@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/picture/one-word.png">
 <meta property="og:image" content="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/picture/cbow.jpg">
 <meta property="og:image" content="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/picture/cbow.jpg">
-<meta property="og:updated_time" content="2019-04-21T06:22:59.080Z">
+<meta property="og:updated_time" content="2019-04-21T06:25:48.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Insight into Word2Vec">
 <meta name="twitter:description" content="A comprehensive understanding of Word2Vec, including background, development, and formula derivation.">
@@ -95,7 +95,7 @@
 <li>由于文章中插入了图片以及标准数学公式，但是Github不支持用Latex编写的数学公式，建议克隆到本地之后使用<a href="https://www.typora.io/" target="_blank" rel="noopener">Typora</a>打开，即可查看完整版本。</li>
 <li>也可以在<a href="https://www.zybuluo.com/Vincent-Gao/note/1447446" target="_blank" rel="noopener">发布版本</a>中查看。</li>
 </ul>
-<p>&lt; !—more—&gt;</p>
+<a id="more"></a>
 <h2 id="背景：自然语言处理"><a href="#背景：自然语言处理" class="headerlink" title="背景：自然语言处理"></a>背景：自然语言处理</h2><p>自然语言处理是计算机科学领域与人工智能领域中的一个重要方向。它研究能实现人与计算机之间用自然语言进行有效通信的各种理论和方法。自然语言处理是一门融语言学、计算机科学、数学于一体的科学。因此，这一领域的研究将涉及自然语言，即人们日常使用的语言，所以它与语言学的研究有着密切的联系，但又有重要的区别。自然语言处理并不是一般地研究自然语言，而在于研制能有效地实现自然语言通信的计算机系统，特别是其中的软件系统。因而它是计算机科学的一部分。</p>
 <p>自然语言处理的最最基础的部分就是要让计算机能够识别人类的语言，因此词向量也就应运而生了。词向量顾名思义就是以向量的形式表示词。</p>
 <h2 id="几种常见的模型（由简单到复杂）"><a href="#几种常见的模型（由简单到复杂）" class="headerlink" title="几种常见的模型（由简单到复杂）"></a>几种常见的模型（由简单到复杂）</h2><h3 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h3><p>词袋模型的基本思想就是将文档中出现的所有词用一个袋子装起来。词袋模型不考虑词出现的先后顺序，并且认为文本中每个词出现的概率都是独立的，不依靠其他词的出现。</p>
@@ -290,7 +290,7 @@ w_{i, j}^{\prime}=w_{i, j}^{\prime}-\eta^{*} E I_{j}^{*} h_{i}</script><p>W的�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/" data-id="cjuqg5y7z0000ssw7bewthrcr" class="article-share-link">Share</a>
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/" data-id="cjuqjsu7g0000hkw7i463lll4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Word2Vec/">Word2Vec</a></li></ul>
