@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/one-word.png">
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/cbow.png">
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/skip-gram.jpg">
-<meta property="og:updated_time" content="2019-04-24T08:13:02.408Z">
+<meta property="og:updated_time" content="2019-04-29T08:12:51.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Insight into Word2Vec">
 <meta name="twitter:description" content="A comprehensive understanding of Word2Vec, including background, development, and formula derivation.">
@@ -211,7 +211,13 @@
 \begin{array} { c } { p ( s ) = p \left( w _ { 1 } , w _ { 2 } , w _ { 3 } , \ldots , w _ { n } \right) = p \left( w _ { 1 } \right) \cdot p \left( w _ { 2 } | w _ { 1 } \right) \cdot p \left( w _ { 3 } | w _ { 2 } , w _ { 1 } \right) \cdot \ldots } \\ { \cdot p \left( w _ { n } | w _ { n - 1 } , w _ { n - 2 } , \ldots , w _ { 1 } \right) } \end{array}
 \end{array}</script><p>这样求一个句子出现的概率就变成了求若干个条件概率。但这样又会出现参数过多的问题。因此我们引入马尔科夫假设，即一个词出现的概率只与它之前若干个出现的单词有关。</p>
 <p>假设一个词出现的概率只与它前面$n$个词出现的概率相关，<strong>N-Gram</strong>也就由此而来了。通常情况下$n$越大，得到的概率越准确但同时计算量也越大，因此$n$一般取2或者3。</p>
-<h3 id="N-Gram-思想"><a href="#N-Gram-思想" class="headerlink" title="N-Gram 思想"></a>N-Gram 思想</h3><p>考虑$p(w_k|w_1^{k-1})$的近似计算，利用Bayes公式，有：</p>
+<h3 id="N-Gram-思想"><a href="#N-Gram-思想" class="headerlink" title="N-Gram 思想"></a>N-Gram 思想</h3><p>一个先导的知识就是贝叶斯公式，这里关于贝叶斯公式不做过多的描述：</p>
+<script type="math/tex; mode=display">
+P(B|A) = \frac{P(A|B)P(B)}{P(A)}</script><script type="math/tex; mode=display">
+P(B_i|A) = \frac{P(A|Bi)P(Bi)}{P(A)} \\
+= \frac{P(A|Bi)P(Bi)}{\sum_{j=1}^{n} P(B_j)P(A|B_j)}</script><p>从理解的角度可以认为是：</p>
+<script type="math/tex; mode=display">
+P(规律|现象) = \frac{P(现象|规律)P(规律)}{P(现象)}</script><p>考虑$p(w_k|w_1^{k-1})$的近似计算，利用Bayes公式，有：</p>
 <script type="math/tex; mode=display">
 p(w_k|w_1^{k-1}) = \frac{p(w_1^k)}{p(w_1^{k-1})}</script><p>根据大数定理，我们可以近似表示：</p>
 <script type="math/tex; mode=display">
