@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction | Gao Haojun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+<meta name="keywords" content="Equity Premium Prediction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/index.html">
+<meta property="og:site_name" content="Gao Haojun">
+<meta property="og:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-01T14:27:34.650Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+<meta name="twitter:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+  
+    <link rel="alternate" href="/Blog/atom.xml" title="Gao Haojun" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/Blog/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/Blog/" id="logo">Gao Haojun</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/Blog/">Home</a>
+        
+          <a class="main-nav-link" href="/Blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vincentgaohj.github.io/Blog"></form>
+      </div>
+    </div>
+  </div>
+  <script>
+    
+    var number_of_banners = 6;
+    var randnum = Math.floor(Math.random() * number_of_banners + 1);
+    document.getElementById("banner").style.backgroundImage = "url(/Blog/css/images/banner" + randnum + ".jpg)";
+    
+</script>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/" class="article-date">
+  <time datetime="2019-05-01T14:25:45.000Z" itemprop="datePublished">2019-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      A Comprehensive Look at The Empirical Performance of Equity Premium Prediction
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</p>
+<a id="more"></a>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>被解释变量就是股票超额收益（equity premium）Our dependent variable is always the equity premium, that is, the total rate of return on the stock market minus the prevailing short-term interest rate.</p>
+<p>解释变量有以下三种：与股票特征相关的变量，与利率相关的变量以及市场上的宏观变量：</p>
+<ul>
+<li><p><strong>股票特征相关变量 stock characteristics</strong></p>
+<ul>
+<li><p><strong>股息 Dividends</strong> ： d/p (dividend price ratio) &amp; d/y (dividend yield) </p>
+<p>Dividends are 12-month moving sums of dividends paid on the S&amp;P 500 index.</p>
+</li>
+<li><p><strong>收入 Earnings</strong> ：e/p (earnings price ratio) &amp; d/e (dividend payout ratio)</p>
+<p>Earnings are 12-month moving sums of earnings on the S&amp;P 500 index.</p>
+</li>
+<li><p><strong>股票方差 Stock Variance (svar)</strong>： 股票方差是以标准普尔500指数日回报的平方之和计算的</p>
+<p>Stock Variance is computed as sum of squared daily returns on the S&amp;P 500.</p>
+</li>
+<li><p><strong>横截面溢价 Cross-Sectional Premium (csp)</strong>：测度了高 beta 股票和低 beta 股票的相对估值。</p>
+</li>
+<li><p><strong>账面价值 BookValue</strong></p>
+</li>
+<li><p><strong>公司发行活动 Corporate Issuing Activity</strong>：</p>
+<ul>
+<li><em>Net Equity Expansion</em> (<strong>ntis</strong>) is the ratio of 12-month moving sums of net issues by NYSE listed stocks divided by the total end-of-year market capitalization of NYSE stocks. </li>
+<li><em>Percent Equity Issuing</em> (<strong>eqis</strong>), is the ratio of equity issuing activity as a fraction of total issuing activity.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>利率相关变量</strong></p>
+<ul>
+<li><strong>国库券 Treasury Bills (tbl)</strong></li>
+<li><strong>长期收益率 Long Term Yield (lty)</strong></li>
+<li><strong>公司债券收益率 Corporate Bond Returns</strong><ul>
+<li><em>企业债券收益率 Corporate Bond Yields</em></li>
+<li><em>默认收益率差 Default Yield Spread (dfy)</em></li>
+<li><em>违约收益率 Default Return Spread (dfr)</em></li>
+</ul>
+</li>
+<li><strong>通胀率 Inflation (infl)</strong></li>
+</ul>
+</li>
+<li><p><strong>宏观变量</strong></p>
+<ul>
+<li><strong>投资对资本的比率 Investment to Capital Ratio (i/k)</strong></li>
+<li>i/k = 总投资 / 整个经济体的总资本</li>
+</ul>
+</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="单因素回归"><a href="#单因素回归" class="headerlink" title="单因素回归"></a>单因素回归</h3><h3 id="多因素回归"><a href="#多因素回归" class="headerlink" title="多因素回归"></a>多因素回归</h3><ul>
+<li><p>all (kitchen sink regression)</p>
+<p>包括上述所以的变量（它不包括<strong>cay</strong>,部分原因是数据的可用性有限）。</p>
+</li>
+<li><p>ms (model selection)</p>
+<p>如果有 k 个变量，就会有 个随机的模型组合方式。在每个时期 t，选出一个最好的模型 —— 标准是 OOS 的预测误差最小（minimum OOS prediction errors）。</p>
+</li>
+</ul>
+<h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><ol>
+<li>首先，将 T 个样本分为 m 个样本内数据和 p 个样本外数据；</li>
+<li>其次，为了预测第 m+1 期的值，我们要用前 m 期共 m-1 个有效数据回归，得到系数 α 和 β；</li>
+<li>最后，代入第 m 期的解释变量求第 m+1 期的 r;</li>
+<li>然后，预测第 m+2 期的 r, 此时第 m+ 1 期的是所有真实数据都已知了，用前 m+1 期共 m 个有效数据回归，再得到系数 α 和 β（与第一次的可能不同）；代入第 m+1 期的解释变量求第 m+2 期的 r;</li>
+<li>重复以上过程，直到把 q 个样本外预测做完。</li>
+</ol>
+<h2 id="实证分析-Empirical-Procedure"><a href="#实证分析-Empirical-Procedure" class="headerlink" title="实证分析 Empirical Procedure"></a>实证分析 Empirical Procedure</h2><h3 id="OOS-Statistic"><a href="#OOS-Statistic" class="headerlink" title="OOS Statistic"></a>OOS Statistic</h3><p>eN 表示 OOS 与历史均值（无条件预测）之间的误差；eA 表示 OOS 与 OLS 回归模型（条件预测）之间的误差。</p>
+<ul>
+<li>$R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}$</li>
+<li>$\overline{R}^{2}=R^{2}-\left(1-R^{2}\right) \times\left(\frac{T-k}{T-1}\right)$</li>
+<li>$\Delta \mathrm{RMSE}=\sqrt{\mathrm{MSE}_{N}}-\sqrt{\mathrm{MSE}_{A}}$</li>
+<li>$\operatorname{MSE}-\mathrm{F}=(T-h+1) \times\left(\frac{\mathrm{MSE}_{N}-\mathrm{MSE}_{A}}{\mathrm{MSE}_{A}}\right)$</li>
+</ul>
+<p>For our encompassing tests in Section 6, we compute</p>
+<ul>
+<li>$\mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}$</li>
+</ul>
+<h3 id="Statistical-Power"><a href="#Statistical-Power" class="headerlink" title="Statistical Power"></a>Statistical Power</h3><p>Our article entertains both IS and OOS tests.  Inoue and Kilian (2004) show that the OOS tests used in this paper are less powerful than IS tests. We believe this is the wrong way to look at the issue of power for two reasons:</p>
+<ul>
+<li>In our forecasting regression context, OOS performance just happens to be one natural and especially useful diagnostic statistic. It can help determine whether a model is stable and wellspecified, or changing over time, either suddenly or gradually. It is unreasonable to propose a model if the IS performance is insignificant, regardless of its OOS performance.</li>
+<li>All of the OOS tests in our paper do not fail in the way the critics suggest. Low-power OOS tests would produce relatively poor predictions early and relatively good predictions late in the sample. Instead,allofourmodelsshowthe opposite behavior—good OOS performance early, bad OOS performance late.</li>
+</ul>
+<h3 id="Estimation-Period"><a href="#Estimation-Period" class="headerlink" title="Estimation Period"></a>Estimation Period</h3><ul>
+<li>The first begins OOS forecasts 20 years after data are available; </li>
+<li>The second begins OOS forecast in 1965 (or 20 years after data are available, whichever comes later); </li>
+<li>The third ignores all data prior to 1927 even in the estimation. </li>
+</ul>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li>大多数模型是不稳定的、甚至是虚假的。即使单个变量模型在某段时间内具有良好的样本外预测能力，这种预测能力也很难持续，比如经济结构不稳定或结构变化。</li>
+<li>到 2005 年末为止，大多数模型无论是在 IS 还是在 OOS 中都丧失了统计显著性。在 OOS 中，大多数模型不仅不能在统计意义上或经济意义上打败无条件基准水平（历史均值），而且表现的还不如它。如果我们把目光集中在 1975 年以后的时间里，我们会发现，没有哪一个模型在 OOS 中有突出的表现，而且也几乎没有可接受的 IS 显著水平。</li>
+<li>当我们把视角从研究者转向为投资者时，我们相信有证据表明这些模型并不能给今天的投资提供支持或建议。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/" data-id="cjv5bfeie0001k0w7fxq21p4w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Equity-Premium-Prediction/">Equity Premium Prediction</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2019/04/30/Convolutional-Neural-Networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Convolutional Neural Networks</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Equity-Premium-Prediction/">Equity Premium Prediction</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Word2Vec/">Word2Vec</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/Blog/tags/Equity-Premium-Prediction/" style="font-size: 10px;">Equity Premium Prediction</a> <a href="/Blog/tags/Word2Vec/" style="font-size: 10px;">Word2Vec</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/04/">April 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/">A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2019/04/30/Convolutional-Neural-Networks/">Convolutional Neural Networks</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2019/04/21/Insight-into-Word2Vec/">Insight into Word2Vec</a>
+          </li>
+        
+          <li>
+            <a href="/Blog/2019/04/21/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Gao Haojun<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Blog/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
