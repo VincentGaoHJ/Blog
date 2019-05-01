@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-01T14:27:34.650Z">
+<meta property="og:updated_time" content="2019-05-01T14:33:41.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta name="twitter:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
@@ -96,8 +96,9 @@
       
         <p>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</p>
 <a id="more"></a>
-<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>被解释变量就是股票超额收益（equity premium）Our dependent variable is always the equity premium, that is, the total rate of return on the stock market minus the prevailing short-term interest rate.</p>
-<p>解释变量有以下三种：与股票特征相关的变量，与利率相关的变量以及市场上的宏观变量：</p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p><strong>被解释变量就是股票超额收益（equity premium）</strong></p>
+<p>Our dependent variable is always the equity premium, that is, the total rate of return on the stock market minus the prevailing short-term interest rate.</p>
+<p><strong>解释变量有以下三种：与股票特征相关的变量，与利率相关的变量以及市场上的宏观变量：</strong></p>
 <ul>
 <li><p><strong>股票特征相关变量 stock characteristics</strong></p>
 <ul>
@@ -142,11 +143,11 @@
 </ul>
 </li>
 </ul>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="单因素回归"><a href="#单因素回归" class="headerlink" title="单因素回归"></a>单因素回归</h3><h3 id="多因素回归"><a href="#多因素回归" class="headerlink" title="多因素回归"></a>多因素回归</h3><ul>
-<li><p>all (kitchen sink regression)</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
+<li><p><strong>all (kitchen sink regression)</strong></p>
 <p>包括上述所以的变量（它不包括<strong>cay</strong>,部分原因是数据的可用性有限）。</p>
 </li>
-<li><p>ms (model selection)</p>
+<li><p><strong>ms (model selection)</strong></p>
 <p>如果有 k 个变量，就会有 个随机的模型组合方式。在每个时期 t，选出一个最好的模型 —— 标准是 OOS 的预测误差最小（minimum OOS prediction errors）。</p>
 </li>
 </ul>
@@ -159,14 +160,19 @@
 </ol>
 <h2 id="实证分析-Empirical-Procedure"><a href="#实证分析-Empirical-Procedure" class="headerlink" title="实证分析 Empirical Procedure"></a>实证分析 Empirical Procedure</h2><h3 id="OOS-Statistic"><a href="#OOS-Statistic" class="headerlink" title="OOS Statistic"></a>OOS Statistic</h3><p>eN 表示 OOS 与历史均值（无条件预测）之间的误差；eA 表示 OOS 与 OLS 回归模型（条件预测）之间的误差。</p>
 <ul>
-<li>$R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}$</li>
-<li>$\overline{R}^{2}=R^{2}-\left(1-R^{2}\right) \times\left(\frac{T-k}{T-1}\right)$</li>
-<li>$\Delta \mathrm{RMSE}=\sqrt{\mathrm{MSE}_{N}}-\sqrt{\mathrm{MSE}_{A}}$</li>
-<li>$\operatorname{MSE}-\mathrm{F}=(T-h+1) \times\left(\frac{\mathrm{MSE}_{N}-\mathrm{MSE}_{A}}{\mathrm{MSE}_{A}}\right)$</li>
+<li><script type="math/tex; mode=display">
+R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
+<li><script type="math/tex; mode=display">
+\overline{R}^{2}=R^{2}-\left(1-R^{2}\right) \times\left(\frac{T-k}{T-1}\right)</script></li>
+<li><script type="math/tex; mode=display">
+\Delta \mathrm{RMSE}=\sqrt{\mathrm{MSE}_{N}}-\sqrt{\mathrm{MSE}_{A}}</script></li>
+<li><script type="math/tex; mode=display">
+\operatorname{MSE}-\mathrm{F}=(T-h+1) \times\left(\frac{\mathrm{MSE}_{N}-\mathrm{MSE}_{A}}{\mathrm{MSE}_{A}}\right)</script></li>
 </ul>
 <p>For our encompassing tests in Section 6, we compute</p>
 <ul>
-<li>$\mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}$</li>
+<li><script type="math/tex; mode=display">
+\mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}</script></li>
 </ul>
 <h3 id="Statistical-Power"><a href="#Statistical-Power" class="headerlink" title="Statistical Power"></a>Statistical Power</h3><p>Our article entertains both IS and OOS tests.  Inoue and Kilian (2004) show that the OOS tests used in this paper are less powerful than IS tests. We believe this is the wrong way to look at the issue of power for two reasons:</p>
 <ul>
@@ -187,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/" data-id="cjv5bfeie0001k0w7fxq21p4w" class="article-share-link">Share</a>
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/" data-id="cjv5bmtrd000054w7enfel1h7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Equity-Premium-Prediction/">Equity Premium Prediction</a></li></ul>
