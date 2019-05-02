@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-02T12:28:55.507Z">
+<meta property="og:updated_time" content="2019-05-02T20:56:25.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta name="twitter:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
@@ -185,6 +185,16 @@ R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
 <ul>
 <li><script type="math/tex; mode=display">
 \mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}</script></li>
+</ul>
+<h3 id="重抽样-Bootstrap"><a href="#重抽样-Bootstrap" class="headerlink" title="重抽样 Bootstrap"></a>重抽样 Bootstrap</h3><h4 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h4><p>We then generate 10,000 bootstrapped time series by drawing with replacement from the residuals. The initial observation—preceding the sample of data used to estimate the models—is selected by picking one date from the actual data at random. This bootstrap procedure not only preserves the autocorrelation structure of the predictor variable, thereby being valid under the Stambaugh (1999) specification, but also preserves the cross-correlation structure of the two residuals. </p>
+<h4 id="我们-Moving-Block-Bootstrap"><a href="#我们-Moving-Block-Bootstrap" class="headerlink" title="我们 Moving Block Bootstrap"></a>我们 Moving Block Bootstrap</h4><ul>
+<li><p><strong>Block bootstrap</strong></p>
+<p>The block bootstrap is used when the data, or the errors in a model, are correlated. In this case, a simple case or residual resampling will fail, as it is not able to replicate the correlation in the data. The block bootstrap tries to replicate the correlation by resampling instead blocks of data.</p>
+</li>
+<li><p><strong>Time series: Moving block bootstrap</strong></p>
+<p>In the moving block bootstrap, introduced by Künsch (1989),<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics" target="_blank" rel="noopener">[25]</a>#cite_note-25) data is split into <em>n</em> − <em>b</em> + 1 overlapping blocks of length <em>b</em>: Observation 1 to b will be block 1, observation 2 to <em>b</em> + 1 will be block 2, etc. Then from these <em>n</em> − <em>b</em> + 1 blocks, <em>n</em>/<em>b</em> blocks will be drawn at random with replacement. Then aligning these n/b blocks in the order they were picked, will give the bootstrap observations.</p>
+<p>This bootstrap works with dependent data, however, the bootstrapped observations will not be stationary anymore by construction. But, it was shown that varying randomly the block length can avoid this problem.<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics" target="_blank" rel="noopener">[26]</a>#cite_note-26) This method is known as the <em>stationary bootstrap.</em> Other related modifications of the moving block bootstrap are the <em>Markovian bootstrap</em> and a stationary bootstrap method that matches subsequent blocks based on standard deviation matching.</p>
+</li>
 </ul>
 <h3 id="Statistical-Power"><a href="#Statistical-Power" class="headerlink" title="Statistical Power"></a>Statistical Power</h3><p>Our article entertains both IS and OOS tests.  Inoue and Kilian (2004) show that the OOS tests used in this paper are less powerful than IS tests. We believe this is the wrong way to look at the issue of power for two reasons:</p>
 <ul>
