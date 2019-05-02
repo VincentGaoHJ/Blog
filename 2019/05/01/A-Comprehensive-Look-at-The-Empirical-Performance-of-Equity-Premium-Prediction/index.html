@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-01T14:33:41.012Z">
+<meta property="og:updated_time" content="2019-05-02T12:28:55.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta name="twitter:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
@@ -144,11 +144,23 @@
 </li>
 </ul>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul>
-<li><p><strong>all (kitchen sink regression)</strong></p>
+<li><p><strong>Simple univariate model</strong></p>
+</li>
+<li><p><strong>‘‘Kitchen Sink’’ Regression (all)</strong></p>
 <p>包括上述所以的变量（它不包括<strong>cay</strong>,部分原因是数据的可用性有限）。</p>
 </li>
-<li><p><strong>ms (model selection)</strong></p>
-<p>如果有 k 个变量，就会有 个随机的模型组合方式。在每个时期 t，选出一个最好的模型 —— 标准是 OOS 的预测误差最小（minimum OOS prediction errors）。</p>
+<li><p><strong>Consumption, wealth, income ratio (cay)</strong></p>
+<script type="math/tex; mode=display">
+c_{t}=\alpha+\beta_{a} \cdot a_{t}+\beta_{y} \cdot y_{t}+\sum_{i=-k} b_{a, i} \cdot \Delta a_{t-i} +\sum_{i=-k}^{k} b_{y, i} \cdot \Delta y_{t-i}+\epsilon_{t} \\
+t=k+1, \ldots, T-k</script><p>where c is the aggregate consumption, a is the aggregate wealth, and y is the aggregate income.</p>
+<p>Because the cay is constructed using look-ahead (in-sample) estimation regression coefficients, we also created an equivalent measure that excludes advance knowledge from the estimation equation and thus uses only prevailing data. In other words, if the current time period is ‘s’, then we estimated using only the data up to ‘s’ through</p>
+<script type="math/tex; mode=display">
+c_{t}=\alpha+\beta_{a}^{s} \cdot a_{t}+\beta_{y}^{s} \cdot y_{t}+\sum_{i=-k}^{k} b_{a, i}^{s} \cdot \Delta a_{t-i} +\sum_{i=-k}^{k} b_{y, i}^{s} \cdot \Delta y_{t-i}+\epsilon_{t} \\
+t=k+1, \ldots, s-k</script><p>This measure is called caya (‘‘ante’’) to distinguish it from the traditional variable cayp constructed with look-ahead bias (‘‘post’’).</p>
+</li>
+<li><p><strong>model selection (ms)</strong></p>
+<p>如果有 $k$ 个变量，就会有 $2^k$ 个随机的模型组合方式。在每个时期 $t$，选出一个最好的模型 —— 标准是 OOS 的预测误差最小（minimum OOS prediction errors）。</p>
+<p><strong>The latter two models, cay and ms, are revised every period, which render IS regressions problematic. This is also why we did not include caya in the kitchen sink specification.</strong></p>
 </li>
 </ul>
 <h2 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h2><ol>
