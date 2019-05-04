@@ -15,10 +15,12 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-02T20:56:25.025Z">
+<meta property="og:image" content="http://qiniu.gaohaojun.cn/moving-block-bootstrap.png">
+<meta property="og:updated_time" content="2019-05-04T08:16:23.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
 <meta name="twitter:description" content="A Comprehensive Look at The Empirical Performance of Equity Premium Prediction">
+<meta name="twitter:image" content="http://qiniu.gaohaojun.cn/moving-block-bootstrap.png">
   
     <link rel="alternate" href="/Blog/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -96,6 +98,7 @@
       
         <p>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</p>
 <a id="more"></a>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>[TOC]</p>
 <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p><strong>被解释变量就是股票超额收益（equity premium）</strong></p>
 <p>Our dependent variable is always the equity premium, that is, the total rate of return on the stock market minus the prevailing short-term interest rate.</p>
 <p><strong>解释变量有以下三种：与股票特征相关的变量，与利率相关的变量以及市场上的宏观变量：</strong></p>
@@ -187,15 +190,23 @@ R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
 \mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}</script></li>
 </ul>
 <h3 id="重抽样-Bootstrap"><a href="#重抽样-Bootstrap" class="headerlink" title="重抽样 Bootstrap"></a>重抽样 Bootstrap</h3><h4 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h4><p>We then generate 10,000 bootstrapped time series by drawing with replacement from the residuals. The initial observation—preceding the sample of data used to estimate the models—is selected by picking one date from the actual data at random. This bootstrap procedure not only preserves the autocorrelation structure of the predictor variable, thereby being valid under the Stambaugh (1999) specification, but also preserves the cross-correlation structure of the two residuals. </p>
-<h4 id="我们-Moving-Block-Bootstrap"><a href="#我们-Moving-Block-Bootstrap" class="headerlink" title="我们 Moving Block Bootstrap"></a>我们 Moving Block Bootstrap</h4><ul>
-<li><p><strong>Block bootstrap</strong></p>
+<h4 id="我们-Moving-Block-Bootstrap"><a href="#我们-Moving-Block-Bootstrap" class="headerlink" title="我们 Moving Block Bootstrap"></a>我们 Moving Block Bootstrap</h4><p><strong>Bootstrap</strong></p>
+<p><strong>它的核心思想是通过使用数据本身，从而估计从该数据中计算出来的统计数据的变化。</strong>现代计算机强大的计算能力使得该方法的实现非常简单。</p>
+<p>放到参数估计的上下文中，<strong>Bootstrap 意味着我们仅仅通过使用手头上的样本数据（样本数据 “自力更生”）而不对总体的分布做任何假设（比如传统方法中的正态分布假设），来计算样本统计量在估计总体统计量时的误差。</strong></p>
+<p>Bootstrap 原则指出：<strong>Bootstrap 样本统计量 u* 围绕原始样本统计量 u 的变化（简称为 u* 的变化）是 原始样本统计量 u 围绕总体统计量 v 的变化（简称为 u 的变化） 的一个很好的近似。</strong></p>
+<p><strong>为了计算 u* 的变化，我们只需要对原始样本数据进行大量的可置换重采样。</strong></p>
+<p><strong>Block Bootstrap</strong></p>
 <p>The block bootstrap is used when the data, or the errors in a model, are correlated. In this case, a simple case or residual resampling will fail, as it is not able to replicate the correlation in the data. The block bootstrap tries to replicate the correlation by resampling instead blocks of data.</p>
-</li>
-<li><p><strong>Time series: Moving block bootstrap</strong></p>
-<p>In the moving block bootstrap, introduced by Künsch (1989),<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics" target="_blank" rel="noopener">[25]</a>#cite_note-25) data is split into <em>n</em> − <em>b</em> + 1 overlapping blocks of length <em>b</em>: Observation 1 to b will be block 1, observation 2 to <em>b</em> + 1 will be block 2, etc. Then from these <em>n</em> − <em>b</em> + 1 blocks, <em>n</em>/<em>b</em> blocks will be drawn at random with replacement. Then aligning these n/b blocks in the order they were picked, will give the bootstrap observations.</p>
-<p>This bootstrap works with dependent data, however, the bootstrapped observations will not be stationary anymore by construction. But, it was shown that varying randomly the block length can avoid this problem.<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics" target="_blank" rel="noopener">[26]</a>#cite_note-26) This method is known as the <em>stationary bootstrap.</em> Other related modifications of the moving block bootstrap are the <em>Markovian bootstrap</em> and a stationary bootstrap method that matches subsequent blocks based on standard deviation matching.</p>
-</li>
+<p><strong>由于时间序列存在自相关性，因此在重采样的时候应使用 Block Bootstrap。</strong>顾名思义，Block Bootstrap 就是每次从序列中有放回的抽取一个由连续 n 个相邻数据点构成的 block（大小由 block size 决定）。主流的 Block Bootstrap 算法包括以下三种：</p>
+<ul>
+<li>Moving Block Bootstrap（Kunsch 1989, Liu and Singh 1992）；</li>
+<li>Circular Block Bootstrap（Politis and Romano 1992）;</li>
+<li>Stationary Bootstrap（Politis and Romano 1994）。</li>
 </ul>
+<p>下图说明了 Moving Block Bootstrap（MBB）的原理：</p>
+<p><img src="http://qiniu.gaohaojun.cn/moving-block-bootstrap.png" alt="Moving Block Bootstrap（MBB）的原理"></p>
+<p>从上图的原理可知，<strong>MBB 最大的问题是对于原始序列首尾两端样本采样不足</strong>。为了规避这个问题，Circular Block Bootstrap（CBB）被提出。顾名思义，它是将原始数据的首尾相连，构成一个圆圈（Circular 一词的出处），然后再按照给定的 block size 进行重采样，避免首尾两端采样不足。</p>
+<p>最后一种方法是 Stationary Bootstrap（SB），<strong>它和前两者最大的区别是使用非固定的 block size</strong>。SB 中的 block size 满足几何分布；作为输入而给定的 block size 是它的期望。<strong>该方法得到的 bootstrapped 样本可以更好的满足平稳性的要求，因此当原始时间序列难以满足平稳性时有更好的效果。</strong></p>
 <h3 id="Statistical-Power"><a href="#Statistical-Power" class="headerlink" title="Statistical Power"></a>Statistical Power</h3><p>Our article entertains both IS and OOS tests.  Inoue and Kilian (2004) show that the OOS tests used in this paper are less powerful than IS tests. We believe this is the wrong way to look at the issue of power for two reasons:</p>
 <ul>
 <li>In our forecasting regression context, OOS performance just happens to be one natural and especially useful diagnostic statistic. It can help determine whether a model is stable and wellspecified, or changing over time, either suddenly or gradually. It is unreasonable to propose a model if the IS performance is insignificant, regardless of its OOS performance.</li>
@@ -211,6 +222,7 @@ R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
 <li>到 2005 年末为止，大多数模型无论是在 IS 还是在 OOS 中都丧失了统计显著性。在 OOS 中，大多数模型不仅不能在统计意义上或经济意义上打败无条件基准水平（历史均值），而且表现的还不如它。如果我们把目光集中在 1975 年以后的时间里，我们会发现，没有哪一个模型在 OOS 中有突出的表现，而且也几乎没有可接受的 IS 显著水平。</li>
 <li>当我们把视角从研究者转向为投资者时，我们相信有证据表明这些模型并不能给今天的投资提供支持或建议。</li>
 </ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://mp.weixin.qq.com/s?__biz=MzIyMDEwNDk1Mg==&amp;mid=2650877206&amp;idx=1&amp;sn=54cfdca6a519abee8fb96ba8f4632ca5&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">用 Bootstrap 进行参数估计大有可为</a></p>
 
       
     </div>
