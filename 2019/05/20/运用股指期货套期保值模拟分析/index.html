@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="机构投资者运用股指期货套期保值的模拟分析">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-20T13:10:21.180Z">
+<meta property="og:updated_time" content="2019-05-21T11:06:01.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运用股指期货套期保值模拟分析">
 <meta name="twitter:description" content="机构投资者运用股指期货套期保值的模拟分析">
@@ -97,21 +97,25 @@
         <p>对于证券公司等机构投资者而言，如何完善一个完整的套期保值流程和套保策略是提高证券投资收益和规避风险的一个重要环节。股指期货相对于股票现货最重要的两个功能就是杠杆和做空。运用杠杆能够提高资金的使用效率，利用做空能够实现套期保值。</p>
 <a id="more"></a>
 <h3 id="投资组合选择"><a href="#投资组合选择" class="headerlink" title="投资组合选择"></a>投资组合选择</h3><p>选择 50 支股票作为初始投资组合</p>
+<hr>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>以选定的 50 支股票构成的投资组合作为套保对象，规避系统性风险，且套保目标制定为完全套保，以实现完全对冲系统性风险。</p>
+<hr>
 <h3 id="套保步骤"><a href="#套保步骤" class="headerlink" title="套保步骤"></a>套保步骤</h3><ol>
-<li><p>测算该投资组合中各支股票基于沪深300指数的 β 值</p>
-</li>
-<li><p>评估该投资组合市值于沪深300指数的走势的相关性（把两个值都画折线图，能看出趋势一致就可以）</p>
-</li>
-<li><p>采用空头套保策略，在持有股票组合不变的情况下做空股指期货合约（可剔除部分 β 值过低的个股）</p>
-</li>
-<li><p>基于套保期限接近的原则选择套保合约</p>
+<li>测算该投资组合中各支股票基于沪深300指数的 $β$ 值</li>
+<li>评估该投资组合市值于沪深300指数的走势的相关性（把两个值都画折线图，能看出趋势一致就可以）</li>
+<li>采用空头套保策略，在持有股票组合不变的情况下做空股指期货合约（可剔除部分 $β$ 值过低的个股）</li>
+</ol>
+<hr>
+<h3 id="套保策略"><a href="#套保策略" class="headerlink" title="套保策略"></a>套保策略</h3><ul>
+<li><p><strong>套保合约</strong></p>
+<p> 基于套保期限接近的原则选择套保合约</p>
 <ul>
-<li>查询：沪深300当期市值</li>
+<li>查询沪深300当期市值</li>
 <li>合约乘数</li>
 </ul>
 </li>
-<li><p>基于投资组合的β值测算套保比率（持有的期货合约头寸于现货组合头寸之间的比率）</p>
+<li><p><strong>套保比率</strong></p>
+<p> 基于投资组合的β值测算套保比率（持有的期货合约头寸于现货组合头寸之间的比率）</p>
 <ul>
 <li>套期保值比率计算模型：</li>
 <li><strong>风险最小化套期保值 ← 一般采用</strong></li>
@@ -119,20 +123,47 @@
 <li>效用最大化套期保值</li>
 </ul>
 </li>
-<li><p>根据不同模型计算出的套保比率得出所需股指期货合约分数</p>
+<li><p><strong>股指期货合约份数</strong></p>
+<p> 根据不同模型计算出的套保比率得出所需股指期货合约份数</p>
 <script type="math/tex; mode=display">
-期货合约份数 = \frac{现货资产市值 \times 最优套保比率}{股指期货当期价格 \times 合约乘数}</script></li>
-<li><p>度量不同模型计算出的套保比率的风险规避效果</p>
+ 期货合约份数 = \frac{现货资产市值 \times 最优套保比率}{股指期货当期价格 \times 合约乘数}</script></li>
+<li><p><strong>风险规避效果</strong></p>
+<p> 度量不同模型计算出的套保比率的风险规避效果</p>
 <script type="math/tex; mode=display">
-H e=\frac{\sigma_{n}^{2}-\sigma_{k}^{2}}{\sigma_{n}^{2}}</script><ul>
+ H e=\frac{\sigma_{n}^{2}-\sigma_{k}^{2}}{\sigma_{n}^{2}}</script><ul>
 <li>分子：未套保资产组合收益方差减去套保后资产组合收益方差</li>
 </ul>
 </li>
-<li><p>拟定交易费率和保证金比率（在数据库中查询，如果没有就分别按照 0.015% 和 15% 计算）</p>
+<li><p><strong>拟定交易费率和保证金比率</strong></p>
+<p>在数据库中查询，如果没有就分别按照 0.015% 和 15% 计算</p>
 </li>
-<li><p>执行期货合约，<strong>动态调整期货头寸（待定，时间充裕就做，否则就只做两个月的套保）</strong></p>
+<li><p><strong>动态调整</strong></p>
+<p>执行期货合约，动态调整期货头寸（待定，时间充裕就做，否则就只做两个月的套保）</p>
 </li>
-</ol>
+</ul>
+<hr>
+<h3 id="最优套期保值比率计量模型"><a href="#最优套期保值比率计量模型" class="headerlink" title="最优套期保值比率计量模型"></a>最优套期保值比率计量模型</h3><script type="math/tex; mode=display">
+H=\frac{\operatorname{Cov}\left(R_{s}, R_{f}\right)}{\operatorname{Var}\left(R_{f}\right)}=\frac{\rho \sigma_{s} \sigma_{f}}{\sigma_{f}^{2}}=\rho \frac{\sigma_{s}}{\sigma_{f}}</script><p>其中 $R_s$ 为现货市场收益率，$R_f$ 为期货市场收益率</p>
+<h4 id="具体可选择模型"><a href="#具体可选择模型" class="headerlink" title="具体可选择模型"></a>具体可选择模型</h4><ul>
+<li><p><strong>最小二乘回归模型（OLS）</strong></p>
+<p>以 $R_s$ 为被解释变量， $R_f$ 为解释变量做最小二乘回归，得到的回归系数 $β$ 即为最优套保比率。</p>
+</li>
+<li><p><strong>双向自回归模型（VAR）</strong></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\Delta \ln S_{\mathrm{t}}=C_{s}+\sum_{i=1}^{l} \alpha_{s} \Delta \ln S_{t-1}+\sum_{i=1}^{l} \beta_{s} \Delta \ln F_{t-1}+\varepsilon_{s}} \\ {\Delta \ln F_{t}=C_{f}+\sum_{i=1}^{l} \alpha_{f} \Delta \ln F_{t-1}+\sum_{i=1}^{l} \beta_{f} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}</script><p>其中 $C$ 为截距项，$α \&amp; β$ 为回归系数，$ε$ 为服从独立同分布的随机误差项，要寻找最佳滞后值 $L$，从而使残差项的自相关性消除。最后根据公式计算出套保比率：</p>
+<script type="math/tex; mode=display">
+h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}{\operatorname{Var}\left(\varepsilon_{f t}\right)}</script></li>
+<li><p><strong>误差修正模型（VECM）</strong></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\Delta \ln S_{\mathrm{t}}=C_{s}+\mathrm{k}_{\mathrm{s}} Z_{\mathrm{t}-1}+\sum_{i=1}^{l} \alpha_{s i} \Delta \ln S_{t-1}+\sum_{i=1}^{l} \beta_{s i} \Delta \ln F_{t-1}+\varepsilon_{s t}} \\ {\Delta \ln F_{t}=C_{f}+k_{f} Z_{t-1}+\sum_{i=1}^{l} \alpha_{f i} \Delta \ln F_{t-1}+\sum_{i=1}^{l} \beta_{f i} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}</script><p>其中：</p>
+<script type="math/tex; mode=display">
+Z_{t}=S_{t}-\alpha F_{t}</script><p>套保比率计算公式同上。</p>
+</li>
+<li><p><strong>广义自回归条件异方差模型（GARCH）</strong></p>
+<script type="math/tex; mode=display">
+\Delta \ln S_{t}=\alpha+\beta \Delta \ln F_{t-1}+\gamma Z_{t-1}+\varepsilon_{t}</script><p>其中 $β$ 就是套保比率值</p>
+</li>
+</ul>
 
       
     </div>
@@ -260,21 +291,5 @@ H e=\frac{\sigma_{n}^{2}-\sigma_{k}^{2}}{\sigma_{n}^{2}}</script><ul>
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
