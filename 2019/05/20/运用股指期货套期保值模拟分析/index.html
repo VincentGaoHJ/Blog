@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="机构投资者运用股指期货套期保值的模拟分析">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T01:37:03.193Z">
+<meta property="og:updated_time" content="2019-05-29T01:43:25.192Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运用股指期货套期保值模拟分析">
 <meta name="twitter:description" content="机构投资者运用股指期货套期保值的模拟分析">
@@ -156,16 +156,29 @@ H=\frac{\operatorname{Cov}\left(R_{s}, R_{f}\right)}{\operatorname{Var}\left(R_{
 <li><p><strong>最小二乘回归模型（OLS）</strong></p>
 <p>以 $R_s$ 为被解释变量， $R_f$ 为解释变量做最小二乘回归，得到的回归系数 $β$ 即为最优套保比率。</p>
 </li>
-<li><p><strong>双向自回归模型（VAR）</strong></p>
+<li><p><strong>双向自回归模型（B-VAR）</strong></p>
 <script type="math/tex; mode=display">
 \begin{array}{l}{\Delta \ln S_{\mathrm{t}}=C_{s}+\sum_{i=1}^{l} \alpha_{s} \Delta \ln S_{t-1}+\sum_{i=1}^{l} \beta_{s} \Delta \ln F_{t-1}+\varepsilon_{s}} \\ {\Delta \ln F_{t}=C_{f}+\sum_{i=1}^{l} \alpha_{f} \Delta \ln F_{t-1}+\sum_{i=1}^{l} \beta_{f} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}</script><p>其中 $C$ 为截距项，$α \&amp; β$ 为回归系数，$ε$ 为服从独立同分布的随机误差项，要寻找最佳滞后值 $L$，从而使残差项的自相关性消除。最后根据公式计算出套保比率：</p>
 <script type="math/tex; mode=display">
-h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}{\operatorname{Var}\left(\varepsilon_{f t}\right)}</script></li>
-<li><p><strong>误差修正模型（VECM）</strong></p>
+h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}{\operatorname{Var}\left(\varepsilon_{f t}\right)}</script><p>克服 ols 可能忽略残差项自相关的缺陷</p>
+<p><strong>步骤：</strong></p>
+<p>确定最优滞后阶数，采用 AIC 方法，列出沪深 300 指数的前 5 阶 AIC，最小取值时的阶数即为最优滞后阶数。建立 B-var 模型：</p>
 <script type="math/tex; mode=display">
-\begin{array}{l}{\Delta \ln S_{\mathrm{t}}=C_{s}+\mathrm{k}_{\mathrm{s}} Z_{\mathrm{t}-1}+\sum_{i=1}^{l} \alpha_{s i} \Delta \ln S_{t-1}+\sum_{i=1}^{l} \beta_{s i} \Delta \ln F_{t-1}+\varepsilon_{s t}} \\ {\Delta \ln F_{t}=C_{f}+k_{f} Z_{t-1}+\sum_{i=1}^{l} \alpha_{f i} \Delta \ln F_{t-1}+\sum_{i=1}^{l} \beta_{f i} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}</script><p>其中：</p>
-<script type="math/tex; mode=display">
-Z_{t}=S_{t}-\alpha F_{t}</script><p>套保比率计算公式同上。</p>
+\Delta \ln \mathrm{S}_{1}=\alpha+\beta \Delta \ln \mathrm{F}_{\mathrm{t}}+\sum_{i=1}^{\mathrm{k}} \theta_{1} \Delta \ln \mathrm{S}_{-\mathrm{i}}+\sum_{\mathrm{i}=1}^{\mathrm{m}} \lambda_{1} \Delta \ln \mathrm{F}_{\mathrm{t}-1}+\varepsilon_{\mathrm{t}}</script><p><strong>输入值：</strong>解释变量为股指期货价格 被解释变量为现货价格 还需要输入滞后阶数</p>
+<p>β 值即为所求套保比率</p>
+<p><strong>需要展示的内容：</strong>B-var 获得的 β 值</p>
+</li>
+<li><p><strong>误差修正模型（ECM）</strong></p>
+<p>在 B-var 模型的基础上将两组数据回归得到的残差序列作为滞后项引入 ECM 作为解释变量。</p>
+<p><strong>步骤：</strong></p>
+<p>对 B-var 中得到的残差序列进行 ADF 检验，判断是否平稳；若平稳，则将序列作为滞后项引入作为解释变量进行回归。</p>
+<p><strong>需要展示内容：</strong></p>
+<ul>
+<li><p>残差项的 ADF 检验结果</p>
+</li>
+<li><p>ECM 的回归结果</p>
+</li>
+</ul>
 </li>
 <li><p><strong>广义自回归条件异方差模型（GARCH）</strong></p>
 <script type="math/tex; mode=display">
