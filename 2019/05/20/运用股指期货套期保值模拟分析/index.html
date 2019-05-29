@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="机构投资者运用股指期货套期保值的模拟分析">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-29T01:24:31.053Z">
+<meta property="og:updated_time" content="2019-05-29T01:37:03.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运用股指期货套期保值模拟分析">
 <meta name="twitter:description" content="机构投资者运用股指期货套期保值的模拟分析">
@@ -201,18 +201,36 @@ Z_{t}=S_{t}-\alpha F_{t}</script><p>套保比率计算公式同上。</p>
 </li>
 <li><p><strong>股指期货和股指数据的基差序列检验（预期结论）</strong></p>
 <ul>
-<li><p>正态性检验</p>
+<li><p><strong>正态性检验</strong></p>
 <p>检验基差序列是否满足正态分布，运用的统计量为 JB 统计量。JB 统计量十分显著，不满足正态分布。峰度大于 3，偏态为左偏，基差分布呈现典型的“尖峰肥尾”。</p>
 </li>
-<li><p>平稳性检验</p>
+<li><p><strong>平稳性检验</strong></p>
 <p>用 ADF 检验基差序列的平稳性。基差 ADF 值大于置信水平为 1% 时的临界值，P 值显著，因此基差序列平稳。</p>
+<p><strong>检验序列是否存在“单位根”，确保回归回归结果中不存在“伪回归”。</strong></p>
+<p><strong>检验方法：</strong></p>
+<p>计算样本数据的 ADF 值，并和 5% 置信水平下的 t 检验临界值作比较，如果 ADF 检验值大于 5% 置信水平下的 t 检验临界值则序列不平稳。</p>
+<p>检验结果不平稳则对原序列进行一阶差分，得到新的序列，再进行 ADF 检验（步骤同上）。</p>
+<p><strong>一阶段差分代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genr st = log(st) - log(st(-1))</span><br></pre></td></tr></table></figure>
+<p>其中 $st$ 为原序列</p>
+<p>需要展示的内容：沪深 300 期货与现货价格几次（一般为两次）平稳检验的结果，包括 ADF 值和 5% 置信水平下 t 检验的值。</p>
 </li>
-<li><p>自相关性</p>
+<li><p><strong>协整检验</strong></p>
+<p>使用 E-G 检验法，检验两组变量的协整关系。（E-G检验法的使用条件是两组变量的单整阶数一样）</p>
+<p><strong>步骤如下：</strong></p>
+<ul>
+<li><p>提取两组数据 OLS 检验后的残差项 e</p>
+</li>
+<li><p>对残差项 e 进行 ADF 测试</p>
+</li>
+<li><p>如果残差项序列不存在单位根，则通过 E-G 检验，说明两组序列具有长期协整关系。</p>
+</li>
+</ul>
+<p><strong>需要展示的内容：</strong>两组数据的残差项 e 进行 ADF 测试后的结果</p>
 </li>
 </ul>
 </li>
 <li><p><strong>最优套期保值比率的估计</strong></p>
-<p>根据参考论文的结论，通过 OLS 计算出的套期保值率和其他两个模型差别不大，在粗略估计中，我们可以选用 OLS法估计最优套期保值率。</p>
 </li>
 <li><p><strong>计算期货合约份数</strong></p>
 </li>
@@ -225,7 +243,7 @@ Z_{t}=S_{t}-\alpha F_{t}</script><p>套保比率计算公式同上。</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vincentgaohj.github.io/Blog/2019/05/20/运用股指期货套期保值模拟分析/" data-id="cjvxpd0nh0008psw74dhsx9nu" class="article-share-link">Share</a>
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/05/20/运用股指期货套期保值模拟分析/" data-id="cjw8k7ucx0007vww7m7h7yocr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Econometrics/">Econometrics</a></li></ul>
