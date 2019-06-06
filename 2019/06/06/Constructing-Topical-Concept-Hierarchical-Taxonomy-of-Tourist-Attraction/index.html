@@ -7,18 +7,18 @@
   
   <title>Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
+  <meta name="description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained">
 <meta name="keywords" content="NMF,Machine-Learning,Clustering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
+<meta property="og:description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T03:37:32.060Z">
+<meta property="og:updated_time" content="2019-06-06T14:26:30.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
-<meta name="twitter:description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
+<meta name="twitter:description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained">
   
     <link rel="alternate" href="/Blog/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -95,15 +95,39 @@
     <div class="article-entry" itemprop="articleBody">
       
         <a id="more"></a>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
+<li>A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained ones.</li>
+<li>A concept extraction module for extracting concept of every topic that maintain strong discriminative power at different levels of the taxonomy.</li>
+</ul>
 <h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
 <script type="math/tex; mode=display">
 \min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
-\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
+\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $`` is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
 <p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.</p>
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
 \mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4>
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Clustering-for-topic-splitting"><a href="#Algorithm-1-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Clustering for topic splitting"></a>Algorithm 1:  Clustering for topic splitting</h4><hr>
+<ul>
+<li><strong>Input: </strong>A matrix $X$ of parent topic $C$ ; the number of sub-topics $K$; threshold $δ$ and $\gamma$.</li>
+<li><strong>Output:</strong> $K$ sub-topics of $C$</li>
+</ul>
+<hr>
+<p>$C_{sub}$ $\leftarrow$ $C$ ;</p>
+<p><strong>while</strong> <em>True</em> <strong>do</strong></p>
+<p>​        $S_1, S_2, … , S_K \leftarrow Nonnegative  Matrix  Factorization (S_{sub}, K)$</p>
+<p>​        <strong>for</strong> $k$ <em>from</em> $1$ <em>to</em> $K$ <strong>do</strong></p>
+<p>​                <strong>for</strong> <em>t ∈ S_k</em> <strong>do</strong></p>
+<p>​                        $r( t, S_k ) ← probability of  term   t  for  S_k ;$</p>
+<p>​                        $d( t, S_k ) ← document  frequency  of  term  t  for  S_k ;$</p>
+<p>​                        <strong>if</strong> $r(t,S k ) &lt; δ$  <strong>and</strong> $d( t, S_k ) &lt; \gamma$ <strong>then</strong> </p>
+<p>​                                $S_k ← S_k − \{t\};$</p>
+<p>​        $C^{‘}_{sub} \leftarrow  S_1 ∪ S_2 ∪ … ∪ S_K;$ </p>
+<p>​        <strong>if</strong> $C^{‘}_{sub} = C_{sub}$ <strong>then</strong></p>
+<p>​                $Break;$</p>
+<p>​        $C^{‘}_{sub} \leftarrow C_{sub}$<br><strong>Return</strong> $S_1 ∪ S_2 ∪ … ∪ S_K;$</p>
+<hr>
+<h4 id="Algorithm-2-Non-negative-Matrix-Factorization"><a href="#Algorithm-2-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 2:  Non-negative Matrix Factorization"></a>Algorithm 2:  Non-negative Matrix Factorization</h4><h4 id="Algorithm-3-TextRank-Function-for-Concept-Extraction"><a href="#Algorithm-3-TextRank-Function-for-Concept-Extraction" class="headerlink" title="Algorithm 3:  TextRank Function for Concept Extraction"></a>Algorithm 3:  TextRank Function for Concept Extraction</h4>
       
     </div>
     <footer class="article-footer">
