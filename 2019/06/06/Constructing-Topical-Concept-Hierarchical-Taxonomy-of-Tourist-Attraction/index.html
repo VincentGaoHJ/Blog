@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: LaTeX | Gao Haojun</title>
+  <title>Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Gao Haojun">
-<meta property="og:url" content="http://vincentgaohj.github.io/Blog/tags/LaTeX/index.html">
+  <meta name="description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
+<meta name="keywords" content="NMF,Machine-Learning,Clustering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/index.html">
 <meta property="og:site_name" content="Gao Haojun">
+<meta property="og:description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-06T03:37:32.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gao Haojun">
+<meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
+<meta name="twitter:description" content="理论数学表达Non-negative Matrix FactorizationThe model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest">
   
     <link rel="alternate" href="/Blog/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -67,40 +72,62 @@
 </script>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/Blog/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/Blog/2019/05/14/Study-Notes-of-LaTeX/" class="archive-article-date">
-  <time datetime="2019-05-14T03:01:32.000Z" itemprop="datePublished">May 14</time>
+        <section id="main"><article id="post-Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" class="article-date">
+  <time datetime="2019-06-06T02:49:48.000Z" itemprop="datePublished">2019-06-06</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Blog/2019/05/14/Study-Notes-of-LaTeX/">Study Notes of LaTeX</a>
+    <h1 class="article-title" itemprop="name">
+      Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
+<script type="math/tex; mode=display">
+\min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
+\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
+<p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.</p>
+<script type="math/tex; mode=display">
+\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
+\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" data-id="cjwk4so0t0000u4w7gcvr9lsv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Clustering/">Clustering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/NMF/">NMF</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2019/05/20/运用股指期货套期保值模拟分析/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">运用股指期货套期保值模拟分析</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
