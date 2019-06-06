@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T14:33:15.959Z">
+<meta property="og:updated_time" content="2019-06-06T15:20:37.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -108,7 +108,25 @@
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
 \mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Clustering-for-topic-splitting"><a href="#Algorithm-1-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Clustering for topic splitting"></a>Algorithm 1:  Clustering for topic splitting</h4><hr>
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><a href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Hierarchical Clustering for topic splitting"></a>Algorithm 1:  Hierarchical Clustering for topic splitting</h4><hr>
+<ul>
+<li><strong>Input:</strong> The dataset $D$ of topic $C$ ; the number of sub-topics $K$; threshold $N$.</li>
+<li><strong>Output:</strong> Hierarchical topics</li>
+</ul>
+<hr>
+<p>$Recursion  function$</p>
+<p>&emsp;&emsp;$X \leftarrow Prepare Matrix (C, D)$</p>
+<p>&emsp;&emsp;$S_1 , S_2 , … , S_K \leftarrow Clustering  for  Topic  Splitting(X)$</p>
+<p>&emsp;&emsp;$loss \leftarrow Post  Pruning  Function(X, S_1 , S_2 , … , S_K)$</p>
+<p>&emsp;&emsp;<strong>if</strong>  $loss &gt; 0$ <strong>then return</strong> \\\停止条件之后剪枝</p>
+<p>&emsp;&emsp;<strong>for</strong> $K  from  1  to  K$ <strong>do</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;$n \leftarrow item  number  of  C$</p>
+<p>&emsp;&emsp;&emsp;&emsp; <strong>if</strong> $n&lt;N$ <strong>then continue</strong> \\\停止条件之预剪枝</p>
+<p>&emsp;&emsp;&emsp;&emsp;$CE_k \leftarrow Concept   Extraction(C, S_k)$</p>
+<p>&emsp;&emsp;&emsp;&emsp;$Recursion  Function (S_k)$</p>
+<p>&emsp;&emsp;<strong>Return</strong> $CE_1, CE_2，… , CE_k, S_1,S_2,…,S_k$</p>
+<hr>
+<h4 id="Algorithm-2-Clustering-for-topic-splitting"><a href="#Algorithm-2-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 2:  Clustering for topic splitting"></a>Algorithm 2:  Clustering for topic splitting</h4><hr>
 <ul>
 <li><strong>Input: </strong>A matrix $X$ of parent topic $C$ ; the number of sub-topics $K$; threshold $δ$ and $\gamma$.</li>
 <li><strong>Output:</strong> $K$ sub-topics of $C$</li>
@@ -116,19 +134,19 @@
 <hr>
 <p>$C_{sub}$ $\leftarrow$ $C$ ;</p>
 <p><strong>while</strong> <em>True</em> <strong>do</strong></p>
-<p>$ S_1, S_2, … , S_K \leftarrow Nonnegative  Matrix  Factorization (S_{sub}, K)$</p>
+<p>&emsp;&emsp;$ S_1, S_2, … , S_K \leftarrow Nonnegative  Matrix  Factorization (S_{sub}, K)$</p>
 <p>&emsp;&emsp;<strong>for</strong> $k$ <em>from</em> $1$ <em>to</em> $K$ <strong>do</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;<strong>for</strong> <em>t ∈ S_k</em> <strong>do</strong></p>
-<p>​                        $r( t, S_k ) ← probability of  term   t  for  S_k ;$</p>
-<p>​                        $d( t, S_k ) ← document  frequency  of  term  t  for  S_k ;$</p>
-<p>​                        <strong>if</strong> $r(t,S k ) &lt; δ$  <strong>and</strong> $d( t, S_k ) &lt; \gamma$ <strong>then</strong> </p>
-<p>​                                $S_k ← S_k − \{t\};$</p>
-<p>​        $C^{‘}_{sub} \leftarrow  S_1 ∪ S_2 ∪ … ∪ S_K;$ </p>
-<p>​        <strong>if</strong> $C^{‘}_{sub} = C_{sub}$ <strong>then</strong></p>
-<p>​                $Break;$</p>
-<p>​        $C^{‘}_{sub} \leftarrow C_{sub}$<br><strong>Return</strong> $S_1 ∪ S_2 ∪ … ∪ S_K;$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$r( t, S_k ) ← probability of  term   t  for  S_k ;$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$d( t, S_k ) ← document  frequency  of  term  t  for  S_k ;$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>if</strong> $r(t,S k ) &lt; δ$  <strong>and</strong> $d( t, S_k ) &lt; \gamma$ <strong>then</strong> </p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$S_k ← S_k − \{t\};$</p>
+<p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow  S_1 ∪ S_2 ∪ … ∪ S_K;$ </p>
+<p>&emsp;&emsp;<strong>if</strong> $C^{‘}_{sub} = C_{sub}$ <strong>then</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;$Break;$</p>
+<p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow C_{sub}$<br><strong>Return</strong> $S_1 , S_2 , … , S_K;$</p>
 <hr>
-<h4 id="Algorithm-2-Non-negative-Matrix-Factorization"><a href="#Algorithm-2-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 2:  Non-negative Matrix Factorization"></a>Algorithm 2:  Non-negative Matrix Factorization</h4><h4 id="Algorithm-3-TextRank-Function-for-Concept-Extraction"><a href="#Algorithm-3-TextRank-Function-for-Concept-Extraction" class="headerlink" title="Algorithm 3:  TextRank Function for Concept Extraction"></a>Algorithm 3:  TextRank Function for Concept Extraction</h4>
+<h4 id="Algorithm-3-Non-negative-Matrix-Factorization"><a href="#Algorithm-3-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 3:  Non-negative Matrix Factorization"></a>Algorithm 3:  Non-negative Matrix Factorization</h4><h4 id="Algorithm-4-TextRank-Function-for-Concept-Extraction"><a href="#Algorithm-4-TextRank-Function-for-Concept-Extraction" class="headerlink" title="Algorithm 4:  TextRank Function for Concept Extraction"></a>Algorithm 4:  TextRank Function for Concept Extraction</h4>
       
     </div>
     <footer class="article-footer">
