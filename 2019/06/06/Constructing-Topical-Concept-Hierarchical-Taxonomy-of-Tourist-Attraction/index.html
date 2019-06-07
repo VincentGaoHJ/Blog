@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-07T05:18:12.317Z">
+<meta property="og:updated_time" content="2019-06-07T08:48:36.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -108,7 +108,38 @@
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
 \mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><a href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Hierarchical Clustering for topic splitting"></a>Algorithm 1:  Hierarchical Clustering for topic splitting</h4><hr>
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><hr>
+<h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><hr>
+<h4 id="对树生成的约束"><a href="#对树生成的约束" class="headerlink" title="对树生成的约束"></a>对树生成的约束</h4><ul>
+<li><p><strong>预剪枝</strong></p>
+<ul>
+<li><strong>定义一个高度，当树达到该高度时就停止树的生长（Max Level）</strong></li>
+<li><strong>定义一个阈值，当达到某个节点的实例个数小于阈值时就可以停止树的生长</strong></li>
+</ul>
+</li>
+<li><p><strong>后剪枝</strong></p>
+<p><strong>定义一个目标函数，由损失项 (Loss term) 加上正则项 (Regularization term)，以最小化结构性风险(Structural risk)</strong></p>
+<ul>
+<li><p>每个景点由一个向量表示，向量由词袋模型生成，所以两个景点向量之间的距离可以表示成：</p>
+<script type="math/tex; mode=display">
+\operatorname{dist}(X, Y)=\sqrt{\sum_{i=1}^{n}\left(x_{i}-y_{i}\right)^{2}}</script></li>
+<li><p>我们用每个簇的拟合标准差（景点和簇中心向量距离的平方和的均值的平方根）来定义这个簇的混乱程度：</p>
+<script type="math/tex; mode=display">
+H(X)=\sqrt{\frac{1}{n} \sum_{i=1}^{n}dist^2(X_{i}-\hat{X})}</script></li>
+<li><p>因为每一个节点中景点向量的向量空间是变化的，所以直接用决策树的剪枝策略是没有意义的，这里收到<strong>决策树代价复杂度剪枝方法</strong>的启发，做了一些调整：</p>
+<ul>
+<li>因为节点之间的景点向量空间是不断变化的，所以在考虑剪枝的时候仅考虑本节点是否应该继续分割而不考虑继续分割后再进行分割而产生的变化，构建如下的损失函数：</li>
+</ul>
+<script type="math/tex; mode=display">
+C_{\alpha} (T)=\frac{1}{N} \sum_{t=1}^{|T|} N_{t} H_{t}+\alpha(|T|+1)</script><p>$|T|$：该节点生成的簇个数；$N$：样本总数；$N_t$：第 t 个簇中的样本数量；$H_t$：第 t 个簇的混乱程度；$\alpha$：惩罚因子</p>
+<p>对于每一个节点，聚类后：</p>
+<script type="math/tex; mode=display">
+C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ 则此次聚类没有意义，则不需要进行这次聚类。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><a href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Hierarchical Clustering for topic splitting"></a>Algorithm 1:  Hierarchical Clustering for topic splitting</h4><hr>
 <ul>
 <li><strong>Input:</strong> The dataset $D$ of topic $C$ ; the number of sub-topics $K$; threshold $N$.</li>
 <li><strong>Output:</strong> Hierarchical topics</li>
