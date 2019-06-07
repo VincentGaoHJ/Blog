@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-07T09:12:04.612Z">
+<meta property="og:updated_time" content="2019-06-07T09:13:37.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -186,10 +186,13 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 <hr>
 <p><strong>Initialize</strong> $U = U_0 ,V = V_0 ,H ≥ 0$</p>
 <p><strong>while</strong> $Not convergent$ <strong>and</strong> $t ≤ T$ <strong>do</strong></p>
-<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{U}^{T} \mathbf{X V}\right</a>}{\left<a href="i, j">\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right</a>}}$</p>
-<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right</a>}{\left<a href="i, j">\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right</a>}}$</p>
-<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right</a>}{\left<a href="i, j">\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right</a>}}$</p>
-<p>&emsp;&emsp;$t=t+1$</p>
+<p>&emsp;&emsp;<strong>Update</strong></p>
+<script type="math/tex; mode=display">
+\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><p>&emsp;&emsp;<strong>Update</strong> </p>
+<script type="math/tex; mode=display">
+\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><p>&emsp;&emsp;<strong>Update</strong> </p>
+<script type="math/tex; mode=display">
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>&emsp;&emsp;$t=t+1$</p>
 <p><strong>end while</strong></p>
 <hr>
 <h4 id="Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Algorithm 4:  Concept Extraction based on TextRank Algorithm"></a>Algorithm 4:  Concept Extraction based on TextRank Algorithm</h4>
