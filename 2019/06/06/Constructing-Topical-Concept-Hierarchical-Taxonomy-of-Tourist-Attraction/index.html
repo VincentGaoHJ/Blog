@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-06T15:20:37.377Z">
+<meta property="og:updated_time" content="2019-06-07T05:18:12.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -103,7 +103,7 @@
 <h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
 <script type="math/tex; mode=display">
 \min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
-\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $`` is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
+\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
 <p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.</p>
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
@@ -146,7 +146,21 @@
 <p>&emsp;&emsp;&emsp;&emsp;$Break;$</p>
 <p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow C_{sub}$<br><strong>Return</strong> $S_1 , S_2 , … , S_K;$</p>
 <hr>
-<h4 id="Algorithm-3-Non-negative-Matrix-Factorization"><a href="#Algorithm-3-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 3:  Non-negative Matrix Factorization"></a>Algorithm 3:  Non-negative Matrix Factorization</h4><h4 id="Algorithm-4-TextRank-Function-for-Concept-Extraction"><a href="#Algorithm-4-TextRank-Function-for-Concept-Extraction" class="headerlink" title="Algorithm 4:  TextRank Function for Concept Extraction"></a>Algorithm 4:  TextRank Function for Concept Extraction</h4>
+<h4 id="Algorithm-3-Non-negative-Matrix-Factorization"><a href="#Algorithm-3-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 3:  Non-negative Matrix Factorization"></a>Algorithm 3:  Non-negative Matrix Factorization</h4><hr>
+<ul>
+<li><strong>Input:</strong>  $\{X,U_0,V_0,T\}$</li>
+<li><strong>Output:</strong> $\{U,V\}$</li>
+</ul>
+<hr>
+<p><strong>Initialize</strong> $U = U_0 ,V = V_0 ,H ≥ 0$</p>
+<p><strong>while</strong> $Not convergent$ <strong>and</strong> $t ≤ T$ <strong>do</strong></p>
+<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{U}^{T} \mathbf{X V}\right</a>}{\left<a href="i, j">\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right</a>}}$</p>
+<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right</a>}{\left<a href="i, j">\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right</a>}}$</p>
+<p>&emsp;&emsp;<strong>Update</strong> $\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left<a href="i, j">\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right</a>}{\left<a href="i, j">\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right</a>}}$</p>
+<p>&emsp;&emsp;$t=t+1$</p>
+<p><strong>end while</strong></p>
+<hr>
+<h4 id="Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Algorithm 4:  Concept Extraction based on TextRank Algorithm"></a>Algorithm 4:  Concept Extraction based on TextRank Algorithm</h4>
       
     </div>
     <footer class="article-footer">
