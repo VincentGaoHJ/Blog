@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-07T10:41:06.046Z">
+<meta property="og:updated_time" content="2019-06-09T01:20:17.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -96,10 +96,12 @@
       
         <p>摘要, 理论数学表达 and 算法</p>
 <a id="more"></a>
+<hr>
 <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
 <li>A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained ones.</li>
 <li>A concept extraction module for extracting concept of every topic that maintain strong discriminative power at different levels of the taxonomy.</li>
 </ul>
+<hr>
 <h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
 <script type="math/tex; mode=display">
 \min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
@@ -126,7 +128,7 @@
 \operatorname{dist}(X, Y)=\sqrt{\sum_{i=1}^{n}\left(x_{i}-y_{i}\right)^{2}}</script></li>
 <li><p>我们用每个簇的拟合标准差（景点和簇中心向量距离的平方和的均值的平方根）来定义这个簇的混乱程度：</p>
 <script type="math/tex; mode=display">
-H(X)=\sqrt{\frac{1}{n} \sum_{i=1}^{n}dist^2(X_{i}-\hat{X})}</script></li>
+H(X)=\frac{1}{n} \sum_{i=1}^{n}dist(X_{i}-\hat{X})</script></li>
 <li><p>因为每一个节点中景点向量的向量空间是变化的，所以直接用决策树的剪枝策略是没有意义的，这里收到<strong>决策树代价复杂度剪枝方法</strong>的启发，做了一些调整：</p>
 <ul>
 <li>因为节点之间的景点向量空间是不断变化的，所以在考虑剪枝的时候仅考虑本节点是否应该继续分割而不考虑继续分割后再进行分割而产生的变化，构建如下的损失函数：</li>
@@ -140,6 +142,22 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 </ul>
 </li>
 </ul>
+<hr>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="节点-X-矩阵的构建"><a href="#节点-X-矩阵的构建" class="headerlink" title="节点 X 矩阵的构建"></a>节点 X 矩阵的构建</h4><ul>
+<li><p><strong>TF-IDF 过滤</strong></p>
+<p>已知是属于这个节点的景点，我们将这些景点的每一条评论当做是一篇文档，对文档进行分词，然后对每一篇文档内的词计算 tf-idf 值，并且对 tf 值和 idf 值做一个上下界的阈值限制，将所有评论中剩下的词用做词袋模型。</p>
+</li>
+<li><p><strong>布尔矩阵</strong></p>
+<p>我们尝试过直接用 tf-idf 值做 X 矩阵，也尝试了用布尔值做 X 矩阵，也尝试了用词频做 X 矩阵。最终发现 tf-idf 值做矩阵与用词频做矩阵效果都不理想，用布尔值（出现过这个词就为 1，没有出现过就为 0 ）做矩阵效果是最理想的。</p>
+</li>
+</ul>
+<h4 id="节点的迭代方法"><a href="#节点的迭代方法" class="headerlink" title="节点的迭代方法"></a>节点的迭代方法</h4><p>因为每个景点属于 k 个类别的概率最后和都为 1，也就是矩阵分解出来的结果无法直接识别噪音（噪音型景点），所以我们采取的一个办法首先定义噪音型景点，然后迭代性的删除直到不存在噪音型景点为止。</p>
+<ul>
+<li>我们认为噪音型景点的两个特征，一个是类别的归属度不高，一个是景点出现的特征词（词袋模型中的词）少。如果一个景点包含这两个特征，就判断其是噪音型的景点。</li>
+<li>然后节点进行矩阵分解之后对结果进行分析，如果存在噪音型的景点，那么就需要将这些景点从这个节点的景点集合中删除，并且重新构建本节点的 attraction-toi 矩阵，然后重新进行矩阵分解。</li>
+<li>重复以上的操作直到本节点不存在噪音。</li>
+</ul>
+<hr>
 <h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><h4 id="Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><a href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 1:  Hierarchical Clustering for topic splitting"></a>Algorithm 1:  Hierarchical Clustering for topic splitting</h4><hr>
 <ul>
 <li><strong>Input:</strong> The dataset $D$ of topic $C$ ; the number of sub-topics $K$; threshold $N$.</li>
@@ -322,5 +340,21 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
