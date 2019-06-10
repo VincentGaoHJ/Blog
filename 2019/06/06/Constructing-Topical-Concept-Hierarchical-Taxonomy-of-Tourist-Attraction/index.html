@@ -8,14 +8,14 @@
   <title>Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="摘要, 理论数学表达 and 算法">
-<meta name="keywords" content="Machine-Learning,NMF,Clustering">
+<meta name="keywords" content="NMF,Machine-Learning,Clustering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/index.html">
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T03:54:09.008Z">
+<meta property="og:updated_time" content="2019-06-10T03:59:24.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -135,9 +135,9 @@ Importance\left(V_{i}\right) = W S\left(V_{i}\right) - W S_{parent}\left(V_{i}\r
 <li><p>每个景点由一个向量表示，向量由词袋模型生成，所以两个景点向量之间的距离可以表示成：</p>
 <script type="math/tex; mode=display">
 \operatorname{dist}(X, Y)=\sqrt{\sum_{i=1}^{n}\left(x_{i}-y_{i}\right)^{2}}</script></li>
-<li><p>我们用每个簇的拟合标准差（景点和簇中心向量距离的平方和的均值的平方根）来定义这个簇的混乱程度：</p>
+<li><p>我们用景点和簇中心向量距离的和来定义这个簇的混乱程度：</p>
 <script type="math/tex; mode=display">
-H(X)=\frac{1}{n} \sum_{i=1}^{n}dist(X_{i}-\hat{X})</script></li>
+H(X)= \sum_{i=1}^{n}dist(X_{i}-\hat{X})</script></li>
 <li><p>因为每一个节点中景点向量的向量空间是变化的，所以直接用决策树的剪枝策略是没有意义的，这里收到<strong>决策树代价复杂度剪枝方法</strong>的启发，做了一些调整：</p>
 <ul>
 <li>因为节点之间的景点向量空间是不断变化的，所以在考虑剪枝的时候仅考虑本节点是否应该继续分割而不考虑继续分割后再进行分割而产生的变化，构建如下的损失函数：</li>
@@ -235,7 +235,7 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" data-id="cjwpugd4i0003wow7seyqm2sl" class="article-share-link">Share</a>
+      <a data-url="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" data-id="cjwpul85c0001i8w70npwl255" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Clustering/">Clustering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/NMF/">NMF</a></li></ul>
