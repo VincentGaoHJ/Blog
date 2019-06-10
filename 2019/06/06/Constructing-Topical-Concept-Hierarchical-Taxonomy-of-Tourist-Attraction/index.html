@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="摘要, 理论数学表达 and 算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-09T01:20:17.451Z">
+<meta property="og:updated_time" content="2019-06-10T03:54:09.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
@@ -112,7 +112,16 @@
 \mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
 \mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>This is <a href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记" target="_blank" rel="noopener">理论推导</a> link.</p>
 <hr>
-<h4 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h4><hr>
+<h4 id="Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Concept Extraction based on TextRank Algorithm"></a>Concept Extraction based on TextRank Algorithm</h4><h5 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h5><p>Graph-based ranking algorithms are essentially a way of deciding the importance of a vertex within<br>a graph, based on global information recursively drawn from the entire graph. </p>
+<p>Formally, let $G=(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}_{i}$ , let $\operatorname{In}\left(V_{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V_{i}\right)$ be the set of vertices that vertex $V_{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):</p>
+<script type="math/tex; mode=display">
+S\left(V_{i}\right)=(1-d)+d * \sum_{j \in I n\left(V_{i}\right)} \frac{1}{\left|O u t\left(V_{j}\right)\right|} S\left(V_{j}\right)</script><p>where $d$ is a damping factor that can be set between 0 and 1, which has the role of integrating into the model the probability of jumping from a given vertex to another random vertex in the graph. The factor $d$ is usually set to $0.85$ (Brin and Page, 1998), and this is the value we are also using in our implementation.</p>
+<h5 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h5><p>However, the graphs are built from natural language texts, and may include multiple or partial links between the units (vertices) that are extracted from text. It may be therefore useful to indicate and incorporate into the model the “strength” of the connection between two vertices $\boldsymbol{V}_{i}$ and $\boldsymbol{V}_{j}$ as a weight $w_{i j}$ added to the corresponding edge that connects the two vertices.</p>
+<script type="math/tex; mode=display">
+W S\left(V_{i}\right)=(1-d)+d * \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right)</script><p><strong>Concept Extraction</strong></p>
+<p>在这里，由于我们的模型已经提供了一个关于景点的层级结构，也就相当于对于每一个节点（除根节点以外），其先验知识就是其父节点的知识，也就是我们在抽取关键词作为节点概念的时候，一些在父节点就已经很出众的词语不应该成为子节点的概念。所以关于一个阶段来说，其概念抽取的时候应该选择在父子节点中概念重要程度增加最多的概念：</p>
+<script type="math/tex; mode=display">
+Importance\left(V_{i}\right) = W S\left(V_{i}\right) - W S_{parent}\left(V_{i}\right)\\=d * [ \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right) - \sum_{V_{j} \in I n_{p}\left(V_{i}\right)} \frac{(w_{j i})_{p}}{\sum_{V_{k} \in O u t_{p}\left(V_{j}\right)} (w_{j k})_{p}} W S_{p}\left(V_{j}\right)]</script><hr>
 <h4 id="对树生成的约束"><a href="#对树生成的约束" class="headerlink" title="对树生成的约束"></a>对树生成的约束</h4><ul>
 <li><p><strong>预剪枝</strong></p>
 <ul>
@@ -213,7 +222,16 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 \mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>&emsp;&emsp;$t=t+1$</p>
 <p><strong>end while</strong></p>
 <hr>
-<h4 id="Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Algorithm 4:  Concept Extraction based on TextRank Algorithm"></a>Algorithm 4:  Concept Extraction based on TextRank Algorithm</h4>
+<h4 id="Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Algorithm 4:  Concept Extraction based on TextRank Algorithm"></a>Algorithm 4:  Concept Extraction based on TextRank Algorithm</h4><hr>
+<ol>
+<li><em>Identify text units that best define the node and its parent node, and add them as vertices in the graph, respectively.</em></li>
+<li><em>Identify relations that connect such text units, and use these relations to draw edges between vertices</em><br><em>in the graph.</em></li>
+<li><em>Iterate the graph-based ranking algorithm until convergence.</em></li>
+<li><em>The intersection of the two graph vertices is the set of concept words, and the final score of the word is the score difference between the two graphs.</em></li>
+<li><em>Sort concept words based on their final score. Use the values attached to each concept word for ranking/selection decisions.</em></li>
+</ol>
+<hr>
+
       
     </div>
     <footer class="article-footer">
@@ -340,21 +358,5 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
