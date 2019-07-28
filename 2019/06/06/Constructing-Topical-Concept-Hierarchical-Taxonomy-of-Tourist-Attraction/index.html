@@ -3,10 +3,14 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-
-  
-  <title>Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction | Gao Haojun</title>
+  <title>constructing topical concept hierarchical taxonomy of tourist attraction | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="NMFMachine-LearningClustering">
+  
+  
+  
+  
   <meta name="description" content="摘要, 理论数学表达 and 算法">
 <meta name="keywords" content="NMF,Machine-Learning,Clustering">
 <meta property="og:type" content="article">
@@ -20,78 +24,176 @@
 <meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta name="twitter:description" content="摘要, 理论数学表达 and 算法">
   
-    <link rel="alternate" href="/Blog/atom.xml" title="Gao Haojun" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
+
   
-    <link rel="icon" href="/favicon.png">
-  
+
+  <link rel="icon" href="/Blog/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
   <link rel="stylesheet" href="/Blog/css/style.css">
+
+  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
+  <script src="/Blog/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+  
+
 </head>
 </html>
-<body>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
   <div id="container">
     <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/Blog/" id="logo">Gao Haojun</a>
-      </h1>
       
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/Blog/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/Blog/">Home</a>
-        
-          <a class="main-nav-link" href="/Blog/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/Blog/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://vincentgaohj.github.io/Blog"></form>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/Blog/',
+        CONTENT_URL: '/Blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/Blog/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
       </div>
     </div>
-  </div>
-  <script>
-    
-    var number_of_banners = 6;
-    var randnum = Math.floor(Math.random() * number_of_banners + 1);
-    document.getElementById("banner").style.backgroundImage = "url(/Blog/css/images/banner" + randnum + ".jpg)";
-    
-</script>
+
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" class="article-date">
-  <time datetime="2019-06-06T02:49:48.000Z" itemprop="datePublished">2019-06-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="thumb" itemprop="name">
       Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction
     </h1>
   
 
       </header>
     
+    <div class="article-meta">
+      
+	<a href="/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" class="article-date">
+	  <time datetime="2019-06-06T02:49:48.000Z" itemprop="datePublished">2019-06-06</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
     <div class="article-entry" itemprop="articleBody">
       
         <p>摘要, 理论数学表达 and 算法</p>
@@ -235,10 +337,71 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" data-id="cjwpul85c0001i8w70npwl255" class="article-share-link">Share</a>
+      
+        <div id="donation_div"></div>
+
+<script src="/Blog/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
       
       
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Gao Haojun
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/" target="_blank" title="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Clustering/">Clustering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/NMF/">NMF</a></li></ul>
+
+      
 
     </footer>
   </div>
@@ -257,107 +420,201 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
   
 </article>
 
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论数学表达"><span class="nav-number">2.</span> <span class="nav-text">理论数学表达</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-negative-Matrix-Factorization"><span class="nav-number">2.1.</span> <span class="nav-text">Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Concept Extraction based on TextRank Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PageRank"><span class="nav-number">2.2.1.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TextRank"><span class="nav-number">2.2.2.</span> <span class="nav-text">TextRank</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对树生成的约束"><span class="nav-number">2.3.</span> <span class="nav-text">对树生成的约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">3.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#节点-X-矩阵的构建"><span class="nav-number">3.1.</span> <span class="nav-text">节点 X 矩阵的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点的迭代方法"><span class="nav-number">3.2.</span> <span class="nav-text">节点的迭代方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm"><span class="nav-number">4.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><span class="nav-number">4.1.</span> <span class="nav-text">Algorithm 1:  Hierarchical Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-2-Clustering-for-topic-splitting"><span class="nav-number">4.2.</span> <span class="nav-text">Algorithm 2:  Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-3-Non-negative-Matrix-Factorization"><span class="nav-number">4.3.</span> <span class="nav-text">Algorithm 3:  Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Algorithm 4:  Concept Extraction based on TextRank Algorithm</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
 </section>
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/CNN/">CNN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Clustering/">Clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Deep-Learning/">Deep-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Econometrics/">Econometrics</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/LaTeX/">LaTeX</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/NMF/">NMF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Word2Vec/">Word2Vec</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/Blog/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/Blog/tags/Clustering/" style="font-size: 10px;">Clustering</a> <a href="/Blog/tags/Deep-Learning/" style="font-size: 10px;">Deep-Learning</a> <a href="/Blog/tags/Econometrics/" style="font-size: 15px;">Econometrics</a> <a href="/Blog/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/Blog/tags/Machine-Learning/" style="font-size: 20px;">Machine-Learning</a> <a href="/Blog/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/Blog/tags/Word2Vec/" style="font-size: 10px;">Word2Vec</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/04/">April 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/">Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2019/05/20/运用股指期货套期保值模拟分析/">运用股指期货套期保值模拟分析</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2019/05/14/Study-Notes-of-LaTeX/">Study Notes of LaTeX</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/">A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2019/04/30/Convolutional-Neural-Networks/">Convolutional Neural Networks</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
       </div>
+      
       <footer id="footer">
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Gao Haojun<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Gao Haojun All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
   </div>
 </footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
     </div>
-    <nav id="mobile-nav">
+    <!-- <nav id="mobile-nav">
   
     <a href="/Blog/" class="mobile-nav-link">Home</a>
   
     <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
   
-</nav>
+    <a href="/Blog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/Blog/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/Blog/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
   <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
   <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/Blog/js/script.js"></script>
+<script src="/Blog/js/scripts.js"></script>
+
+
+
+
+  <script src="/Blog/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
 
 
 
   </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Gao Haojun
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Gao Haojun All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         tex2jax: {
