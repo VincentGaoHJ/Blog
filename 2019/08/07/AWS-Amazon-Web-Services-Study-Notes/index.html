@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T05:54:34.435Z">
+<meta property="og:updated_time" content="2019-08-07T07:26:54.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
 <meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
@@ -195,7 +195,6 @@
       
         <p>The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.</p>
 <a id="more"></a>
-<p>[TOC]</p>
 <h2 id="AWS-Global-Infrastructure"><a href="#AWS-Global-Infrastructure" class="headerlink" title="AWS Global Infrastructure"></a>AWS Global Infrastructure</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><ul>
 <li>Regions</li>
 <li>Available Zone<ul>
@@ -230,7 +229,28 @@
 </ul>
 </li>
 </ul>
-<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2>
+<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a>VPC (Virtual Private Cloud)</h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
+<p>The relations between VPC and region, VPC and AZ are below:</p>
+<ul>
+<li>VPCs deploy into 1 of the 18 AWS regions</li>
+<li>A VPC can host resources from any Available Zone within its region</li>
+</ul>
+<h3 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a>Subnets</h3><p>When you create a subnet, you specify the CIDR block for the subnet, which is a subset of the VPC CIDR block. </p>
+<p>When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block; for example, <code>10.0.0.0/16</code>. This is the primary CIDR block for your VPC.</p>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p><strong>Internet Gateway</strong></p>
+<p>An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It therefore imposes no availability risks or bandwidth constraints on your network traffic.</p>
+<p>An internet gateway serves two purposes: </p>
+<ul>
+<li>to provide a target in your VPC route tables for internet-routable traffic</li>
+<li>to perform network address translation (NAT) for instances that have been assigned public IPv4 addresses.</li>
+</ul>
+<hr>
+<p><strong>NAT Gateway</strong></p>
+<p><strong>You can use a NAT device to enable instances in a private subnet to connect to the internet (for example, for software updates) or other AWS services, but prevent the internet from initiating connections with the instances.</strong> </p>
+<p>A NAT device forwards traffic from the instances in the private subnet to the internet or other AWS services, and then sends the response back to the instances. When traffic goes to the internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses.</p>
+<h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a>Elastic Network Interfaces</h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
+<p><strong>弹性 IP 就是固定 IP ，弹性是指的可以弹性的关联实例，对于实例来说，弹性 IP 的作用就是固定 IP 。</strong></p>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3>
       
     </div>
     <footer class="article-footer">
@@ -321,7 +341,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li></ol></li></ol>
     
     </div>
   </aside>
