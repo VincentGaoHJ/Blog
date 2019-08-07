@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T07:26:54.305Z">
+<meta property="og:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
+<meta property="og:updated_time" content="2019-08-07T07:49:35.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
 <meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
+<meta name="twitter:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -250,7 +252,23 @@
 <p>A NAT device forwards traffic from the instances in the private subnet to the internet or other AWS services, and then sends the response back to the instances. When traffic goes to the internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses.</p>
 <h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a>Elastic Network Interfaces</h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
 <p><strong>弹性 IP 就是固定 IP ，弹性是指的可以弹性的关联实例，对于实例来说，弹性 IP 的作用就是固定 IP 。</strong></p>
-<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><p><strong>Security Groups</strong></p>
+<ul>
+<li>A <em>security group</em> acts as a virtual firewall for your instance to control inbound and outbound traffic. When you launch an instance in a VPC, you can assign up to five security groups to the instance. Security groups act at the instance level, not the subnet level. Therefore, each instance in a subnet in your VPC could be assigned to a different set of security groups. If you don’t specify a particular group at launch time, the instance is automatically assigned to the default security group for the VPC.</li>
+<li>For each security group, you add <em>rules</em> that control the inbound traffic to instances, and a separate set of rules that control the outbound traffic. This section describes the basic things you need to know about security groups for your VPC and their rules.</li>
+</ul>
+<p><strong>Network ACLs</strong></p>
+<ul>
+<li>A <em>network access control list (ACL)</em> is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. You might set up network ACLs with rules similar to your security groups in order to add an additional layer of security to your VPC.</li>
+</ul>
+<p><strong>Comparison of Security Groups and Network ACLs</strong></p>
+<ul>
+<li>Traffic from an Internet gateway is routed to the appropriate subnet using the routes in the routing table. </li>
+<li>The rules of the network ACL associated with the subnet control which traffic is allowed to the subnet. </li>
+<li>The rules of the security group associated with an instance control which traffic is allowed to the instance.</li>
+</ul>
+<p><img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png" alt></p>
+
       
     </div>
     <footer class="article-footer">
