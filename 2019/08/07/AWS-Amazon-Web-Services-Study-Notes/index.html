@@ -9,18 +9,18 @@
   
   
   
-  <meta name="description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
+  <meta name="description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS (Amazon Web Services) Study Notes">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/08/07/AWS-Amazon-Web-Services-Study-Notes/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
+<meta property="og:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
-<meta property="og:updated_time" content="2019-08-07T08:17:41.457Z">
+<meta property="og:updated_time" content="2019-08-07T08:47:13.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
-<meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.">
+<meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
 <meta name="twitter:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -196,6 +196,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few.</p>
+<p>[TOC]</p>
 <a id="more"></a>
 <h2 id="AWS-Global-Infrastructure"><a href="#AWS-Global-Infrastructure" class="headerlink" title="AWS Global Infrastructure"></a>AWS Global Infrastructure</h2><h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><ul>
 <li>Regions</li>
@@ -231,6 +232,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a>VPC (Virtual Private Cloud)</h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
 <p>The relations between VPC and region, VPC and AZ are below:</p>
 <ul>
@@ -268,6 +270,8 @@
 <li>The rules of the security group associated with an instance control which traffic is allowed to the instance.</li>
 </ul>
 <p><img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png" alt="The following diagram illustrates the layers of security provided by security groups and network ACLs"></p>
+<h4 id="AWS-Direct-Connect"><a href="#AWS-Direct-Connect" class="headerlink" title="AWS Direct Connect"></a><a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html" target="_blank" rel="noopener">AWS Direct Connect</a></h4><p><strong>AWS Direct Connect links your internal network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable.</strong> </p>
+<p>One end of the cable is connected to your router, the other to an AWS Direct Connect router. With this connection, you can create <em>virtual interfaces</em> directly to public AWS services (for example, to Amazon S3) or to Amazon VPC, bypassing internet service providers in your network path. An AWS Direct Connect location provides access to AWS in the Region with which it is associated. You can use a single connection in a public Region or AWS GovCloud (US) to access public AWS services in all other public Regions.</p>
 
       
     </div>
@@ -359,7 +363,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AWS-Direct-Connect"><span class="nav-number">2.5.1.</span> <span class="nav-text">AWS Direct Connect</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
