@@ -21,7 +21,10 @@
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-before.7f287b3bf00bbc4fbdeadef3c8d5910374aec963.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows_server_lifecycle.png">
-<meta property="og:updated_time" content="2019-08-08T06:11:46.099Z">
+<meta property="og:image" content="https://docs.aws.amazon.com/autoscaling/plans/userguide/images/dynamic-scaling.png">
+<meta property="og:image" content="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/CW-Overview.png">
+<meta property="og:image" content="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/monitoring-overviewpage-console.PNG">
+<meta property="og:updated_time" content="2019-08-08T07:25:06.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
 <meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
@@ -379,7 +382,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><ul>
+<h2 id="Database-in-AWS"><a href="#Database-in-AWS" class="headerlink" title="Database in AWS"></a>Database in AWS</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><ul>
 <li><p>Relational Database</p>
 <ul>
 <li>RDS</li>
@@ -400,28 +403,37 @@
 <thead>
 <tr>
 <th>类型</th>
-<th>特性</th>
-<th>优点</th>
-<th>缺点</th>
+<th>关系型数据库</th>
+<th>非关系型数据库</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>关系型数据库</td>
+<td>特性</td>
 <td>1、采用了关系模型来组织数据的数据库； 2、最大特点就是事务的一致性； 3、简单来说，关系模型指的就是二维表格模型， 而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。</td>
-<td>1、容易理解：二维表结构是非常贴近逻辑世界一个概念，关系模型相对网状、层次等其他模型来说更容易理解； 2、使用方便：通用的 SQL 语言使得操作关系型数据库非常方便； 3、易于维护：丰富的完整性 (实体完整性、参照完整性和用户定义的完整性) 大大减低了数据冗余和数据不一致的概率； 4、支持 SQL，可用于复杂的查询。</td>
-<td>1、为了维护一致性所付出的巨大代价就是其读写性能比较差； 2、固定的表结构； 3、高并发读写需求； 4、海量数据的高效率读写；</td>
+<td>1、使用键值对存储数据； 2、分布式； 3、一般不支持 ACID 特性； 4、非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合。</td>
 </tr>
 <tr>
-<td>非关系型数据库</td>
-<td>1、使用键值对存储数据； 2、分布式； 3、一般不支持 ACID 特性； 4、非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合。</td>
+<td>优点</td>
+<td>1、容易理解：二维表结构是非常贴近逻辑世界一个概念，关系模型相对网状、层次等其他模型来说更容易理解； 2、使用方便：通用的 SQL 语言使得操作关系型数据库非常方便； 3、易于维护：丰富的完整性 (实体完整性、参照完整性和用户定义的完整性) 大大减低了数据冗余和数据不一致的概率； 4、支持 SQL，可用于复杂的查询。</td>
 <td>1、无需经过 sql 层的解析，读写性能很高； 2、基于键值对，数据没有耦合性，容易扩展； 3、存储数据的格式：nosql 的存储格式是 key,value 形式、文档形式、图片形式等等，文档形式、图片形式等等，而关系型数据库则只支持基础类型。</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>1、为了维护一致性所付出的巨大代价就是其读写性能比较差； 2、固定的表结构； 3、高并发读写需求； 4、海量数据的高效率读写；</td>
 <td>1、不提供 sql 支持，学习和使用成本较高； 2、无事务处理，附加功能 bi 和报表等支持也不好；</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h3 id="Amazon-RDS-Amazon-Relational-Database-Service"><a href="#Amazon-RDS-Amazon-Relational-Database-Service" class="headerlink" title="Amazon RDS (Amazon Relational Database Service)"></a><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html" target="_blank" rel="noopener">Amazon RDS (Amazon Relational Database Service)</a></h3><p>Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient, resizable capacity for an industry-standard relational database and manages common database administration tasks.</p>
+<h2 id="Management-amp-Governance-in-AWS"><a href="#Management-amp-Governance-in-AWS" class="headerlink" title="Management &amp; Governance in AWS"></a>Management &amp; Governance in AWS</h2><h3 id="Auto-Scaling"><a href="#Auto-Scaling" class="headerlink" title="Auto Scaling"></a><a href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html" target="_blank" rel="noopener">Auto Scaling</a></h3><p>AWS Auto Scaling enables you to configure automatic scaling for the AWS resources that are part of your application in a matter of minutes.</p>
+<p><img src="https://docs.aws.amazon.com/autoscaling/plans/userguide/images/dynamic-scaling.png" alt="How Amazon Auto Scaling Works"></p>
+<p>With AWS Auto Scaling, you configure and manage scaling for your resources through a scaling plan. The scaling plan uses dynamic scaling and predictive scaling to automatically scale your application’s resources.</p>
+<h3 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html" target="_blank" rel="noopener">CloudWatch</a></h3><p>Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications.</p>
+<p><img src="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/CW-Overview.png" alt="How Amazon CloudWatch Works"></p>
+<p>Amazon CloudWatch is basically a metrics repository. An AWS service—such as Amazon EC2—puts metrics into the repository, and you retrieve statistics based on those metrics. If you put your own custom metrics into the repository, you can retrieve statistics on these metrics as well.</p>
+<p><img src="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/monitoring-overviewpage-console.PNG" alt="CloudWatch console"></p>
+<p>The CloudWatch overview home page appears.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><p><a href="https://docs.aws.amazon.com/index.html" target="_blank" rel="noopener">AWS Documentation</a></p>
 </li>
@@ -521,7 +533,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Direct-Connect"><span class="nav-number">2.6.</span> <span class="nav-text">AWS Direct Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Peering"><span class="nav-number">2.7.</span> <span class="nav-text">VPC Peering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">2.8.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Endpoints"><span class="nav-number">2.9.</span> <span class="nav-text">VPC Endpoints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage-in-AWS"><span class="nav-number">3.</span> <span class="nav-text">Storage in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Simple-Storage-Service"><span class="nav-number">3.1.</span> <span class="nav-text">S3 (Simple Storage Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Glacier"><span class="nav-number">3.2.</span> <span class="nav-text">S3 Glacier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Elastic-Block-Store"><span class="nav-number">3.3.</span> <span class="nav-text">EBS (Elastic Block Store)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compute-in-AWS"><span class="nav-number">4.</span> <span class="nav-text">Compute in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EC2-Elastic-Compute-Cloud"><span class="nav-number">4.1.</span> <span class="nav-text">EC2 (Elastic Compute Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instance-Purchasing-Options"><span class="nav-number">4.2.</span> <span class="nav-text">Instance Purchasing Options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database"><span class="nav-number">5.</span> <span class="nav-text">Database</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">5.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-RDS-Amazon-Relational-Database-Service"><span class="nav-number">5.2.</span> <span class="nav-text">Amazon RDS (Amazon Relational Database Service)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Direct-Connect"><span class="nav-number">2.6.</span> <span class="nav-text">AWS Direct Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Peering"><span class="nav-number">2.7.</span> <span class="nav-text">VPC Peering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">2.8.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Endpoints"><span class="nav-number">2.9.</span> <span class="nav-text">VPC Endpoints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage-in-AWS"><span class="nav-number">3.</span> <span class="nav-text">Storage in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Simple-Storage-Service"><span class="nav-number">3.1.</span> <span class="nav-text">S3 (Simple Storage Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Glacier"><span class="nav-number">3.2.</span> <span class="nav-text">S3 Glacier</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EBS-Elastic-Block-Store"><span class="nav-number">3.3.</span> <span class="nav-text">EBS (Elastic Block Store)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compute-in-AWS"><span class="nav-number">4.</span> <span class="nav-text">Compute in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EC2-Elastic-Compute-Cloud"><span class="nav-number">4.1.</span> <span class="nav-text">EC2 (Elastic Compute Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Instance-Purchasing-Options"><span class="nav-number">4.2.</span> <span class="nav-text">Instance Purchasing Options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-in-AWS"><span class="nav-number">5.</span> <span class="nav-text">Database in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">5.1.</span> <span class="nav-text">Overview</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Management-amp-Governance-in-AWS"><span class="nav-number">6.</span> <span class="nav-text">Management &amp; Governance in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-Scaling"><span class="nav-number">6.1.</span> <span class="nav-text">Auto Scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CloudWatch"><span class="nav-number">6.2.</span> <span class="nav-text">CloudWatch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
