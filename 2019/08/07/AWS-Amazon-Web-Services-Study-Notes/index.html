@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-after.d85d3e2cb67fd2ed1a3be645d443e9f5910409fd.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-before.7f287b3bf00bbc4fbdeadef3c8d5910374aec963.png">
-<meta property="og:updated_time" content="2019-08-08T02:16:28.110Z">
+<meta property="og:updated_time" content="2019-08-08T02:24:51.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
 <meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
@@ -235,15 +235,15 @@
 </li>
 </ul>
 <hr>
-<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a>VPC (Virtual Private Cloud)</h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
+<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener">VPC (Virtual Private Cloud)</a></h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
 <p>The relations between VPC and region, VPC and AZ are below:</p>
 <ul>
 <li>VPCs deploy into 1 of the 18 AWS regions</li>
 <li>A VPC can host resources from any Available Zone within its region</li>
 </ul>
-<h3 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a>Subnets</h3><p>When you create a subnet, you specify the CIDR block for the subnet, which is a subset of the VPC CIDR block. </p>
+<h3 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html" target="_blank" rel="noopener">Subnets</a></h3><p>When you create a subnet, you specify the CIDR block for the subnet, which is a subset of the VPC CIDR block. </p>
 <p>When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block; for example, <code>10.0.0.0/16</code>. This is the primary CIDR block for your VPC.</p>
-<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p><strong>Internet Gateway</strong></p>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p><strong><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html" target="_blank" rel="noopener">Internet Gateway</a></strong></p>
 <p>An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It therefore imposes no availability risks or bandwidth constraints on your network traffic.</p>
 <p>An internet gateway serves two purposes: </p>
 <ul>
@@ -251,12 +251,12 @@
 <li>to perform network address translation (NAT) for instances that have been assigned public IPv4 addresses.</li>
 </ul>
 <hr>
-<p><strong>NAT Gateway</strong></p>
+<p><strong><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html" target="_blank" rel="noopener">NAT Gateway</a></strong></p>
 <p><strong>You can use a NAT device to enable instances in a private subnet to connect to the internet (for example, for software updates) or other AWS services, but prevent the internet from initiating connections with the instances.</strong> </p>
 <p>A NAT device forwards traffic from the instances in the private subnet to the internet or other AWS services, and then sends the response back to the instances. When traffic goes to the internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses.</p>
-<h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a>Elastic Network Interfaces</h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
+<h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html" target="_blank" rel="noopener">Elastic Network Interfaces</a></h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
 <p><strong>弹性 IP 就是固定 IP ，弹性是指的可以弹性的关联实例，对于实例来说，弹性 IP 的作用就是固定 IP 。</strong></p>
-<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><p><strong>Security Groups</strong></p>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html" target="_blank" rel="noopener">Security</a></h3><p><strong>Security Groups</strong></p>
 <ul>
 <li>A <em>security group</em> acts as a virtual firewall for your instance to control inbound and outbound traffic. When you launch an instance in a VPC, you can assign up to five security groups to the instance. Security groups act at the instance level, not the subnet level. Therefore, each instance in a subnet in your VPC could be assigned to a different set of security groups. If you don’t specify a particular group at launch time, the instance is automatically assigned to the default security group for the VPC.</li>
 <li>For each security group, you add <em>rules</em> that control the inbound traffic to instances, and a separate set of rules that control the outbound traffic. This section describes the basic things you need to know about security groups for your VPC and their rules.</li>
@@ -302,7 +302,7 @@
 <p>A bucket is a container for objects stored in Amazon S3. Every object is contained in a bucket. </p>
 </li>
 <li><p><strong>Objects</strong></p>
-<p>Objects are the fundamental entities stored in Amazon S3.\</p>
+<p>Objects are the fundamental entities stored in Amazon S3.</p>
 </li>
 <li><p><strong>Keys</strong></p>
 <p>A key is the unique identifier for an object within a bucket. </p>
