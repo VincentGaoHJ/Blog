@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-after.d85d3e2cb67fd2ed1a3be645d443e9f5910409fd.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-before.7f287b3bf00bbc4fbdeadef3c8d5910374aec963.png">
-<meta property="og:updated_time" content="2019-08-07T09:23:41.914Z">
+<meta property="og:updated_time" content="2019-08-08T02:16:28.110Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
 <meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, to name a few. [TOC]">
@@ -296,7 +296,30 @@
 </ul>
 <p>最新的技术实现，基于 AWS PrivateLink 技术，针对 EC2、ELB、Kinesis 等，为这些 AWS 服务在 Consumer VPC 增加了一个或多个 ENI 接口及 IP 地址，同时为这些 ENI 接口提供 Region 及 Zone 的 DNS 域名（公网可解析、返回私网 IP 地址），也可以在 Consumer VPC 内部将标准 AWS 服务域名（如：ec2.us-east-2.amazonaws.com）解析为这些 ENI 接口的私有 IP 地址。</p>
 <p>通过 PrivateLink 技术，我们自己也可以对外发布 Endpoint Service：在 Provider VPC 创建 Network ELB 及 Back-end 服务器、基于 ELB 创建 Endpoint Service；在 Consumer VPC 创建 Interface VPC Endpoint、引用 Provider VPC 的 Endpoint Service。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>
+<h2 id="Storage-in-AWS"><a href="#Storage-in-AWS" class="headerlink" title="Storage in AWS"></a>Storage in AWS</h2><h3 id="S3-Simple-Storage-Service"><a href="#S3-Simple-Storage-Service" class="headerlink" title="S3 (Simple Storage Service)"></a><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html" target="_blank" rel="noopener">S3 (Simple Storage Service)</a></h3><p>Amazon Simple Storage Service (Amazon S3) is storage for the internet. You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere on the web.</p>
+<ul>
+<li><p><strong>Buckets</strong></p>
+<p>A bucket is a container for objects stored in Amazon S3. Every object is contained in a bucket. </p>
+</li>
+<li><p><strong>Objects</strong></p>
+<p>Objects are the fundamental entities stored in Amazon S3.\</p>
+</li>
+<li><p><strong>Keys</strong></p>
+<p>A key is the unique identifier for an object within a bucket. </p>
+</li>
+<li><p><strong>Regions</strong></p>
+<p>You can choose the geographical region where Amazon S3 will store the buckets you create. </p>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><p><a href="https://docs.aws.amazon.com/index.html" target="_blank" rel="noopener">AWS Documentation</a></p>
+</li>
+<li><p><a href="http://jayendrapatil.com/" target="_blank" rel="noopener">AWS Certification Catalog</a></p>
+</li>
+<li><p><a href="https://blog.51cto.com/8493144/2160058" target="_blank" rel="noopener">经验分享：成功通过 AWS Advanced Networking Specialty 认证考试</a></p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -387,7 +410,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Direct-Connect"><span class="nav-number">2.6.</span> <span class="nav-text">AWS Direct Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Peering"><span class="nav-number">2.7.</span> <span class="nav-text">VPC Peering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">2.8.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Endpoints"><span class="nav-number">2.9.</span> <span class="nav-text">VPC Endpoints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Global-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">AWS Global Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Components"><span class="nav-number">1.1.</span> <span class="nav-text">Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-on-AWS"><span class="nav-number">1.2.</span> <span class="nav-text">Machine Learning on AWS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-in-AWS"><span class="nav-number">2.</span> <span class="nav-text">Networking in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Virtual-Private-Cloud"><span class="nav-number">2.1.</span> <span class="nav-text">VPC (Virtual Private Cloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subnets"><span class="nav-number">2.2.</span> <span class="nav-text">Subnets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gateway"><span class="nav-number">2.3.</span> <span class="nav-text">Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Network-Interfaces"><span class="nav-number">2.4.</span> <span class="nav-text">Elastic Network Interfaces</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.5.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Direct-Connect"><span class="nav-number">2.6.</span> <span class="nav-text">AWS Direct Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Peering"><span class="nav-number">2.7.</span> <span class="nav-text">VPC Peering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">2.8.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VPC-Endpoints"><span class="nav-number">2.9.</span> <span class="nav-text">VPC Endpoints</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage-in-AWS"><span class="nav-number">3.</span> <span class="nav-text">Storage in AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Simple-Storage-Service"><span class="nav-number">3.1.</span> <span class="nav-text">S3 (Simple Storage Service)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
