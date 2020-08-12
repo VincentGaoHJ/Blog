@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies Pol">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-12T16:35:29.698Z">
+<meta property="og:updated_time" content="2020-08-12T17:13:23.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies Pol">
@@ -203,14 +203,21 @@
 <p>End Users such as people, employees and organizations etc.</p>
 </li>
 <li><p><strong>Groups</strong></p>
-<p><strong>A collection of users.</strong> Each users in the group will inherit the permissions of the group.</p>
+<p><em>A collection of users.</em> Each users in the group will inherit the permissions of the group.</p>
 </li>
 <li><p><strong>Policies</strong></p>
-<p>Policies are made up of documents, called Policy documents. These documents are in a format called JSON and they <strong>give permissions as what a user/group/role is able to do.</strong></p>
+<p>Policies are made up of documents, called Policy documents. These documents are in a format called JSON and they <em>give permissions as what a user/group/role is able to do.</em></p>
 </li>
 <li><p><strong>Roles</strong></p>
-<p>You create roles and <strong>then assign them to AWS Resources</strong>. For example, you might give a virtual machine inside AWS as the ability to write files to S3 which is a type of storage within the AWS.</p>
+<p>You create roles and t<em>hen assign them to AWS Resources.</em> For example, you might give a virtual machine inside AWS as the ability to write files to S3 which is a type of storage within the AWS.</p>
 </li>
+</ul>
+<h2 id="Exam-Tips"><a href="#Exam-Tips" class="headerlink" title="Exam Tips"></a>Exam Tips</h2><ul>
+<li><p><strong>IAM is universal.</strong> It doesn’t apply to regions at this time.</p>
+</li>
+<li><p>Always setup <strong>Multi-factor Authentication</strong> on your <strong>root accoun</strong>t.</p>
+</li>
+<li>You can create and customize your own <strong>password rotation policies</strong>.</li>
 </ul>
 
       
@@ -305,7 +312,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">2.</span> <span class="nav-text">Exam Tips</span></a></li></ol>
     
     </div>
   </aside>
@@ -494,21 +501,5 @@ var a = new Donate({
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
