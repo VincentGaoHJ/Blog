@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies Pol">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-12T17:13:23.474Z">
+<meta property="og:updated_time" content="2020-08-13T15:16:16.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies Pol">
@@ -219,6 +219,89 @@
 </li>
 <li>You can create and customize your own <strong>password rotation policies</strong>.</li>
 </ul>
+<h2 id="What-is-S3"><a href="#What-is-S3" class="headerlink" title="What is S3"></a>What is S3</h2><ul>
+<li>It’s <strong>Object-based</strong> storage(allows you to upload files.)<ul>
+<li>Key</li>
+<li>Value</li>
+<li>Version ID(Important for versioning)</li>
+<li>Metadata</li>
+<li>Subresources<ul>
+<li>Access Control Lists</li>
+<li>Torrent</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Files can be from 0 Bytes to 5 TB.</li>
+<li>Files are stored in <strong>Buckets</strong>.</li>
+<li>S3 is a <strong>universal namespace</strong>. That is, names must be unique globally.</li>
+<li><strong>HTTP 200 code</strong> if the upload wad successful.</li>
+<li><strong>Web Address</strong><ul>
+<li><a href="https://acloudguru.s3.amazonaws.com/" target="_blank" rel="noopener">https://acloudguru.s3.amazonaws.com/</a> (default region)</li>
+<li><a href="https://acloudguru.eu-west-1.amazonaws.com/" target="_blank" rel="noopener">https://acloudguru.eu-west-1.amazonaws.com/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="How-does-data-consistency-work-for-S3"><a href="#How-does-data-consistency-work-for-S3" class="headerlink" title="How does data consistency work for S3"></a>How does data consistency work for S3</h2><ul>
+<li>Read after Write consistency for <strong>PUTS</strong> of <strong>NEW</strong> Objects. It means you write a new file and read it immediately afterwards, you will be able to view that data.</li>
+<li>Eventual consistency for overwrite <strong>PUTS</strong> and <strong>DELETES</strong>(can take some time to propagate). If you update <strong>AN EXISTING</strong> file or delete a file and read it immediately, you may get the older version, or you may not. Basically changes to objects can take a little bit of time to propagate.</li>
+</ul>
+<h2 id="S3-Gurantees"><a href="#S3-Gurantees" class="headerlink" title="S3 - Gurantees"></a>S3 - Gurantees</h2><ul>
+<li>99.9% <strong>availability</strong></li>
+<li>11 <em> 9 <em>*durability</em></em></li>
+</ul>
+<h2 id="S3-Features"><a href="#S3-Features" class="headerlink" title="S3 - Features"></a>S3 - Features</h2><ul>
+<li><strong>Tiered Storage Available</strong></li>
+<li>Lifecycle Management<ul>
+<li>Tier A to Tier B to Glacier</li>
+</ul>
+</li>
+<li>Versioning</li>
+<li>Encryption</li>
+<li>MFA Delete</li>
+<li>Secure your data using <strong>Access Control Lists</strong> and <strong>Bucket Policies</strong></li>
+</ul>
+<h2 id="S3-Storage-Classes"><a href="#S3-Storage-Classes" class="headerlink" title="S3 - Storage Classes"></a>S3 - Storage Classes</h2><ul>
+<li>S3 Standard</li>
+<li>S3 - IA (Infrequently Accessed)<ul>
+<li>requires rapid access when needed</li>
+<li>Charged a retrieval fee</li>
+</ul>
+</li>
+<li>S3 One Zone - IA<ul>
+<li>Phased out version: RRS (S3 Reduce Redundancy Storage), still exists.</li>
+</ul>
+</li>
+<li>S3 - Intelligent Tiering<ul>
+<li>Designed to optimize costs by automatically moving data to the most cost-effective access tier, without performance impact or operational overhead.</li>
+</ul>
+</li>
+<li>S3 Glacier<ul>
+<li>Retrieval times configurable from minutes to hours.</li>
+</ul>
+</li>
+<li>S3 Glacier Deep Archive<ul>
+<li>retrieval time of 12 hours is acceptable.</li>
+</ul>
+</li>
+</ul>
+<h2 id="S3-Charges"><a href="#S3-Charges" class="headerlink" title="S3 - Charges"></a>S3 - Charges</h2><ul>
+<li>Storage</li>
+<li>Requests</li>
+<li>Storage Management Pricing</li>
+<li>Data Transfer Pricing</li>
+<li>Transfer Acceleration</li>
+<li>Cross Region Replication Pricing</li>
+</ul>
+<h2 id="Exam-Tips-1"><a href="#Exam-Tips-1" class="headerlink" title="Exam Tips"></a>Exam Tips</h2><ul>
+<li>Every tips in “What is S3” part</li>
+<li>Not suitable to install an operating system or host a database on (box base storage needed, not object based).</li>
+<li>You can turn on MFA Delete to protect the data.</li>
+<li>Read after Write consistency for <strong>PUTS</strong> of <strong>NEW</strong> Objects.</li>
+<li>Eventual consistency for overwrite <strong>PUTS</strong> and <strong>DELETES</strong>(can take some time to propagate).</li>
+</ul>
+<h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/s3/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/s3/faqs/</a></p>
+<p><a href="https://aws.amazon.com/iam/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/iam/faqs/</a></p>
 
       
     </div>
@@ -312,7 +395,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">2.</span> <span class="nav-text">Exam Tips</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">2.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-S3"><span class="nav-number">3.</span> <span class="nav-text">What is S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-does-data-consistency-work-for-S3"><span class="nav-number">4.</span> <span class="nav-text">How does data consistency work for S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Gurantees"><span class="nav-number">5.</span> <span class="nav-text">S3 - Gurantees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Features"><span class="nav-number">6.</span> <span class="nav-text">S3 - Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Storage-Classes"><span class="nav-number">7.</span> <span class="nav-text">S3 - Storage Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Charges"><span class="nav-number">8.</span> <span class="nav-text">S3 - Charges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips-1"><span class="nav-number">9.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">10.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol>
     
     </div>
   </aside>
@@ -501,5 +584,21 @@ var a = new Donate({
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
