@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="IAMKey Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-15T09:00:19.123Z">
+<meta property="og:updated_time" content="2020-08-16T03:27:53.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="IAMKey Terminology For IAM Users End Users such as people, employees and organizations etc.  Groups A collection of users. Each users in the group will inherit the permissions of the group.  Policies">
@@ -334,6 +334,37 @@
 </ul>
 </li>
 </ul>
+<h3 id="S3-Object-Lock-amp-Glacier-Vault-Lock"><a href="#S3-Object-Lock-amp-Glacier-Vault-Lock" class="headerlink" title="S3 - Object Lock &amp; Glacier Vault Lock"></a>S3 - Object Lock &amp; Glacier Vault Lock</h3><h4 id="Object-Lock"><a href="#Object-Lock" class="headerlink" title="Object Lock"></a>Object Lock</h4><p>You can use <strong>S3 Object Lock</strong> to store objects using a <strong>write once, read many (WORM) model</strong>. It can help you prevent objects from being deleted or modified for a fixed amount of time or indefinitely.</p>
+<ul>
+<li><strong>Governance Mode:</strong> <strong>users can’t overwrite or delete an object version or alter its lock settings</strong> unless they have special permissions.</li>
+<li><p><strong>Compliance Mode: a protected object version can’t be overwritten or deleted by any user</strong>, including the root user in your aws account. Compliance mode ensures an object version can’t be overwritten or deleted for the duration of the <strong>retention period.</strong></p>
+</li>
+<li><p><strong>Retention Period &amp; Legal Holds</strong></p>
+<ul>
+<li><strong>Retention period: Protects an object version for a fixed amount of time.</strong><ul>
+<li>After the retention period expires, the object version can be overwritten or deleted unless you also placed a legal hold on the object version.</li>
+</ul>
+</li>
+<li><strong>Legal Holds: S3 Object Lock also enables you to place a legal hold on an object version.</strong> <ul>
+<li>Like a retention period, a legal hold prevents an object version from being overwritten or deleted. </li>
+<li>However, a legal hold doesn’t have an associated retention period and remains in effect until removed. </li>
+<li>Legal holds can be freely placed and removed by any user who has the <em>S3:PutObjectLegalHold</em> permission.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Glacier-Vault-Lock"><a href="#Glacier-Vault-Lock" class="headerlink" title="Glacier Vault Lock"></a>Glacier Vault Lock</h4><p><strong>You can easily deploy and enforce compliance controls for individual S3 glacier vaults with a Vault Lock policy.</strong> You can specify controls, such as WORM, in a Vault Lock policy and lock the policy from future edits. Once locked, the policy can no longer be changed.</p>
+<h3 id="S3-Performance"><a href="#S3-Performance" class="headerlink" title="S3 Performance"></a>S3 Performance</h3><p>You can a achieve a high number of requests: 3500 PUT/COPY/POST/DELETE and 5500 GET/HEAD requests <strong>per second per prefix.</strong></p>
+<ul>
+<li><strong>You can get better performance by spreading your reads across different prefixes.</strong></li>
+<li>The more prefixed we have, the better performance we can achieve.</li>
+</ul>
+<p>S3 LIMITATION WHEN USING KMS</p>
+<ul>
+<li>Using <strong>SSE-KMS</strong> to encrypt your objects in S3, you must keep in mind the <strong>KMS limits</strong>.</li>
+<li>When you upload a file ,you will call <code>GenerateDataKey</code> in the KMS API.</li>
+</ul>
 <h2 id="Exam-Tips-1"><a href="#Exam-Tips-1" class="headerlink" title="Exam Tips"></a>Exam Tips</h2><ul>
 <li>Every tips in “What is S3” part</li>
 <li>Not suitable to install an operating system or host a database on (box base storage needed, not object based).</li>
@@ -347,6 +378,19 @@
 </li>
 <li>Stores all versions of an objects(including all writes and even if you delete an object)</li>
 <li>Versioning cannot be disabled, only suspended once enabled</li>
+<li>Life-cycle:<ul>
+<li>Automates moving your objects between the different storage tiers.</li>
+<li>Can be used in conjunction with versioning.</li>
+<li>Can be applied to current versions and previous versions.</li>
+</ul>
+</li>
+<li>Object Lock &amp; Glacier Vault Lock<ul>
+<li>Use S3 Object to store objects using a write once, read many (WORM) model.x</li>
+<li>Object locks can be on individual objects or applied across the bucket as a whole.</li>
+<li>Object locks come in two modes: governance mode and compliance mode.</li>
+<li>S3 Glacier Vault Lock: you can specify controls such as WORM in a Vault Lock policy and lock the policy from future edits.</li>
+</ul>
+</li>
 </ul>
 <hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/s3/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/s3/faqs/</a></p>
@@ -444,7 +488,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Exam Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#S3"><span class="nav-number">2.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-S3"><span class="nav-number">2.1.</span> <span class="nav-text">What is S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-does-data-consistency-work-for-S3"><span class="nav-number">2.2.</span> <span class="nav-text">How does data consistency work for S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Gurantees"><span class="nav-number">2.3.</span> <span class="nav-text">S3 - Gurantees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Features"><span class="nav-number">2.4.</span> <span class="nav-text">S3 - Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Storage-Classes"><span class="nav-number">2.5.</span> <span class="nav-text">S3 - Storage Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Charges"><span class="nav-number">2.6.</span> <span class="nav-text">S3 - Charges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Pricing-Tiers"><span class="nav-number">2.7.</span> <span class="nav-text">S3 - Pricing Tiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Security-amp-Encryption"><span class="nav-number">2.8.</span> <span class="nav-text">S3 - Security &amp; Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Version-Control"><span class="nav-number">2.9.</span> <span class="nav-text">S3 - Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips-1"><span class="nav-number">2.10.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">2.11.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Exam Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#S3"><span class="nav-number">2.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-S3"><span class="nav-number">2.1.</span> <span class="nav-text">What is S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-does-data-consistency-work-for-S3"><span class="nav-number">2.2.</span> <span class="nav-text">How does data consistency work for S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Gurantees"><span class="nav-number">2.3.</span> <span class="nav-text">S3 - Gurantees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Features"><span class="nav-number">2.4.</span> <span class="nav-text">S3 - Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Storage-Classes"><span class="nav-number">2.5.</span> <span class="nav-text">S3 - Storage Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Charges"><span class="nav-number">2.6.</span> <span class="nav-text">S3 - Charges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Pricing-Tiers"><span class="nav-number">2.7.</span> <span class="nav-text">S3 - Pricing Tiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Security-amp-Encryption"><span class="nav-number">2.8.</span> <span class="nav-text">S3 - Security &amp; Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Version-Control"><span class="nav-number">2.9.</span> <span class="nav-text">S3 - Version Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Object-Lock-amp-Glacier-Vault-Lock"><span class="nav-number">2.9.1.</span> <span class="nav-text">S3 - Object Lock &amp; Glacier Vault Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Lock"><span class="nav-number">2.9.1.1.</span> <span class="nav-text">Object Lock</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Glacier-Vault-Lock"><span class="nav-number">2.9.1.2.</span> <span class="nav-text">Glacier Vault Lock</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-Performance"><span class="nav-number">2.9.2.</span> <span class="nav-text">S3 Performance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips-1"><span class="nav-number">2.10.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">2.11.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
