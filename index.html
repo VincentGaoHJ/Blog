@@ -698,12 +698,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li><p>Should people be allowed to take photos when visiting a museum?</p>
-</li>
-<li><p>Do you agree or disagree with the following statement? Being polite is more important than being truthful.</p>
-</li>
-<li><p>etc.</p>
-</li>
+<li>Should people be allowed to take photos when visiting a museum?</li>
+<li>Do you agree or disagree with the following statement? Being polite is more important than being truthful.</li>
+<li>etc</li>
 </ul>
       
     </div>
@@ -856,6 +853,11 @@
 <li>A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained ones.</li>
 <li>A concept extraction module for extracting concept of every topic that maintain strong discriminative power at different levels of the taxonomy.</li>
 </ul>
+<hr>
+<h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
+<script type="math/tex; mode=display">
+\min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
+\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
       
     </div>
     <footer class="article-footer">
