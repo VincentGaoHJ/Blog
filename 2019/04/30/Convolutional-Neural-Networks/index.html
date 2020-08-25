@@ -6,13 +6,13 @@
   <title>convolutional neural networks | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Machine-LearningCNNDeep-Learning">
+  <meta name="keywords" content="CNNMachine-LearningDeep-Learning">
   
   
   
   
   <meta name="description" content="A comprehensive understanding of Convolutional Neural Networks, including Convolution and pooling.">
-<meta name="keywords" content="Machine-Learning,CNN,Deep-Learning">
+<meta name="keywords" content="CNN,Machine-Learning,Deep-Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Convolutional Neural Networks">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/04/30/Convolutional-Neural-Networks/index.html">
@@ -668,5 +668,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
