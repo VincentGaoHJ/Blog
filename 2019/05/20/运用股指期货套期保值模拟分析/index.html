@@ -32,6 +32,8 @@
   <link rel="icon" href="/Blog/css/images/mylogo.jpg">
   <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
   
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -329,8 +331,7 @@ h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}
 <p>计算样本数据的 ADF 值，并和 5% 置信水平下的 t 检验临界值作比较，如果 ADF 检验值大于 5% 置信水平下的 t 检验临界值则序列不平稳。</p>
 <p>检验结果不平稳则对原序列进行一阶差分，得到新的序列，再进行 ADF 检验（步骤同上）。</p>
 <p><strong>一阶段差分代码：</strong></p>
-<pre><code class="lang-Eviews">genr st = log(st) - log(st(-1))
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genr st = log(st) - log(st(-1))</span><br></pre></td></tr></table></figure>
 <p>其中 $st$ 为原序列</p>
 <p>需要展示的内容：沪深 300 期货与现货价格几次（一般为两次）平稳检验的结果，包括 ADF 值和 5% 置信水平下 t 检验的值。</p>
 </li>
