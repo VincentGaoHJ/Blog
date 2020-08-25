@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/one-word.png">
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/cbow.png">
 <meta property="og:image" content="http://qiniu.gaohaojun.cn/skip-gram.jpg">
-<meta property="og:updated_time" content="2020-08-25T04:21:10.429Z">
+<meta property="og:updated_time" content="2020-08-25T05:37:46.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Insight into Word2Vec">
 <meta name="twitter:description" content="A comprehensive understanding of Word2Vec, including background, development, and formula derivation.">
@@ -195,7 +195,7 @@
     <div class="article-meta">
       
 	<a href="/Blog/2019/04/21/Insight-into-Word2Vec/" class="article-date">
-	  <time datetime="2019-04-21T01:56:51.000Z" itemprop="datePublished">2019-04-21</time>
+	  <time datetime="2019-04-21T05:58:25.000Z" itemprop="datePublished">2019-04-21</time>
 	</a>
 
       
@@ -213,9 +213,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><ul>
-<li>A comprehensive understanding of Word2Vec, including background, development, and formula derivation</li>
-</ul>
+        <p>A comprehensive understanding of Word2Vec, including background, development, and formula derivation</p>
 <a id="more"></a>
 <h2 id="背景：自然语言处理"><a href="#背景：自然语言处理" class="headerlink" title="背景：自然语言处理"></a>背景：自然语言处理</h2><p>自然语言处理是计算机科学领域与人工智能领域中的一个重要方向。它研究能实现人与计算机之间用自然语言进行有效通信的各种理论和方法。自然语言处理是一门融语言学、计算机科学、数学于一体的科学。因此，这一领域的研究将涉及自然语言，即人们日常使用的语言，所以它与语言学的研究有着密切的联系，但又有重要的区别。自然语言处理并不是一般地研究自然语言，而在于研制能有效地实现自然语言通信的计算机系统，特别是其中的软件系统。因而它是计算机科学的一部分。</p>
 <p>自然语言处理的最最基础的部分就是要让计算机能够识别人类的语言，因此词向量也就应运而生了。词向量顾名思义就是以向量的形式表示词。</p>
@@ -561,15 +559,20 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/Blog/2019/04/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Blog/2019/04/30/Convolutional-Neural-Networks/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Hello World
+          Convolutional Neural Networks
         
       </div>
     </a>
   
+  
+    <a href="/Blog/2019/04/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
   
 </nav>
 
@@ -582,7 +585,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Attention"><span class="nav-number">1.</span> <span class="nav-text">Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景：自然语言处理"><span class="nav-number">2.</span> <span class="nav-text">背景：自然语言处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见的模型（由简单到复杂）"><span class="nav-number">3.</span> <span class="nav-text">几种常见的模型（由简单到复杂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词袋模型"><span class="nav-number">3.1.</span> <span class="nav-text">词袋模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-hot编码"><span class="nav-number">3.2.</span> <span class="nav-text">one-hot编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计语言模型"><span class="nav-number">3.3.</span> <span class="nav-text">统计语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-Gram-思想"><span class="nav-number">3.4.</span> <span class="nav-text">N-Gram 思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个重要模型"><span class="nav-number">3.5.</span> <span class="nav-text">两个重要模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skip-gram-模型讲解"><span class="nav-number">3.6.</span> <span class="nav-text">Skip-gram 模型讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fake-Task"><span class="nav-number">3.6.1.</span> <span class="nav-text">Fake Task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏层部分"><span class="nav-number">3.6.2.</span> <span class="nav-text">隐藏层部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出层部分"><span class="nav-number">3.6.3.</span> <span class="nav-text">输出层部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型理解"><span class="nav-number">3.6.4.</span> <span class="nav-text">模型理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax-详解"><span class="nav-number">3.7.</span> <span class="nav-text">Softmax 详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型公式推导"><span class="nav-number">4.</span> <span class="nav-text">模型公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-Word-模型"><span class="nav-number">4.1.</span> <span class="nav-text">One-Word 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBOW模型（连续词袋模型）"><span class="nav-number">4.2.</span> <span class="nav-text">CBOW模型（连续词袋模型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skip-gram模型"><span class="nav-number">4.3.</span> <span class="nav-text">skip-gram模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考来源："><span class="nav-number">4.3.1.</span> <span class="nav-text">参考来源：</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景：自然语言处理"><span class="nav-number">1.</span> <span class="nav-text">背景：自然语言处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种常见的模型（由简单到复杂）"><span class="nav-number">2.</span> <span class="nav-text">几种常见的模型（由简单到复杂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#词袋模型"><span class="nav-number">2.1.</span> <span class="nav-text">词袋模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-hot编码"><span class="nav-number">2.2.</span> <span class="nav-text">one-hot编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#统计语言模型"><span class="nav-number">2.3.</span> <span class="nav-text">统计语言模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#N-Gram-思想"><span class="nav-number">2.4.</span> <span class="nav-text">N-Gram 思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个重要模型"><span class="nav-number">2.5.</span> <span class="nav-text">两个重要模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Skip-gram-模型讲解"><span class="nav-number">2.6.</span> <span class="nav-text">Skip-gram 模型讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fake-Task"><span class="nav-number">2.6.1.</span> <span class="nav-text">Fake Task</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐藏层部分"><span class="nav-number">2.6.2.</span> <span class="nav-text">隐藏层部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出层部分"><span class="nav-number">2.6.3.</span> <span class="nav-text">输出层部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型理解"><span class="nav-number">2.6.4.</span> <span class="nav-text">模型理解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax-详解"><span class="nav-number">2.7.</span> <span class="nav-text">Softmax 详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型公式推导"><span class="nav-number">3.</span> <span class="nav-text">模型公式推导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-Word-模型"><span class="nav-number">3.1.</span> <span class="nav-text">One-Word 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CBOW模型（连续词袋模型）"><span class="nav-number">3.2.</span> <span class="nav-text">CBOW模型（连续词袋模型）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#skip-gram模型"><span class="nav-number">3.3.</span> <span class="nav-text">skip-gram模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考来源："><span class="nav-number">3.3.1.</span> <span class="nav-text">参考来源：</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>
