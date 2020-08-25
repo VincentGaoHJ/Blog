@@ -32,8 +32,6 @@
   <link rel="icon" href="/Blog/css/images/mylogo.jpg">
   <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -53,7 +51,9 @@
   <link rel="stylesheet" href="/Blog/css/bootstrap.css">
 
   <!-- Code prettify using google code prettify -->
+
   <link rel="stylesheet" href="/Blog/css/prettify.css" media="screen" type="text/css">
+  
 
   
     <link rel="stylesheet" href="/Blog/css/dialog.css">
@@ -265,16 +265,62 @@
 <li>导言区：<code>\usepackage{graphicx}</code></li>
 <li>语法：<code>\includegraphics[&lt; 选项 &gt;]{&lt; 文件名 &gt;}</code></li>
 <li>格式：EPS，PDF，PNG，JPEG，BMP</li>
-<li><p>图片在当前目录下的figures和PICS目录下：</p>
-<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">\graphicspath</span><span class="template-variable">&#123;&#123;figures/&#125;</span><span class="xml">,</span><span class="template-variable">&#123;pics/&#125;</span><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在正文中插入图片：</p>
-</li>
+<li>图片在当前目录下的figures和PICS目录下：<pre><code>\graphicspath{{figures/},{pics/}}
+</code></pre></li>
+<li>在正文中插入图片：</li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">LaTex</span><span class="string">&#123;&#125;</span></span></span><br><span class="line">    设置缩放比例</span><br><span class="line">    <span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=0.3]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line">    设置高度</span><br><span class="line">    <span class="tag">\<span class="name">includegraphics</span><span class="string">[height=0.3cm]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line">    设置宽度</span><br><span class="line">    <span class="tag">\<span class="name">includegraphics</span><span class="string">[width=0.3cm]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line">    设置版型高度</span><br><span class="line">    <span class="tag">\<span class="name">includegraphics</span><span class="string">[height=0.3cm]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line">    设置版型宽度</span><br><span class="line">    <span class="tag">\<span class="name">includegraphics</span><span class="string">[width=0.3cm]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    生成五列表格，分别是左对齐，居中，居中，右对齐和指定宽度(自动换行)</span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;tabular&#125;</span><span class="string">&#123;l || c | c | r | p&#123;1.5cm&#125;</span></span>&#125;</span><br><span class="line">        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        <span class="tag">\<span class="name">hilne</span></span> <span class="tag">\<span class="name">hilne</span></span> 两个命令可以产生双横线</span><br><span class="line">        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        <span class="tag">\<span class="name">hilne</span></span></span><br><span class="line">        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        <span class="tag">\<span class="name">hilne</span></span></span><br><span class="line">        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        <span class="tag">\<span class="name">hilne</span></span></span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;tabular&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    交叉引用</span><br><span class="line">    <span class="tag">\<span class="name">LaTeX</span><span class="string">&#123;&#125;</span></span>中<span class="tag">\<span class="name">Tex</span></span>系统吉祥物见图<span class="tag">\<span class="name">ref</span><span class="string">&#123;fig-lion&#125;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;figure&#125;</span></span></span><br><span class="line">        图片居中</span><br><span class="line">        <span class="tag">\<span class="name">centering</span></span></span><br><span class="line">        <span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=0.3]</span><span class="string">&#123;lion&#125;</span></span></span><br><span class="line">        设置图片标题并且设置标签</span><br><span class="line">        <span class="tag">\<span class="name">caption</span><span class="string">&#123;\Tex 吉祥物&#125;</span></span><span class="tag">\<span class="name">label</span><span class="string">&#123;fig-lion&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;figure&#125;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;table&#125;</span></span></span><br><span class="line">        表格居中</span><br><span class="line">        <span class="tag">\<span class="name">centering</span></span></span><br><span class="line">        设置图片标题</span><br><span class="line">        <span class="tag">\<span class="name">caption</span><span class="string">&#123;考试成绩单&#125;</span></span></span><br><span class="line">        </span><br><span class="line">        <span class="tag">\<span class="name">begin</span><span class="string">&#123;tabular&#125;</span><span class="string">&#123;l || c | c | r | p&#123;1.5cm&#125;</span></span>&#125;</span><br><span class="line">            姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        <span class="tag">\<span class="name">end</span><span class="string">&#123;tabular&#125;</span></span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;table&#125;</span></span></span><br><span class="line">    </span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>\begin{document}
+    \LaTex{}
+    设置缩放比例
+    \includegraphics[scale=0.3]{lion}
+    设置高度
+    \includegraphics[height=0.3cm]{lion}
+    设置宽度
+    \includegraphics[width=0.3cm]{lion}
+    设置版型高度
+    \includegraphics[height=0.3cm]{lion}
+    设置版型宽度
+    \includegraphics[width=0.3cm]{lion}
+\end{document}
+</code></pre><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><pre><code>\begin{document}
+    生成五列表格，分别是左对齐，居中，居中，右对齐和指定宽度(自动换行)
+    \begin{tabular}{l || c | c | r | p{1.5cm}}
+        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 \\
+        \hilne \hilne 两个命令可以产生双横线
+        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 \\
+        \hilne
+        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 \\
+        \hilne
+        姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 \\
+        \hilne
+    \end{tabular}
+\end{document}
+</code></pre><h2 id="浮动体"><a href="#浮动体" class="headerlink" title="浮动体"></a>浮动体</h2><pre><code>\begin{document}
+    交叉引用
+    \LaTeX{}中\Tex系统吉祥物见图\ref{fig-lion}
+
+    \begin{figure}
+        图片居中
+        \centering
+        \includegraphics[scale=0.3]{lion}
+        设置图片标题并且设置标签
+        \caption{\Tex 吉祥物}\label{fig-lion}
+    \end{figure}
+
+    \begin{table}
+        表格居中
+        \centering
+        设置图片标题
+        \caption{考试成绩单}
+
+        \begin{tabular}{l || c | c | r | p{1.5cm}}
+            姓名 &amp; 语文 &amp; 数学 &amp; 外语 &amp; 备注 \\
+        \end{tabular}
+
+    \end{table}
+
+\end{document}
+</code></pre><ul>
 <li><code>\begin{figure}[&lt;允许位置&gt;]</code></li>
 <li>&lt;允许位置&gt;参数（默认tbp）</li>
 <li><ul>
@@ -343,13 +389,26 @@ a_0, a_1, A_{100x+2}</script><h3 id="希腊字母"><a href="#希腊字母" class
 <li>比例是<code>\begin{displaymath} frac{3}{4} \end{displaymath}</code></li>
 <li>对公式进行自动编号并且对公式进行交叉引用：</li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">交换律见式<span class="tag">\<span class="name">ref</span><span class="string">&#123;eq:commutative&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;equation&#125;</span></span></span><br><span class="line">    a+b=b+a <span class="tag">\<span class="name">label</span><span class="string">&#123;eq:commutative&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;equation&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>交换律见式\ref{eq:commutative}
+\begin{equation}
+    a+b=b+a \label{eq:commutative}
+\end{equation}
+</code></pre><ul>
 <li>对公式不进行自动编号并且对公式进行交叉引用（需要amsmath宏包）：</li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">交换律见式<span class="tag">\<span class="name">ref</span><span class="string">&#123;eq:commutative&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;equation*&#125;</span></span></span><br><span class="line">    a+b=b+a <span class="tag">\<span class="name">label</span><span class="string">&#123;eq:commutative&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;equation*&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="矩阵（需要amsmath宏包）"><a href="#矩阵（需要amsmath宏包）" class="headerlink" title="矩阵（需要amsmath宏包）"></a>矩阵（需要amsmath宏包）</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">[</span></span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;matrix&#125;</span></span></span><br><span class="line">        0 &amp; 1 <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        1 &amp; 0 </span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;matrix&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">]</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>交换律见式\ref{eq:commutative}
+\begin{equation*}
+    a+b=b+a \label{eq:commutative}
+\end{equation*}
+</code></pre><h3 id="矩阵（需要amsmath宏包）"><a href="#矩阵（需要amsmath宏包）" class="headerlink" title="矩阵（需要amsmath宏包）"></a>矩阵（需要amsmath宏包）</h3><pre><code>\begin{document}
+    \[
+    \begin{matrix}
+        0 &amp; 1 \\
+        1 &amp; 0 
+    \end{matrix}
+    \]
+\end{document}
+</code></pre><ul>
 <li><p>加入小括号<br><code>\begin{pmatrix}</code><br><code>\end{pmatrix}</code></p>
 </li>
 <li><p>加入中括号<br><code>\begin{bmatrix}</code><br><code>\end{bmatrix}</code></p>
@@ -373,53 +432,145 @@ a_0, a_1, A_{100x+2}</script><h3 id="希腊字母"><a href="#希腊字母" class
 <li><p>array环境排版更为复杂的环境</p>
 </li>
 </ul>
-<h3 id="多行公式（需要amsmath和amssymb宏包）"><a href="#多行公式（需要amsmath和amssymb宏包）" class="headerlink" title="多行公式（需要amsmath和amssymb宏包）"></a>多行公式（需要amsmath和amssymb宏包）</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="comment">% 用gather（带编号）和gather*（不带编号）环境（可以使用\\换行）</span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;gather&#125;</span></span></span><br><span class="line">        a+b=b+a <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        ab ba</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;gather&#125;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 在\\之前使用\notag阻止编号</span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;gather&#125;</span></span></span><br><span class="line">        a+b=b+a <span class="tag">\<span class="name">notag</span></span> <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        ab ba</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;gather&#125;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 用align环境按照指定位置对齐（align*不对公式进行编号），对齐位置由&amp;决定</span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;align&#125;</span></span></span><br><span class="line">        a+b&amp;=b+a <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        ab&amp; ba</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;align&#125;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">% 用split环境将公式进行多行排版</span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;split&#125;</span></span></span><br><span class="line">        a+b&amp; <span class="tag">\<span class="name">\</span></span></span><br><span class="line">        =b+a</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;split&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="参考文献——BibTex"><a href="#参考文献——BibTex" class="headerlink" title="参考文献——BibTex"></a>参考文献——BibTex</h2><h3 id="一次管理，一次使用"><a href="#一次管理，一次使用" class="headerlink" title="一次管理，一次使用"></a>一次管理，一次使用</h3><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;thebibliography&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">bibitem</span><span class="string">[记号]</span><span class="string">&#123;引用标志&#125;</span></span>文献条目1</span><br><span class="line">    <span class="comment">%使用`\emph`标重</span></span><br><span class="line">    <span class="tag">\<span class="name">bibitem</span><span class="string">&#123;article1&#125;</span></span>陈立辉,苏伟.<span class="tag">\<span class="name">emph</span><span class="string">&#123;基于LaTeX的Web数学公式提取方法研究&#125;</span><span class="string">[J]</span></span>. 计算机科学。 2014(06)</span><br><span class="line">    <span class="comment">%使用`\texttt`引用链接</span></span><br><span class="line">    <span class="tag">\<span class="name">bibitem</span><span class="string">&#123;latexGuide&#125;</span></span>Kopka,Patrick.<span class="tag">\<span class="name">emph</span><span class="string">&#123;Guide to \LaTeX&#125;</span></span>, <span class="formula">$4^&#123;th&#125;$</span> Edition. Available at <span class="tag">\<span class="name">texttt</span><span class="string">&#123;http://www.amazon.com&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;thebibliography&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<h3 id="多行公式（需要amsmath和amssymb宏包）"><a href="#多行公式（需要amsmath和amssymb宏包）" class="headerlink" title="多行公式（需要amsmath和amssymb宏包）"></a>多行公式（需要amsmath和amssymb宏包）</h3><pre><code>\begin{document}
+    % 用gather（带编号）和gather*（不带编号）环境（可以使用\\换行）
+    \begin{gather}
+        a+b=b+a \\
+        ab ba
+    \end{gather}
+
+    % 在\\之前使用\notag阻止编号
+    \begin{gather}
+        a+b=b+a \notag \\
+        ab ba
+    \end{gather}
+
+    % 用align环境按照指定位置对齐（align*不对公式进行编号），对齐位置由&amp;决定
+    \begin{align}
+        a+b&amp;=b+a \\
+        ab&amp; ba
+    \end{align}
+
+    % 用split环境将公式进行多行排版
+    \begin{split}
+        a+b&amp; \\
+        =b+a
+    \end{split}
+\end{document}
+</code></pre><h2 id="参考文献——BibTex"><a href="#参考文献——BibTex" class="headerlink" title="参考文献——BibTex"></a>参考文献——BibTex</h2><h3 id="一次管理，一次使用"><a href="#一次管理，一次使用" class="headerlink" title="一次管理，一次使用"></a>一次管理，一次使用</h3><pre><code>\begin{thebibliography}
+    \bibitem[记号]{引用标志}文献条目1
+    %使用`\emph`标重
+    \bibitem{article1}陈立辉,苏伟.\emph{基于LaTeX的Web数学公式提取方法研究}[J]. 计算机科学。 2014(06)
+    %使用`\texttt`引用链接
+    \bibitem{latexGuide}Kopka,Patrick.\emph{Guide to \LaTeX}, $4^{th}$ Edition. Available at \texttt{http://www.amazon.com}
+\end{thebibliography}
+</code></pre><ul>
 <li><strong>使用<code>\cite{article1}</code>引用文章</strong></li>
 </ul>
-<h3 id="一次管理，多次使用"><a href="#一次管理，多次使用" class="headerlink" title="一次管理，多次使用"></a>一次管理，多次使用</h3><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">@BOOK</span><span class="template-variable">&#123;引用标志,</span></span><br><span class="line"><span class="template-variable">    title = &#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    publisher = </span><span class="template-variable">&#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    year = </span><span class="template-variable">&#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    author = </span><span class="template-variable">&#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    series = </span><span class="template-variable">&#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    address = </span><span class="template-variable">&#123;&#125;</span><span class="xml">,</span></span><br><span class="line"><span class="xml">    adition = </span><span class="template-variable">&#123;&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-<ul>
+<h3 id="一次管理，多次使用"><a href="#一次管理，多次使用" class="headerlink" title="一次管理，多次使用"></a>一次管理，多次使用</h3><pre><code>@BOOK{引用标志,
+    title = {},
+    publisher = {},
+    year = {},
+    author = {},
+    series = {},
+    address = {},
+    adition = {}
+}
+</code></pre><ul>
 <li><p><strong>使用<code>\bibliographystyle{plain}</code>指定样式</strong></p>
 </li>
 <li><p><strong>正文中使用：</strong></p>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">bibliography</span><span class="string">&#123;引用标志&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>排版未引用的文献：<code>\nocite{*}</code></strong></p>
-</li>
+<pre><code>\begin{document}
+  \bibliography{引用标志}
+\end{document}
+</code></pre></li>
+<li><strong>排版未引用的文献：<code>\nocite{*}</code></strong></li>
 </ul>
-<h2 id="参考文献——BibLaTex"><a href="#参考文献——BibLaTex" class="headerlink" title="参考文献——BibLaTex"></a>参考文献——BibLaTex</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">[style=numeric,backend=biber]</span><span class="string">&#123;biblatex&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">addbibresource</span><span class="string">&#123;test.bib&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">%正文区</span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="comment">%一次管理，多次引用</span></span><br><span class="line">    无格式化引用<span class="tag">\<span class="name">cite</span><span class="string">&#123;biblatex&#125;</span></span></span><br><span class="line">    带方括号的引用<span class="tag">\<span class="name">parencite</span><span class="string">&#123;a1-1&#125;</span></span></span><br><span class="line">    上标引用<span class="tag">\<span class="name">supercite</span><span class="string">&#123;6-1&#125;</span></span></span><br><span class="line">    <span class="comment">%列出未引用文献</span></span><br><span class="line">    <span class="tag">\<span class="name">nocite</span><span class="string">&#123;*&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">printbibliography</span><span class="string">[title = &#123;参考文献&#125;]</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h2 id="命令的定义与重定义"><a href="#命令的定义与重定义" class="headerlink" title="命令的定义与重定义"></a>命令的定义与重定义</h2><ul>
+<h2 id="参考文献——BibLaTex"><a href="#参考文献——BibLaTex" class="headerlink" title="参考文献——BibLaTex"></a>参考文献——BibLaTex</h2><pre><code>\usepackage[style=numeric,backend=biber]{biblatex}
+\addbibresource{test.bib}
+
+%正文区
+\begin{document}
+    %一次管理，多次引用
+    无格式化引用\cite{biblatex}
+    带方括号的引用\parencite{a1-1}
+    上标引用\supercite{6-1}
+    %列出未引用文献
+    \nocite{*}
+    \printbibliography[title = {参考文献}]
+\end{document}
+</code></pre><h2 id="命令的定义与重定义"><a href="#命令的定义与重定义" class="headerlink" title="命令的定义与重定义"></a>命令的定义与重定义</h2><ul>
 <li><strong>内容与格式分离的思想</strong></li>
 </ul>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">%导言区</span><br><span class="line">\documentclass&#123;ctexart&#125;（或者ctexbook, ctexrep）</span><br><span class="line">%\newcommand-定义命令</span><br><span class="line">%命令只能由字母组成，不能以\<span class="keyword">end</span>开头</span><br><span class="line">%\newcommand&lt;命令&gt;<span class="meta">[&lt;参数个数&gt;]</span><span class="meta">[&lt;手参数默认值&gt;]</span>&#123;&lt;具体定义&gt;&#125;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>%导言区
+\documentclass{ctexart}（或者ctexbook, ctexrep）
+%\newcommand-定义命令
+%命令只能由字母组成，不能以\end开头
+%\newcommand&lt;命令&gt;[&lt;参数个数&gt;][&lt;手参数默认值&gt;]{&lt;具体定义&gt;}
+</code></pre><ul>
 <li><strong>例如：使用\PRC 相当于 People’s Pepublic of \emph{China}</strong></li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">newcommand</span></span><span class="tag">\<span class="name">PRC</span><span class="string">&#123;People's Republic of \emph&#123;China&#125;</span></span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">%正文区（文稿区）</span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;docuemnt&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">PRC</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>\newcommand\PRC{People&#39;s Republic of \emph{China}}
+
+%正文区（文稿区）
+\begin{docuemnt}
+    \PRC
+\end{document}
+</code></pre><ul>
 <li><strong>\newcommand还可以添加参数，参数个数从1-9，使用时前添加#</strong></li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">newcommand</span></span><span class="tag">\<span class="name">loves</span><span class="string">[2]</span><span class="string">&#123;#1 喜欢 #2&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">%正文区（文稿区）</span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;docuemnt&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">loves</span><span class="string">&#123;猫儿&#125;</span><span class="string">&#123;鱼儿&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>\newcommand\loves[2]{#1 喜欢 #2}
+
+%正文区（文稿区）
+\begin{docuemnt}
+    \loves{猫儿}{鱼儿}
+\end{document}
+</code></pre><ul>
 <li><strong>为\newcommand添加默认参数值</strong></li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">newcommand</span></span><span class="tag">\<span class="name">loves</span><span class="string">[3]</span><span class="string">[喜欢]</span><span class="string">&#123;#2#1#3&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">%正文区（文稿区）</span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;docuemnt&#125;</span></span></span><br><span class="line">    <span class="comment">%输出猫儿喜欢鱼儿</span></span><br><span class="line">    <span class="tag">\<span class="name">loves</span><span class="string">&#123;猫儿&#125;</span><span class="string">&#123;鱼儿&#125;</span></span> </span><br><span class="line">    </span><br><span class="line">    <span class="comment">%输出猫儿最爱鱼儿</span></span><br><span class="line">    <span class="tag">\<span class="name">loves</span><span class="string">[最爱]</span><span class="string">&#123;猫儿&#125;</span><span class="string">&#123;鱼儿&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>\newcommand\loves[3][喜欢]{#2#1#3}
+
+%正文区（文稿区）
+\begin{docuemnt}
+    %输出猫儿喜欢鱼儿
+    \loves{猫儿}{鱼儿} 
+
+    %输出猫儿最爱鱼儿
+    \loves[最爱]{猫儿}{鱼儿}
+\end{document}
+</code></pre><ul>
 <li><p><strong>使用\renewcommand\abstractname重定义命令</strong></p>
 </li>
 <li><p><strong>使用\newenvironment定义环境</strong></p>
 </li>
 </ul>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">%\newenvironment&#123;&lt;环境名称&gt;&#125;<span class="meta">[&lt;参数个数&gt;]</span><span class="meta">[&lt;首参数默认值&gt;]</span></span><br><span class="line">%    &#123;&lt;环境前定义&gt;&#125;</span><br><span class="line">%    &#123;&lt;环境后定义&gt;&#125;</span><br><span class="line">    </span><br><span class="line">\newenvironment&#123;myabstract&#125;[<span class="number">1</span>][摘要]</span><br><span class="line">&#123;\small</span><br><span class="line">    \<span class="keyword">begin</span>&#123;center&#125;\bfseries #<span class="number">1</span>\<span class="keyword">end</span>&#123;center&#125;</span><br><span class="line">    \<span class="keyword">begin</span>&#123;quotation&#125;&#125;</span><br><span class="line">    &#123;\<span class="keyword">end</span>&#123;quotation&#125;&#125;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>%\newenvironment{&lt;环境名称&gt;}[&lt;参数个数&gt;][&lt;首参数默认值&gt;]
+%    {&lt;环境前定义&gt;}
+%    {&lt;环境后定义&gt;}
+
+\newenvironment{myabstract}[1][摘要]
+{\small
+    \begin{center}\bfseries #1\end{center}
+    \begin{quotation}}
+    {\end{quotation}}
+</code></pre><ul>
 <li><p><strong>使用\renewenvironment重定义环境</strong></p>
 </li>
 <li><p><strong>\newenvironment和\newcommand嵌套使用</strong></p>
 </li>
 </ul>
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">newenvironment</span><span class="string">&#123;Quotation&#125;</span><span class="string">[1]</span></span></span><br><span class="line">&#123;<span class="tag">\<span class="name">newcommand</span></span><span class="tag">\<span class="name">quotesource</span><span class="string">&#123;#1&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;quotation&#125;</span></span>&#125;</span><br><span class="line">    &#123;<span class="tag">\<span class="name">par</span></span><span class="tag">\<span class="name">hfill</span></span>--- 《<span class="tag">\<span class="name">textit</span><span class="string">&#123;\quotesource&#125;</span></span>》</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;quotation&#125;</span></span>&#125;   </span><br><span class="line">    </span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;Quotation&#125;</span><span class="string">&#123;乾卦&#125;</span></span></span><br><span class="line">        初九，潜龙勿用。</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;Quotation&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>\newenvironment{Quotation}[1]
+{\newcommand\quotesource{#1}
+    \begin{quotation}}
+    {\par\hfill--- 《\textit{\quotesource}》
+    \end{quotation}}   
+
+\begin{document}
+    \begin{Quotation}{乾卦}
+        初九，潜龙勿用。
+    \end{Quotation}
+\end{document}
+</code></pre><ul>
 <li><strong>文章结构内容参考：</strong> <a href="https://www.bilibili.com/video/av16002978/" target="_blank" rel="noopener">https://www.bilibili.com/video/av16002978/</a></li>
 </ul>
 
@@ -557,9 +708,7 @@ var a = new Donate({
 
 <!-- 2017.6.11，masikkk新增，加载本地Google Prettify 代码高亮js代码 -->
 
-<!--
 <script src="/Blog/js/prettify.js"></script>
--->
 
 <!-- 2017.6.11，masikkk新增，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
 <!-- jQuery的$(window).load(function(){})是在页面所有元素(包括所有css,js,图片,Flash等)加载完毕后执行
@@ -574,7 +723,6 @@ $(window).load(function(){
 <!-- 2017.7.1，masikkk添加，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
 <!-- jQuery的$(document).ready(function(){})是当页面的标准DOM元素被解析成DOM树后就执行 -->
 
-<!--
 <script type="text/javascript">
 $(document).ready(function(){
  $('pre').addClass('prettyprint linenums');
@@ -582,7 +730,6 @@ $(document).ready(function(){
  prettyPrint();
  })
 </script>
--->
 
 <!-- min height -->
 

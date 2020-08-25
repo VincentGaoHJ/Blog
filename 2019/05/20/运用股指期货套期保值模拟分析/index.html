@@ -32,8 +32,6 @@
   <link rel="icon" href="/Blog/css/images/mylogo.jpg">
   <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -53,7 +51,9 @@
   <link rel="stylesheet" href="/Blog/css/bootstrap.css">
 
   <!-- Code prettify using google code prettify -->
+
   <link rel="stylesheet" href="/Blog/css/prettify.css" media="screen" type="text/css">
+  
 
   
     <link rel="stylesheet" href="/Blog/css/dialog.css">
@@ -331,7 +331,8 @@ h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}
 <p>计算样本数据的 ADF 值，并和 5% 置信水平下的 t 检验临界值作比较，如果 ADF 检验值大于 5% 置信水平下的 t 检验临界值则序列不平稳。</p>
 <p>检验结果不平稳则对原序列进行一阶差分，得到新的序列，再进行 ADF 检验（步骤同上）。</p>
 <p><strong>一阶段差分代码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genr st = log(st) - log(st(-1))</span><br></pre></td></tr></table></figure>
+<pre><code class="lang-Eviews">genr st = log(st) - log(st(-1))
+</code></pre>
 <p>其中 $st$ 为原序列</p>
 <p>需要展示的内容：沪深 300 期货与现货价格几次（一般为两次）平稳检验的结果，包括 ADF 值和 5% 置信水平下 t 检验的值。</p>
 </li>
@@ -494,9 +495,7 @@ var a = new Donate({
 
 <!-- 2017.6.11，masikkk新增，加载本地Google Prettify 代码高亮js代码 -->
 
-<!--
 <script src="/Blog/js/prettify.js"></script>
--->
 
 <!-- 2017.6.11，masikkk新增，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
 <!-- jQuery的$(window).load(function(){})是在页面所有元素(包括所有css,js,图片,Flash等)加载完毕后执行
@@ -511,7 +510,6 @@ $(window).load(function(){
 <!-- 2017.7.1，masikkk添加，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
 <!-- jQuery的$(document).ready(function(){})是当页面的标准DOM元素被解析成DOM树后就执行 -->
 
-<!--
 <script type="text/javascript">
 $(document).ready(function(){
  $('pre').addClass('prettyprint linenums');
@@ -519,7 +517,6 @@ $(document).ready(function(){
  prettyPrint();
  })
 </script>
--->
 
 <!-- min height -->
 
