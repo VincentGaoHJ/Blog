@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>study notes of mysql | Gao Haojun</title>
+  <title>study notes of mysql 1 —— query function | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="MySQL">
@@ -11,22 +11,22 @@
   
   
   
-  <meta name="description" content="DQL (Data Query Language) DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
+  <meta name="description" content="DQL (Data Query Language)">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Study Notes of MySQL">
-<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/08/17/Study-Notes-of-MySQL/index.html">
+<meta property="og:title" content="Study Notes of MySQL 1 —— Query Function">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="DQL (Data Query Language) DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
+<meta property="og:description" content="DQL (Data Query Language)">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://www.w3schools.com/sql/img_innerjoin.gif">
 <meta property="og:image" content="https://www.w3schools.com/sql/img_leftjoin.gif">
 <meta property="og:image" content="https://www.w3schools.com/sql/img_rightjoin.gif">
 <meta property="og:image" content="https://www.w3schools.com/sql/img_fulljoin.gif">
-<meta property="og:updated_time" content="2020-08-29T07:09:01.535Z">
+<meta property="og:updated_time" content="2020-08-29T11:03:23.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Study Notes of MySQL">
-<meta name="twitter:description" content="DQL (Data Query Language) DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
+<meta name="twitter:title" content="Study Notes of MySQL 1 —— Query Function">
+<meta name="twitter:description" content="DQL (Data Query Language)">
 <meta name="twitter:image" content="https://www.w3schools.com/sql/img_innerjoin.gif">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -173,7 +173,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Study-Notes-of-MySQL" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Study-Notes-of-MySQL-1--Query Function" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -181,7 +181,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      Study Notes of MySQL
+      Study Notes of MySQL 1 —— Query Function
     </h1>
   
 
@@ -189,7 +189,7 @@
     
     <div class="article-meta">
       
-	<a href="/Blog/2020/08/17/Study-Notes-of-MySQL/" class="article-date">
+	<a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/" class="article-date">
 	  <time datetime="2020-08-17T10:42:47.000Z" itemprop="datePublished">2020-08-17</time>
 	</a>
 
@@ -210,9 +210,6 @@
       
         <ul>
 <li><strong>DQL</strong> (Data Query Language)</li>
-<li><strong>DML</strong> (Data Manipulation Language)</li>
-<li><strong>DDL</strong> (Data Definition Language)</li>
-<li><strong>TCL</strong> (Transaction Control Language)</li>
 </ul>
 <a id="more"></a>
 <p>[toc]</p>
@@ -318,10 +315,7 @@
 <h3 id="exists-后面（相关子查询）"><a href="#exists-后面（相关子查询）" class="headerlink" title="exists 后面（相关子查询）"></a>exists 后面（相关子查询）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">语法：</span><br><span class="line">	查询结果有没有，返回布尔类型</span><br><span class="line">示例：</span><br><span class="line">    SELECT EXISTS(</span><br><span class="line">        SELECT employee_id </span><br><span class="line">        FROM employees</span><br><span class="line">        WHERE salary = 30000</span><br><span class="line">    );</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 查询有员工的部门名</span><br><span class="line">SELECT department_name</span><br><span class="line">FROM departments d</span><br><span class="line">WHERE EXISTS(</span><br><span class="line">	SELECT *</span><br><span class="line">    FROM employees e</span><br><span class="line">    WHERE d.&apos;department_id&apos; = e.&apos;department_id&apos;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 查询没有女朋友的男神信息</span><br><span class="line"># 使用 IN 的方法</span><br><span class="line">SELECT bo.*</span><br><span class="line">FROM boys bo</span><br><span class="line">WHERE bo.id NOT IN(</span><br><span class="line">	SELECT boyfriend_id</span><br><span class="line">    FROM bueaty</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 使用 EXISTS 的方法</span><br><span class="line">SELECT bo.*</span><br><span class="line">FROM boys bo</span><br><span class="line">WHERE NOT EXISTS(</span><br><span class="line">	SELECT boyfriend_id</span><br><span class="line">    FROM beauty b</span><br><span class="line">    WHERE bo.&apos;id&apos; = b.&apos;boyfriend_id&apos;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">使用场景：</span><br><span class="line">	当显示的数据，一页显示不全，需要分页提交 sql 请求</span><br><span class="line">语法:</span><br><span class="line">	SELECT 查询列表</span><br><span class="line">	FROM 表</span><br><span class="line">	LIMIT offset, size;</span><br><span class="line"></span><br><span class="line">offset: 要显示的条目的起始索引</span><br><span class="line">size：要显示的条目个数</span><br><span class="line">limit 放在查询语句的最后，执行顺序也是最后</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 查询前五条员工信息</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees</span><br><span class="line">LIMIT 0,5;</span><br><span class="line"></span><br><span class="line"># 查询第十一条到第二十五条</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees</span><br><span class="line">LIMIT 10, 15;</span><br><span class="line"></span><br><span class="line"># 查询有奖金的员工中工资较高的前十名</span><br><span class="line">SELECT *</span><br><span class="line">FROM employees</span><br><span class="line">WHERE commission_pct IS NOT NULL</span><br><span class="line">ORDER BY salary DESC</span><br><span class="line">LIMIT 10;</span><br></pre></td></tr></table></figure>
 <h2 id="union-联合查询"><a href="#union-联合查询" class="headerlink" title="union 联合查询"></a>union 联合查询</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">作用：将多条查询语句的结果合并成一个结果</span><br><span class="line">语法：</span><br><span class="line">	查询语句 1</span><br><span class="line">	UNION</span><br><span class="line">	查询语句 2</span><br><span class="line">	UNION</span><br><span class="line">	...</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 查询部门编号大于 90 或者邮箱包含 a 的员工信息</span><br><span class="line">SELECT * FROM employees WHERE email LIKE &apos;%a%&apos; OR department_id &gt; 90;</span><br><span class="line"># 或者</span><br><span class="line">SELECT * FROM employees WHERE email LIKE &apos;%a%&apos;</span><br><span class="line">UNION</span><br><span class="line">SELECT * FROM employees WHERE department_id &gt; 90;</span><br></pre></td></tr></table></figure>
-<hr>
-<h1 id="DML-Data-Manipulation-Language"><a href="#DML-Data-Manipulation-Language" class="headerlink" title="DML (Data Manipulation Language)"></a>DML (Data Manipulation Language)</h1><hr>
-<h1 id="DDL-Data-Definition-Language"><a href="#DDL-Data-Definition-Language" class="headerlink" title="DDL (Data Definition Language)"></a>DDL (Data Definition Language)</h1><hr>
-<h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1>
+
       
     </div>
     <footer class="article-footer">
@@ -347,7 +341,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/Blog/2020/08/17/Study-Notes-of-MySQL/" target="_blank" title="Study Notes of MySQL">http://vincentgaohj.github.io/Blog/2020/08/17/Study-Notes-of-MySQL/</a>
+          <a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/" target="_blank" title="Study Notes of MySQL 1 —— Query Function">http://vincentgaohj.github.io/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -397,6 +391,15 @@ var a = new Donate({
     
 <nav id="article-nav">
   
+    <a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control
+        
+      </div>
+    </a>
+  
   
     <a href="/Blog/2020/08/13/AWS-Solution-Architect-Associate-Identity-Access-Management-and-S3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
@@ -414,7 +417,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-基础"><span class="nav-number">1.</span> <span class="nav-text">MySQL 基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DQL-Data-Query-Language"><span class="nav-number">2.</span> <span class="nav-text">DQL (Data Query Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础查询"><span class="nav-number">2.1.</span> <span class="nav-text">基础查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件查询"><span class="nav-number">2.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序查询"><span class="nav-number">2.3.</span> <span class="nav-text">排序查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见函数"><span class="nav-number">2.4.</span> <span class="nav-text">常见函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符函数"><span class="nav-number">2.4.1.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-number">2.4.3.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他函数"><span class="nav-number">2.4.4.</span> <span class="nav-text">其他函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制函数"><span class="nav-number">2.4.5.</span> <span class="nav-text">流程控制函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组函数"><span class="nav-number">2.4.6.</span> <span class="nav-text">分组函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组查询"><span class="nav-number">2.5.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接查询"><span class="nav-number">2.6.</span> <span class="nav-text">连接查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql92-标准"><span class="nav-number">2.6.1.</span> <span class="nav-text">sql92 标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#等值连接"><span class="nav-number">2.6.1.1.</span> <span class="nav-text">等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非等值连接"><span class="nav-number">2.6.1.2.</span> <span class="nav-text">非等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自连接"><span class="nav-number">2.6.1.3.</span> <span class="nav-text">自连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql99-标准"><span class="nav-number">2.6.2.</span> <span class="nav-text">sql99 标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-等值连接"><span class="nav-number">2.6.2.1.</span> <span class="nav-text">内连接 — 等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-非等值连接"><span class="nav-number">2.6.2.2.</span> <span class="nav-text">内连接 — 非等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-自连接"><span class="nav-number">2.6.2.3.</span> <span class="nav-text">内连接 — 自连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外连接"><span class="nav-number">2.6.2.4.</span> <span class="nav-text">外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉连接"><span class="nav-number">2.6.2.5.</span> <span class="nav-text">交叉连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接总结"><span class="nav-number">2.6.2.6.</span> <span class="nav-text">连接总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">2.7.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#where-或者-having-后面"><span class="nav-number">2.7.1.</span> <span class="nav-text">where 或者 having 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-后面"><span class="nav-number">2.7.2.</span> <span class="nav-text">select 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-后面"><span class="nav-number">2.7.3.</span> <span class="nav-text">from 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exists-后面（相关子查询）"><span class="nav-number">2.7.4.</span> <span class="nav-text">exists 后面（相关子查询）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页查询"><span class="nav-number">2.8.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#union-联合查询"><span class="nav-number">2.9.</span> <span class="nav-text">union 联合查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">3.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">4.</span> <span class="nav-text">DDL (Data Definition Language)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">5.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL-基础"><span class="nav-number">1.</span> <span class="nav-text">MySQL 基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DQL-Data-Query-Language"><span class="nav-number">2.</span> <span class="nav-text">DQL (Data Query Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础查询"><span class="nav-number">2.1.</span> <span class="nav-text">基础查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件查询"><span class="nav-number">2.2.</span> <span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序查询"><span class="nav-number">2.3.</span> <span class="nav-text">排序查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见函数"><span class="nav-number">2.4.</span> <span class="nav-text">常见函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符函数"><span class="nav-number">2.4.1.</span> <span class="nav-text">字符函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数学函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">数学函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期函数"><span class="nav-number">2.4.3.</span> <span class="nav-text">日期函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他函数"><span class="nav-number">2.4.4.</span> <span class="nav-text">其他函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程控制函数"><span class="nav-number">2.4.5.</span> <span class="nav-text">流程控制函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组函数"><span class="nav-number">2.4.6.</span> <span class="nav-text">分组函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组查询"><span class="nav-number">2.5.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接查询"><span class="nav-number">2.6.</span> <span class="nav-text">连接查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql92-标准"><span class="nav-number">2.6.1.</span> <span class="nav-text">sql92 标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#等值连接"><span class="nav-number">2.6.1.1.</span> <span class="nav-text">等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非等值连接"><span class="nav-number">2.6.1.2.</span> <span class="nav-text">非等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自连接"><span class="nav-number">2.6.1.3.</span> <span class="nav-text">自连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sql99-标准"><span class="nav-number">2.6.2.</span> <span class="nav-text">sql99 标准</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-等值连接"><span class="nav-number">2.6.2.1.</span> <span class="nav-text">内连接 — 等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-非等值连接"><span class="nav-number">2.6.2.2.</span> <span class="nav-text">内连接 — 非等值连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接-—-自连接"><span class="nav-number">2.6.2.3.</span> <span class="nav-text">内连接 — 自连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外连接"><span class="nav-number">2.6.2.4.</span> <span class="nav-text">外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交叉连接"><span class="nav-number">2.6.2.5.</span> <span class="nav-text">交叉连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接总结"><span class="nav-number">2.6.2.6.</span> <span class="nav-text">连接总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子查询"><span class="nav-number">2.7.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#where-或者-having-后面"><span class="nav-number">2.7.1.</span> <span class="nav-text">where 或者 having 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select-后面"><span class="nav-number">2.7.2.</span> <span class="nav-text">select 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-后面"><span class="nav-number">2.7.3.</span> <span class="nav-text">from 后面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exists-后面（相关子查询）"><span class="nav-number">2.7.4.</span> <span class="nav-text">exists 后面（相关子查询）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页查询"><span class="nav-number">2.8.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#union-联合查询"><span class="nav-number">2.9.</span> <span class="nav-text">union 联合查询</span></a></li></ol></li></ol>
     
     </div>
   </aside>

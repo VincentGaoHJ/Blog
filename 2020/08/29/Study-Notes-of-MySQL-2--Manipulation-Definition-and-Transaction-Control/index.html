@@ -3,22 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>archives: 2020 | Gao Haojun</title>
+  <title>study notes of mysql 2 —— manipulation, definition and transaction control | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="MySQL">
   
   
   
-  <meta name="description" content="Are you watching closely?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Gao Haojun">
-<meta property="og:url" content="http://vincentgaohj.github.io/Blog/archives/2020/index.html">
+  
+  <meta name="description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="Are you watching closely?">
+<meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-08-29T11:04:13.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gao Haojun">
-<meta name="twitter:description" content="Are you watching closely?">
+<meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
+<meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -64,12 +68,6 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/archive.css">
-    <!-- Code prettify using google code prettify -->
-    <!--
-    <link rel="stylesheet" href="/Blog/css/prettify.css" media="screen" type="text/css">
-    -->
-  
   
   
     <link rel="stylesheet" href="/Blog/css/vdonate.css">
@@ -79,7 +77,7 @@
 </html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -101,7 +99,7 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;">
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -170,236 +168,149 @@
             
       <div id="content" class="outer">
         
-          <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>There are 16 posts in total till now.</span></blockquote>
+          <section id="main" style="float:none;"><article id="post-Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control
+    </h1>
+  
 
-
-<!-- 分页显示 -->
-
-	
-	
-		
-		
-		  
-		  
-		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="/Blog/archives/2020" class="archive-year">2020</a></h1>
-		    </div>
-		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+      </header>
+    
+    <div class="article-meta">
       
-	<a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/" class="archive-article-date">
+	<a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/" class="article-date">
 	  <time datetime="2020-08-29T11:02:41.000Z" itemprop="datePublished">2020-08-29</time>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/">Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control</a>
-    </h1>
-  
+    <a class="article-category-link" href="/Blog/categories/Technology/">Technology</a>
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
       
-	<a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/" class="archive-article-date">
-	  <time datetime="2020-08-17T10:42:47.000Z" itemprop="datePublished">2020-08-17</time>
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/">Study Notes of MySQL 1 —— Query Function</a>
-    </h1>
-  
 
-    </header>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>DML</strong> (Data Manipulation Language)</li>
+<li><strong>DDL</strong> (Data Definition Language)</li>
+<li><strong>TCL</strong> (Transaction Control Language)</li>
+</ul>
+<a id="more"></a>
+<p>[toc]</p>
+<h1 id="DML-Data-Manipulation-Language"><a href="#DML-Data-Manipulation-Language" class="headerlink" title="DML (Data Manipulation Language)"></a>DML (Data Manipulation Language)</h1><hr>
+<h1 id="DDL-Data-Definition-Language"><a href="#DDL-Data-Definition-Language" class="headerlink" title="DDL (Data Definition Language)"></a>DDL (Data Definition Language)</h1><hr>
+<h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/Blog/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/" target="_blank" title="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">http://vincentgaohj.github.io/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/MySQL/">MySQL</a></li></ul>
+
+      
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Study Notes of MySQL 1 —— Query Function</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/Blog/2020/08/13/AWS-Solution-Architect-Associate-Identity-Access-Management-and-S3/" class="archive-article-date">
-	  <time datetime="2020-08-12T16:25:22.000Z" itemprop="datePublished">2020-08-13</time>
-	</a>
 
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/Blog/2020/08/13/AWS-Solution-Architect-Associate-Identity-Access-Management-and-S3/">AWS Solution Architect(Associate) - Identity Access Management and S3</a>
-    </h1>
-  
+<!-- Table of Contents -->
 
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/" class="archive-article-date">
-	  <time datetime="2020-08-08T17:00:18.000Z" itemprop="datePublished">2020-08-09</time>
-	</a>
-
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/">AWS Certified Solutions Architect - Associate 2020</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-	
-		</div></section>
-	
-
-	<!-- 页数指示器 -->
-	
-
-
-
-
-</div></section>
-          <aside id="sidebar">
-  
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Connect</h3>
-    <div class="widget widget_athemes_social_icons">
-
-    	<ul class="clearfix widget-social-icons">   
-    	
-          
-     			  <li><a href="https://github.com/VincentGaoHJ" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://weibo.com/VincentGaoHJ" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://twitter.com/Vincent_GHJ" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://www.facebook.com/haojun.gao.104" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
-          
-   		
-          
-     			  <li><a href="https://www.instagram.com/vincent_gaohj/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-          
-   		
-   		</ul>
-
-
-   		<!--
-   		<ul class="clearfix widget-social-icons">   		
-   		<li class="widget-si-twitter"><a href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
-		<li class="widget-si-facebook"><a href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
-			<li class="widget-si-gplus"><a href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
-			<li class="widget-si-pinterest"><a href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
-			<li class="widget-si-flickr"><a href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
-			<li class="widget-si-instagram"><a href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
-		</ul> -->
-
-    </div>
-  </div>
-
-
-  
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">1.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">2.</span> <span class="nav-text">DDL (Data Definition Language)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">3.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a></li></ol>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/AWS/">AWS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/English-Study/">English Study</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/Finance/">Finance</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/Research/">Research</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/Blog/categories/Technology/">Technology</a><span class="category-list-count">6</span></li></ul>
     </div>
-  </div>
+  </aside>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/AWS/">AWS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Amazon/">Amazon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/CNN/">CNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Clustering/">Clustering</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Deep-Learning/">Deep-Learning</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Econometrics/">Econometrics</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/LaTeX/">LaTeX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/MySQL/">MySQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/NMF/">NMF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Solutions-Architect-Associate/">Solutions Architect - Associate</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/TOEFL/">TOEFL</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blog/tags/Word2Vec/">Word2Vec</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/Blog/tags/AWS/" style="font-size: 13.33px;">AWS</a> <a href="/Blog/tags/Amazon/" style="font-size: 10px;">Amazon</a> <a href="/Blog/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/Blog/tags/Clustering/" style="font-size: 10px;">Clustering</a> <a href="/Blog/tags/Deep-Learning/" style="font-size: 10px;">Deep-Learning</a> <a href="/Blog/tags/Econometrics/" style="font-size: 13.33px;">Econometrics</a> <a href="/Blog/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/Blog/tags/Machine-Learning/" style="font-size: 16.67px;">Machine-Learning</a> <a href="/Blog/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/Blog/tags/NMF/" style="font-size: 10px;">NMF</a> <a href="/Blog/tags/Solutions-Architect-Associate/" style="font-size: 13.33px;">Solutions Architect - Associate</a> <a href="/Blog/tags/TOEFL/" style="font-size: 20px;">TOEFL</a> <a href="/Blog/tags/Word2Vec/" style="font-size: 10px;">Word2Vec</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2020/08/">August 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/09/">September 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/08/">August 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/06/">June 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/05/">May 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blog/archives/2019/04/">April 2019</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/">Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/">Study Notes of MySQL 1 —— Query Function</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2020/08/13/AWS-Solution-Architect-Associate-Identity-Access-Management-and-S3/">AWS Solution Architect(Associate) - Identity Access Management and S3</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/">AWS Certified Solutions Architect - Associate 2020</a>
-          </li>
-        
-          <li>
-            <a href="/Blog/2019/09/18/Study-Notes-of-TOEFL-Writing-Part-Outline-of-Real-Test-Questions/">Study Notes of TOEFL Writing Part —— Outline of Real Test Questions</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
+</section>
         
       </div>
       
@@ -528,6 +439,8 @@ $(document).ready(function(){
 
 
 
+  <script src="/Blog/js/dialog.js"></script>
+
 
 
 
@@ -611,6 +524,8 @@ $(document).ready(function(){
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
