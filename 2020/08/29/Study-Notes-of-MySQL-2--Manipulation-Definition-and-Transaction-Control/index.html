@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-29T16:31:14.300Z">
+<meta property="og:updated_time" content="2020-08-29T16:40:43.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -276,41 +276,136 @@
 </li>
 </ul>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
-<li><p>数值型</p>
-<ul>
-<li><p>整型</p>
-<p>| 整数类型     | 字节数 | 范围                                             |<br>| —————— | ——— | ———————————————————————— |<br>| Tinyint      | 1      | 有符号：-128 -127 <br>无符号：(0-255)          |<br>| Smallint     | 2      | 有符号：-32768 - 32767 <br>无符号：(0 - 65535) |<br>| Mediumint    | 3      | 很大                                             |<br>| Int, integer | 4      | 很大                                             |<br>| Bigint       | 8      | 很大                                             |</p>
+<li><strong>数值型 - 整型</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>整数类型</th>
+<th>字节数</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tinyint</td>
+<td>1</td>
+<td>有符号：-128 -127 <br>无符号：(0-255)</td>
+</tr>
+<tr>
+<td>Smallint</td>
+<td>2</td>
+<td>有符号：-32768 - 32767 <br>无符号：(0 - 65535)</td>
+</tr>
+<tr>
+<td>Mediumint</td>
+<td>3</td>
+<td>很大</td>
+</tr>
+<tr>
+<td>Int, integer</td>
+<td>4</td>
+<td>很大</td>
+</tr>
+<tr>
+<td>Bigint</td>
+<td>8</td>
+<td>很大</td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 设置无符号（默认有符号）</span><br><span class="line">CREATE TABLE IF EXISTS tab_int(</span><br><span class="line">	t1 INT;</span><br><span class="line">    t2 INT UNSIGNED</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 如果插入数值超出范围：插入临界值</span><br><span class="line"># 如果不设置长度就是默认长度</span><br><span class="line"># 设置了长度不改变范围，只改变显示长度，真是的范围只由整数类型决定（搭配 ZEROFILL 使用可以用 0 在左侧填充）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>小数</p>
 <ul>
-<li><p>定点数</p>
-<p>| 浮点数类型  | 默认                   | 字节 | 范围 |<br>| —————- | ——————————— | —— | —— |<br>| float(M,D)  | 根据插入的值来确定精度 | 4    | 很大 |<br>| double(M,D) | 根据插入的值来确定精度 | 8    | 很大 |</p>
-</li>
-<li><p>浮点数</p>
-<p>| 定点数类型                 | 默认      | 字节 | 范围                                                         |<br>| ————————————— | ————- | —— | —————————————————————————————— |<br>| DEC(M,D)<br>DECIMAL(M,D) | M=10, D=0 | M+2  | 最大取值范围与double相同，给定decimal的有效取值范围由M和D决定 |</p>
+<li><strong>小数 - 定点数</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>浮点数类型</th>
+<th>默认</th>
+<th>字节</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float(M,D)</td>
+<td>根据插入的值来确定精度</td>
+<td>4</td>
+<td>很大</td>
+</tr>
+<tr>
+<td>double(M,D)</td>
+<td>根据插入的值来确定精度</td>
+<td>8</td>
+<td>很大</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>小数 - 浮点数</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>定点数类型</th>
+<th>默认</th>
+<th>字节</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEC(M,D)<br>DECIMAL(M,D)</td>
+<td>M=10, D=0</td>
+<td>M+2</td>
+<td>最大取值范围与double相同，给定decimal的有效取值范围由M和D决定</td>
+</tr>
+</tbody>
+</table>
+</div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># M：整数部位和小数部位总长度</span><br><span class="line"># D：小数点后几位</span><br><span class="line"># M 和 D 都可以省略</span><br><span class="line">CREATE TABLE tab_float(</span><br><span class="line">	f1 FLOAT(5,2),</span><br><span class="line">    f1 DOUBLE(5,2),</span><br><span class="line">    f1 DECIMAL(5,2),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>字符型</p>
 <ul>
-<li>较短的文本<ul>
-<li>char</li>
-<li>varchar</li>
+<li><strong>字符型 - 较短的文本</strong></li>
 </ul>
-</li>
-<li>较长的文本<ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>字符串类型</th>
+<th>差别</th>
+<th>最多字符数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char(M)</td>
+<td>可变类型</td>
+<td>M</td>
+<td>M 为 0-255 之间的整数</td>
+</tr>
+<tr>
+<td>varchar(M)</td>
+<td>不可变类型</td>
+<td>M</td>
+<td>M 为 0-255 之间的整数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong>字符型 - 较长的文本</strong><ul>
 <li>text</li>
 <li>blob（较长的二进制数据）</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>日期类型</p>
-</li>
+<li>日期类型</li>
 </ul>
 <hr>
 <h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1>
