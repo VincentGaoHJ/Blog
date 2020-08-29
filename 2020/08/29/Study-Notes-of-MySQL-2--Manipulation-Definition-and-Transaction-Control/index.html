@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-29T16:40:43.672Z">
+<meta property="og:updated_time" content="2020-08-29T16:52:39.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -396,6 +396,24 @@
 <td>M</td>
 <td>M 为 0-255 之间的整数</td>
 </tr>
+<tr>
+<td>binary &amp; varbinary</td>
+<td>/</td>
+<td>/</td>
+<td>保存较短的二进制</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>/</td>
+<td>/</td>
+<td>用于保存枚举</td>
+</tr>
+<tr>
+<td>set</td>
+<td>/</td>
+<td>/</td>
+<td>用于保存集合</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -405,8 +423,52 @@
 <li>blob（较长的二进制数据）</li>
 </ul>
 </li>
-<li>日期类型</li>
+<li><strong>日期类型</strong></li>
 </ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>日期和时间类型</th>
+<th>字节</th>
+<th>最小值</th>
+<th>最大值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>4</td>
+<td>1000-01-01</td>
+<td>9999-12-31</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>8</td>
+<td>1000-01-01 00:00:00</td>
+<td>9999-12-31 23:59:59</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>4</td>
+<td>1970010108001</td>
+<td>2038年的某个时刻</td>
+</tr>
+<tr>
+<td>time</td>
+<td>3</td>
+<td>-838:59:59</td>
+<td>838:59:59</td>
+</tr>
+<tr>
+<td>year</td>
+<td>1</td>
+<td>1901</td>
+<td>2155</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 <h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1>
       
