@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-30T04:43:56.191Z">
+<meta property="og:updated_time" content="2020-08-30T04:54:49.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -582,20 +582,20 @@
 </thead>
 <tbody>
 <tr>
-<td>READ UNCOMMITED 读未提交数据</td>
+<td>READ UNCOMMITTED 读未提交数据</td>
 <td>允许事务读取未被其他事物提交的变更。<br>脏读，幻读，不可重复读的问题都会出现。</td>
 </tr>
 <tr>
-<td>READ COMMITED 读已提交数据</td>
-<td>只允许事物读取已经被其他事物提交的变更。<br>可以避免脏读，但不可重复读和幻读仍然可能出现。</td>
+<td>READ COMMITTED 读已提交数据</td>
+<td>只允许事务读取已经被其他事务提交的变更。<br>可以避免脏读，但不可重复读和幻读仍然可能出现。</td>
 </tr>
 <tr>
 <td>REPEATABLE READ 可重复读</td>
-<td>确保事物可以多次从一个字段中读取相同的值，在这个事物持续期间，禁止其他事物对这个字段进行更新。<br>可以避免脏读和不可重复读，但幻读仍然存在。</td>
+<td>确保事务可以多次从一个字段中读取相同的值，在这个事务持续期间，禁止其他事务对这个字段进行更新。<br>可以避免脏读和不可重复读，但幻读仍然存在。</td>
 </tr>
 <tr>
 <td>SERIALIZABLE 串行化</td>
-<td>确保事物可以从一个表中读取相同的行，在这个事物持续期间，禁止其他事物对该表执行插入，更新和删除。<br>所有并发问题可以避免。</td>
+<td>确保事务可以从一个表中读取相同的行，在这个事务持续期间，禁止其他事务对该表执行插入，更新和删除。<br>所有并发问题可以避免。</td>
 </tr>
 </tbody>
 </table>
@@ -608,7 +608,17 @@
 <li>幻读：T1从一个表中读取了某一个字段，T2 在该表中<strong>插入</strong>了一些新的行，如果 T1 再次读取同一个表，就会多出几行。</li>
 </ul>
 </li>
-<li><p>事务的隔离级别</p>
+<li><p><strong>MySQL的默认事务隔离级别：REPEATABLE READ</strong></p>
+</li>
+<li><p><strong>设置当前 MySQL 连接的隔离级别</strong></p>
+<blockquote>
+<p>set transaction isolation level read committed</p>
+</blockquote>
+</li>
+<li><p><strong>设置数据库系统的全局的隔离级别</strong></p>
+<blockquote>
+<p>set global transaction isolation level read committed</p>
+</blockquote>
 </li>
 </ul>
 
@@ -926,21 +936,5 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
