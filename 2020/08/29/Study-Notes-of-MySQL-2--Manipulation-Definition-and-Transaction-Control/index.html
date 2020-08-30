@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-30T04:54:49.394Z">
+<meta property="og:updated_time" content="2020-08-30T06:12:10.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -621,6 +621,22 @@
 </blockquote>
 </li>
 </ul>
+<h2 id="回滚点"><a href="#回滚点" class="headerlink" title="回滚点"></a>回滚点</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">DELETE FROM account WHERE id = 25;</span><br><span class="line">SAVEPOINT a; # 设置保存点</span><br><span class="line">DELETE FROM account WHERE id = 29;</span><br><span class="line">ROLLBACK TO a; # 回滚到保存点</span><br></pre></td></tr></table></figure>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
+<li><strong>含义：虚拟表，和普通表一样使用（MySQL 15.1 版本出现的新特性，是通过表动态生成的数据）。只保存 SQL 逻辑，不保存查询结果。</strong></li>
+<li><strong>应用场景</strong><ul>
+<li>多个地方用到同样的查询结果</li>
+<li>该查询结果使用的 SQL 语句比较复杂</li>
+</ul>
+</li>
+<li><strong>特性</strong><ul>
+<li>复用 SQL 语句</li>
+<li>简化复杂的 SQL 操作，不必知道查询细节</li>
+<li>保护数据，提高安全性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">创建 视图 语法：</span><br><span class="line">	CREATE VIEW 视图名</span><br><span class="line">	AS</span><br><span class="line">	查询语句;</span><br><span class="line"></span><br><span class="line">使用 视图 语法：</span><br><span class="line">	SELECT * </span><br><span class="line">	FROM 视图名;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 查询张姓同学的姓名和专业</span><br><span class="line">SELECT stuname. majorname</span><br><span class="line">FROM stuinfo s</span><br><span class="line">INNER JOIN major m </span><br><span class="line">ON s.&apos;majorid&apos; = m.&apos;id&apos;;</span><br><span class="line"></span><br><span class="line">SELECT * </span><br><span class="line">FROM v1 </span><br><span class="line">WHERE stuname LIKE &apos;张%&apos;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -714,7 +730,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">1.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert"><span class="nav-number">1.1.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">1.2.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-amp-Truncate"><span class="nav-number">1.3.</span> <span class="nav-text">Delete &amp; Truncate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">2.</span> <span class="nav-text">DDL (Data Definition Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的管理"><span class="nav-number">2.1.</span> <span class="nav-text">库的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的管理"><span class="nav-number">2.2.</span> <span class="nav-text">表的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">2.4.</span> <span class="nav-text">常见约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识列"><span class="nav-number">2.5.</span> <span class="nav-text">标识列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">3.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Terminology"><span class="nav-number">3.1.</span> <span class="nav-text">Basic Terminology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的创建"><span class="nav-number">3.2.</span> <span class="nav-text">事务的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的隔离级别"><span class="nav-number">3.3.</span> <span class="nav-text">数据库的隔离级别</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">1.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert"><span class="nav-number">1.1.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">1.2.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-amp-Truncate"><span class="nav-number">1.3.</span> <span class="nav-text">Delete &amp; Truncate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">2.</span> <span class="nav-text">DDL (Data Definition Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的管理"><span class="nav-number">2.1.</span> <span class="nav-text">库的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的管理"><span class="nav-number">2.2.</span> <span class="nav-text">表的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">2.4.</span> <span class="nav-text">常见约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识列"><span class="nav-number">2.5.</span> <span class="nav-text">标识列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">3.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Terminology"><span class="nav-number">3.1.</span> <span class="nav-text">Basic Terminology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的创建"><span class="nav-number">3.2.</span> <span class="nav-text">事务的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的隔离级别"><span class="nav-number">3.3.</span> <span class="nav-text">数据库的隔离级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回滚点"><span class="nav-number">3.4.</span> <span class="nav-text">回滚点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图"><span class="nav-number">3.5.</span> <span class="nav-text">视图</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -936,5 +952,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
