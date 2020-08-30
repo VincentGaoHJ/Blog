@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-29T17:49:36.712Z">
+<meta property="og:updated_time" content="2020-08-30T04:43:56.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -469,9 +469,149 @@
 </tbody>
 </table>
 </div>
-<h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">含义：</span><br><span class="line">	一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性</span><br><span class="line">语法：</span><br><span class="line">	CREATE TABLE 表名(</span><br><span class="line">		字段名 字段类型 约束</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">分类：六大约束</span><br><span class="line">	NOT NULL：非空，用于保证该字段的值不为空（姓名，学号）</span><br><span class="line">	DEFAULT：默认，用于保证该字段有默认值（性别）</span><br><span class="line">	PRIMARY KEY：主键，用于保证该字段的值具有唯一性，并且非空（学号，编号）</span><br><span class="line">	UNIQUE：唯一，用于保证搞字段的值具有唯一性，可以为空（座位号）</span><br><span class="line">	CHECK：检查约束（MySQL中不支持）</span><br><span class="line">	FORRIGN KEY：外键，用于限制两个表的关系，用于保证该字段的值必须来自于主键的关联列的值，在从表中添加外键约束，用于引用主表中					的列值（学生表的专业编号，员工表的部门编号）</span><br><span class="line">添加约束的时机</span><br><span class="line">	创建表时</span><br><span class="line">	修改表时</span><br><span class="line"></span><br><span class="line">约束的添加分类</span><br><span class="line">	列级约束</span><br><span class="line">		六大约束都可以写（语法上都支持）</span><br><span class="line">		外键约束无效果</span><br><span class="line">	表级约束</span><br><span class="line">		除了非空/默认，其他都支持</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">创建 *表* 时添加 *列级* 约束</span><br><span class="line">*/</span><br><span class="line">USE students;</span><br><span class="line"></span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT PRIMARY KEY, # 主键</span><br><span class="line">    stuName VARCHAR(20) NOT NULL, # 非空</span><br><span class="line">    gender CHAR(1) CHECK(gender=&apos;Male&apos; OR gender=&apos;Female&apos;), # 检查</span><br><span class="line">    seat INT UNIQUE, # 唯一</span><br><span class="line">    age INT DEFAULT 18, # 默认</span><br><span class="line">    majorId INT FOREIGN KEY REFERENCES major(id) # 外键</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">创建 *表* 时添加 *表级* 约束</span><br><span class="line">语法：在各个字段的最下面</span><br><span class="line">	[constraint 约束名] 约束类型（字段名）</span><br><span class="line">*/</span><br><span class="line">DROP TABLE IF EXISTS stuinfo;</span><br><span class="line"></span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT,</span><br><span class="line">    stuName VARCHAR(20),</span><br><span class="line">    gender CHAR(1),</span><br><span class="line">    seat INT,</span><br><span class="line">    age INT,</span><br><span class="line">    majorId INT,</span><br><span class="line">    </span><br><span class="line">    CONSTRAINT pk PRIMARY KEY(id), # 主键</span><br><span class="line">    CONSTRAINT up UNIQUE(seat), # 唯一</span><br><span class="line">    CONSTRAINT ck CHECK(gender=&apos;Male&apos; OR gender=&apos;Female&apos;), # 检查</span><br><span class="line">    CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) # 外键</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 通用写法</span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT PRIMARY KEY, # 主键</span><br><span class="line">    stuName VARCHAR(20) NOT NULL, # 非空</span><br><span class="line">    gender CHAR(1),</span><br><span class="line">    seat INT UNIQUE, # 唯一</span><br><span class="line">    age INT DEFAULT 18, # 默认</span><br><span class="line">    majorId INT,</span><br><span class="line">    CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) # 外键</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><ul>
+<li><p><strong>含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性</strong></p>
+</li>
+<li><p>语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE 表名(</span><br><span class="line">		字段名 字段类型 约束</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>分类：六大约束</strong></p>
+<ul>
+<li>NOT NULL：非空，用于保证该字段的值不为空（姓名，学号）</li>
+<li>DEFAULT：默认，用于保证该字段有默认值（性别）</li>
+<li>PRIMARY KEY：主键，用于保证该字段的值具有唯一性，并且非空（学号，编号）</li>
+<li>UNIQUE：唯一，用于保证搞字段的值具有唯一性，可以为空（座位号）</li>
+<li>CHECK：检查约束（MySQL中不支持）</li>
+<li>FORRIGN KEY：外键，用于限制两个表的关系，用于保证该字段的值必须来自于主键的关联列的值，在从表中添加外键约束，用于引用主表中的列值（学生表的专业编号，员工表的部门编号）</li>
+</ul>
+</li>
+<li><p><strong>添加约束的时机</strong></p>
+<ul>
+<li>创建表时</li>
+<li>修改表时</li>
+</ul>
+</li>
+<li><p><strong>约束的添加分类</strong></p>
+<ul>
+<li>列级约束<ul>
+<li>六大约束都可以写（语法上都支持）</li>
+<li>外键约束无效果</li>
+</ul>
+</li>
+<li>表级约束<ul>
+<li>除了非空/默认，其他都支持</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>创建<strong>表</strong>时添加 <strong>列级</strong> 约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">创建 *表* 时添加 *列级* 约束</span><br><span class="line">*/</span><br><span class="line">USE students;</span><br><span class="line"></span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT PRIMARY KEY, # 主键</span><br><span class="line">    stuName VARCHAR(20) NOT NULL, # 非空</span><br><span class="line">    gender CHAR(1) CHECK(gender=&apos;Male&apos; OR gender=&apos;Female&apos;), # 检查</span><br><span class="line">    seat INT UNIQUE, # 唯一</span><br><span class="line">    age INT DEFAULT 18, # 默认</span><br><span class="line">    majorId INT FOREIGN KEY REFERENCES major(id) # 外键</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 <strong>表</strong> 时添加 <strong>表级</strong> 约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">创建 *表* 时添加 *表级* 约束</span><br><span class="line">语法：在各个字段的最下面</span><br><span class="line">	[constraint 约束名] 约束类型（字段名）</span><br><span class="line">*/</span><br><span class="line">DROP TABLE IF EXISTS stuinfo;</span><br><span class="line"></span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT,</span><br><span class="line">    stuName VARCHAR(20),</span><br><span class="line">    gender CHAR(1),</span><br><span class="line">    seat INT,</span><br><span class="line">    age INT,</span><br><span class="line">    majorId INT,</span><br><span class="line">    </span><br><span class="line">    CONSTRAINT pk PRIMARY KEY(id), # 主键</span><br><span class="line">    CONSTRAINT up UNIQUE(seat), # 唯一</span><br><span class="line">    CONSTRAINT ck CHECK(gender=&apos;Male&apos; OR gender=&apos;Female&apos;), # 检查</span><br><span class="line">    CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) # 外键</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 通用写法</span><br><span class="line">CREATE TABLE stuinfo(</span><br><span class="line">	id INT PRIMARY KEY, # 主键</span><br><span class="line">    stuName VARCHAR(20) NOT NULL, # 非空</span><br><span class="line">    gender CHAR(1),</span><br><span class="line">    seat INT UNIQUE, # 唯一</span><br><span class="line">    age INT DEFAULT 18, # 默认</span><br><span class="line">    majorId INT,</span><br><span class="line">    CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id) # 外键</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <strong>表</strong> 时添加 <strong>列级</strong> 约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时添加 *列级* 约束</span><br><span class="line">	alter table 表名 modify column 字段名 字段类型 新约束;</span><br><span class="line">*/</span><br><span class="line"># 非空约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NOT NULL;</span><br><span class="line"># 默认约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN age INT DEFAULT 18;</span><br><span class="line"># 主键约束-列级</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN id INT PRIMARY KEY;</span><br><span class="line"># 唯一约束-列级</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN seat INT UNIQUE;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <strong>表</strong> 时添加 <strong>表级</strong> 约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时添加 *表级* 约束</span><br><span class="line">	alter table 表名 add [constraint 约束名] 约束类型（字段名）;</span><br><span class="line">*/</span><br><span class="line"># 主键约束-表级</span><br><span class="line">ALTER TABLE stuinfo ADD PRIMARY KEY(id);</span><br><span class="line"># 唯一约束-表级</span><br><span class="line">ALTER TABLE stuinfo ADD UNIQUE(seat);</span><br><span class="line"># 外键约束</span><br><span class="line">ALTER TABLE stuinfo ADD [CONSTRAINT fk_stuinfo_major] FOREIGN KEY(majorid) REFERENCES major(id);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 <strong>表</strong> 时<strong>删除</strong>约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时删除约束</span><br><span class="line">*/</span><br><span class="line"># 删除非空约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;</span><br><span class="line"># 删除默认约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN age INT;</span><br><span class="line"># 删除主键</span><br><span class="line">ALTER TABLE stuinfo DROP PRIMARY KEY;</span><br><span class="line"># 删除唯一约束</span><br><span class="line">ALTER TABLE stuinfo DROP INDEX seat;</span><br><span class="line"># 删除外键约束</span><br><span class="line">ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="标识列"><a href="#标识列" class="headerlink" title="标识列"></a>标识列</h2><ul>
+<li><p><strong>标识列：又称为自增长列</strong></p>
+</li>
+<li><p>含义</p>
+<ul>
+<li>可以不用手动的插入值，系统提供默认的序列值</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>标识类不必须和主键搭配，但要求是一个 KEY</li>
+<li>一个表中只能有一个标识列</li>
+<li>标识列只能是数值型</li>
+<li>可以设置步长（<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  - 可以通过手动插入值，来设置起始值</span><br><span class="line"></span><br><span class="line">- **创建表时设置标识列**</span><br><span class="line"></span><br><span class="line">  ```mysql</span><br><span class="line">  # 创建表时设置标识列</span><br><span class="line">  CREATE TABLE tab_identity(</span><br><span class="line">  	id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">      NAME VARCHAR(20)</span><br><span class="line">  );</span><br><span class="line">  </span><br><span class="line">  # 可以通过手动插入值，来设置起始值</span><br><span class="line">  INSERT INTO tab_identity(id, NAME) VALUES(10, &apos;john&apos;);</span><br><span class="line">  INSERT INTO tab_identity(id, NAME) VALUES(NULL, &apos;john&apos;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>修改表时设置标识列</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改表时删除标识列</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab_identity MODIFY COLUMN id INT;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <hr>
-<h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1>
+<h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1><h2 id="Basic-Terminology"><a href="#Basic-Terminology" class="headerlink" title="Basic Terminology"></a>Basic Terminology</h2><ul>
+<li><strong>事务：一个或者一组 sql 语句组成的一个执行单元。</strong>这个执行单元要么全部执行，要么全部不执行。如果单元中的某条 SQL 语句执行失败，那么整个单元将会回滚。</li>
+<li><p><strong>存储引擎</strong></p>
+<ul>
+<li>概念：在 MySQL 中的数据用各种不同的技术存储在文件或者内存中。</li>
+<li>通过 Show Engines 来查看 MySQL 支持的存储引擎</li>
+<li>在 MySQL 中用的最多的存储引擎有：innodb, myisam, memory 等。其中 innodb 支持事务。</li>
+</ul>
+</li>
+<li><p><strong>事务的 ACID 属性</strong></p>
+<ul>
+<li><strong>Atomicity</strong> 原子性：事务是一个不可分割的工作单位</li>
+<li><strong>Consistency</strong> 一致性：事务必须使数据库从一个一致性状态变换到另一个一致性状态。</li>
+<li><strong>Isolation</strong> 隔离性：事务的执行不能被其他的事务干扰，即一个事务内部的操作以及使用的数据对并发的其他事物是隔离的，并发执行的各个事物之间是不能互相干扰的。</li>
+<li><strong>Durability</strong> 持久性：事务一旦提交，对数据库的改变就是永久性的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="事务的创建"><a href="#事务的创建" class="headerlink" title="事务的创建"></a>事务的创建</h2><ul>
+<li><p>隐式事务：事务没有明显的开启和结束的标记</p>
+<ul>
+<li>比如：insert / update / delete</li>
+</ul>
+</li>
+<li><p>显式事务：事务具有明显的开启和结束的标记</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 前提：必须先设置自动提交功能为禁用</span><br><span class="line">set autocommit = 0;</span><br><span class="line"># 可选</span><br><span class="line">START TRANSACTION;</span><br><span class="line"># 结束事务</span><br><span class="line">COMMIT; # 提交事务</span><br><span class="line">ROLLBACK; # 回滚事务</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 500 WHERE username = &apos;Tim Duncan&apos;;</span><br><span class="line">UPDATE account SET balance = 1500 WHERE username = &apos;Larry Bird&apos;;</span><br><span class="line">COMMIT;</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &apos;Tim Duncan&apos;;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &apos;Larry Bird&apos;;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>READ UNCOMMITED 读未提交数据</td>
+<td>允许事务读取未被其他事物提交的变更。<br>脏读，幻读，不可重复读的问题都会出现。</td>
+</tr>
+<tr>
+<td>READ COMMITED 读已提交数据</td>
+<td>只允许事物读取已经被其他事物提交的变更。<br>可以避免脏读，但不可重复读和幻读仍然可能出现。</td>
+</tr>
+<tr>
+<td>REPEATABLE READ 可重复读</td>
+<td>确保事物可以多次从一个字段中读取相同的值，在这个事物持续期间，禁止其他事物对这个字段进行更新。<br>可以避免脏读和不可重复读，但幻读仍然存在。</td>
+</tr>
+<tr>
+<td>SERIALIZABLE 串行化</td>
+<td>确保事物可以从一个表中读取相同的行，在这个事物持续期间，禁止其他事物对该表执行插入，更新和删除。<br>所有并发问题可以避免。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><p><strong>如果没有设置隔离机制</strong></p>
+<ul>
+<li>脏读：T1 读取了已经被 T2 更新但是还<strong>没有被提交</strong>的字段。</li>
+<li>不可重复读：T1读取了一个字段，然后 T2 <strong>更新</strong>了该字段之后，T1 再次读取了同一个字段，值就不同了。</li>
+<li>幻读：T1从一个表中读取了某一个字段，T2 在该表中<strong>插入</strong>了一些新的行，如果 T1 再次读取同一个表，就会多出几行。</li>
+</ul>
+</li>
+<li><p>事务的隔离级别</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -564,7 +704,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">1.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert"><span class="nav-number">1.1.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">1.2.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-amp-Truncate"><span class="nav-number">1.3.</span> <span class="nav-text">Delete &amp; Truncate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">2.</span> <span class="nav-text">DDL (Data Definition Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的管理"><span class="nav-number">2.1.</span> <span class="nav-text">库的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的管理"><span class="nav-number">2.2.</span> <span class="nav-text">表的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">2.4.</span> <span class="nav-text">常见约束</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">3.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DML-Data-Manipulation-Language"><span class="nav-number">1.</span> <span class="nav-text">DML (Data Manipulation Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Insert"><span class="nav-number">1.1.</span> <span class="nav-text">Insert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">1.2.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete-amp-Truncate"><span class="nav-number">1.3.</span> <span class="nav-text">Delete &amp; Truncate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DDL-Data-Definition-Language"><span class="nav-number">2.</span> <span class="nav-text">DDL (Data Definition Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的管理"><span class="nav-number">2.1.</span> <span class="nav-text">库的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的管理"><span class="nav-number">2.2.</span> <span class="nav-text">表的管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见约束"><span class="nav-number">2.4.</span> <span class="nav-text">常见约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识列"><span class="nav-number">2.5.</span> <span class="nav-text">标识列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCL-Transaction-Control-Language"><span class="nav-number">3.</span> <span class="nav-text">TCL (Transaction Control Language)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Terminology"><span class="nav-number">3.1.</span> <span class="nav-text">Basic Terminology</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的创建"><span class="nav-number">3.2.</span> <span class="nav-text">事务的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的隔离级别"><span class="nav-number">3.3.</span> <span class="nav-text">数据库的隔离级别</span></a></li></ol></li></ol>
     
     </div>
   </aside>
