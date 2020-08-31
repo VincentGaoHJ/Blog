@@ -3,26 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>aws certified solutions architect - associate 2020 | Gao Haojun</title>
+  <title>study notes of mysql 3 —— variables, procedures and functions | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="AWSSolutions Architect - Associate">
+  <meta name="keywords" content="MySQL">
   
   
   
   
-  <meta name="description" content="Content Outline    Domain percentage of Examination     Domain 1: Design Resilient Architectures 30%   Domain 2: Design High-Performing Architectures 28%   Domain 3: Design Secure Applications and Arc">
-<meta name="keywords" content="AWS,Solutions Architect - Associate">
+  <meta name="description" content="Variables Stored Procedures and Functions Control Flow Functions">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AWS Certified Solutions Architect - Associate 2020">
-<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/index.html">
+<meta property="og:title" content="Study Notes of MySQL 3 —— Variables, Procedures and Functions">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="Content Outline    Domain percentage of Examination     Domain 1: Design Resilient Architectures 30%   Domain 2: Design High-Performing Architectures 28%   Domain 3: Design Secure Applications and Arc">
+<meta property="og:description" content="Variables Stored Procedures and Functions Control Flow Functions">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-25T05:44:14.982Z">
+<meta property="og:updated_time" content="2020-08-31T09:25:12.570Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AWS Certified Solutions Architect - Associate 2020">
-<meta name="twitter:description" content="Content Outline    Domain percentage of Examination     Domain 1: Design Resilient Architectures 30%   Domain 2: Design High-Performing Architectures 28%   Domain 3: Design Secure Applications and Arc">
+<meta name="twitter:title" content="Study Notes of MySQL 3 —— Variables, Procedures and Functions">
+<meta name="twitter:description" content="Variables Stored Procedures and Functions Control Flow Functions">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -168,7 +168,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-AWS-Certified-Solutions-Architect-Associate-2020" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -176,7 +176,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      AWS Certified Solutions Architect - Associate 2020
+      Study Notes of MySQL 3 —— Variables, Procedures and Functions
     </h1>
   
 
@@ -184,12 +184,12 @@
     
     <div class="article-meta">
       
-	<a href="/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/" class="article-date">
-	  <time datetime="2020-08-08T17:00:18.000Z" itemprop="datePublished">2020-08-09</time>
+	<a href="/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/" class="article-date">
+	  <time datetime="2020-08-31T08:36:15.000Z" itemprop="datePublished">2020-08-31</time>
 	</a>
 
       
-    <a class="article-category-link" href="/Blog/categories/AWS/">AWS</a>
+    <a class="article-category-link" href="/Blog/categories/Technology/">Technology</a>
 
       
 	<a class="article-views">
@@ -203,94 +203,38 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Content-Outline"><a href="#Content-Outline" class="headerlink" title="Content Outline"></a>Content Outline</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Domain</th>
-<th>percentage of Examination</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Domain 1: Design Resilient Architectures</td>
-<td>30%</td>
-</tr>
-<tr>
-<td>Domain 2: Design High-Performing Architectures</td>
-<td>28%</td>
-</tr>
-<tr>
-<td>Domain 3: Design Secure Applications and Architectures</td>
-<td>24%</td>
-</tr>
-<tr>
-<td>Domain 4: Design Cost-Optimized Architectures</td>
-<td>18%</td>
-</tr>
-<tr>
-<td><strong>TOTAL</strong></td>
-<td><strong>100%</strong></td>
-</tr>
-</tbody>
-</table>
-</div>
+        <ul>
+<li><strong>Variables</strong></li>
+<li><strong>Stored Procedures and Functions</strong></li>
+<li><strong>Control Flow Functions</strong> </li>
+</ul>
 <a id="more"></a>
-<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
-<li>130 Minutes in Length</li>
-<li>60 Questions</li>
-<li>Multiple Choice</li>
-<li>Passing score of 720 (100 - 1000)</li>
-<li>Aim for 70%</li>
-<li>Qualification is valid for 2 years</li>
-<li>Scenario based questions</li>
+<p>[toc]</p>
+<h1 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h1><h2 id="系统变量"><a href="#系统变量" class="headerlink" title="系统变量"></a>系统变量</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">分类：</span><br><span class="line">	全局变量：作用域是全局设置</span><br><span class="line">	会话变量：作用域仅仅是当前连接（会话）</span><br><span class="line">注意：</span><br><span class="line">	如果全局级别，则需要加 global，如果是会话级别，则需要加session，如果不写，则默认</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 查看所有的系统变量</span><br><span class="line">show global variables;</span><br><span class="line"></span><br><span class="line"># 查看满足条件的部分系统变量</span><br><span class="line">show global variables likee &apos;%char%&apos;;</span><br><span class="line"></span><br><span class="line"># 查看指定的某个系统变量的值</span><br><span class="line">select @@global.系统变量名;</span><br><span class="line"></span><br><span class="line"># 为某个系统变量赋值</span><br><span class="line">set global.系统变量名 = 值;</span><br><span class="line">set @@global.系统变量名 = 值;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义变量"><a href="#自定义变量" class="headerlink" title="自定义变量"></a>自定义变量</h2><ul>
+<li><strong>说明：变量是用户自定义的，不是由系统提供的</strong></li>
+<li><strong>分类</strong><ul>
+<li>用户变量：作用域针对当前会话有效，等同于会话变量的作用域</li>
+<li>局部变量：仅仅在 begin end 中有效</li>
+</ul>
+</li>
+<li><p><strong>使用步骤</strong></p>
+<ul>
+<li>声明</li>
+<li>赋值</li>
+<li>使用（查看，比较，运算）</li>
+</ul>
+</li>
+<li><p><strong>用户变量</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 声明并初始化</span><br><span class="line">SET @用户变量名 = 值;</span><br><span class="line">SET @用户变量名 := 值;</span><br><span class="line">SELECT @用户变量名 := 值;</span><br><span class="line"></span><br><span class="line"># 赋值</span><br><span class="line">SET @用户变量名 = 值;</span><br><span class="line">SET @用户变量名 := 值;</span><br><span class="line">SELECT @用户变量名 := 值;</span><br><span class="line">SELECT 字段 INTO 变量名 FROM 表;</span><br><span class="line"></span><br><span class="line"># 使用：查看用户变量的值</span><br><span class="line">SELECT @用户变量名</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*案例*/</span><br><span class="line"># 声明</span><br><span class="line">SET @count=1;</span><br><span class="line"># 赋值</span><br><span class="line">SELECT COUNT(*) INTO @count</span><br><span class="line">FROM employees;</span><br><span class="line"># 查看</span><br><span class="line">SELECT @count;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>局部变量</strong></p>
+<p>应用在 <figure class="highlight plain"><figcaption><span>end``` 中的第一句话</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```mysql</span><br><span class="line"># 声明</span><br><span class="line">DECLARE 变量名 类型;</span><br><span class="line">DECLARE 变量名 类型 DEFAULT 值;</span><br><span class="line"># 赋值同上</span><br><span class="line"># 使用同上</span><br></pre></td></tr></table></figure></p>
+</li>
 </ul>
 <hr>
-<h3 id="Domain-1-Design-Resilient-Architectures"><a href="#Domain-1-Design-Resilient-Architectures" class="headerlink" title="Domain 1: Design Resilient Architectures"></a>Domain 1: Design Resilient Architectures</h3><ul>
-<li>1.1 Design a multi-tier architecture solution</li>
-<li>1.2 Design highly available and/or fault-tolerant architectures</li>
-<li>1.3 Design decoupling mechanisms using AWS services</li>
-<li>1.4 Choose appropriate resilient storage</li>
-</ul>
-<h3 id="Domain-2-Design-High-Performing-Architectures"><a href="#Domain-2-Design-High-Performing-Architectures" class="headerlink" title="Domain 2: Design High-Performing Architectures"></a>Domain 2: Design High-Performing Architectures</h3><ul>
-<li>2.1 Identify elastic and scalable compute solutions for a workload</li>
-<li>2.2 Select high-performing and scalable storage solutions for a workload</li>
-<li>2.3 Select high-performing networking solutions for a workload</li>
-<li>2.4 Choose high-performing database solutions for a workload</li>
-</ul>
-<h3 id="Domain-3-Design-Secure-Applications-and-Architectures"><a href="#Domain-3-Design-Secure-Applications-and-Architectures" class="headerlink" title="Domain 3: Design Secure Applications and Architectures"></a>Domain 3: Design Secure Applications and Architectures</h3><ul>
-<li>3.1 Design secure access to AWS resources</li>
-<li>3.2 Design secure application tiers</li>
-<li>3.3 Select appropriate data security options</li>
-</ul>
-<h3 id="Domain-4-Design-Cost-Optimized-Architectures"><a href="#Domain-4-Design-Cost-Optimized-Architectures" class="headerlink" title="Domain 4: Design Cost-Optimized Architectures"></a>Domain 4: Design Cost-Optimized Architectures</h3><ul>
-<li>4.1 Identify cost-effective storage solutions</li>
-<li>4.2 Identify cost-effective compute and database services</li>
-<li>4.3 Design cost-optimized network architectures</li>
-</ul>
-<hr>
-<h2 id="AWS-High-Level-Services"><a href="#AWS-High-Level-Services" class="headerlink" title="AWS - High Level Services"></a>AWS - High Level Services</h2><h3 id="Global-Infrastructure"><a href="#Global-Infrastructure" class="headerlink" title="Global Infrastructure"></a>Global Infrastructure</h3><ul>
-<li><p>One <strong>availability zone</strong> could be two or three <strong>data centers</strong> that are all within a couple of miles.</p>
-</li>
-<li><p><strong>Region</strong> is just a simply a geographic area that consists of two or more <strong>availability zones</strong>.</p>
-</li>
-<li><strong>Edge Locations</strong> are endpoints for AWS which are used for caching content. Typically this consists of CloudFront, Amazon’s Content Delivery Network(CDN).</li>
-</ul>
-<h3 id="Services-related-to-the-Exam-Core-Part"><a href="#Services-related-to-the-Exam-Core-Part" class="headerlink" title="Services related to the Exam - Core Part"></a>Services related to the Exam - Core Part</h3><ul>
-<li>Compute</li>
-<li>Storage</li>
-<li>Database</li>
-<li>Network &amp;  Content Delivery</li>
-<li>Security, Identity &amp; Compliance</li>
-</ul>
-<h3 id="Services-related-to-the-Exam-Other-Part"><a href="#Services-related-to-the-Exam-Other-Part" class="headerlink" title="Services related to the Exam - Other Part"></a>Services related to the Exam - Other Part</h3><ul>
-<li>Migration &amp; Transfer</li>
-<li>Machine Learning</li>
-<li>Management &amp; Governance</li>
-<li>Analytics</li>
-<li>Desktop &amp; App Streaming</li>
-</ul>
-
+<h1 id="Stored-Procedures-and-Functions"><a href="#Stored-Procedures-and-Functions" class="headerlink" title="Stored Procedures and Functions"></a>Stored Procedures and Functions</h1><hr>
+<h1 id="Control-Flow-Functions"><a href="#Control-Flow-Functions" class="headerlink" title="Control Flow Functions"></a>Control Flow Functions</h1>
       
     </div>
     <footer class="article-footer">
@@ -316,7 +260,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/" target="_blank" title="AWS Certified Solutions Architect - Associate 2020">http://vincentgaohj.github.io/Blog/2020/08/09/AWS-Certified-Solutions-Architect-Associate-2020/</a>
+          <a href="/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/" target="_blank" title="Study Notes of MySQL 3 —— Variables, Procedures and Functions">http://vincentgaohj.github.io/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -356,7 +300,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/AWS/">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Solutions-Architect-Associate/">Solutions Architect - Associate</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/MySQL/">MySQL</a></li></ul>
 
       
 
@@ -366,19 +310,10 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/Blog/2020/08/13/AWS-Solution-Architect-Associate-Identity-Access-Management-and-S3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          AWS Solution Architect(Associate) - Identity Access Management and S3
-        
-      </div>
-    </a>
   
-  
-    <a href="/Blog/2019/09/18/Study-Notes-of-TOEFL-Writing-Part-Outline-of-Real-Test-Questions/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Study Notes of TOEFL Writing Part —— Outline of Real Test Questions</div>
+      <div class="article-nav-title">Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control</div>
     </a>
   
 </nav>
@@ -392,7 +327,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Outline"><span class="nav-number">1.</span> <span class="nav-text">Content Outline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">2.</span> <span class="nav-text">Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-1-Design-Resilient-Architectures"><span class="nav-number">2.1.</span> <span class="nav-text">Domain 1: Design Resilient Architectures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-2-Design-High-Performing-Architectures"><span class="nav-number">2.2.</span> <span class="nav-text">Domain 2: Design High-Performing Architectures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-3-Design-Secure-Applications-and-Architectures"><span class="nav-number">2.3.</span> <span class="nav-text">Domain 3: Design Secure Applications and Architectures</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Domain-4-Design-Cost-Optimized-Architectures"><span class="nav-number">2.4.</span> <span class="nav-text">Domain 4: Design Cost-Optimized Architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-High-Level-Services"><span class="nav-number">3.</span> <span class="nav-text">AWS - High Level Services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Global-Infrastructure"><span class="nav-number">3.1.</span> <span class="nav-text">Global Infrastructure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Services-related-to-the-Exam-Core-Part"><span class="nav-number">3.2.</span> <span class="nav-text">Services related to the Exam - Core Part</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Services-related-to-the-Exam-Other-Part"><span class="nav-number">3.3.</span> <span class="nav-text">Services related to the Exam - Other Part</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Variables"><span class="nav-number">1.</span> <span class="nav-text">Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统变量"><span class="nav-number">1.1.</span> <span class="nav-text">系统变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义变量"><span class="nav-number">1.2.</span> <span class="nav-text">自定义变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Stored-Procedures-and-Functions"><span class="nav-number">2.</span> <span class="nav-text">Stored Procedures and Functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Control-Flow-Functions"><span class="nav-number">3.</span> <span class="nav-text">Control Flow Functions</span></a></li></ol>
     
     </div>
   </aside>

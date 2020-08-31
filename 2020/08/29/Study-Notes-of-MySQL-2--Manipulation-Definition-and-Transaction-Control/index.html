@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-30T06:26:57.336Z">
+<meta property="og:updated_time" content="2020-08-31T08:29:29.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control">
 <meta name="twitter:description" content="DML (Data Manipulation Language) DDL (Data Definition Language) TCL (Transaction Control Language)">
@@ -651,7 +651,28 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DESC myv3;</span><br><span class="line">SHOW CREATE VIEW myv3;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>视图的更新</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 插入  </span><br><span class="line">INSERT INTO myv1 VALUES(&apos;张飞&apos;,&apos;1234@sina.com&apos;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  # 插入  </span><br><span class="line">  INSERT INTO myv1 VALUES(&apos;张飞&apos;,&apos;1234@sina.com&apos;)</span><br><span class="line">  </span><br><span class="line"># 修改</span><br><span class="line">  UPDATE myn1 SET last_name = &apos;Tim Duncan&apos; WHERE last_name = &apos;Larry Bird&apos;;</span><br><span class="line">  </span><br><span class="line">  # 删除</span><br><span class="line">  DELETE FROM myv1 WHERE last_name = &apos;Tim Duncan&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>具备以下关键词的视图不允许更新</strong></p>
+<ul>
+<li><p>包含以下关键字的 SQL 语句：<figure class="highlight plain"><figcaption><span>by```，```having```，```union``` 或者 ```union all```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 常量视图：```SELECT &apos;John&apos; NAME;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><figure class="highlight plain"><figcaption><span>中包含子查询</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```join</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>from</code> 一个不能更新的视图</p>
+</li>
+<li><code>where</code> 子句的子查询引用了 <code>from</code> 子句中的表</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>视图与表的对比</strong><ul>
+<li>视图不占用实际的物理空间，表占用</li>
+<li>视图保存语句逻辑，表保存了实际结果数据</li>
+<li>视图一般不进行增删改</li>
+</ul>
 </li>
 </ul>
 
@@ -729,6 +750,15 @@ var a = new Donate({
   
     
 <nav id="article-nav">
+  
+    <a href="/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Study Notes of MySQL 3 —— Variables, Procedures and Functions
+        
+      </div>
+    </a>
   
   
     <a href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query Function/" id="article-nav-older" class="article-nav-link-wrap">
@@ -969,5 +999,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
