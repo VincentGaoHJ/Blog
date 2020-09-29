@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="The model layer The view layer The template layer">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-29T09:20:12.505Z">
+<meta property="og:updated_time" content="2020-09-29T09:30:17.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Django">
 <meta name="twitter:description" content="The model layer The view layer The template layer">
@@ -210,6 +210,18 @@
 </ul>
 <a id="more"></a>
 <p>[toc]</p>
+<h1 id="Project-Structure"><a href="#Project-Structure" class="headerlink" title="Project Structure"></a>Project Structure</h1><ul>
+<li><figure class="highlight plain"><figcaption><span>documentation</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```scripts</span><br></pre></td></tr></table></figure>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>installed to PATH via setup.py</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- ```[project_name]</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><figcaption><span>project-specific applications</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- ```settings```: settings for different environments, see below</span><br><span class="line">- ```urls.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- ```static```: site-specific static files</span><br><span class="line">- ```templates```: site-specific templates</span><br><span class="line">- ```tests```: site-specific tests (mostly in-browser ones)</span><br><span class="line">- ```tmp```: excluded from git</span><br><span class="line">- ```setup.py</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
 <h1 id="The-model-layer"><a href="#The-model-layer" class="headerlink" title="The model layer"></a>The model layer</h1><p><strong>A model is the single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table.</strong></p>
 <ul>
 <li>Each model is a Python class that subclasses <a href="https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model" target="_blank" rel="noopener"><code>django.db.models.Model</code></a>.</li>
@@ -404,7 +416,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-model-layer"><span class="nav-number">1.</span> <span class="nav-text">The model layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defined-the-model"><span class="nav-number">1.1.</span> <span class="nav-text">Defined the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-models"><span class="nav-number">1.2.</span> <span class="nav-text">Using models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-methods"><span class="nav-number">1.3.</span> <span class="nav-text">Model methods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-view-layer"><span class="nav-number">2.</span> <span class="nav-text">The view layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-views"><span class="nav-number">2.1.</span> <span class="nav-text">Writing views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-dispatcher"><span class="nav-number">2.2.</span> <span class="nav-text">URL dispatcher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-template-layer"><span class="nav-number">3.</span> <span class="nav-text">The template layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">3.1.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-programmers"><span class="nav-number">3.2.</span> <span class="nav-text">Python programmers</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Project-Structure"><span class="nav-number">1.</span> <span class="nav-text">Project Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-model-layer"><span class="nav-number">2.</span> <span class="nav-text">The model layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defined-the-model"><span class="nav-number">2.1.</span> <span class="nav-text">Defined the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-models"><span class="nav-number">2.2.</span> <span class="nav-text">Using models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-methods"><span class="nav-number">2.3.</span> <span class="nav-text">Model methods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-view-layer"><span class="nav-number">3.</span> <span class="nav-text">The view layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-views"><span class="nav-number">3.1.</span> <span class="nav-text">Writing views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-dispatcher"><span class="nav-number">3.2.</span> <span class="nav-text">URL dispatcher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-template-layer"><span class="nav-number">4.</span> <span class="nav-text">The template layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">4.1.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-programmers"><span class="nav-number">4.2.</span> <span class="nav-text">Python programmers</span></a></li></ol></li></ol>
     
     </div>
   </aside>
