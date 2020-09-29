@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="The model layer The view layer The template layer">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-29T09:06:54.040Z">
+<meta property="og:updated_time" content="2020-09-29T09:20:12.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Study Notes of Django">
 <meta name="twitter:description" content="The model layer The view layer The template layer">
@@ -267,7 +267,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="The-template-layer"><a href="#The-template-layer" class="headerlink" title="The template layer"></a>The template layer</h1><h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><ul>
+<h1 id="The-template-layer"><a href="#The-template-layer" class="headerlink" title="The template layer"></a>The template layer</h1><h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a><a href="https://docs.djangoproject.com/en/3.1/topics/templates/" target="_blank" rel="noopener">Templates</a></h2><ul>
 <li><p><strong>Variables</strong></p>
 <ul>
 <li>A variable outputs a value from the context, which is a dict-like object mapping keys to values</li>
@@ -275,13 +275,40 @@
 </ul>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">My first name is <span class="template-variable">&#123;&#123; first_name &#125;&#125;</span>. My last name is <span class="template-variable">&#123;&#123; last_name &#125;&#125;</span>.</span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; my_dict.key &#125;&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; my_object.attribute &#125;&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; my_list.0 &#125;&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<ul>
 <li><p><strong>Tags</strong></p>
+<ul>
+<li>Tags provide arbitrary logic in the rendering process.</li>
+<li>This definition is deliberately vague. For example, a tag can output content, serve as a control structure e.g. an “if” statement or a “for” loop, grab content from a database, or even enable access to other template tags.</li>
+</ul>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">csrf_token</span></span> %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">cycle</span></span> 'odd' 'even' %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> user.is_authenticated %&#125;</span>Hello, <span class="template-variable">&#123;&#123; user.username &#125;&#125;</span>.<span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Filters</strong></p>
+<ul>
+<li>Filters transform the values of variables and tag arguments.</li>
+</ul>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-variable">&#123;&#123; django|<span class="name">title</span> &#125;&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; my_date|<span class="name">date</span>:<span class="string">"Y-m-d"</span> &#125;&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Comments</strong></p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#123;# this won't be rendered #&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Python-programmers"><a href="#Python-programmers" class="headerlink" title="Python programmers"></a><a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/" target="_blank" rel="noopener">Python programmers</a></h2><ul>
+<li><p><strong>Overview</strong></p>
+<ul>
+<li>You configure an <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Engine" target="_blank" rel="noopener"><code>Engine</code></a>.</li>
+<li>You compile template code into a <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Template" target="_blank" rel="noopener"><code>Template</code></a>.</li>
+<li>You render the template with a <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Context" target="_blank" rel="noopener"><code>Context</code></a>.</li>
+</ul>
+</li>
+<li><p><strong>Loading a template</strong></p>
+<ul>
+<li>The recommended way to create a <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Template" target="_blank" rel="noopener"><code>Template</code></a> is by calling the factory methods of the <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Engine" target="_blank" rel="noopener"><code>Engine</code></a>: <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Engine.get_template" target="_blank" rel="noopener"><code>get_template()</code></a>, <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Engine.select_template" target="_blank" rel="noopener"><code>select_template()</code></a> and <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Engine.from_string" target="_blank" rel="noopener"><code>from_string()</code></a>.</li>
+<li>In a Django project where the <a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-TEMPLATES" target="_blank" rel="noopener"><code>TEMPLATES</code></a> setting defines a <a href="https://docs.djangoproject.com/en/3.1/topics/templates/#django.template.backends.django.DjangoTemplates" target="_blank" rel="noopener"><code>DjangoTemplates</code></a> engine, it’s possible to instantiate a <a href="https://docs.djangoproject.com/en/3.1/ref/templates/api/#django.template.Template" target="_blank" rel="noopener"><code>Template</code></a> directly. If more than one <a href="https://docs.djangoproject.com/en/3.1/topics/templates/#django.template.backends.django.DjangoTemplates" target="_blank" rel="noopener"><code>DjangoTemplates</code></a> engine is defined, the first one will be used.</li>
+</ul>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from django.template import Template</span><br><span class="line"></span><br><span class="line">template = Template("My name is <span class="template-variable">&#123;&#123; my_name &#125;&#125;</span>.")</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Rendering a context</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.template <span class="keyword">import</span> Context, Template</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>template = Template(<span class="string">"My name is &#123;&#123; my_name &#125;&#125;."</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>context = Context(&#123;<span class="string">"my_name"</span>: <span class="string">"Adrian"</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>template.render(context)</span><br><span class="line"><span class="string">"My name is Adrian."</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>context = Context(&#123;<span class="string">"my_name"</span>: <span class="string">"Dolores"</span>&#125;)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>template.render(context)</span><br><span class="line"><span class="string">"My name is Dolores."</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -377,7 +404,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-model-layer"><span class="nav-number">1.</span> <span class="nav-text">The model layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defined-the-model"><span class="nav-number">1.1.</span> <span class="nav-text">Defined the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-models"><span class="nav-number">1.2.</span> <span class="nav-text">Using models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-methods"><span class="nav-number">1.3.</span> <span class="nav-text">Model methods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-view-layer"><span class="nav-number">2.</span> <span class="nav-text">The view layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-views"><span class="nav-number">2.1.</span> <span class="nav-text">Writing views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-dispatcher"><span class="nav-number">2.2.</span> <span class="nav-text">URL dispatcher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-template-layer"><span class="nav-number">3.</span> <span class="nav-text">The template layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">3.1.</span> <span class="nav-text">Templates</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-model-layer"><span class="nav-number">1.</span> <span class="nav-text">The model layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defined-the-model"><span class="nav-number">1.1.</span> <span class="nav-text">Defined the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-models"><span class="nav-number">1.2.</span> <span class="nav-text">Using models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-methods"><span class="nav-number">1.3.</span> <span class="nav-text">Model methods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-view-layer"><span class="nav-number">2.</span> <span class="nav-text">The view layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-views"><span class="nav-number">2.1.</span> <span class="nav-text">Writing views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-dispatcher"><span class="nav-number">2.2.</span> <span class="nav-text">URL dispatcher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-template-layer"><span class="nav-number">3.</span> <span class="nav-text">The template layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">3.1.</span> <span class="nav-text">Templates</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-programmers"><span class="nav-number">3.2.</span> <span class="nav-text">Python programmers</span></a></li></ol></li></ol>
     
     </div>
   </aside>
