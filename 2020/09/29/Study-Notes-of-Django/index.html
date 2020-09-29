@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>study notes of django | Gao Haojun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Django">
+  
+  
+  
+  
+  <meta name="description" content="The model layer The view layer The template layer">
+<meta name="keywords" content="Django">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Study Notes of Django">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/09/29/Study-Notes-of-Django/index.html">
+<meta property="og:site_name" content="Gao Haojun">
+<meta property="og:description" content="The model layer The view layer The template layer">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-09-29T09:06:54.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Study Notes of Django">
+<meta name="twitter:description" content="The model layer The view layer The template layer">
+  
+    <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/Blog/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/Blog/css/style.css">
+
+  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
+  <script src="/Blog/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/Blog/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/Blog/',
+        CONTENT_URL: '/Blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/Blog/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Study-Notes-of-Django" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Study Notes of Django
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Blog/2020/09/29/Study-Notes-of-Django/" class="article-date">
+	  <time datetime="2020-09-29T07:29:18.000Z" itemprop="datePublished">2020-09-29</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/Blog/categories/Technology/">Technology</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>The model layer</strong></li>
+<li><strong>The view layer</strong></li>
+<li><strong>The template layer</strong> </li>
+</ul>
+<a id="more"></a>
+<p>[toc]</p>
+<h1 id="The-model-layer"><a href="#The-model-layer" class="headerlink" title="The model layer"></a>The model layer</h1><p><strong>A model is the single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table.</strong></p>
+<ul>
+<li>Each model is a Python class that subclasses <a href="https://docs.djangoproject.com/en/3.1/ref/models/instances/#django.db.models.Model" target="_blank" rel="noopener"><code>django.db.models.Model</code></a>.</li>
+<li>Each attribute of the model represents a database field.</li>
+</ul>
+<h2 id="Defined-the-model"><a href="#Defined-the-model" class="headerlink" title="Defined the model"></a><a href="https://docs.djangoproject.com/en/3.1/topics/db/models/" target="_blank" rel="noopener">Defined the model</a></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    first_name and last_name are fields of the model. </span></span><br><span class="line"><span class="string">    Each field is specified as a class attribute, and each attribute maps to a database column.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="number">30</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Using-models"><a href="#Using-models" class="headerlink" title="Using models"></a>Using models</h2><ul>
+<li>Once you have defined your models, you need to tell Django you’re going to <em>use</em> those models. </li>
+<li>Do this by editing your settings file and changing the <a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-INSTALLED_APPS" target="_blank" rel="noopener"><code>INSTALLED_APPS</code></a> setting to add the name of the module that contains your <code>models.py</code>.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">    <span class="string">'myapp'</span>,</span><br><span class="line">    <span class="comment">#...</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="Model-methods"><a href="#Model-methods" class="headerlink" title="Model methods"></a>Model methods</h2><ul>
+<li>Define custom methods on a model to add custom “row-level” functionality to your objects. </li>
+<li>Whereas <a href="https://docs.djangoproject.com/en/3.1/topics/db/managers/#django.db.models.Manager" target="_blank" rel="noopener"><code>Manager</code></a> methods are intended to do “table-wide” things, model methods should act on a particular model instance.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    first_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    last_name = models.CharField(max_length=<span class="number">50</span>)</span><br><span class="line">    birth_date = models.DateField()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">baby_boomer_status</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"Returns the person's baby-boomer status."</span></span><br><span class="line">        <span class="keyword">import</span> datetime</span><br><span class="line">        <span class="keyword">if</span> self.birth_date &lt; datetime.date(<span class="number">1945</span>, <span class="number">8</span>, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"Pre-boomer"</span></span><br><span class="line">        <span class="keyword">elif</span> self.birth_date &lt; datetime.date(<span class="number">1965</span>, <span class="number">1</span>, <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"Baby boomer"</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"Post-boomer"</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">full_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Also known as “managed attributes”, and a feature of Python since version 2.2. </span></span><br><span class="line"><span class="string">        This is a neat way to implement attributes whose usage resembles attribute access, </span></span><br><span class="line"><span class="string">        but whose implementation uses method calls.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="string">"Returns the person's full name."</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'%s %s'</span> % (self.first_name, self.last_name)</span><br></pre></td></tr></table></figure>
+<h1 id="The-view-layer"><a href="#The-view-layer" class="headerlink" title="The view layer"></a>The view layer</h1><h2 id="Writing-views"><a href="#Writing-views" class="headerlink" title="Writing views"></a><a href="https://docs.djangoproject.com/en/3.1/topics/http/views/" target="_blank" rel="noopener">Writing views</a></h2><ul>
+<li><p>A view function, or <em>view</em> for short, is a Python function that takes a Web request and returns a Web response.</p>
+</li>
+<li><p>For the sake of putting the code <em>somewhere</em>, the convention is to put views in a file called <code>views.py</code>, placed in your project or application directory.</p>
+</li>
+<li><p><strong>Simple example</strong></p>
+<ul>
+<li><p>The view returns an <a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponse" target="_blank" rel="noopener"><code>HttpResponse</code></a> object that contains the generated response. </p>
+</li>
+<li><p>Each view function is responsible for returning an <a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpResponse" target="_blank" rel="noopener"><code>HttpResponse</code></a> object.</p>
+</li>
+<li>To display this view at a particular URL, you’ll need to create a <em>URLconf</em>; see <a href="https://docs.djangoproject.com/en/3.1/topics/http/urls/" target="_blank" rel="noopener">URL dispatcher</a> for instructions.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  import the class HttpResponse from the django.http module, along with Python’s datetime library.</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">current_datetime</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    This is the view function. </span></span><br><span class="line"><span class="string">    We define a function called current_datetime. </span></span><br><span class="line"><span class="string">    Each view function takes an HttpRequest object as its first parameter, which is typically named request.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    html = <span class="string">"&lt;html&gt;&lt;body&gt;It is now %s.&lt;/body&gt;&lt;/html&gt;"</span> % now</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(html)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="URL-dispatcher"><a href="#URL-dispatcher" class="headerlink" title="URL dispatcher"></a><a href="https://docs.djangoproject.com/en/3.1/topics/http/urls/" target="_blank" rel="noopener">URL dispatcher</a></h2><ul>
+<li><p>To design URLs for an app, you create a Python module informally called a <strong>URLconf</strong> (URL configuration). This module is pure Python code and is a mapping between URL path expressions to Python functions (your views).</p>
+</li>
+<li><p><strong>How Django processes a request</strong></p>
+<ul>
+<li>Django determines the root URLconf module to use. Ordinarily, this is the value of the <a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-ROOT_URLCONF" target="_blank" rel="noopener"><code>ROOT_URLCONF</code></a> setting, but if the incoming <code>HttpRequest</code> object has a <a href="https://docs.djangoproject.com/en/3.1/ref/request-response/#django.http.HttpRequest.urlconf" target="_blank" rel="noopener"><code>urlconf</code></a> attribute (set by middleware), its value will be used in place of the <a href="https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-ROOT_URLCONF" target="_blank" rel="noopener"><code>ROOT_URLCONF</code></a> setting.</li>
+<li>Django loads that Python module and looks for the variable <code>urlpatterns</code>. This should be a <a href="https://docs.python.org/3/glossary.html#term-sequence" target="_blank" rel="noopener">sequence</a> of <a href="https://docs.djangoproject.com/en/3.1/ref/urls/#django.urls.path" target="_blank" rel="noopener"><code>django.urls.path()</code></a> and/or <a href="https://docs.djangoproject.com/en/3.1/ref/urls/#django.urls.re_path" target="_blank" rel="noopener"><code>django.urls.re_path()</code></a> instances.<ul>
+<li>re_path(): The <code>route</code> argument should be a string or <a href="https://docs.djangoproject.com/en/3.1/ref/utils/#django.utils.translation.gettext_lazy" target="_blank" rel="noopener"><code>gettext_lazy()</code></a> (see <a href="https://docs.djangoproject.com/en/3.1/topics/i18n/translation/#translating-urlpatterns" target="_blank" rel="noopener">Translating URL patterns</a>) that contains a regular expression compatible with Python’s <a href="https://docs.python.org/3/library/re.html#module-re" target="_blank" rel="noopener"><code>re</code></a> module.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Simple Example</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line"><span class="comment"># uising path</span></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'articles/2003/'</span>, views.special_case_2003), <span class="comment"># To capture a value from the URL, use angle brackets.</span></span><br><span class="line">    path(<span class="string">'articles/&lt;int:year&gt;/'</span>, views.year_archive), <span class="comment"># Captured values can optionally include a converter type. </span></span><br><span class="line">    path(<span class="string">'articles/&lt;int:year&gt;/&lt;int:month&gt;/'</span>, views.month_archive),</span><br><span class="line">    path(<span class="string">'articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/'</span>, views.article_detail),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># /articles/2003/03/building-a-django-site/ would match the final pattern. </span></span><br><span class="line"><span class="comment"># Django would call the function views.article_detail(request, year=2003, month=3, slug="building-a-django-site").</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># using re_path</span></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'articles/2003/'</span>, views.special_case_2003),</span><br><span class="line">    re_path(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/$'</span>, views.year_archive),</span><br><span class="line">    re_path(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/(?P&lt;month&gt;[0-9]&#123;2&#125;)/$'</span>, views.month_archive),</span><br><span class="line">    re_path(<span class="string">r'^articles/(?P&lt;year&gt;[0-9]&#123;4&#125;)/(?P&lt;month&gt;[0-9]&#123;2&#125;)/(?P&lt;slug&gt;[\w-]+)/$'</span>, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Path converters</strong></p>
+<ul>
+<li><code>str</code> - Matches any non-empty string, excluding the path separator, <code>&#39;/&#39;</code>. This is the default if a converter isn’t included in the expression.</li>
+<li><code>int</code> - Matches zero or any positive integer. Returns an <code>int</code>.</li>
+<li><code>slug</code> - Matches any slug string consisting of ASCII letters or numbers, plus the hyphen and underscore characters. For example, <code>building-your-1st-django-site</code>.</li>
+<li><code>uuid</code> - Matches a formatted UUID. To prevent multiple URLs from mapping to the same page, dashes must be included and letters must be lowercase. For example, <code>075194d3-6885-417e-a8a8-6c931e272f00</code>. Returns a <a href="https://docs.python.org/3/library/uuid.html#uuid.UUID" target="_blank" rel="noopener"><code>UUID</code></a> instance.</li>
+<li><code>path</code> - Matches any non-empty string, including the path separator, <code>&#39;/&#39;</code>. This allows you to match against a complete URL path rather than a segment of a URL path as with <code>str</code>.</li>
+</ul>
+</li>
+</ul>
+<h1 id="The-template-layer"><a href="#The-template-layer" class="headerlink" title="The template layer"></a>The template layer</h1><h2 id="Templates"><a href="#Templates" class="headerlink" title="Templates"></a>Templates</h2><ul>
+<li><p><strong>Variables</strong></p>
+<ul>
+<li>A variable outputs a value from the context, which is a dict-like object mapping keys to values</li>
+<li>Dictionary lookup, attribute lookup and list-index lookups are implemented with a dot notation</li>
+</ul>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">My first name is <span class="template-variable">&#123;&#123; first_name &#125;&#125;</span>. My last name is <span class="template-variable">&#123;&#123; last_name &#125;&#125;</span>.</span><br><span class="line"></span><br><span class="line"><span class="template-variable">&#123;&#123; my_dict.key &#125;&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; my_object.attribute &#125;&#125;</span></span><br><span class="line"><span class="template-variable">&#123;&#123; my_list.0 &#125;&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>Tags</strong></p>
+</li>
+<li><p><strong>Filters</strong></p>
+</li>
+<li><p><strong>Comments</strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/Blog/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/Blog/2020/09/29/Study-Notes-of-Django/" target="_blank" title="Study Notes of Django">http://vincentgaohj.github.io/Blog/2020/09/29/Study-Notes-of-Django/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Django/">Django</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Study Notes of MySQL 3 —— Variables, Procedures and Functions</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-model-layer"><span class="nav-number">1.</span> <span class="nav-text">The model layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Defined-the-model"><span class="nav-number">1.1.</span> <span class="nav-text">Defined the model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-models"><span class="nav-number">1.2.</span> <span class="nav-text">Using models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model-methods"><span class="nav-number">1.3.</span> <span class="nav-text">Model methods</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-view-layer"><span class="nav-number">2.</span> <span class="nav-text">The view layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Writing-views"><span class="nav-number">2.1.</span> <span class="nav-text">Writing views</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL-dispatcher"><span class="nav-number">2.2.</span> <span class="nav-text">URL dispatcher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-template-layer"><span class="nav-number">3.</span> <span class="nav-text">The template layer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Templates"><span class="nav-number">3.1.</span> <span class="nav-text">Templates</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Gao Haojun All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+
+<!-- 2017.6.11，masikkk新增，加载本地Google Prettify 代码高亮js代码 -->
+
+<!--
+<script src="/Blog/js/prettify.js"></script>
+-->
+
+<!-- 2017.6.11，masikkk新增，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(window).load(function(){})是在页面所有元素(包括所有css,js,图片,Flash等)加载完毕后执行
+<script type="text/javascript">
+$(window).load(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+<!-- 2017.7.1，masikkk添加，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(document).ready(function(){})是当页面的标准DOM元素被解析成DOM树后就执行 -->
+
+<!--
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+
+
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Blog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/Blog/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/Blog/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Blog/js/scripts.js"></script>
+
+
+
+
+  <script src="/Blog/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Gao Haojun
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Haojun(Vincent) Gao All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
