@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-11T08:55:45.030Z">
+<meta property="og:updated_time" content="2020-10-11T17:50:08.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
@@ -304,10 +304,10 @@
 <li>Storage Management Pricing</li>
 <li>Data Transfer Pricing</li>
 <li>Transfer Acceleration</li>
-<li><p>Cross Region Replication Pricing</p>
-<h2 id="S3-Pricing-Tiers"><a href="#S3-Pricing-Tiers" class="headerlink" title="S3 - Pricing Tiers"></a>S3 - Pricing Tiers</h2></li>
-<li><p><strong>What makes up the cost of S3?</strong> </p>
-<ul>
+<li>Cross Region Replication Pricing</li>
+</ul>
+<h2 id="S3-Pricing-Tiers"><a href="#S3-Pricing-Tiers" class="headerlink" title="S3 - Pricing Tiers"></a>S3 - Pricing Tiers</h2><ul>
+<li><strong>What makes up the cost of S3?</strong> <ul>
 <li><strong>Storage (Understand how to get the best value out of S3)</strong></li>
 <li>Requests and Data Retrievals</li>
 <li>Data Transfer</li>
@@ -408,6 +408,47 @@
 </ul>
 </li>
 </ul>
+<h2 id="S3-Cross-Account-Access"><a href="#S3-Cross-Account-Access" class="headerlink" title="S3 Cross Account Access"></a>S3 Cross Account Access</h2><p>3 ways to share S3 buckets across accounts</p>
+<ul>
+<li>Using Bucket Policies &amp; IAM (applies across the entire bucket). Programmatic Access Only</li>
+<li>Using Bucket ACLs &amp; IAM (individual objects). Also Programmatic Access Only.</li>
+<li>Cross-account IAM Roles. Programmatic and Console access.</li>
+</ul>
+<h2 id="Cross-Region-Replication"><a href="#Cross-Region-Replication" class="headerlink" title="Cross Region Replication"></a>Cross Region Replication</h2><ul>
+<li>Versioning must be enabled on both the source and destination.</li>
+<li>Files in an existing bucket are not replicated automatically.</li>
+<li>All subsequent updated files will be replicated automatically.</li>
+<li>Delete markers are not replicated.</li>
+<li>Deleting individual versions or delete markers will not be replicated.</li>
+<li>Understand what Cross Region Replication is at a high level.</li>
+</ul>
+<h2 id="S3-Transfer-Acceleration"><a href="#S3-Transfer-Acceleration" class="headerlink" title="S3 Transfer Acceleration"></a>S3 Transfer Acceleration</h2><ul>
+<li><p>S3 Transfer Acceleration utilize the CloudFront Edge Network to accelerate your uploads to S3.</p>
+</li>
+<li><p>Instead of uploading directly to your S3 bucket, you can use a distinct URL to upload directly to an edge location which will then transfer that file to S3.</p>
+</li>
+<li><p>You will get a distinct URL to upload to</p>
+<blockquote>
+<p>acloudguru.s3-accelerate.amazonaws.com</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="AWS-DataSync"><a href="#AWS-DataSync" class="headerlink" title="AWS DataSync"></a>AWS DataSync</h2><ul>
+<li>DataSync automatically encrypts data and accelerates transfer over the WAN. DataSync performs automatic data integrity checks in-transit and at-rest.</li>
+<li>DataSync Agent is deployed as an agent on a server and connects to your NAS or file system to copy data to AWS and write data from AWS.</li>
+<li>DataSync seamlessly and securely connects to Amazon S3, Amazon EFS, or Amazon FSx for Windows File Server to copy data and meta-data to and from AWS.</li>
+</ul>
+<h2 id="CloudFront"><a href="#CloudFront" class="headerlink" title="CloudFront"></a>CloudFront</h2><ul>
+<li>A content delivery network(CDN) is a system of distributed servers(network) that deliver web pages and other web content to a user based on the geographic locations of the user, the origin of the web page, and a content delivery server.</li>
+<li><strong>Key Terminology</strong><ul>
+<li><strong>Edge Location</strong>: This is the location where content will be cached. This is separate to an AWS Region/AZ.</li>
+<li><strong>Origin</strong>: This is the origin of all the files that the CDN will distribute. This can be an S3 bucket, an EC2 Instance, an Elastic Load Balancer, or Route53.</li>
+<li><strong>Distribution</strong>: This is the name given the CDN which consists of a collection of Edge Locations.</li>
+<li><strong>Web Distribution</strong>: Typically used for Web sites.</li>
+<li><strong>RTMP</strong>: Used for Media Streaming.</li>
+</ul>
+</li>
+</ul>
 <h2 id="Exam-Tips-1"><a href="#Exam-Tips-1" class="headerlink" title="Exam Tips"></a>Exam Tips</h2><ul>
 <li><p>Every tips in “What is S3” part</p>
 </li>
@@ -467,6 +508,26 @@
 <li>Always use a strong and complex password on root account.</li>
 <li>Paying account should be used for billing purposes only. Do not deploy resources into the paying account.</li>
 <li>Enable/Disable AWS services using Service Control Policies (SCP) either on OU or on individual accounts.</li>
+</ul>
+</li>
+<li><p>3 Different ways to share S3</p>
+</li>
+<li><p>Cross Region Replication</p>
+</li>
+<li><p>AWS DataSync</p>
+<ul>
+<li>Used to move <strong>large amounts</strong> of data from on-promises to AWS.</li>
+<li>Used with <strong>NFS-</strong> and <strong>SMB-</strong>compatible file systems.</li>
+<li><strong>Replication</strong> can be done hourly, daily, or weekly.</li>
+<li>Install the <strong>DataSync agent</strong> to start the replication.</li>
+<li>Can be used to replicate <strong>EFS</strong> to <strong>EFS</strong>.</li>
+</ul>
+</li>
+<li><p>CloudFront</p>
+<ul>
+<li>Edge locations are not just READ only, you can write to them too.(i.e. put an object on to them.)</li>
+<li>Objects are cached for the life of the <strong>TTL (Time to Live.)</strong></li>
+<li>You can clear cached objects, but you will be charges. <strong>That’s a really important exam topic that you can invalidate cache contents.</strong></li>
 </ul>
 </li>
 </ul>
@@ -575,7 +636,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Exam Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#S3"><span class="nav-number">2.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-S3"><span class="nav-number">2.1.</span> <span class="nav-text">What is S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-does-data-consistency-work-for-S3"><span class="nav-number">2.2.</span> <span class="nav-text">How does data consistency work for S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Guarantees"><span class="nav-number">2.3.</span> <span class="nav-text">S3 - Guarantees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Features"><span class="nav-number">2.4.</span> <span class="nav-text">S3 - Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Storage-Classes"><span class="nav-number">2.5.</span> <span class="nav-text">S3 - Storage Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Charges"><span class="nav-number">2.6.</span> <span class="nav-text">S3 - Charges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Pricing-Tiers"><span class="nav-number">2.7.</span> <span class="nav-text">S3 - Pricing Tiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Security-amp-Encryption"><span class="nav-number">2.8.</span> <span class="nav-text">S3 - Security &amp; Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Version-Control"><span class="nav-number">2.9.</span> <span class="nav-text">S3 - Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Object-Lock-amp-Glacier-Vault-Lock"><span class="nav-number">2.10.</span> <span class="nav-text">S3 - Object Lock &amp; Glacier Vault Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-Lock"><span class="nav-number">2.10.1.</span> <span class="nav-text">Object Lock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glacier-Vault-Lock"><span class="nav-number">2.10.2.</span> <span class="nav-text">Glacier Vault Lock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Performance"><span class="nav-number">2.11.</span> <span class="nav-text">S3 Performance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-LIMITATION-WHEN-USING-KMS"><span class="nav-number">2.11.1.</span> <span class="nav-text">S3 LIMITATION WHEN USING KMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Uploads"><span class="nav-number">2.11.2.</span> <span class="nav-text">Multi Uploads</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Downloads-S3-Byte-Range-Fetches"><span class="nav-number">2.11.3.</span> <span class="nav-text">Downloads (S3 Byte-Range Fetches)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Select-amp-Glacier-Select"><span class="nav-number">2.12.</span> <span class="nav-text">S3 Select &amp; Glacier Select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Organizations-amp-Consolidated-Billing"><span class="nav-number">2.13.</span> <span class="nav-text">AWS Organizations &amp; Consolidated Billing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips-1"><span class="nav-number">2.14.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">2.15.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IAM"><span class="nav-number">1.</span> <span class="nav-text">IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-For-IAM"><span class="nav-number">1.1.</span> <span class="nav-text">Key Terminology For IAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Exam Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#S3"><span class="nav-number">2.</span> <span class="nav-text">S3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-S3"><span class="nav-number">2.1.</span> <span class="nav-text">What is S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-does-data-consistency-work-for-S3"><span class="nav-number">2.2.</span> <span class="nav-text">How does data consistency work for S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Guarantees"><span class="nav-number">2.3.</span> <span class="nav-text">S3 - Guarantees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Features"><span class="nav-number">2.4.</span> <span class="nav-text">S3 - Features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Storage-Classes"><span class="nav-number">2.5.</span> <span class="nav-text">S3 - Storage Classes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Charges"><span class="nav-number">2.6.</span> <span class="nav-text">S3 - Charges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Pricing-Tiers"><span class="nav-number">2.7.</span> <span class="nav-text">S3 - Pricing Tiers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Security-amp-Encryption"><span class="nav-number">2.8.</span> <span class="nav-text">S3 - Security &amp; Encryption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Version-Control"><span class="nav-number">2.9.</span> <span class="nav-text">S3 - Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Object-Lock-amp-Glacier-Vault-Lock"><span class="nav-number">2.10.</span> <span class="nav-text">S3 - Object Lock &amp; Glacier Vault Lock</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-Lock"><span class="nav-number">2.10.1.</span> <span class="nav-text">Object Lock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Glacier-Vault-Lock"><span class="nav-number">2.10.2.</span> <span class="nav-text">Glacier Vault Lock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Performance"><span class="nav-number">2.11.</span> <span class="nav-text">S3 Performance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#S3-LIMITATION-WHEN-USING-KMS"><span class="nav-number">2.11.1.</span> <span class="nav-text">S3 LIMITATION WHEN USING KMS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-Uploads"><span class="nav-number">2.11.2.</span> <span class="nav-text">Multi Uploads</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Downloads-S3-Byte-Range-Fetches"><span class="nav-number">2.11.3.</span> <span class="nav-text">Downloads (S3 Byte-Range Fetches)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Select-amp-Glacier-Select"><span class="nav-number">2.12.</span> <span class="nav-text">S3 Select &amp; Glacier Select</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Organizations-amp-Consolidated-Billing"><span class="nav-number">2.13.</span> <span class="nav-text">AWS Organizations &amp; Consolidated Billing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Cross-Account-Access"><span class="nav-number">2.14.</span> <span class="nav-text">S3 Cross Account Access</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-Region-Replication"><span class="nav-number">2.15.</span> <span class="nav-text">Cross Region Replication</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#S3-Transfer-Acceleration"><span class="nav-number">2.16.</span> <span class="nav-text">S3 Transfer Acceleration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-DataSync"><span class="nav-number">2.17.</span> <span class="nav-text">AWS DataSync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CloudFront"><span class="nav-number">2.18.</span> <span class="nav-text">CloudFront</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips-1"><span class="nav-number">2.19.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">2.20.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
