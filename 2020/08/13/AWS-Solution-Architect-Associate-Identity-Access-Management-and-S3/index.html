@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-13T16:26:30.903Z">
+<meta property="og:updated_time" content="2020-10-13T16:32:07.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
@@ -555,11 +555,11 @@
 <li>Bucket policies (use JSON-based language) are applied to the entire bucket.</li>
 </ul>
 </li>
-<li><p>Stores all versions of an objects(including all writes and even if you delete an object)    </p>
+<li><p><strong>Stores all versions of an objects(including all writes and even if you delete an object)</strong>    </p>
 </li>
-<li><p>Versioning cannot be disabled, only suspended once enabled</p>
+<li><p><strong>Versioning cannot be disabled, only suspended once enabled</strong></p>
 </li>
-<li><p>Life-cycle:</p>
+<li><p><strong>Life-cycle:</strong></p>
 <ul>
 <li>Automates moving your objects between the different storage tiers.</li>
 <li>Can be used in conjunction with versioning.</li>
@@ -574,7 +574,7 @@
 <li>S3 Glacier Vault Lock: you can specify controls such as WORM in a Vault Lock policy and lock the policy from future edits.</li>
 </ul>
 </li>
-<li><p>Performance</p>
+<li><p><strong>Performance</strong></p>
 <ul>
 <li><p>prefixed simply is the pathway between you bucket name and filenames</p>
 <blockquote>
@@ -591,7 +591,7 @@
 </li>
 </ul>
 </li>
-<li><p>Practices with AWS Organizations</p>
+<li><p><strong>Practices with AWS Organizations</strong></p>
 <ul>
 <li>Always enable multi-factor authentication on root account.</li>
 <li>Always use a strong and complex password on root account.</li>
@@ -599,11 +599,11 @@
 <li>Enable/Disable AWS services using Service Control Policies (SCP) either on OU or on individual accounts.</li>
 </ul>
 </li>
-<li><p>3 Different ways to share S3</p>
+<li><p><strong>3 Different ways to share S3</strong></p>
 </li>
-<li><p>Cross Region Replication</p>
+<li><p><strong>Cross Region Replication</strong></p>
 </li>
-<li><p>AWS DataSync</p>
+<li><p><strong>AWS DataSync</strong></p>
 <ul>
 <li>Used to move <strong>large amounts</strong> of data from on-promises to AWS.</li>
 <li>Used with <strong>NFS-</strong> and <strong>SMB-</strong>compatible file systems.</li>
@@ -612,14 +612,14 @@
 <li>Can be used to replicate <strong>EFS</strong> to <strong>EFS</strong>.</li>
 </ul>
 </li>
-<li><p>CloudFront</p>
+<li><p><strong>CloudFront</strong></p>
 <ul>
 <li>Edge locations are not just READ only, you can write to them too.(i.e. put an object on to them.)</li>
 <li>Objects are cached for the life of the <strong>TTL (Time to Live.)</strong></li>
 <li>You can clear cached objects, but you will be charges. <strong>That’s a really important exam topic that you can invalidate cache contents.</strong></li>
 </ul>
 </li>
-<li><p>CloudFront Signed URL’s and Cookies</p>
+<li><p><strong>CloudFront Signed URL’s and Cookies</strong></p>
 <ul>
 <li>If your origin is EC2, then use CloudFront.</li>
 <li>If your origin is going to be S3, and you’ve only got a single file in there, then you want to use a S3 signed URL instead of a CloudFront signed URL.</li>
@@ -630,7 +630,7 @@
 </li>
 </ul>
 </li>
-<li><p>Storage Gateway</p>
+<li><p><strong>Storage Gateway</strong></p>
 <ul>
 <li>File Gateway - For flat files, stored directly on S3.</li>
 <li>Volume Gateway<ul>
@@ -639,6 +639,24 @@
 </ul>
 </li>
 <li>Gateway Virtual Tape Library</li>
+</ul>
+</li>
+<li><p><strong>Athena</strong></p>
+<p>Remember what Athena is and what it allows you to do:</p>
+<ul>
+<li>Athena is an interactive query service</li>
+<li>It allows you to query data located in S3 using standard SQL</li>
+<li>Serverless</li>
+<li>Commonly used to analyze log data stored in S3.</li>
+</ul>
+</li>
+<li><p><strong>Macie</strong></p>
+<p>Remember what Macie is and what it allows you to do:</p>
+<ul>
+<li>Macie uses AI to analyze data in S3 and helps identify PII</li>
+<li>Can also be used to analyze CouldTrail logs for suspicious API activity</li>
+<li>Includes Dashboards, Reports and Alerting</li>
+<li>Great for PCI-DSS compliance and preventing ID theft.</li>
 </ul>
 </li>
 </ul>
