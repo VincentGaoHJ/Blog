@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-14T03:42:30.602Z">
+<meta property="og:updated_time" content="2020-10-14T04:15:13.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
@@ -503,18 +503,21 @@
 <li><strong>Cached Volumes:</strong> let you use Amazon Simple Storage Service(S3) as your primary data storage while retaining frequently accessed data locally in your storage gateway. </li>
 </ul>
 </li>
-<li><p>Tape Gateway</p>
-<p>Tape Gateway offers a durable, cost-effective solution to archive your data in the AWS Cloud.</p>
+<li><p>Tape Gateway (Gateway Virtual Tape Library)</p>
+<ul>
+<li><p>Tape Gateway offers a durable, cost-effective solution to archive your data in the AWS Cloud.</p>
+</li>
+<li><p>Used for backup and uses popular backup applications like NetBackup. Backup Exec Veeam etc.</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
 </ul>
 <h2 id="Athena-vs-Macie"><a href="#Athena-vs-Macie" class="headerlink" title="Athena vs Macie"></a>Athena vs Macie</h2><p><strong>Athena</strong></p>
+<p><strong>Interactive query service which enables you to analyze and query data located in S3 using standard SQL.</strong></p>
 <ul>
-<li><p><strong>Interactive query service which enables you to analyze and query data located in S3 using standard SQL.</strong></p>
-</li>
-<li><p>Serverless, nothing to provision, pay per query / per TB scanned.</p>
-</li>
+<li><strong>Serverless</strong>, nothing to provision, pay per query / per TB scanned.</li>
 <li>No need to set up complex Extract/Transform/Load (ETL) processes.</li>
 <li>Works directly with data stored in S3.</li>
 <li>Can be used to query log files stored in S3</li>
