@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-13T16:32:07.167Z">
+<meta property="og:updated_time" content="2020-10-14T03:18:23.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Identity Access Management and S3">
 <meta name="twitter:description" content="Key Terminology For IAM What is S3 ? How does data consistency work for S3 ? S3 - Guarantees / Features / Storage Classes / Charges / Pricing Tiers / Security &amp;amp; Encryption / Version Control / Obj">
@@ -559,14 +559,14 @@
 </li>
 <li><p><strong>Versioning cannot be disabled, only suspended once enabled</strong></p>
 </li>
-<li><p><strong>Life-cycle:</strong></p>
+<li><p><strong>Life-cycle Policies:</strong></p>
 <ul>
 <li>Automates moving your objects between the different storage tiers.</li>
 <li>Can be used in conjunction with versioning.</li>
 <li>Can be applied to current versions and previous versions.</li>
 </ul>
 </li>
-<li><p>Object Lock &amp; Glacier Vault Lock</p>
+<li><p><strong>Object Lock &amp; Glacier Vault Lock</strong></p>
 <ul>
 <li>Use S3 Object to store objects using a write once, read many (WORM) model.</li>
 <li>Object locks can be on individual objects or applied across the bucket as a whole.</li>
@@ -657,6 +657,89 @@
 <li>Can also be used to analyze CouldTrail logs for suspicious API activity</li>
 <li>Includes Dashboards, Reports and Alerting</li>
 <li>Great for PCI-DSS compliance and preventing ID theft.</li>
+</ul>
+</li>
+<li><p><strong>Summary - IAM</strong></p>
+<ul>
+<li>IAM is universal. It does not apply to regions at this time.</li>
+<li>The ‘root account’ is simply the account created when first setup your AWS account. It has complete Admin access.</li>
+<li>New Users have NO permissions when first created.</li>
+<li>New users are assigned Access Key ID &amp; Secret Access Keys when first created.</li>
+<li>These are not the same as a password. You cannot use the Access key ID &amp; Secret Access Key to Login in to the console. You can use this to access AWS via the APIs and Command Line, however.</li>
+<li>You only get to view these once. If you lose them, you have to regenerate them. So, save them in a secure location.</li>
+<li>Always setup Multi-factor Authentication on tour root account.</li>
+<li>You can create and customize your own password rotation policies.</li>
+</ul>
+</li>
+<li><p><strong>Summary - S3</strong></p>
+<ul>
+<li>Remember that S3 is <strong>Object-based</strong> (allow you to upload files).</li>
+<li>Files can be from 0 to 5 TB.</li>
+<li>There is unlimited storage.</li>
+<li>Files are stored in Buckets.</li>
+<li>S3 is a <strong>universal name-space</strong>.</li>
+<li>By default, all newly created buckets are private. you can setup access control to your buckets using: Bucket Policies and Access Control Lists.</li>
+<li>The Key Fundamentals of S3<ul>
+<li>Key</li>
+<li>Value</li>
+<li>Version ID</li>
+<li>Meta-data</li>
+<li>Sub-resources<ul>
+<li>Access Control Lists</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Read after Write consistency for PUTS of new Objects</li>
+<li>Eventually Consistency for overwrite PUTS and DELETED (can take some time to propagate)</li>
+<li>Understand how to get the best value out of S3<ul>
+<li>S3 Standard</li>
+<li>S3 - IA</li>
+<li>S3 One Zone - IA</li>
+<li>S3 - Intelligent Tiering</li>
+<li>S3 Glacier</li>
+<li>S3 Glacier Deep Archive</li>
+</ul>
+</li>
+<li>Encryption in Transit is achieved by<ul>
+<li>SSL / TLS</li>
+</ul>
+</li>
+<li>Encryption At Rest (server side) is achieved by<ul>
+<li>S3 Managed Keys - SSE - S3</li>
+<li>AWS Key Management Service, Managed Keys - SSE - KMS</li>
+<li>Server Side Encryption With Customer Provided Keys - SSE - C</li>
+</ul>
+</li>
+<li>Client Side Encryption</li>
+<li>Object Lock<ul>
+<li>Use S3 Object Lock to store objects using a write once, read many (WORM) model.</li>
+<li>Object locks can be on individual objects or applied across the bucket as a whole.</li>
+<li>Object locks come in two modes: governance mode and compliance mode.<ul>
+<li>With governance mode, users can’t overwrite or delete an object version or alter its lock setting unless they have special permissions.</li>
+<li>With compliance mode, a protected object version can’t be overwritten or deleted by any user, including the root user in your AWS account.</li>
+</ul>
+</li>
+<li>S3 Glacier Vault Lock allows you to easily deploy and enforce compliance controls for individual S3 Glacier vaults with a Vault Lock policy. You can specify controls such as WORM in a Vault Lock policy and lock the policy from future edits. Once locked, the policy can no longer be changed.</li>
+</ul>
+</li>
+<li>You can get better performance by spreading your reads across different prefixes. For example, if you are using two prefixes, you can achieve 11,000 requests per second.</li>
+<li>If you are using SSE-KMS to encrypt your objects in S3, you must keep in mind the KMS limits.<ul>
+<li>Uploading/downloading will count toward the KMS quota.</li>
+</ul>
+</li>
+<li>Multipart Uploads<ul>
+<li>Use <strong>multipart uploads</strong> to increase performance when <strong>uploading files</strong> to S3.</li>
+<li>Should be used for any files <strong>over 100 MB</strong> and must be used for any file <strong>over 5 GB</strong>.</li>
+<li>Use <strong>S3 byte-range fetches</strong> to increase performance when <strong>downloading files</strong> to S3.</li>
+</ul>
+</li>
+<li>S3 Select<ul>
+<li>Remember that S3 Select is used to <strong>retrieve only a subset of data</strong> from an object by using simple SQL expressions.</li>
+<li>Get data by <strong>rows or columns</strong> using simple SQL expressions.</li>
+<li>Save money on <strong>data transfer</strong> and increase speed.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
