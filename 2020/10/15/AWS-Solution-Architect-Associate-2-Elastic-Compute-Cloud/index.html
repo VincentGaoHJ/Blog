@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers. Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-15T13:13:18.551Z">
+<meta property="og:updated_time" content="2020-10-15T14:15:02.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers. Amazo">
@@ -208,7 +208,48 @@
 </ul>
 <a id="more"></a>
 <p>[toc]</p>
-<h1 id="EC2"><a href="#EC2" class="headerlink" title="EC2"></a>EC2</h1><hr>
+<h1 id="Elastic-Compute-Cloud"><a href="#Elastic-Compute-Cloud" class="headerlink" title="Elastic Compute Cloud"></a>Elastic Compute Cloud</h1><h2 id="EC2-Pricing-Models"><a href="#EC2-Pricing-Models" class="headerlink" title="EC2 Pricing Models"></a>EC2 Pricing Models</h2><ul>
+<li><p><strong>On Demand</strong></p>
+<p><strong>Allows you to pay a fixed rate by the hours (or by the second) with no commitment.</strong></p>
+<ul>
+<li>Users want the low cost and flexibility of EC2 without any up-front payment or long-term commitment.</li>
+<li>Application with short-term, spiky, or unpredictable workloads that cannot be interrupted</li>
+<li>Applications being developed or tested on Amazon EC2 for the first time.</li>
+</ul>
+</li>
+<li><p><strong>Reserved</strong></p>
+<p><strong>Provides you with a capacity reservation, and offer a significant discount on the hourly charge for an instance.</strong></p>
+<ul>
+<li>Applications with steady state or predicable usage</li>
+<li>Applications that require reserved capacity</li>
+<li>Users able to make up-front payments to reduce their total computing costs even further.</li>
+<li><strong>Reserved Pricing Types</strong><ul>
+<li><strong>Standard Reserved Instances</strong>: These offer up to 75% off on demand instances.</li>
+<li><strong>Convertible Reserved Instances</strong>: It allows you to change between the different instance types. These offer up to 54% off on demand capacity to change the attributes of the RI as long as the exchange results in the creation of Reserved Instances of equal or greater value.</li>
+<li><strong>Scheduled Reserved Instances</strong>: These are available to launch within the time windows you reserve.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Spot</strong></p>
+<p><strong>Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times.</strong></p>
+<ul>
+<li>Applications that have flexible start and end times.</li>
+<li>Applications that are only feasible at very low compute prices.</li>
+<li>Users with urgent computing needs for large amounts of additional capacity.</li>
+</ul>
+</li>
+<li><p><strong>Dedicated Hosts</strong></p>
+<p><strong>An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use.</strong> Dedicated Hosts can help you reduce costs by allowing you to use your existing server-bound software licenses.</p>
+<ul>
+<li>Useful for regulatory requirements that may not support multi-tenant virtualization.(It might be the government says that you cannot support multi tenant virtualization)</li>
+<li>Grateful for licensing which does not support multi-tenancy or cloud deployment.(If you’ve got some really harsh Oracle licensing)</li>
+<li>Can be purchased On-Demand(hourly).</li>
+<li>Can be purchased as a Reservation for up to 70% off the On-demand price.</li>
+</ul>
+</li>
+</ul>
+<hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/ec2/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/ec2/faqs/</a></p>
 
       
@@ -303,7 +344,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EC2"><span class="nav-number">1.</span> <span class="nav-text">EC2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.1.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.2.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
