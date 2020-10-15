@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-15T14:16:01.824Z">
+<meta property="og:updated_time" content="2020-10-15T16:33:22.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -207,16 +207,16 @@
 <p>Amazon EC2’s simple web service interface allows you to obtain and configure capacity with minimal friction. It provides you with complete control of your computing resources and lets you run on Amazon’s proven computing environment.</p>
 <a id="more"></a>
 <p>[toc]</p>
-<h1 id="Elastic-Compute-Cloud"><a href="#Elastic-Compute-Cloud" class="headerlink" title="Elastic Compute Cloud"></a>Elastic Compute Cloud</h1><h2 id="EC2-Pricing-Models"><a href="#EC2-Pricing-Models" class="headerlink" title="EC2 Pricing Models"></a>EC2 Pricing Models</h2><ul>
-<li><p><strong>On Demand</strong></p>
+<h1 id="Elastic-Compute-Cloud"><a href="#Elastic-Compute-Cloud" class="headerlink" title="Elastic Compute Cloud"></a>Elastic Compute Cloud</h1><p>Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. </p>
+<p>Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change.</p>
+<h2 id="EC2-Pricing-Models"><a href="#EC2-Pricing-Models" class="headerlink" title="EC2 Pricing Models"></a><a href="https://aws.amazon.com/ec2/pricing/" target="_blank" rel="noopener">EC2 Pricing Models</a></h2><p><strong>On Demand</strong></p>
 <p><strong>Allows you to pay a fixed rate by the hours (or by the second) with no commitment.</strong></p>
 <ul>
 <li>Users want the low cost and flexibility of EC2 without any up-front payment or long-term commitment.</li>
 <li>Application with short-term, spiky, or unpredictable workloads that cannot be interrupted</li>
 <li>Applications being developed or tested on Amazon EC2 for the first time.</li>
 </ul>
-</li>
-<li><p><strong>Reserved</strong></p>
+<p><strong>Reserved</strong></p>
 <p><strong>Provides you with a capacity reservation, and offer a significant discount on the hourly charge for an instance.</strong></p>
 <ul>
 <li>Applications with steady state or predicable usage</li>
@@ -229,16 +229,14 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>Spot</strong></p>
+<p><strong>Spot</strong></p>
 <p><strong>Enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times.</strong></p>
 <ul>
 <li>Applications that have flexible start and end times.</li>
 <li>Applications that are only feasible at very low compute prices.</li>
 <li>Users with urgent computing needs for large amounts of additional capacity.</li>
 </ul>
-</li>
-<li><p><strong>Dedicated Hosts</strong></p>
+<p><strong>Dedicated Hosts</strong></p>
 <p><strong>An Amazon EC2 Dedicated Host is a physical server with EC2 instance capacity fully dedicated to your use.</strong> Dedicated Hosts can help you reduce costs by allowing you to use your existing server-bound software licenses.</p>
 <ul>
 <li>Useful for regulatory requirements that may not support multi-tenant virtualization.(It might be the government says that you cannot support multi tenant virtualization)</li>
@@ -246,7 +244,12 @@
 <li>Can be purchased On-Demand(hourly).</li>
 <li>Can be purchased as a Reservation for up to 70% off the On-demand price.</li>
 </ul>
-</li>
+<h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
+<ul>
+<li>Termination Protection is <strong>turned off</strong> by default, you must turn it on.</li>
+<li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated. <strong>But any additional volumes by default won’t be deleted.</strong></li>
+<li>EBS Root Volumes of your DEFAULT AMI’s <strong>CAN</strong> be encrypted. You can also use a third party tool (such as bit locker etc) to encrypt the root volume, or this can be done when creating AMI’s in the AWS console or using the API.</li>
+<li>Additional volumes can be encrypted.</li>
 </ul>
 <hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/ec2/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/ec2/faqs/</a></p>
@@ -343,7 +346,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.2.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.3.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
