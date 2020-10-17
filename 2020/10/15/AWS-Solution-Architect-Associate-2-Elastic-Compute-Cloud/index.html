@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-17T03:50:50.190Z">
+<meta property="og:updated_time" content="2020-10-17T09:11:53.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -383,7 +383,52 @@
 </ul>
 </li>
 </ul>
-<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
+<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><ul>
+<li><strong>snapshots of encrypted volumes are encrypted automatically.</strong></li>
+<li><strong>Volumes restored from encrypted snapshots are encrypted automatically.</strong></li>
+<li><strong>You can share snapshots, but only if they are unencrypted.</strong></li>
+<li><strong>These snapshots can be shared with other AWS accounts or made public.</strong></li>
+<li><strong>You can now encrypt root device volumes upon creation of the EC2 instance.</strong></li>
+<li><strong>The process for making it encrypted:</strong><ul>
+<li>Create a Snapshot of the unencrypted root device volume</li>
+<li>Create a copy of the Snapshot and select the encrypt option</li>
+<li>Create an AMI from the encrypted Snapshot</li>
+<li>Use that AMI to launch new encrypted instance</li>
+</ul>
+</li>
+</ul>
+<h2 id="Spot-Instances-amp-Spot-Fleets"><a href="#Spot-Instances-amp-Spot-Fleets" class="headerlink" title="Spot Instances &amp; Spot Fleets"></a>Spot Instances &amp; Spot Fleets</h2><p><strong>Amazon EC2 Spot Instances let you take advantage of unused EC2 capacity in the AWS Cloud.</strong></p>
+<ul>
+<li>You may also use a <strong>Spot block</strong> to stop your Spot Instances from being terminated even if the Spot price goes over your max Spot price.</li>
+</ul>
+<p><strong>Spot Fleets</strong></p>
+<p><strong>A spot Fleet is a collection of Spot Instances and, optionally, On-Demand Instances.</strong></p>
+<ul>
+<li>The <strong>Spot Fleet</strong> attempts to launch the number of Spot Instances and On-Demand Instances to meet the target capacity you specified in the Spot Fleet request. The request for Spot Instances is fulfilled if there is available capacity and the <strong>maximum price you specified in the request exceeds the current Spot price.</strong> The spot Fleet also attempts to maintain its target capacity fleet if your Spot Instances are interrupted.</li>
+</ul>
+<p><strong>Exam Tips</strong></p>
+<ul>
+<li><strong>Spot Instances save up to 90% of the cost On-Demand Instances.</strong></li>
+<li><strong>Useful for any type of computing where you don’t need persistent storage.</strong></li>
+<li><strong>You can block Spot Instances from terminating by using Spot block.</strong></li>
+<li><strong>A Spot Fleet is a collection of Spot Instances and optionally, On-Demand Instances.</strong></li>
+</ul>
+<h2 id="EBS-Behaviors-Reviewed"><a href="#EBS-Behaviors-Reviewed" class="headerlink" title="EBS Behaviors Reviewed"></a>EBS Behaviors Reviewed</h2><p>If we stop the instance, the <strong>data is kept on the disk (with EBS)</strong> and will remain on the disk until the EC2 instance is started. </p>
+<p>If the instance is terminated, then by default <strong>the root device volume will also be terminated.</strong></p>
+<h2 id="EC2-Hibernate-Reviewed"><a href="#EC2-Hibernate-Reviewed" class="headerlink" title="EC2 Hibernate Reviewed"></a>EC2 Hibernate Reviewed</h2><p>When you hibernate an EC2 instance, the operating system is told to perform hibernation (suspend-to-disk). Hibernation saves the contents from the instance memory (RAM) to your Amazon EBS root volume. We persist the instance’s Amazon EBS root volume and any attached Amazon EBS data volumes.</p>
+<p><strong>When you start your instance out of hibernation:</strong></p>
+<ul>
+<li>The <strong>Amazon EBS</strong> root volume is restored to its previous sate</li>
+<li>The <strong>RAM</strong> contents are reloaded</li>
+<li>The processes that were preciously running on the instance are resumed</li>
+<li>Previously attached data volumes are <strong>reattached and the instance retains its instance ID.</strong></li>
+</ul>
+<p><strong>This is useful for:</strong></p>
+<ul>
+<li><strong>Long-running processes</strong></li>
+<li><strong>Services that take time to initialize</strong></li>
+</ul>
+<h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
 <ul>
 <li>Termination Protection is <strong>turned off</strong> by default, you must turn it on.</li>
 <li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated. <strong>But any additional volumes by default won’t be deleted.</strong></li>
@@ -485,7 +530,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.8.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.9.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.11.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.12.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
