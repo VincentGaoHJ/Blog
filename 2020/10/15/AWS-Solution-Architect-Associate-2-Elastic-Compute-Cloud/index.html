@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-16T18:19:38.456Z">
+<meta property="og:updated_time" content="2020-10-17T03:50:50.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -351,7 +351,39 @@
 <li><strong>You can reboot both, you will not lose your data.</strong></li>
 <li><strong>By default, both ROOT volumes will be deleted on termination. However, with EBS volumes, you can tell AWS to keep the root device volume.</strong></li>
 </ul>
-<h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
+<h2 id="ENI-vs-ENA-vs-EFA"><a href="#ENI-vs-ENA-vs-EFA" class="headerlink" title="ENI vs ENA vs EFA"></a>ENI vs ENA vs EFA</h2><p><strong>Terminology</strong></p>
+<ul>
+<li><p><strong>ENI</strong></p>
+<p><strong>For basic networking.</strong></p>
+<ul>
+<li><strong>Elastic Network Interface</strong> - essentially a virtual network card.</li>
+<li>An ENI is simply a virtual network card for your EC2 instances.</li>
+</ul>
+</li>
+<li><p><strong>EN</strong></p>
+<p><strong>For when you need speeds between 10 Gbps and 100 Gbps. Anywhere you need reliable, high throughput.</strong></p>
+<ul>
+<li><strong>Enhanced Networking</strong>. Uses <strong>single root I/O virtualization (SR-IOV)</strong> to provide high-performance networking capabilities on supported instance types.</li>
+<li>Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.</li>
+<li>Use where you want good network performance.</li>
+<li><strong>Depending on your instance type, enhanced networking can be enabled using:</strong><ul>
+<li><strong>Elastic Network Adapter(ENA),</strong> which supports network speeds of up to 100 Gbps for supported instance types.</li>
+<li>Intel 82599 <strong>Virtual Function (VF)</strong> interface, which supports network speeds of up to 10 Gbps for supported instance types. This is typically used on older instances.</li>
+<li><strong>In any scenario question, you probably want to choose ENA over VF if given the option.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>EFA</strong></p>
+<p><strong>Fort when you need to accelerate High Performance Computing (HPC) and machine learning applications or if you need to do an OS-bypass.</strong></p>
+<ul>
+<li><strong>Elastic Fabric Adapter (EFA)</strong> is a network device that you can attach to your Amazon EC2 instance to accelerate High Performance Computing (HPC) and machine learning applications.</li>
+<li>EFA provided lower and more consistent latency and higher throughput than the TCP transport traditionally used in cloud-based HPC systems.</li>
+<li>EFA can use OS-bypass. OS-bypass enables HPC and machine learning applications to bypass the operating system kernel and to communicate directly with the EFA device. It makes it a lot faster with a lot lower latency. Not supported with Windows currently, only Linux.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
 <ul>
 <li>Termination Protection is <strong>turned off</strong> by default, you must turn it on.</li>
 <li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated. <strong>But any additional volumes by default won’t be deleted.</strong></li>
@@ -453,7 +485,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.6.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.7.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.8.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.9.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
