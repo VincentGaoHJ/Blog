@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-17T09:11:53.635Z">
+<meta property="og:updated_time" content="2020-10-17T10:27:36.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -428,6 +428,43 @@
 <li><strong>Long-running processes</strong></li>
 <li><strong>Services that take time to initialize</strong></li>
 </ul>
+<p><strong>Exam Tips:</strong></p>
+<ul>
+<li><strong>EC2 Hibernate</strong> preserves the in-memory RAM on persistent storage(EBS)</li>
+<li>Much faster to boot up because you <strong>do not need to reload the operating system.</strong></li>
+<li>Instance RAM must be less than <strong>150 GB.</strong></li>
+<li>Available for Windows, Amazon Linux 2 AMI, and Ubuntu.</li>
+<li>Instances can’t be hibernated for more than 60 days.</li>
+</ul>
+<h2 id="Cloud-Watch"><a href="#Cloud-Watch" class="headerlink" title="Cloud Watch"></a>Cloud Watch</h2><p><strong>Amazon CloudWatch is a monitoring service to monitor your AWS resources, as well as the applications that you run on AWS.</strong></p>
+<p><strong>CloudWatch can monitor things like:</strong></p>
+<ul>
+<li>Compute</li>
+<li>Storage &amp; Content Delivery</li>
+</ul>
+<p><strong>Host Level Metrics Consist of:</strong></p>
+<ul>
+<li>CPU</li>
+<li>Network</li>
+<li>Disk</li>
+<li>Status Check</li>
+</ul>
+<p><strong>AWS CloudTrail</strong></p>
+<p>AWS CloudTrail increases visibility into your user and resource activity by recording AWS Management Console actions and API calls. You can identity which users and accounts called AWS, the source IP address from which the calls were made, and when the calls occurred.</p>
+<p><strong>CloudTrail vs CloudWatch</strong></p>
+<ul>
+<li><strong>CloudWatch monitors performance.</strong></li>
+<li><strong>CloudTrail monitors API calls in the AWS platform</strong> </li>
+</ul>
+<p><strong>Things need to be remembered:</strong></p>
+<ul>
+<li>CloudWatch is used for monitoring performance.</li>
+<li>CloudWatch can monitor most of AWS as well as your applications that run on AWS.</li>
+<li>CloudWatch with EC2 will monitor events every 5 minutes by default.</li>
+<li>You can have 1 minute intervals by turning on detailed monitoring.</li>
+<li>You can create CloudWatch alarms which trigger notifications.</li>
+<li><strong>CloudWatch is all about performance. CloudTrail is all about auditing.</strong></li>
+</ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
 <ul>
 <li>Termination Protection is <strong>turned off</strong> by default, you must turn it on.</li>
@@ -530,7 +567,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.11.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.12.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Watch"><span class="nav-number">1.11.</span> <span class="nav-text">Cloud Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.12.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.13.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
