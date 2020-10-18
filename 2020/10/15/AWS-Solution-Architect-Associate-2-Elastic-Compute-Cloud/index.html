@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-17T10:40:32.669Z">
+<meta property="og:updated_time" content="2020-10-18T06:02:20.835Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -477,7 +477,82 @@
 <li><strong>Standard Monitoring = 5 Minutes</strong></li>
 <li><strong>Detailed Monitoring = 1 Minutes</strong></li>
 </ul>
-<h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
+<h2 id="AWS-Command-Line"><a href="#AWS-Command-Line" class="headerlink" title="AWS Command Line"></a>AWS Command Line</h2><ul>
+<li>You can interact with AWS from anywhere in the world just by using the command line (CLI).</li>
+<li>You will need to set up access in IAM.</li>
+<li>Commands themselves are not in the exam, but some basic commands will be useful to know for real life.</li>
+</ul>
+<h2 id="Identity-Access-Management-Roles"><a href="#Identity-Access-Management-Roles" class="headerlink" title="Identity Access Management Roles"></a>Identity Access Management Roles</h2><ul>
+<li><strong>Roles are far more secure than storing your access key and secret access key on individual EC2 instances.</strong></li>
+<li>Roles are easier to manage.</li>
+<li><strong>Roles can be assigned to an EC2 instance after it is created using both the console &amp; command line.</strong></li>
+<li><strong>Roles are universal — you can use them in any region.</strong></li>
+</ul>
+<h2 id="Using-Boot-Strap-Scrips"><a href="#Using-Boot-Strap-Scrips" class="headerlink" title="Using Boot Strap Scrips"></a>Using Boot Strap Scrips</h2><p><strong>Bootstrap Scripts are super powerful as you can see it’s a way of automating your infrastructure.</strong></p>
+<h2 id="Instance-Meta-data"><a href="#Instance-Meta-data" class="headerlink" title="Instance Meta data"></a>Instance Meta data</h2><ul>
+<li><p><strong>Used to get information about an instance (such as public IP)</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/m</span>eta-data<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>User data simply contain the bootstrap script that you run</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/u</span>ser-data<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="EFS-Amazon-Elastic-File-System"><a href="#EFS-Amazon-Elastic-File-System" class="headerlink" title="EFS (Amazon Elastic File System)"></a>EFS (Amazon Elastic File System)</h2><p>Amazon Elastic File System(Amazon EFS) is as <strong>file storage service for Amazon Elastic Compute Cloud (EC2) instance</strong>. Amazon EFS is easy to use and provides a simple interface that allows you to create and configure file systems quickly and easily.</p>
+<p><strong>With Amazon EFS, storage capacity is elastic</strong>, growing and shrinking automatically as you add and remove files, so you applications have the storage they need, when they need it.</p>
+<p><strong>Exam Tips</strong></p>
+<ul>
+<li><strong>Supports the Network File System version 4 (NFSv4) protocol.</strong></li>
+<li><strong>You only pay for the storage you use (no pre-provisioning required)</strong></li>
+<li><strong>Can scale up to the petabytes</strong></li>
+<li><strong>Can support thousands of concurrent NFS connections</strong></li>
+<li><strong>Data is stored across multiple AZ’s within a region</strong></li>
+<li><strong>Read After Write Consistency</strong></li>
+</ul>
+<h2 id="FSX-for-Windows-amp-FSX-for-Lustre"><a href="#FSX-for-Windows-amp-FSX-for-Lustre" class="headerlink" title="FSX for Windows &amp; FSX for Lustre"></a>FSX for Windows &amp; FSX for Lustre</h2><p><strong>Amazon FSx for Windows</strong></p>
+<ul>
+<li>Amazon FSx for Windows File Server provides <strong>a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require file storage to AWS</strong>. Amazon FSx is built on Windows Server.</li>
+</ul>
+<p><strong>FSX for Lustre</strong></p>
+<ul>
+<li><p><strong>Amazon FSx for Lustre is a fully managed file system that is optimized for compute-intensive workloads</strong>, such as high-performance computing, machine learning, media data processing, and electronic design automation (EDA).</p>
+</li>
+<li><p>With Amazon FSx, you can launch and run a Lustre file system that can process massive data sets at up to hundreds of gigabytes per second of throughput, millions of IOPS, and sub-millisecond latencies.</p>
+</li>
+</ul>
+<h3 id="How-is-FSx-Windows-amp-Lustre-Different-to-EFS"><a href="#How-is-FSx-Windows-amp-Lustre-Different-to-EFS" class="headerlink" title="How is FSx (Windows &amp; Lustre) Different to EFS"></a>How is FSx (Windows &amp; Lustre) Different to EFS</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Windows FSx</th>
+<th>Lustre FSx</th>
+<th>EFS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A managed Windows Server</td>
+<td>A managed file system</td>
+<td>A managed NAS filter for EC2 instances</td>
+</tr>
+<tr>
+<td>Running Windows <strong>Server Message Block (SMB)-based</strong> file services</td>
+<td></td>
+<td>Based on <strong>Network File System (NFS) version 4</strong></td>
+</tr>
+<tr>
+<td>Designed for <strong>Windows and Windows applications</strong></td>
+<td>Designed specifically for <strong>fast processing of workloads</strong></td>
+<td>One of the first <strong>network file sharing protocols</strong> native to Unix and Linux</td>
+</tr>
+<tr>
+<td><strong>When you need centralized Storage for Windows-based applications</strong></td>
+<td><strong>When you need high-speed, high-capacity distributed storage.</strong></td>
+<td><strong>When you need distributed, highly resilient storage for Linux-based applications</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="EC2-Placement-Groups"><a href="#EC2-Placement-Groups" class="headerlink" title="EC2 Placement Groups"></a>EC2 Placement Groups</h2><h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
 <ul>
 <li>Termination Protection is <strong>turned off</strong> by default, you must turn it on.</li>
 <li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated. <strong>But any additional volumes by default won’t be deleted.</strong></li>
@@ -579,7 +654,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Watch"><span class="nav-number">1.11.</span> <span class="nav-text">Cloud Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.12.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.13.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Watch"><span class="nav-number">1.11.</span> <span class="nav-text">Cloud Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Command-Line"><span class="nav-number">1.12.</span> <span class="nav-text">AWS Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity-Access-Management-Roles"><span class="nav-number">1.13.</span> <span class="nav-text">Identity Access Management Roles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Boot-Strap-Scrips"><span class="nav-number">1.14.</span> <span class="nav-text">Using Boot Strap Scrips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instance-Meta-data"><span class="nav-number">1.15.</span> <span class="nav-text">Instance Meta data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EFS-Amazon-Elastic-File-System"><span class="nav-number">1.16.</span> <span class="nav-text">EFS (Amazon Elastic File System)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FSX-for-Windows-amp-FSX-for-Lustre"><span class="nav-number">1.17.</span> <span class="nav-text">FSX for Windows &amp; FSX for Lustre</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-is-FSx-Windows-amp-Lustre-Different-to-EFS"><span class="nav-number">1.17.1.</span> <span class="nav-text">How is FSx (Windows &amp; Lustre) Different to EFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Placement-Groups"><span class="nav-number">1.18.</span> <span class="nav-text">EC2 Placement Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.19.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.20.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
