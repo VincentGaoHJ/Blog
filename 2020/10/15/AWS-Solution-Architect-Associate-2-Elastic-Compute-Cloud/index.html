@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-19T05:54:23.953Z">
+<meta property="og:updated_time" content="2020-10-19T06:14:43.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -318,6 +318,7 @@
 <li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated.</li>
 <li>EBS Root Volumes of your <strong>DEFAULT</strong> AMI’s <strong>CAN</strong> be encrypted. You can use a third party tool (such as bit locker etc) to encrypt the root volume. or this can be done when creating AMI’s in the AWS console or using the API.</li>
 <li>Additional volumes can be encrypted.</li>
+<li><a href="https://aws.amazon.com/blogs/aws/new-multi-attach-for-provisioned-iops-io1-amazon-ebs-volumes/" target="_blank" rel="noopener">As of Feb 2020 you can attach certain types of EBS volumes to multiple EC2 instances.</a> </li>
 </ul>
 <h2 id="EBS-Volume-amp-Snapshot"><a href="#EBS-Volume-amp-Snapshot" class="headerlink" title="EBS Volume &amp; Snapshot"></a>EBS Volume &amp; Snapshot</h2><ul>
 <li><strong>It’s really important to remember that your EBS volumes will always be in the same Availability Zones as your EC2 instance.</strong></li>
@@ -575,6 +576,7 @@
 <ul>
 <li><strong>Group of instances that are each placed on distinct underlying hardware.</strong></li>
 <li>Recommended for applications that <strong>have a small number of critical instances that should be kept separate from each other.</strong></li>
+<li>Spread placement groups have a specific limitation that you can only have a maximum of 7 running instances per Availability Zone.</li>
 </ul>
 <p><strong>Partitioned</strong></p>
 <ul>
