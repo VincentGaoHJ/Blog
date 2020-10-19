@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-19T02:19:34.288Z">
+<meta property="og:updated_time" content="2020-10-19T05:54:23.953Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Elastic Compute Cloud (Amazon EC2)">
 <meta name="twitter:description" content="Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.  Amazo">
@@ -313,6 +313,12 @@
 </tbody>
 </table>
 </div>
+<ul>
+<li>Termination protection is <strong>turned off</strong> by default, you must turn it on.</li>
+<li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated.</li>
+<li>EBS Root Volumes of your <strong>DEFAULT</strong> AMI’s <strong>CAN</strong> be encrypted. You can use a third party tool (such as bit locker etc) to encrypt the root volume. or this can be done when creating AMI’s in the AWS console or using the API.</li>
+<li>Additional volumes can be encrypted.</li>
+</ul>
 <h2 id="EBS-Volume-amp-Snapshot"><a href="#EBS-Volume-amp-Snapshot" class="headerlink" title="EBS Volume &amp; Snapshot"></a>EBS Volume &amp; Snapshot</h2><ul>
 <li><strong>It’s really important to remember that your EBS volumes will always be in the same Availability Zones as your EC2 instance.</strong></li>
 <li><strong>Volumes exist on EBS.</strong> Think of EBS as a virtual hard disk.</li>
@@ -323,6 +329,9 @@
 <li>To create a snapshot for Amazon EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. <strong>However you can take a snap while the instance is running.</strong></li>
 <li><strong>You can create AMI’s from Snapshots.</strong></li>
 <li><strong>You can change EBS volume sizes on the fly, including changing the size and storage type.</strong></li>
+</ul>
+<p><strong>Migrating EBS</strong></p>
+<ul>
 <li><strong>To move an EC2 volume from one AZ to another, take a snapshot of it, create an AMI from the snapshot and then use the AMI to launch the EC2 instance in a new AZ.</strong></li>
 <li><strong>To move an EC2 volume from one region to another, take a snapshot of it, create an AMI from the snapshot and the copy the AMI from one region to the other. Then use the copied AMI to launch the new EC2 instance in the new region.</strong></li>
 </ul>
@@ -383,19 +392,19 @@
 </ul>
 </li>
 </ul>
-<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><ul>
+<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><p><strong>EBS Encryption</strong></p>
+<ul>
 <li><strong>snapshots of encrypted volumes are encrypted automatically.</strong></li>
 <li><strong>Volumes restored from encrypted snapshots are encrypted automatically.</strong></li>
 <li><strong>You can share snapshots, but only if they are unencrypted.</strong></li>
 <li><strong>These snapshots can be shared with other AWS accounts or made public.</strong></li>
-<li><strong>You can now encrypt root device volumes upon creation of the EC2 instance.</strong></li>
-<li><strong>The process for making it encrypted:</strong><ul>
+</ul>
+<p><strong>You can now encrypt root device volumes upon creation of the EC2 instance. The process for making it encrypted:</strong></p>
+<ul>
 <li>Create a Snapshot of the unencrypted root device volume</li>
 <li>Create a copy of the Snapshot and select the encrypt option</li>
 <li>Create an AMI from the encrypted Snapshot</li>
 <li>Use that AMI to launch new encrypted instance</li>
-</ul>
-</li>
 </ul>
 <h2 id="Spot-Instances-amp-Spot-Fleets"><a href="#Spot-Instances-amp-Spot-Fleets" class="headerlink" title="Spot Instances &amp; Spot Fleets"></a>Spot Instances &amp; Spot Fleets</h2><p><strong>Amazon EC2 Spot Instances let you take advantage of unused EC2 capacity in the AWS Cloud.</strong></p>
 <ul>
@@ -465,7 +474,7 @@
 </ul>
 <p><strong>Things need to be remembered:</strong></p>
 <ul>
-<li>CloudWatch is used for monitoring performance.</li>
+<li><strong>CloudWatch is used for monitoring performance.</strong></li>
 <li>CloudWatch can monitor most of AWS as well as your applications that run on AWS.</li>
 <li>CloudWatch with EC2 will monitor events every 5 minutes by default.</li>
 <li>You can have 1 minute intervals by turning on detailed monitoring.</li>
@@ -482,13 +491,16 @@
 <li>You will need to set up access in IAM.</li>
 <li>Commands themselves are not in the exam, but some basic commands will be useful to know for real life.</li>
 </ul>
-<h2 id="Identity-Access-Management-Roles"><a href="#Identity-Access-Management-Roles" class="headerlink" title="Identity Access Management Roles"></a>Identity Access Management Roles</h2><ul>
+<h2 id="Role-Identity-Access-Management-Roles"><a href="#Role-Identity-Access-Management-Roles" class="headerlink" title="Role: Identity Access Management Roles"></a>Role: Identity Access Management Roles</h2><ul>
 <li><strong>Roles are far more secure than storing your access key and secret access key on individual EC2 instances.</strong></li>
 <li>Roles are easier to manage.</li>
 <li><strong>Roles can be assigned to an EC2 instance after it is created using both the console &amp; command line.</strong></li>
 <li><strong>Roles are universal — you can use them in any region.</strong></li>
 </ul>
-<h2 id="Using-Boot-Strap-Scrips"><a href="#Using-Boot-Strap-Scrips" class="headerlink" title="Using Boot Strap Scrips"></a>Using Boot Strap Scrips</h2><p><strong>Bootstrap Scripts are super powerful as you can see it’s a way of automating your infrastructure.</strong></p>
+<h2 id="BootStrap-Scrips"><a href="#BootStrap-Scrips" class="headerlink" title="BootStrap Scrips"></a>BootStrap Scrips</h2><p><strong>Bootstrap Scripts are super powerful as you can see it’s a way of automating your infrastructure.</strong></p>
+<ul>
+<li>Bootstrap scripts run when an EC2 instance first boots.</li>
+</ul>
 <h2 id="Instance-Meta-data"><a href="#Instance-Meta-data" class="headerlink" title="Instance Meta data"></a>Instance Meta data</h2><ul>
 <li><p><strong>Used to get information about an instance (such as public IP)</strong></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/m</span>eta-data<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
@@ -578,21 +590,21 @@
 <p><strong>Other Exam Tips</strong></p>
 <ul>
 <li><strong>The name you specify for a placement group must be unique within your AWS account.</strong></li>
-<li>You can’t merge placement groups.</li>
-<li>You can move an existing instance into a placement group. Before you move the instance, the instance must be in the stopped state. You can move or remove an instance using the AWS CLI or an AWS SDK (software development kit), you can’t do it via the console yet.</li>
+<li><strong>You can’t merge</strong> placement groups.</li>
+<li><strong>You can’t move</strong> an existing instance into a placement group. Before you move the instance, the instance must be in the stopped state. You can move or remove an instance using the AWS CLI or an AWS SDK (software development kit), you can’t do it via the console yet.</li>
 </ul>
 <h2 id="HPC-on-AWS"><a href="#HPC-on-AWS" class="headerlink" title="HPC on AWS"></a>HPC on AWS</h2><p>You can create a large number of resources in almost no time. You only pay for the resources you use — and, once finished, you can destroy the resources. </p>
 <ul>
 <li><strong>Data Transfer</strong><ul>
-<li><strong>Snowball, snowmobile</strong></li>
-<li><strong>AWS DataSync</strong></li>
+<li><strong>Snowball, snowmobile (terabytes/petabytes worth of data)</strong></li>
+<li><strong>AWS DataSync</strong> </li>
 <li><strong>Direct Connect</strong> (a cloud service solution that makes it easy to establish a dedicated network connection from your premises to AWS)</li>
 </ul>
 </li>
 <li><strong>Compute</strong><ul>
 <li><strong>EC2</strong></li>
-<li><strong>EC2 fleets</strong></li>
-<li><strong>Placement groups</strong></li>
+<li><strong>EC2 fleets (Spot Instances or Spot Fleets)</strong></li>
+<li><strong>Placement groups (cluster placement groups)</strong></li>
 </ul>
 </li>
 <li><strong>Networking</strong><ul>
@@ -601,6 +613,46 @@
 <li><strong>Elastic Fabric Adapters </strong>(Network device you can attach to your Amazon EC2 to accelerate HPC and machine learning applications.)</li>
 </ul>
 </li>
+<li><strong>Storage</strong><ul>
+<li><strong>Instance-attached storage</strong><ul>
+<li><strong>EBS</strong>(Amazon Elastic Block Store provides persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud.)</li>
+<li><strong>Instance Store</strong></li>
+</ul>
+</li>
+<li><strong>Network Storage</strong><ul>
+<li><strong>Amazon S3</strong></li>
+<li><strong>Amazon EFS</strong> (Amazon Elastic File System is as file storage service for Amazon Elastic Compute Cloud (EC2) instance)</li>
+<li><strong>Amazon FSx for Lustre</strong> (Amazon FSx for Lustre is a fully managed file system that is optimized for compute-intensive workloads)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Orchestration &amp; Automation</strong><ul>
+<li><strong>AWS Batch</strong><ul>
+<li>AWS Batch enables developers, scientist, and engineers to <strong>easily and efficiently run hundreds of thousands of batch computing jobs on AWS.</strong></li>
+<li>AWS Batch supports <strong>multi-node parallel jobs</strong>, which allows you to run a single job that spans multiple EC2 instance.</li>
+<li>You can easily schedule jobs and launch EC2 instances according to your needs.</li>
+</ul>
+</li>
+<li><strong>AWS ParallelCluster</strong><ul>
+<li>Open-source cluster management tool that <strong>makes it easy for you to deploy and manage</strong> HPC clusters on AWS.</li>
+<li>ParallelCluster uses a <strong>simple text file to model and provision all the resources needed</strong> for your HPC applications in an automated and secure manner.</li>
+<li><strong>Automate creation</strong> of VPC, subnet, cluster type, and instance types.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="AWS-WAF-Web-Application-Firewall"><a href="#AWS-WAF-Web-Application-Firewall" class="headerlink" title="AWS WAF (Web Application Firewall)"></a>AWS WAF (Web Application Firewall)</h2><p><strong>AWS WAF is a web application firewall that lets you monitor the HTTP and HTTPS requests that are forwarded to Amazon CloudFront, an Application Load Balancer or API Gateway.</strong></p>
+<p><strong>AWS WAF also lets you control access to your content.</strong></p>
+<ul>
+<li>You can configure conditions such as what IP addresses are allowed to make this request or what query string parameters need to be passed for the request to be allowed.</li>
+<li>Then the application load balancer or CloudFront or API Gateway will either allow this content to be received or to give a HTTP 403 Status Code.</li>
+</ul>
+<p><strong>How to block malicious IP addresses:</strong></p>
+<ul>
+<li>Use AWS WAF</li>
+<li>Use Network ACLs</li>
 </ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><p><strong>Get Hands Dirty</strong></p>
 <ul>
@@ -704,7 +756,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Watch"><span class="nav-number">1.11.</span> <span class="nav-text">Cloud Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Command-Line"><span class="nav-number">1.12.</span> <span class="nav-text">AWS Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Identity-Access-Management-Roles"><span class="nav-number">1.13.</span> <span class="nav-text">Identity Access Management Roles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Boot-Strap-Scrips"><span class="nav-number">1.14.</span> <span class="nav-text">Using Boot Strap Scrips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instance-Meta-data"><span class="nav-number">1.15.</span> <span class="nav-text">Instance Meta data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EFS-Amazon-Elastic-File-System"><span class="nav-number">1.16.</span> <span class="nav-text">EFS (Amazon Elastic File System)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FSX-for-Windows-amp-FSX-for-Lustre"><span class="nav-number">1.17.</span> <span class="nav-text">FSX for Windows &amp; FSX for Lustre</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-is-FSx-Windows-amp-Lustre-Different-to-EFS"><span class="nav-number">1.17.1.</span> <span class="nav-text">How is FSx (Windows &amp; Lustre) Different to EFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Placement-Groups"><span class="nav-number">1.18.</span> <span class="nav-text">EC2 Placement Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HPC-on-AWS"><span class="nav-number">1.19.</span> <span class="nav-text">HPC on AWS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.20.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.21.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elastic-Compute-Cloud"><span class="nav-number">1.</span> <span class="nav-text">Elastic Compute Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Pricing-Models"><span class="nav-number">1.1.</span> <span class="nav-text">EC2 Pricing Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-Groups"><span class="nav-number">1.2.</span> <span class="nav-text">Security Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS"><span class="nav-number">1.3.</span> <span class="nav-text">EBS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Volume-amp-Snapshot"><span class="nav-number">1.4.</span> <span class="nav-text">EBS Volume &amp; Snapshot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AMI-Type-EBS-vs-Instance-Store"><span class="nav-number">1.5.</span> <span class="nav-text">AMI Type (EBS vs Instance Store)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ENI-vs-ENA-vs-EFA"><span class="nav-number">1.6.</span> <span class="nav-text">ENI vs ENA vs EFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Encrypted-Root-Device-Volumes-amp-Snapshots"><span class="nav-number">1.7.</span> <span class="nav-text">Encrypted Root Device Volumes &amp; Snapshots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spot-Instances-amp-Spot-Fleets"><span class="nav-number">1.8.</span> <span class="nav-text">Spot Instances &amp; Spot Fleets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EBS-Behaviors-Reviewed"><span class="nav-number">1.9.</span> <span class="nav-text">EBS Behaviors Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Hibernate-Reviewed"><span class="nav-number">1.10.</span> <span class="nav-text">EC2 Hibernate Reviewed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Watch"><span class="nav-number">1.11.</span> <span class="nav-text">Cloud Watch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Command-Line"><span class="nav-number">1.12.</span> <span class="nav-text">AWS Command Line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Role-Identity-Access-Management-Roles"><span class="nav-number">1.13.</span> <span class="nav-text">Role: Identity Access Management Roles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BootStrap-Scrips"><span class="nav-number">1.14.</span> <span class="nav-text">BootStrap Scrips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Instance-Meta-data"><span class="nav-number">1.15.</span> <span class="nav-text">Instance Meta data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EFS-Amazon-Elastic-File-System"><span class="nav-number">1.16.</span> <span class="nav-text">EFS (Amazon Elastic File System)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FSX-for-Windows-amp-FSX-for-Lustre"><span class="nav-number">1.17.</span> <span class="nav-text">FSX for Windows &amp; FSX for Lustre</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-is-FSx-Windows-amp-Lustre-Different-to-EFS"><span class="nav-number">1.17.1.</span> <span class="nav-text">How is FSx (Windows &amp; Lustre) Different to EFS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EC2-Placement-Groups"><span class="nav-number">1.18.</span> <span class="nav-text">EC2 Placement Groups</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HPC-on-AWS"><span class="nav-number">1.19.</span> <span class="nav-text">HPC on AWS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-WAF-Web-Application-Firewall"><span class="nav-number">1.20.</span> <span class="nav-text">AWS WAF (Web Application Firewall)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.21.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.22.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
