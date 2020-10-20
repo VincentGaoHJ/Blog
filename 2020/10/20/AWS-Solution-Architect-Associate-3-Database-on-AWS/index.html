@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Relational database on AWS:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-20T04:22:55.880Z">
+<meta property="og:updated_time" content="2020-10-20T05:41:00.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta name="twitter:description" content="Relational database on AWS:">
@@ -275,6 +275,11 @@
 <li>SQL Server is not available for the read replicas.</li>
 <li>Used for scaling, not for DR!</li>
 <li>Must have automatic backups</li>
+<li><strong>Each read replica will have its own DNS end point</strong></li>
+<li>You can have read replicas that have Multi-AZ</li>
+<li>You can create read replicas of Multi-AZ source databases</li>
+<li><strong>Read replicas can be promoted to be their own databases.</strong> This breaks the replications. So if you do promote a read replica to be its own independent database the replication will no longer work.</li>
+<li>You can have a read replica in a second region.</li>
 </ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
