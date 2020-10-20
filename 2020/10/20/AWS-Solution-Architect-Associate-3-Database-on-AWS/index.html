@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Relational database on AWS:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-20T02:18:21.858Z">
+<meta property="og:updated_time" content="2020-10-20T04:22:55.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta name="twitter:description" content="Relational database on AWS:">
@@ -225,12 +225,56 @@
 <p><strong>ElastiCache</strong></p>
 <ul>
 <li><strong>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud.</strong> </li>
-<li><strong>Used to speed up performance of existing databases.</strong></li>
+<li><strong>Used to speed up performance of existing databases (frequent identical queries).</strong></li>
 <li>ElastiCache supports two open-source in-memory caching engines:<ul>
 <li>Memcached</li>
 <li>Redis</li>
 </ul>
 </li>
+</ul>
+<p><strong>Remember the following points:</strong></p>
+<ul>
+<li>RDS runs on virtual machines</li>
+<li>You cannot log into these operating systems however</li>
+<li>Patching of the RDS Operating System and DB is Amazon’s responsibility</li>
+<li>RDS is NOT Serverless</li>
+<li>Aurora Serverless IS Serverless</li>
+</ul>
+<h2 id="RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><a href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas" class="headerlink" title="RDS - Back Ups, Multi-AZ &amp; Read Replicas"></a>RDS - Back Ups, Multi-AZ &amp; Read Replicas</h2><h3 id="Back-Ups"><a href="#Back-Ups" class="headerlink" title="Back Ups"></a>Back Ups</h3><p><strong>Automated Backups</strong></p>
+<ul>
+<li>Automated Backups allow you to recover your database to any point in time within a “retention period”. The retention period can be between one and 35 days. </li>
+<li>Automated Backups will take a full daily snapshot and will also store transaction logs throughout the day. </li>
+<li>When you do a recovery, AWS will first choose the most recent daily back up, and then apply transaction logs relevant to that day. This allows you to do a point in time recovery down to a second, within the retention period.</li>
+<li><strong>Enabled by default.</strong></li>
+<li>The backup data is stored in S3 and you get free storage space equal to the size of your database.</li>
+<li>Backups are taken within a defined window. During the backup window, storage I/O may be suspended while your data is being backed up.</li>
+</ul>
+<p><strong>Database Snapshots</strong></p>
+<ul>
+<li>DB Snapshots <strong>are done manually.</strong></li>
+<li>They are stored even after you delete the origin RDS instance, unlike automated bakeups.</li>
+</ul>
+<p><strong>Restoring Backups</strong></p>
+<ul>
+<li>Whenever you restore wither an Automatic Backup or a manual Snapshot, <strong>the restored version of the database will be a new RDS instance with a new DNS (Domain Name System) endpoint.</strong></li>
+</ul>
+<p><strong>Encryption At Rest</strong></p>
+<ul>
+<li><strong>Encryption is done using the AWS KMS (Key Management Service).</strong> </li>
+<li>Once your RDS instance is encrypted, the data stored at rest in the underlying storage is encrypted, as are its automated backups, read replicas, and snapshot.</li>
+</ul>
+<h3 id="Multi-AZ"><a href="#Multi-AZ" class="headerlink" title="Multi-AZ"></a>Multi-AZ</h3><ul>
+<li><strong>Multi-AZ allows you to have an exact copy of your production database in another Availability Zone.</strong> </li>
+<li>AWS handles the replication for you, so when you production database is written to, this write will automatically be synchronized to the stand by database.</li>
+<li>In the event of planned database maintenance, DB Instance failure, or an Availability Zone failure, <strong>Amazon RDS will automatically fail-over to the standby so that database operations can resume quickly without administrative intervention.</strong></li>
+<li><strong>Aurora is not involved in Multi-AZ,</strong> because Aurora by its own architecture is completely fault tolerant.</li>
+</ul>
+<h3 id="Read-Replica"><a href="#Read-Replica" class="headerlink" title="Read Replica"></a>Read Replica</h3><ul>
+<li><strong>Read replicas allow you to have a read-only copy of your production database.</strong> </li>
+<li>This is achieved by using Asynchronous replication from the primary RDS instance to the read replica. <strong>You use read replicas primarily for very read-heavy database workloads.</strong></li>
+<li>SQL Server is not available for the read replicas.</li>
+<li>Used for scaling, not for DR!</li>
+<li>Must have automatic backups</li>
 </ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
@@ -327,7 +371,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.3.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.3.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.4.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
