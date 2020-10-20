@@ -11,18 +11,18 @@
   
   
   
-  <meta name="description" content="Relational database on AWS: SQL Server; Oracle; MySQL Server; PostgreSQL; Aurora: MariaDB">
+  <meta name="description" content="Relational database on AWS:">
 <meta name="keywords" content="AWS,Solutions Architect - Associate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/10/20/AWS-Solution-Architect-Associate-3-Database-on-AWS/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="Relational database on AWS: SQL Server; Oracle; MySQL Server; PostgreSQL; Aurora: MariaDB">
+<meta property="og:description" content="Relational database on AWS:">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-20T01:54:23.022Z">
+<meta property="og:updated_time" content="2020-10-20T02:18:21.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
-<meta name="twitter:description" content="Relational database on AWS: SQL Server; Oracle; MySQL Server; PostgreSQL; Aurora: MariaDB">
+<meta name="twitter:description" content="Relational database on AWS:">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -203,12 +203,34 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Relational database on AWS: SQL Server; Oracle; MySQL Server; PostgreSQL; Aurora: MariaDB</p>
+        <p>Relational database on AWS: </p>
 <a id="more"></a>
 <p>[toc]</p>
-<h1 id="Database-on-AWS"><a href="#Database-on-AWS" class="headerlink" title="Database on AWS"></a>Database on AWS</h1><h2 id="RDS-has-two-key-feature"><a href="#RDS-has-two-key-feature" class="headerlink" title="RDS has two key feature:"></a>RDS has two key feature:</h2><ul>
-<li>Multi-AZ - For Disaster Recovery</li>
-<li>Read Replicas - For performance</li>
+<h1 id="Database-on-AWS"><a href="#Database-on-AWS" class="headerlink" title="Database on AWS"></a>Database on AWS</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Database Types</strong></p>
+<ul>
+<li><strong>RDS (OLTP): SQL Server; Oracle; MySQL Server; PostgreSQL; Aurora: MariaDB</strong>. RDS has two key feature: Multi-AZ - For Disaster Recovery; Read Replicas - For performance.</li>
+<li><strong>DynamoDB (NoSQL)</strong></li>
+<li><strong>Red Shift OLAP</strong></li>
+</ul>
+<p><strong>OLTP vs OLAP</strong></p>
+<ul>
+<li><strong>Online Transaction Processing (OLTP)</strong> differs from <strong>Online Analytics Processing (OLAP)</strong> in terms of the types of queries you will run.</li>
+</ul>
+<p><strong>Redshift for Data Warehousing </strong></p>
+<ul>
+<li><strong>Used for business intelligence.</strong> Tools like Congnos, Jaspersoft, SQL Server Reporting Services, Oracle Hyperion, SAP NetWeaver.</li>
+<li>Used to pull in very large and complex data sets. Usually used by management to do queries on data (such as current performance vs targets etc)</li>
+<li>Data Warehousing databases use different type of architecture both from a database perspective and infrastructure layer. <strong>Amazon’s Data Warehouse Solution is Called Redshift.</strong></li>
+</ul>
+<p><strong>ElastiCache</strong></p>
+<ul>
+<li><strong>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud.</strong> </li>
+<li><strong>Used to speed up performance of existing databases.</strong></li>
+<li>ElastiCache supports two open-source in-memory caching engines:<ul>
+<li>Memcached</li>
+<li>Redis</li>
+</ul>
+</li>
 </ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
@@ -305,7 +327,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-has-two-key-feature"><span class="nav-number">1.1.</span> <span class="nav-text">RDS has two key feature:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.3.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.2.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.3.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
