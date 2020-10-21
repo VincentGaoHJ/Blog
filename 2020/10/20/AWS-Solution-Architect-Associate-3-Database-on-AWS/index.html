@@ -21,7 +21,8 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png">
 <meta property="og:image" content="https://d1.awsstatic.com/re19/Redshift/Product-Page-Diagram_Redshift_Data-Lake-Integration@2x.b04dff434226a5b3e5e38159bbf610ee617a5655.png">
-<meta property="og:updated_time" content="2020-10-21T03:09:37.818Z">
+<meta property="og:image" content="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png">
+<meta property="og:updated_time" content="2020-10-21T04:13:46.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta name="twitter:description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
@@ -290,13 +291,68 @@
 <li><strong>Read replicas can be promoted to be their own databases.</strong> This breaks the replications. So if you do promote a read replica to be its own independent database the replication will no longer work.</li>
 <li><strong>You can have a read replica in a second region.</strong></li>
 </ul>
-<h2 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h2><p><strong>Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.</strong> It is a fully managed database and <strong>supports both document and key-value data models</strong>. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad-tech, IoT, and many other applications.</p>
+<h2 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h2><h3 id="Basic-DynamoDB"><a href="#Basic-DynamoDB" class="headerlink" title="Basic DynamoDB"></a>Basic DynamoDB</h3><p><strong>Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.</strong> It is a fully managed database and <strong>supports both document and key-value data models</strong>. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad-tech, IoT, and many other applications.</p>
 <p><strong>The Basics of DynamoDB</strong></p>
 <ul>
 <li><strong>Stored on SSD storage</strong></li>
 <li><strong>Spread across 3 geographically distinct data centers</strong></li>
 <li><strong>Eventual Consistent Reads (Default)</strong>: Consistency across all copies of data is usually reached within a second.</li>
 <li><strong>Strongly Consistent Reads</strong>: Return a result that reflects all writes that received a successful response prior to the read.</li>
+</ul>
+<h3 id="Advanced-DynamoDB"><a href="#Advanced-DynamoDB" class="headerlink" title="Advanced DynamoDB"></a>Advanced DynamoDB</h3><p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html" target="_blank" rel="noopener">DynamoDB Accelerator (DAX)</a></strong></p>
+<p><img src="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png" alt="a high-level overview of DAX"></p>
+<ul>
+<li>Fully managed, highly available, in-memory cache</li>
+<li>10x performance improvement</li>
+<li>Reduces request time from <strong>milliseconds</strong> to microseconds — even under load.</li>
+<li>No need for developers to manage caching logic</li>
+<li>DAX is completely compatible with DynamoDB API calls</li>
+</ul>
+<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html" target="_blank" rel="noopener">Transactions</a></strong></p>
+<ul>
+<li><strong>Multiple “all-or-nothing” operations</strong></li>
+<li>Financial transactions / Fulfilling orders</li>
+<li>Two underlying reads or writes — prepare/commit</li>
+<li>Up to 25 items or 4 MB of Data</li>
+</ul>
+<p><strong>On-Demand Capacity</strong></p>
+<ul>
+<li><strong>Pay-per-request pricing</strong></li>
+<li><strong>Balance cost and performance</strong></li>
+<li>No minimum capacity</li>
+<li><strong>No charge for read/write</strong> — only storage and backups</li>
+<li><strong>Pay more per request</strong> than with provisioned capacity</li>
+<li>Use for new product launches</li>
+</ul>
+<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html" target="_blank" rel="noopener">On-Demand backup and Restore</a></strong></p>
+<ul>
+<li>Full backups at any time</li>
+<li>Zero impact on table performance or available</li>
+<li>Consistent within seconds and <strong>retained until deleted</strong></li>
+<li>operates within same region as the source table</li>
+</ul>
+<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html" target="_blank" rel="noopener">Point-in-Time Recovery (PITR)</a></strong></p>
+<ul>
+<li>Protects against accidental writes or deletes</li>
+<li>Restore to any point in the <strong>past 35 days</strong></li>
+<li>Incremental backups</li>
+<li>Not enabled by default</li>
+<li>Latest restorable: <strong>five minutes in the past</strong></li>
+</ul>
+<p><strong>Streams</strong></p>
+<ul>
+<li>Time-ordered sequence of item-level changes in a table</li>
+<li>Stored for 24 hours</li>
+<li>Inserts, updates, and deletes</li>
+</ul>
+<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html" target="_blank" rel="noopener">Global Tables</a></strong></p>
+<p><strong>Managed Multi-Master, Multi-Region Replication</strong></p>
+<ul>
+<li><strong>Globally distributed applications</strong></li>
+<li>Based on DynamoDB streams</li>
+<li><strong>Multi-region redundancy for DR (Disaster Recovery) or HA (High Availability)</strong></li>
+<li>No need to rewrite the  application, DynamoDB handle it automatically for you</li>
+<li>Replication latency under <strong>one second</strong></li>
 </ul>
 <h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
@@ -393,7 +449,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.5.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.5.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
