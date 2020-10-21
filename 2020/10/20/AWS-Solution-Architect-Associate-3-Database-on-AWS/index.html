@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png">
 <meta property="og:image" content="https://d1.awsstatic.com/re19/Redshift/Product-Page-Diagram_Redshift_Data-Lake-Integration@2x.b04dff434226a5b3e5e38159bbf610ee617a5655.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png">
-<meta property="og:updated_time" content="2020-10-21T04:13:46.129Z">
+<meta property="og:updated_time" content="2020-10-21T05:44:20.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta name="twitter:description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
@@ -277,7 +277,6 @@
 <li>In the event of planned database maintenance, DB Instance failure, or an Availability Zone failure, <strong>Amazon RDS will automatically fail-over to the standby so that database operations can resume quickly without administrative intervention.</strong></li>
 <li><strong>Aurora is not involved in Multi-AZ,</strong> because Aurora by its own architecture is completely fault tolerant.</li>
 <li>Used for DR (Disaster Recovery)</li>
-<li></li>
 </ul>
 <h3 id="Read-Replica"><a href="#Read-Replica" class="headerlink" title="Read Replica"></a>Read Replica</h3><ul>
 <li><strong>Read replicas allow you to have a read-only copy of your production database.</strong> </li>
@@ -354,7 +353,34 @@
 <li>No need to rewrite the  application, DynamoDB handle it automatically for you</li>
 <li>Replication latency under <strong>one second</strong></li>
 </ul>
-<h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
+<p><strong><a href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html" target="_blank" rel="noopener">Database Migration Service (DMS)</a></strong></p>
+<ul>
+<li><p><strong>At a high level, when using AWS DMS you do the following:</strong></p>
+<ul>
+<li>Create a replication server.</li>
+<li>Create source and target endpoints that have connection information about your data stores.</li>
+<li>Create one or more migration tasks to migrate data between the source and target data stores.</li>
+</ul>
+</li>
+<li><p><strong>A task can consist of three major phases:</strong></p>
+<ul>
+<li>The full load of existing data</li>
+<li>The application of cached changes</li>
+<li>Ongoing replication</li>
+</ul>
+</li>
+</ul>
+<p><strong>Security</strong></p>
+<ul>
+<li>Encryption at rest using <strong>KMS</strong></li>
+<li>Site-to-site VPN</li>
+<li>Direct Connect (DX)</li>
+<li>IAM policies and roles</li>
+<li>Fine-grained access: This is where you have an IAM policies that allows users access to only certain attributes within DynamoDB table items.</li>
+<li>CloudWatch and CloudTrail</li>
+<li>VPC endpoints: For DynamoDB to enable EC2 instances in your VPC to use their private IP addresses to access DynamoDB with no exposure to the public Internet.</li>
+</ul>
+<h2 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a>Redshift</h2><h2 id="Other-Exam-Tips"><a href="#Other-Exam-Tips" class="headerlink" title="Other Exam Tips"></a>Other Exam Tips</h2><hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
 
       
@@ -449,7 +475,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.4.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.5.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redshift"><span class="nav-number">1.4.</span> <span class="nav-text">Redshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Exam-Tips"><span class="nav-number">1.5.</span> <span class="nav-text">Other Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.6.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
