@@ -20,7 +20,9 @@
 <meta property="og:description" content="The multi-armed bandit problem is a class example to demonstrate the exploration versus exploitation dilemma. This post introduces the bandit problem and how to solve it using different exploration st">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lilianweng.github.io/lil-log/assets/images/exploration_vs_exploitation.png">
-<meta property="og:updated_time" content="2020-11-07T03:10:53.940Z">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/09/im_9-300x180.jpg">
+<meta property="og:image" content="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/09/IM_23-768x393.jpg">
+<meta property="og:updated_time" content="2020-11-07T03:28:29.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Comprehensive Look at The Multi-Armed Bandit Problem">
 <meta name="twitter:description" content="The multi-armed bandit problem is a class example to demonstrate the exploration versus exploitation dilemma. This post introduces the bandit problem and how to solve it using different exploration st">
@@ -215,8 +217,40 @@
 <p>The multi-armed bandit (short: <em>bandit</em> or MAB) can be seen as a set of real distributions $B=\{R_{1},\dots ,R_{K}\}$, each distribution being  associated with the rewards delivered by one of the  $K\in \mathbb {N} ^{+}$ levers. Let $\mu _{1},\dots ,\mu _{K}$ be the mean values associated with these reward distributions. </p>
 <p>The gambler iteratively plays one lever per round and observes the  associated reward. The objective is to maximize the sum of the collected rewards. </p>
 <p>The horizon $H$ is the number of rounds that remain to be played.</p>
+<p><strong>The loss that we incur due to time/rounds spent due to the learning is called regret.</strong> In other words, we want to maximise my reward even during the learning phase. Regret is very aptly named, as it quantifies exactly how much you regret not picking the optimal arm.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/09/im_9-300x180.jpg" alt></p>
 <h1 id="Bandit-Strategies"><a href="#Bandit-Strategies" class="headerlink" title="Bandit Strategies"></a>Bandit Strategies</h1><h2 id="ε-Greedy-Algorithm"><a href="#ε-Greedy-Algorithm" class="headerlink" title="ε-Greedy Algorithm"></a>ε-Greedy Algorithm</h2><p>According to the ε-greedy algorithm, with a small probability $\epsilon$ we take a random action, but otherwise (which should be the most of the time, probability $1-epsilon$ ) we pick the best action that we have learnt so far.</p>
-<h2 id="Upper-Confidence-Bounds"><a href="#Upper-Confidence-Bounds" class="headerlink" title="Upper Confidence Bounds"></a>Upper Confidence Bounds</h2><h2 id="Hoeffding’s-Inequality"><a href="#Hoeffding’s-Inequality" class="headerlink" title="Hoeffding’s Inequality"></a>Hoeffding’s Inequality</h2><h2 id="UCB"><a href="#UCB" class="headerlink" title="UCB"></a>UCB</h2><h2 id="Bayesian-UCB"><a href="#Bayesian-UCB" class="headerlink" title="Bayesian UCB"></a>Bayesian UCB</h2><h2 id="Thompson-Sampling"><a href="#Thompson-Sampling" class="headerlink" title="Thompson Sampling"></a>Thompson Sampling</h2><h1 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h1><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><strong>Blog</strong></p>
+<blockquote>
+<p><strong>With probability 1- epsilon – we choose action with maximum value (argmaxa Qt(a))\</strong></p>
+<p><strong>With probability epsilon – we randomly choose an action from a set of all actions A\</strong></p>
+</blockquote>
+<h2 id="Upper-Confidence-Bounds"><a href="#Upper-Confidence-Bounds" class="headerlink" title="Upper Confidence Bounds"></a>Upper Confidence Bounds</h2><p><strong>Upper Confidence Bound (UCB) is the most widely used solution method for multi-armed bandit problems. This algorithm is based on the principle of optimism in the face of uncertainty.</strong></p>
+<p>In other words, the more uncertain we are about an arm, the more important it becomes to explore that arm.</p>
+<blockquote>
+<ul>
+<li>UCB says that we should choose the arm a1 and receive a reward making us less uncertain about its action-value. For the next trial/timestep, if we still are very uncertain about a1, we will choose it again until the uncertainty is reduced below a threshold.</li>
+</ul>
+</blockquote>
+<p><strong>UCB is actually a family of algorithms</strong>. Here, we will discuss UCB1.</p>
+<h2 id="UCB1"><a href="#UCB1" class="headerlink" title="UCB1"></a>UCB1</h2><p><strong>Steps involved in UCB1:</strong></p>
+<ul>
+<li><em>Play each of the K actions once, giving initial values for mean rewards corresponding to each action at</em></li>
+<li><em>For each round t = K:</em></li>
+<li><em>Let Nt(a) represent the number of times action a was played so far</em></li>
+<li><em>Play the action at maximising the following expression</em></li>
+<li><em>Observe the reward and update the mean reward or expected payoff for the chosen action</em></li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{equation}
+Q(a)+\sqrt{\frac{2 \log t}{N_{t}(a)}}
+\end{equation}</script><p>Each time <em>a</em> is selected, the uncertainty is presumably reduced: $N_t(a)$ increments, and, as it appears in the denominator, the uncertainty term decreases.</p>
+<p>On the other hand, each time an action other than <em>a</em> is selected, t increases, but Nt(a) does not; because t appears in the numerator, the uncertainty estimate increases.</p>
+<p><strong>Regret Comparison</strong></p>
+<p>Among all the algorithms given in this article, only the UCB algorithm provides a strategy where the regret increases as log(t), while in the other algorithms we get linear regret with different slopes.</p>
+<p><img src="https://cdn.analyticsvidhya.com/wp-content/uploads/2018/09/IM_23-768x393.jpg" alt></p>
+<h1 id="Case-Study"><a href="#Case-Study" class="headerlink" title="Case Study"></a>Case Study</h1><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>We need exploration because information is valuable. </p>
+<p>In terms of the exploration strategies, we can do no exploration at all, focusing on the short-term returns. Or we occasionally explore at random. Or even further, we explore and we are picky about which options to explore — actions with higher uncertainty are favored because they can provide higher information gain.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><strong>Blog</strong></p>
 <ul>
 <li><p><a href="https://lilianweng.github.io/lil-log/2018/01/23/the-multi-armed-bandit-problem-and-its-solutions.html" target="_blank" rel="noopener">The Multi-Armed Bandit Problem and Its Solutions — Lil’Log</a></p>
 </li>
@@ -320,7 +354,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-Multi-Armed-Bandit"><span class="nav-number">1.</span> <span class="nav-text">What is Multi-Armed Bandit?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploitation-vs-Exploration"><span class="nav-number">1.1.</span> <span class="nav-text">Exploitation vs Exploration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.2.</span> <span class="nav-text">Definition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bandit-Strategies"><span class="nav-number">2.</span> <span class="nav-text">Bandit Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ε-Greedy-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">ε-Greedy Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upper-Confidence-Bounds"><span class="nav-number">2.2.</span> <span class="nav-text">Upper Confidence Bounds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hoeffding’s-Inequality"><span class="nav-number">2.3.</span> <span class="nav-text">Hoeffding’s Inequality</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UCB"><span class="nav-number">2.4.</span> <span class="nav-text">UCB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-UCB"><span class="nav-number">2.5.</span> <span class="nav-text">Bayesian UCB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Thompson-Sampling"><span class="nav-number">2.6.</span> <span class="nav-text">Thompson Sampling</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Case-Study"><span class="nav-number">3.</span> <span class="nav-text">Case Study</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-Multi-Armed-Bandit"><span class="nav-number">1.</span> <span class="nav-text">What is Multi-Armed Bandit?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Exploitation-vs-Exploration"><span class="nav-number">1.1.</span> <span class="nav-text">Exploitation vs Exploration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition"><span class="nav-number">1.2.</span> <span class="nav-text">Definition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bandit-Strategies"><span class="nav-number">2.</span> <span class="nav-text">Bandit Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ε-Greedy-Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">ε-Greedy Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Upper-Confidence-Bounds"><span class="nav-number">2.2.</span> <span class="nav-text">Upper Confidence Bounds</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UCB1"><span class="nav-number">2.3.</span> <span class="nav-text">UCB1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Case-Study"><span class="nav-number">3.</span> <span class="nav-text">Case Study</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol>
     
     </div>
   </aside>
