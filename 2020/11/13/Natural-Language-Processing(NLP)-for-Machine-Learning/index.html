@@ -19,10 +19,17 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-15T16:45:47.541Z">
+<meta property="og:image" content="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png">
+<meta property="og:image" content="https://monkeylearn.com/static/d96cda57105351e7b75b844910ab3f73/df264/2.png">
+<meta property="og:image" content="https://monkeylearn.com/static/aaa7bf8149587b9b828f99e1db9f7e46/df264/3.png">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e">
+<meta property="og:updated_time" content="2020-11-16T02:53:34.795Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing(NLP) for Machine Learning">
 <meta name="twitter:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
+<meta name="twitter:image" content="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -336,7 +343,8 @@
 <h3 id="Remove-stopwords"><a href="#Remove-stopwords" class="headerlink" title="Remove stopwords"></a>Remove <a href="http://kavita-ganesan.com/what-are-stop-words/#.X6lcQGgzZhE" target="_blank" rel="noopener">stopwords</a></h3><p>Stopwords are common words that will likely appear in any text. They don’t tell us much about our data so we remove them. </p>
 <p><strong>e.g.: silver or lead is fine for me-&gt; silver, lead, fine.</strong></p>
 <p>we are passing two parameters to <a href="https://kavita-ganesan.com/how-to-use-countvectorizer/" target="_blank" rel="noopener">CountVectorizer</a>, <code>max_df</code> and <code>stop_words</code>. The first is just to say ignore all words that have appeared in 85% of the documents, since those may be unimportant. The later, is a custom stop words list. You can also use stop words that are native to sklearn by setting <code>stop_words=&#39;english&#39;</code>,.</p>
-<h3 id="Lemmatizing"><a href="#Lemmatizing" class="headerlink" title="Lemmatizing"></a>Lemmatizing</h3><p>Lemmatizing derives the canonical form (‘lemma’) of a word. i.e the root form. It is better than stemming as it uses a dictionary-based approach i.e a morphological analysis to the root word. </p>
+<h3 id="Lemmatizing"><a href="#Lemmatizing" class="headerlink" title="Lemmatizing"></a>Lemmatizing</h3><p>For grammatical reasons, documents are going to use different forms of a word, such as <em>organize</em>, <em>organizes</em>, and <em>organizing</em>. Additionally, there are families of derivationally related words with similar meanings, such as <em>democracy</em>, <em>democratic</em>, and <em>democratization</em>. In many situations, it seems as if it would be useful for a search for one of these words to return documents that contain another word in the set</p>
+<p>It is better than stemming as it uses a dictionary-based approach i.e a morphological analysis to the root word. </p>
 <p><strong>e.g.: entitling, entitled -&gt; entitle</strong></p>
 <h2 id="Vectorizing-Data"><a href="#Vectorizing-Data" class="headerlink" title="Vectorizing Data"></a>Vectorizing Data</h2><p>Vectorizing is the process of encoding text as integers i.e. numeric form to create feature vectors so that machine learning algorithms can understand our data.</p>
 <h3 id="Bag-Of-Words"><a href="#Bag-Of-Words" class="headerlink" title="Bag-Of-Words"></a>Bag-Of-Words</h3><p>It gives a result of 1 if present in the sentence and 0 if not present. It, therefore, creates a bag of words with a document-matrix count in each text document.</p>
@@ -350,17 +358,20 @@
 </ul>
 <p>Multiplying these two numbers results in the TF-IDF score of a word in a document. The higher the score, the more relevant that word is in that particular document.</p>
 <h4 id="Mathematical-Term"><a href="#Mathematical-Term" class="headerlink" title="Mathematical Term"></a>Mathematical Term</h4><p><strong>To put it in more formal mathematical terms</strong>, the TF-IDF score for the word t in the document d from the document set D is calculated as follows:</p>
+<p><img src="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png" alt></p>
 <script type="math/tex; mode=display">
 \begin{equation}
 \text { tf-idf }(t, d, D)=t f(t, d) \cdot \text { idf }(t, D)
 \end{equation}</script><p>where</p>
+<p><img src="https://monkeylearn.com/static/d96cda57105351e7b75b844910ab3f73/df264/2.png" alt></p>
 <script type="math/tex; mode=display">
 \begin{equation}
 \begin{array}{c}
 t f(t, d)=\log (1+\text { freq }(t, d)) \\
 i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
 \end{array}
-\end{equation}</script><p><a href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly" target="_blank" rel="noopener"><strong>How can one reduce the TFIDF model size?</strong></a></p>
+\end{equation}</script><p><img src="https://monkeylearn.com/static/aaa7bf8149587b9b828f99e1db9f7e46/df264/3.png" alt></p>
+<p><a href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly" target="_blank" rel="noopener"><strong>How can one reduce the TFIDF model size?</strong></a></p>
 <ul>
 <li>The most effortless way is by filtering out infrequent words. You can achieve this by setting input arguments as follows: to use <code>min_df</code> to ignore terms that have a document frequency lower than the <code>min_df</code>. If float, the parameter represents a proportion of documents, integer absolute counts. When dealing with a relatively large corpus, using <code>min_df</code> of 5, 10, or 50 reduces the size of the vocabulary significantly while maintaining (or often improving) the accuracy.</li>
 <li><code>max_features</code> To consider only the top <code>max_features</code> ordered by term frequency across the corpus. This is useful if you have strict limit on the size of TF-IDF transformed features (e.g. up to 100,000 TF-IDF features).</li>
@@ -372,6 +383,18 @@ i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
 <li>The average length of tweets posted by user.</li>
 <li>The average length of sentence(base on the intuition that the provocative sentence tend to have few words in a sentence to make a clear slogan).</li>
 </ul>
+<h2 id="Metric"><a href="#Metric" class="headerlink" title="Metric"></a>Metric</h2><ul>
+<li><strong>Accuracy can be a misleading metric for imbalanced data sets.</strong> Consider a sample with 95 negative and 5 positive values. Classifying all values as negative in this case gives 0.95 accuracy score. </li>
+<li><strong>Precision</strong>: In the field of information retrieval, precision is the fraction of retrieved documents that are relevant to the query.</li>
+<li><strong>Recall</strong>: recall is the fraction of the relevant documents that are successfully retrieved.</li>
+<li>Precision and recall are then defined as:</li>
+</ul>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807" alt></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b" alt></p>
+<ul>
+<li><strong>F-measure</strong>: he traditional F-measure or balanced F-score (<strong>F1 score</strong>) is the <a href="https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers" target="_blank" rel="noopener">geometric(harmonic) mean</a> of precision and recall:</li>
+</ul>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e" alt></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://towardsdatascience.com/natural-language-processing-nlp-for-machine-learning-d44498845d5b" target="_blank" rel="noopener">Natural Language Processing(NLP) for Machine Learning</a></li>
 <li><a href="https://www.geeksforgeeks.org/sklearn-feature-extraction-with-tf-idf/" target="_blank" rel="noopener">Sklearn | Feature Extraction with TF-IDF</a></li>
@@ -476,7 +499,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Form-the-Dataset"><span class="nav-number">1.</span> <span class="nav-text">Form the Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-processing-Data"><span class="nav-number">2.</span> <span class="nav-text">Pre-processing Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-punctuation"><span class="nav-number">2.1.</span> <span class="nav-text">Remove punctuation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenization"><span class="nav-number">2.2.</span> <span class="nav-text">Tokenization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-stopwords"><span class="nav-number">2.3.</span> <span class="nav-text">Remove stopwords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lemmatizing"><span class="nav-number">2.4.</span> <span class="nav-text">Lemmatizing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vectorizing-Data"><span class="nav-number">3.</span> <span class="nav-text">Vectorizing Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bag-Of-Words"><span class="nav-number">3.1.</span> <span class="nav-text">Bag-Of-Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extracting-features-with-TF-IDF"><span class="nav-number">3.2.</span> <span class="nav-text">Extracting features with TF-IDF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-is-TF-IDF-used-in-Machine-Learning"><span class="nav-number">3.2.1.</span> <span class="nav-text">Why is TF-IDF used in Machine Learning ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-TF-IDF"><span class="nav-number">3.2.2.</span> <span class="nav-text">What is TF-IDF ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mathematical-Term"><span class="nav-number">3.2.3.</span> <span class="nav-text">Mathematical Term</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Engineering"><span class="nav-number">4.</span> <span class="nav-text">Feature Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Useful-Dataset"><span class="nav-number">6.</span> <span class="nav-text">Other Useful Dataset</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Form-the-Dataset"><span class="nav-number">1.</span> <span class="nav-text">Form the Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-processing-Data"><span class="nav-number">2.</span> <span class="nav-text">Pre-processing Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-punctuation"><span class="nav-number">2.1.</span> <span class="nav-text">Remove punctuation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenization"><span class="nav-number">2.2.</span> <span class="nav-text">Tokenization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-stopwords"><span class="nav-number">2.3.</span> <span class="nav-text">Remove stopwords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lemmatizing"><span class="nav-number">2.4.</span> <span class="nav-text">Lemmatizing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vectorizing-Data"><span class="nav-number">3.</span> <span class="nav-text">Vectorizing Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bag-Of-Words"><span class="nav-number">3.1.</span> <span class="nav-text">Bag-Of-Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Extracting-features-with-TF-IDF"><span class="nav-number">3.2.</span> <span class="nav-text">Extracting features with TF-IDF</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-is-TF-IDF-used-in-Machine-Learning"><span class="nav-number">3.2.1.</span> <span class="nav-text">Why is TF-IDF used in Machine Learning ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-TF-IDF"><span class="nav-number">3.2.2.</span> <span class="nav-text">What is TF-IDF ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mathematical-Term"><span class="nav-number">3.2.3.</span> <span class="nav-text">Mathematical Term</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Engineering"><span class="nav-number">4.</span> <span class="nav-text">Feature Engineering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Metric"><span class="nav-number">5.</span> <span class="nav-text">Metric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Useful-Dataset"><span class="nav-number">7.</span> <span class="nav-text">Other Useful Dataset</span></a></li></ol>
     
     </div>
   </aside>
@@ -698,5 +721,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
