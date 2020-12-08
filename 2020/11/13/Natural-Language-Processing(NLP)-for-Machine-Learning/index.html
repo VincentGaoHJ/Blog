@@ -19,17 +19,14 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png">
-<meta property="og:image" content="https://monkeylearn.com/static/d96cda57105351e7b75b844910ab3f73/df264/2.png">
-<meta property="og:image" content="https://monkeylearn.com/static/aaa7bf8149587b9b828f99e1db9f7e46/df264/3.png">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e">
-<meta property="og:updated_time" content="2020-11-16T02:53:34.795Z">
+<meta property="og:updated_time" content="2020-11-17T03:19:24.789Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Natural Language Processing(NLP) for Machine Learning">
 <meta name="twitter:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
-<meta name="twitter:image" content="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png">
+<meta name="twitter:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -358,20 +355,17 @@
 </ul>
 <p>Multiplying these two numbers results in the TF-IDF score of a word in a document. The higher the score, the more relevant that word is in that particular document.</p>
 <h4 id="Mathematical-Term"><a href="#Mathematical-Term" class="headerlink" title="Mathematical Term"></a>Mathematical Term</h4><p><strong>To put it in more formal mathematical terms</strong>, the TF-IDF score for the word t in the document d from the document set D is calculated as follows:</p>
-<p><img src="https://monkeylearn.com/static/23b5e36265d19e9b42a9ae42220d257b/df264/1.png" alt></p>
 <script type="math/tex; mode=display">
 \begin{equation}
 \text { tf-idf }(t, d, D)=t f(t, d) \cdot \text { idf }(t, D)
 \end{equation}</script><p>where</p>
-<p><img src="https://monkeylearn.com/static/d96cda57105351e7b75b844910ab3f73/df264/2.png" alt></p>
 <script type="math/tex; mode=display">
 \begin{equation}
 \begin{array}{c}
 t f(t, d)=\log (1+\text { freq }(t, d)) \\
 i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
 \end{array}
-\end{equation}</script><p><img src="https://monkeylearn.com/static/aaa7bf8149587b9b828f99e1db9f7e46/df264/3.png" alt></p>
-<p><a href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly" target="_blank" rel="noopener"><strong>How can one reduce the TFIDF model size?</strong></a></p>
+\end{equation}</script><p><a href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly" target="_blank" rel="noopener"><strong>How can one reduce the TFIDF model size?</strong></a></p>
 <ul>
 <li>The most effortless way is by filtering out infrequent words. You can achieve this by setting input arguments as follows: to use <code>min_df</code> to ignore terms that have a document frequency lower than the <code>min_df</code>. If float, the parameter represents a proportion of documents, integer absolute counts. When dealing with a relatively large corpus, using <code>min_df</code> of 5, 10, or 50 reduces the size of the vocabulary significantly while maintaining (or often improving) the accuracy.</li>
 <li><code>max_features</code> To consider only the top <code>max_features</code> ordered by term frequency across the corpus. This is useful if you have strict limit on the size of TF-IDF transformed features (e.g. up to 100,000 TF-IDF features).</li>
