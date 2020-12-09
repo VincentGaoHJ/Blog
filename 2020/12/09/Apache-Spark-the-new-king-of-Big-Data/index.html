@@ -3,7 +3,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>apache spark: benefits of using the new ‘king’ of big data | Gao Haojun</title>
+  <title>apache spark: the new ‘king’ of big data | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="keywords" content="Spark">
@@ -11,18 +11,24 @@
   
   
   
-  <meta name="description" content="Big data and data science are buzz words. But, there is no such a strict and precise definition.">
-<meta name="keywords" content="Spark">
+  <meta name="keywords" content="Spark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apache Spark: Benefits of using the new ‘king’ of Big Data">
+<meta property="og:title" content="Apache Spark: the New ‘king’ of Big Data">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="Big data and data science are buzz words. But, there is no such a strict and precise definition.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-09T12:55:19.911Z">
+<meta property="og:image" content="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg">
+<meta property="og:image" content="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png">
+<meta property="og:image" content="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png">
+<meta property="og:image" content="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/2018-09-28-18_12_51-Apache-Spark-Architecture-_-Understanding-the-Spark-Components-_-Edureka.png">
+<meta property="og:image" content="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture1-5-768x266.png">
+<meta property="og:image" content="https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/02/Kafka-Hadoop-Spark-Architecture-1024x666.png">
+<meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-Pipeline.png">
+<meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-PipelineModel.png">
+<meta property="og:updated_time" content="2020-12-09T18:12:50.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apache Spark: Benefits of using the new ‘king’ of Big Data">
-<meta name="twitter:description" content="Big data and data science are buzz words. But, there is no such a strict and precise definition.">
+<meta name="twitter:title" content="Apache Spark: the New ‘king’ of Big Data">
+<meta name="twitter:image" content="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -176,7 +182,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      Apache Spark: Benefits of using the new ‘king’ of Big Data
+      Apache Spark: the New ‘king’ of Big Data
     </h1>
   
 
@@ -203,10 +209,156 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Big data and data science are buzz words. But, there is no such a strict and precise definition.</p>
+        <p><img src="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg" alt></p>
 <a id="more"></a>
 <p>[TOC]</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><h3 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h3><p>It’s a general-purpose form of distributed processing that has several components: </p>
+<ul>
+<li><strong>HDFS</strong>(The Hadoop Distributed File System), which stores files in a Hadoop-native format and parallelizes them across a cluster; </li>
+<li><strong>YARN</strong>, a schedule that coordinates application runtimes; </li>
+<li><strong>MapReduce</strong>, the algorithm that actually processes the data in parallel. </li>
+</ul>
+<p>Hadoop is built in Java, and accessible through many programming languages, for writing MapReduce code, including Python, through a Thrift client.</p>
+<h3 id="What-is-Apache-Spark"><a href="#What-is-Apache-Spark" class="headerlink" title="What is Apache Spark?"></a>What is Apache Spark?</h3><p>Spark as a whole consists of various libraries, APIs, databases, etc. The main components of Apache Spark are as follows:</p>
+<ul>
+<li><p><strong>Spark Core: </strong>Spare Core is the basic building block of Spark, which includes all components for job scheduling, performing various memory operations, fault tolerance, and more. Spark Core is also home to the API that consists of RDD. Moreover, Spark Core provides APIs for building and manipulating data in RDD.</p>
+</li>
+<li><p><strong>Spark SQL: </strong>Apache Spark works with the unstructured data using its ‘go to’ tool, Spark SQL. Spark SQL allows querying data via SQL, as well as via Apache Hive’s form of SQL called Hive Query Language (HQL). It also supports data from various sources like parse tables, log files, JSON, etc. Spark SQL allows programmers to combine SQL queries with <strong>programmable changes or manipulations</strong> supported by RDD in Python, Java, Scala, and R.</p>
+</li>
+<li><p><strong>Spark Streaming: </strong>Spark Streaming processes live streams of data. Data generated by various sources is processed at the very instant by Spark Streaming. Examples of this data include log files, messages containing status updates posted by users, etc.</p>
+</li>
+<li><p><strong>GraphX: </strong>GraphX is Apache Spark’s library for enhancing graphs and enabling graph-parallel computation. Apache Spark includes a number of graph algorithms which help users in simplifying graph analytics.</p>
+</li>
+<li><p><strong>MLlib: </strong>Apache Spark comes up with a library containing common Machine Learning (ML) services called MLlib. It provides various types of ML algorithms including regression, clustering, and classification, which can perform various operations on data to get meaningful insights out of it.</p>
+</li>
+</ul>
+<p><img src="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png" alt></p>
+<p>Spark has several APIs. The original interface was written in Scala, and based on heavy usage by data scientists, Python and R endpoints were also added. Java is another option for writing Spark jobs.  </p>
+<h3 id="Apache-Spark-vs-Hadoop-vs-Hive"><a href="#Apache-Spark-vs-Hadoop-vs-Hive" class="headerlink" title="Apache Spark vs Hadoop vs Hive"></a>Apache Spark vs Hadoop vs Hive</h3><p>That’s not to say Hadoop is obsolete. It does things that Spark does not, and often provides the framework upon which Spark works. The <a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html" target="_blank" rel="noopener">Hadoop Distributed File System</a> enables the service to store and index files, serving as a virtual data infrastructure.</p>
+<p>Spark, on the other hand, performs distributed, high-speed compute functions on that architecture. <strong>If Hadoop is the professional kitchen with the tools and equipment to build and cook meals of data, then Spark is the expediter that rapidly assembles and distributes those meals for consumption.</strong></p>
+<p>Because Spark was built to work with and run on the Hadoop infrastructure, the two systems work well together. Fast-growing organizations built in Hadoop can easily add Spark’s speed and functionality as needed.</p>
+<p>As for the different between hive and Spark, they are different products built for different purposes in the big data space. <strong>Hive is a distributed database, and Spark is a framework for data analytics.</strong></p>
+<p><strong>Hive</strong> is a pure data warehousing database which stores data in the form of tables. As a result, it can only process structured data read and written using SQL queries. Hive is not an option for unstructured data. In addition, Hive is not an ideal for OLTP or OLAP kinds of operations.</p>
+<hr>
+<h2 id="Key-Terminology-and-Concepts"><a href="#Key-Terminology-and-Concepts" class="headerlink" title="Key Terminology and Concepts"></a>Key Terminology and Concepts</h2><ul>
+<li><p><strong>Spark RDDs</strong></p>
+<ul>
+<li><strong>Resilient Distributed Datasets are data structures that are the core building blocks of Spark.</strong> A RDD is an immutable, partitioned collection of records, which means that it can hold values, tuples, or other objects, these records are partitioned so as to be processed on a distributed system, and that once an RDD has been made, it is impossible to alter it.</li>
+<li><strong>Spark DataFrame</strong> have all of the features of RDDs but also have a schema. This will make them our data structure of choice for getting started with PySpark.</li>
+<li><strong>Spark DataSets</strong> are similar to DataFrames but are <em>strongly-typed,</em> meaning that the type is specified upon the creation of the DataSet and is not inferred from the type of records stored in it. <em>This means DataSets are not used in PySpark because Python is a dynamically-typed language.</em></li>
+</ul>
+</li>
+<li><p><strong>Transformations</strong></p>
+<ul>
+<li>Transformations are one of the things you can do to an RDD in Spark.</li>
+<li>Transformations take an RDD as an input and perform some function on them based on what Transformation is being called, and outputs one or more RDDs.</li>
+</ul>
+</li>
+<li><strong>Actions</strong> <ul>
+<li>An Action is any RDD operation that does not produce an RDD as an output. </li>
+<li>Aan Action is the cue to the compiler to evaluate the lineage graph and return the value specified by the Action.</li>
+</ul>
+</li>
+<li><strong>Lineage Graph</strong><ul>
+<li>A lineage graph outlines what is called a “logical execution plan”. What that means is that the compiler begins with the earliest RDDs that aren’t dependent on any other RDDs, and follows a logical chain of Transformations until it ends with the RDD that an Action is called on. </li>
+<li>This feature is primarily what drives Spark’s fault tolerance. If a node fails for some reason, all the information about what that node was supposed to be doing is stored in the lineage graph, which can be replicated elsewhere.</li>
+</ul>
+</li>
+<li><strong>Application</strong><ul>
+<li>A Spark <strong>application</strong> is a user built program that consists of a driver and that driver’s associated executors.</li>
+</ul>
+</li>
+<li><strong>Job</strong><ul>
+<li>A Spark <strong>job</strong> is task or set of tasks to be executed with executor processes, as directed by the driver. </li>
+<li>A job is triggered by the calling of an RDD Action.</li>
+</ul>
+</li>
+<li><strong>Map Stage</strong> in Map Reduce<ul>
+<li>The map or mapper’s job is to process the input data. Generally the input data is in the form of file or directory and is stored in the Hadoop file system (HDFS). </li>
+<li>The input file is passed to the mapper function line by line. The mapper processes the data and creates several small chunks of data.</li>
+</ul>
+</li>
+<li><strong>Reduce Stage</strong> in Map Reduce<ul>
+<li>This stage is the combination of the <strong>Shuffle</strong> stage and the <strong>Reduce</strong> stage. </li>
+<li>The Reducer’s job is to process the data that comes from the mapper. After processing, it produces a new set of output, which will be stored in the HDFS.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png" alt></p>
+<ul>
+<li><p><strong>Speed</strong><br>Spark runs up to 100 times faster than Hadoop MapReduce for large-scale data processing. It is also able to achieve this speed through controlled partitioning.</p>
+</li>
+<li><p><strong>Powerful Caching</strong></p>
+<p>Simple programming layer provides powerful caching and disk persistence capabilities.</p>
+</li>
+<li><p><strong>Deployment</strong></p>
+<p>It can be deployed through <strong><em>Mesos, Hadoop via YARN, or Spark’s own cluster manager.</em></strong></p>
+</li>
+<li><p><strong>Real-Time</strong><br>It offers Real-time computation &amp; low latency because of <strong><em>in-memory computation.</em></strong></p>
+</li>
+<li><p><strong>Polyglot</strong><br>Spark provides high-level APIs in Java, Scala, Python, and R. Spark code can be written in any of these four languages. It also provides a shell in Scala and Python.</p>
+</li>
+</ul>
+<h3 id="Spark-Architecture-Overview"><a href="#Spark-Architecture-Overview" class="headerlink" title="Spark Architecture Overview"></a>Spark Architecture Overview</h3><p>Apache Spark has a well-defined layered architecture where all the spark components and layers are loosely coupled. This architecture is further integrated with various extensions and libraries. Apache Spark Architecture is based on two main abstractions:</p>
+<ul>
+<li><em>Resilient Distributed Dataset (RDD)</em></li>
+<li><em>Directed Acyclic Graph (DAG)</em></li>
+</ul>
+<p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/2018-09-28-18_12_51-Apache-Spark-Architecture-_-Understanding-the-Spark-Components-_-Edureka.png" alt="Spark Architecture"></p>
+<h3 id="Resilient-Distributed-Dataset-RDD"><a href="#Resilient-Distributed-Dataset-RDD" class="headerlink" title="Resilient Distributed Dataset(RDD)"></a>Resilient Distributed Dataset(RDD)</h3><p>RDDs are the building blocks of any Spark application. RDDs Stands for:</p>
+<ul>
+<li><strong>Resilient:</strong> Fault tolerant and is capable of rebuilding data on failure</li>
+<li><strong>Distributed:</strong> Distributed data among the multiple nodes in a cluster</li>
+<li><strong>Dataset:</strong> Collection of partitioned data with values</li>
+</ul>
+<p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture1-5-768x266.png" alt="Workflow of RDD"></p>
+<hr>
+<h2 id="Using-Hadoop-and-Spark-together"><a href="#Using-Hadoop-and-Spark-together" class="headerlink" title="Using Hadoop and Spark together"></a>Using Hadoop and Spark together</h2><p>There are several instances where you would want to use the two tools together. Despite some asking if Spark will replace Hadoop entirely because of the former’s processing power, they are meant to complement each other rather than compete. Below you can see a simplified version of Spark-and-Hadoop architecture:</p>
+<p><img src="https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/02/Kafka-Hadoop-Spark-Architecture-1024x666.png" alt="Hadoop-Kafka-Spark Architecture Diagram: How Spark works together with Hadoop and Kafka"></p>
+<p>Hadoop can—at a lower price—deal with heavier operations while Spark processes the more numerous smaller jobs that need instantaneous turnaround.</p>
+<p>YARN also makes archiving and analysis of archived data possible, whereas it isn’t with Apache Spark. Thus, Hadoop and YARN in particular becomes a critical thread for tying together the real-time processing, machine learning and reiterated graph processing.</p>
+<hr>
+<h2 id="Summing-it-up"><a href="#Summing-it-up" class="headerlink" title="Summing it up"></a>Summing it up</h2><p><strong>So is it Hadoop or Spark?</strong> These systems are two of the most prominent distributed systems for processing data on the market today. Hadoop is used mainly for disk-heavy operations with the MapReduce paradigm, and Spark is a more flexible, but more costly in-memory processing architecture. Both are Apache top-level projects, are often used together, and have similarities, but it’s important to understand the features of each when deciding to implement them.</p>
+<p><strong>So is it Spark or Hive?</strong> Hive and Spark are both immensely popular tools in the big data world. Hive is the best option for performing data analytics on large volumes of data using SQLs. Spark, on the other hand, is the best option for running big data analytics. It provides a faster, more modern alternative to MapReduce.</p>
+<hr>
+<h2 id="ML-Pipelines"><a href="#ML-Pipelines" class="headerlink" title="ML Pipelines"></a><strong>ML Pipelines</strong></h2><p>ML Pipelines provide a uniform set of high-level APIs built on top of <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener">DataFrames</a> that help users create and tune practical machine learning pipelines.</p>
+<ul>
+<li><p><strong>Main concepts in Pipelines</strong></p>
+<ul>
+<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#dataframe" target="_blank" rel="noopener"><code>DataFrame</code></a></strong>: This ML API uses <code>DataFrame</code> from Spark SQL as an ML dataset, which can hold a variety of data types. E.g., a <code>DataFrame</code> could have different columns storing text, feature vectors, true labels, and predictions.</li>
+<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#transformers" target="_blank" rel="noopener"><code>Transformer</code></a></strong>: A <code>Transformer</code> is an algorithm which can transform one <code>DataFrame</code> into another <code>DataFrame</code>. E.g., an ML model is a <code>Transformer</code> which transforms a <code>DataFrame</code> with features into a <code>DataFrame</code> with predictions.</li>
+<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#estimators" target="_blank" rel="noopener"><code>Estimator</code></a></strong>: An <code>Estimator</code> is an algorithm which can be fit on a <code>DataFrame</code> to produce a <code>Transformer</code>. E.g., a learning algorithm is an <code>Estimator</code> which trains on a <code>DataFrame</code> and produces a model.</li>
+<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline" target="_blank" rel="noopener"><code>Pipeline</code></a></strong>: A <code>Pipeline</code> chains multiple <code>Transformer</code>s and <code>Estimator</code>s together to specify an ML workflow.</li>
+<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#parameters" target="_blank" rel="noopener"><code>Parameter</code></a></strong>: All <code>Transformer</code>s and <code>Estimator</code>s now share a common API for specifying parameters.</li>
+</ul>
+</li>
+<li><p><strong>How it works</strong></p>
+<p><img src="https://spark.apache.org/docs/latest/img/ml-Pipeline.png" alt="ML Pipeline Example"></p>
+<ul>
+<li>The first two (<code>Tokenizer</code> and <code>HashingTF</code>) are <code>Transformer</code>s (blue), and the third (<code>LogisticRegression</code>) is an <code>Estimator</code> (red). The bottom row represents data flowing through the pipeline, where cylinders indicate <code>DataFrame</code>s. </li>
+<li>The <code>Pipeline.fit()</code> method is called on the original <code>DataFrame</code>, which has raw text documents and labels. </li>
+<li>The <code>Tokenizer.transform()</code> method splits the raw text documents into words, adding a new column with words to the <code>DataFrame</code>. </li>
+<li>The <code>HashingTF.transform()</code> method converts the words column into feature vectors, adding a new column with those vectors to the <code>DataFrame</code>. </li>
+<li>Now, since <code>LogisticRegression</code> is an <code>Estimator</code>, the <code>Pipeline</code> first calls <code>LogisticRegression.fit()</code> to produce a <code>LogisticRegressionModel</code>. </li>
+<li>If the <code>Pipeline</code> had more <code>Estimator</code>s, it would call the <code>LogisticRegressionModel</code>’s <code>transform()</code> method on the <code>DataFrame</code> before passing the <code>DataFrame</code> to the next stage.</li>
+</ul>
+<p><img src="https://spark.apache.org/docs/latest/img/ml-PipelineModel.png" alt="ML PipelineModel Example"></p>
+<ul>
+<li>A <code>Pipeline</code> is an <code>Estimator</code>. Thus, after a <code>Pipeline</code>’s <code>fit()</code> method runs, it produces a <code>PipelineModel</code>, which is a <code>Transformer</code>. This <code>PipelineModel</code> is used at <em>test time</em>; the figure below illustrates this usage.</li>
+<li>In the figure above, the <code>PipelineModel</code> has the same number of stages as the original <code>Pipeline</code>, but all <code>Estimator</code>s in the original <code>Pipeline</code> have become <code>Transformer</code>s. </li>
+<li>When the <code>PipelineModel</code>’s <code>transform()</code> method is called on a test dataset, the data are passed through the fitted pipeline in order. </li>
+<li>Each stage’s <code>transform()</code> method updates the dataset and passes it to the next stage.</li>
+<li><code>Pipeline</code>s and <code>PipelineModel</code>s help to ensure that training and test data go through identical feature processing steps.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://towardsdatascience.com/a-neanderthals-guide-to-apache-spark-in-python-9ef1f156d427" target="_blank" rel="noopener">A Neanderthal’s Guide to Apache Spark in Python</a></li>
+<li><a href="https://www.edureka.co/blog/spark-architecture/#Spark" target="_blank" rel="noopener">Apache Spark Architecture – Spark Cluster Architecture Explained</a></li>
+<li><a href="https://logz.io/blog/hadoop-vs-spark/" target="_blank" rel="noopener">How do Hadoop and Spark Stack Up?</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -232,7 +384,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
-          <a href="/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/" target="_blank" title="Apache Spark: Benefits of using the new ‘king’ of Big Data">http://vincentgaohj.github.io/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/</a>
+          <a href="/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/" target="_blank" title="Apache Spark: the New ‘king’ of Big Data">http://vincentgaohj.github.io/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/</a>
           </li>
           <li class="post-copyright-license">
             <strong>Copyright Notice:   </strong>
@@ -299,7 +451,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#About"><span class="nav-number">1.</span> <span class="nav-text">About</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Hadoop"><span class="nav-number">1.1.</span> <span class="nav-text">What is Hadoop?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Apache-Spark"><span class="nav-number">1.2.</span> <span class="nav-text">What is Apache Spark?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apache-Spark-vs-Hadoop-vs-Hive"><span class="nav-number">1.3.</span> <span class="nav-text">Apache Spark vs Hadoop vs Hive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Terminology-and-Concepts"><span class="nav-number">2.</span> <span class="nav-text">Key Terminology and Concepts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Apache-Spark-Architecture"><span class="nav-number">3.</span> <span class="nav-text">Apache Spark Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Features-of-Apache-Spark"><span class="nav-number">3.1.</span> <span class="nav-text">Features of Apache Spark</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-Architecture-Overview"><span class="nav-number">3.2.</span> <span class="nav-text">Spark Architecture Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resilient-Distributed-Dataset-RDD"><span class="nav-number">3.3.</span> <span class="nav-text">Resilient Distributed Dataset(RDD)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Hadoop-and-Spark-together"><span class="nav-number">4.</span> <span class="nav-text">Using Hadoop and Spark together</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summing-it-up"><span class="nav-number">5.</span> <span class="nav-text">Summing it up</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ML-Pipelines"><span class="nav-number">6.</span> <span class="nav-text">ML Pipelines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
@@ -521,5 +673,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
