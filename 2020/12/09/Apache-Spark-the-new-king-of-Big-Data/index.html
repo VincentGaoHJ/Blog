@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/02/Kafka-Hadoop-Spark-Architecture-1024x666.png">
 <meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-Pipeline.png">
 <meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-PipelineModel.png">
-<meta property="og:updated_time" content="2020-12-09T18:12:50.210Z">
+<meta property="og:updated_time" content="2020-12-09T18:18:24.700Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apache Spark: the New ‘king’ of Big Data">
 <meta name="twitter:image" content="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg">
@@ -241,15 +241,13 @@
 <p><strong>Hive</strong> is a pure data warehousing database which stores data in the form of tables. As a result, it can only process structured data read and written using SQL queries. Hive is not an option for unstructured data. In addition, Hive is not an ideal for OLTP or OLAP kinds of operations.</p>
 <hr>
 <h2 id="Key-Terminology-and-Concepts"><a href="#Key-Terminology-and-Concepts" class="headerlink" title="Key Terminology and Concepts"></a>Key Terminology and Concepts</h2><ul>
-<li><p><strong>Spark RDDs</strong></p>
-<ul>
+<li><strong>Spark RDDs</strong><ul>
 <li><strong>Resilient Distributed Datasets are data structures that are the core building blocks of Spark.</strong> A RDD is an immutable, partitioned collection of records, which means that it can hold values, tuples, or other objects, these records are partitioned so as to be processed on a distributed system, and that once an RDD has been made, it is impossible to alter it.</li>
 <li><strong>Spark DataFrame</strong> have all of the features of RDDs but also have a schema. This will make them our data structure of choice for getting started with PySpark.</li>
 <li><strong>Spark DataSets</strong> are similar to DataFrames but are <em>strongly-typed,</em> meaning that the type is specified upon the creation of the DataSet and is not inferred from the type of records stored in it. <em>This means DataSets are not used in PySpark because Python is a dynamically-typed language.</em></li>
 </ul>
 </li>
-<li><p><strong>Transformations</strong></p>
-<ul>
+<li><strong>Transformations</strong><ul>
 <li>Transformations are one of the things you can do to an RDD in Spark.</li>
 <li>Transformations take an RDD as an input and perform some function on them based on what Transformation is being called, and outputs one or more RDDs.</li>
 </ul>
@@ -287,8 +285,10 @@
 <hr>
 <h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png" alt></p>
 <ul>
-<li><p><strong>Speed</strong><br>Spark runs up to 100 times faster than Hadoop MapReduce for large-scale data processing. It is also able to achieve this speed through controlled partitioning.</p>
-</li>
+<li><strong>Speed</strong></li>
+</ul>
+<p>Spark runs up to 100 times faster than Hadoop MapReduce for large-scale data processing. It is also able to achieve this speed through controlled partitioning.</p>
+<ul>
 <li><p><strong>Powerful Caching</strong></p>
 <p>Simple programming layer provides powerful caching and disk persistence capabilities.</p>
 </li>
@@ -297,7 +297,8 @@
 </li>
 <li><p><strong>Real-Time</strong><br>It offers Real-time computation &amp; low latency because of <strong><em>in-memory computation.</em></strong></p>
 </li>
-<li><p><strong>Polyglot</strong><br>Spark provides high-level APIs in Java, Scala, Python, and R. Spark code can be written in any of these four languages. It also provides a shell in Scala and Python.</p>
+<li><p><strong>Polyglot</strong></p>
+<p>Spark provides high-level APIs in Java, Scala, Python, and R. Spark code can be written in any of these four languages. It also provides a shell in Scala and Python.</p>
 </li>
 </ul>
 <h3 id="Spark-Architecture-Overview"><a href="#Spark-Architecture-Overview" class="headerlink" title="Spark Architecture Overview"></a>Spark Architecture Overview</h3><p>Apache Spark has a well-defined layered architecture where all the spark components and layers are loosely coupled. This architecture is further integrated with various extensions and libraries. Apache Spark Architecture is based on two main abstractions:</p>
@@ -357,6 +358,7 @@
 <li><a href="https://towardsdatascience.com/a-neanderthals-guide-to-apache-spark-in-python-9ef1f156d427" target="_blank" rel="noopener">A Neanderthal’s Guide to Apache Spark in Python</a></li>
 <li><a href="https://www.edureka.co/blog/spark-architecture/#Spark" target="_blank" rel="noopener">Apache Spark Architecture – Spark Cluster Architecture Explained</a></li>
 <li><a href="https://logz.io/blog/hadoop-vs-spark/" target="_blank" rel="noopener">How do Hadoop and Spark Stack Up?</a></li>
+<li><a href="https://spark.apache.org/docs/latest/ml-pipeline.html" target="_blank" rel="noopener">MLlib: ML Pipelines</a></li>
 </ul>
 
       
@@ -433,6 +435,15 @@ var a = new Donate({
   
     
 <nav id="article-nav">
+  
+    <a href="/Blog/2020/12/20/How-to-Make-the-Best-Pour-Over-Coffee-Like-a-Pro/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          How to Make the Best Pour Over Coffee Like a Pro
+        
+      </div>
+    </a>
   
   
     <a href="/Blog/2020/12/08/Docker-Django-React-AWS-Deploying-Containerized-Application-to-Cloud/" id="article-nav-older" class="article-nav-link-wrap">
