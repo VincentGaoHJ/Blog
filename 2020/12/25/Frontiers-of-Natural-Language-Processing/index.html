@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>frontiers of natural language processing | Gao Haojun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Natural-Language-Processing">
+  
+  
+  
+  
+  <meta name="description" content="Natural language processing (NLP) is the technique to provide semantics to information extracted from optical character recognition engines and documents. In this article, we progress from reviewing t">
+<meta name="keywords" content="Natural-Language-Processing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frontiers of Natural Language Processing">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/12/25/Frontiers-of-Natural-Language-Processing/index.html">
+<meta property="og:site_name" content="Gao Haojun">
+<meta property="og:description" content="Natural language processing (NLP) is the technique to provide semantics to information extracted from optical character recognition engines and documents. In this article, we progress from reviewing t">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://images.unsplash.com/photo-1508233620467-f79f1e317a05">
+<meta property="og:updated_time" content="2020-12-25T05:35:22.108Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Frontiers of Natural Language Processing">
+<meta name="twitter:description" content="Natural language processing (NLP) is the technique to provide semantics to information extracted from optical character recognition engines and documents. In this article, we progress from reviewing t">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1508233620467-f79f1e317a05">
+  
+    <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/Blog/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/Blog/css/style.css">
+
+  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
+  <script src="/Blog/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/Blog/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/Blog/',
+        CONTENT_URL: '/Blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/Blog/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Frontiers-of-Natural-Language-Processing" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      Frontiers of Natural Language Processing
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Blog/2020/12/25/Frontiers-of-Natural-Language-Processing/" class="article-date">
+	  <time datetime="2020-12-25T05:29:29.000Z" itemprop="datePublished">2020-12-25</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/Blog/categories/Technology/">Technology</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Natural language processing (NLP) is the technique to provide semantics to information extracted from optical character recognition engines and documents. In this article, we progress from reviewing the recent history of natural language processing towards a deeper understanding of information understanding through NLP. We will look at the history, biggest open problems and frontiers methodology.</p>
+<p><img src="https://images.unsplash.com/photo-1508233620467-f79f1e317a05" alt></p>
+<a id="more"></a>
+<p>[TOC]</p>
+<h2 id="A-Review-of-the-Recent-History-of-NLP"><a href="#A-Review-of-the-Recent-History-of-NLP" class="headerlink" title="A Review of the Recent History of NLP"></a>A Review of the Recent History of NLP</h2><h3 id="2001-•-Neural-language-models"><a href="#2001-•-Neural-language-models" class="headerlink" title="2001 • Neural language models"></a>2001 • Neural language models</h3><ul>
+<li>First neural language models: feed-forward neural networks that take into account n previous words</li>
+<li>Initial look-up layer is commonly known as word embedding matrix as each word corresponds to one vector</li>
+</ul>
+<h3 id="2013-•-Word-embeddings"><a href="#2013-•-Word-embeddings" class="headerlink" title="2013 • Word embeddings"></a>2013 • Word embeddings</h3><ul>
+<li>Main innovation: pretraining word embedding look-up matrix on a large unlabeled corpus</li>
+<li>Popularized by word2vec, an efficient approximation to language modeling</li>
+<li>word2vec comes in two variants: skip-gram and CBOW</li>
+</ul>
+<h3 id="2013-•-Neural-networks-for-NLP"><a href="#2013-•-Neural-networks-for-NLP" class="headerlink" title="2013 • Neural networks for NLP"></a>2013 • Neural networks for NLP</h3><ul>
+<li><strong>Recurrent neural networks</strong><ul>
+<li>Long-short term memory networks are the model of choice</li>
+</ul>
+</li>
+<li><strong>Convolutional neural networks</strong><ul>
+<li>focus on local features</li>
+<li>Can be extended with wider receptive fields (dilated convolutions) to capture wider context</li>
+<li>Convolutions can be used to speed up an LSTM</li>
+</ul>
+</li>
+<li><strong>Recursive neural networks</strong><ul>
+<li>Natural language is inherently hierarchical</li>
+<li>Treat input as tree rather than as a sequence</li>
+<li>Can also be extended to LSTMs</li>
+</ul>
+</li>
+</ul>
+<h3 id="2014-•-Sequence-to-sequence-models"><a href="#2014-•-Sequence-to-sequence-models" class="headerlink" title="2014 • Sequence-to-sequence models"></a>2014 • Sequence-to-sequence models</h3><p>General framework for applying neural networks to tasks where output is a sequence</p>
+<ul>
+<li>Typically RNN-based, but other encoders and decoders can be used</li>
+<li>New architectures mainly coming out of work in Machine Translation</li>
+</ul>
+<h3 id="2015-•-Attention"><a href="#2015-•-Attention" class="headerlink" title="2015 • Attention"></a>2015 • Attention</h3><p>One of the core innovations in Neural Machine Translation</p>
+<ul>
+<li>Weighted average of source sentence hidden states</li>
+<li>Mitigates bottleneck of compressing source sentence into a single vector</li>
+</ul>
+<h3 id="2018-•-Pretrained-language-models"><a href="#2018-•-Pretrained-language-models" class="headerlink" title="2018 • Pretrained language models"></a>2018 • Pretrained language models</h3><ul>
+<li>Language models pretrained on a large corpus capture a lot of additional information</li>
+<li>Language model embeddings can be used as features in a target model or a language model can be fine-tuned on target task data</li>
+<li>Enables learning models with significantly less data</li>
+<li>Additional benefit: Language models only require unlabeled data</li>
+<li>Enables application to low-resource languages where labeled data is scarce</li>
+</ul>
+<h2 id="The-biggest-open-problems-in-NLP"><a href="#The-biggest-open-problems-in-NLP" class="headerlink" title="The biggest open problems in NLP"></a>The biggest open problems in NLP</h2><h3 id="Problem-1-Natural-Language-Understanding-and-Reasoning"><a href="#Problem-1-Natural-Language-Understanding-and-Reasoning" class="headerlink" title="Problem 1: Natural Language Understanding and Reasoning"></a>Problem 1: Natural Language Understanding and Reasoning</h3><ul>
+<li>Almost none of our current models have “real” understanding</li>
+<li>Models should incorporate common sense</li>
+</ul>
+<h3 id="Problem-2-NLP-for-low-resource-scenarios"><a href="#Problem-2-NLP-for-low-resource-scenarios" class="headerlink" title="Problem 2: NLP for low-resource scenarios"></a>Problem 2: NLP for low-resource scenarios</h3><ul>
+<li>Generalization beyond the training data</li>
+<li>Domain-transfer, transfer learning, multi-task learning</li>
+<li>Learning from small amounts of data</li>
+<li>Unsupervised learning; Semi-supervised, weakly-supervised, “Wiki-ly” supervised,distantly-supervised, lightly-supervised, minimally-supervised</li>
+</ul>
+<h3 id="Problem-3-Datasets-problems-and-evaluation"><a href="#Problem-3-Datasets-problems-and-evaluation" class="headerlink" title="Problem 3: Datasets, problems and evaluation"></a>Problem 3: Datasets, problems and evaluation</h3><p>Perhaps the biggest problem is to properly define the problems themselves. And by properly defining a problem, I mean building datasets and evaluation procedures that are appropriate to measure our progress towards concrete goals. Things would be easier if we could reduce everything to Kaggle style competitions!</p>
+<hr>
+<h2 id="Frontiers-of-Natural-Language-Processing"><a href="#Frontiers-of-Natural-Language-Processing" class="headerlink" title="Frontiers of Natural Language Processing"></a>Frontiers of Natural Language Processing</h2><h3 id="Neural-networks-for-NLP"><a href="#Neural-networks-for-NLP" class="headerlink" title="Neural networks for NLP"></a>Neural networks for NLP</h3><ul>
+<li>Can be extended with wider receptive fields (dilated convolutions) to capture wider context [Kalchbrenner et al., ’17]</li>
+<li>CNNs and LSTMs can be combined and stacked [Wang et al., ACL ’16]</li>
+<li>Convolutions can be used to speed up an LSTM [Bradbury et al., ICLR ’17]</li>
+<li>CNNs over a graph (trees), e.g. graph-convolutional neural networks [Bastings et al., EMNLP ’17]</li>
+</ul>
+<h3 id="Sequence-to-sequence-models"><a href="#Sequence-to-sequence-models" class="headerlink" title="Sequence-to-sequence models"></a>Sequence-to-sequence models</h3><ul>
+<li>Deep LSTM [Wu et al., ’16]</li>
+<li>Convolutional encoders [Kalchbrenner et al., arXiv ’16; Gehring et al., arXiv ’17]</li>
+<li>Transformer [Vaswani et al.,NIPS ’17]</li>
+<li>Combination of LSTM and Transformer [Chen et al., ACL ’18]</li>
+</ul>
+<h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><ul>
+<li>Different forms of attention available [Luong et al., EMNLP ’15]</li>
+<li>Constituency parsing [Vinyals et al., NIPS ’15]</li>
+<li>Reading comprehension [Hermann et al., NIPS ’15]</li>
+<li>One-shot learning [Vinyals et al.,NIPS ’16],</li>
+<li>Image captioning [Xu et al., ICML ’15]</li>
+<li>Used in Transformer [Vaswani et al., NIPS ’17], state-of-the-art architecturefor machine translation</li>
+</ul>
+<h3 id="Pretrained-language-models"><a href="#Pretrained-language-models" class="headerlink" title="Pretrained language models"></a>Pretrained language models</h3><ul>
+<li>Language model embeddings can be used as features in a target model [Peters et al., NAACL ’18]</li>
+<li>Can be fine-tuned on target task data [Howard &amp; Ruder, ACL ’18]</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/Blog/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/Blog/2020/12/25/Frontiers-of-Natural-Language-Processing/" target="_blank" title="Frontiers of Natural Language Processing">http://vincentgaohj.github.io/Blog/2020/12/25/Frontiers-of-Natural-Language-Processing/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Natural-Language-Processing/">Natural-Language-Processing</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2020/12/20/How-to-Make-the-Best-Pour-Over-Coffee-Like-a-Pro/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to Make the Best Pour Over Coffee Like a Pro</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Review-of-the-Recent-History-of-NLP"><span class="nav-number">1.</span> <span class="nav-text">A Review of the Recent History of NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2001-•-Neural-language-models"><span class="nav-number">1.1.</span> <span class="nav-text">2001 • Neural language models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2013-•-Word-embeddings"><span class="nav-number">1.2.</span> <span class="nav-text">2013 • Word embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2013-•-Neural-networks-for-NLP"><span class="nav-number">1.3.</span> <span class="nav-text">2013 • Neural networks for NLP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2014-•-Sequence-to-sequence-models"><span class="nav-number">1.4.</span> <span class="nav-text">2014 • Sequence-to-sequence models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2015-•-Attention"><span class="nav-number">1.5.</span> <span class="nav-text">2015 • Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2018-•-Pretrained-language-models"><span class="nav-number">1.6.</span> <span class="nav-text">2018 • Pretrained language models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-biggest-open-problems-in-NLP"><span class="nav-number">2.</span> <span class="nav-text">The biggest open problems in NLP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-1-Natural-Language-Understanding-and-Reasoning"><span class="nav-number">2.1.</span> <span class="nav-text">Problem 1: Natural Language Understanding and Reasoning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-2-NLP-for-low-resource-scenarios"><span class="nav-number">2.2.</span> <span class="nav-text">Problem 2: NLP for low-resource scenarios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-3-Datasets-problems-and-evaluation"><span class="nav-number">2.3.</span> <span class="nav-text">Problem 3: Datasets, problems and evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frontiers-of-Natural-Language-Processing"><span class="nav-number">3.</span> <span class="nav-text">Frontiers of Natural Language Processing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-networks-for-NLP"><span class="nav-number">3.1.</span> <span class="nav-text">Neural networks for NLP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sequence-to-sequence-models"><span class="nav-number">3.2.</span> <span class="nav-text">Sequence-to-sequence models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention"><span class="nav-number">3.3.</span> <span class="nav-text">Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pretrained-language-models"><span class="nav-number">3.4.</span> <span class="nav-text">Pretrained language models</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Gao Haojun All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+
+<!-- 2017.6.11，masikkk新增，加载本地Google Prettify 代码高亮js代码 -->
+
+<!--
+<script src="/Blog/js/prettify.js"></script>
+-->
+
+<!-- 2017.6.11，masikkk新增，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(window).load(function(){})是在页面所有元素(包括所有css,js,图片,Flash等)加载完毕后执行
+<script type="text/javascript">
+$(window).load(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+<!-- 2017.7.1，masikkk添加，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(document).ready(function(){})是当页面的标准DOM元素被解析成DOM树后就执行 -->
+
+<!--
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+
+
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Blog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/Blog/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/Blog/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/Blog/js/scripts.js"></script>
+
+
+
+
+  <script src="/Blog/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Gao Haojun
+          </div>
+          <div class="panel-body">
+            Copyright © 2020 Haojun(Vincent) Gao All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
