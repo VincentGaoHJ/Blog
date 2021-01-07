@@ -22,7 +22,11 @@
 <meta property="og:image" content="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png">
 <meta property="og:image" content="https://d1.awsstatic.com/re19/Redshift/Product-Page-Diagram_Redshift_Data-Lake-Integration@2x.b04dff434226a5b3e5e38159bbf610ee617a5655.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png">
-<meta property="og:updated_time" content="2020-10-22T01:24:07.282Z">
+<meta property="og:image" content="https://d1.awsstatic.com/reInvent/re20-pdp-tier2-3/Redshift/Latest/product-page-diagram_Redshift-Data-Sharing.cfb492d92166375ec67d5e73fcfa397e75fe9ea0.png">
+<meta property="og:image" content="https://d1.awsstatic.com/elasticache/EC_Use_Cases/product-page-diagram_ElastiCache_how-it-works.ec509f8b878f549b7fb8a49669bf2547878303f6.png">
+<meta property="og:image" content="https://d1.awsstatic.com/product-marketing/DMS/product-page-diagram-AWS-DMS_database-consolidation.86418ac11df3b896a07ff4efad07854003644f3d.png">
+<meta property="og:image" content="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/images/emr-on-eks-architecture.png">
+<meta property="og:updated_time" content="2021-01-07T15:03:59.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta name="twitter:description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
@@ -380,7 +384,8 @@
 <li>CloudWatch and CloudTrail</li>
 <li>VPC endpoints: For DynamoDB to enable EC2 instances in your VPC to use their private IP addresses to access DynamoDB with no exposure to the public Internet.</li>
 </ul>
-<h2 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a>Redshift</h2><p>Amazon Redshift is a fast, fully managed, petabyte-scale <strong>data warehouse service that makes it simple and cost-effective to efficiently analyze all your data using your existing business intelligence tools</strong>. It is optimized for datasets ranging from a few hundred gigabytes to a petabyte or more and costs less than $1,000 per terabyte per year, a tenth the cost of most traditional data warehousing solutions.</p>
+<h2 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a><a href="https://aws.amazon.com/redshift" target="_blank" rel="noopener">Redshift</a></h2><p>Amazon Redshift is a fast, fully managed, petabyte-scale <strong>data warehouse service that makes it simple and cost-effective to efficiently analyze all your data using your existing business intelligence tools</strong>. It is optimized for datasets ranging from a few hundred gigabytes to a petabyte or more and costs less than $1,000 per terabyte per year, a tenth the cost of most traditional data warehousing solutions.</p>
+<p><img src="https://d1.awsstatic.com/reInvent/re20-pdp-tier2-3/Redshift/Latest/product-page-diagram_Redshift-Data-Sharing.cfb492d92166375ec67d5e73fcfa397e75fe9ea0.png" alt="Analyze all of your data with the fastest and most widely used cloud data warehouse"></p>
 <p><strong>Redshift can be configured as follows</strong></p>
 <ul>
 <li>Single Node (160 GB)</li>
@@ -428,12 +433,80 @@
 <ul>
 <li><strong>Redshift is used for business intelligence</strong></li>
 </ul>
-<h2 id="Aurora"><a href="#Aurora" class="headerlink" title="Aurora"></a>Aurora</h2><p>Amazon Aurora is a MySQL and PostgreSQL-compatible relational database engine that combines the speed and availability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases.</p>
-<p>Things to know about Aurora</p>
+<h2 id="Aurora"><a href="#Aurora" class="headerlink" title="Aurora"></a><a href="https://aws.amazon.com/rds/aurora/" target="_blank" rel="noopener">Aurora</a></h2><p>Amazon Aurora is a MySQL and PostgreSQL-compatible relational database engine that combines the speed and availability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases.</p>
+<p><strong>Things to know about Aurora</strong></p>
 <ul>
 <li>Start with 10 GB, Scales in 10 GB increments to 64 TB (Storage Autoscaling)</li>
 <li>Compute resources can scale up to 32vCPUs and 244 GB of Memory.</li>
 <li>2 copies of your data is contained in each availability zone, with minimum of 3 availability zones. 6 copies of your data.</li>
+</ul>
+<p><strong>Three Types of Aurora Replicas are available</strong></p>
+<ul>
+<li>Aurora Replicas (Currently up to 15)</li>
+<li>MySQL Read Replicas (Currently up to 5)</li>
+<li>PostgresQL Read Replicas  (Currently up to 1)</li>
+</ul>
+<p><strong>What is Amazon Aurora Serverless</strong></p>
+<p><em>Provides a relatively simple. cost-effective option for infrequent, intermittent, or unpredictable workloads.</em></p>
+<ul>
+<li>An on-demand, autoscaling configuration for the MySQL-compatible and PostgreSQL-compatible editions of Amazon Aurora.</li>
+<li>An Aurora Serverless DB cluster automatically starts up, shuts down, and scales capacity up or down based on your application’s needs.</li>
+</ul>
+<p><strong>Exam Tips</strong></p>
+<ul>
+<li><strong>2 copies of your data are contained in each availability zone, with minimum of 3 availability zones. 6 copies of your data.</strong></li>
+<li>You can share Aurora Snapshots with other AWS accounts</li>
+<li><strong>3 types of replicas available.</strong> Aurora Replicas, MySQL replicas &amp; PostgresQL replicas. Automated failover is only available with Aurora Replicas.</li>
+<li><strong>Aurora has automates backups turned on by default.</strong> You can also take snapshots with Aurora. You can share these snapshots with other AWS accounts.</li>
+<li><strong>Use Aurora Serverless if you want a simple, cost-effective option for infrequent, intermittent, or unpredictable workloads.</strong></li>
+</ul>
+<h2 id="ElastiCache"><a href="#ElastiCache" class="headerlink" title="ElastiCache"></a><a href="https://aws.amazon.com/elasticache/" target="_blank" rel="noopener">ElastiCache</a></h2><p><strong>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud.</strong> The service improves the performance of web applications by allowing you to retrieve information from fast, managed, in-memory caches, instead of relying entirely on slower disk-cased databases. <strong>ElastiCache supports two open-source in-memory caching engines: Memcached and Redis.</strong></p>
+<p><img src="https://d1.awsstatic.com/elasticache/EC_Use_Cases/product-page-diagram_ElastiCache_how-it-works.ec509f8b878f549b7fb8a49669bf2547878303f6.png" alt="Amazon ElastiCache makes it easy to setup, manage, and scale in-memory data stores in the cloud"></p>
+<p><strong>Memcached</strong></p>
+<ul>
+<li>Simple Cache to offload DB</li>
+<li>Scale horizontally</li>
+<li>multi-thread performance</li>
+</ul>
+<p><strong>Redis</strong></p>
+<ul>
+<li>Advanced data types</li>
+<li>Ranking/Sorting data sets</li>
+<li>Pub/Sub capabilities</li>
+<li>Persistence</li>
+<li>Multi-AZ</li>
+<li>Backup &amp; Restore Capabilities</li>
+</ul>
+<p><strong>Exam Tips</strong></p>
+<ul>
+<li>Use ElastiCache to increase database and web application performance</li>
+<li>Redis is Multi-AZ</li>
+<li>You can do back ups and restores of Redis</li>
+</ul>
+<h2 id="Database-Migration-Service-DMS"><a href="#Database-Migration-Service-DMS" class="headerlink" title="Database Migration Service (DMS)"></a><a href="https://aws.amazon.com/dms/" target="_blank" rel="noopener">Database Migration Service (DMS)</a></h2><p><strong>DMS is a cloud service that makes it easy to migrate relational databases, data warehouses, NoSQL databases, and other types of data stores.</strong> You can use AWS DMS to migrate your data into the AWS Cloud, between on-premises instances(through an AWS Cloud Setup), or between combinations of cloud and on-premises setups.</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/DMS/product-page-diagram-AWS-DMS_database-consolidation.86418ac11df3b896a07ff4efad07854003644f3d.png" alt="use AWS Database Migration Service to consolidate multiple source databases into a single target database. "></p>
+<p><strong>Exam Tips</strong></p>
+<ul>
+<li>DMS allows you to <strong>migrate databases</strong> from one source to AWS</li>
+<li>The source can either be on-promises, or inside AWS itself or another cloud provider such as Azure.</li>
+<li>You can do <strong>homogeneous</strong> migrations(same DB engines) or heterogeneous migrations.</li>
+<li><strong>If you do a heterogeneous migration, you will need the AWS Schema Conversion Tool (SCT).</strong></li>
+</ul>
+<h2 id="Caching-Services"><a href="#Caching-Services" class="headerlink" title="Caching Services"></a>Caching Services</h2><p><strong>Caching is a balancing act between up-to-date, accurate information and latency. We can use the following services to cache on AWS.</strong></p>
+<ul>
+<li>CloudFront</li>
+<li>API Gateway</li>
+<li>ElastiCache — Memcached and Redis</li>
+<li>DynamoDB Accelerator (DAX)</li>
+</ul>
+<h2 id="EMR-Overview"><a href="#EMR-Overview" class="headerlink" title="EMR Overview"></a><a href="https://aws.amazon.com/emr" target="_blank" rel="noopener">EMR Overview</a></h2><p><strong>Amazon EMR makes it easy to set up, operate, and scale your big data environments by automating time-consuming tasks like provisioning capacity and tuning clusters.</strong></p>
+<p><img src="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/images/emr-on-eks-architecture.png" alt="Amazon EMR on EKS works with other AWS services"></p>
+<p><strong>Amazon EMR</strong> is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as <a href="https://aws.amazon.com/emr/features/spark/" target="_blank" rel="noopener">Apache Spark</a>, <a href="https://aws.amazon.com/emr/features/hive/" target="_blank" rel="noopener">Apache Hive</a>, <a href="https://aws.amazon.com/emr/features/hbase/" target="_blank" rel="noopener">Apache HBase</a>, <a href="https://aws.amazon.com/blogs/big-data/use-apache-flink-on-amazon-emr/" target="_blank" rel="noopener">Apache Flink</a>, <a href="https://aws.amazon.com/emr/features/hudi/" target="_blank" rel="noopener">Apache Hudi</a>, and <a href="https://aws.amazon.com/emr/features/presto/" target="_blank" rel="noopener">Presto</a>.  With EMR you can run petabyte-scale analysis at <a href="https://pages.awscloud.com/Gated-IDC-The-Economic-Benefits-of-Migrating-Apache-Spark-and-Hadoop-to-Amazon-EMR.html" target="_blank" rel="noopener">less than half of the cost</a> of traditional on-premises solutions and <a href="https://aws.amazon.com/blogs/big-data/amazon-emr-introduces-emr-runtime-for-apache-spark/" target="_blank" rel="noopener">over 3x faster</a> than standard Apache Spark. </p>
+<p><strong>What is EMR?</strong></p>
+<ul>
+<li><strong>The central component of Amazon EMR is the cluster.</strong> </li>
+<li>A cluster is a collection of Amazon Elastic Compute Cloud (Amazon EC2) instances. </li>
+<li>Each instance in the cluster is called a node. Each node has a role within the cluster, referred to as the node type.</li>
 </ul>
 <hr>
 <h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
@@ -539,7 +612,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redshift"><span class="nav-number">1.4.</span> <span class="nav-text">Redshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aurora"><span class="nav-number">1.5.</span> <span class="nav-text">Aurora</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.6.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redshift"><span class="nav-number">1.4.</span> <span class="nav-text">Redshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aurora"><span class="nav-number">1.5.</span> <span class="nav-text">Aurora</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElastiCache"><span class="nav-number">1.6.</span> <span class="nav-text">ElastiCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Migration-Service-DMS"><span class="nav-number">1.7.</span> <span class="nav-text">Database Migration Service (DMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-Services"><span class="nav-number">1.8.</span> <span class="nav-text">Caching Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EMR-Overview"><span class="nav-number">1.9.</span> <span class="nav-text">EMR Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.10.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -554,7 +627,7 @@ var a = new Donate({
   <div class="container">
       	<div class="row">
 	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 Gao Haojun All Rights Reserved.</p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2021 Gao Haojun All Rights Reserved.</p>
 	      
 	      
     		<p class="busuanzi_uv">
@@ -741,7 +814,7 @@ $(document).ready(function(){
             Gao Haojun
           </div>
           <div class="panel-body">
-            Copyright © 2020 Haojun(Vincent) Gao All Rights Reserved.
+            Copyright © 2021 Haojun(Vincent) Gao All Rights Reserved.
           </div>
         </div>
       </div>
