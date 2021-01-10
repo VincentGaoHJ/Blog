@@ -20,7 +20,8 @@
 <meta property="og:description" content="In the fast-paced field of web applications, containerization has become not only common but the preferred mode of packaging and delivering web applications. Containers allow us to package our applica">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://d1.awsstatic.com/AppSync/How-It-Works-product-page-diagram_AppSync@2x.c39ecb89b7b40ba682cf0f875ae13b6bdd8dca5b.png">
-<meta property="og:updated_time" content="2021-01-10T05:40:55.533Z">
+<meta property="og:image" content="https://docs.amplify.aws/images/AmplifyEnvSwitching.jpg">
+<meta property="og:updated_time" content="2021-01-10T06:43:52.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Build Modern Serverless Applications with AWS Amplify and AppSync">
 <meta name="twitter:description" content="In the fast-paced field of web applications, containerization has become not only common but the preferred mode of packaging and delivering web applications. Containers allow us to package our applica">
@@ -224,8 +225,56 @@
 </li>
 <li></li>
 </ul>
-<h2 id="AWS-AppSync"><a href="#AWS-AppSync" class="headerlink" title="AWS AppSync"></a>AWS AppSync</h2><h2 id="Amplify"><a href="#Amplify" class="headerlink" title="Amplify"></a><a href="https://docs.amplify.aws/" target="_blank" rel="noopener">Amplify</a></h2><h3 id="Serverless-Function"><a href="#Serverless-Function" class="headerlink" title="Serverless Function"></a>Serverless Function</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/y4Obz26GkCk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="AWS-AppSync"><a href="#AWS-AppSync" class="headerlink" title="AWS AppSync"></a>AWS AppSync</h2><h2 id="AWS-Amplify"><a href="#AWS-Amplify" class="headerlink" title="AWS Amplify"></a><a href="https://docs.amplify.aws/" target="_blank" rel="noopener">AWS Amplify</a></h2><p>AWS Amplify is a set of products and tools that enable mobile and front-end web developers to build and deploy secure, scalable full-stack applications, powered by AWS.</p>
+<h3 id="Common-Command-Line"><a href="#Common-Command-Line" class="headerlink" title="Common Command Line"></a>Common Command Line</h3><ul>
+<li><code>amplify &lt;category&gt; &lt;subcommand&gt;</code><ul>
+<li><code>amplify &lt;category&gt; add</code>: Add resources of a category to the cloud.<ul>
+<li>Place a CloudFormation template for the resources of this category in the category’s subdirectory <code>amplify/backend/\&lt;category\&gt;</code></li>
+<li>Insert its reference into the above-mentioned root stack as the nested child stack. </li>
+<li>When working in teams, it is good practice to run an <code>amplify pull</code> before modifying the backend categories.</li>
+</ul>
+</li>
+<li><code>amplify &lt;category&gt; update</code></li>
+<li><code>amplify &lt;category&gt; remove</code></li>
+<li><code>amplify &lt;category&gt; push</code></li>
+</ul>
+</li>
+<li><code>amplify push</code>: Once you have made your category updates, run the command <code>amplify push</code> to update the cloud resources.</li>
+<li><code>amplify pull</code>: Operates similar to a <em>git pull</em>.</li>
+<li><code>amplify env &lt;subcommand&gt;</code>: Control multiple environment<ul>
+<li><code>amplify env add</code></li>
+<li><code>amplify env list</code></li>
+<li><code>amplify env checkout</code></li>
+<li><code>amplify env remove</code></li>
+</ul>
+</li>
+<li><code>amplify console</code>:  Launches the browser directing you to your cloud project in the AWS Amplify Console. </li>
+<li><code>amplify delete</code></li>
+<li><code>amplify init</code>: the root stack is created with three resources:<ul>
+<li>IAM role for unauthenticated users</li>
+<li>IAM role for authenticated users</li>
+<li>S3 bucket, the deployment bucket, to support this provider’s workflow</li>
+</ul>
+</li>
+<li><code>amplify publish</code></li>
+<li><code>amplify run</code></li>
+<li><code>amplify status</code></li>
+</ul>
+<h3 id="Amplify-CLI"><a href="#Amplify-CLI" class="headerlink" title="Amplify CLI"></a>Amplify CLI</h3><p>The Amplify Command Line Interface (CLI) is a unified tool-chain to create, integrate, and manage the AWS cloud services for your app.</p>
+<ul>
+<li><strong>Authentication: </strong>The Amplify CLI supports configuring many different Authentication and Authorization workflows, including simple and advanced configurations of the login options, triggering Lambda functions during different lifecycle events, and administrative actions which you can optionally expose to your applications.</li>
+<li><strong>API(GraphQL): </strong>The GraphQL Transform provides a simple to use abstraction that helps you quickly create backends for your web and mobile applications on AWS. With the GraphQL Transform, you define your application’s data model using the GraphQL Schema Definition Language (SDL) and the library handles converting your SDL definition into a set of fully descriptive AWS CloudFormation templates that implement your data model.</li>
+<li><strong>Serverless Functions: </strong>You can add a Lambda function to your project which you can use alongside a REST API or as a data source in your GraphQL API using the <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank" rel="noopener"><code>@function</code> directive</a>.</li>
+<li><strong>Storage: </strong>Amplify CLI’s <code>storage</code> category enables you to create and manage cloud-connected file &amp; data storage. Use the <code>storage</code> category when you need to store:<ol>
+<li>app content (images, audio, video etc.) in an public, protected or private storage bucket or</li>
+<li>app data in a NoSQL database and access it with a REST API + Lambda</li>
+</ol>
+</li>
+</ul>
+<h3 id="Serverless-Function"><a href="#Serverless-Function" class="headerlink" title="Serverless Function"></a>Serverless Function</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/y4Obz26GkCk?start=566" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+<h3 id="Team-Environment"><a href="#Team-Environment" class="headerlink" title="Team Environment"></a>Team Environment</h3><p>For multiple environments, Amplify matches the standard Git workflow where you switch between different branches using the <code>env checkout</code> command - similar to running <code>git checkout BRANCHNAME</code>, run <code>amplify env checkout ENVIRONMENT_NAME</code> to switch between environments. </p>
+<p><img src="https://docs.amplify.aws/images/AmplifyEnvSwitching.jpg" alt="Image"></p>
 <h2 id="Amplify-DataStore"><a href="#Amplify-DataStore" class="headerlink" title="Amplify DataStore"></a>Amplify DataStore</h2><hr>
 <h2 id="Deploy-Docker-Containers-on-Amazon-ECS"><a href="#Deploy-Docker-Containers-on-Amazon-ECS" class="headerlink" title="Deploy Docker Containers on Amazon ECS"></a>Deploy Docker Containers on Amazon ECS</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li></li>
@@ -323,7 +372,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GraphQL"><span class="nav-number">1.</span> <span class="nav-text">GraphQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Designing-Your-Schema"><span class="nav-number">1.1.</span> <span class="nav-text">Designing Your Schema</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-AppSync"><span class="nav-number">2.</span> <span class="nav-text">AWS AppSync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amplify"><span class="nav-number">3.</span> <span class="nav-text">Amplify</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Serverless-Function"><span class="nav-number">3.1.</span> <span class="nav-text">Serverless Function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amplify-DataStore"><span class="nav-number">4.</span> <span class="nav-text">Amplify DataStore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deploy-Docker-Containers-on-Amazon-ECS"><span class="nav-number">5.</span> <span class="nav-text">Deploy Docker Containers on Amazon ECS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GraphQL"><span class="nav-number">1.</span> <span class="nav-text">GraphQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Designing-Your-Schema"><span class="nav-number">1.1.</span> <span class="nav-text">Designing Your Schema</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-AppSync"><span class="nav-number">2.</span> <span class="nav-text">AWS AppSync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Amplify"><span class="nav-number">3.</span> <span class="nav-text">AWS Amplify</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Common-Command-Line"><span class="nav-number">3.1.</span> <span class="nav-text">Common Command Line</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amplify-CLI"><span class="nav-number">3.2.</span> <span class="nav-text">Amplify CLI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Serverless-Function"><span class="nav-number">3.3.</span> <span class="nav-text">Serverless Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Team-Environment"><span class="nav-number">3.4.</span> <span class="nav-text">Team Environment</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amplify-DataStore"><span class="nav-number">4.</span> <span class="nav-text">Amplify DataStore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deploy-Docker-Containers-on-Amazon-ECS"><span class="nav-number">5.</span> <span class="nav-text">Deploy Docker Containers on Amazon ECS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
