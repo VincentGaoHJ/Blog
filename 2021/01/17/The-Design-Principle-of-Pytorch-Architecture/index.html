@@ -11,15 +11,15 @@
   
   
   
-  <meta name="description" content="Are you watching closely?">
+  <meta name="description" content="The article introduces the detailed principles that drive the implementation of PyTorch and how these principles are reflected in the PyTorch architecture.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Design Principle of PyTorch Architecture">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2021/01/17/The-Design-Principle-of-Pytorch-Architecture/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="Are you watching closely?">
+<meta property="og:description" content="The article introduces the detailed principles that drive the implementation of PyTorch and how these principles are reflected in the PyTorch architecture.">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-17T01:41:20.000Z">
-<meta property="article:modified_time" content="2021-01-17T07:05:43.490Z">
+<meta property="article:modified_time" content="2021-01-17T07:59:21.419Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="PyTorch">
 <meta property="article:tag" content="Deep Learning">
@@ -215,7 +215,24 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>The article introduces the detailed principles that drive the implementation of PyTorch and how these principles are reflected in the PyTorch architecture.</p>
+<a id="more"></a>
+<h2 id="Design-principles"><a href="#Design-principles" class="headerlink" title="Design principles"></a>Design principles</h2><p>PyTorch’s success stems from weaving previous ideas into a design that balances speed and ease of use. There are four main principles behind our choices:</p>
+<p><strong>Be Pythonic:</strong> Data scientists are familiar with the Python language, its programming model, and it stools. </p>
+<p><strong>Put researchers first:</strong> PyTorch strives to make writing models, data loaders, and optimizers as easy and productive as possible.  </p>
+<p><strong>Provide pragmatic performance:</strong> To be useful, PyTorch needs to deliver compelling performance,although not at the expense of simplicity and ease of use. </p>
+<p><strong>Worse is better:</strong> Given a fixed amount of engineering resources, and all else being equal, the time saved by keeping the internal implementation of PyTorch simple can be used to implement additional features, adapt to new situations, and keep up with the fast pace of progress in the field of AI. Therefore it is better to have a simple but slightly incomplete solution than a comprehensive but complex and hard to maintain design.</p>
+<h2 id="Usability-Centric-Design"><a href="#Usability-Centric-Design" class="headerlink" title="Usability Centric Design"></a>Usability Centric Design</h2><h3 id="Deep-learning-models-are-just-Python-programs"><a href="#Deep-learning-models-are-just-Python-programs" class="headerlink" title="Deep learning models are just Python programs"></a>Deep learning models are just Python programs</h3><p>The neural networks themselves evolved rapidly from simple sequences of feed forward layers into incredibly varied numerical programs often composed of many loops and recursive functions. To support this growing complexity, PyTorch foregos the potential benefits of a graph-meta programming based approach to preserve the imperative programming model of Python.  </p>
+<p><strong>PyTorch extends this to all aspects of deep learning workflows.</strong> Defining layers, composing models, loading data, running optimizers, and parallelizing the training process are all expressed using the familiar concepts developed for general purpose programming. <strong>This solution ensures that any new potential neural network architecture can be easily implemented with PyTorch.</strong> </p>
+<h3 id="Interoperability-and-extensibility"><a href="#Interoperability-and-extensibility" class="headerlink" title="Interoperability and extensibility"></a>Interoperability and extensibility</h3><p>Easy and efficient interoperability is one of the top priorities for PyTorch because it opens the possibility to leverage the rich ecosystem of Python libraries as part of user programs. <strong>Hence, PyTorch allows for bidirectional exchange of data with external libraries.</strong></p>
+<ul>
+<li>For example, it provides a mechanism to convert between NumPy arrays and PyTorch tensors using the <code>torch.from_numpy()</code> function and <code>.numpy()</code> tensor method.</li>
+<li>Similar functionality is also available to exchange data stored using the <a target="_blank" rel="noopener" href="https://github.com/dmlc/dlpack">DLPack</a> format. </li>
+</ul>
+<h3 id="Automatic-differentiation"><a href="#Automatic-differentiation" class="headerlink" title="Automatic differentiation"></a>Automatic differentiation</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://papers.nips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html">PyTorch: An Imperative Style, High-Performance Deep Learning Library</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
@@ -310,7 +327,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav">None</ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-principles"><span class="nav-number">1.</span> <span class="nav-text">Design principles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usability-Centric-Design"><span class="nav-number">2.</span> <span class="nav-text">Usability Centric Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-learning-models-are-just-Python-programs"><span class="nav-number">2.1.</span> <span class="nav-text">Deep learning models are just Python programs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Interoperability-and-extensibility"><span class="nav-number">2.2.</span> <span class="nav-text">Interoperability and extensibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatic-differentiation"><span class="nav-number">2.3.</span> <span class="nav-text">Automatic differentiation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol>
     
     </div>
   </aside>
