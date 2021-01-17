@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>aws (amazon web services) study notes | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Amazon">
+  <meta name="keywords" content="Amazon" />
   
   
   
   
   <meta name="description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, Networking in AWS, Storage in AWS, Compute in AWS and Database in AWS, to name a few.">
-<meta name="keywords" content="Amazon">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS (Amazon Web Services) Study Notes">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/08/07/AWS-Amazon-Web-Services-Study-Notes/index.html">
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, Networking in AWS, Storage in AWS, Compute in AWS and Database in AWS, to name a few.">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
 <meta property="og:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-after.d85d3e2cb67fd2ed1a3be645d443e9f5910409fd.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-before.7f287b3bf00bbc4fbdeadef3c8d5910374aec963.png">
@@ -35,10 +34,11 @@
 <meta property="og:image" content="https://docs.aws.amazon.com/amazonswf/latest/developerguide/images/swf-overview-workflow.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/images/acuity-arch-3a.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/firehose/latest/dev/images/fh-flow-s3.png">
-<meta property="og:updated_time" content="2020-08-25T05:17:49.864Z">
+<meta property="article:published_time" content="2019-08-07T05:53:29.000Z">
+<meta property="article:modified_time" content="2021-01-17T06:43:50.105Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="Amazon">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AWS (Amazon Web Services) Study Notes">
-<meta name="twitter:description" content="The study notes during the internship period of AWS, including AWS Global Infrastructure, Networking in AWS, Storage in AWS, Compute in AWS and Database in AWS, to name a few.">
 <meta name="twitter:image" content="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -61,13 +61,19 @@
 }
 
   </style>
-  <link rel="stylesheet" href="/Blog/css/style.css">
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
 
-  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
-  <script src="/Blog/js/bootstrap.js"></script>
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
 
   
 
@@ -75,23 +81,25 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/dialog.css">
-  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
 
   
 
   
-    <link rel="stylesheet" href="/Blog/css/header-post.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
   
 
   
   
   
-    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -116,7 +124,8 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -137,14 +146,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -168,10 +177,12 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/Blog/js/insight.js"></script>
 
+
 </div></li>
-            </ul></div>
+            </div>
           </div>
                 
       </div>
@@ -185,14 +196,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-AWS-Amazon-Web-Services-Study-Notes" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-AWS-Amazon-Web-Services-Study-Notes" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       AWS (Amazon Web Services) Study Notes
     </h1>
   
@@ -206,7 +217,7 @@
 	</a>
 
       
-    <a class="article-category-link" href="/Blog/categories/Technology/">Technology</a>
+    <a class="article-category-link" href="/Blog/categories/AWS/">AWS</a>
 
       
 	<a class="article-views">
@@ -259,15 +270,15 @@
 </li>
 </ul>
 <hr>
-<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html" target="_blank" rel="noopener">VPC (Virtual Private Cloud)</a></h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
+<h2 id="Networking-in-AWS"><a href="#Networking-in-AWS" class="headerlink" title="Networking in AWS"></a>Networking in AWS</h2><h3 id="VPC-Virtual-Private-Cloud"><a href="#VPC-Virtual-Private-Cloud" class="headerlink" title="VPC (Virtual Private Cloud)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html">VPC (Virtual Private Cloud)</a></h3><p>Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.</p>
 <p>The relations between VPC and region, VPC and AZ are below:</p>
 <ul>
 <li>VPCs deploy into 1 of the 18 AWS regions</li>
 <li>A VPC can host resources from any Available Zone within its region</li>
 </ul>
-<h3 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html" target="_blank" rel="noopener">Subnets</a></h3><p>When you create a subnet, you specify the CIDR block for the subnet, which is a subset of the VPC CIDR block. </p>
+<h3 id="Subnets"><a href="#Subnets" class="headerlink" title="Subnets"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html">Subnets</a></h3><p>When you create a subnet, you specify the CIDR block for the subnet, which is a subset of the VPC CIDR block. </p>
 <p>When you create a VPC, you must specify a range of IPv4 addresses for the VPC in the form of a Classless Inter-Domain Routing (CIDR) block; for example, <code>10.0.0.0/16</code>. This is the primary CIDR block for your VPC.</p>
-<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p><strong><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html" target="_blank" rel="noopener">Internet Gateway</a></strong></p>
+<h3 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h3><p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">Internet Gateway</a></strong></p>
 <p>An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between instances in your VPC and the internet. It therefore imposes no availability risks or bandwidth constraints on your network traffic.</p>
 <p>An internet gateway serves two purposes: </p>
 <ul>
@@ -275,12 +286,12 @@
 <li>to perform network address translation (NAT) for instances that have been assigned public IPv4 addresses.</li>
 </ul>
 <hr>
-<p><strong><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html" target="_blank" rel="noopener">NAT Gateway</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html">NAT Gateway</a></strong></p>
 <p><strong>You can use a NAT device to enable instances in a private subnet to connect to the internet (for example, for software updates) or other AWS services, but prevent the internet from initiating connections with the instances.</strong> </p>
 <p>A NAT device forwards traffic from the instances in the private subnet to the internet or other AWS services, and then sends the response back to the instances. When traffic goes to the internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses.</p>
-<h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html" target="_blank" rel="noopener">Elastic Network Interfaces</a></h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
+<h3 id="Elastic-Network-Interfaces"><a href="#Elastic-Network-Interfaces" class="headerlink" title="Elastic Network Interfaces"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html">Elastic Network Interfaces</a></h3><p><strong>You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance.</strong> The attributes of a network interface follow it as it’s attached or detached from an instance and reattached to another instance. When you move a network interface from one instance to another, network traffic is redirected to the new instance.</p>
 <p><strong>弹性 IP 就是固定 IP ，弹性是指的可以弹性的关联实例，对于实例来说，弹性 IP 的作用就是固定 IP 。</strong></p>
-<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html" target="_blank" rel="noopener">Security</a></h3><p><strong>Security Groups</strong></p>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Security.html">Security</a></h3><p><strong>Security Groups</strong></p>
 <ul>
 <li>A <em>security group</em> acts as a virtual firewall for your instance to control inbound and outbound traffic. When you launch an instance in a VPC, you can assign up to five security groups to the instance. Security groups act at the instance level, not the subnet level. Therefore, each instance in a subnet in your VPC could be assigned to a different set of security groups. If you don’t specify a particular group at launch time, the instance is automatically assigned to the default security group for the VPC.</li>
 <li>For each security group, you add <em>rules</em> that control the inbound traffic to instances, and a separate set of rules that control the outbound traffic. This section describes the basic things you need to know about security groups for your VPC and their rules.</li>
@@ -296,20 +307,20 @@
 <li>The rules of the security group associated with an instance control which traffic is allowed to the instance.</li>
 </ul>
 <p><img src="https://docs.aws.amazon.com/vpc/latest/userguide/images/security-diagram.png" alt="The following diagram illustrates the layers of security provided by security groups and network ACLs"></p>
-<h3 id="AWS-Direct-Connect"><a href="#AWS-Direct-Connect" class="headerlink" title="AWS Direct Connect"></a><a href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html" target="_blank" rel="noopener">AWS Direct Connect</a></h3><p><strong>AWS Direct Connect links your internal network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable.</strong> </p>
+<h3 id="AWS-Direct-Connect"><a href="#AWS-Direct-Connect" class="headerlink" title="AWS Direct Connect"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html">AWS Direct Connect</a></h3><p><strong>AWS Direct Connect links your internal network to an AWS Direct Connect location over a standard Ethernet fiber-optic cable.</strong> </p>
 <p>One end of the cable is connected to your router, the other to an AWS Direct Connect router. With this connection, you can create <em>virtual interfaces</em> directly to public AWS services (for example, to Amazon S3) or to Amazon VPC, bypassing internet service providers in your network path. An AWS Direct Connect location provides access to AWS in the Region with which it is associated. You can use a single connection in a public Region or AWS GovCloud (US) to access public AWS services in all other public Regions.</p>
-<h3 id="VPC-Peering"><a href="#VPC-Peering" class="headerlink" title="VPC Peering"></a><a href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html" target="_blank" rel="noopener">VPC Peering</a></h3><p><a href="https://docs.aws.amazon.com/vpc/latest/userguide/" target="_blank" rel="noopener">Amazon Virtual Private Cloud</a> (Amazon VPC) enables you to launch AWS resources into a virtual network that you’ve defined.</p>
+<h3 id="VPC-Peering"><a href="#VPC-Peering" class="headerlink" title="VPC Peering"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html">VPC Peering</a></h3><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/">Amazon Virtual Private Cloud</a> (Amazon VPC) enables you to launch AWS resources into a virtual network that you’ve defined.</p>
 <ul>
 <li>A VPC peering connection is a networking connection between two VPCs that enables you to route traffic between them using private IPv4 addresses or IPv6 addresses. </li>
 <li>Instances in either VPC can communicate with each other as if they are within the same network. </li>
 <li>You can create a VPC peering connection between your own VPCs, or with a VPC in another AWS account. </li>
 <li>The VPCs can be in different regions (also known as an inter-region VPC peering connection).</li>
 </ul>
-<h3 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html" target="_blank" rel="noopener">Transit Gateway</a></h3><p><strong>AWS Transit Gateway is a service that enables customers to connect their Amazon Virtual Private Clouds (VPCs) and their on-premises networks to a single gateway.</strong> </p>
+<h3 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html">Transit Gateway</a></h3><p><strong>AWS Transit Gateway is a service that enables customers to connect their Amazon Virtual Private Clouds (VPCs) and their on-premises networks to a single gateway.</strong> </p>
 <p><img src="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-after.d85d3e2cb67fd2ed1a3be645d443e9f5910409fd.png" alt="With AWS Transit Gateway"></p>
 <p><strong>With AWS Transit Gateway, you only have to create and manage a single connection from the central gateway in to each Amazon VPC, on-premises data center, or remote office across your network.</strong> Transit Gateway acts as a hub that controls how traffic is routed among all the connected networks which act like spokes. This hub and spoke model significantly simplifies management and reduces operational costs because each network only has to connect to the Transit Gateway and not to every other network. Any new VPC is simply connected to the Transit Gateway and is then automatically available to every other network that is connected to the Transit Gateway. This ease of connectivity makes it easy to scale your network as you grow.</p>
 <p><img src="https://d1.awsstatic.com/product-marketing/transit-gateway/tgw-before.7f287b3bf00bbc4fbdeadef3c8d5910374aec963.png" alt="Without AWS Transit Gateway"></p>
-<h3 id="VPC-Endpoints"><a href="#VPC-Endpoints" class="headerlink" title="VPC Endpoints"></a><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html" target="_blank" rel="noopener">VPC Endpoints</a></h3><p>A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by <strong>PrivateLink</strong> without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. Traffic between your VPC and the other service does not leave the Amazon network.</p>
+<h3 id="VPC-Endpoints"><a href="#VPC-Endpoints" class="headerlink" title="VPC Endpoints"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html">VPC Endpoints</a></h3><p>A VPC endpoint enables you to privately connect your VPC to supported AWS services and VPC endpoint services powered by <strong>PrivateLink</strong> without requiring an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection. Instances in your VPC do not require public IP addresses to communicate with resources in the service. Traffic between your VPC and the other service does not leave the Amazon network.</p>
 <p><strong>主要是出于安全及合规考虑，访问 AWS 公有服务时，不走 Internet。主要分为 2 类：</strong></p>
 <ul>
 <li><strong>Gateway VPC Endpoint</strong></li>
@@ -320,7 +331,7 @@
 </ul>
 <p>最新的技术实现，基于 AWS PrivateLink 技术，针对 EC2、ELB、Kinesis 等，为这些 AWS 服务在 Consumer VPC 增加了一个或多个 ENI 接口及 IP 地址，同时为这些 ENI 接口提供 Region 及 Zone 的 DNS 域名（公网可解析、返回私网 IP 地址），也可以在 Consumer VPC 内部将标准 AWS 服务域名（如：ec2.us-east-2.amazonaws.com）解析为这些 ENI 接口的私有 IP 地址。</p>
 <p>通过 PrivateLink 技术，我们自己也可以对外发布 Endpoint Service：在 Provider VPC 创建 Network ELB 及 Back-end 服务器、基于 ELB 创建 Endpoint Service；在 Consumer VPC 创建 Interface VPC Endpoint、引用 Provider VPC 的 Endpoint Service。</p>
-<h3 id="ELB-Elastic-Load-Balancing"><a href="#ELB-Elastic-Load-Balancing" class="headerlink" title="ELB (Elastic Load Balancing)"></a><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html" target="_blank" rel="noopener">ELB (Elastic Load Balancing)</a></h3><p>Elastic Load Balancing distributes incoming application or network traffic across multiple targets, such as Amazon EC2 instances, containers, and IP addresses, in multiple Availability Zones. Elastic Load Balancing scales your load balancer as traffic to your application changes over time, and can scale to the vast majority of workloads automatically.</p>
+<h3 id="ELB-Elastic-Load-Balancing"><a href="#ELB-Elastic-Load-Balancing" class="headerlink" title="ELB (Elastic Load Balancing)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html">ELB (Elastic Load Balancing)</a></h3><p>Elastic Load Balancing distributes incoming application or network traffic across multiple targets, such as Amazon EC2 instances, containers, and IP addresses, in multiple Availability Zones. Elastic Load Balancing scales your load balancer as traffic to your application changes over time, and can scale to the vast majority of workloads automatically.</p>
 <p><strong>Elastic Load Balancing supports three types of load balancers:</strong> </p>
 <ul>
 <li>Application Load Balancers</li>
@@ -329,20 +340,20 @@
 </ul>
 <p>You can select the appropriate load balancer based on your application needs. If you need flexible application management, we recommend that you use an Application Load Balancer. If extreme performance and static IP is needed for your application, we recommend that you use a Network Load Balancer. If you have an existing application that was built within the EC2-Classic network, then you should use a Classic Load Balancer.</p>
 <p><strong>Tips</strong></p>
-<p>Please pay attention to the <a href="https://aws.amazon.com/elasticloadbalancing/faqs/?nc=sn&amp;loc=6" target="_blank" rel="noopener">FAQs</a>.</p>
-<h3 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html" target="_blank" rel="noopener">API Gateway</a></h3><p>Amazon API Gateway is an AWS service for creating, publishing, maintaining, monitoring, and securing REST and WebSocket APIs at any scale. API developers can create APIs that access AWS or other web services as well as data stored in the <a href="https://aws.amazon.com/what-is-cloud-computing/" target="_blank" rel="noopener">AWS Cloud</a>.</p>
+<p>Please pay attention to the <a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticloadbalancing/faqs/?nc=sn&amp;loc=6">FAQs</a>.</p>
+<h3 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html">API Gateway</a></h3><p>Amazon API Gateway is an AWS service for creating, publishing, maintaining, monitoring, and securing REST and WebSocket APIs at any scale. API developers can create APIs that access AWS or other web services as well as data stored in the <a target="_blank" rel="noopener" href="https://aws.amazon.com/what-is-cloud-computing/">AWS Cloud</a>.</p>
 <p><img src="https://docs.aws.amazon.com/apigateway/latest/developerguide/images/Product-Page-Diagram_Amazon-API-Gateway-How-Works.png" alt="API Gateway architecture"></p>
 <p><strong>Features of API Gateway</strong></p>
 <ul>
-<li>Support for stateful (<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html" target="_blank" rel="noopener">WebSocket</a>) and stateless (<a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html" target="_blank" rel="noopener">REST</a>) APIs.</li>
-<li>Powerful, flexible <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html" target="_blank" rel="noopener">authentication</a> mechanisms, such as AWS Identity and Access Management policies, Lambda authorizer functions, and Amazon Cognito user pools.</li>
-<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-developer-portal.html" target="_blank" rel="noopener">Developer portal</a> for publishing your APIs.</li>
-<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html" target="_blank" rel="noopener">Canary release deployments</a> for safely rolling out changes.</li>
-<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/cloudtrail.html" target="_blank" rel="noopener">CloudTrail</a> logging and monitoring of API usage and API changes.</li>
-<li>Integration with <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html" target="_blank" rel="noopener">AWS WAF</a> for protecting your APIs against common web exploits.</li>
-<li>Integration with <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-xray.html" target="_blank" rel="noopener">AWS X-Ray</a> for understanding and triaging performance latencies.</li>
+<li>Support for stateful (<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api.html">WebSocket</a>) and stateless (<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-rest-api.html">REST</a>) APIs.</li>
+<li>Powerful, flexible <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html">authentication</a> mechanisms, such as AWS Identity and Access Management policies, Lambda authorizer functions, and Amazon Cognito user pools.</li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-developer-portal.html">Developer portal</a> for publishing your APIs.</li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html">Canary release deployments</a> for safely rolling out changes.</li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/cloudtrail.html">CloudTrail</a> logging and monitoring of API usage and API changes.</li>
+<li>Integration with <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-aws-waf.html">AWS WAF</a> for protecting your APIs against common web exploits.</li>
+<li>Integration with <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-xray.html">AWS X-Ray</a> for understanding and triaging performance latencies.</li>
 </ul>
-<h2 id="Storage-in-AWS"><a href="#Storage-in-AWS" class="headerlink" title="Storage in AWS"></a>Storage in AWS</h2><h3 id="S3-Simple-Storage-Service"><a href="#S3-Simple-Storage-Service" class="headerlink" title="S3 (Simple Storage Service)"></a><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html" target="_blank" rel="noopener">S3 (Simple Storage Service)</a></h3><p>Amazon Simple Storage Service (Amazon S3) is storage for the internet. You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere on the web.</p>
+<h2 id="Storage-in-AWS"><a href="#Storage-in-AWS" class="headerlink" title="Storage in AWS"></a>Storage in AWS</h2><h3 id="S3-Simple-Storage-Service"><a href="#S3-Simple-Storage-Service" class="headerlink" title="S3 (Simple Storage Service)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonS3/latest/dev/Introduction.html">S3 (Simple Storage Service)</a></h3><p>Amazon Simple Storage Service (Amazon S3) is storage for the internet. You can use Amazon S3 to store and retrieve any amount of data at any time, from anywhere on the web.</p>
 <ul>
 <li><p><strong>Buckets</strong></p>
 <p>A bucket is a container for objects stored in Amazon S3. Every object is contained in a bucket. </p>
@@ -357,8 +368,8 @@
 <p>You can choose the geographical region where Amazon S3 will store the buckets you create. </p>
 </li>
 </ul>
-<h3 id="S3-Glacier"><a href="#S3-Glacier" class="headerlink" title="S3 Glacier"></a><a href="https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html" target="_blank" rel="noopener">S3 Glacier</a></h3><p>Glacier is an extremely low-cost storage service that provides durable storage with security features for data archiving and backup. With Glacier, customers can store their data cost effectively for months, years, or even decades.</p>
-<h3 id="EBS-Elastic-Block-Store"><a href="#EBS-Elastic-Block-Store" class="headerlink" title="EBS (Elastic Block Store)"></a><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html" target="_blank" rel="noopener">EBS (Elastic Block Store)</a></h3><p>Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances.</p>
+<h3 id="S3-Glacier"><a href="#S3-Glacier" class="headerlink" title="S3 Glacier"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html">S3 Glacier</a></h3><p>Glacier is an extremely low-cost storage service that provides durable storage with security features for data archiving and backup. With Glacier, customers can store their data cost effectively for months, years, or even decades.</p>
+<h3 id="EBS-Elastic-Block-Store"><a href="#EBS-Elastic-Block-Store" class="headerlink" title="EBS (Elastic Block Store)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html">EBS (Elastic Block Store)</a></h3><p>Amazon Elastic Block Store (Amazon EBS) provides block level storage volumes for use with EC2 instances. EBS volumes behave like raw, unformatted block devices. You can mount these volumes as devices on your instances.</p>
 <p>Amazon EBS is recommended when data must be quickly accessible and requires long-term persistence.</p>
 <p><strong>Comparison of EBS and S3</strong></p>
 <ul>
@@ -367,11 +378,11 @@
 <li>请求：EBS 按卷的 I/O 请求进行收费，S3 对 GET 及所有其他请求按次数进行收费，对于小文件 S3 的请求费用甚至会高于传输费用；</li>
 <li>数据传出：两者数据传出至 Internet 的费用目前一致；S3 的数据存储相对更为可靠，S3 通过冗余方式将数据同步到多个设备，而 EBS 卷的持久性取决于您的卷大小和自上次快照后数据更新的比例，因此 EBS 提高持久性需定期快照至 S3。</li>
 </ul>
-<h2 id="Compute-in-AWS"><a href="#Compute-in-AWS" class="headerlink" title="Compute in AWS"></a>Compute in AWS</h2><h3 id="EC2-Elastic-Compute-Cloud"><a href="#EC2-Elastic-Compute-Cloud" class="headerlink" title="EC2 (Elastic Compute Cloud)"></a><a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/concepts.html" target="_blank" rel="noopener">EC2 (Elastic Compute Cloud)</a></h3><p>Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster.</p>
+<h2 id="Compute-in-AWS"><a href="#Compute-in-AWS" class="headerlink" title="Compute in AWS"></a>Compute in AWS</h2><h3 id="EC2-Elastic-Compute-Cloud"><a href="#EC2-Elastic-Compute-Cloud" class="headerlink" title="EC2 (Elastic Compute Cloud)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/concepts.html">EC2 (Elastic Compute Cloud)</a></h3><p>Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster.</p>
 <p><img src="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png" alt="An Amazon EC2 Windows instance"></p>
 <p><strong>An Amazon EC2 Windows instance</strong> is similar to the traditional Windows Server. After you launch an instance, it briefly goes into the pending state while registration takes place, then it goes into the running state. The instance remains active until you stop or terminate it. You can’t restart an instance after you terminate it. You can create a backup image of your instance while it’s running, and launch a new instance from that backup image.</p>
 <p><img src="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows_server_lifecycle.png" alt="A traditional server running Windows Server"></p>
-<h3 id="Instance-Purchasing-Options"><a href="#Instance-Purchasing-Options" class="headerlink" title="Instance Purchasing Options"></a><a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-purchasing-options.html" target="_blank" rel="noopener">Instance Purchasing Options</a></h3><ul>
+<h3 id="Instance-Purchasing-Options"><a href="#Instance-Purchasing-Options" class="headerlink" title="Instance Purchasing Options"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-purchasing-options.html">Instance Purchasing Options</a></h3><ul>
 <li><p><strong>On-Demand</strong></p>
 <p>With On-Demand instances, you pay for compute capacity by per hour or per second depending on which instances you run.</p>
 </li>
@@ -412,7 +423,7 @@
 </tr>
 <tr>
 <td style="text-align:left">Automatic instance recovery</td>
-<td style="text-align:left">Supported. For more information, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/dedicated-hosts-recovery.html" target="_blank" rel="noopener">Host Recovery</a>.</td>
+<td style="text-align:left">Supported. For more information, see <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/dedicated-hosts-recovery.html">Host Recovery</a>.</td>
 <td>Supported</td>
 </tr>
 <tr>
@@ -467,7 +478,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="Management-amp-Governance-in-AWS"><a href="#Management-amp-Governance-in-AWS" class="headerlink" title="Management &amp; Governance in AWS"></a>Management &amp; Governance in AWS</h2><h3 id="Auto-Scaling"><a href="#Auto-Scaling" class="headerlink" title="Auto Scaling"></a><a href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html" target="_blank" rel="noopener">Auto Scaling</a></h3><p>AWS Auto Scaling enables you to configure automatic scaling for the AWS resources that are part of your application in a matter of minutes.</p>
+<h2 id="Management-amp-Governance-in-AWS"><a href="#Management-amp-Governance-in-AWS" class="headerlink" title="Management &amp; Governance in AWS"></a>Management &amp; Governance in AWS</h2><h3 id="Auto-Scaling"><a href="#Auto-Scaling" class="headerlink" title="Auto Scaling"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">Auto Scaling</a></h3><p>AWS Auto Scaling enables you to configure automatic scaling for the AWS resources that are part of your application in a matter of minutes.</p>
 <p><img src="https://docs.aws.amazon.com/autoscaling/plans/userguide/images/dynamic-scaling.png" alt="How Amazon Auto Scaling Works"></p>
 <p>With AWS Auto Scaling, you configure and manage scaling for your resources through a scaling plan. The scaling plan uses dynamic scaling and predictive scaling to automatically scale your application’s resources.</p>
 <p><strong>Ways to Auto Scale</strong></p>
@@ -476,7 +487,7 @@
 <li>Dynamic — Most used</li>
 <li>Predictive — Could combine with machine learning</li>
 </ul>
-<h3 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html" target="_blank" rel="noopener">CloudWatch</a></h3><p>Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications.</p>
+<h3 id="CloudWatch"><a href="#CloudWatch" class="headerlink" title="CloudWatch"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html">CloudWatch</a></h3><p>Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. You can use CloudWatch to collect and track metrics, which are variables you can measure for your resources and applications.</p>
 <p><img src="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/CW-Overview.png" alt="How Amazon CloudWatch Works"></p>
 <p>Amazon CloudWatch is basically a metrics repository. An AWS service—such as Amazon EC2—puts metrics into the repository, and you retrieve statistics based on those metrics. If you put your own custom metrics into the repository, you can retrieve statistics on these metrics as well.</p>
 <p><img src="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/images/monitoring-overviewpage-console.PNG" alt="CloudWatch console"></p>
@@ -488,7 +499,7 @@
 <li><strong>Events</strong> - CloudWatch Events helps you to respond to state changes in your AWS resources.</li>
 <li><strong>Logs</strong> - CloudWatch Logs helps you to aggregate, monitor, and store logs.</li>
 </ul>
-<h3 id="CloudFormation"><a href="#CloudFormation" class="headerlink" title="CloudFormation"></a><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html" target="_blank" rel="noopener">CloudFormation</a></h3><p><strong>AWS CloudFormation is a service that helps you model and set up your Amazon Web Services resources so that you can spend less time managing those resources and more time focusing on your applications that run in AWS.</strong> You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and AWS CloudFormation takes care of provisioning and configuring those resources for you. </p>
+<h3 id="CloudFormation"><a href="#CloudFormation" class="headerlink" title="CloudFormation"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html">CloudFormation</a></h3><p><strong>AWS CloudFormation is a service that helps you model and set up your Amazon Web Services resources so that you can spend less time managing those resources and more time focusing on your applications that run in AWS.</strong> You create a template that describes all the AWS resources that you want (like Amazon EC2 instances or Amazon RDS DB instances), and AWS CloudFormation takes care of provisioning and configuring those resources for you. </p>
 <p><img src="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/images/update-stack-diagram.png" alt="the workflow for updating a stack"></p>
 <p><strong>The following scenarios demonstrate how AWS CloudFormation can help.</strong></p>
 <ul>
@@ -503,8 +514,8 @@
 <li>S<strong>N</strong>S - <strong>N</strong>otification</li>
 <li>S<strong>WF</strong> - <strong>W</strong>ork <strong>F</strong>low</li>
 </ul>
-<h3 id="SQS-Simple-Queue-Service"><a href="#SQS-Simple-Queue-Service" class="headerlink" title="SQS (Simple Queue Service)"></a><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html" target="_blank" rel="noopener">SQS (Simple Queue Service)</a></h3><p>Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. Amazon SQS offers common constructs such as <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html" target="_blank" rel="noopener">dead-letter queues</a> and <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html" target="_blank" rel="noopener">cost allocation tags</a>. It provides a generic web services API and it can be accessed by any programming language that the AWS SDK supports.</p>
-<p>Amazon SQS supports both <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html" target="_blank" rel="noopener">standard</a> and <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html" target="_blank" rel="noopener">FIFO queues</a>. </p>
+<h3 id="SQS-Simple-Queue-Service"><a href="#SQS-Simple-Queue-Service" class="headerlink" title="SQS (Simple Queue Service)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html">SQS (Simple Queue Service)</a></h3><p>Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components. Amazon SQS offers common constructs such as <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html">dead-letter queues</a> and <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html">cost allocation tags</a>. It provides a generic web services API and it can be accessed by any programming language that the AWS SDK supports.</p>
+<p>Amazon SQS supports both <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues.html">standard</a> and <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html">FIFO queues</a>. </p>
 <div class="table-container">
 <table>
 <thead>
@@ -516,7 +527,7 @@
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Unlimited Throughput</strong> – Standard queues support a nearly unlimited number of transactions per second (TPS) per API action.</td>
-<td style="text-align:left"><strong>High Throughput</strong> – By default, FIFO queues support up to 3,000 messages per second, per API action , with <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-batch-api-actions.html" target="_blank" rel="noopener">batching</a>.  FIFO queues support up to 300 messages per second, per API action without batching.</td>
+<td style="text-align:left"><strong>High Throughput</strong> – By default, FIFO queues support up to 3,000 messages per second, per API action , with <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-batch-api-actions.html">batching</a>.  FIFO queues support up to 300 messages per second, per API action without batching.</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>At-Least-Once Delivery</strong> – A message is delivered at least once, but occasionally more than one copy of a message is delivered.</td>
@@ -551,11 +562,11 @@
 <li>Short Polling-peturned immediately even if no messages are in the queue</li>
 <li>Long Polling - polls the queue perodically and only returns a response when a message is in the queue or the timeout reached</li>
 </ul>
-<h3 id="SNS-Simple-Notification-Service"><a href="#SNS-Simple-Notification-Service" class="headerlink" title="SNS (Simple Notification Service)"></a><a href="https://docs.aws.amazon.com/sns/latest/dg/welcome.html" target="_blank" rel="noopener">SNS (Simple Notification Service)</a></h3><p><strong>Amazon Simple Notification Service (Amazon SNS) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients.</strong> In Amazon SNS, there are two types of clients—publishers and subscribers—also referred to as producers and consumers. Publishers communicate asynchronously with subscribers by producing and sending a message to a topic, which is a logical access point and communication channel. </p>
-<p><img src="https://docs.aws.amazon.com/sns/latest/dg/images/sns-how-works.png" alt></p>
+<h3 id="SNS-Simple-Notification-Service"><a href="#SNS-Simple-Notification-Service" class="headerlink" title="SNS (Simple Notification Service)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/sns/latest/dg/welcome.html">SNS (Simple Notification Service)</a></h3><p><strong>Amazon Simple Notification Service (Amazon SNS) is a web service that coordinates and manages the delivery or sending of messages to subscribing endpoints or clients.</strong> In Amazon SNS, there are two types of clients—publishers and subscribers—also referred to as producers and consumers. Publishers communicate asynchronously with subscribers by producing and sending a message to a topic, which is a logical access point and communication channel. </p>
+<p><img src="https://docs.aws.amazon.com/sns/latest/dg/images/sns-how-works.png" alt=""></p>
 <h4 id="Differences-between-SNS-and-SQS"><a href="#Differences-between-SNS-and-SQS" class="headerlink" title="Differences between SNS and SQS"></a>Differences between SNS and SQS</h4><p>SNS 是分布式发布订阅系统。当发布者发送给 SNS 时，邮件会被推送到订阅者。 SQS 是分布式排队系统。消息不会推送到接收器。接收器必须轮询 SQS 以接收消息。消息不能由多个接收器同时接收。任何一个接收器可以接收消息，处理和删除它。其他接收器稍后不接收相同的消息。轮询固有地在 SQS 中的消息传递中引入了一些延迟，而不是 SNS，其中消息被立即推送到订户。 SNS 支持多个端点，例如电子邮件，短信，http 端点和 SQS。如果想要未知数量和类型的订阅者接收邮件，您需要 SNS。</p>
 <p>SQS 主要用于解耦应用程序或集成应用程序。消息可以短期存储在 SQS 中 (最多 14 天)。 SNS 将多个消息副本分发给多个订户。例如，假设您要将应用程序生成的数据复制到多个存储系统。您可以使用 SNS 并将此数据发送给多个订阅者，每个订阅者都会将其收到的消息复制到不同的存储系统 (s3，主机上的硬盘，数据库等)。</p>
-<h3 id="SWF-Simple-Workflow-Service"><a href="#SWF-Simple-Workflow-Service" class="headerlink" title="SWF (Simple Workflow Service)"></a><a href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html" target="_blank" rel="noopener">SWF (Simple Workflow Service)</a></h3><p><strong>Using the Amazon Simple Workflow Service (Amazon SWF), you can implement distributed, asynchronous applications as <em>workflows</em>.</strong> Workflows coordinate and manage the execution of activities that can be run asynchronously across multiple computing devices and that can feature both sequential and parallel processing.</p>
+<h3 id="SWF-Simple-Workflow-Service"><a href="#SWF-Simple-Workflow-Service" class="headerlink" title="SWF (Simple Workflow Service)"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html">SWF (Simple Workflow Service)</a></h3><p><strong>Using the Amazon Simple Workflow Service (Amazon SWF), you can implement distributed, asynchronous applications as <em>workflows</em>.</strong> Workflows coordinate and manage the execution of activities that can be run asynchronously across multiple computing devices and that can feature both sequential and parallel processing.</p>
 <p><strong>For example</strong>, the following figure shows a simple e-commerce order-processing workflow involving both people and automated processes.</p>
 <p><img src="https://docs.aws.amazon.com/amazonswf/latest/developerguide/images/swf-overview-workflow.png" alt="an E-Commerce Application"></p>
 <p><strong>Workflow Execution</strong></p>
@@ -586,7 +597,7 @@
 <li>Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a message is processed only once.</li>
 <li>Amazon SWF keeps track of all the tasks and events in an application. With Amazon SQS, you need to<br>implement your own application-level tracking especially if your application uses multiple queues.</li>
 </ul>
-<h2 id="Media-Services-in-AWS"><a href="#Media-Services-in-AWS" class="headerlink" title="Media Services in AWS"></a>Media Services in AWS</h2><h3 id="Elastic-Transcoder"><a href="#Elastic-Transcoder" class="headerlink" title="Elastic Transcoder"></a><a href="https://docs.aws.amazon.com/elastictranscoder/latest/developerguide/introduction.html" target="_blank" rel="noopener">Elastic Transcoder</a></h3><p><strong>Amazon Elastic Transcoder lets you convert media files that you have stored in Amazon Simple Storage Service (Amazon S3) into media files in the formats required by consumer playback devices.</strong> For example, you can convert large, high-quality digital media files into formats that users can play back on mobile devices, tablets, web browsers, and connected televisions.</p>
+<h2 id="Media-Services-in-AWS"><a href="#Media-Services-in-AWS" class="headerlink" title="Media Services in AWS"></a>Media Services in AWS</h2><h3 id="Elastic-Transcoder"><a href="#Elastic-Transcoder" class="headerlink" title="Elastic Transcoder"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elastictranscoder/latest/developerguide/introduction.html">Elastic Transcoder</a></h3><p><strong>Amazon Elastic Transcoder lets you convert media files that you have stored in Amazon Simple Storage Service (Amazon S3) into media files in the formats required by consumer playback devices.</strong> For example, you can convert large, high-quality digital media files into formats that users can play back on mobile devices, tablets, web browsers, and connected televisions.</p>
 <p><strong>Elastic Transcoder has four components:</strong></p>
 <ul>
 <li><p><strong>Jobs</strong> do the work of transcoding. </p>
@@ -603,16 +614,16 @@
 </ul>
 <h2 id="Analytics-in-AWS"><a href="#Analytics-in-AWS" class="headerlink" title="Analytics in AWS"></a>Analytics in AWS</h2><h3 id="Kinesis"><a href="#Kinesis" class="headerlink" title="Kinesis"></a>Kinesis</h3><p>Amazon Kinesis makes it easy to collect, process, and analyze video and data streams in real time.</p>
 <h4 id="SQS-EXAM-TIPS-1"><a href="#SQS-EXAM-TIPS-1" class="headerlink" title="SQS EXAM TIPS"></a>SQS EXAM TIPS</h4><p>Know the differences between video stream and Firehose, and choose the proper service under specific scenarios.</p>
-<h4 id="Kinesis-Video-Streams"><a href="#Kinesis-Video-Streams" class="headerlink" title="Kinesis Video Streams"></a><a href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/what-is-kinesis-video.html" target="_blank" rel="noopener">Kinesis Video Streams</a></h4><p>Amazon Kinesis Video Streams is a fully managed AWS service that enables you to stream live video from devices to the AWS Cloud and durably store it. You can then build your own applications for real-time video processing or perform batch-oriented video analytics.</p>
+<h4 id="Kinesis-Video-Streams"><a href="#Kinesis-Video-Streams" class="headerlink" title="Kinesis Video Streams"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/what-is-kinesis-video.html">Kinesis Video Streams</a></h4><p>Amazon Kinesis Video Streams is a fully managed AWS service that enables you to stream live video from devices to the AWS Cloud and durably store it. You can then build your own applications for real-time video processing or perform batch-oriented video analytics.</p>
 <p><img src="https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/images/acuity-arch-3a.png" alt="an overview of how Kinesis Video Streams works"></p>
-<h4 id="Kinesis-Data-Firehose"><a href="#Kinesis-Data-Firehose" class="headerlink" title="Kinesis Data Firehose"></a><a href="https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html" target="_blank" rel="noopener">Kinesis Data Firehose</a></h4><p>Amazon Kinesis Data Firehose is a fully managed service for delivering real-time <a href="http://aws.amazon.com/streaming-data/" target="_blank" rel="noopener">streaming data</a> to destinations such as Amazon Simple Storage Service (Amazon S3), Amazon Redshift, Amazon Elasticsearch Service (Amazon ES), and Splunk. </p>
+<h4 id="Kinesis-Data-Firehose"><a href="#Kinesis-Data-Firehose" class="headerlink" title="Kinesis Data Firehose"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html">Kinesis Data Firehose</a></h4><p>Amazon Kinesis Data Firehose is a fully managed service for delivering real-time <a target="_blank" rel="noopener" href="http://aws.amazon.com/streaming-data/">streaming data</a> to destinations such as Amazon Simple Storage Service (Amazon S3), Amazon Redshift, Amazon Elasticsearch Service (Amazon ES), and Splunk. </p>
 <p><strong>For Amazon S3 destinations</strong>, streaming data is delivered to your S3 bucket. If data transformation is enabled, you can optionally back up source data to another Amazon S3 bucket.</p>
-<p><img src="https://docs.aws.amazon.com/firehose/latest/dev/images/fh-flow-s3.png" alt></p>
+<p><img src="https://docs.aws.amazon.com/firehose/latest/dev/images/fh-flow-s3.png" alt=""></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://docs.aws.amazon.com/index.html" target="_blank" rel="noopener">AWS Documentation</a></li>
-<li><a href="http://jayendrapatil.com/" target="_blank" rel="noopener">AWS Certification Catalog</a></li>
-<li><a href="https://blog.51cto.com/8493144/2160058" target="_blank" rel="noopener">经验分享：成功通过 AWS Advanced Networking Specialty 认证考试</a></li>
-<li><a href="https://read.acloud.guru/" target="_blank" rel="noopener">A CLOUD GURU</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/index.html">AWS Documentation</a></li>
+<li><a target="_blank" rel="noopener" href="http://jayendrapatil.com/">AWS Certification Catalog</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/8493144/2160058">经验分享：成功通过 AWS Advanced Networking Specialty 认证考试</a></li>
+<li><a target="_blank" rel="noopener" href="https://read.acloud.guru/">A CLOUD GURU</a></li>
 </ul>
 
       
@@ -621,7 +632,9 @@
       
         <div id="donation_div"></div>
 
+
 <script src="/Blog/js/vdonate.js"></script>
+
 <script>
 var a = new Donate({
   title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
@@ -636,7 +649,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
@@ -650,7 +663,7 @@ var a = new Donate({
          
         </ul>
 <div>
-</div></div>
+
       
       
         
@@ -680,7 +693,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Amazon/">Amazon</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Amazon/" rel="tag">Amazon</a></li></ul>
 
       
 
@@ -841,8 +854,13 @@ $(document).ready(function(){
 </script>
 
 
-  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
-  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/Blog/js/scripts.js"></script>
@@ -850,7 +868,10 @@ $(document).ready(function(){
 
 
 
-  <script src="/Blog/js/dialog.js"></script>
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
 
 
 

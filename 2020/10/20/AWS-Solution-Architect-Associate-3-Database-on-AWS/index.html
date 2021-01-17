@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>aws solution architect(associate) - database on aws | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="AWSSolutions Architect - Associate">
+  <meta name="keywords" content="AWSSolutions Architect - Associate" />
   
   
   
   
   <meta name="description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
-<meta name="keywords" content="AWS,Solutions Architect - Associate">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Solution Architect(Associate) - Database on AWS">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/10/20/AWS-Solution-Architect-Associate-3-Database-on-AWS/index.html">
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
 <meta property="og:image" content="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png">
 <meta property="og:image" content="https://d1.awsstatic.com/re19/Redshift/Product-Page-Diagram_Redshift_Data-Lake-Integration@2x.b04dff434226a5b3e5e38159bbf610ee617a5655.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png">
@@ -26,10 +25,12 @@
 <meta property="og:image" content="https://d1.awsstatic.com/elasticache/EC_Use_Cases/product-page-diagram_ElastiCache_how-it-works.ec509f8b878f549b7fb8a49669bf2547878303f6.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/DMS/product-page-diagram-AWS-DMS_database-consolidation.86418ac11df3b896a07ff4efad07854003644f3d.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/images/emr-on-eks-architecture.png">
-<meta property="og:updated_time" content="2021-01-11T03:26:57.778Z">
+<meta property="article:published_time" content="2020-10-20T01:41:20.000Z">
+<meta property="article:modified_time" content="2021-01-11T07:17:51.031Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Solutions Architect - Associate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AWS Solution Architect(Associate) - Database on AWS">
-<meta name="twitter:description" content="Choose from 15 purpose-built database engines including relational, key-value, document, in-memory, graph, time series, and ledger databases.  With AWS databases, you don’t need to worry about databas">
 <meta name="twitter:image" content="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -52,13 +53,19 @@
 }
 
   </style>
-  <link rel="stylesheet" href="/Blog/css/style.css">
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
 
-  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
-  <script src="/Blog/js/bootstrap.js"></script>
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
 
   
 
@@ -66,23 +73,25 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/dialog.css">
-  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
 
   
 
   
-    <link rel="stylesheet" href="/Blog/css/header-post.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
   
 
   
   
   
-    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -107,7 +116,8 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -128,14 +138,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -159,10 +169,12 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/Blog/js/insight.js"></script>
 
+
 </div></li>
-            </ul></div>
+            </div>
           </div>
                 
       </div>
@@ -176,14 +188,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-AWS-Solution-Architect-Associate-3-Database-on-AWS" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-AWS-Solution-Architect-Associate-3-Database-on-AWS" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       AWS Solution Architect(Associate) - Database on AWS
     </h1>
   
@@ -294,9 +306,9 @@
 <li><strong>Read replicas can be promoted to be their own databases.</strong> This breaks the replications. So if you do promote a read replica to be its own independent database the replication will no longer work.</li>
 <li><strong>You can have a read replica in a second region.</strong></li>
 </ul>
-<h2 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h2><iframe width="560" height="315" src="https://www.youtube.com/embed/HaEPXoXVf2k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a>DynamoDB</h2><p><em>FYI: I highly recommend you to watch it, it is mind-blowing.</em></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HaEPXoXVf2k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<p><em>FYI: I highly recommend you to watch it, it is mind-blowing</em></p>
 <h3 id="Basic-DynamoDB"><a href="#Basic-DynamoDB" class="headerlink" title="Basic DynamoDB"></a>Basic DynamoDB</h3><p><strong>Amazon DynamoDB is a fast and flexible NoSQL database service for all applications that need consistent, single-digit millisecond latency at any scale.</strong> It is a fully managed database and <strong>supports both document and key-value data models</strong>. Its flexible data model and reliable performance make it a great fit for mobile, web, gaming, ad-tech, IoT, and many other applications.</p>
 <p><strong>The Basics of DynamoDB</strong></p>
 <ul>
@@ -305,7 +317,29 @@
 <li><strong>Eventual Consistent Reads (Default)</strong>: Consistency across all copies of data is usually reached within a second.</li>
 <li><strong>Strongly Consistent Reads</strong>: Return a result that reflects all writes that received a successful response prior to the read.</li>
 </ul>
-<h3 id="Advanced-DynamoDB"><a href="#Advanced-DynamoDB" class="headerlink" title="Advanced DynamoDB"></a>Advanced DynamoDB</h3><p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html" target="_blank" rel="noopener">DynamoDB Accelerator (DAX)</a></strong></p>
+<h3 id="Tenets-of-NoSQL-DATA-MODELING"><a href="#Tenets-of-NoSQL-DATA-MODELING" class="headerlink" title="Tenets of NoSQL DATA MODELING"></a>Tenets of NoSQL DATA MODELING</h3><ul>
+<li>Understand the use case</li>
+<li>Define the access patterns<ul>
+<li>Read/Write workloads</li>
+</ul>
+</li>
+<li><strong>Data-modeling</strong><ul>
+<li><strong>Avoid relational design patterns, use one table</strong></li>
+<li><strong>1 application service = 1 table</strong><ul>
+<li>Reduce round trips</li>
+<li>Simplify access patterns</li>
+</ul>
+</li>
+<li><strong>Identify Primary Keys</strong><ul>
+<li>How will items be inserted and read?</li>
+<li>Overload items into partitions</li>
+</ul>
+</li>
+<li>Define indexes for secondary access patterns</li>
+</ul>
+</li>
+</ul>
+<h3 id="Advanced-DynamoDB"><a href="#Advanced-DynamoDB" class="headerlink" title="Advanced DynamoDB"></a>Advanced DynamoDB</h3><p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html">DynamoDB Accelerator (DAX)</a></strong></p>
 <p><img src="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/images/dax_high_level.png" alt="a high-level overview of DAX"></p>
 <ul>
 <li>Fully managed, highly available, in-memory cache</li>
@@ -314,7 +348,7 @@
 <li>No need for developers to manage caching logic</li>
 <li>DAX is completely compatible with DynamoDB API calls</li>
 </ul>
-<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html" target="_blank" rel="noopener">Transactions</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html">Transactions</a></strong></p>
 <ul>
 <li><strong>Multiple “all-or-nothing” operations</strong></li>
 <li>Financial transactions / Fulfilling orders</li>
@@ -330,14 +364,14 @@
 <li><strong>Pay more per request</strong> than with provisioned capacity</li>
 <li>Use for new product launches</li>
 </ul>
-<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html" target="_blank" rel="noopener">On-Demand backup and Restore</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/BackupRestore.html">On-Demand backup and Restore</a></strong></p>
 <ul>
 <li>Full backups at any time</li>
 <li>Zero impact on table performance or available</li>
 <li>Consistent within seconds and <strong>retained until deleted</strong></li>
 <li>operates within same region as the source table</li>
 </ul>
-<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html" target="_blank" rel="noopener">Point-in-Time Recovery (PITR)</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html">Point-in-Time Recovery (PITR)</a></strong></p>
 <ul>
 <li>Protects against accidental writes or deletes</li>
 <li>Restore to any point in the <strong>past 35 days</strong></li>
@@ -351,7 +385,7 @@
 <li>Stored for 24 hours</li>
 <li>Inserts, updates, and deletes</li>
 </ul>
-<p><strong><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html" target="_blank" rel="noopener">Global Tables</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html">Global Tables</a></strong></p>
 <p><strong>Managed Multi-Master, Multi-Region Replication</strong></p>
 <ul>
 <li><strong>Globally distributed applications</strong></li>
@@ -360,7 +394,7 @@
 <li>No need to rewrite the  application, DynamoDB handle it automatically for you</li>
 <li>Replication latency under <strong>one second</strong></li>
 </ul>
-<p><strong><a href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html" target="_blank" rel="noopener">Database Migration Service (DMS)</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html">Database Migration Service (DMS)</a></strong></p>
 <ul>
 <li><p><strong>At a high level, when using AWS DMS you do the following:</strong></p>
 <ul>
@@ -387,7 +421,7 @@
 <li>CloudWatch and CloudTrail</li>
 <li>VPC endpoints: For DynamoDB to enable EC2 instances in your VPC to use their private IP addresses to access DynamoDB with no exposure to the public Internet.</li>
 </ul>
-<h2 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a><a href="https://aws.amazon.com/redshift" target="_blank" rel="noopener">Redshift</a></h2><p>Amazon Redshift is a fast, fully managed, petabyte-scale <strong>data warehouse service that makes it simple and cost-effective to efficiently analyze all your data using your existing business intelligence tools</strong>. It is optimized for datasets ranging from a few hundred gigabytes to a petabyte or more and costs less than $1,000 per terabyte per year, a tenth the cost of most traditional data warehousing solutions.</p>
+<h2 id="Redshift"><a href="#Redshift" class="headerlink" title="Redshift"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/redshift">Redshift</a></h2><p>Amazon Redshift is a fast, fully managed, petabyte-scale <strong>data warehouse service that makes it simple and cost-effective to efficiently analyze all your data using your existing business intelligence tools</strong>. It is optimized for datasets ranging from a few hundred gigabytes to a petabyte or more and costs less than $1,000 per terabyte per year, a tenth the cost of most traditional data warehousing solutions.</p>
 <p><img src="https://d1.awsstatic.com/reInvent/re20-pdp-tier2-3/Redshift/Latest/product-page-diagram_Redshift-Data-Sharing.cfb492d92166375ec67d5e73fcfa397e75fe9ea0.png" alt="Analyze all of your data with the fastest and most widely used cloud data warehouse"></p>
 <p><strong>Redshift can be configured as follows</strong></p>
 <ul>
@@ -436,7 +470,7 @@
 <ul>
 <li><strong>Redshift is used for business intelligence</strong></li>
 </ul>
-<h2 id="Aurora"><a href="#Aurora" class="headerlink" title="Aurora"></a><a href="https://aws.amazon.com/rds/aurora/" target="_blank" rel="noopener">Aurora</a></h2><p>Amazon Aurora is a MySQL and PostgreSQL-compatible relational database engine that combines the speed and availability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases.</p>
+<h2 id="Aurora"><a href="#Aurora" class="headerlink" title="Aurora"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/aurora/">Aurora</a></h2><p>Amazon Aurora is a MySQL and PostgreSQL-compatible relational database engine that combines the speed and availability of high-end commercial databases with the simplicity and cost-effectiveness of open source databases.</p>
 <p><strong>Things to know about Aurora</strong></p>
 <ul>
 <li>Start with 10 GB, Scales in 10 GB increments to 64 TB (Storage Autoscaling)</li>
@@ -463,7 +497,7 @@
 <li><strong>Aurora has automates backups turned on by default.</strong> You can also take snapshots with Aurora. You can share these snapshots with other AWS accounts.</li>
 <li><strong>Use Aurora Serverless if you want a simple, cost-effective option for infrequent, intermittent, or unpredictable workloads.</strong></li>
 </ul>
-<h2 id="ElastiCache"><a href="#ElastiCache" class="headerlink" title="ElastiCache"></a><a href="https://aws.amazon.com/elasticache/" target="_blank" rel="noopener">ElastiCache</a></h2><p><strong>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud.</strong> The service improves the performance of web applications by allowing you to retrieve information from fast, managed, in-memory caches, instead of relying entirely on slower disk-cased databases. <strong>ElastiCache supports two open-source in-memory caching engines: Memcached and Redis.</strong></p>
+<h2 id="ElastiCache"><a href="#ElastiCache" class="headerlink" title="ElastiCache"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticache/">ElastiCache</a></h2><p><strong>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud.</strong> The service improves the performance of web applications by allowing you to retrieve information from fast, managed, in-memory caches, instead of relying entirely on slower disk-cased databases. <strong>ElastiCache supports two open-source in-memory caching engines: Memcached and Redis.</strong></p>
 <p><img src="https://d1.awsstatic.com/elasticache/EC_Use_Cases/product-page-diagram_ElastiCache_how-it-works.ec509f8b878f549b7fb8a49669bf2547878303f6.png" alt="Amazon ElastiCache makes it easy to setup, manage, and scale in-memory data stores in the cloud"></p>
 <p><strong>Memcached</strong></p>
 <ul>
@@ -486,7 +520,7 @@
 <li>Redis is Multi-AZ</li>
 <li>You can do back ups and restores of Redis</li>
 </ul>
-<h2 id="Database-Migration-Service-DMS"><a href="#Database-Migration-Service-DMS" class="headerlink" title="Database Migration Service (DMS)"></a><a href="https://aws.amazon.com/dms/" target="_blank" rel="noopener">Database Migration Service (DMS)</a></h2><p><strong>DMS is a cloud service that makes it easy to migrate relational databases, data warehouses, NoSQL databases, and other types of data stores.</strong> You can use AWS DMS to migrate your data into the AWS Cloud, between on-premises instances(through an AWS Cloud Setup), or between combinations of cloud and on-premises setups.</p>
+<h2 id="Database-Migration-Service-DMS"><a href="#Database-Migration-Service-DMS" class="headerlink" title="Database Migration Service (DMS)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/dms/">Database Migration Service (DMS)</a></h2><p><strong>DMS is a cloud service that makes it easy to migrate relational databases, data warehouses, NoSQL databases, and other types of data stores.</strong> You can use AWS DMS to migrate your data into the AWS Cloud, between on-premises instances(through an AWS Cloud Setup), or between combinations of cloud and on-premises setups.</p>
 <p><img src="https://d1.awsstatic.com/product-marketing/DMS/product-page-diagram-AWS-DMS_database-consolidation.86418ac11df3b896a07ff4efad07854003644f3d.png" alt="use AWS Database Migration Service to consolidate multiple source databases into a single target database. "></p>
 <p><strong>Exam Tips</strong></p>
 <ul>
@@ -502,9 +536,9 @@
 <li>ElastiCache — Memcached and Redis</li>
 <li>DynamoDB Accelerator (DAX)</li>
 </ul>
-<h2 id="EMR-Overview"><a href="#EMR-Overview" class="headerlink" title="EMR Overview"></a><a href="https://aws.amazon.com/emr" target="_blank" rel="noopener">EMR Overview</a></h2><p><strong>Amazon EMR makes it easy to set up, operate, and scale your big data environments by automating time-consuming tasks like provisioning capacity and tuning clusters.</strong></p>
+<h2 id="EMR-Overview"><a href="#EMR-Overview" class="headerlink" title="EMR Overview"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/emr">EMR Overview</a></h2><p><strong>Amazon EMR makes it easy to set up, operate, and scale your big data environments by automating time-consuming tasks like provisioning capacity and tuning clusters.</strong></p>
 <p><img src="https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/images/emr-on-eks-architecture.png" alt="Amazon EMR on EKS works with other AWS services"></p>
-<p><strong>Amazon EMR</strong> is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as <a href="https://aws.amazon.com/emr/features/spark/" target="_blank" rel="noopener">Apache Spark</a>, <a href="https://aws.amazon.com/emr/features/hive/" target="_blank" rel="noopener">Apache Hive</a>, <a href="https://aws.amazon.com/emr/features/hbase/" target="_blank" rel="noopener">Apache HBase</a>, <a href="https://aws.amazon.com/blogs/big-data/use-apache-flink-on-amazon-emr/" target="_blank" rel="noopener">Apache Flink</a>, <a href="https://aws.amazon.com/emr/features/hudi/" target="_blank" rel="noopener">Apache Hudi</a>, and <a href="https://aws.amazon.com/emr/features/presto/" target="_blank" rel="noopener">Presto</a>.  With EMR you can run petabyte-scale analysis at <a href="https://pages.awscloud.com/Gated-IDC-The-Economic-Benefits-of-Migrating-Apache-Spark-and-Hadoop-to-Amazon-EMR.html" target="_blank" rel="noopener">less than half of the cost</a> of traditional on-premises solutions and <a href="https://aws.amazon.com/blogs/big-data/amazon-emr-introduces-emr-runtime-for-apache-spark/" target="_blank" rel="noopener">over 3x faster</a> than standard Apache Spark. </p>
+<p><strong>Amazon EMR</strong> is the industry-leading cloud big data platform for processing vast amounts of data using open source tools such as <a target="_blank" rel="noopener" href="https://aws.amazon.com/emr/features/spark/">Apache Spark</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/emr/features/hive/">Apache Hive</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/emr/features/hbase/">Apache HBase</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/big-data/use-apache-flink-on-amazon-emr/">Apache Flink</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/emr/features/hudi/">Apache Hudi</a>, and <a target="_blank" rel="noopener" href="https://aws.amazon.com/emr/features/presto/">Presto</a>.  With EMR you can run petabyte-scale analysis at <a target="_blank" rel="noopener" href="https://pages.awscloud.com/Gated-IDC-The-Economic-Benefits-of-Migrating-Apache-Spark-and-Hadoop-to-Amazon-EMR.html">less than half of the cost</a> of traditional on-premises solutions and <a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/big-data/amazon-emr-introduces-emr-runtime-for-apache-spark/">over 3x faster</a> than standard Apache Spark. </p>
 <p><strong>What is EMR?</strong></p>
 <ul>
 <li><strong>The central component of Amazon EMR is the cluster.</strong> </li>
@@ -519,7 +553,7 @@
 <li>You can configure replication to S3 on <strong>five-minute intervals for all log data from the master node</strong>; however , this can only be configured when creating the cluster for the first time.</li>
 </ul>
 <hr>
-<h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a href="https://aws.amazon.com/rds/faqs/" target="_blank" rel="noopener">https://aws.amazon.com/rds/faqs/</a></p>
+<h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/faqs/">https://aws.amazon.com/rds/faqs/</a></p>
 
       
     </div>
@@ -527,7 +561,9 @@
       
         <div id="donation_div"></div>
 
+
 <script src="/Blog/js/vdonate.js"></script>
+
 <script>
 var a = new Donate({
   title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
@@ -542,7 +578,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
@@ -556,7 +592,7 @@ var a = new Donate({
          
         </ul>
 <div>
-</div></div>
+
       
       
         
@@ -586,7 +622,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/AWS/">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Solutions-Architect-Associate/">Solutions Architect - Associate</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Solutions-Architect-Associate/" rel="tag">Solutions Architect - Associate</a></li></ul>
 
       
 
@@ -596,7 +632,7 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/Blog/2020/11/06/A-Comprehensive-Look-at-The Multi-Armed-Bandit-Problem/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/Blog/2020/11/06/A-Comprehensive-Look-at-The%20Multi-Armed-Bandit-Problem/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -622,7 +658,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.2.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redshift"><span class="nav-number">1.4.</span> <span class="nav-text">Redshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aurora"><span class="nav-number">1.5.</span> <span class="nav-text">Aurora</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElastiCache"><span class="nav-number">1.6.</span> <span class="nav-text">ElastiCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Migration-Service-DMS"><span class="nav-number">1.7.</span> <span class="nav-text">Database Migration Service (DMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-Services"><span class="nav-number">1.8.</span> <span class="nav-text">Caching Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EMR-Overview"><span class="nav-number">1.9.</span> <span class="nav-text">EMR Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.10.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><span class="nav-number">1.2.</span> <span class="nav-text">RDS - Back Ups, Multi-AZ &amp; Read Replicas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Back-Ups"><span class="nav-number">1.2.1.</span> <span class="nav-text">Back Ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multi-AZ"><span class="nav-number">1.2.2.</span> <span class="nav-text">Multi-AZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read-Replica"><span class="nav-number">1.2.3.</span> <span class="nav-text">Read Replica</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DynamoDB"><span class="nav-number">1.3.</span> <span class="nav-text">DynamoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-DynamoDB"><span class="nav-number">1.3.1.</span> <span class="nav-text">Basic DynamoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tenets-of-NoSQL-DATA-MODELING"><span class="nav-number">1.3.2.</span> <span class="nav-text">Tenets of NoSQL DATA MODELING</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-DynamoDB"><span class="nav-number">1.3.3.</span> <span class="nav-text">Advanced DynamoDB</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redshift"><span class="nav-number">1.4.</span> <span class="nav-text">Redshift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aurora"><span class="nav-number">1.5.</span> <span class="nav-text">Aurora</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ElastiCache"><span class="nav-number">1.6.</span> <span class="nav-text">ElastiCache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Migration-Service-DMS"><span class="nav-number">1.7.</span> <span class="nav-text">Database Migration Service (DMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-Services"><span class="nav-number">1.8.</span> <span class="nav-text">Caching Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EMR-Overview"><span class="nav-number">1.9.</span> <span class="nav-text">EMR Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.10.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -747,8 +783,13 @@ $(document).ready(function(){
 </script>
 
 
-  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
-  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/Blog/js/scripts.js"></script>
@@ -756,7 +797,10 @@ $(document).ready(function(){
 
 
 
-  <script src="/Blog/js/dialog.js"></script>
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
 
 
 

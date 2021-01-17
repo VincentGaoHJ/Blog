@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>apache spark: the new ‘king’ of big data | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Spark">
+  <meta name="keywords" content="Spark" />
   
   
   
   
-  <meta name="keywords" content="Spark">
-<meta property="og:type" content="article">
+  <meta property="og:type" content="article">
 <meta property="og:title" content="Apache Spark: the New ‘king’ of Big Data">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/12/09/Apache-Spark-the-new-king-of-Big-Data/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
 <meta property="og:image" content="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg">
 <meta property="og:image" content="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png">
 <meta property="og:image" content="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png">
@@ -25,9 +24,11 @@
 <meta property="og:image" content="https://dytvr9ot2sszz.cloudfront.net/wp-content/uploads/2018/02/Kafka-Hadoop-Spark-Architecture-1024x666.png">
 <meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-Pipeline.png">
 <meta property="og:image" content="https://spark.apache.org/docs/latest/img/ml-PipelineModel.png">
-<meta property="og:updated_time" content="2020-12-09T18:18:24.700Z">
+<meta property="article:published_time" content="2020-12-09T12:22:32.000Z">
+<meta property="article:modified_time" content="2020-12-09T18:18:24.700Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="Spark">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apache Spark: the New ‘king’ of Big Data">
 <meta name="twitter:image" content="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -50,13 +51,19 @@
 }
 
   </style>
-  <link rel="stylesheet" href="/Blog/css/style.css">
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
 
-  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
-  <script src="/Blog/js/bootstrap.js"></script>
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
 
   
 
@@ -64,23 +71,25 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/dialog.css">
-  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
 
   
 
   
-    <link rel="stylesheet" href="/Blog/css/header-post.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
   
 
   
   
   
-    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -105,7 +114,8 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -126,14 +136,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -157,10 +167,12 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/Blog/js/insight.js"></script>
 
+
 </div></li>
-            </ul></div>
+            </div>
           </div>
                 
       </div>
@@ -174,14 +186,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Apache-Spark-the-new-king-of-Big-Data" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Apache-Spark-the-new-king-of-Big-Data" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       Apache Spark: the New ‘king’ of Big Data
     </h1>
   
@@ -209,7 +221,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg" alt></p>
+        <p><img src="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg" alt=""></p>
 <a id="more"></a>
 <p>[TOC]</p>
 <h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><h3 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h3><p>It’s a general-purpose form of distributed processing that has several components: </p>
@@ -232,9 +244,9 @@
 <li><p><strong>MLlib: </strong>Apache Spark comes up with a library containing common Machine Learning (ML) services called MLlib. It provides various types of ML algorithms including regression, clustering, and classification, which can perform various operations on data to get meaningful insights out of it.</p>
 </li>
 </ul>
-<p><img src="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png" alt></p>
+<p><img src="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png" alt=""></p>
 <p>Spark has several APIs. The original interface was written in Scala, and based on heavy usage by data scientists, Python and R endpoints were also added. Java is another option for writing Spark jobs.  </p>
-<h3 id="Apache-Spark-vs-Hadoop-vs-Hive"><a href="#Apache-Spark-vs-Hadoop-vs-Hive" class="headerlink" title="Apache Spark vs Hadoop vs Hive"></a>Apache Spark vs Hadoop vs Hive</h3><p>That’s not to say Hadoop is obsolete. It does things that Spark does not, and often provides the framework upon which Spark works. The <a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html" target="_blank" rel="noopener">Hadoop Distributed File System</a> enables the service to store and index files, serving as a virtual data infrastructure.</p>
+<h3 id="Apache-Spark-vs-Hadoop-vs-Hive"><a href="#Apache-Spark-vs-Hadoop-vs-Hive" class="headerlink" title="Apache Spark vs Hadoop vs Hive"></a>Apache Spark vs Hadoop vs Hive</h3><p>That’s not to say Hadoop is obsolete. It does things that Spark does not, and often provides the framework upon which Spark works. The <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html">Hadoop Distributed File System</a> enables the service to store and index files, serving as a virtual data infrastructure.</p>
 <p>Spark, on the other hand, performs distributed, high-speed compute functions on that architecture. <strong>If Hadoop is the professional kitchen with the tools and equipment to build and cook meals of data, then Spark is the expediter that rapidly assembles and distributes those meals for consumption.</strong></p>
 <p>Because Spark was built to work with and run on the Hadoop infrastructure, the two systems work well together. Fast-growing organizations built in Hadoop can easily add Spark’s speed and functionality as needed.</p>
 <p>As for the different between hive and Spark, they are different products built for different purposes in the big data space. <strong>Hive is a distributed database, and Spark is a framework for data analytics.</strong></p>
@@ -283,7 +295,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png" alt></p>
+<h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png" alt=""></p>
 <ul>
 <li><strong>Speed</strong></li>
 </ul>
@@ -323,15 +335,15 @@
 <h2 id="Summing-it-up"><a href="#Summing-it-up" class="headerlink" title="Summing it up"></a>Summing it up</h2><p><strong>So is it Hadoop or Spark?</strong> These systems are two of the most prominent distributed systems for processing data on the market today. Hadoop is used mainly for disk-heavy operations with the MapReduce paradigm, and Spark is a more flexible, but more costly in-memory processing architecture. Both are Apache top-level projects, are often used together, and have similarities, but it’s important to understand the features of each when deciding to implement them.</p>
 <p><strong>So is it Spark or Hive?</strong> Hive and Spark are both immensely popular tools in the big data world. Hive is the best option for performing data analytics on large volumes of data using SQLs. Spark, on the other hand, is the best option for running big data analytics. It provides a faster, more modern alternative to MapReduce.</p>
 <hr>
-<h2 id="ML-Pipelines"><a href="#ML-Pipelines" class="headerlink" title="ML Pipelines"></a><strong>ML Pipelines</strong></h2><p>ML Pipelines provide a uniform set of high-level APIs built on top of <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener">DataFrames</a> that help users create and tune practical machine learning pipelines.</p>
+<h2 id="ML-Pipelines"><a href="#ML-Pipelines" class="headerlink" title="ML Pipelines"></a><strong>ML Pipelines</strong></h2><p>ML Pipelines provide a uniform set of high-level APIs built on top of <a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/sql-programming-guide.html">DataFrames</a> that help users create and tune practical machine learning pipelines.</p>
 <ul>
 <li><p><strong>Main concepts in Pipelines</strong></p>
 <ul>
-<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#dataframe" target="_blank" rel="noopener"><code>DataFrame</code></a></strong>: This ML API uses <code>DataFrame</code> from Spark SQL as an ML dataset, which can hold a variety of data types. E.g., a <code>DataFrame</code> could have different columns storing text, feature vectors, true labels, and predictions.</li>
-<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#transformers" target="_blank" rel="noopener"><code>Transformer</code></a></strong>: A <code>Transformer</code> is an algorithm which can transform one <code>DataFrame</code> into another <code>DataFrame</code>. E.g., an ML model is a <code>Transformer</code> which transforms a <code>DataFrame</code> with features into a <code>DataFrame</code> with predictions.</li>
-<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#estimators" target="_blank" rel="noopener"><code>Estimator</code></a></strong>: An <code>Estimator</code> is an algorithm which can be fit on a <code>DataFrame</code> to produce a <code>Transformer</code>. E.g., a learning algorithm is an <code>Estimator</code> which trains on a <code>DataFrame</code> and produces a model.</li>
-<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline" target="_blank" rel="noopener"><code>Pipeline</code></a></strong>: A <code>Pipeline</code> chains multiple <code>Transformer</code>s and <code>Estimator</code>s together to specify an ML workflow.</li>
-<li><strong><a href="https://spark.apache.org/docs/latest/ml-pipeline.html#parameters" target="_blank" rel="noopener"><code>Parameter</code></a></strong>: All <code>Transformer</code>s and <code>Estimator</code>s now share a common API for specifying parameters.</li>
+<li><strong><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html#dataframe"><code>DataFrame</code></a></strong>: This ML API uses <code>DataFrame</code> from Spark SQL as an ML dataset, which can hold a variety of data types. E.g., a <code>DataFrame</code> could have different columns storing text, feature vectors, true labels, and predictions.</li>
+<li><strong><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html#transformers"><code>Transformer</code></a></strong>: A <code>Transformer</code> is an algorithm which can transform one <code>DataFrame</code> into another <code>DataFrame</code>. E.g., an ML model is a <code>Transformer</code> which transforms a <code>DataFrame</code> with features into a <code>DataFrame</code> with predictions.</li>
+<li><strong><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html#estimators"><code>Estimator</code></a></strong>: An <code>Estimator</code> is an algorithm which can be fit on a <code>DataFrame</code> to produce a <code>Transformer</code>. E.g., a learning algorithm is an <code>Estimator</code> which trains on a <code>DataFrame</code> and produces a model.</li>
+<li><strong><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html#pipeline"><code>Pipeline</code></a></strong>: A <code>Pipeline</code> chains multiple <code>Transformer</code>s and <code>Estimator</code>s together to specify an ML workflow.</li>
+<li><strong><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html#parameters"><code>Parameter</code></a></strong>: All <code>Transformer</code>s and <code>Estimator</code>s now share a common API for specifying parameters.</li>
 </ul>
 </li>
 <li><p><strong>How it works</strong></p>
@@ -355,10 +367,10 @@
 </li>
 </ul>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://towardsdatascience.com/a-neanderthals-guide-to-apache-spark-in-python-9ef1f156d427" target="_blank" rel="noopener">A Neanderthal’s Guide to Apache Spark in Python</a></li>
-<li><a href="https://www.edureka.co/blog/spark-architecture/#Spark" target="_blank" rel="noopener">Apache Spark Architecture – Spark Cluster Architecture Explained</a></li>
-<li><a href="https://logz.io/blog/hadoop-vs-spark/" target="_blank" rel="noopener">How do Hadoop and Spark Stack Up?</a></li>
-<li><a href="https://spark.apache.org/docs/latest/ml-pipeline.html" target="_blank" rel="noopener">MLlib: ML Pipelines</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/a-neanderthals-guide-to-apache-spark-in-python-9ef1f156d427">A Neanderthal’s Guide to Apache Spark in Python</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.edureka.co/blog/spark-architecture/#Spark">Apache Spark Architecture – Spark Cluster Architecture Explained</a></li>
+<li><a target="_blank" rel="noopener" href="https://logz.io/blog/hadoop-vs-spark/">How do Hadoop and Spark Stack Up?</a></li>
+<li><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/ml-pipeline.html">MLlib: ML Pipelines</a></li>
 </ul>
 
       
@@ -367,7 +379,9 @@
       
         <div id="donation_div"></div>
 
+
 <script src="/Blog/js/vdonate.js"></script>
+
 <script>
 var a = new Donate({
   title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
@@ -382,7 +396,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
@@ -396,7 +410,7 @@ var a = new Donate({
          
         </ul>
 <div>
-</div></div>
+
       
       
         
@@ -426,7 +440,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Spark/">Spark</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Spark/" rel="tag">Spark</a></li></ul>
 
       
 
@@ -587,8 +601,13 @@ $(document).ready(function(){
 </script>
 
 
-  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
-  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/Blog/js/scripts.js"></script>
@@ -596,7 +615,10 @@ $(document).ready(function(){
 
 
 
-  <script src="/Blog/js/dialog.js"></script>
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
 
 
 

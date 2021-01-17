@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>constructing topical concept hierarchical taxonomy of tourist attraction | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="NMFMachine-LearningClustering">
+  <meta name="keywords" content="NMFMachine-LearningClustering" />
   
   
   
   
   <meta name="description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained o">
-<meta name="keywords" content="NMF,Machine-Learning,Clustering">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/index.html">
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained o">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-08-25T06:05:36.475Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-06-06T02:49:48.000Z">
+<meta property="article:modified_time" content="2020-08-25T06:05:36.475Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="NMF">
+<meta property="article:tag" content="Machine-Learning">
+<meta property="article:tag" content="Clustering">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction">
-<meta name="twitter:description" content="Abstract A hierarchical co-clustering module by using non-negative matrix tri-factorization for allocating attractions and things of interest to topic when splitting a coarse topic into fine-grained o">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -44,13 +46,19 @@
 }
 
   </style>
-  <link rel="stylesheet" href="/Blog/css/style.css">
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
 
-  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
-  <script src="/Blog/js/bootstrap.js"></script>
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
 
   
 
@@ -58,23 +66,25 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/dialog.css">
-  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
 
   
 
   
-    <link rel="stylesheet" href="/Blog/css/header-post.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
   
 
   
   
   
-    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -99,7 +109,8 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -120,14 +131,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -151,10 +162,12 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/Blog/js/insight.js"></script>
 
+
 </div></li>
-            </ul></div>
+            </div>
           </div>
                 
       </div>
@@ -168,14 +181,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction
     </h1>
   
@@ -217,7 +230,7 @@
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
 \mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>This is <a href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记" target="_blank" rel="noopener">理论推导</a> link.</p>
+\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>This is <a target="_blank" rel="noopener" href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记">理论推导</a> link.</p>
 <hr>
 <h4 id="Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Concept Extraction based on TextRank Algorithm"></a>Concept Extraction based on TextRank Algorithm</h4><h5 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h5><p>Graph-based ranking algorithms are essentially a way of deciding the importance of a vertex within<br>a graph, based on global information recursively drawn from the entire graph. </p>
 <p>Formally, let $G=(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}_{i}$ , let $\operatorname{In}\left(V_{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V_{i}\right)$ be the set of vertices that vertex $V_{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):</p>
@@ -345,7 +358,9 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
       
         <div id="donation_div"></div>
 
+
 <script src="/Blog/js/vdonate.js"></script>
+
 <script>
 var a = new Donate({
   title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
@@ -360,7 +375,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
@@ -374,7 +389,7 @@ var a = new Donate({
          
         </ul>
 <div>
-</div></div>
+
       
       
         
@@ -404,7 +419,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Clustering/">Clustering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/NMF/">NMF</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Clustering/" rel="tag">Clustering</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/NMF/" rel="tag">NMF</a></li></ul>
 
       
 
@@ -424,7 +439,7 @@ var a = new Donate({
     </a>
   
   
-    <a href="/Blog/2019/05/20/运用股指期货套期保值模拟分析/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Blog/2019/05/20/%E8%BF%90%E7%94%A8%E8%82%A1%E6%8C%87%E6%9C%9F%E8%B4%A7%E5%A5%97%E6%9C%9F%E4%BF%9D%E5%80%BC%E6%A8%A1%E6%8B%9F%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">运用股指期货套期保值模拟分析</div>
     </a>
@@ -440,7 +455,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#理论数学表达"><span class="nav-number">2.</span> <span class="nav-text">理论数学表达</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-negative-Matrix-Factorization"><span class="nav-number">2.1.</span> <span class="nav-text">Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Concept Extraction based on TextRank Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PageRank"><span class="nav-number">2.2.1.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TextRank"><span class="nav-number">2.2.2.</span> <span class="nav-text">TextRank</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对树生成的约束"><span class="nav-number">2.3.</span> <span class="nav-text">对树生成的约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">3.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#节点-X-矩阵的构建"><span class="nav-number">3.1.</span> <span class="nav-text">节点 X 矩阵的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#节点的迭代方法"><span class="nav-number">3.2.</span> <span class="nav-text">节点的迭代方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm"><span class="nav-number">4.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><span class="nav-number">4.1.</span> <span class="nav-text">Algorithm 1:  Hierarchical Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-2-Clustering-for-topic-splitting"><span class="nav-number">4.2.</span> <span class="nav-text">Algorithm 2:  Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-3-Non-negative-Matrix-Factorization"><span class="nav-number">4.3.</span> <span class="nav-text">Algorithm 3:  Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Algorithm 4:  Concept Extraction based on TextRank Algorithm</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%95%B0%E5%AD%A6%E8%A1%A8%E8%BE%BE"><span class="nav-number">2.</span> <span class="nav-text">理论数学表达</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-negative-Matrix-Factorization"><span class="nav-number">2.1.</span> <span class="nav-text">Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Concept Extraction based on TextRank Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PageRank"><span class="nav-number">2.2.1.</span> <span class="nav-text">PageRank</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TextRank"><span class="nav-number">2.2.2.</span> <span class="nav-text">TextRank</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%A0%91%E7%94%9F%E6%88%90%E7%9A%84%E7%BA%A6%E6%9D%9F"><span class="nav-number">2.3.</span> <span class="nav-text">对树生成的约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">3.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%82%B9-X-%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-number">3.1.</span> <span class="nav-text">节点 X 矩阵的构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E7%9A%84%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">节点的迭代方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm"><span class="nav-number">4.</span> <span class="nav-text">Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-1-Hierarchical-Clustering-for-topic-splitting"><span class="nav-number">4.1.</span> <span class="nav-text">Algorithm 1:  Hierarchical Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-2-Clustering-for-topic-splitting"><span class="nav-number">4.2.</span> <span class="nav-text">Algorithm 2:  Clustering for topic splitting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-3-Non-negative-Matrix-Factorization"><span class="nav-number">4.3.</span> <span class="nav-text">Algorithm 3:  Non-negative Matrix Factorization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><span class="nav-number">4.4.</span> <span class="nav-text">Algorithm 4:  Concept Extraction based on TextRank Algorithm</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -565,8 +580,13 @@ $(document).ready(function(){
 </script>
 
 
-  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
-  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/Blog/js/scripts.js"></script>
@@ -574,7 +594,10 @@ $(document).ready(function(){
 
 
 
-  <script src="/Blog/js/dialog.js"></script>
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
 
 
 

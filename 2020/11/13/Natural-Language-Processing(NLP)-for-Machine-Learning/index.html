@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
   <meta charset="utf-8">
   
   <title>natural language processing(nlp) for machine learning | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Machine-LearningNatural-Language-Processing">
+  <meta name="keywords" content="Machine-LearningNatural-Language-Processing" />
   
   
   
   
   <meta name="description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
-<meta name="keywords" content="Machine-Learning,Natural-Language-Processing">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Natural Language Processing(NLP) for Machine Learning">
 <meta property="og:url" content="http://vincentgaohj.github.io/Blog/2020/11/13/Natural-Language-Processing(NLP)-for-Machine-Learning/index.html">
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
-<meta property="og:locale" content="default">
+<meta property="og:locale">
 <meta property="og:image" content="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b">
 <meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e">
-<meta property="og:updated_time" content="2020-12-08T06:07:37.531Z">
+<meta property="article:published_time" content="2020-11-13T04:53:22.000Z">
+<meta property="article:modified_time" content="2020-12-08T06:07:37.531Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="Machine-Learning">
+<meta property="article:tag" content="Natural-Language-Processing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Natural Language Processing(NLP) for Machine Learning">
-<meta name="twitter:description" content="Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, o">
 <meta name="twitter:image" content="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
@@ -49,13 +50,19 @@
 }
 
   </style>
-  <link rel="stylesheet" href="/Blog/css/style.css">
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
 
-  <script src="/Blog/js/jquery-3.1.1.min.js"></script>
-  <script src="/Blog/js/bootstrap.js"></script>
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/Blog/css/bootstrap.css">
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
 
   
 
@@ -63,23 +70,25 @@
   
 
   
-    <link rel="stylesheet" href="/Blog/css/dialog.css">
-  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
 
   
 
   
-    <link rel="stylesheet" href="/Blog/css/header-post.css">
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
   
 
   
   
   
-    <link rel="stylesheet" href="/Blog/css/vdonate.css">
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -104,7 +113,8 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -125,14 +135,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -156,10 +166,12 @@
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/Blog/js/insight.js"></script>
 
+
 </div></li>
-            </ul></div>
+            </div>
           </div>
                 
       </div>
@@ -173,14 +185,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-Natural-Language-Processing(NLP)-for-Machine-Learning" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-Natural-Language-Processing(NLP)-for-Machine-Learning" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
+    <h1 class="thumb" class="article-title" itemprop="name">
       Natural Language Processing(NLP) for Machine Learning
     </h1>
   
@@ -209,12 +221,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, otherwise known as text vectorization.</p>
-<p><img src="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png" alt></p>
+<p><img src="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png" alt=""></p>
 <a id="more"></a>
 <p>[toc]</p>
 <h2 id="Form-the-Dataset"><a href="#Form-the-Dataset" class="headerlink" title="Form the Dataset"></a>Form the Dataset</h2><p><strong>Positive Samples</strong></p>
 <ul>
-<li><a href="https://transparency.twitter.com/en/reports/information-operations.html" target="_blank" rel="noopener">Twitter Information Operations</a>: Insights into attempts to manipulate Twitter by state-backed entities.<ul>
+<li><a target="_blank" rel="noopener" href="https://transparency.twitter.com/en/reports/information-operations.html">Twitter Information Operations</a>: Insights into attempts to manipulate Twitter by state-backed entities.<ul>
 <li>User Dataset: followers count, following count, account creation date, etc.</li>
 <li>Tweets Dataset: tweets content, hash-tag, etc.</li>
 </ul>
@@ -223,8 +235,8 @@
 </ul>
 <p><strong>Negative Samples</strong></p>
 <ul>
-<li>User Dataset —  <a href="https://www.oreilly.com/ideas/tweets-loud-and-quiet" target="_blank" rel="noopener">“Tweets Loud and Quiet”</a> </li>
-<li>Tweets Dataset — <a href="http://help.sentiment140.com/for-students/" target="_blank" rel="noopener">sentiment140</a></li>
+<li>User Dataset —  <a target="_blank" rel="noopener" href="https://www.oreilly.com/ideas/tweets-loud-and-quiet">“Tweets Loud and Quiet”</a> </li>
+<li>Tweets Dataset — <a target="_blank" rel="noopener" href="http://help.sentiment140.com/for-students/">sentiment140</a></li>
 <li>Those two dataset have no connection, but we could know the distribution of users information and tweets content separately. <strong>That’s also why we could use these two separate dataset to form the negative sample by simply sampling the tweets from tweets dataset to be the users tweets feature.</strong> the total number of tweets posted by user is told by the users dataset, as well as the frequency of user’s tweet behavior(calculated by total number divided by time horizon).</li>
 </ul>
 <p><strong>Sample of Natural Language Dataset</strong></p>
@@ -339,15 +351,15 @@
 <h2 id="Pre-processing-Data"><a href="#Pre-processing-Data" class="headerlink" title="Pre-processing Data"></a>Pre-processing Data</h2><h3 id="Remove-punctuation"><a href="#Remove-punctuation" class="headerlink" title="Remove punctuation"></a>Remove punctuation</h3><p>Punctuation can provide grammatical context to a sentence which supports our understanding. But for our vectorizer which counts the number of words and not the context, it does not add value, so we remove all special characters.</p>
 <p><strong>e.g.: How are you?-&gt;How are you</strong></p>
 <h3 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h3><p>Is the process of segmenting running text into sentences and words. In essence, it’s the task of cutting a text into pieces called <em>tokens</em>, and at the same time throwing away certain characters, such as punctuation.</p>
-<h3 id="Remove-stopwords"><a href="#Remove-stopwords" class="headerlink" title="Remove stopwords"></a>Remove <a href="http://kavita-ganesan.com/what-are-stop-words/#.X6lcQGgzZhE" target="_blank" rel="noopener">stopwords</a></h3><p>Stopwords are common words that will likely appear in any text. They don’t tell us much about our data so we remove them. </p>
+<h3 id="Remove-stopwords"><a href="#Remove-stopwords" class="headerlink" title="Remove stopwords"></a>Remove <a target="_blank" rel="noopener" href="http://kavita-ganesan.com/what-are-stop-words/#.X6lcQGgzZhE">stopwords</a></h3><p>Stopwords are common words that will likely appear in any text. They don’t tell us much about our data so we remove them. </p>
 <p><strong>e.g.: silver or lead is fine for me-&gt; silver, lead, fine.</strong></p>
-<p>we are passing two parameters to <a href="https://kavita-ganesan.com/how-to-use-countvectorizer/" target="_blank" rel="noopener">CountVectorizer</a>, <code>max_df</code> and <code>stop_words</code>. The first is just to say ignore all words that have appeared in 85% of the documents, since those may be unimportant. The later, is a custom stop words list. You can also use stop words that are native to sklearn by setting <code>stop_words=&#39;english&#39;</code>,.</p>
+<p>we are passing two parameters to <a target="_blank" rel="noopener" href="https://kavita-ganesan.com/how-to-use-countvectorizer/">CountVectorizer</a>, <code>max_df</code> and <code>stop_words</code>. The first is just to say ignore all words that have appeared in 85% of the documents, since those may be unimportant. The later, is a custom stop words list. You can also use stop words that are native to sklearn by setting <code>stop_words=&#39;english&#39;</code>,.</p>
 <h3 id="Lemmatizing"><a href="#Lemmatizing" class="headerlink" title="Lemmatizing"></a>Lemmatizing</h3><p>For grammatical reasons, documents are going to use different forms of a word, such as <em>organize</em>, <em>organizes</em>, and <em>organizing</em>. Additionally, there are families of derivationally related words with similar meanings, such as <em>democracy</em>, <em>democratic</em>, and <em>democratization</em>. In many situations, it seems as if it would be useful for a search for one of these words to return documents that contain another word in the set</p>
 <p>It is better than stemming as it uses a dictionary-based approach i.e a morphological analysis to the root word. </p>
 <p><strong>e.g.: entitling, entitled -&gt; entitle</strong></p>
 <h2 id="Vectorizing-Data"><a href="#Vectorizing-Data" class="headerlink" title="Vectorizing Data"></a>Vectorizing Data</h2><p>Vectorizing is the process of encoding text as integers i.e. numeric form to create feature vectors so that machine learning algorithms can understand our data.</p>
 <h3 id="Bag-Of-Words"><a href="#Bag-Of-Words" class="headerlink" title="Bag-Of-Words"></a>Bag-Of-Words</h3><p>It gives a result of 1 if present in the sentence and 0 if not present. It, therefore, creates a bag of words with a document-matrix count in each text document.</p>
-<h3 id="Extracting-features-with-TF-IDF"><a href="#Extracting-features-with-TF-IDF" class="headerlink" title="Extracting features with TF-IDF"></a>Extracting features with TF-IDF</h3><h4 id="Why-is-TF-IDF-used-in-Machine-Learning"><a href="#Why-is-TF-IDF-used-in-Machine-Learning" class="headerlink" title="Why is TF-IDF used in Machine Learning ?"></a>Why is TF-IDF used in Machine Learning ?</h4><p><a href="https://monkeylearn.com/blog/gentle-guide-to-machine-learning/" target="_blank" rel="noopener">Machine learning</a> with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, otherwise known as <a href="https://monkeylearn.com/blog/beginners-guide-text-vectorization/" target="_blank" rel="noopener">text vectorization</a>. It’s a fundamental step in the process of machine learning for <a href="http://www.monkeylearn.com/data-analysis/" target="_blank" rel="noopener">analyzing data</a>, and different vectorization algorithms will drastically affect end results, so you need to choose one that will deliver the results you’re hoping for.</p>
+<h3 id="Extracting-features-with-TF-IDF"><a href="#Extracting-features-with-TF-IDF" class="headerlink" title="Extracting features with TF-IDF"></a>Extracting features with TF-IDF</h3><h4 id="Why-is-TF-IDF-used-in-Machine-Learning"><a href="#Why-is-TF-IDF-used-in-Machine-Learning" class="headerlink" title="Why is TF-IDF used in Machine Learning ?"></a>Why is TF-IDF used in Machine Learning ?</h4><p><a target="_blank" rel="noopener" href="https://monkeylearn.com/blog/gentle-guide-to-machine-learning/">Machine learning</a> with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, otherwise known as <a target="_blank" rel="noopener" href="https://monkeylearn.com/blog/beginners-guide-text-vectorization/">text vectorization</a>. It’s a fundamental step in the process of machine learning for <a target="_blank" rel="noopener" href="http://www.monkeylearn.com/data-analysis/">analyzing data</a>, and different vectorization algorithms will drastically affect end results, so you need to choose one that will deliver the results you’re hoping for.</p>
 <h4 id="What-is-TF-IDF"><a href="#What-is-TF-IDF" class="headerlink" title="What is TF-IDF ?"></a>What is TF-IDF ?</h4><p>TF-IDF which stands for <strong>Term Frequency – Inverse Document Frequency</strong>. It is one of the most important techniques used for information retrieval to represent how important a specific word or phrase is to a given document. </p>
 <p>The TF-IDF  value increases in proportion to the number of times a word appears in the document but is often offset by the frequency of the word in the corpus, which helps to adjust with respect to the fact that some words appear more frequently in general.</p>
 <ul>
@@ -367,7 +379,7 @@
 t f(t, d)=\log (1+\text { freq }(t, d)) \\
 i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
 \end{array}
-\end{equation}</script><p><a href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly" target="_blank" rel="noopener"><strong>How can one reduce the TFIDF model size?</strong></a></p>
+\end{equation}</script><p><a target="_blank" rel="noopener" href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly"><strong>How can one reduce the TFIDF model size?</strong></a></p>
 <ul>
 <li>The most effortless way is by filtering out infrequent words. You can achieve this by setting input arguments as follows: to use <code>min_df</code> to ignore terms that have a document frequency lower than the <code>min_df</code>. If float, the parameter represents a proportion of documents, integer absolute counts. When dealing with a relatively large corpus, using <code>min_df</code> of 5, 10, or 50 reduces the size of the vocabulary significantly while maintaining (or often improving) the accuracy.</li>
 <li><code>max_features</code> To consider only the top <code>max_features</code> ordered by term frequency across the corpus. This is useful if you have strict limit on the size of TF-IDF transformed features (e.g. up to 100,000 TF-IDF features).</li>
@@ -385,22 +397,22 @@ i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
 <li><strong>Recall</strong>: recall is the fraction of the relevant documents that are successfully retrieved.</li>
 <li>Precision and recall are then defined as:</li>
 </ul>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807" alt></p>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b" alt></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807" alt=""></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b" alt=""></p>
 <ul>
-<li><strong>F-measure</strong>: he traditional F-measure or balanced F-score (<strong>F1 score</strong>) is the <a href="https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers" target="_blank" rel="noopener">geometric(harmonic) mean</a> of precision and recall:</li>
+<li><strong>F-measure</strong>: he traditional F-measure or balanced F-score (<strong>F1 score</strong>) is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers">geometric(harmonic) mean</a> of precision and recall:</li>
 </ul>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e" alt></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e" alt=""></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://towardsdatascience.com/natural-language-processing-nlp-for-machine-learning-d44498845d5b" target="_blank" rel="noopener">Natural Language Processing(NLP) for Machine Learning</a></li>
-<li><a href="https://www.geeksforgeeks.org/sklearn-feature-extraction-with-tf-idf/" target="_blank" rel="noopener">Sklearn | Feature Extraction with TF-IDF</a></li>
-<li><a href="https://medium.com/@hritikattri10/feature-extraction-using-tf-idf-algorithm-44eedb37305e" target="_blank" rel="noopener">Feature Extraction using TF-IDF algorithm</a></li>
-<li><a href="https://kavita-ganesan.com/extracting-keywords-from-text-tfidf/#.X6lUVWgzZhE" target="_blank" rel="noopener">Extracting Keywords with TF-IDF and Python’s Scikit-Learn</a></li>
-<li><a href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/" target="_blank" rel="noopener">Twitter sentiment analysis using Python and NLTK</a></li>
-<li><a href="https://monkeylearn.com/blog/what-is-tf-idf/" target="_blank" rel="noopener">What is TF-IDF</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/natural-language-processing-nlp-for-machine-learning-d44498845d5b">Natural Language Processing(NLP) for Machine Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/sklearn-feature-extraction-with-tf-idf/">Sklearn | Feature Extraction with TF-IDF</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@hritikattri10/feature-extraction-using-tf-idf-algorithm-44eedb37305e">Feature Extraction using TF-IDF algorithm</a></li>
+<li><a target="_blank" rel="noopener" href="https://kavita-ganesan.com/extracting-keywords-from-text-tfidf/#.X6lUVWgzZhE">Extracting Keywords with TF-IDF and Python’s Scikit-Learn</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.laurentluce.com/posts/twitter-sentiment-analysis-using-python-and-nltk/">Twitter sentiment analysis using Python and NLTK</a></li>
+<li><a target="_blank" rel="noopener" href="https://monkeylearn.com/blog/what-is-tf-idf/">What is TF-IDF</a></li>
 </ul>
 <h2 id="Other-Useful-Dataset"><a href="#Other-Useful-Dataset" class="headerlink" title="Other Useful Dataset"></a>Other Useful Dataset</h2><ul>
-<li><a href="https://github.com/shaypal5/awesome-twitter-data" target="_blank" rel="noopener">A list of Twitter datasets and related resources</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shaypal5/awesome-twitter-data">A list of Twitter datasets and related resources</a></li>
 </ul>
 
       
@@ -409,7 +421,9 @@ i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
       
         <div id="donation_div"></div>
 
+
 <script src="/Blog/js/vdonate.js"></script>
+
 <script>
 var a = new Donate({
   title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
@@ -424,7 +438,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
           </li>
           <li class="post-copyright-link">
           <strong>Post link:  </strong>
@@ -438,7 +452,7 @@ var a = new Donate({
          
         </ul>
 <div>
-</div></div>
+
       
       
         
@@ -468,7 +482,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Natural-Language-Processing/">Natural-Language-Processing</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Machine-Learning/" rel="tag">Machine-Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Natural-Language-Processing/" rel="tag">Natural-Language-Processing</a></li></ul>
 
       
 
@@ -488,7 +502,7 @@ var a = new Donate({
     </a>
   
   
-    <a href="/Blog/2020/11/06/A-Comprehensive-Look-at-The Multi-Armed-Bandit-Problem/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/Blog/2020/11/06/A-Comprehensive-Look-at-The%20Multi-Armed-Bandit-Problem/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">A Comprehensive Look at The Multi-Armed Bandit Problem</div>
     </a>
@@ -629,8 +643,13 @@ $(document).ready(function(){
 </script>
 
 
-  <link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
-  <script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
 
 
 <script src="/Blog/js/scripts.js"></script>
@@ -638,7 +657,10 @@ $(document).ready(function(){
 
 
 
-  <script src="/Blog/js/dialog.js"></script>
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
 
 
 
