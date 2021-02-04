@@ -19,8 +19,9 @@
 <meta property="og:description" content="AWS Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely.  Using IAM, you can create and manage AWS users and groups, and use permissions to allow a">
 <meta property="og:locale">
 <meta property="og:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--T9jIYY2g--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://raw.githubusercontent.com/butu5/devto/master/blog-posts/iam-test/assets/3-iam.png">
+<meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/directory_service_howitworks.80bfccbf2f5d1d63558ec3c086aff247147258f1.png">
 <meta property="article:published_time" content="2021-01-07T16:03:22.000Z">
-<meta property="article:modified_time" content="2021-01-07T16:12:16.248Z">
+<meta property="article:modified_time" content="2021-02-04T06:41:35.174Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -222,12 +223,120 @@
 <p><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--T9jIYY2g--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://raw.githubusercontent.com/butu5/devto/master/blog-posts/iam-test/assets/3-iam.png" alt="Using IAM, you can control who can access to AWS resources"></p>
 <a id="more"></a>
 <p>[toc]</p>
-<h1 id="Database-on-AWS"><a href="#Database-on-AWS" class="headerlink" title="Database on AWS"></a>Database on AWS</h1><h2 id="AWS-Directory-Service"><a href="#AWS-Directory-Service" class="headerlink" title="AWS Directory Service"></a>AWS Directory Service</h2><p><strong>What is AWS Directory Service?</strong></p>
+<h1 id="Advanced-IAM"><a href="#Advanced-IAM" class="headerlink" title="Advanced IAM"></a>Advanced IAM</h1><h2 id="AWS-Directory-Service"><a href="#AWS-Directory-Service" class="headerlink" title="AWS Directory Service"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/directoryservice/">AWS Directory Service</a></h2><p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/directory_service_howitworks.80bfccbf2f5d1d63558ec3c086aff247147258f1.png" alt="How it works"></p>
+<p><strong>AWS Directory Service for Microsoft Active Directory</strong>, also known as AWS Managed Microsoft Active Directory (AD), enables your directory-aware workloads and AWS resources to use managed Active Directory (AD) in AWS.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/faqs/">https://aws.amazon.com/rds/faqs/</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">AWS</th>
+<th style="text-align:center">Customer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Multi-AZ Deployment</td>
+<td style="text-align:center">Users, Groups, GPOs</td>
+</tr>
+<tr>
+<td style="text-align:center">Patch, Monitor, Recover</td>
+<td style="text-align:center">Standard AD Tools</td>
+</tr>
+<tr>
+<td style="text-align:center">Instance Rotation</td>
+<td style="text-align:center">Scale out DCs</td>
+</tr>
+<tr>
+<td style="text-align:center">Snapshot and Restore</td>
+<td style="text-align:center">Trusts (Resource Forest)</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Certificate Authorities</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">Federation</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>User Case</strong></p>
 <ul>
-<li></li>
+<li>Provide your on-premises AD users quick access to AWS</li>
+<li>Leverage integrations with Amazon RDS and Amazon FSx</li>
+<li>Enable single sign-on experience for AWS End User Computing services</li>
+<li>Give your on-premises AD users federated access to the AWS Management Console and AWS CLI quickly</li>
+<li>Grant your on-premises AD users single-click access to cloud business applications</li>
 </ul>
-<hr>
-<h2 id="REMEMBER-TO-READ-FAQ"><a href="#REMEMBER-TO-READ-FAQ" class="headerlink" title="REMEMBER TO READ FAQ"></a>REMEMBER TO READ FAQ</h2><p><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/faqs/">https://aws.amazon.com/rds/faqs/</a></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">AD Compatible</th>
+<th style="text-align:center">Not AD Compatible</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Managed Microsoft AD</td>
+<td style="text-align:center">Cloud Directory</td>
+</tr>
+<tr>
+<td style="text-align:center">AD Connector</td>
+<td style="text-align:center">Cognito User Pools</td>
+</tr>
+<tr>
+<td style="text-align:center">Simple AD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Simple AD</strong></p>
+<ul>
+<li>Standalone managed directory</li>
+<li>Basic AD features</li>
+<li>Small: &lt;= 500; Large &lt;= 5000 users</li>
+<li>Easier to manage EC2</li>
+<li>Linux workloads that need LDAP</li>
+<li>Does not support trusts (can’t join on-promises AD)</li>
+</ul>
+<p><strong>AD Connector</strong></p>
+<ul>
+<li>Directory gateway (proxy) for on-premises AD</li>
+<li>Avoid caching information in the cloud</li>
+<li>Allow on-premises users to log in to AWS using AD</li>
+<li>Join EC2 instances to your existing AD domain</li>
+<li>Scale across multiple AD Connectors</li>
+</ul>
+<p><strong>Cloud Directory</strong></p>
+<ul>
+<li>Directory-based store for <strong>developers</strong></li>
+<li>Multiple hierarchies with hundreds of millions of objects</li>
+<li>Use cases: org charts, course catalogs, device registries</li>
+<li>Full managed service</li>
+</ul>
+<p><strong>Amazon Cognito User Pools</strong></p>
+<ul>
+<li>Managed user directory for SaaS application</li>
+<li>Sign-ip and sign-in for web or mobile</li>
+<li>Works with <strong>social media</strong> identities</li>
+</ul>
+<h2 id="IAM-Policies"><a href="#IAM-Policies" class="headerlink" title="IAM Policies"></a>IAM Policies</h2><p><strong>Amazon Resource Name (ARN)</strong></p>
+<ul>
+<li><blockquote>
+<p>begin with: arn:partition:service:region:account_id</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>IAM Policies</strong></p>
+<ul>
+<li>JSON document that defines permissions</li>
+<li>Identity Policy &amp; Resource Policy</li>
+<li>No effect until attached</li>
+<li>List of Statements</li>
+</ul>
 
       
     </div>
@@ -332,7 +441,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Database-on-AWS"><span class="nav-number">1.</span> <span class="nav-text">Database on AWS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Directory-Service"><span class="nav-number">1.1.</span> <span class="nav-text">AWS Directory Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REMEMBER-TO-READ-FAQ"><span class="nav-number">1.2.</span> <span class="nav-text">REMEMBER TO READ FAQ</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Advanced-IAM"><span class="nav-number">1.</span> <span class="nav-text">Advanced IAM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Directory-Service"><span class="nav-number">1.1.</span> <span class="nav-text">AWS Directory Service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IAM-Policies"><span class="nav-number">1.2.</span> <span class="nav-text">IAM Policies</span></a></li></ol></li></ol>
     
     </div>
   </aside>
