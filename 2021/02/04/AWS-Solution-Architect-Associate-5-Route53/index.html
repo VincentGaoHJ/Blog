@@ -20,7 +20,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*TtV18rCw_px2YgopdP2b7A.png">
 <meta property="article:published_time" content="2021-02-04T07:03:24.000Z">
-<meta property="article:modified_time" content="2021-02-05T07:56:45.058Z">
+<meta property="article:modified_time" content="2021-02-05T08:00:12.288Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -261,12 +261,18 @@
 <li><p><strong>Alias Records</strong></p>
 <ul>
 <li>Alias records work like a CNAME record in that you can map one DNS name to another “target” DNS name.</li>
-<li>The key difference between alias records and CNAME is that, a CNAME can not be used for naked domain names. You can’t have a CNAME for <code>http://acloud.guru</code>, it must be either an A record or an Alias.</li>
+<li><strong>The key difference between alias records and CNAME is that, a CNAME can not be used for naked domain names. You can’t have a CNAME for <code>http://acloud.guru</code>, it must be either an A record or an Alias.</strong></li>
 </ul>
 </li>
 <li><p><strong>MX Records</strong></p>
 </li>
 <li><p><strong>PTR Records</strong></p>
+</li>
+<li><p><strong>Exam Tips</strong></p>
+<ul>
+<li>ELBS do not have pre-defined IPv4 addresses; you resolve to them using a DNS name</li>
+<li><strong>Given the choice, always choose an Alias Record over a CNAME</strong></li>
+</ul>
 </li>
 </ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
