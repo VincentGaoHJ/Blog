@@ -20,7 +20,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*TtV18rCw_px2YgopdP2b7A.png">
 <meta property="article:published_time" content="2021-02-04T07:03:24.000Z">
-<meta property="article:modified_time" content="2021-02-04T07:11:08.296Z">
+<meta property="article:modified_time" content="2021-02-05T07:56:45.058Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -220,8 +220,56 @@
         <p><strong>Amazon Route 53 is a highly available and scalable cloud <a target="_blank" rel="noopener" href="https://aws.amazon.com/route53/what-is-dns/">Domain Name System (DNS)</a> web service.</strong> </p>
 <p>It is designed to give developers and businesses an extremely reliable and cost effective way to route end users to Internet applications by translating names like www.example.com into the numeric IP addresses like 192.0.2.1 that computers use to connect to each other.<img src="https://cdn-images-1.medium.com/max/2000/1*TtV18rCw_px2YgopdP2b7A.png" alt="Host application running on S3 Bucket"></p>
 <a id="more"></a>
-<p>[toc]</p>
-<h1 id="Route53"><a href="#Route53" class="headerlink" title="Route53"></a>Route53</h1><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<h1 id="Route53"><a href="#Route53" class="headerlink" title="Route53"></a>Route53</h1><h2 id="Common-DNS-Types"><a href="#Common-DNS-Types" class="headerlink" title="Common DNS Types"></a>Common DNS Types</h2><ul>
+<li><p><strong>SOA Records: Start of Authority Record, it stores information about:</strong> </p>
+<ul>
+<li>The name of the server that supplied the data for the zone</li>
+<li>The administrator of the zone</li>
+<li>The current version of the data file</li>
+<li>The default number of seconds for the time-to-live file on resource records</li>
+</ul>
+</li>
+<li><p><strong>NS Records: NS Stands for Name Server Records</strong></p>
+<ul>
+<li>They are used by Top Level Domain servers to direct traffic to the Content DNS server which contains the authoritative DNS records.</li>
+</ul>
+</li>
+<li><p><strong>A Records</strong></p>
+<ul>
+<li><p>An A record is the fundamental type of DNS record.</p>
+</li>
+<li><p>The “A” in A record stands for “Address”</p>
+</li>
+<li><p>The A record is used by a computer to translate the name of the domain to an IP address.</p>
+</li>
+<li><blockquote>
+<p>www.acloud.guru -&gt; 123.10.10.80</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>CNAMES</strong></p>
+<ul>
+<li><p>A Canonical Name can be used to resolve one domain name to another.</p>
+</li>
+<li><blockquote>
+<p>mobile.acloud.guru -&gt; m.acloud.guru</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p><strong>Alias Records</strong></p>
+<ul>
+<li>Alias records work like a CNAME record in that you can map one DNS name to another “target” DNS name.</li>
+<li>The key difference between alias records and CNAME is that, a CNAME can not be used for naked domain names. You can’t have a CNAME for <code>http://acloud.guru</code>, it must be either an A record or an Alias.</li>
+</ul>
+</li>
+<li><p><strong>MX Records</strong></p>
+</li>
+<li><p><strong>PTR Records</strong></p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://tkssharma.com/deploy-application-using-aws-s3-cloudfront/">Deploying Application on S3 or ES2 Instance using Route 53/Cloudfront Gitlab</a></li>
 </ul>
 
@@ -319,7 +367,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Route53"><span class="nav-number">1.</span> <span class="nav-text">Route53</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.1.</span> <span class="nav-text">References</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Route53"><span class="nav-number">1.</span> <span class="nav-text">Route53</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Common-DNS-Types"><span class="nav-number">1.1.</span> <span class="nav-text">Common DNS Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.2.</span> <span class="nav-text">References</span></a></li></ol></li></ol>
     
     </div>
   </aside>
