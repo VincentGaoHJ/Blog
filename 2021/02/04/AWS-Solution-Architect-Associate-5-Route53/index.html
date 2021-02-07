@@ -20,7 +20,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*TtV18rCw_px2YgopdP2b7A.png">
 <meta property="article:published_time" content="2021-02-04T07:03:24.000Z">
-<meta property="article:modified_time" content="2021-02-06T13:25:43.580Z">
+<meta property="article:modified_time" content="2021-02-07T09:02:22.796Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -271,7 +271,15 @@
 <li><p><strong>Exam Tips</strong></p>
 <ul>
 <li>ELBS do not have pre-defined IPv4 addresses; you resolve to them using a DNS name</li>
-<li><strong>Given the choice, always choose an Alias Record over a CNAME</strong></li>
+<li><p><strong>Given the choice, always choose an Alias Record over a CNAME</strong></p>
+</li>
+<li><p><strong>Health Check</strong></p>
+<ul>
+<li>You can set health checks on individual record sets</li>
+<li>If a record set fails a health check it will be removed from Route53 until it passes the health check</li>
+<li>You can set SNS notifications to alert you if a health check is failed</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -284,17 +292,11 @@
 <ul>
 <li>Allows you split your traffic based on different weights assigned</li>
 <li>For example: you can set 10% of your traffic to go to <code>US-EAST-1</code> and 90% to go to <code>EU-WEST-1</code></li>
-<li><strong>Health Check</strong><ul>
-<li>You can set health checks on individual record sets</li>
-<li>If a record set fails a health check it will be removed from Route53 until it passes the health check</li>
-<li>You can set SNS notifications to alert you if a health check is failed</li>
-</ul>
-</li>
 </ul>
 <p><strong>Latency Routing Policy</strong></p>
 <ul>
 <li>Allows you to route your traffic based on the network latency for your end user (Which region will give them the fastest response time)</li>
-<li>To use latency-based routing, you create a latency resouce record set for the  Amazon EC2 resource in each region that hosts your website</li>
+<li>To use latency-based routing, you create a latency resource record set for the  Amazon EC2 resource in each region that hosts your website</li>
 </ul>
 <p><strong>Failover Routing Policy</strong></p>
 <ul>
@@ -305,8 +307,20 @@
 <ul>
 <li>Lets you choose where your traffic will be sent based on the geographic location of your users.</li>
 </ul>
-<p><strong>Geoproximity Routing Policy</strong></p>
-<p><strong>Multivalue Answer</strong></p>
+<p><strong>Geoproximity Routing Policy (Traffic Flow Only)</strong></p>
+<ul>
+<li>Lets Amazon Route 53 route traffic to your resources based on the geographic location of your users and your resources.</li>
+<li>You can also optionally choose to route more traffic or less to a given resource by specifying a value, known as a bias.</li>
+<li>A bias expands or shrinks the size of the geographic region from which traffic is routed to a resource.</li>
+<li><strong>To use Geoproximity Routing, you must use Route 53 traffic flow.</strong></li>
+</ul>
+<p><strong>Multivalue Answer Routing</strong></p>
+<p><em>Multivalue answer routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries. Route 53 responds to DNS queries with up to eight healthy records and gives different answers to different DNS resolvers. The choice of which to use is left to the requesting service effectively creating a form or randomization.</em></p>
+<ul>
+<li>Multivalue answer routing lets you configure Amazon Route 53 to return multiple values, such as IP addresses for your web servers, in response to DNS queries.</li>
+<li>You can specify multiple values for almost any record, but multivalue answer routing also lets you check the health of each resource, so Route 53 returns only values for healthy resources.</li>
+<li><strong>This is similar to simple routing however it allows you to put health checks on each record set.</strong></li>
+</ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://tkssharma.com/deploy-application-using-aws-s3-cloudfront/">Deploying Application on S3 or ES2 Instance using Route 53/Cloudfront Gitlab</a></li>
 </ul>
