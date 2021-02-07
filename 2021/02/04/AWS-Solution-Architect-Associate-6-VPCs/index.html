@@ -20,7 +20,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/e1822db470e60d090affd0956d743cb0e7cdf113/2020/11/05/The-following-diagram-shows-the-key-components-to-deploy-a-secure-server-endpoint-in-a-VPC-with-shared-subnets..png">
 <meta property="article:published_time" content="2021-02-04T07:03:24.000Z">
-<meta property="article:modified_time" content="2021-02-07T09:44:58.739Z">
+<meta property="article:modified_time" content="2021-02-07T10:37:12.638Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -222,6 +222,16 @@
 <p><img src="https://d2908q01vomqb2.cloudfront.net/e1822db470e60d090affd0956d743cb0e7cdf113/2020/11/05/The-following-diagram-shows-the-key-components-to-deploy-a-secure-server-endpoint-in-a-VPC-with-shared-subnets..png" alt="Key Components to Deploy a Secure Server Endpoint in a VPC with Shared Subnets"></p>
 <a id="more"></a>
 <h1 id="VPCs"><a href="#VPCs" class="headerlink" title="VPCs"></a>VPCs</h1><p>Virtual Private Cloud lets you provision a logically isolated section of the Amazon Web Services Cloud where you can launch AWS resources in a virtue network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.</p>
+<h2 id="VPC-Overview"><a href="#VPC-Overview" class="headerlink" title="VPC Overview"></a>VPC Overview</h2><ul>
+<li><p><strong>No Translative peering</strong></p>
+</li>
+<li><p>When you create a VPC, a  default Route Table, Network Access Control List and a default Security Group is created</p>
+</li>
+<li>It won’t create any subnets, nor will it create a default Internet gateway</li>
+<li>Amazon always reserve 5 IP addresses within your subnets</li>
+<li>You can only have 1 Internet Gateway per VPC</li>
+<li>Security Groups cant span VPCs.</li>
+</ul>
 <h2 id="Amazon-Virtual-Private-Cloud-features"><a href="#Amazon-Virtual-Private-Cloud-features" class="headerlink" title="Amazon Virtual Private Cloud features"></a>Amazon Virtual Private Cloud features</h2><p> Amazon Virtual Private Cloud provides features that you can use to increase and monitor the security for your virtual private cloud (VPC):</p>
 <ul>
 <li><p><strong>Reachability Analyzer:</strong> Reachability Analyzer is a static configuration analysis tool that enables you to analyze and debug network reachability between two resources in your VPC. </p>
@@ -237,7 +247,7 @@
 <li><p><strong>Network Access Control List:</strong> A network access control list (ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. </p>
 </li>
 </ul>
-<h2 id="Comparison-of-security-groups-and-network-ACLs"><a href="#Comparison-of-security-groups-and-network-ACLs" class="headerlink" title="Comparison of security groups and network ACLs"></a>Comparison of security groups and network ACLs</h2><div class="table-container">
+<h2 id="Security-groups-vs-Network-ACLs"><a href="#Security-groups-vs-Network-ACLs" class="headerlink" title="Security groups vs Network ACLs"></a>Security groups vs Network ACLs</h2><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -269,15 +279,37 @@
 </tbody>
 </table>
 </div>
-<h2 id="Exam-Tips"><a href="#Exam-Tips" class="headerlink" title="Exam Tips"></a>Exam Tips</h2><ul>
-<li><p><strong>No Translative peering</strong></p>
+<h2 id="Network-Address-Translation-NAT"><a href="#Network-Address-Translation-NAT" class="headerlink" title="Network Address Translation (NAT)"></a>Network Address Translation (NAT)</h2><p><strong>NAT Instance</strong></p>
+<ul>
+<li>When creating a NAT instance, Disable Source/Destination Check on the Instance</li>
+<li>NAT instances must be in a public subnet</li>
+<li>There must be a route out of the private subnet to the NAT instance, in order for this to work</li>
+<li>The amount of traffic that NAT instances can support depends on the instance size. If you are bottlenecking, increase the instance size.</li>
+<li>You can create high availability using auto-scaling Groups, multiple subnets in different AZs, and a script to automate fail-over.</li>
+</ul>
+<p><strong>NAT Gateways</strong></p>
+<p><em>If you have resources in multiple Availability Zones and they share one NAT gateway, in the event that the NAT gateway’s Availability Zone is down, resources in the other Availability Zones lose Internet access. To create an Availability Zone-independent architecture, create a NAT gateway in each Availability Zone and configure your routing to ensure that resources use the NAT gateway in the same Availability Zone.</em></p>
+<ul>
+<li>Redundant inside the Availability Zone</li>
+<li>Preferred by the enterprise</li>
+<li>Starts at 5 Gbps and scales currently to 45 Gbps</li>
+<li>No need to patch</li>
+<li>Not associated with security groups</li>
+<li>Automatically assigned a public ip address</li>
+<li>Remember to update your route tables</li>
+<li>No need to disable Source/Destination Checks</li>
+</ul>
+<h2 id="Access-Control-Lists-ACL"><a href="#Access-Control-Lists-ACL" class="headerlink" title="Access Control Lists (ACL)"></a>Access Control Lists (ACL)</h2><ul>
+<li>VPC automatically comes with a default network ACL, and by default it allows all outbound and inbound traffic</li>
+<li>You can create custom network ACLs. By default, each custom network ACL denies all inbound and outbound traffic until you add rules.</li>
+<li><p>Each subnet in your VPC must be associated with a network ACL. If you don’t explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL</p>
 </li>
-<li><p>When you create a VPC, a  default Route Table, Network Access Control List and a default Security Group is created</p>
+<li><p>Block IP Addresses using network ACLs not Security Groups</p>
 </li>
-<li>It won’t create any subnets, nor will it create a default Internet gateway</li>
-<li>Amazon always reserve 5 IP addresses within your subnets</li>
-<li>You can only have 1 Internet Gateway per VPC</li>
-<li>Security Groups can’’t span VPCs.</li>
+<li>You can associate a network ACL with multiple subnets; however, a subnet can be associated with only one network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.</li>
+<li>Network ACLs contain a numbered list of rules that is evaluated in order, starting with the lowest numbered rule.</li>
+<li>Network ACLs have separate inbound and outbound rules, and each rule can either allow or deny traffic</li>
+<li>Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa.)</li>
 </ul>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><p><strong>AWS Storage Blog</strong></p>
@@ -396,7 +428,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VPCs"><span class="nav-number">1.</span> <span class="nav-text">VPCs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Virtual-Private-Cloud-features"><span class="nav-number">1.1.</span> <span class="nav-text">Amazon Virtual Private Cloud features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-of-security-groups-and-network-ACLs"><span class="nav-number">1.2.</span> <span class="nav-text">Comparison of security groups and network ACLs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Exam-Tips"><span class="nav-number">1.3.</span> <span class="nav-text">Exam Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.4.</span> <span class="nav-text">References</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VPCs"><span class="nav-number">1.</span> <span class="nav-text">VPCs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">VPC Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Virtual-Private-Cloud-features"><span class="nav-number">1.2.</span> <span class="nav-text">Amazon Virtual Private Cloud features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-groups-vs-Network-ACLs"><span class="nav-number">1.3.</span> <span class="nav-text">Security groups vs Network ACLs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Address-Translation-NAT"><span class="nav-number">1.4.</span> <span class="nav-text">Network Address Translation (NAT)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Control-Lists-ACL"><span class="nav-number">1.5.</span> <span class="nav-text">Access Control Lists (ACL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.6.</span> <span class="nav-text">References</span></a></li></ol></li></ol>
     
     </div>
   </aside>
