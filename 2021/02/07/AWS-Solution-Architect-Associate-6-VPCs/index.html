@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/r2018/b/ubiquity/global-accelerator-after.2e404ac7f998e501219f2614bc048bb9c01f46d4.png">
 <meta property="og:image" content="https://d1.awsstatic.com/r2018/b/ubiquity/global-accelerator-before.46be83fdc7c630457bba963c7dc928cb676d9046.png">
 <meta property="article:published_time" content="2021-02-07T06:37:34.000Z">
-<meta property="article:modified_time" content="2021-02-12T06:56:18.243Z">
+<meta property="article:modified_time" content="2021-02-13T06:07:47.909Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -354,6 +354,11 @@
 <li>Once the VPN is available, setup the VPN on the customer gateway or firewall</li>
 </ol>
 <h2 id="Global-Accelerator"><a href="#Global-Accelerator" class="headerlink" title="Global Accelerator"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/global-accelerator/">Global Accelerator</a></h2><p>AWS Global Accelerator is a networking service that sends your user’s traffic through Amazon Web Service’s global network infrastructure, improving your internet user performance by up to 60%. When the internet is congested, Global Accelerator’s automatic routing optimizations will help keep your packet loss, jitter, and latency consistently low.</p>
+<ul>
+<li>AWS Global Accelerator is a service in which you create accelerators to improve availability and performance of your applications for local and global users.</li>
+<li>You can assigned two static IP addresses (or alternatively you can bring your own)</li>
+<li>You can control traffic using traffic dials. This is done within the endpoint group.</li>
+</ul>
 <p><img src="https://d1.awsstatic.com/r2018/b/ubiquity/global-accelerator-after.2e404ac7f998e501219f2614bc048bb9c01f46d4.png" alt="With AWS Global Accelerator"></p>
 <p><strong>With AWS Global Accelerator:</strong></p>
 <p><strong>Adding AWS Global Accelerator removes these inefficiencies. It leverages the Global AWS Network, resulting in improved performance.</strong> </p>
@@ -388,8 +393,20 @@
 <li>Traffic is disputed to optimal endpoints within the endpoint groups associated with a listener.</li>
 </ul>
 </li>
-<li><strong>Endpoint Group</strong></li>
-<li><strong>Endpoint</strong></li>
+<li><strong>Endpoint Group</strong><ul>
+<li>Each endpoint group is associated with a specific AWS Region</li>
+<li>Endpoint groups include one or more endpoints in the Region</li>
+<li>You can increase or reduce the percentage of traffic that would be otherwise directed to an endpoint group by adjusting a setting called a traffic dial</li>
+<li>The traffic dial lets you easily do performance testing or blue/green deployment testing for new releases across different AWS Regions, for example.</li>
+</ul>
+</li>
+<li><p><strong>Endpoint</strong></p>
+<ul>
+<li>Endpoints can be Network Load Balancers, Application Load Balancers, EC2 instances, or Elastic IP addresses</li>
+<li>An Application Load Balancer endpoint can be an Internet-facing or internal. Traffic is routed to endpoints based on configuration options that you choose, such as endpoint wrights</li>
+<li>For each endpoint, you can configure weights, which are numbers that you can use to specify the proportion of traffic to route to each one. This can be useful, for example, to do performance testing within a Region.</li>
+</ul>
+</li>
 </ul>
 <h2 id="VPC-End-Points"><a href="#VPC-End-Points" class="headerlink" title="VPC End Points"></a>VPC End Points</h2><h2 id="VPC-Private-Link"><a href="#VPC-Private-Link" class="headerlink" title="VPC Private Link"></a>VPC Private Link</h2><h2 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a>Transit Gateway</h2><h2 id="VPN-Hub"><a href="#VPN-Hub" class="headerlink" title="VPN Hub"></a>VPN Hub</h2><h2 id="Networking-Costs-on-AWS"><a href="#Networking-Costs-on-AWS" class="headerlink" title="Networking Costs on AWS"></a>Networking Costs on AWS</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li><p><strong>AWS Storage Blog</strong></p>
