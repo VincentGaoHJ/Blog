@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/r2018/b/ubiquity/global-accelerator-before.46be83fdc7c630457bba963c7dc928cb676d9046.png">
 <meta property="og:image" content="https://d1.awsstatic.com/diagrams/product-page-diagram_Accelerated-Site-to-Site-VPN_How-it-Works%402x.89c94ea4b307abe21f82d9fd453fe3c72cacb2a3.png">
 <meta property="article:published_time" content="2021-02-07T06:37:34.000Z">
-<meta property="article:modified_time" content="2021-03-02T08:07:02.406Z">
+<meta property="article:modified_time" content="2021-03-02T08:31:16.623Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -465,6 +465,66 @@
 </ul>
 </li>
 </ul>
+<h2 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h2><ul>
+<li><strong>Having just created a new VPC and launching an instance into its public subnet, you realise that you have forgotten to assign a public IP to the instance during creation. What is the simplest way to make your instance reachable from the outside world?</strong><ul>
+<li><strong>Answer:</strong> Create an Elastic IP and new network interface. Associate the Elastic IP to the new network interface, and the new network interface to your instance.</li>
+<li><strong>Explanation:</strong> Although creating a new NIC &amp; associating an EIP also results in your instance being accessible from the internet, it leaves your instance with 2 NICs &amp; 2 private IPs as well as the public address and is therefore not the simplest solution. By default, any user-created VPC subnet WILL NOT automatically assign public IPv4 addresses to instances – the only subnet that does this is the “default” VPC subnets automatically created by AWS in your account.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Are you permitted to conduct your own vulnerability scans on your own VPC without alerting AWS first?</strong><ul>
+<li><strong>Answer:</strong> Depends on the type of scan and the service being scanned. Some scans can be performed without alerting AWS, some require you to alert.</li>
+<li><strong>Explanation:</strong> Until recently customers were not permitted to conduct penetration testing without AWS engagement. However that has changed. There are still conditions though.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>True or False: You can accelerate your application by adding a second Internet gateway to your VPC.</strong><ul>
+<li><strong>Answer:</strong> FALSE</li>
+<li><strong>Explanation:</strong> You may have only one Internet gateway per VPC.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>True or False: An application load balancer must be deployed into at least two subnets.</strong><ul>
+<li><strong>Answer:</strong> True</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Which of the following allows you to SSH or RDP into an EC2 instance located in a private subnet?</strong><ul>
+<li><strong>Answer:</strong> Bastion host</li>
+<li><strong>Explanation:</strong> A Bastion host allows you to securely administer (via SSH or RDP) an EC2 instance located in a private subnet. Don’t confuse Bastions and NATs, which allow outside traffic to reach an instance in a private subnet.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Which of the following offers the largest range of internal IP addresses?</strong><ul>
+<li><strong>Answer:</strong> /16</li>
+<li><strong>Explanation:</strong> The /16 offers 65,536 possible addresses.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>When I create a new security group, all outbound traffic is allowed by default.</strong><ul>
+<li><strong>Answer:</strong> True</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>By default, how many VPCs am I allowed in each AWS region?</strong><ul>
+<li><strong>Answer:</strong> 5</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>To save administration headaches, a consultant advises that you leave all security groups in web-facing subnets open on port 22 to 0.0.0.0/0 CIDR. That way, you can connect wherever you are in the world. Is this a good security design?</strong><ul>
+<li><strong>Answer:</strong> No.</li>
+<li><strong>Explanation:</strong> 0.0.0.0/0 would allow ANYONE from ANYWHERE to connect to your instances. This is generally a bad plan. The phrase ‘web-facing subnets’ does not mean just web servers. It would include any instances in that subnet some of which you may not strangers attacking. You would only allow 0.0.0.0/0 on port 80 or 443 to to connect to your public facing Web Servers, or preferably only to an ELB. Good security starts by limiting public access to only what the customer needs. Please see the AWS Security whitepaper for complete details.</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -560,7 +620,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VPCs"><span class="nav-number">1.</span> <span class="nav-text">VPCs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">VPC Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Virtual-Private-Cloud-features"><span class="nav-number">1.2.</span> <span class="nav-text">Amazon Virtual Private Cloud features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-groups-vs-Network-ACLs"><span class="nav-number">1.3.</span> <span class="nav-text">Security groups vs Network ACLs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Address-Translation-NAT"><span class="nav-number">1.4.</span> <span class="nav-text">Network Address Translation (NAT)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Control-Lists-ACL"><span class="nav-number">1.5.</span> <span class="nav-text">Access Control Lists (ACL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Flow-Logs"><span class="nav-number">1.6.</span> <span class="nav-text">VPC Flow Logs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bastions"><span class="nav-number">1.7.</span> <span class="nav-text">Bastions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Direct-Connect"><span class="nav-number">1.8.</span> <span class="nav-text">Direct Connect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Idea"><span class="nav-number">1.8.1.</span> <span class="nav-text">Basic Idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-to-Creating-a-Direct-Connect-Connection"><span class="nav-number">1.8.2.</span> <span class="nav-text">Steps to Creating a Direct Connect Connection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Accelerator"><span class="nav-number">1.9.</span> <span class="nav-text">Global Accelerator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Global-Accelerator-Components"><span class="nav-number">1.9.1.</span> <span class="nav-text">AWS Global Accelerator Components</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-End-Points"><span class="nav-number">1.10.</span> <span class="nav-text">VPC End Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Private-Link"><span class="nav-number">1.11.</span> <span class="nav-text">VPC Private Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">1.12.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN-CloudHub"><span class="nav-number">1.13.</span> <span class="nav-text">VPN CloudHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-Costs-on-AWS"><span class="nav-number">1.14.</span> <span class="nav-text">Networking Costs on AWS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.15.</span> <span class="nav-text">References</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VPCs"><span class="nav-number">1.</span> <span class="nav-text">VPCs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Overview"><span class="nav-number">1.1.</span> <span class="nav-text">VPC Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Virtual-Private-Cloud-features"><span class="nav-number">1.2.</span> <span class="nav-text">Amazon Virtual Private Cloud features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Security-groups-vs-Network-ACLs"><span class="nav-number">1.3.</span> <span class="nav-text">Security groups vs Network ACLs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Address-Translation-NAT"><span class="nav-number">1.4.</span> <span class="nav-text">Network Address Translation (NAT)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Access-Control-Lists-ACL"><span class="nav-number">1.5.</span> <span class="nav-text">Access Control Lists (ACL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Flow-Logs"><span class="nav-number">1.6.</span> <span class="nav-text">VPC Flow Logs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bastions"><span class="nav-number">1.7.</span> <span class="nav-text">Bastions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Direct-Connect"><span class="nav-number">1.8.</span> <span class="nav-text">Direct Connect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-Idea"><span class="nav-number">1.8.1.</span> <span class="nav-text">Basic Idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-to-Creating-a-Direct-Connect-Connection"><span class="nav-number">1.8.2.</span> <span class="nav-text">Steps to Creating a Direct Connect Connection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Global-Accelerator"><span class="nav-number">1.9.</span> <span class="nav-text">Global Accelerator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Global-Accelerator-Components"><span class="nav-number">1.9.1.</span> <span class="nav-text">AWS Global Accelerator Components</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-End-Points"><span class="nav-number">1.10.</span> <span class="nav-text">VPC End Points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPC-Private-Link"><span class="nav-number">1.11.</span> <span class="nav-text">VPC Private Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transit-Gateway"><span class="nav-number">1.12.</span> <span class="nav-text">Transit Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN-CloudHub"><span class="nav-number">1.13.</span> <span class="nav-text">VPN CloudHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Networking-Costs-on-AWS"><span class="nav-number">1.14.</span> <span class="nav-text">Networking Costs on AWS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.15.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">1.16.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -790,5 +850,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
