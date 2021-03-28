@@ -19,9 +19,11 @@
 <meta property="og:description" content="Customers are using AWS high level services(e.g. Amazon Kinesis)to collect, process, and analyze real-time data. In this way, they can react quickly to new information from their business, their infra">
 <meta property="og:locale">
 <meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis_Evolve-from-batch-to-real-time-Analytics.d7ed76be304a30be5720fd159469f157e7c09ede.png">
+<meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-standard-queue-diagram.29963b2823bc048492c7af2757535d500aa2c159.png">
+<meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-fifo-queue-diagram.8f1c8d366f58845ce03bb2983c16349102cf1524.png">
 <meta property="og:image" content="https://d1.awsstatic.com/products/Cognito/SmashingIdeasAssets/02_content_images/Cognito-SI-CI-IMG_landing_federation.efd07e7e0d884e003120f979ff8c5c1b8a332d73.png">
 <meta property="article:published_time" content="2021-03-28T07:37:14.000Z">
-<meta property="article:modified_time" content="2021-03-28T09:13:14.512Z">
+<meta property="article:modified_time" content="2021-03-28T09:35:39.390Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -224,6 +226,13 @@
 <a id="more"></a>
 <h1 id="Applications"><a href="#Applications" class="headerlink" title="Applications"></a>Applications</h1><h2 id="SQS-Amazon-Simple-Queue-Service"><a href="#SQS-Amazon-Simple-Queue-Service" class="headerlink" title="SQS (Amazon Simple Queue Service)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/sqs/">SQS (Amazon Simple Queue Service)</a></h2><p><strong>Amazon SQS is a web services that gives you access to a message queue that can be used to store messages while waiting for a computer to process them.</strong> So it is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.</p>
 <p><strong>So, you should notice the word “Decouple” if you ever see it in the exam.</strong></p>
+<ul>
+<li>SQS is pull-based, not pushed-based</li>
+<li>Messages are 256 KB in size.</li>
+<li>Messages can be kept in the queue from 1 minute to 14 days; the default retention period is 4 days.</li>
+<li>SQS guarantees that you messages will be processed at lease once (detail explained below: visibility).</li>
+<li>Amazon SQS long polling is a way to retrieve messages from your Amazon SQS queues. While the regular short polling returns immediately (even if the message queue being polled is empty), long polling doesn’t return a response until a message arrives in he message queue, or the long poll times out. <strong>So, please bear in mind that using long pulling to reduce the cost because long polling essentially won;t turn a response until a message arrives.</strong></li>
+</ul>
 <h3 id="Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><a href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services" class="headerlink" title="Using Amazon SQS with other AWS infrastructure web services"></a>Using Amazon SQS with other AWS infrastructure web services</h3><p>Amazon SQS message queuing can be used with other AWS Services such as <a target="_blank" rel="noopener" href="https://aws.amazon.com/redshift/">Redshift</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/dynamodb/">DynamoDB</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/">RDS</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/ec2-sla/">EC2</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/">ECS</a>, <a target="_blank" rel="noopener" href="https://aws.amazon.com/lambda/">Lambda</a>, and <a target="_blank" rel="noopener" href="https://aws.amazon.com/s3/">S3</a>, to make distributed applications more scalable and reliable. Below are some common design patterns:</p>
 <ul>
 <li><strong>Work Queues</strong>: Decouple components of a distributed application that may not all process the same amount of work simultaneously.</li>
@@ -233,6 +242,54 @@
 <li><strong>Priority</strong>: Use separate queues to provide prioritization of work.</li>
 <li><strong>Scalability</strong>: Because message queues decouple your processes, it’s easy to scale up the send or receive rate of messages - simply add another process.</li>
 <li><strong>Resiliency</strong>: When part of your system fails, it doesn’t need to take the entire system down. Message queues decouple components of your system, so if a process that is reading messages from the queue fails, messages can still be added to the queue to be processed when the system recovers.</li>
+</ul>
+<h3 id="Queue-types"><a href="#Queue-types" class="headerlink" title="Queue types"></a>Queue types</h3><p><strong><em>Amazon SQS offers two queue types for different application requirements:</em></strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>Standard Queues</strong></th>
+<th><strong>FIFO Queues</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unlimited Throughput</strong>: Standard queues support a nearly unlimited number of transactions per second (TPS) per API action.</td>
+<td><strong>High Throughput</strong>: By default, FIFO queues support up to 300 messages per second. When you batch 10 messages per operation (maximum), FIFO queues can support up to 3,000 messages per second.</td>
+</tr>
+<tr>
+<td><strong>At-Least-Once Delivery</strong>: A message is delivered at least once, but occasionally more than one copy of a message is delivered.</td>
+<td><strong>Exactly-Once Processing</strong>: A message is delivered once and remains available until a consumer processes and deletes it. Duplicates aren’t introduced into the queue.</td>
+</tr>
+<tr>
+<td><strong>Best-Effort Ordering</strong>: Occasionally, messages might be delivered in an order different from which they were sent.</td>
+<td><strong>First-In-First-Out Delivery</strong>: The order in which messages are sent and received is strictly preserved (i.e. First-In-First-Out).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Standard Queues</strong></p>
+<p>You can use standard message queues in many scenarios, as long as your application can process messages that arrive more than once and out of order, for example:</p>
+<p><img src="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-standard-queue-diagram.29963b2823bc048492c7af2757535d500aa2c159.png" alt="sqs-what-is-sqs-standard-queue-diagram"></p>
+<ul>
+<li>Decouple live user requests from intensive background work: Let users upload media while resizing or encoding it.</li>
+<li>Allocate tasks to multiple worker nodes: Process a high number of credit card validation requests.</li>
+<li>Batch messages for future processing: Schedule multiple entries to be added to a database.</li>
+</ul>
+<p><strong>FIFO Queues</strong></p>
+<p>FIFO queues are designed to enhance messaging between applications when the order of operations and events is critical, or where duplicates can’t be tolerated, for example:</p>
+<p><img src="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-fifo-queue-diagram.8f1c8d366f58845ce03bb2983c16349102cf1524.png" alt="sqs-what-is-sqs-fifo-queue-diagram"></p>
+<p>FIFO queues are designed to enhance messaging between applications when the order of operations and events is critical, or where duplicates can’t be tolerated, for example:</p>
+<ul>
+<li>Ensure that user-entered commands are executed in the right order.</li>
+<li>Display the correct product price by sending price modifications in the right order.</li>
+<li>Prevent a student from enrolling in a course before registering for an account.</li>
+</ul>
+<p><strong>SQS Visibility</strong></p>
+<ul>
+<li><strong>Visibility timeout is the amount of time that the message is invisible in the SQS queue after a reader picks up that message will then be processed before the visibility timeout expired, the message will then be deleted from the queue.</strong> If the job is not processed within that time, the message will become visible again and another reader will process it. This could result in the same message being delivered twice.</li>
+<li>Visibility timeout maximum is 12 hours.</li>
+<li><strong>It’s a very popular exam question that asking about getting the same message being delivered twice and what could be the cause of it.</strong></li>
 </ul>
 <hr>
 <h2 id="SWF"><a href="#SWF" class="headerlink" title="SWF"></a>SWF</h2><hr>
@@ -370,7 +427,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF"><span class="nav-number">1.2.</span> <span class="nav-text">SWF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS"><span class="nav-number">1.3.</span> <span class="nav-text">SNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Queue types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF"><span class="nav-number">1.2.</span> <span class="nav-text">SWF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS"><span class="nav-number">1.3.</span> <span class="nav-text">SNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
@@ -600,21 +657,5 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
