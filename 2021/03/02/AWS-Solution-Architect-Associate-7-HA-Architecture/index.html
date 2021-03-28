@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/images/cross_zone_load_balancing_disabled.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/AutoScaling/aws-auto-scaling-how-it-works-diagram.d42779c774d634883bdcd0463de7bd86f6e2231d.png">
 <meta property="article:published_time" content="2021-03-02T06:33:26.000Z">
-<meta property="article:modified_time" content="2021-03-10T06:41:08.325Z">
+<meta property="article:modified_time" content="2021-03-28T05:40:37.407Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -320,6 +320,24 @@
 </li>
 </ul>
 <hr>
+<h2 id="HA-Architecture-1"><a href="#HA-Architecture-1" class="headerlink" title="HA Architecture"></a>HA Architecture</h2><p><strong><em>Everything fails. Everything. You should always plan for failure.</em></strong></p>
+<ul>
+<li>Always Design for failure</li>
+<li>Use Multiple AZ’s and Multiple Regions where ever you can</li>
+<li>Know the difference between Multi-AZ and Read Replicas for RDS.<ul>
+<li>Multi-AZ is for disasters</li>
+<li>Read Replicas for performance</li>
+</ul>
+</li>
+<li>Know the difference between scaling out and scaling up<ul>
+<li>Scaling Out is using auto scaling groups to add additional instance</li>
+<li>Scaling Up is where we increase the resources inside out EC2 instance, like from t-2 micro to 6-x extra large</li>
+</ul>
+</li>
+<li><strong>Read the question carefully and always consider the cost element</strong> </li>
+<li>Know the different S3 storage classes</li>
+</ul>
+<hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><strong>AWS Architecture Blog</strong><ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/architecture/architecting-for-reliable-scalability/">Architecting for Reliable Scalability</a></li>
@@ -437,7 +455,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA-Architecture"><span class="nav-number">1.</span> <span class="nav-text">HA Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-Balancers"><span class="nav-number">1.1.</span> <span class="nav-text">Load Balancers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Load-Balancer-Theory"><span class="nav-number">1.2.</span> <span class="nav-text">Advanced Load Balancer Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Sessions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sticky Sessions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Zone-Load-Balancing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cross Zone Load Balancing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Patterns"><span class="nav-number">1.2.3.</span> <span class="nav-text">Path Patterns</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auto-Scaling"><span class="nav-number">1.3.</span> <span class="nav-text">Auto Scaling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Three Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Five-Options"><span class="nav-number">1.3.2.</span> <span class="nav-text">Five Options</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA-Architecture"><span class="nav-number">1.</span> <span class="nav-text">HA Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-Balancers"><span class="nav-number">1.1.</span> <span class="nav-text">Load Balancers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Load-Balancer-Theory"><span class="nav-number">1.2.</span> <span class="nav-text">Advanced Load Balancer Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Sessions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sticky Sessions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Zone-Load-Balancing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cross Zone Load Balancing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Patterns"><span class="nav-number">1.2.3.</span> <span class="nav-text">Path Patterns</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auto-Scaling"><span class="nav-number">1.3.</span> <span class="nav-text">Auto Scaling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Three Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Five-Options"><span class="nav-number">1.3.2.</span> <span class="nav-text">Five Options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HA-Architecture-1"><span class="nav-number">1.4.</span> <span class="nav-text">HA Architecture</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
