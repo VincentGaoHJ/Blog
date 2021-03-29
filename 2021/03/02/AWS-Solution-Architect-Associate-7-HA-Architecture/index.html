@@ -18,17 +18,19 @@
 <meta property="og:site_name" content="Gao Haojun">
 <meta property="og:description" content="High availability protect against data center, availability zone, server, network and storage subsystem failures to keep your business running without downtime.">
 <meta property="og:locale">
-<meta property="og:image" content="https://d1.awsstatic.com/Marketplace/solutions-center/diagrams/AWSMP-Infrastructure-Software-SoftNAS-High-Availability.b3e65776e90801b50c421f42ba4e1745290ac9a4.PNG">
+<meta property="og:image" content="https://media.amazonwebservices.com/blog/2018/as_face_3.png">
 <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/02/04/1-ALB-Example.png">
 <meta property="og:image" content="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/images/cross_zone_load_balancing_disabled.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/AutoScaling/aws-auto-scaling-how-it-works-diagram.d42779c774d634883bdcd0463de7bd86f6e2231d.png">
+<meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png">
+<meta property="og:image" content="https://d1.awsstatic.com/partner-network/QuickStart/datasheets/linux-bastion-architecture.584765ff724625db9ab0d91a8ccb1c2eb7e15a5b.png">
 <meta property="article:published_time" content="2021-03-02T06:33:26.000Z">
-<meta property="article:modified_time" content="2021-03-28T05:40:37.407Z">
+<meta property="article:modified_time" content="2021-03-29T07:51:34.044Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://d1.awsstatic.com/Marketplace/solutions-center/diagrams/AWSMP-Infrastructure-Software-SoftNAS-High-Availability.b3e65776e90801b50c421f42ba4e1745290ac9a4.PNG">
+<meta name="twitter:image" content="https://media.amazonwebservices.com/blog/2018/as_face_3.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -221,7 +223,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>High availability protect against data center, availability zone, server, network and storage subsystem failures to keep your business running without downtime.</strong></p>
-<p><img src="https://d1.awsstatic.com/Marketplace/solutions-center/diagrams/AWSMP-Infrastructure-Software-SoftNAS-High-Availability.b3e65776e90801b50c421f42ba4e1745290ac9a4.PNG" alt="Solutions"></p>
+<p><img src="https://media.amazonwebservices.com/blog/2018/as_face_3.png" alt="Predictive Scaling in Action"></p>
 <a id="more"></a>
 <h1 id="HA-Architecture"><a href="#HA-Architecture" class="headerlink" title="HA Architecture"></a>HA Architecture</h1><h2 id="Load-Balancers"><a href="#Load-Balancers" class="headerlink" title="Load Balancers"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticloadbalancing">Load Balancers</a></h2><p>Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP addresses, Lambda functions, and virtual appliances. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zones.</p>
 <p><img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/02/04/1-ALB-Example.png" alt="HTTP APIs to ALB example"></p>
@@ -338,6 +340,30 @@
 <li>Know the different S3 storage classes</li>
 </ul>
 <hr>
+<h2 id="Cloud-Formation"><a href="#Cloud-Formation" class="headerlink" title="Cloud Formation"></a>Cloud Formation</h2><p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png" alt="How it works"></p>
+<p><strong><em>AWS CloudFormation gives you an easy way to model a collection of related AWS and third-party resources, provision them quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.</em></strong></p>
+<ul>
+<li>CloudFormation is a way of completely scripting your cloud environment.</li>
+<li>Quick Start is a bunch of Cloud Formation templates already built by AWS Solutions Architects allowing you to create complec environments very quickly.</li>
+</ul>
+<h3 id="Build-serverless-applications-with-SAM"><a href="#Build-serverless-applications-with-SAM" class="headerlink" title="Build serverless applications with SAM"></a>Build serverless applications with SAM</h3><p>Build serverless applications faster with the <a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</a>, an open-source framework that provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines per resource, you can define the application you want and model it using YAML. During deployment, SAM transforms and expands the SAM syntax into CloudFormation syntax. </p>
+<hr>
+<h2 id="Elastic-Beanstalk"><a href="#Elastic-Beanstalk" class="headerlink" title="Elastic Beanstalk"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticbeanstalk/">Elastic Beanstalk</a></h2><p>AWS Elastic Beanstalk is an easy-to-use service <strong><em>for deploying and scaling web applications</em></strong> and service.</p>
+<p>With Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without worrying about the infrastructure that runs those applications. You simply upload your application, and Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring.</p>
+<ul>
+<li><strong>Scaling:</strong> AWS Elastic Beanstalk leverages Elastic Load Balancing and Auto Scaling to <strong><em>automatically scale your application in and out</em></strong> based on your application’s specific needs. In addition, multiple availability zones give you an option to improve application reliability and availability by running in more than one zone.</li>
+<li><strong>Customization:</strong> With AWS Elastic Beanstalk, you <strong><em>have the freedom to select the AWS resources</em></strong>, such as Amazon EC2 instance type including Spot instances, that are optimal for your application. Additionally, Elastic Beanstalk lets you “open the hood” and retain full control over the AWS resources powering your application. If you decide you want to take over some (or all) of the elements of your infrastructure, you can do so seamlessly by using Elastic Beanstalk’s management capabilities.</li>
+</ul>
+<hr>
+<h2 id="Highly-Available-Bastion"><a href="#Highly-Available-Bastion" class="headerlink" title="Highly Available Bastion"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/quickstart/architecture/linux-bastion/">Highly Available Bastion</a></h2><p><strong><em>The bastion hosts provide secure access to Linux instances located in the private and public subnets of your virtual private cloud (VPC).</em></strong></p>
+<p><img src="https://d1.awsstatic.com/partner-network/QuickStart/datasheets/linux-bastion-architecture.584765ff724625db9ab0d91a8ccb1c2eb7e15a5b.png" alt="What will you build"></p>
+<p><strong>High Availability with Bastion Hosts</strong></p>
+<ul>
+<li>Two hosts in two separate Availability Zones. Use a Network Load Balancer with static IP addresses and health checks to fail over from one host to the other.</li>
+<li>Can’t use an Application Load Balancer, as it is layer 7 and you need to use layer 4.</li>
+<li>One host in one Availability Zone behind an Auto Scaling group with health checks and a fixed EIP (Elastic IP). If the host fails, the health check will fail and the Auto Scaling group will provision a new EC2 instance in a separate Availability Zone. You can use a user data script to provision the same EIP to the new host. This is the cheapest option, but it is not 100% fault tolerant.</li>
+</ul>
+<hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><strong>AWS Architecture Blog</strong><ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/architecture/architecting-for-reliable-scalability/">Architecting for Reliable Scalability</a></li>
@@ -360,6 +386,7 @@
 </ul>
 </li>
 </ul>
+<hr>
 <h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1>
       
     </div>
@@ -464,7 +491,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA-Architecture"><span class="nav-number">1.</span> <span class="nav-text">HA Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-Balancers"><span class="nav-number">1.1.</span> <span class="nav-text">Load Balancers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Load-Balancer-Theory"><span class="nav-number">1.2.</span> <span class="nav-text">Advanced Load Balancer Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Sessions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sticky Sessions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Zone-Load-Balancing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cross Zone Load Balancing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Patterns"><span class="nav-number">1.2.3.</span> <span class="nav-text">Path Patterns</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auto-Scaling"><span class="nav-number">1.3.</span> <span class="nav-text">Auto Scaling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Three Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Five-Options"><span class="nav-number">1.3.2.</span> <span class="nav-text">Five Options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HA-Architecture-1"><span class="nav-number">1.4.</span> <span class="nav-text">HA Architecture</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA-Architecture"><span class="nav-number">1.</span> <span class="nav-text">HA Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Load-Balancers"><span class="nav-number">1.1.</span> <span class="nav-text">Load Balancers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced-Load-Balancer-Theory"><span class="nav-number">1.2.</span> <span class="nav-text">Advanced Load Balancer Theory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sticky-Sessions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Sticky Sessions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cross-Zone-Load-Balancing"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cross Zone Load Balancing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Path-Patterns"><span class="nav-number">1.2.3.</span> <span class="nav-text">Path Patterns</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Auto-Scaling"><span class="nav-number">1.3.</span> <span class="nav-text">Auto Scaling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Three-Components"><span class="nav-number">1.3.1.</span> <span class="nav-text">Three Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Five-Options"><span class="nav-number">1.3.2.</span> <span class="nav-text">Five Options</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HA-Architecture-1"><span class="nav-number">1.4.</span> <span class="nav-text">HA Architecture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Formation"><span class="nav-number">1.5.</span> <span class="nav-text">Cloud Formation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-serverless-applications-with-SAM"><span class="nav-number">1.5.1.</span> <span class="nav-text">Build serverless applications with SAM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Beanstalk"><span class="nav-number">1.6.</span> <span class="nav-text">Elastic Beanstalk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Highly-Available-Bastion"><span class="nav-number">1.7.</span> <span class="nav-text">Highly Available Bastion</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
@@ -694,5 +721,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
