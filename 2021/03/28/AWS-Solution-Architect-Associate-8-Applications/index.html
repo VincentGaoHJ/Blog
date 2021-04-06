@@ -22,9 +22,11 @@
 <meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-standard-queue-diagram.29963b2823bc048492c7af2757535d500aa2c159.png">
 <meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-fifo-queue-diagram.8f1c8d366f58845ce03bb2983c16349102cf1524.png">
 <meta property="og:image" content="https://d1.awsstatic.com/diagrams/Product-page-diagram-Amazon-SNS_event-driven-SNS-compute%402X_.4b9c0a75aa40bda9cdb12f0176930a12da2872bf.png">
+<meta property="og:image" content="https://d1.awsstatic.com/serverless/New-API-GW-Diagram.c9fc9835d2a9aa00ef90d0ddc4c6402a2536de0d.png">
+<meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis-Data-Streams.074de94302fd60948e1ad070e425eeda73d350e7.png">
 <meta property="og:image" content="https://d1.awsstatic.com/products/Cognito/SmashingIdeasAssets/02_content_images/Cognito-SI-CI-IMG_landing_federation.efd07e7e0d884e003120f979ff8c5c1b8a332d73.png">
 <meta property="article:published_time" content="2021-03-28T07:37:14.000Z">
-<meta property="article:modified_time" content="2021-04-06T02:55:26.867Z">
+<meta property="article:modified_time" content="2021-04-06T06:41:12.400Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -343,8 +345,85 @@
 
 
 <hr>
-<h2 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a>API Gateway</h2><hr>
-<h2 id="Kinesis"><a href="#Kinesis" class="headerlink" title="Kinesis"></a>Kinesis</h2><hr>
+<h2 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/api-gateway/">API Gateway</a></h2><p><strong><em>Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale. APIs act as the “front door” for applications to access data, business logic, or functionality from your backend services.</em></strong> </p>
+<p><img src="https://d1.awsstatic.com/serverless/New-API-GW-Diagram.c9fc9835d2a9aa00ef90d0ddc4c6402a2536de0d.png" alt="How API Gateway Works"></p>
+<p>Using API Gateway, you can create RESTful APIs and WebSocket APIs that enable real-time two-way communication applications. API Gateway supports containerized and serverless workloads, as well as web applications.</p>
+<ul>
+<li>Remember what API Gateway is at a high level: it’s a door to your environment</li>
+<li>API Gateway has caching capabilities to increase performance</li>
+<li>API Gateway is low cost and scales automatically</li>
+<li>You can throttle API Gateway to prevent attacks</li>
+<li>You can log results to CloudWatch</li>
+<li>If you are using JavaScript/AJAX that uses multiple domains with API Gateway, ensure that you have enables CORS on API Gateway.</li>
+<li>CORS is enforced by the client, so it is enforced by your browser</li>
+</ul>
+<h3 id="What-Can-API-Gateway-Do"><a href="#What-Can-API-Gateway-Do" class="headerlink" title="What Can API Gateway Do?"></a>What Can API Gateway Do?</h3><ul>
+<li>Expose HTTPS endpoints to define a RESTful API</li>
+<li>Serverlessly connect to services like Lambda &amp; DynamoDB</li>
+<li>Send each API endpoint to a different target</li>
+<li>Run efficiently with low cost</li>
+<li>Scale effortlessly</li>
+<li>Track and control usage by API key</li>
+<li>Throttle requests to prevent attacks</li>
+<li>Connect to CloudWatch to log all requests for monitoring</li>
+<li>Maintain multiple versions of your API</li>
+</ul>
+<h3 id="How-DO-I-Configure-API-Gateway"><a href="#How-DO-I-Configure-API-Gateway" class="headerlink" title="How DO I Configure API Gateway?"></a>How DO I Configure API Gateway?</h3><ul>
+<li>Define Resources and nested Resources (URL Paths)</li>
+<li>For each Resources:<ul>
+<li>Select supported HTTP methods (verbs)</li>
+<li>Set security</li>
+<li>Choose target (such as EC2, Lambda, DynamoDB, etc.)</li>
+<li>Set request and response transformation</li>
+</ul>
+</li>
+</ul>
+<h3 id="How-Do-I-Deploy-API-Gateway"><a href="#How-Do-I-Deploy-API-Gateway" class="headerlink" title="How Do I Deploy API Gateway?"></a>How Do I Deploy API Gateway?</h3><ul>
+<li><p>Deploy API to a stage</p>
+<ul>
+<li>Uses API Gateway domain, by default</li>
+<li>Can use custom domain</li>
+<li>Support AWS Certificate Manager: free SSL/TLS certs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="API-Gateway-Caching"><a href="#API-Gateway-Caching" class="headerlink" title="API Gateway Caching"></a>API Gateway Caching</h3><p>You can add caching to API calls by provisioning an API Gateway cache and specifying its size in gigabytes. The cache is provisioned for a specific stage of your APIs. This improves performance and reduces the traffic sent to your back end. Cache settings allow you to control the way the cache key is built and the time-to-live (TTL) of the data stored for each method. API Gateway also exposes management APIs that help you invalidate the cache for each stage. Caching is available for REST APIs in API Gateway.</p>
+<h3 id="Same-Origin-Policy"><a href="#Same-Origin-Policy" class="headerlink" title="Same Origin Policy"></a>Same Origin Policy</h3><p>In computing, the same-origin policy is an important concept in the web application security model. Under the policy, a web browser permits scripts contained in a first web page to access data in a second web page, but only if both web pages have the same origin.</p>
+<p>This is done to prevent Cross-Site Scripting (XSS) attacking.</p>
+<ul>
+<li>Enforced by web browers</li>
+<li>Ignored by tools like PostMan and curl.</li>
+</ul>
+<p>CORS is one way the server at the other end (not the client code in the browser) can relax the same-origin policy.</p>
+<p>Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources (e.g. fonts) on a web page to be requested from another domain outside the domain from which the first resource was served.</p>
+<ul>
+<li>Browser makes an HTTP OPTIONS call for a URL (OPTION is an HTTP method like GET, PUT, and POST)</li>
+<li>Server returns a response that says:<ul>
+<li>“These other domains are approved to GET this URL”</li>
+</ul>
+</li>
+<li>Error: <ul>
+<li>“Origin policy cannot be read at the remote resource?” </li>
+<li>You need to enable CORS on API Gateway.</li>
+<li><strong>Going into the exam, if you see something where it’s talking about origin policy cannot be read at the remote resource. It means the cause is not enabled on your API Gateway and API Gateway is not able to go and request that information from the other side.</strong></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Kinesis"><a href="#Kinesis" class="headerlink" title="Kinesis"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/kinesis/">Kinesis</a></h2><p><strong><em>Amazon Kinesis makes it easy to collect, process, and analyze real-time, streaming data so you can get timely insights and react quickly to new information. Amazon Kinesis offers key capabilities to cost-effectively process streaming data at any scale, along with the flexibility to choose the tools that best suit the requirements of your application.</em></strong></p>
+<p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis-Data-Streams.074de94302fd60948e1ad070e425eeda73d350e7.png" alt="Amazon Kinesis Data Streams"></p>
+<p><strong>3 Different Types of Kinesis</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/kinesis/data-streams/">Amazon Kinesis Data Streams</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/kinesis/data-firehose/">Amazon Kinesis Data Firehose</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/kinesis/data-analytics/">Amazon Kinesis Data Analytics</a></li>
+</ul>
+<h3 id="Kinesis-Data-Streams"><a href="#Kinesis-Data-Streams" class="headerlink" title="Kinesis Data Streams"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/kinesis/data-streams/">Kinesis Data Streams</a></h3><p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/streams/latest/dev/introduction.html">Review the developer guide</a></p>
+<p>Kinesis Streams Consists Of Shards:</p>
+<ul>
+<li>5 transactions per second for reads, up to a maximum total data read rate of 2 MB</li>
+</ul>
+<hr>
 <h2 id="Web-Identity-Federation-Cognito"><a href="#Web-Identity-Federation-Cognito" class="headerlink" title="Web Identity Federation - Cognito"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cognito/">Web Identity Federation - Cognito</a></h2><p><strong><em>Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. Amazon Cognito scales to millions of users and supports sign-in with social identity providers, such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0 and OpenID Connect.</em></strong>  </p>
 <p><img src="https://d1.awsstatic.com/products/Cognito/SmashingIdeasAssets/02_content_images/Cognito-SI-CI-IMG_landing_federation.efd07e7e0d884e003120f979ff8c5c1b8a332d73.png" alt=""></p>
 <p><strong>Cognito is an Identity Broker which handles interaction between your applications and the Web ID provider.</strong></p>
@@ -375,8 +454,16 @@
 <p>Cognito uses SNS to send a notification to all the devices associated with a given user identity whenever data stored in the cloud changes.</p>
 <hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><strong>AWS News Blog</strong><ul>
+<li><p><strong>AWS News Blog</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/aws/new-amazon-kinesis-data-analytics-for-java/">New – Amazon Kinesis Data Analytics for Java</a></li>
+</ul>
+</li>
+<li><p><strong>AWS Compute Blog</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/increasing-real-time-stream-processing-performance-with-amazon-kinesis-data-streams-enhanced-fan-out-and-aws-lambda/">Increasing real-time stream processing performance with Amazon Kinesis Data Streams enhanced fan-out and AWS Lambda</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/big-data/scaling-amazon-kinesis-data-streams-with-aws-application-auto-scaling/">Scale Amazon Kinesis Data Streams with AWS Application Auto Scaling</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/big-data/perform-near-real-time-analytics-on-streaming-data-with-amazon-kinesis-and-amazon-elasticsearch-service/">https://aws.amazon.com/blogs/big-data/perform-near-real-time-analytics-on-streaming-data-with-amazon-kinesis-and-amazon-elasticsearch-service/</a></li>
 </ul>
 </li>
 </ul>
@@ -475,7 +562,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Queue types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF-Simple-Workflow-Service"><span class="nav-number">1.2.</span> <span class="nav-text">SWF (Simple Workflow Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS-Simple-Notification-Service"><span class="nav-number">1.3.</span> <span class="nav-text">SNS (Simple Notification Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Queue types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF-Simple-Workflow-Service"><span class="nav-number">1.2.</span> <span class="nav-text">SWF (Simple Workflow Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS-Simple-Notification-Service"><span class="nav-number">1.3.</span> <span class="nav-text">SNS (Simple Notification Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-Can-API-Gateway-Do"><span class="nav-number">1.5.1.</span> <span class="nav-text">What Can API Gateway Do?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-DO-I-Configure-API-Gateway"><span class="nav-number">1.5.2.</span> <span class="nav-text">How DO I Configure API Gateway?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-Do-I-Deploy-API-Gateway"><span class="nav-number">1.5.3.</span> <span class="nav-text">How Do I Deploy API Gateway?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API-Gateway-Caching"><span class="nav-number">1.5.4.</span> <span class="nav-text">API Gateway Caching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Same-Origin-Policy"><span class="nav-number">1.5.5.</span> <span class="nav-text">Same Origin Policy</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kinesis-Data-Streams"><span class="nav-number">1.6.1.</span> <span class="nav-text">Kinesis Data Streams</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
