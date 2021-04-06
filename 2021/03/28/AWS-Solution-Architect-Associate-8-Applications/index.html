@@ -21,9 +21,10 @@
 <meta property="og:image" content="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Amazon-Kinesis_Evolve-from-batch-to-real-time-Analytics.d7ed76be304a30be5720fd159469f157e7c09ede.png">
 <meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-standard-queue-diagram.29963b2823bc048492c7af2757535d500aa2c159.png">
 <meta property="og:image" content="https://d1.awsstatic.com/AmazonSQS/sqs-what-is-sqs-fifo-queue-diagram.8f1c8d366f58845ce03bb2983c16349102cf1524.png">
+<meta property="og:image" content="https://d1.awsstatic.com/diagrams/Product-page-diagram-Amazon-SNS_event-driven-SNS-compute%402X_.4b9c0a75aa40bda9cdb12f0176930a12da2872bf.png">
 <meta property="og:image" content="https://d1.awsstatic.com/products/Cognito/SmashingIdeasAssets/02_content_images/Cognito-SI-CI-IMG_landing_federation.efd07e7e0d884e003120f979ff8c5c1b8a332d73.png">
 <meta property="article:published_time" content="2021-03-28T07:37:14.000Z">
-<meta property="article:modified_time" content="2021-03-28T09:35:39.390Z">
+<meta property="article:modified_time" content="2021-04-06T02:55:26.867Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -292,9 +293,56 @@
 <li><strong>It’s a very popular exam question that asking about getting the same message being delivered twice and what could be the cause of it.</strong></li>
 </ul>
 <hr>
-<h2 id="SWF"><a href="#SWF" class="headerlink" title="SWF"></a>SWF</h2><hr>
-<h2 id="SNS"><a href="#SNS" class="headerlink" title="SNS"></a>SNS</h2><hr>
-<h2 id="Elastic-Transcoder"><a href="#Elastic-Transcoder" class="headerlink" title="Elastic Transcoder"></a>Elastic Transcoder</h2><hr>
+<h2 id="SWF-Simple-Workflow-Service"><a href="#SWF-Simple-Workflow-Service" class="headerlink" title="SWF (Simple Workflow Service)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/swf/">SWF (Simple Workflow Service)</a></h2><p><em>The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build applications that coordinate work across distributed components.</em> </p>
+<p>In Amazon SWF, a task represents a logical unit of work that is performed by a component of your application. Coordinating tasks across the application involves managing intertask dependencies, scheduling, and concurrency in accordance with the logical flow of the application.</p>
+<p><strong>SWF vs SQS</strong></p>
+<ul>
+<li>SQS has a retention period of up to 14 days; with SWF, workflow executions can last up to 1 year</li>
+<li>Amazon SWF presents a task-oriented API, whereas Amazon SQS offers a message-oriented API.</li>
+<li>Amazon SWF ensures that a task is assigned only once and is never duplicated. With Amazon SQS, you need to handle duplicated messages and may also need to ensure that a message is processed only once.</li>
+<li>Amazon SWF keeps track of all the tasks and events in a application. With Amazon SQS, you need to implement your own application-level tracking, especially if your application uses multiple queues.</li>
+</ul>
+<p><strong>SWF Actors</strong></p>
+<ul>
+<li><strong>Workflow Starters</strong> — An application that can initiate (start) a workflow. Could be your e-commerce website following the placement of an order, or a mobile app searching for bus times.</li>
+<li><strong>Deciders</strong> — Control the flow of activity tasks in a workflow execution. If something has finished (or failed) in a workflow, a Decider decides what to do next.</li>
+<li><strong>Activity Workers</strong> — Carry out the activity tasks.</li>
+</ul>
+<hr>
+<h2 id="SNS-Simple-Notification-Service"><a href="#SNS-Simple-Notification-Service" class="headerlink" title="SNS (Simple Notification Service)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/sns">SNS (Simple Notification Service)</a></h2><p><em>Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication.</em></p>
+<p><img src="https://d1.awsstatic.com/diagrams/Product-page-diagram-Amazon-SNS_event-driven-SNS-compute%402X_.4b9c0a75aa40bda9cdb12f0176930a12da2872bf.png" alt="How it works"></p>
+<p>SNS allows you to group multiple recipients using topics, A topic is an ‘access point’ for allowing recipients to dynamically subscribe for identical copies of the same notification.</p>
+<p>One topic can support deliveries to multiple endpoint types — for example, you can group together iOS, Android and SMS recipients. When you publish once to a topic, SNS delivers appropriately formatted copies of your message to each subscriber.</p>
+<p><strong>SNS Availability</strong></p>
+<p>To prevent messages from being lost, all messages published to Amazon SNS are stored redundantly across multiple availability zones.</p>
+<p><strong>SNS Benefits</strong></p>
+<ul>
+<li>Instantaneous, push-bases delivery (no polling)</li>
+<li>Simple APIs And easy integration with applications</li>
+<li>Flexible message delivery over transport protocols</li>
+<li>Inexpensive , pay-as-you-go model with no up-front costs</li>
+<li>Web-based AWS Management Console offers the simplicity of a point-and-check interface</li>
+</ul>
+<p><strong>SNS vs SQS</strong></p>
+<p><strong><em>Amazon really like to quiz you the differences between SWF &amp; SQS and then SNS &amp; SQS.</em></strong></p>
+<ul>
+<li>Both Messaging Services in AWS</li>
+<li>SNS - Push</li>
+<li>SQS - Polls (Pulls)</li>
+</ul>
+<hr>
+<h2 id="Elastic-Transcoder"><a href="#Elastic-Transcoder" class="headerlink" title="Elastic Transcoder"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elastictranscoder/">Elastic Transcoder</a></h2><p><strong><em>Amazon Elastic Transcoder manages all aspects of the media transcoding process for you transparently and automatically. There’s no need to administer software, scale hardware, tune performance, or otherwise manage transcoding infrastructure.</em></strong></p>
+<ul>
+<li>Media Transcoder in the cloud</li>
+<li>Convert media files from their original source format in to different formats that will play on smart phones, tablets, PCs, etc.</li>
+<li>Provides transcoding presets for popular output formats, which means that you don;t need to guess about which settings work best on particular devices.</li>
+<li>Pay based on the minutes that you transcode and the resolution at which you transcode.</li>
+</ul>
+<iframe width="859" height="483" src="https://www.youtube.com/embed/wSYHdt1TJVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+
+<hr>
 <h2 id="API-Gateway"><a href="#API-Gateway" class="headerlink" title="API Gateway"></a>API Gateway</h2><hr>
 <h2 id="Kinesis"><a href="#Kinesis" class="headerlink" title="Kinesis"></a>Kinesis</h2><hr>
 <h2 id="Web-Identity-Federation-Cognito"><a href="#Web-Identity-Federation-Cognito" class="headerlink" title="Web Identity Federation - Cognito"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cognito/">Web Identity Federation - Cognito</a></h2><p><strong><em>Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. Amazon Cognito scales to millions of users and supports sign-in with social identity providers, such as Apple, Facebook, Google, and Amazon, and enterprise identity providers via SAML 2.0 and OpenID Connect.</em></strong>  </p>
@@ -427,7 +475,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Queue types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF"><span class="nav-number">1.2.</span> <span class="nav-text">SWF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS"><span class="nav-number">1.3.</span> <span class="nav-text">SNS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Applications"><span class="nav-number">1.</span> <span class="nav-text">Applications</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQS-Amazon-Simple-Queue-Service"><span class="nav-number">1.1.</span> <span class="nav-text">SQS (Amazon Simple Queue Service)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Amazon-SQS-with-other-AWS-infrastructure-web-services"><span class="nav-number">1.1.1.</span> <span class="nav-text">Using Amazon SQS with other AWS infrastructure web services</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Queue-types"><span class="nav-number">1.1.2.</span> <span class="nav-text">Queue types</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SWF-Simple-Workflow-Service"><span class="nav-number">1.2.</span> <span class="nav-text">SWF (Simple Workflow Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SNS-Simple-Notification-Service"><span class="nav-number">1.3.</span> <span class="nav-text">SNS (Simple Notification Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Transcoder"><span class="nav-number">1.4.</span> <span class="nav-text">Elastic Transcoder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-Gateway"><span class="nav-number">1.5.</span> <span class="nav-text">API Gateway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kinesis"><span class="nav-number">1.6.</span> <span class="nav-text">Kinesis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Identity-Federation-Cognito"><span class="nav-number">1.7.</span> <span class="nav-text">Web Identity Federation - Cognito</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Pool-vs-Identity-Pool"><span class="nav-number">1.7.1.</span> <span class="nav-text">User Pool vs Identity Pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Cognito-in-Action"><span class="nav-number">1.7.2.</span> <span class="nav-text">Amazon Cognito in Action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cognito-Synchronization"><span class="nav-number">1.7.3.</span> <span class="nav-text">Cognito Synchronization</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
