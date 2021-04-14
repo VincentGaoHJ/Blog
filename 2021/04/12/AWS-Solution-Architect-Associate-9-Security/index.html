@@ -20,8 +20,9 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/03/09/Demystifying-KMS-keys-2021-2.png">
 <meta property="og:image" content="https://d1.awsstatic.com/products/WAF/product-page-diagram_APIv2-AWS-WAF_How-it-Works-2x.1cafa052deabb5ca8500ce9565209f0f97725482.png">
+<meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/03/09/Demystifying-KMS-keys-2021-2.png">
 <meta property="article:published_time" content="2021-04-12T02:18:34.000Z">
-<meta property="article:modified_time" content="2021-04-12T06:48:59.653Z">
+<meta property="article:modified_time" content="2021-04-14T03:01:01.051Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -235,10 +236,171 @@
 <p><img src="https://d1.awsstatic.com/products/WAF/product-page-diagram_APIv2-AWS-WAF_How-it-Works-2x.1cafa052deabb5ca8500ce9565209f0f97725482.png" alt="product-page-diagram_APIv2-AWS-WAF_How-it-Works-2x"></p>
 <p>AWS WAF is a web application firewall that helps protect your web applications or APIs <strong>against common web exploits and bots</strong> that may affect availability, compromise security, or consume excessive resources. </p>
 <p>AWS WAF gives you control over how traffic reaches your applications by enabling you to create security rules that control bot traffic and block common attack patterns, such as SQL injection or cross-site scripting.</p>
+<h2 id="KMS-Key-Management-Service"><a href="#KMS-Key-Management-Service" class="headerlink" title="KMS (Key Management Service)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/kms/">KMS (Key Management Service)</a></h2><p><img src="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/03/09/Demystifying-KMS-keys-2021-2.png" alt="AWS options for key management"></p>
+<p><strong>AWS Key Management Service (KMS) makes it easy for you to create and manage cryptographic keys and control their use across a wide range of AWS services and in your applications.</strong> </p>
+<ul>
+<li>Regional secure key management and encryption and decryption</li>
+<li>Manages customer master keys (CMKs)</li>
+<li>Ideal for S3 objects, database passwords and API keys stored in Systems Manager Parameter Store</li>
+<li>Encrypt and decrypt data up to 4 KB in size</li>
+<li>Integrated with most AWS services</li>
+<li>Pay per API call</li>
+<li>Audit capability using CloudTrail — logs delivered to S3</li>
+<li>FIPS 140-2 Level 2, FIPS is a US government computer security standard used to approve cryptographic modules.</li>
+<li>Level 3 is CloudHSM</li>
+</ul>
+<p><strong>Types of CMKs</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Can View</th>
+<th style="text-align:center">Can Manage</th>
+<th style="text-align:center">Dedicated to My Account</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Customer Managed</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">AWS Managed CMK</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">AWS Owned CMK</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Symmetric vs Asymmetric CMKs</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Symmetric</th>
+<th style="text-align:center">Asymmetric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Same</strong> key used for encryption and decryption</td>
+<td style="text-align:center">Mathematically related public/private key pair</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>AES-256</strong></td>
+<td style="text-align:center"><strong>RSA</strong> and <strong>elliptic-curve cryptography (ECC)</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">Never leaves AWS unencrypted</td>
+<td style="text-align:center"><strong>Private</strong> key never leaves AWS unencrypted</td>
+</tr>
+<tr>
+<td style="text-align:center">Must call the KMS APIs to use</td>
+<td style="text-align:center">Must call the KMS APIs to use the <strong>private</strong> key</td>
+</tr>
+<tr>
+<td style="text-align:center">AWS services integrated with KMS use symmetric CMKs</td>
+<td style="text-align:center"><strong>Download</strong> the public key and use outside AWS</td>
+</tr>
+<tr>
+<td style="text-align:center">Encrypt, decrypt, and re-encrypt data</td>
+<td style="text-align:center">Used outside AWS by users who can’t call KMS APIs</td>
+</tr>
+<tr>
+<td style="text-align:center">Generate data keys, data key pairs, and random byte strings</td>
+<td style="text-align:center">AWS services integrated with KMS <strong>do not support</strong> asymmetric CMKS</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Import</strong> your own key material</td>
+<td style="text-align:center">Often used in Sign messages and verify signatures</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="CloudHSM"><a href="#CloudHSM" class="headerlink" title="CloudHSM"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudhsm/">CloudHSM</a></h2><iframe width="403" height="827" src="https://www.youtube.com/embed/hEVks207ALM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><strong>AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud.</strong></p>
+<ul>
+<li><strong>Dedicated</strong> hardware security module (HSM)</li>
+<li><strong>FIPS 140-2 Level 3 (Level 2 is KMS)</strong></li>
+<li>Manage your own keys</li>
+<li><strong>No access</strong> to the AWS-managed component</li>
+<li>Runs within a VPC in your account</li>
+<li>Single tenant , dedicated hardware, multi-AZ cluster</li>
+<li>Industry-standard APIs — <strong>no AWS APIs</strong></li>
+<li><strong>PKCS#11</strong></li>
+<li><strong>Java Cryptography Tensions (JCE)</strong></li>
+<li><strong>Microsoft CryptoNG (CNG)</strong></li>
+<li>Keep your keys safe — <strong>irretrievable</strong> if lost!</li>
+</ul>
+<h2 id="Systems-Manager-Parameter-Store"><a href="#Systems-Manager-Parameter-Store" class="headerlink" title="Systems Manager Parameter Store"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">Systems Manager Parameter Store</a></h2><p><strong><em>AWS Systems Manager Parameter Store (Parameter Store) provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, Amazon Machine Image (AMI) IDs, and license codes as parameter values.</em></strong></p>
+<ul>
+<li>Component of AWS Systems Manager (SSM)</li>
+<li>Secure <strong>serverless</strong> storage for configuration and secrets:<ul>
+<li>Passwords</li>
+<li>Database connection strings</li>
+<li>License codes</li>
+<li>API keys</li>
+</ul>
+</li>
+<li>Values can be stored encrypted (KMS) or plain-text</li>
+<li>Separate data from source control</li>
+<li>Store parameters in <strong>hierarchies</strong></li>
+<li>Track versions</li>
+<li>Set TTL to expire values such as passwords.</li>
+</ul>
+<h3 id="AWS-Parameter-Store-vs-AWS-Secrets-Manager"><a href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager" class="headerlink" title="AWS Parameter Store vs. AWS Secrets Manager"></a>AWS Parameter Store vs. AWS Secrets Manager</h3><p>To implement password rotation lifecycles, use AWS Secrets Manager (Secrets Manager). Secrets Manager allows you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. For more information, see <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html">What is AWS Secrets Manager?</a></p>
+<p><strong>Similarities</strong></p>
+<ul>
+<li><p><strong>Managed Key/Value Store Services.</strong> </p>
+<p>Both services can store values up to 4096 characters and allow the keys to have prefixes.</p>
+</li>
+<li><p><strong>Similar Encryption Options.</strong> </p>
+<p>Both services can leverage AWS KMS to encrypt values. </p>
+</li>
+<li><p><strong>Both Reference-able in CloudFormation.</strong> </p>
+<p>Writing on how SSM Parameter Store and AWS Secrets Manager interact with CloudFormation can be a whole separate article. </p>
+</li>
+</ul>
+<p><strong>Differences</strong></p>
+<ul>
+<li><p><strong>Password Generation.</strong> </p>
+<p>AWS Secrets Manager is able to generate random secrets through the AWS CLI or SDK. </p>
+</li>
+<li><p><strong>Secrets Rotation.</strong> </p>
+<p>Another feature unique to AWS Secrets Manger is the ability to rotate the secret value. Out of the box, AWS Secrets Manager provides full key rotation integration with RDS. </p>
+</li>
+<li><p><strong>Cost.</strong> </p>
+<p>There are no additional charges for using SSM Parameter Store. However, there are limit of 10,000 parameters per account. On the other hand, AWS Secrets Manager does accrue additional costs. At the time of this writing, it costs $0.40 per secret stored and additional $0.05 for 10,000 API calls.</p>
+</li>
+<li><p><strong>Cross Account Access.</strong> </p>
+<p>Another way AWS Secrets Manager is substantially different from SSM Parameter store, is that secrets can be shared across accounts. For example, IAM users and application resources in one development or production AWS account will be able access secrets stored in a different AWS account (e.g. Security AWS Account). Such functionality is also beneficial for use cases where a customer needs to share a particular secret with a partner. The article found HERE demonstrates how to setup a cross-account AWS Secrets Manager secret.</p>
+</li>
+</ul>
+<p><strong>Secrets Manager takes things several steps further and it would not be surprising to see AWS continue to build on this functionality.</strong></p>
 <hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><strong>AWS Security Blog</strong><ul>
+<li><p><strong>AWS Security Blog</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/security/demystifying-kms-keys-operations-bring-your-own-key-byok-custom-key-store-and-ciphertext-portability/">Demystifying KMS keys operations, bring your own key (BYOK), custom key store, and ciphertext portability</a></li>
+</ul>
+</li>
+<li><p><strong>AWS Management &amp; Governance Blog</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/mt/the-right-way-to-store-secrets-using-parameter-store/">The Right Way to Store Secrets using Parameter Store</a></li>
+</ul>
+</li>
+<li><strong>Third Party Blog</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://www.1strategy.com/blog/2019/02/28/aws-parameter-store-vs-aws-secrets-manager/">AWS Parameter Store vs. AWS Secrets Manager</a></li>
 </ul>
 </li>
 </ul>
@@ -337,7 +499,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cloud-Security"><span class="nav-number">1.</span> <span class="nav-text">Cloud Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducing-Security-Threats"><span class="nav-number">1.1.</span> <span class="nav-text">Reducing Security Threats</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cloud-Security"><span class="nav-number">1.</span> <span class="nav-text">Cloud Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducing-Security-Threats"><span class="nav-number">1.1.</span> <span class="nav-text">Reducing Security Threats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMS-Key-Management-Service"><span class="nav-number">1.2.</span> <span class="nav-text">KMS (Key Management Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CloudHSM"><span class="nav-number">1.3.</span> <span class="nav-text">CloudHSM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systems-Manager-Parameter-Store"><span class="nav-number">1.4.</span> <span class="nav-text">Systems Manager Parameter Store</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager"><span class="nav-number">1.4.1.</span> <span class="nav-text">AWS Parameter Store vs. AWS Secrets Manager</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
