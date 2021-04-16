@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/Test%20Images/Kate%20Test%20Images/Serverless_Web_App_LP_assets-12.da876b91b6451199d3582b6cc81dc17ff7e5791f.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png">
 <meta property="article:published_time" content="2021-04-16T10:03:44.000Z">
-<meta property="article:modified_time" content="2021-04-16T10:03:31.636Z">
+<meta property="article:modified_time" content="2021-04-16T10:28:26.159Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -220,10 +220,26 @@
       
         <p><strong>A serverless architecture is a way to build and run applications and services without having to manage infrastructure. Your application still runs on servers, but all the server management is done by AWS.</strong> </p>
 <p>You no longer have to provision, scale, and maintain servers to run your applications, databases, and storage systems. Learn more about serverless computing <a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/">here</a>.</p>
-<p><img src="https://d1.awsstatic.com/Test%20Images/Kate%20Test%20Images/Serverless_Web_App_LP_assets-12.da876b91b6451199d3582b6cc81dc17ff7e5791f.png" alt="architecture of building a serverless web app"></p>
+<p><img src="https://d1.awsstatic.com/Test%20Images/Kate%20Test%20Images/Serverless_Web_App_LP_assets-12.da876b91b6451199d3582b6cc81dc17ff7e5791f.png" alt="Architecture of Building a Serverless Web Application"></p>
 <a id="more"></a>
 <h1 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h1><h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/lambda/">Lambda</a></h2><p><strong><em>AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, creating workload-aware cluster scaling logic, maintaining event integrations, or managing runtimes.</em></strong></p>
 <p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png" alt="How AWS Lambda Works"></p>
+<ul>
+<li>Lambda scales out (not up) automatically</li>
+<li>Lambda functions are independent, 1 event = 1 function</li>
+<li>Lambda is serverless</li>
+<li>Know what services are serverless<ul>
+<li>RDS is not serverless (Aurora service is a exception) even though AWS takes care of its operation system, there is still an operating system that they have to go in and you still gonna have downtime when they’re doing maintenance. </li>
+<li>DynamoDB is serverless</li>
+<li>S3 is serverless</li>
+<li>API Gateway is serverless</li>
+<li>EC2 is not serverless, because it’s obviously a virtual machine</li>
+</ul>
+</li>
+<li>Lambda functions can trigger other lambda functions, 1 event can = x functions if functions trigger other functions</li>
+<li>Architectures can get extremely complicated, AWS X-ray allows you to debug what is happening</li>
+<li>Lambda can do things globally, you can use it to back up S3 buckets to other S3 buckets etc.</li>
+</ul>
 <hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
 <li><p><strong>AWS News Blog</strong></p>
