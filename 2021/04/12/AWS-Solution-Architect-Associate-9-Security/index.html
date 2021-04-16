@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/products/WAF/product-page-diagram_APIv2-AWS-WAF_How-it-Works-2x.1cafa052deabb5ca8500ce9565209f0f97725482.png">
 <meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/03/09/Demystifying-KMS-keys-2021-2.png">
 <meta property="article:published_time" content="2021-04-12T02:18:34.000Z">
-<meta property="article:modified_time" content="2021-04-14T03:02:33.056Z">
+<meta property="article:modified_time" content="2021-04-16T09:57:08.826Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -361,30 +361,16 @@
 <h3 id="AWS-Parameter-Store-vs-AWS-Secrets-Manager"><a href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager" class="headerlink" title="AWS Parameter Store vs. AWS Secrets Manager"></a>AWS Parameter Store vs. AWS Secrets Manager</h3><p>To implement password rotation lifecycles, use AWS Secrets Manager (Secrets Manager). Secrets Manager allows you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. For more information, see <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html">What is AWS Secrets Manager?</a></p>
 <p><strong>Similarities</strong></p>
 <ul>
-<li><p><strong>Managed Key/Value Store Services.</strong> </p>
-<p>Both services can store values up to 4096 characters and allow the keys to have prefixes.</p>
-</li>
-<li><p><strong>Similar Encryption Options.</strong> </p>
-<p>Both services can leverage AWS KMS to encrypt values. </p>
-</li>
-<li><p><strong>Both Reference-able in CloudFormation.</strong> </p>
-<p>Writing on how SSM Parameter Store and AWS Secrets Manager interact with CloudFormation can be a whole separate article. </p>
-</li>
+<li><strong>Managed Key/Value Store Services.</strong> Both services can store values up to 4096 characters and allow the keys to have prefixes.</li>
+<li><strong>Similar Encryption Options.</strong> Both services can leverage AWS KMS to encrypt values. </li>
+<li><strong>Both Reference-able in CloudFormation.</strong> Writing on how SSM Parameter Store and AWS Secrets Manager interact with CloudFormation can be a whole separate article. </li>
 </ul>
 <p><strong>Differences</strong></p>
 <ul>
-<li><p><strong>Password Generation.</strong> </p>
-<p>AWS Secrets Manager is able to generate random secrets through the AWS CLI or SDK. </p>
-</li>
-<li><p><strong>Secrets Rotation.</strong> </p>
-<p>Another feature unique to AWS Secrets Manger is the ability to rotate the secret value. Out of the box, AWS Secrets Manager provides full key rotation integration with RDS. </p>
-</li>
-<li><p><strong>Cost.</strong> </p>
-<p>There are no additional charges for using SSM Parameter Store. However, there are limit of 10,000 parameters per account. On the other hand, AWS Secrets Manager does accrue additional costs. At the time of this writing, it costs $0.40 per secret stored and additional $0.05 for 10,000 API calls.</p>
-</li>
-<li><p><strong>Cross Account Access.</strong> </p>
-<p>Another way AWS Secrets Manager is substantially different from SSM Parameter store, is that secrets can be shared across accounts. For example, IAM users and application resources in one development or production AWS account will be able access secrets stored in a different AWS account (e.g. Security AWS Account). Such functionality is also beneficial for use cases where a customer needs to share a particular secret with a partner. The article found HERE demonstrates how to setup a cross-account AWS Secrets Manager secret.</p>
-</li>
+<li><strong>Password Generation.</strong> AWS Secrets Manager is able to generate random secrets through the AWS CLI or SDK. </li>
+<li><strong>Secrets Rotation.</strong> Another feature unique to AWS Secrets Manger is the ability to rotate the secret value. Out of the box, AWS Secrets Manager provides full key rotation integration with RDS. </li>
+<li><strong>Cost.</strong> There are no additional charges for using SSM Parameter Store. However, there are limit of 10,000 parameters per account. On the other hand, AWS Secrets Manager does accrue additional costs. At the time of this writing, it costs \$0.40 per secret stored and additional \$0.05 for 10,000 API calls.</li>
+<li><strong>Cross Account Access.</strong> Another way AWS Secrets Manager is substantially different from SSM Parameter store, is that secrets can be shared across accounts. For example, IAM users and application resources in one development or production AWS account will be able access secrets stored in a different AWS account (e.g. Security AWS Account). Such functionality is also beneficial for use cases where a customer needs to share a particular secret with a partner. The article found HERE demonstrates how to setup a cross-account AWS Secrets Manager secret.</li>
 </ul>
 <p><strong>Secrets Manager takes things several steps further and it would not be surprising to see AWS continue to build on this functionality.</strong></p>
 <hr>
@@ -404,7 +390,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1>
+
       
     </div>
     <footer class="article-footer">
@@ -499,7 +485,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cloud-Security"><span class="nav-number">1.</span> <span class="nav-text">Cloud Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducing-Security-Threats"><span class="nav-number">1.1.</span> <span class="nav-text">Reducing Security Threats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMS-Key-Management-Service"><span class="nav-number">1.2.</span> <span class="nav-text">KMS (Key Management Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CloudHSM"><span class="nav-number">1.3.</span> <span class="nav-text">CloudHSM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systems-Manager-Parameter-Store"><span class="nav-number">1.4.</span> <span class="nav-text">Systems Manager Parameter Store</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager"><span class="nav-number">1.4.1.</span> <span class="nav-text">AWS Parameter Store vs. AWS Secrets Manager</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cloud-Security"><span class="nav-number">1.</span> <span class="nav-text">Cloud Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reducing-Security-Threats"><span class="nav-number">1.1.</span> <span class="nav-text">Reducing Security Threats</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMS-Key-Management-Service"><span class="nav-number">1.2.</span> <span class="nav-text">KMS (Key Management Service)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CloudHSM"><span class="nav-number">1.3.</span> <span class="nav-text">CloudHSM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Systems-Manager-Parameter-Store"><span class="nav-number">1.4.</span> <span class="nav-text">Systems Manager Parameter Store</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager"><span class="nav-number">1.4.1.</span> <span class="nav-text">AWS Parameter Store vs. AWS Secrets Manager</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol>
     
     </div>
   </aside>
@@ -729,5 +715,21 @@ $(document).ready(function(){
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
