@@ -329,7 +329,7 @@
     <header class="archive-article-header">
       
 	<a href="/Blog/2020/04/18/AWS-Certified-Machine-Learning-Specialty/" class="archive-article-date">
-	  <time datetime="2020-04-17T20:31:18.000Z" itemprop="datePublished">2020-04-18</time>
+	  <time datetime="2020-04-17T20:25:18.000Z" itemprop="datePublished">2020-04-18</time>
 	</a>
 
       
@@ -769,5 +769,21 @@ $(document).ready(function(){
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
