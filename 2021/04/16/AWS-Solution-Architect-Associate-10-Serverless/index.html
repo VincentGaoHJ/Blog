@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png">
 <meta property="og:image" content="https://d1.awsstatic.com/reInvent/re20-pdp-tier1/Mithril/product-page-diagram_Amazon-ECS%402x.0d872eb6fb782ddc733a27d2bb9db795fed71185.png">
 <meta property="article:published_time" content="2021-04-16T10:03:44.000Z">
-<meta property="article:modified_time" content="2021-04-16T14:02:47.988Z">
+<meta property="article:modified_time" content="2021-04-17T19:57:13.856Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Solutions Architect - Associate">
@@ -244,14 +244,112 @@
 <h2 id="Serverless-Application-Model-SAM"><a href="#Serverless-Application-Model-SAM" class="headerlink" title="Serverless Application Model (SAM)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/sam/">Serverless Application Model (SAM)</a></h2><p><strong><em>The AWS Serverless Application Model (SAM) is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings.</em></strong></p>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/1dzihtC5LJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
-
+<ul>
+<li>CloudFormation extension optimized for serverless applications</li>
+<li>New types: functions, APIs, tables</li>
+<li>Supports anything CloudFormation supports</li>
+<li>Run serverless applications locally</li>
+<li>Package and deploy using CodeDeploy</li>
+</ul>
 <h2 id="Elastic-Container-Service-ECS"><a href="#Elastic-Container-Service-ECS" class="headerlink" title="Elastic Container Service (ECS)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/">Elastic Container Service (ECS)</a></h2><p><strong><em>Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service. Customers such as Duolingo, Samsung, GE, and Cookpad use ECS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.</em></strong></p>
 <p><img src="https://d1.awsstatic.com/reInvent/re20-pdp-tier1/Mithril/product-page-diagram_Amazon-ECS%402x.0d872eb6fb782ddc733a27d2bb9db795fed71185.png" alt="How Amazon ECS works"></p>
+<p><strong>What are Containers and Docker?</strong></p>
+<ul>
+<li>A <strong>container</strong> is a package that contains an application, libraries, runtime, and tools required to run it</li>
+<li>Run on a container engine like <strong>Docker</strong></li>
+<li>Provides the <strong>isolation</strong> benefits of virtualization with less overhead and faster starts than VMs</li>
+<li>Containerized applications are <strong>portable</strong> and offer a consistent environment</li>
+</ul>
+<p><strong>What is ECS?</strong></p>
+<ul>
+<li>Managed container <strong>orchestration service</strong></li>
+<li>Create <strong>cluster</strong> to manage fleets of container deployments</li>
+<li>ECS manages EC2 or Fargate instances</li>
+<li>Schedules containers for optimal placement</li>
+<li>Defines rules for CPU and memory requirements</li>
+<li>Monitor resource utilization</li>
+<li>Deploy, update, roll back</li>
+<li><strong>FREE</strong></li>
+<li>VPC, security groups, EBS volumes</li>
+<li>ELB</li>
+<li>CloudTrail and CloudWatch (Native support for CloudWatch so that you can get alarmed on state changes in the cluster)</li>
+</ul>
+<p><strong>ECS Components</strong></p>
+<ul>
+<li><strong>Cluster:</strong> Logical collection of ECS resources — either ECS EC2 instance or Fargate instances</li>
+<li><strong>Task:</strong> Single running copy of any containers defined by a task definition.</li>
+<li><strong>Task Definition:</strong> Defines your application</li>
+<li><strong>Service:</strong> Allows task definitions to be scaled by adding tasks</li>
+<li><strong>Container Definition:</strong> Inside a task definition, it defines the individual containers a task uses</li>
+<li><strong>Registry:</strong> Storage for container images</li>
+</ul>
+<p><strong>Fargate</strong></p>
+<ul>
+<li><strong>Serverless</strong> container engine</li>
+<li>Eliminates need to provision and manage servers</li>
+<li>Specify and pay fore resources per application</li>
+<li>Works with both <strong>ECS</strong> and <strong>EKS</strong></li>
+<li>Each workload runs in its own kernel</li>
+<li>Isolation and security</li>
+<li>Choose EC2 instead if:<ul>
+<li>Compliance requirements</li>
+<li>Require broader customization</li>
+<li>Require GPUs</li>
+</ul>
+</li>
+</ul>
+<p><strong>Elastic Kubernetes Service (EKS)</strong></p>
+<ul>
+<li>K8s is <strong>open-source</strong> software that lets you deploy and manage containerized applications at scale</li>
+<li>Same toolset on-premises and in cloud</li>
+<li>Containers are grouped in <strong>pods</strong></li>
+<li>Like ECS, supports both EC2 and Fargate</li>
+<li>Why use EKS?<ul>
+<li>Already using K8s</li>
+<li>Want to migrate to AWS</li>
+</ul>
+</li>
+</ul>
+<p><strong>Elastic Container Registry (ECR)</strong></p>
+<ul>
+<li>Managed Docker container registry</li>
+<li>Store, manage, and deploy images</li>
+<li>Integrated with ECS and EKS</li>
+<li>Works with on-premises deployments</li>
+<li>Highly available</li>
+<li>Integrated with <strong>IAM</strong></li>
+<li>Pay for storage and data transfer</li>
+</ul>
+<p><strong>ECS (Elastic Container Service) + ELB (Elastic Load Balancing)</strong></p>
+<ul>
+<li>Distribute traffic evenly across tasks in your service</li>
+<li>Supports ALB (Application Load Balancer), NLB (Network Load Balancer), CLB (Classic Load Balancer)</li>
+<li>Use ALB to route HTTP/HTTPS (layer 7) traffic</li>
+<li>Use NLB or CLB to route TCP (layer 4) traffic</li>
+<li>Supported by both EC2 and Fargate launch types</li>
+<li>ALB allows:<ul>
+<li>Dynamic host port mapping</li>
+<li>Path-based routing</li>
+<li>Priority rules</li>
+</ul>
+</li>
+<li>ALB is recommended over NLB or CLB</li>
+</ul>
 <hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><strong>Containers</strong><ul>
+<li><p><strong>Containers</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/containers/new-using-amazon-ecs-exec-access-your-containers-fargate-ec2/">NEW – Using Amazon ECS Exec to access your containers on AWS Fargate and Amazon EC2</a></li>
+</ul>
+</li>
+<li><p><strong>AWS Developer Blog</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/developer/deploying-aws-step-functions-using-github-actions/">Deploying AWS Step Functions using GitHub Actions</a></li>
+</ul>
+</li>
+<li><strong>AWS Compute Blog</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/getting-started-with-serverless-for-developers-part-1/">Getting started with serverless for developers: Part 1</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/using-container-image-support-for-aws-lambda-with-aws-sam/">Using container image support for AWS Lambda with AWS SAM</a></li>
 </ul>
 </li>
 </ul>
