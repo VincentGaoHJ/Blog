@@ -20,7 +20,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://www.proud2becloud.com/wp-content/uploads/2020/07/AWS_ML_Specialty_get_certified-720x626.png">
 <meta property="article:published_time" content="2021-04-17T20:34:13.000Z">
-<meta property="article:modified_time" content="2021-05-31T10:54:17.854Z">
+<meta property="article:modified_time" content="2021-06-01T03:39:25.957Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="Certified Machine Learning - Specialty">
@@ -241,7 +241,20 @@
 <li>You can define whatever partitioning strategy you like</li>
 <li>Data Partitioning will be handled by some tools we use (e.g. AWS Glue)</li>
 </ul>
-<hr>
+<p><strong>S3 Encryption for Objects</strong></p>
+<p>There are 4 methods of encrypting objects in S3</p>
+<ul>
+<li>SSE-S3: encrypts S3 objects using keys handled &amp; managed by AWS</li>
+<li>SSE-KMS: use AWS Key Management Service to manage encryption keys <ul>
+<li>Additional security (user must have access to KMS key)</li>
+<li>Audit trail for KMS key usage</li>
+</ul>
+</li>
+<li>SSE-C: when you want to manage your own encryption keys</li>
+<li>Client Side Encryption</li>
+</ul>
+<p><strong>From an ML perspective, SSE-S3 and SSE-KMS will be most likely used.</strong></p>
+<h2 id="AWS-Kinesis"><a href="#AWS-Kinesis" class="headerlink" title="AWS Kinesis"></a>AWS Kinesis</h2><hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1>
       
     </div>
@@ -337,7 +350,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Engineering"><span class="nav-number">1.</span> <span class="nav-text">Data Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-S3"><span class="nav-number">1.1.</span> <span class="nav-text">Amazon S3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Engineering"><span class="nav-number">1.</span> <span class="nav-text">Data Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-S3"><span class="nav-number">1.1.</span> <span class="nav-text">Amazon S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Kinesis"><span class="nav-number">1.2.</span> <span class="nav-text">AWS Kinesis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
     
     </div>
   </aside>
