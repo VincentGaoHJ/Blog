@@ -3,29 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>aws certified machine learning (specialty) - topic 1: data engineering | Gao Haojun</title>
+  <title>tag: aws - aws-sam - aws-serverless | Gao Haojun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="AWSCertified Machine Learning - Specialty" />
   
   
   
-  
-  <meta name="description" content="AWS Certified Machine Learning - Specialty is an advanced certification a bit different from the others, because it is the only one which focuses on specific sector knowledge not strictly tied to AWS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AWS Certified Machine Learning (Specialty) - Topic 1: Data Engineering">
-<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2021/04/18/AWS-Machine-Learning-Specialty-1-Data-Engineer/index.html">
+  <meta name="description" content="Are you watching closely?">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gao Haojun">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/tags/AWS-AWS-SAM-AWS-Serverless/index.html">
 <meta property="og:site_name" content="Gao Haojun">
-<meta property="og:description" content="AWS Certified Machine Learning - Specialty is an advanced certification a bit different from the others, because it is the only one which focuses on specific sector knowledge not strictly tied to AWS">
+<meta property="og:description" content="Are you watching closely?">
 <meta property="og:locale">
-<meta property="og:image" content="https://www.proud2becloud.com/wp-content/uploads/2020/07/AWS_ML_Specialty_get_certified-720x626.png">
-<meta property="article:published_time" content="2021-04-17T20:34:13.000Z">
-<meta property="article:modified_time" content="2021-06-01T03:39:25.957Z">
 <meta property="article:author" content="Haojun(Vincent) Gao">
-<meta property="article:tag" content="AWS">
-<meta property="article:tag" content="Certified Machine Learning - Specialty">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.proud2becloud.com/wp-content/uploads/2020/07/AWS_ML_Specialty_get_certified-720x626.png">
   
     <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
   
@@ -79,6 +71,12 @@
   
 
   
+    <link rel="stylesheet" href="/Blog/css/archive.css" >
+    <!-- Code prettify using google code prettify -->
+    <!--
+    <link rel="stylesheet" href="/Blog/css/prettify.css" media="screen" type="text/css">
+    -->
+  
   
   
     <link rel="stylesheet" href="/Blog/css/vdonate.css" >
@@ -88,7 +86,7 @@
 
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body>
 
 
   
@@ -111,7 +109,7 @@
             
               <a class="brand" style="
                  margin-top: 0px;"  
-                href="#" data-toggle="modal" data-target="#myModal" >
+                 >
                   <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
               </a>
             
@@ -182,187 +180,43 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-AWS-Machine-Learning-Specialty-1-Data-Engineer" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+          <section id="main" style="float:none;">
   
-    <h1 class="thumb" class="article-title" itemprop="name">
-      AWS Certified Machine Learning (Specialty) - Topic 1: Data Engineering
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/Blog/archives/2021" class="archive-year">2021</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+	<a href="/Blog/2021/07/03/Mastering-AWS-SAM/" class="archive-article-date">
+	  <time datetime="2021-07-03T05:08:59.000Z" itemprop="datePublished">2021-07-03</time>
+	</a>
+
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/Blog/2021/07/03/Mastering-AWS-SAM/">Mastering AWS SAM: The AWS Serverless Application Model</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/Blog/2021/04/18/AWS-Machine-Learning-Specialty-1-Data-Engineer/" class="article-date">
-	  <time datetime="2021-04-17T20:34:13.000Z" itemprop="datePublished">2021-04-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/Blog/categories/AWS-Certified-Machine-Learning-Specialty/">AWS Certified Machine Learning Specialty</a>
-
-      
-	<a class="article-views">
-	<span id="busuanzi_container_page_pv">
-		PV:<span id="busuanzi_value_page_pv"></span>
-	</span>
-	</a>
-
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>AWS Certified Machine Learning - Specialty</strong> is an advanced certification a bit different from the others, because it is the only one which focuses on specific sector knowledge not strictly tied to AWS services. </p>
-<p>In fact, in order to pass the exam and obtain the certification, it’s fundamental being able to <strong>recognize, analyze and optimize different machine learning problems</strong> starting from use cases’ descriptions, without them being exclusively linked to peculiar AWS’ solutions.</p>
-<p><img src="https://www.proud2becloud.com/wp-content/uploads/2020/07/AWS_ML_Specialty_get_certified-720x626.png" alt="AWS Machine Learning Specialty"></p>
-<a id="more"></a>
-<p>[toc]</p>
-<h1 id="Data-Engineering"><a href="#Data-Engineering" class="headerlink" title="Data Engineering"></a>Data Engineering</h1><h2 id="Amazon-S3"><a href="#Amazon-S3" class="headerlink" title="Amazon S3"></a>Amazon S3</h2><p>This is my previous article about <a target="_blank" rel="noopener" href="https://gaohaojun.cn/Blog/2020/08/13/AWS-Solution-Architect-Associate-1-Identity-Access-Management-and-S3/">Amazon Storage(for solution architect)</a>, and you can get pretty much everything you need to know about AWS Storage.</p>
-<p><strong>AWS S3 for Machine Learning</strong></p>
-<ul>
-<li>Backbone for many AWS ML services (e.g. SageMaker)</li>
-<li>Create a “Data Lake”<ul>
-<li>Infinite size, no provisioning</li>
-<li>99.999999999% durability</li>
-<li>Decoupling of storage (S3) to compute (EC2, Amazon Athena, Amazon Redshift Spectrum, Amazon Rekognition, and AWS Glue)</li>
-</ul>
-</li>
-<li>Centralized Architecture: All your data can be in one place</li>
-<li>Object Storage =&gt; Supports any file format (Common format for ML: CSV, JSON)</li>
-</ul>
-<p><strong>AWS S3 Data Partitioning</strong></p>
-<ul>
-<li>Pattern for speeding up range queries (ex: AWS Athena)</li>
-<li>You can define whatever partitioning strategy you like</li>
-<li>Data Partitioning will be handled by some tools we use (e.g. AWS Glue)</li>
-</ul>
-<p><strong>S3 Encryption for Objects</strong></p>
-<p>There are 4 methods of encrypting objects in S3</p>
-<ul>
-<li>SSE-S3: encrypts S3 objects using keys handled &amp; managed by AWS</li>
-<li>SSE-KMS: use AWS Key Management Service to manage encryption keys <ul>
-<li>Additional security (user must have access to KMS key)</li>
-<li>Audit trail for KMS key usage</li>
-</ul>
-</li>
-<li>SSE-C: when you want to manage your own encryption keys</li>
-<li>Client Side Encryption</li>
-</ul>
-<p><strong>From an ML perspective, SSE-S3 and SSE-KMS will be most likely used.</strong></p>
-<h2 id="AWS-Kinesis"><a href="#AWS-Kinesis" class="headerlink" title="AWS Kinesis"></a>AWS Kinesis</h2><hr>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1>
-      
-    </div>
-    <footer class="article-footer">
-      
-        <div id="donation_div"></div>
-
-
-<script src="/Blog/js/vdonate.js"></script>
-
-<script>
-var a = new Donate({
-  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
-  btnText: 'Donate', // 可选参数，打赏按钮文字
-  el: document.getElementById('donation_div'),
-  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
-  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
-});
-</script>
-      
-      
-      <div>
-        <ul class="post-copyright">
-          <li class="post-copyright-author">
-          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
-          </li>
-          <li class="post-copyright-link">
-          <strong>Post link:  </strong>
-          <a href="/Blog/2021/04/18/AWS-Machine-Learning-Specialty-1-Data-Engineer/" target="_blank" title="AWS Certified Machine Learning (Specialty) - Topic 1: Data Engineering">http://vincentgaohj.github.io/Blog/2021/04/18/AWS-Machine-Learning-Specialty-1-Data-Engineer/</a>
-          </li>
-          <li class="post-copyright-license">
-            <strong>Copyright Notice:   </strong>
-            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-            unless stating additionally.
-          </li>
-         
-        </ul>
-<div>
-
-      
-      
-        
-	<div id="comment">
-		<!-- 来必力City版安装代码 -->
-		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
-		<script type="text/javascript">
-		   (function(d, s) {
-		       var j, e = d.getElementsByTagName(s)[0];
-
-		       if (typeof LivereTower === 'function') { return; }
-
-		       j = d.createElement(s);
-		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-		       j.async = true;
-
-		       e.parentNode.insertBefore(j, e);
-		   })(document, 'script');
-		</script>
-		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-		</div>
-		<!-- City版安装代码已完成 -->
-	</div>
-
-
-
-      
-      
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Certified-Machine-Learning-Specialty/" rel="tag">Certified Machine Learning - Specialty</a></li></ul>
-
-      
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/Blog/2021/07/03/Mastering-AWS-SAM/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Mastering AWS SAM: The AWS Serverless Application Model
-        
-      </div>
-    </a>
-  
-  
-    <a href="/Blog/2021/04/18/AWS-Certified-Machine-Learning-Specialty/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">AWS Certified Machine Learning – Specialty</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-<!-- Table of Contents -->
-
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Engineering"><span class="nav-number">1.</span> <span class="nav-text">Data Engineering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-S3"><span class="nav-number">1.1.</span> <span class="nav-text">Amazon S3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AWS-Kinesis"><span class="nav-number">1.2.</span> <span class="nav-text">AWS Kinesis</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dive-Into-Exam"><span class="nav-number">3.</span> <span class="nav-text">Dive Into Exam</span></a></li></ol>
-    
-    </div>
-  </aside>
 
 </section>
         
@@ -499,10 +353,6 @@ $(document).ready(function(){
 
 
 
-  
-<script src="/Blog/js/dialog.js"></script>
-
-
 
 
 
@@ -586,8 +436,6 @@ $(document).ready(function(){
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
