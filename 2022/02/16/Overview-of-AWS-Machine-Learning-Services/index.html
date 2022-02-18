@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>overview of aws: machine learning services (2022 edition) | Gao Haojun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="AWSOverview of AWS" />
+  
+  
+  
+  
+  <meta name="description" content="Data Science and Machine Learning are surely some fast-moving industries and some what need you to study in all time to stay ahead and on top in the industry. But the first step of getting into this a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Overview of AWS: Machine Learning Services (2022 Edition)">
+<meta property="og:url" content="http://vincentgaohj.github.io/Blog/2022/02/16/Overview-of-AWS-Machine-Learning-Services/index.html">
+<meta property="og:site_name" content="Gao Haojun">
+<meta property="og:description" content="Data Science and Machine Learning are surely some fast-moving industries and some what need you to study in all time to stay ahead and on top in the industry. But the first step of getting into this a">
+<meta property="og:locale">
+<meta property="og:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--h5xRAej2--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0tvxhqw6gvj2eomwziv5.png">
+<meta property="og:image" content="https://d1.awsstatic.com/products/CodeGuru/Product-Page-Diagram_CodeGuru.4d70717197b2bbd7bb11c44e8c9c351dbc12f821.png">
+<meta property="og:image" content="https://d1.awsstatic.com/reInvent/re21-pdp-tier1/vista/Amazon-DevOps-Guru_How-it-works_Diagram%402x.8cc9c4aa3bf6634bc93c71e66a05a279374459b9.png">
+<meta property="og:image" content="https://d1.awsstatic.com/Comprehend/Use-cases_Customer-analytics.93d8f858f529bec19d1899c9d8a5625d3989e621.png">
+<meta property="og:image" content="https://d1.awsstatic.com/products/LookoutForVision/Product-Page-Diagram_Amazon-Lookout-for-Vision%402x_numbers.452554768092705d869ccad18191504d0e37ce78.png">
+<meta property="og:image" content="https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2020/05/26/albert-nlp-1.gif">
+<meta property="article:published_time" content="2022-02-16T06:02:44.000Z">
+<meta property="article:modified_time" content="2022-02-18T13:46:11.000Z">
+<meta property="article:author" content="Haojun(Vincent) Gao">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Overview of AWS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://res.cloudinary.com/practicaldev/image/fetch/s--h5xRAej2--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0tvxhqw6gvj2eomwziv5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Gao Haojun" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/Blog/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/Blog/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  
+<link rel="stylesheet" href="/Blog/css/style.css">
+
+
+  
+<script src="/Blog/js/jquery-3.1.1.min.js"></script>
+
+  
+<script src="/Blog/js/bootstrap.js"></script>
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/Blog/css/bootstrap.css" >
+
+  
+
+  
+  
+
+  
+    
+<link rel="stylesheet" href="/Blog/css/dialog.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/Blog/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/Blog/css/vdonate.css" >
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/Blog/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/Blog/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/Blog/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/Blog/',
+        CONTENT_URL: '/Blog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/Blog/js/insight.js"></script>
+
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Overview-of-AWS-Machine-Learning-Services" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Overview of AWS: Machine Learning Services (2022 Edition)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/Blog/2022/02/16/Overview-of-AWS-Machine-Learning-Services/" class="article-date">
+	  <time datetime="2022-02-16T06:02:44.000Z" itemprop="datePublished">2022-02-16</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/Blog/categories/AWS/">AWS</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Data Science and Machine Learning are surely some fast-moving industries and some what need you to study in all time to stay ahead and on top in the industry. But the first step of getting into this area seems dreadfully slow due to widely involved technologies and overwhelming terminology that scare you out of shit. </strong> </p>
+<p><strong>AWS lowers the barrier</strong> to entry for companies and organizations looking for solutions of leveraging ML capabilities by offerings more than 20 services including <strong>low-level service</strong> like <a target="_blank" rel="noopener" href="https://aws.amazon.com/pm/sagemaker">SageMaker</a>, which helps build and manage infrastructure for developing environments, as well as <strong>high-level systems</strong> like <a target="_blank" rel="noopener" href="https://aws.amazon.com/rekognition/">Rekognition</a> that come with pre-built Machine Learning models for image recognition.</p>
+<p>This blog will go through all the Machine Learning services offered by AWS.</p>
+<p><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--h5xRAej2--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0tvxhqw6gvj2eomwziv5.png" alt="Machine Learning services, photo by Kareem Negm‬‏"></p>
+<a id="more"></a>
+<h1 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h1><h2 id="SageMaker"><a href="#SageMaker" class="headerlink" title="SageMaker"></a>SageMaker</h2><p><strong>SageMaker is the most important set of micro services in AWS.</strong> It’s a set of tools for deploying machine learning applications. it streamlines all the Machine Learning tasks that come up from preparing data and building a model to training, and deploying it. </p>
+<iframe width="894" height="503" src="https://www.youtube.com/embed/YQyid2uLOvI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>Also, The benefits of SageMaker have to do with all the details of how to stage training tasks and deploy inference tasks across a variety of infrastructure.</p>
+<p>SageMaker is so powerful that can not be just compressed in one section to introduce. So, I’m decided to use another article to illustrate it in full details. Please stay tune.</p>
+<h2 id="Development-Tools"><a href="#Development-Tools" class="headerlink" title="Development Tools"></a>Development Tools</h2><p><strong>The critical issues for traditional developers</strong> to become Cloud practitioners are all kinds of <strong>new patterns of cloud development, including new Cloud IDE, new backend design patterns, and new operation standards.</strong> That requires AWS to provide development tools to ensure the <strong>working environment and cloud experience</strong>, and Machine Learning plays an important role in this task.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/codeguru/"><strong>Amazon CodeGuru</strong></a> is a developer tool that provides <strong>intelligent recommendations to improve code quality</strong> and identify an application’s most expensive lines of code. Integrate CodeGuru into your existing software development workflow to <strong>automate code reviews</strong> during application development and <strong>continuously monitor application’s performance in production</strong> and provide recommendations and visual clues on how to improve code quality, application performance, and reduce overall cost.</p>
+<ul>
+<li><strong>CodeGuru Reviewer</strong> uses machine learning and automated reasoning to identify critical issues, security vulnerabilities, and hard-to-find bugs during application development and provides recommendations to improve code quality.</li>
+<li><strong>CodeGuru Profiler</strong> helps developers find an application’s most expensive lines of code by helping them understand the runtime behavior of their applications, identify and remove code inefficiencies, improve performance, and significantly decrease compute costs.</li>
+</ul>
+<p><img src="https://d1.awsstatic.com/products/CodeGuru/Product-Page-Diagram_CodeGuru.4d70717197b2bbd7bb11c44e8c9c351dbc12f821.png" alt="CodeGuru Reviewer and Profiler"></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/devops-guru/"><strong>Amazon DevOps Guru</strong></a> is a service powered by machine learning (ML) that is designed to make it easy to <strong>improve an application’s operational performance and availability</strong>. DevOps Guru helps detect behaviors that deviate from normal operating patterns so you can identify operational issues long before they impact your customers. When DevOps Guru identifies a critical issue, it <strong>automatically sends an alert and provides a summary of related anomalies</strong>, the likely root cause, and context for when and where the issue occurred.</p>
+<p><img src="https://d1.awsstatic.com/reInvent/re21-pdp-tier1/vista/Amazon-DevOps-Guru_How-it-works_Diagram%402x.8cc9c4aa3bf6634bc93c71e66a05a279374459b9.png" alt="Amazon DevOps Guru"></p>
+<h2 id="Tools-for-Text-Mining"><a href="#Tools-for-Text-Mining" class="headerlink" title="Tools for Text Mining"></a>Tools for Text Mining</h2><p>Text is important for human society and it also more difficult and more tricky to process than other standard machine learning tasks like classification. So, AWS provide a wide range of tools for NLP (natural language processing), as well as GLU (natural language understanding), as well as NLG (natural language generation). With all kinds of text mining tools, you can do <strong>sentiment analysis, translation, also speech recording.</strong> They are accommodating if you want to <strong>build conversational user interfaces</strong> or <strong>summarize texts</strong>.</p>
+<p><img src="https://d1.awsstatic.com/Comprehend/Use-cases_Customer-analytics.93d8f858f529bec19d1899c9d8a5625d3989e621.png" alt="Amazon Comprehend"></p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/comprehend/"><strong>Amazon Comprehend</strong></a> for <strong>natural language processing and text analytics</strong> helps you understand text sentiment and relate texts to each other.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/lex/"><strong>Amazon Lex</strong></a> is a <strong>service for building conversational interfaces</strong> using voice and text. With Lex, you can use the same deep learning engine that powers Alexa in your own applications.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/textract/"><strong>Amazon Textract</strong></a> <strong>extracts text and data from scanned documents</strong>. It’s not just OCR but backed by Machine Learning models that have analyzed many types of documents, and can identify the contents of fields in forms and information stored in tables. </p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/transcribe/"><strong>Amazon Transcribe</strong></a> could be used to <strong>turn any speech recording into a text</strong>. If you need to go the other way around, <a target="_blank" rel="noopener" href="https://aws.amazon.com/polly/"><strong>Amazon Polly</strong></a> will synthesize lifelike speech from any text.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/translate/"><strong>Amazon Translate</strong></a> caters to your multilingual needs by <strong>translating every text</strong> into the language of your choice.</p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/polly/">Amazon Polly</a></strong> is a service that turns text into lifelike speech. Polly lets you create <a target="_blank" rel="noopener" href="https://aws.amazon.com/polly/">applications</a> that talk, enabling you to build entirely new categories of speech-enabled products. Polly is an Amazon artificial intelligence (AI) service that uses advanced deep learning technologies to synthesize speech that sounds like a human voice.</p>
+<h2 id="Tools-for-Image-and-Video"><a href="#Tools-for-Image-and-Video" class="headerlink" title="Tools for Image and Video"></a>Tools for Image and Video</h2><p>The ability to <strong>verify, organize, analysis millions and tons of images</strong> will unlock a whole new set of possibilities.</p>
+<iframe width="894" height="503" src="https://www.youtube.com/embed/0rqIUAH7Br4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/rekognition/"><strong>Amazon Rekognition</strong></a> offers pre-trained and customizable computer vision (CV) capabilities to extract information and insights from your images and videos. From <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/rekognition/latest/dg/collections.html?pg=ln&amp;sec=ft">face detection</a> to <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/rekognition/latest/dg/text-detection.html?pg=ln&amp;sec=ft">text extraction</a>.</p>
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/panorama/"><strong>AWS Panorama</strong></a> is a machine learning (ML) appliance and software development kit (SDK) that brings CV to on-premises internet protocol (IP) cameras.</p>
+<h2 id="Manufacturing-Capabilities"><a href="#Manufacturing-Capabilities" class="headerlink" title="Manufacturing Capabilities"></a>Manufacturing Capabilities</h2><p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/lookout-for-vision/">Amazon Lookout for Vision</a></strong> is a machine learning (ML) service that spots defects and anomalies in visual representations using computer vision (CV). With Amazon Lookout for Vision, manufacturing companies can increase quality and reduce operational costs by quickly identifying differences in images of objects at scale.</p>
+<p><img src="https://d1.awsstatic.com/products/LookoutForVision/Product-Page-Diagram_Amazon-Lookout-for-Vision%402x_numbers.452554768092705d869ccad18191504d0e37ce78.png" alt="Amazon Lookout for Vision"></p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/lookout-for-equipment/">Amazon Lookout for Equipment</a></strong> analyzes the data from the sensors on your equipment (e.g. pressure in a generator, flow rate of a compressor, revolutions per minute of fans), to automatically train a machine learning model based on just your data, for your equipment – with no ML expertise required.</p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/lookout-for-metrics/">Amazon Lookout for Metrics</a></strong> uses machine learning (ML) to automatically detect and diagnose anomalies in business and operational data, such as a sudden dip in sales revenue or customer acquisition rates.</p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/monitron/">Amazon Monitron</a></strong> is an end-to-end system that uses machine learning (ML) to detect abnormal behavior in industrial machinery, enabling you to implement predictive maintenance and reduce unplanned downtime.</p>
+<h2 id="Tools-for-Low-Level-Scientific-Environment"><a href="#Tools-for-Low-Level-Scientific-Environment" class="headerlink" title="Tools for Low Level Scientific Environment"></a>Tools for Low Level Scientific Environment</h2><p>TensorFlow is one of many deep learning frameworks available to researchers and developers to enhance their applications with machine learning. AWS provides broad support for TensorFlow, enabling customers to develop and serve their own models across computer vision, natural language processing, speech translation, and more.</p>
+<p><img src="https://d2908q01vomqb2.cloudfront.net/f1f836cb4ea6efb2a0b1b99f41ad8b103eff4b59/2020/05/26/albert-nlp-1.gif" alt=""></p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/machine-learning/elastic-inference/">Amazon Elastic Inference</a></strong> allows you to attach low-cost GPU-powered acceleration to Amazon EC2 and Amazon SageMaker instances to reduce the cost of running deep learning inference by up to 75%. Amazon Elastic Inference supports TensorFlow, Apache MXNet, PyTorch, and ONNX models.</p>
+<p><strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/machine-learning/inferentia/">AWS Inferentia</a></strong> is a machine learning inference chip designed to deliver high performance at low cost. AWS Inferentia will support the TensorFlow, Apache MXNet, and PyTorch deep learning frameworks, as well as models that use the ONNX format.</p>
+<h2 id="Other-Tools"><a href="#Other-Tools" class="headerlink" title="Other Tools"></a>Other Tools</h2><p><strong>Amazon Augmented AI (Amazon A2I)</strong> is a machine learning service that makes it easy to build the workflows required for human review.</p>
+<p><strong>Amazon Fraud Detector</strong> is a fully managed service that uses machine learning (ML) and more than 20 years of fraud detection expertise from Amazon, to identify potentially fraudulent activity so customers can catch more online fraud faster.</p>
+<p><strong>Amazon HealthLake</strong> is a HIPAA-eligible service that healthcare providers, health insurance companies, and pharmaceutical companies can use to store, transform, query, and analyze large-scale health data.</p>
+<p><strong>Amazon Kendra</strong> is an intelligent search service powered by machine learning. Kendra reimagines enterprise search for your websites and applications so your employees and customers can easily find the content they are looking for, even when it’s scattered across multiple locations and content repositories within your organization.</p>
+<p><strong>Amazon Personalize</strong> is a machine learning service that makes it easy for developers to create individualized recommendations for customers using their applications.<br>Amazon Personalize is like having your own Amazon.com machine learning personalization team at your disposal, 24 hours a day.</p>
+<p><strong>AWS DeepRacer</strong> is a 1/18th scale race car which gives you an interesting and fun way to get started with reinforcement learning (RL). RL is an advanced machine learning (ML) technique which takes a very different approach to training models than other machine learning methods.</p>
+<hr>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><strong>Summary</strong><ul>
+<li><a target="_blank" rel="noopener" href="https://dashbird.io/blog/aws-machine-learning-tools/">AWS Machine Learning Tools (2022 edition)</a></li>
+<li><a target="_blank" rel="noopener" href="https://dev.to/awsmenacommunity/overview-of-aws-machine-learning-services-aws-whitepaper-summary-33h5">Overview of AWS : Machine learning Services| AWS White Paper Summary</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/aws-re-invent-2021-ai-machine-learning-launches-7-things-you-should-know-18c6c06fa982">AWS re:invent 2021 AI &amp; Machine Learning Launches: 7 Things You Should Know</a></li>
+</ul>
+</li>
+<li><p><strong>Amazon SageMaker</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://press.aboutamazon.com/news-releases/news-release-details/aws-announces-six-new-amazon-sagemaker-capabilities">AWS Announces Six New Amazon SageMaker Capabilities</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/machine-learning/building-a-customized-recommender-system-in-amazon-sagemaker/">Building a customized recommender system in Amazon SageMaker</a></li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/machine-learning/train-albert-for-natural-language-processing-with-tensorflow-on-amazon-sagemaker/">Train ALBERT for natural language processing with TensorFlow on Amazon SageMaker</a></li>
+</ul>
+</li>
+<li><p><strong>Serverless</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dashbird.io/blog/machine-learning-in-aws-lambda/">Machine Learning with AWS Lambda</a></li>
+<li><a target="_blank" rel="noopener" href="https://dashbird.io/blog/5-core-aws-serverless-tools-starterkit/">5 Must Have AWS Serverless Tools for your Starter Kit</a></li>
+<li><a target="_blank" rel="noopener" href="https://dashbird.io/blog/ultimate-guide-monitoring-serverless-applications/">Ultimate Guide to Monitoring Serverless Applications</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+
+<script src="/Blog/js/vdonate.js"></script>
+
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Haojun(Vincent) Gao</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/Blog/2022/02/16/Overview-of-AWS-Machine-Learning-Services/" target="_blank" title="Overview of AWS: Machine Learning Services (2022 Edition)">http://vincentgaohj.github.io/Blog/2022/02/16/Overview-of-AWS-Machine-Learning-Services/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/AWS/" rel="tag">AWS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/Blog/tags/Overview-of-AWS/" rel="tag">Overview of AWS</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Blog/2021/10/30/LAMBADA-Method-How-to-use-Data-Augmentation-in-NLU/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LAMBADA Method: How to use Data Augmentation in NLU?</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Tools"><span class="nav-number">1.</span> <span class="nav-text">Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SageMaker"><span class="nav-number">1.1.</span> <span class="nav-text">SageMaker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Development-Tools"><span class="nav-number">1.2.</span> <span class="nav-text">Development Tools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tools-for-Text-Mining"><span class="nav-number">1.3.</span> <span class="nav-text">Tools for Text Mining</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tools-for-Image-and-Video"><span class="nav-number">1.4.</span> <span class="nav-text">Tools for Image and Video</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Manufacturing-Capabilities"><span class="nav-number">1.5.</span> <span class="nav-text">Manufacturing Capabilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tools-for-Low-Level-Scientific-Environment"><span class="nav-number">1.6.</span> <span class="nav-text">Tools for Low Level Scientific Environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-Tools"><span class="nav-number">1.7.</span> <span class="nav-text">Other Tools</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">2.</span> <span class="nav-text">References</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2022 Gao Haojun All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+
+<!-- 2017.6.11，masikkk新增，加载本地Google Prettify 代码高亮js代码 -->
+
+<!--
+<script src="/Blog/js/prettify.js"></script>
+-->
+
+<!-- 2017.6.11，masikkk新增，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(window).load(function(){})是在页面所有元素(包括所有css,js,图片,Flash等)加载完毕后执行
+<script type="text/javascript">
+$(window).load(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+<!-- 2017.7.1，masikkk添加，用于Google Prettify 代码高亮，给pre标签添加class "prettyprint linenums"，有行号 -->
+<!-- jQuery的$(document).ready(function(){})是当页面的标准DOM元素被解析成DOM树后就执行 -->
+
+<!--
+<script type="text/javascript">
+$(document).ready(function(){
+ $('pre').addClass('prettyprint linenums');
+ $('code').addClass('prettyprint');
+ prettyPrint();
+ })
+</script>
+-->
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+
+
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/Blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/Blog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/Blog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/Blog/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/Blog/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/Blog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/Blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/Blog/js/scripts.js"></script>
+
+
+
+
+
+  
+<script src="/Blog/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Gao Haojun
+          </div>
+          <div class="panel-body">
+            Copyright © 2022 Haojun(Vincent) Gao All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
