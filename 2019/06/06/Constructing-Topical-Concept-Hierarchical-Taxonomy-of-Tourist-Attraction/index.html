@@ -7,8 +7,8 @@
 <h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
 <script type="math/tex; mode=display">
 \min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
-\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}_{+}$ and $V ∈ R^{n×c}_{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
-<a id="more"></a>
+\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}<em>{+}$ and $V ∈ R^{n×c}</em>{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
+<span id="more"></span>
 <p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.</p>
 <script type="math/tex; mode=display">
 \mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
@@ -16,10 +16,10 @@
 \mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>This is <a target="_blank" rel="noopener" href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记">理论推导</a> link.</p>
 <hr>
 <h4 id="Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Concept Extraction based on TextRank Algorithm"></a>Concept Extraction based on TextRank Algorithm</h4><h5 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h5><p>Graph-based ranking algorithms are essentially a way of deciding the importance of a vertex within<br>a graph, based on global information recursively drawn from the entire graph. </p>
-<p>Formally, let $G=(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}_{i}$ , let $\operatorname{In}\left(V_{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V_{i}\right)$ be the set of vertices that vertex $V_{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):</p>
+<p>Formally, let $G=(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}<em>{i}$ , let $\operatorname{In}\left(V</em>{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V<em>{i}\right)$ be the set of vertices that vertex $V</em>{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):</p>
 <script type="math/tex; mode=display">
 S\left(V_{i}\right)=(1-d)+d * \sum_{j \in I n\left(V_{i}\right)} \frac{1}{\left|O u t\left(V_{j}\right)\right|} S\left(V_{j}\right)</script><p>where $d$ is a damping factor that can be set between 0 and 1, which has the role of integrating into the model the probability of jumping from a given vertex to another random vertex in the graph. The factor $d$ is usually set to $0.85$ (Brin and Page, 1998), and this is the value we are also using in our implementation.</p>
-<h5 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h5><p>However, the graphs are built from natural language texts, and may include multiple or partial links between the units (vertices) that are extracted from text. It may be therefore useful to indicate and incorporate into the model the “strength” of the connection between two vertices $\boldsymbol{V}_{i}$ and $\boldsymbol{V}_{j}$ as a weight $w_{i j}$ added to the corresponding edge that connects the two vertices.</p>
+<h5 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h5><p>However, the graphs are built from natural language texts, and may include multiple or partial links between the units (vertices) that are extracted from text. It may be therefore useful to indicate and incorporate into the model the “strength” of the connection between two vertices $\boldsymbol{V}<em>{i}$ and $\boldsymbol{V}</em>{j}$ as a weight $w_{i j}$ added to the corresponding edge that connects the two vertices.</p>
 <script type="math/tex; mode=display">
 W S\left(V_{i}\right)=(1-d)+d * \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right)</script><p><strong>Concept Extraction</strong></p>
 <p>在这里，由于我们的模型已经提供了一个关于景点的层级结构，也就相当于对于每一个节点（除根节点以外），其先验知识就是其父节点的知识，也就是我们在抽取关键词作为节点概念的时候，一些在父节点就已经很出众的词语不应该成为子节点的概念。所以关于一个阶段来说，其概念抽取的时候应该选择在父子节点中概念重要程度增加最多的概念：</p>
@@ -49,7 +49,7 @@ H(X)= \sum_{i=1}^{n}dist(X_{i}-\hat{X})</script></li>
 C_{\alpha} (T)=\frac{1}{N} \sum_{t=1}^{|T|} N_{t} H_{t}+\alpha(|T|+1)</script><p>$|T|$：该节点生成的簇个数；$N$：样本总数；$N_t$：第 t 个簇中的样本数量；$H_t$：第 t 个簇的混乱程度；$\alpha$：惩罚因子</p>
 <p>对于每一个节点，聚类后：</p>
 <script type="math/tex; mode=display">
-C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ 则此次聚类没有意义，则不需要进行这次聚类。</p>
+C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} (T)$ 则此次聚类没有意义，则不需要进行这次聚类。</p>
 </li>
 </ul>
 </li>
@@ -76,16 +76,16 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 <li><strong>Output:</strong> Hierarchical topics</li>
 </ul>
 <hr>
-<p>$Recursion  function$</p>
-<p>&emsp;&emsp;$X \leftarrow Prepare Matrix (C, D)$</p>
-<p>&emsp;&emsp;$S_1 , S_2 , … , S_K \leftarrow Clustering  for  Topic  Splitting(X)$</p>
-<p>&emsp;&emsp;$loss \leftarrow Post  Pruning  Function(X, S_1 , S_2 , … , S_K)$</p>
-<p>&emsp;&emsp;<strong>if</strong>  $loss &gt; 0$ <strong>then return</strong> \\\停止条件之后剪枝</p>
-<p>&emsp;&emsp;<strong>for</strong> $K  from  1  to  K$ <strong>do</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;$n \leftarrow item  number  of  C$</p>
-<p>&emsp;&emsp;&emsp;&emsp; <strong>if</strong> $n&lt;N$ <strong>then continue</strong> \\\停止条件之预剪枝</p>
-<p>&emsp;&emsp;&emsp;&emsp;$CE_k \leftarrow Concept   Extraction(C, S_k)$</p>
-<p>&emsp;&emsp;&emsp;&emsp;$Recursion  Function (S_k)$</p>
+<p>$Recursion \ function$</p>
+<p>&emsp;&emsp;$X \leftarrow Prepare\ Matrix (C, D)$</p>
+<p>&emsp;&emsp;$S_1 , S_2 , … , S_K \leftarrow Clustering \ for \ Topic \ Splitting(X)$</p>
+<p>&emsp;&emsp;$loss \leftarrow Post \ Pruning \ Function(X, S_1 , S_2 , … , S_K)$</p>
+<p>&emsp;&emsp;<strong>if</strong>  $loss &gt; 0$ <strong>then return</strong> \\停止条件之后剪枝</p>
+<p>&emsp;&emsp;<strong>for</strong> $K \ from \ 1 \ to \ K$ <strong>do</strong></p>
+<p>&emsp;&emsp;&emsp;&emsp;$n \leftarrow item \ number \ of \ C$</p>
+<p>&emsp;&emsp;&emsp;&emsp; <strong>if</strong> $n&lt;N$ <strong>then continue</strong> \\停止条件之预剪枝</p>
+<p>&emsp;&emsp;&emsp;&emsp;$CE_k \leftarrow Concept  \ Extraction(C, S_k)$</p>
+<p>&emsp;&emsp;&emsp;&emsp;$Recursion \ Function (S_k)$</p>
 <p>&emsp;&emsp;<strong>Return</strong> $CE_1, CE_2，… , CE_k, S_1,S_2,…,S_k$</p>
 <hr>
 <h4 id="Algorithm-2-Clustering-for-topic-splitting"><a href="#Algorithm-2-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 2:  Clustering for topic splitting"></a>Algorithm 2:  Clustering for topic splitting</h4><hr>
@@ -96,22 +96,22 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C_{\alpha}(t) &lt;= C_{\alpha} (T)$ �
 <hr>
 <p>$C_{sub}$ $\leftarrow$ $C$ ;</p>
 <p><strong>while</strong> <em>True</em> <strong>do</strong></p>
-<p>&emsp;&emsp;$ S_1, S_2, … , S_K \leftarrow Nonnegative  Matrix  Factorization (S_{sub}, K)$</p>
+<p>&emsp;&emsp;$ S<em>1, S_2, … , S_K \leftarrow Nonnegative \ Matrix \ Factorization (S</em>{sub}, K)$</p>
 <p>&emsp;&emsp;<strong>for</strong> $k$ <em>from</em> $1$ <em>to</em> $K$ <strong>do</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;<strong>for</strong> <em>t ∈ S_k</em> <strong>do</strong></p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$r( t, S_k ) ← probability of  term   t  for  S_k ;$</p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$d( t, S_k ) ← document  frequency  of  term  t  for  S_k ;$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$r( t, S_k ) ← probability\ of \ term \  t \ for \ S_k ;$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$d( t, S_k ) ← document \ frequency \ of \ term \ t \ for \ S_k ;$</p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>if</strong> $r(t,S k ) &lt; δ$  <strong>and</strong> $d( t, S_k ) &lt; \gamma$ <strong>then</strong> </p>
-<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$S_k ← S_k − \{t\};$</p>
+<p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$S_k ← S_k − {t};$</p>
 <p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow  S_1 ∪ S_2 ∪ … ∪ S_K;$ </p>
-<p>&emsp;&emsp;<strong>if</strong> $C^{‘}_{sub} = C_{sub}$ <strong>then</strong></p>
+<p>&emsp;&emsp;<strong>if</strong> $C^{‘}<em>{sub} = C</em>{sub}$ <strong>then</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;$Break;$</p>
-<p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow C_{sub}$<br><strong>Return</strong> $S_1 , S_2 , … , S_K;$</p>
+<p>&emsp;&emsp;$C^{‘}<em>{sub} \leftarrow C</em>{sub}$<br><strong>Return</strong> $S_1 , S_2 , … , S_K;$</p>
 <hr>
 <h4 id="Algorithm-3-Non-negative-Matrix-Factorization"><a href="#Algorithm-3-Non-negative-Matrix-Factorization" class="headerlink" title="Algorithm 3:  Non-negative Matrix Factorization"></a>Algorithm 3:  Non-negative Matrix Factorization</h4><hr>
 <ul>
-<li><strong>Input:</strong>  $\{X,U_0,V_0,T\}$</li>
-<li><strong>Output:</strong> $\{U,V\}$</li>
+<li><strong>Input:</strong>  ${X,U_0,V_0,T}$</li>
+<li><strong>Output:</strong> ${U,V}$</li>
 </ul>
 <hr>
 <p><strong>Initialize</strong> $U = U_0 ,V = V_0 ,H ≥ 0$</p>
