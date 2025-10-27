@@ -42,6 +42,7 @@
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-03-02T06:33:26.000Z" title="2021/3/2 14:33:26">2021-03-02</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AWS/">AWS</a><span> / </span><a class="link-muted" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/">AWS Certified Solution Architect Associate</a></span><span class="level-item">18 minutes read (About 2757 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">AWS Solution Architect(Associate) - Topic 7: HA Architecture</h1><div class="content"><p><strong>High availability protect against data center, availability zone, server, network and storage subsystem failures to keep your business running without downtime.</strong></p>
 <p><img src="https://media.amazonwebservices.com/blog/2018/as_face_3.png" alt="Predictive Scaling in Action"></p>
 <span id="more"></span>
+
 <h1 id="HA-Architecture"><a href="#HA-Architecture" class="headerlink" title="HA Architecture"></a>HA Architecture</h1><h2 id="Load-Balancers"><a href="#Load-Balancers" class="headerlink" title="Load Balancers"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticloadbalancing">Load Balancers</a></h2><p>Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP addresses, Lambda functions, and virtual appliances. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zones.</p>
 <p><img src="https://d2908q01vomqb2.cloudfront.net/1b6453892473a467d07372d45eb05abc2031647a/2021/02/04/1-ALB-Example.png" alt="HTTP APIs to ALB example"></p>
 <p><strong>Load Balancer Types</strong></p>
@@ -79,19 +80,20 @@
 </li>
 </ul>
 <hr>
-<h2 id="Advanced-Load-Balancer-Theory"><a href="#Advanced-Load-Balancer-Theory" class="headerlink" title="Advanced Load Balancer Theory"></a>Advanced Load Balancer Theory</h2><h3 id="Sticky-Sessions"><a href="#Sticky-Sessions" class="headerlink" title="Sticky Sessions"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html">Sticky Sessions</a></h3><p><strong><em>This feature is useful for servers that maintain state information in order to provide a continuous experience to clients. To use sticky sessions, the client must support cookies.</em></strong></p>
+<h2 id="Advanced-Load-Balancer-Theory"><a href="#Advanced-Load-Balancer-Theory" class="headerlink" title="Advanced Load Balancer Theory"></a>Advanced Load Balancer Theory</h2><h3 id="Sticky-Sessions"><a href="#Sticky-Sessions" class="headerlink" title="Sticky Sessions"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/sticky-sessions.html">Sticky Sessions</a></h3><p><em><strong>This feature is useful for servers that maintain state information in order to provide a continuous experience to clients. To use sticky sessions, the client must support cookies.</strong></em></p>
 <ul>
 <li><p>Classic Load Balancer routes each request independently to the registered EC2 instance with the smallest load.</p>
 </li>
 <li><p>Sticky sessions allow you to bind a user’s session to a specific EC2 instance. This ensures that all requests from the user during the session are sent to the same instance.</p>
 </li>
-<li>You can enable Sticky Sessions for Application Load Balancers as well, but the traffic will be sent at the Target Group Level.</li>
+<li><p>You can enable Sticky Sessions for Application Load Balancers as well, but the traffic will be sent at the Target Group Level.</p>
+</li>
 </ul>
-<h3 id="Cross-Zone-Load-Balancing"><a href="#Cross-Zone-Load-Balancing" class="headerlink" title="Cross Zone Load Balancing"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html">Cross Zone Load Balancing</a></h3><p><strong><em>Cross Zone Load Balancing enables you to load balance across multiple availability zones</em></strong></p>
+<h3 id="Cross-Zone-Load-Balancing"><a href="#Cross-Zone-Load-Balancing" class="headerlink" title="Cross Zone Load Balancing"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html">Cross Zone Load Balancing</a></h3><p><em><strong>Cross Zone Load Balancing enables you to load balance across multiple availability zones</strong></em></p>
 <p>With <em>cross-zone load balancing</em>, each load balancer node for your Classic Load Balancer distributes requests evenly across the registered instances in all enabled Availability Zones. If cross-zone load balancing is disabled, each load balancer node distributes requests evenly across the registered instances in its Availability Zone only. </p>
 <p><img src="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/images/cross_zone_load_balancing_disabled.png" alt="each load balancer node can route its 50% of the client traffic only to targets in its Availability Zone"></p>
 <p>For more information, see <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#cross-zone-load-balancing">Cross-zone load balancing</a> in the <em>Elastic Load Balancing User Guide</em>.</p>
-<h3 id="Path-Patterns"><a href="#Path-Patterns" class="headerlink" title="Path Patterns"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html">Path Patterns</a></h3><p><strong><em>Path patterns allows you to direct traffic to different EC2 instances based on the URL contained in the request</em></strong></p>
+<h3 id="Path-Patterns"><a href="#Path-Patterns" class="headerlink" title="Path Patterns"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html">Path Patterns</a></h3><p><em><strong>Path patterns allows you to direct traffic to different EC2 instances based on the URL contained in the request</strong></em></p>
 <ul>
 <li>You can create a listener with rules to forward requests based on the URL path.</li>
 <li>This is known as path-based routing.</li>
@@ -99,7 +101,7 @@
 <li>For example, you can route general requests to one target group and requests to render images to another target group.</li>
 </ul>
 <hr>
-<h2 id="Auto-Scaling"><a href="#Auto-Scaling" class="headerlink" title="Auto Scaling"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">Auto Scaling</a></h2><p><strong><em>AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost.</em></strong> </p>
+<h2 id="Auto-Scaling"><a href="#Auto-Scaling" class="headerlink" title="Auto Scaling"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html">Auto Scaling</a></h2><p><em><strong>AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost.</strong></em> </p>
 <p><img src="https://d1.awsstatic.com/product-marketing/AutoScaling/aws-auto-scaling-how-it-works-diagram.d42779c774d634883bdcd0463de7bd86f6e2231d.png" alt="How it works"></p>
 <h3 id="Three-Components"><a href="#Three-Components" class="headerlink" title="Three Components"></a>Three Components</h3><ul>
 <li><strong>Groups</strong><ul>
@@ -142,7 +144,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="HA-Architecture-1"><a href="#HA-Architecture-1" class="headerlink" title="HA Architecture"></a>HA Architecture</h2><p><strong><em>Everything fails. Everything. You should always plan for failure.</em></strong></p>
+<h2 id="HA-Architecture-1"><a href="#HA-Architecture-1" class="headerlink" title="HA Architecture"></a>HA Architecture</h2><p><em><strong>Everything fails. Everything. You should always plan for failure.</strong></em></p>
 <ul>
 <li>Always Design for failure</li>
 <li>Use Multiple AZ’s and Multiple Regions where ever you can</li>
@@ -161,22 +163,22 @@
 </ul>
 <hr>
 <h2 id="Cloud-Formation"><a href="#Cloud-Formation" class="headerlink" title="Cloud Formation"></a>Cloud Formation</h2><p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_CloudFormation.ad3a4c93b4fdd3366da3da0de4fb084d89a5d761.png" alt="How it works"></p>
-<p><strong><em>AWS CloudFormation gives you an easy way to model a collection of related AWS and third-party resources, provision them quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.</em></strong></p>
+<p><em><strong>AWS CloudFormation gives you an easy way to model a collection of related AWS and third-party resources, provision them quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.</strong></em></p>
 <ul>
 <li>CloudFormation is a way of completely scripting your cloud environment.</li>
 <li>Quick Start is a bunch of Cloud Formation templates already built by AWS Solutions Architects allowing you to create complex environments very quickly.</li>
 </ul>
 <h3 id="Build-serverless-applications-with-SAM"><a href="#Build-serverless-applications-with-SAM" class="headerlink" title="Build serverless applications with SAM"></a>Build serverless applications with SAM</h3><p>Build serverless applications faster with the <a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/sam/">AWS Serverless Application Model (SAM)</a>, an open-source framework that provides shorthand syntax to express functions, APIs, databases, and event source mappings. With just a few lines per resource, you can define the application you want and model it using YAML. During deployment, SAM transforms and expands the SAM syntax into CloudFormation syntax. </p>
 <hr>
-<h2 id="Elastic-Beanstalk"><a href="#Elastic-Beanstalk" class="headerlink" title="Elastic Beanstalk"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticbeanstalk/">Elastic Beanstalk</a></h2><p>AWS Elastic Beanstalk is an easy-to-use service <strong><em>for deploying and scaling web applications</em></strong> and service.</p>
+<h2 id="Elastic-Beanstalk"><a href="#Elastic-Beanstalk" class="headerlink" title="Elastic Beanstalk"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/elasticbeanstalk/">Elastic Beanstalk</a></h2><p>AWS Elastic Beanstalk is an easy-to-use service <em><strong>for deploying and scaling web applications</strong></em> and service.</p>
 <p>With Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without worrying about the infrastructure that runs those applications. You simply upload your application, and Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring.</p>
 <ul>
-<li><strong>Scaling:</strong> AWS Elastic Beanstalk leverages Elastic Load Balancing and Auto Scaling to <strong><em>automatically scale your application in and out</em></strong> based on your application’s specific needs. In addition, multiple availability zones give you an option to improve application reliability and availability by running in more than one zone.</li>
-<li><strong>Customization:</strong> With AWS Elastic Beanstalk, you <strong><em>have the freedom to select the AWS resources</em></strong>, such as Amazon EC2 instance type including Spot instances, that are optimal for your application. Additionally, Elastic Beanstalk lets you “open the hood” and retain full control over the AWS resources powering your application. If you decide you want to take over some (or all) of the elements of your infrastructure, you can do so seamlessly by using Elastic Beanstalk’s management capabilities.</li>
+<li><strong>Scaling:</strong> AWS Elastic Beanstalk leverages Elastic Load Balancing and Auto Scaling to <em><strong>automatically scale your application in and out</strong></em> based on your application’s specific needs. In addition, multiple availability zones give you an option to improve application reliability and availability by running in more than one zone.</li>
+<li><strong>Customization:</strong> With AWS Elastic Beanstalk, you <em><strong>have the freedom to select the AWS resources</strong></em>, such as Amazon EC2 instance type including Spot instances, that are optimal for your application. Additionally, Elastic Beanstalk lets you “open the hood” and retain full control over the AWS resources powering your application. If you decide you want to take over some (or all) of the elements of your infrastructure, you can do so seamlessly by using Elastic Beanstalk’s management capabilities.</li>
 </ul>
 <h3 id="CloudFormation-vs-Beanstalk"><a href="#CloudFormation-vs-Beanstalk" class="headerlink" title="CloudFormation vs Beanstalk"></a>CloudFormation vs Beanstalk</h3><p>Elastic Beanstalk really is aimed at developers who just want to get their stuff into the AWS Cloud quickly. They don’t want to have to go and learn something like CloudFormation which is a way more powerful tool than Elastic Beanstalk.</p>
 <hr>
-<h2 id="Highly-Available-Bastion"><a href="#Highly-Available-Bastion" class="headerlink" title="Highly Available Bastion"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/quickstart/architecture/linux-bastion/">Highly Available Bastion</a></h2><p><strong><em>The bastion hosts provide secure access to Linux instances located in the private and public subnets of your virtual private cloud (VPC).</em></strong></p>
+<h2 id="Highly-Available-Bastion"><a href="#Highly-Available-Bastion" class="headerlink" title="Highly Available Bastion"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/quickstart/architecture/linux-bastion/">Highly Available Bastion</a></h2><p><em><strong>The bastion hosts provide secure access to Linux instances located in the private and public subnets of your virtual private cloud (VPC).</strong></em></p>
 <p><img src="https://d1.awsstatic.com/partner-network/QuickStart/datasheets/linux-bastion-architecture.584765ff724625db9ab0d91a8ccb1c2eb7e15a5b.png" alt="What will you build"></p>
 <p><strong>High Availability with Bastion Hosts</strong></p>
 <ul>
@@ -190,7 +192,7 @@
 <li><em>Database Migration Service (DMS)</em></li>
 <li><em>Server Migration Service (SMS)</em></li>
 <li><em>AWS Application Discovery Service</em></li>
-<li><em>VM Import/Export</em></li>
+<li><em>VM Import&#x2F;Export</em></li>
 <li><em>Download Amazon Linux 2 as an ISO</em></li>
 </ul>
 <p><strong>Database Migration Service (DMS)</strong></p>
@@ -213,9 +215,9 @@
 <li>You can install the AWS Application Discovery Agent-less Connector as a virtual appliance on VMware vCenter.</li>
 <li>It will then build a server utilization map and dependency map of your on-premises environment.</li>
 <li>The collected data is retained in encrypted format in an AWS Application Discovery Service data store. You can export this data as a CSV filer and use it to estimate the Total Cost of Ownership (TCO) of running on AWS and to plan your migration to AWS.</li>
-<li>This data is also available in AWS Migration Hub, where you can migrate the discovered servers and track their progress as they get migrated to AWS. </li>
+<li>This data is also available in AWS Migration Hub, where you can migrate the discovered servers and track their progress as they get migrated to AWS.</li>
 </ul>
-<p><strong>VM Import/Export</strong></p>
+<p><strong>VM Import&#x2F;Export</strong></p>
 <ul>
 <li>Migrate existing applications in to EC2</li>
 <li>Can be used to create a DR strategy on AWS as a second site.</li>
@@ -227,11 +229,13 @@
 </ul>
 <hr>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
-<li><strong>AWS Architecture Blog</strong><ul>
+<li><p><strong>AWS Architecture Blog</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/architecture/architecting-for-reliable-scalability/">Architecting for Reliable Scalability</a></li>
 </ul>
 </li>
-<li><strong>AWS Compute Blog</strong><ul>
+<li><p><strong>AWS Compute Blog</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/configuring-private-integrations-with-amazon-api-gateway-http-apis/">Configuring private integrations with Amazon API Gateway HTTP APIs</a></li>
 </ul>
 </li>
@@ -252,7 +256,7 @@
 <h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1><p><strong>1) You have a website with three distinct services, each hosted by different web server autoscaling groups. Which AWS service should you use?</strong></p>
 <ul>
 <li><strong>Answer:</strong> Application Load Balancers (ALB)</li>
-<li><strong>Explanation:</strong> The ALB has functionality to distinguish traffic for different targets (mysite.co/accounts vs. mysite.co/sales vs. mysite.co/support) and distribute traffic based on rules for target group, condition, and priority.</li>
+<li><strong>Explanation:</strong> The ALB has functionality to distinguish traffic for different targets (mysite.co&#x2F;accounts vs. mysite.co&#x2F;sales vs. mysite.co&#x2F;support) and distribute traffic based on rules for target group, condition, and priority.</li>
 </ul>
 <p><strong>2) You have been tasked with creating a resilient website for your company. You create the Classic Load Balancer with a standard health check, a Route 53 alias pointing at the ELB, and a launch configuration based on a reliable Linux AMI. You have also checked all the security groups, NACLs, routes, gateways and NATs. You run the first test and cannot reach your web servers via the ELB or directly. What might be wrong?</strong></p>
 <ul>

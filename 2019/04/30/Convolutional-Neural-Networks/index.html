@@ -44,6 +44,7 @@
 <li>This article is suitable for students who are already familiar with Backpropagation Neural Networks to further study Convolutional Neural Networks (CNN). Students who find it difficult can learn BP on their own before reading.</li>
 </ul>
 <span id="more"></span>
+
 <hr>
 <h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline:"></a>Outline:</h2><p>1.卷积（Convolution）</p>
 <ul>
@@ -60,26 +61,23 @@
 </ul>
 <h2 id="卷积（Convolution）"><a href="#卷积（Convolution）" class="headerlink" title="卷积（Convolution）"></a>卷积（Convolution）</h2><h3 id="什么是卷积"><a href="#什么是卷积" class="headerlink" title="什么是卷积"></a>什么是卷积</h3><p>我们现在有$f(x)和g(x)$这两个函数，卷积是发生在这两个函数之间的计算。</p>
 <p>卷积的数学定义如下：</p>
-<p>连续定义：</p>
-<script type="math/tex; mode=display">
-（f*g）(n)=\int_{-\infty}^{\infty}f(\tau)g(n-\tau)d\tau</script><p>离散定义：</p>
-<script type="math/tex; mode=display">
-(f * g)(n)=\sum_{\tau=_\infty}^{\infty}f(\tau)g(n-\tau)</script><p>如果是低年级的同学（就像我）没有接触过卷积一定会很困扰，这个看起来很复杂的东西到底是什么？$n,\tau$有没有什么特别的意义？（实际上就是个符号，在没有情景时没有现实意义）。关于公式的来源这里不赘述，同学们也不必纠结（以后有些课程中会讲到）。我们定义出这个公式，是因为其在现实中有着广泛的应用，本文着重从现实意义解释卷积。</p>
-<p>我们可以观察到求和时$f,g$的自变量取值是一个定值$\tau+(n-\tau)=n$（$n$由我们想求解何处卷积而决定），<strong>这就是理解卷积的关键</strong>。卷积实在将两个函数相乘，再使他们的自变量和为常数后求积分。下面举几个例子。</p>
-<h4 id="信号处理"><a href="#信号处理" class="headerlink" title="信号处理"></a>信号处理</h4><p>$f(t)$表示0-20时间内的离散信号输入,$g(t)$表示系统对一个输入信号响应随时间的衰减。在这个每隔一秒输入一个信号地系统，其某时刻地信号强度和之前输入地信号均有关(叠加的)。比如在$t=8$时，$t=0$输入的信号就衰减成$f(0)g(10)$其他的都以此类推，即此时的信号强度为：</p>
-<script type="math/tex; mode=display">
-(f*g)(10)=\sum_{\tau=0}^{10}f(\tau)g(10-\tau)</script><p><img src="http://static.zybuluo.com/MOFD/2p3jbhnkh0ajshew3o8x81cd/v2-59c8bcf17c24119810ad3071b960f1ba_r.jpg" alt="v2-59c8bcf17c24119810ad3071b960f1ba_r.jpg-187.8kB"></p>
+<p>连续定义：<br>$$<br>（f*g）(n)&#x3D;\int_{-\infty}^{\infty}f(\tau)g(n-\tau)d\tau<br>$$<br>离散定义：<br>$$<br>(f * g)(n)&#x3D;\sum_{\tau&#x3D;_\infty}^{\infty}f(\tau)g(n-\tau)<br>$$</p>
+<p>如果是低年级的同学（就像我）没有接触过卷积一定会很困扰，这个看起来很复杂的东西到底是什么？$n,\tau$有没有什么特别的意义？（实际上就是个符号，在没有情景时没有现实意义）。关于公式的来源这里不赘述，同学们也不必纠结（以后有些课程中会讲到）。我们定义出这个公式，是因为其在现实中有着广泛的应用，本文着重从现实意义解释卷积。</p>
+<p>我们可以观察到求和时$f,g$的自变量取值是一个定值$\tau+(n-\tau)&#x3D;n$（$n$由我们想求解何处卷积而决定），<strong>这就是理解卷积的关键</strong>。卷积实在将两个函数相乘，再使他们的自变量和为常数后求积分。下面举几个例子。</p>
+<h4 id="信号处理"><a href="#信号处理" class="headerlink" title="信号处理"></a>信号处理</h4><p>$f(t)$表示0-20时间内的离散信号输入,$g(t)$表示系统对一个输入信号响应随时间的衰减。在这个每隔一秒输入一个信号地系统，其某时刻地信号强度和之前输入地信号均有关(叠加的)。比如在$t&#x3D;8$时，$t&#x3D;0$输入的信号就衰减成$f(0)g(10)$其他的都以此类推，即此时的信号强度为：</p>
+<p>$$<br>(f*g)(10)&#x3D;\sum_{\tau&#x3D;0}^{10}f(\tau)g(10-\tau)<br>$$</p>
+<p><img src="http://static.zybuluo.com/MOFD/2p3jbhnkh0ajshew3o8x81cd/v2-59c8bcf17c24119810ad3071b960f1ba_r.jpg" alt="v2-59c8bcf17c24119810ad3071b960f1ba_r.jpg-187.8kB"></p>
 <p>这正是上面所说的卷积，可以看出其在信号处理有这样的应用。如果我们把一个信号的衰减程度$g$看作它的权重，某一时刻的信号强度就可以看作之前输入信号的<strong>加权叠加</strong>。在这里我们可以说，卷积是一个函数以另一个函数为权重的<strong>加权叠加</strong>。（关于卷积还有另一种理解：将函数反转、反褶然后求和什么的，不是很直观，有兴趣的同学可以自行查看）。</p>
 <p>至此我们说了两个关键点：</p>
 <ul>
-<li><strong>卷积是对两个数自变量和为常数的函数的积的求和（根本数学定义）。 </strong></li>
+<li>**卷积是对两个数自变量和为常数的函数的积的求和（根本数学定义）。 **</li>
 <li><strong>卷积中一个函数可以看作另一个函数的权，卷积可以看作加权叠加（一种理解方式）。</strong></li>
 </ul>
 <p>带着这两个观点我们再看一个例子</p>
-<h4 id="掷骰子"><a href="#掷骰子" class="headerlink" title="掷骰子"></a>掷骰子</h4><p>同时掷两枚相同的骰子，求骰子的和为6的可能性。很明显骰子出现某个点数的概率是关于点数的常函数（函数值一直是1/6），这时两个函数自变量和为定值6，正是卷积发挥作用的场合。</p>
+<h4 id="掷骰子"><a href="#掷骰子" class="headerlink" title="掷骰子"></a>掷骰子</h4><p>同时掷两枚相同的骰子，求骰子的和为6的可能性。很明显骰子出现某个点数的概率是关于点数的常函数（函数值一直是1&#x2F;6），这时两个函数自变量和为定值6，正是卷积发挥作用的场合。</p>
 <p>概率为：​</p>
-<script type="math/tex; mode=display">
-(f*g)(6)=\sum_{\tau=1}^{5}f(\tau)g(6-\tau)</script><p>下图为和的所有可能，均可用卷积计算。<br><img src="http://static.zybuluo.com/MOFD/gx3jiz12v5r6lsamfry5d3yt/v2-860cdc53a489be168e9a12845c7eadc4_r.jpg" alt="v2-860cdc53a489be168e9a12845c7eadc4_r.jpg-94.1kB"></p>
+<p>$$<br>(f*g)(6)&#x3D;\sum_{\tau&#x3D;1}^{5}f(\tau)g(6-\tau)<br>$$</p>
+<p>下图为和的所有可能，均可用卷积计算。<br><img src="http://static.zybuluo.com/MOFD/gx3jiz12v5r6lsamfry5d3yt/v2-860cdc53a489be168e9a12845c7eadc4_r.jpg" alt="v2-860cdc53a489be168e9a12845c7eadc4_r.jpg-94.1kB"></p>
 <p>这个例子中把一个函数理解为另一个的权解释性并不好，所以关键的是理解数学定义后运用到合适的情境中。但在NLP和computer vision的领域中用<strong>加权叠加</strong>可以很好的解释卷积的作用。</p>
 <hr>
 <h3 id="卷积如何提取text，image特征"><a href="#卷积如何提取text，image特征" class="headerlink" title="卷积如何提取text，image特征"></a>卷积如何提取text，image特征</h3><p>我们在 NLP 和 Computer Vision 中使用 CNN 是因为其能够提取 text ，image 中的特征，反映在出现特定特征时卷积会得到较大值（什么算较大值是规定好的）。这一机制具体如何实现请继续往下阅读，先在这里说明以免引起困惑。</p>
@@ -95,51 +93,17 @@
 </ul>
 <p>我们现在有这样一个text：“tentative deal reached to keep government open”并用如下的词向量表示（有四列常称有4个channels）。</p>
 <p><img src="http://static.zybuluo.com/MOFD/4zgbavl17f2nsfoximxeiqxm/%E6%8D%95%E8%8E%B7.PNG" alt="捕获.PNG-34.5kB"></p>
-<p>CNN的神经元用卷积来获取这样的text。紫色方框是刚刚提到的receptive field（窗口），size为$4\times4$. 在文本矩阵从上到下按照设置的stride（步长）移动窗口（设置1就每次移动一格，设置2就移动两格），每次得到的矩阵都用我们的filter\kernel（由训练得到，就是神经元中的参数）与其进行卷积运算<strong>（矩阵中对应位置相乘再将所有位置的积相加，得到一个数就是卷积的结果）</strong>，比如第一个窗口卷积为-1.0，第二个为-0.5.这样得到了右边只有一个channel的向量完成了文本的输入。把filter矩阵中的对应位置元素看作窗口中对应位置元素的权重，就符合<strong>加权叠加。</strong><img src="http://static.zybuluo.com/MOFD/8cydpq6u5niyboa3rqku5vgb/1.PNG" alt="1.PNG-60.7kB"></p>
+<p>CNN的神经元用卷积来获取这样的text。紫色方框是刚刚提到的receptive field（窗口），size为$4\times4$. 在文本矩阵从上到下按照设置的stride（步长）移动窗口（设置1就每次移动一格，设置2就移动两格），每次得到的矩阵都用我们的filter\kernel（由训练得到，就是神经元中的参数）与其进行卷积运算**（矩阵中对应位置相乘再将所有位置的积相加，得到一个数就是卷积的结果）<strong>，比如第一个窗口卷积为-1.0，第二个为-0.5.这样得到了右边只有一个channel的向量完成了文本的输入。把filter矩阵中的对应位置元素看作窗口中对应位置元素的权重，就符合</strong>加权叠加。**<img src="http://static.zybuluo.com/MOFD/8cydpq6u5niyboa3rqku5vgb/1.PNG" alt="1.PNG-60.7kB"></p>
 <p>这一步如何体现卷积的<strong>数学思想</strong>呢？</p>
 <p>假设窗口中的矩阵为</p>
-<script type="math/tex; mode=display">
-g=
-\left[
- \begin{matrix}
-   a_{1,1} & a_{1,2} & a_{1,3} & a_{1,3} \\
-   a_{2,1} &  a_{2,2} & a_{2,3} & a_{2,3} \\
-   a_{3,1} & a_{3,2} & a_{3,3} & a_{3,3} \\
-  \end{matrix} 
-\right]</script><p>filter矩阵为：</p>
-<script type="math/tex; mode=display">
-f=
-\left[
- \begin{matrix}
-   b_{1,1} & b_{1,2} & b_{1,3} & b_{1,3} \\
-   b_{2,1} & b_{2,2} & b_{2,3} & b_{2,3} \\
-   b_{3,1} & b_{3,2} & b_{3,3} & b_{3,3} \\
-  \end{matrix} 
-\right]=\left[
- \begin{matrix}
-   3 & 1& 2 & -3 \\
-   -1 & 2 &1 & -3 \\
-   1 & 1 & -1 & 1 \\
-  \end{matrix} 
-\right]</script><p>如果把我们的filter中心对称一下，</p>
-<script type="math/tex; mode=display">
-f=
-\left[
- \begin{matrix}
-   b_{1,1} & b_{1,2} & b_{1,3} & b_{1,3} \\
-   b_{2,1} & b_{2,2} & b_{2,3} & b_{2,3} \\
-   b_{3,1} & b_{3,2} & b_{3,3} & b_{3,3} \\
-  \end{matrix} 
-\right]=
-\left[
- \begin{matrix}
-1 & -1 & 1 & 1 \\
-   -3 & 1 & 2 & -1 \\
-   -3 & 2 & 1 & 3 \\
-  \end{matrix} 
-\right]</script><p>现在想得到和刚刚相同权重分配效果，不能让对应位置相乘，等效计算应该是</p>
-<script type="math/tex; mode=display">
-convolution=\sum_{n=1}^{3}a_{n,n}b_{4-n,4-n}</script><p>完美的符合了卷积的数学定义<strong>，自变量相加等于一个定值</strong>$（4,4）$。这样我们就了解了卷积在NLP中的运作方式了。</p>
+<p>$$<br>g&#x3D;<br>\left[<br> \begin{matrix}<br>   a_{1,1} &amp; a_{1,2} &amp; a_{1,3} &amp; a_{1,3} \<br>   a_{2,1} &amp;  a_{2,2} &amp; a_{2,3} &amp; a_{2,3} \<br>   a_{3,1} &amp; a_{3,2} &amp; a_{3,3} &amp; a_{3,3} \<br>  \end{matrix}<br>\right]<br>$$</p>
+<p>filter矩阵为：</p>
+<p>$$<br>f&#x3D;<br>\left[<br> \begin{matrix}<br>   b_{1,1} &amp; b_{1,2} &amp; b_{1,3} &amp; b_{1,3} \<br>   b_{2,1} &amp; b_{2,2} &amp; b_{2,3} &amp; b_{2,3} \<br>   b_{3,1} &amp; b_{3,2} &amp; b_{3,3} &amp; b_{3,3} \<br>  \end{matrix}<br>\right]&#x3D;\left[<br> \begin{matrix}<br>   3 &amp; 1&amp; 2 &amp; -3 \<br>   -1 &amp; 2 &amp;1 &amp; -3 \<br>   1 &amp; 1 &amp; -1 &amp; 1 \<br>  \end{matrix}<br>\right]<br>$$</p>
+<p>如果把我们的filter中心对称一下，</p>
+<p>$$<br>f&#x3D;<br>\left[<br> \begin{matrix}<br>   b_{1,1} &amp; b_{1,2} &amp; b_{1,3} &amp; b_{1,3} \<br>   b_{2,1} &amp; b_{2,2} &amp; b_{2,3} &amp; b_{2,3} \<br>   b_{3,1} &amp; b_{3,2} &amp; b_{3,3} &amp; b_{3,3} \<br>  \end{matrix}<br>\right]&#x3D;<br>\left[<br> \begin{matrix}<br>1 &amp; -1 &amp; 1 &amp; 1 \<br>   -3 &amp; 1 &amp; 2 &amp; -1 \<br>   -3 &amp; 2 &amp; 1 &amp; 3 \<br>  \end{matrix}<br>\right]<br>$$</p>
+<p>现在想得到和刚刚相同权重分配效果，不能让对应位置相乘，等效计算应该是</p>
+<p>$$<br>convolution&#x3D;\sum_{n&#x3D;1}^{3}a_{n,n}b_{4-n,4-n}<br>$$</p>
+<p>完美的符合了卷积的数学定义**，自变量相加等于一个定值**$（4,4）$。这样我们就了解了卷积在NLP中的运作方式了。</p>
 <p>但是得到的向量比原先的文本短，这并不是好的结果，我们希望得到长度相同的结果，方法如下图所示：</p>
 <p>在输入的始末添加<strong>padding（填充层</strong>）在从上到下进行相同得分步骤就能得到和text（未添加padding之前）相同长度的结果了。</p>
 <p><img src="http://static.zybuluo.com/MOFD/zrsfeooypt36zj9b7n5dszxr/tempsnip.png" alt="tempsnip.png-82.4kB"></p>
@@ -161,7 +125,7 @@ convolution=\sum_{n=1}^{3}a_{n,n}b_{4-n,4-n}</script><p>完美的符合了卷积
 <li><p><strong>一般的全连接神经网络不关心各个输入之间的相关性，CNN这样就考虑了局部的特性；</strong></p>
 </li>
 </ol>
-<p>为什么要使用卷积来分配权重，直接给每个词向量的每一维设置权重就好了呀。这就是以往全连接神经网络的思想，但这样的参数量过于庞大。在上面的例子中如果使用全谅解神经网络需要$8\times4=32$个参数才能提取text的一个feature但是CNN只需要12个。如果文本增长全连接神经网络的参数量也会上升，但卷积神经网络矩阵中仍是12个参数。</p>
+<p>为什么要使用卷积来分配权重，直接给每个词向量的每一维设置权重就好了呀。这就是以往全连接神经网络的思想，但这样的参数量过于庞大。在上面的例子中如果使用全谅解神经网络需要$8\times4&#x3D;32$个参数才能提取text的一个feature但是CNN只需要12个。如果文本增长全连接神经网络的参数量也会上升，但卷积神经网络矩阵中仍是12个参数。</p>
 <p>正是因为这样的特性使得CNN在ML占有一席之地，特别实在图像处理领域，全连接神经网络将每一个像素都分别赋予权重使得GPU负担过重，而卷积很好的解决了这个问题。把一部分一部分像素一起考虑，对于一个feature只使用一组参数，大大减少了图像识别的压力。比如我想知道这张图有没有手机，只需要对手机图像训练一组权重再对图像一部分一部分求卷积即可。</p>
 <hr>
 <h2 id="池化（Pooling）"><a href="#池化（Pooling）" class="headerlink" title="池化（Pooling）"></a>池化（Pooling）</h2><h3 id="什么是池化"><a href="#什么是池化" class="headerlink" title="什么是池化"></a>什么是池化</h3><p>相比卷积来说池化是一个比较简单的概念，其核心思想在于<strong>突出</strong>卷积计算的结果中<strong>重要的信息。</strong></p>
