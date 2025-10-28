@@ -43,9 +43,9 @@
 <p>自然语言处理是计算机科学领域与人工智能领域中的一个重要方向。它研究能实现人与计算机之间用自然语言进行有效通信的各种理论和方法。自然语言处理是一门融语言学、计算机科学、数学于一体的科学。因此，这一领域的研究将涉及自然语言，即人们日常使用的语言，所以它与语言学的研究有着密切的联系，但又有重要的区别。自然语言处理并不是一般地研究自然语言，而在于研制能有效地实现自然语言通信的计算机系统，特别是其中的软件系统。因而它是计算机科学的一部分。</p>
 <p><strong>自然语言处理的最最基础的部分就是要让计算机能够识别人类的语言，因此词向量也就应运而生了。词向量顾名思义就是以向量的形式表示词。</strong></p>
 <span id="more"></span>
-
 <h1 id="几种常见的模型（由简单到复杂）"><a href="#几种常见的模型（由简单到复杂）" class="headerlink" title="几种常见的模型（由简单到复杂）"></a>几种常见的模型（由简单到复杂）</h1><h2 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h2><p>词袋模型的基本思想就是将文档中出现的所有词用一个袋子装起来。词袋模型不考虑词出现的先后顺序，并且认为文本中每个词出现的概率都是独立的，不依靠其他词的出现。</p>
 <p>词袋模型可以看成是用向量来表示句子。即</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -56,7 +56,8 @@
 <th>词n</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>句子1</td>
 <td></td>
 <td></td>
@@ -82,11 +83,13 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>纵坐标为选定的特征词（可以是文档中所有出现的词，也可以是选定的某一些词）。可以认为最初的空格里面全是0，当句子中出现了某个词就在相应的位置做加一的操作，最后得到的数字的组合就是相应的句子的向量。</p>
 <h2 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h2><p>one-hot编码是词向量模型的一种体现。这种编码是将文档中出现的所有的词用一个1和N-1个0表示，N是文档中出现的单词的个数。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -97,7 +100,8 @@
 <th>维度n</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>词1</td>
 <td>1</td>
 <td>0</td>
@@ -125,24 +129,51 @@
 <td>0</td>
 <td>1</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>one-hot编码的好处是可以很好地表示离散数据，每一个词都可以用向量的形式表示出来。且一定程度上起到了升维的作用。在回归，分类，聚类等机器学习的算法中，特征之间距离的计算或者相似度的计算是非常重要的，而我们常用的距离或者相似度的计算都是在欧式空间的相似度计算。使用one-hot编码将离散特征的取值数字化表示到了欧式空间，离散特征的某个取值就对应与欧式空间的某个点。将离散型特征使用one-hot编码，有时确实会让特征之间的距离计算更加合理。</p>
 <p>而坏处也比较明显，one-hot是词袋模型的体现，因此有着词袋模型的固有缺点（即忽略掉了词出现的顺序和词的上下文之间的联系）。并且one-hot编码会产生一个较大的稀疏矩阵，在用one-hot编码得到的向量计算时，如果词的维度很大可能造成维灾难而无法计算。</p>
-<h2 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h2><p><code>N-Gram </code> 模型算是对上面词袋模型的补充吧。词袋模型认为文本中每个词出现的概率都是独立的，而这与我们的常规认知是不相符合的（不然完形填空该怎么做啊），而<code>N-Gram </code> 模型则认为可以通过计算概率的方法来获得上下文之间的关系，并且参考的上下文的词越多，预测的越准确。</p>
+<h2 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h2><p><code>N-Gram</code> 模型算是对上面词袋模型的补充吧。词袋模型认为文本中每个词出现的概率都是独立的，而这与我们的常规认知是不相符合的（不然完形填空该怎么做啊），而<code>N-Gram</code> 模型则认为可以通过计算概率的方法来获得上下文之间的关系，并且参考的上下文的词越多，预测的越准确。</p>
 <p>词袋模型的基本思想是用概率来表示上下文之间的关系</p>
-<p>一个经典的例子：假设我们有一个由n个词组成的句子<br>$$<br>\mathrm { s } &#x3D; \left( w _ { 1 } , w _ { 2 } , w _ { 3 } , \ldots \ldots w _ { \mathrm { n } } \right)<br>$$<br>如何衡量它的概率呢？让我们假设，每一个单词$w_i$都要依赖于从第一个单词$w_i$到它之前一个单词$w_{i-1}$的影响:<br>$$<br>\begin{array} { c }<br>\begin{array} { c } { p ( s ) &#x3D; p \left( w _ { 1 } , w _ { 2 } , w _ { 3 } , \ldots , w _ { n } \right) &#x3D; p \left( w _ { 1 } \right) \cdot p \left( w _ { 2 } | w _ { 1 } \right) \cdot p \left( w _ { 3 } | w _ { 2 } , w _ { 1 } \right) \cdot \ldots } \ { \cdot p \left( w _ { n } | w _ { n - 1 } , w _ { n - 2 } , \ldots , w _ { 1 } \right) } \end{array}<br>\end{array}<br>$$</p>
-<p>这样求一个句子出现的概率就变成了求若干个条件概率。但这样又会出现参数过多的问题。因此我们引入马尔科夫假设，即一个词出现的概率只与它之前若干个出现的单词有关。</p>
+<p>一个经典的例子：假设我们有一个由n个词组成的句子</p>
+<script type="math/tex; mode=display">
+\mathrm { s } = \left( w _ { 1 } , w _ { 2 } , w _ { 3 } , \ldots \ldots w _ { \mathrm { n } } \right)</script><p>如何衡量它的概率呢？让我们假设，每一个单词$w<em>i$都要依赖于从第一个单词$w_i$到它之前一个单词$w</em>{i-1}$的影响:</p>
+<script type="math/tex; mode=display">
+\begin{array} { c } 
+\begin{array} { c } { p ( s ) = p \left( w _ { 1 } , w _ { 2 } , w _ { 3 } , \ldots , w _ { n } \right) = p \left( w _ { 1 } \right) \cdot p \left( w _ { 2 } | w _ { 1 } \right) \cdot p \left( w _ { 3 } | w _ { 2 } , w _ { 1 } \right) \cdot \ldots } \\ { \cdot p \left( w _ { n } | w _ { n - 1 } , w _ { n - 2 } , \ldots , w _ { 1 } \right) } \end{array}
+\end{array}</script><p>这样求一个句子出现的概率就变成了求若干个条件概率。但这样又会出现参数过多的问题。因此我们引入马尔科夫假设，即一个词出现的概率只与它之前若干个出现的单词有关。</p>
 <p>假设一个词出现的概率只与它前面$n$个词出现的概率相关，<strong>N-Gram</strong>也就由此而来了。通常情况下$n$越大，得到的概率越准确但同时计算量也越大，因此$n$一般取2或者3。</p>
-<h2 id="N-Gram-思想"><a href="#N-Gram-思想" class="headerlink" title="N-Gram 思想"></a>N-Gram 思想</h2><p>一个先导的知识就是贝叶斯公式，这里关于贝叶斯公式不做过多的描述：<br>$$<br>P(B|A) &#x3D; \frac{P(A|B)P(B)}{P(A)}<br>$$</p>
-<p>$$<br>P(B_i|A) &#x3D; \frac{P(A|Bi)P(Bi)}{P(A)} \<br>&#x3D; \frac{P(A|Bi)P(Bi)}{\sum_{j&#x3D;1}^{n} P(B_j)P(A|B_j)}<br>$$</p>
-<p>从理解的角度可以认为是：<br>$$<br>P(规律|现象) &#x3D; \frac{P(现象|规律)P(规律)}{P(现象)}<br>$$</p>
-<p>考虑$p(w_k|w_1^{k-1})$的近似计算，利用Bayes公式，有：<br>$$<br>p(w_k|w_1^{k-1}) &#x3D; \frac{p(w_1^k)}{p(w_1^{k-1})}<br>$$<br>根据大数定理，我们可以近似表示：<br>$$<br>p(w_k|w_1^{k-1}) \approx \frac{Count(w_1^k)}{Count(w_1^{k-1})}<br>$$<br>举个简单的例子就是：<br>$$<br>p(“你”|“我爱”) \approx \frac{Count(“我爱你”)}{Count(“我爱”)}<br>$$<br>从上述公式能够看出，一个词出现的概率和它之前出现的所有词都相关，如果假定一个词出现的概率只与它前面的固定书目的词相关，这就是N-Gram模型的<strong>重要思想</strong>，其中的数学逻辑就是做了一个$N-1$阶的<strong>Markov假设</strong>，认为一个词出现的概率只与它前面的$N-1$个词相关，也就是：<br>$$<br>p(w_k|w_1^{k-1}) \approx \frac{p(w_1^k)}{p(w_{k-n+1}^{k-1})}<br>$$<br>利用大数定律：<br>$$<br>p(w_k|w_1^{k-1}) \approx \frac{Count(w_1^k)}{Count(w_{k-n+1}^{k-1})}<br>$$<br>举例：假如$N&#x3D;2$<br>$$<br>p(w_k|w_1^{k-1}) \approx \frac{Count(w_{k-1},w_{k})}{Count(w_{k-1})}<br>$$</p>
-<p>$$<br>p(“你”|“我爱”) \approx \frac{Count(“爱你”)}{Count(“爱”)}<br>$$</p>
-<p><strong>所以N-Gram模型其实一个计算一个句子出现概率的模型，当我们需要计算一个句子出现的概率时，只需要计算相关的概率参数，然后将他们连乘起来就好了。</strong></p>
+<h2 id="N-Gram-思想"><a href="#N-Gram-思想" class="headerlink" title="N-Gram 思想"></a>N-Gram 思想</h2><p>一个先导的知识就是贝叶斯公式，这里关于贝叶斯公式不做过多的描述：</p>
+<script type="math/tex; mode=display">
+P(B|A) = \frac{P(A|B)P(B)}{P(A)}</script><script type="math/tex; mode=display">
+P(B_i|A) = \frac{P(A|Bi)P(Bi)}{P(A)} \\
+= \frac{P(A|Bi)P(Bi)}{\sum_{j=1}^{n} P(B_j)P(A|B_j)}</script><p>从理解的角度可以认为是：</p>
+<script type="math/tex; mode=display">
+P(规律|现象) = \frac{P(现象|规律)P(规律)}{P(现象)}</script><p>考虑$p(w_k|w_1^{k-1})$的近似计算，利用Bayes公式，有：</p>
+<script type="math/tex; mode=display">
+p(w_k|w_1^{k-1}) = \frac{p(w_1^k)}{p(w_1^{k-1})}</script><p>根据大数定理，我们可以近似表示：</p>
+<script type="math/tex; mode=display">
+p(w_k|w_1^{k-1}) \approx \frac{Count(w_1^k)}{Count(w_1^{k-1})}</script><p>举个简单的例子就是：</p>
+<script type="math/tex; mode=display">
+p(“你”|“我爱”) \approx \frac{Count(“我爱你”)}{Count(“我爱”)}</script><p>从上述公式能够看出，一个词出现的概率和它之前出现的所有词都相关，如果假定一个词出现的概率只与它前面的固定书目的词相关，这就是N-Gram模型的<strong>重要思想</strong>，其中的数学逻辑就是做了一个$N-1$阶的<strong>Markov假设</strong>，认为一个词出现的概率只与它前面的$N-1$个词相关，也就是：</p>
+<script type="math/tex; mode=display">
+p(w_k|w_1^{k-1}) \approx \frac{p(w_1^k)}{p(w_{k-n+1}^{k-1})}</script><p>利用大数定律：</p>
+<script type="math/tex; mode=display">
+p(w_k|w_1^{k-1}) \approx \frac{Count(w_1^k)}{Count(w_{k-n+1}^{k-1})}</script><p>举例：假如$N=2$</p>
+<script type="math/tex; mode=display">
+p(w_k|w_1^{k-1}) \approx \frac{Count(w_{k-1},w_{k})}{Count(w_{k-1})}</script><script type="math/tex; mode=display">
+p(“你”|“我爱”) \approx \frac{Count(“爱你”)}{Count(“爱”)}</script><p><strong>所以N-Gram模型其实一个计算一个句子出现概率的模型，当我们需要计算一个句子出现的概率时，只需要计算相关的概率参数，然后将他们连乘起来就好了。</strong></p>
 <p><strong>那么，我们怎么利用这样的思想，用机器学习的方法将语言进行建模呢？方法就是将我们所考虑的问题建成一个模型，然后构造出一个目标函数，然后对这个目标函数进行优化，从而求得一组最优的参数，然后利用这一组最优的参数进行预测。</strong></p>
-<p>对于统计语言模型，可以利用<strong>最大似然</strong>的概念，将目标函数设置为：<br>$$<br>\prod_{Corpus} p(w|Context(w))<br>$$<br>利用前文的n-gram思想，$Context(w)&#x3D;w_{i-n+1}^{i-1}$</p>
-<p>实际中，我们采用极大对数似然，将乘法转换为加法，那么目标函数则为：<br>$$<br>\sum_{Corpus} \log p(w|Context(w))<br>$$<br>目标就是<strong>最大化极大对数似然函数。</strong></p>
-<p><strong>一种简单的思路来解决这个问题，就是建立一个关于$w$和它上下文$Context(w)$的函数：</strong><br>$$<br>p(w|Context(w)) &#x3D; F(w,Context(w),\theta)<br>$$<br>这样一来就不用每次都遍历数据库了，只需要训练模型得到参数集，之后使用参数集中的参数，那么输入唯一之后输出也就唯一了。</p>
+<p>对于统计语言模型，可以利用<strong>最大似然</strong>的概念，将目标函数设置为：</p>
+<script type="math/tex; mode=display">
+\prod_{Corpus} p(w|Context(w))</script><p>利用前文的n-gram思想，$Context(w)=w_{i-n+1}^{i-1}$</p>
+<p>实际中，我们采用极大对数似然，将乘法转换为加法，那么目标函数则为：</p>
+<script type="math/tex; mode=display">
+\sum_{Corpus} \log p(w|Context(w))</script><p>目标就是<strong>最大化极大对数似然函数。</strong></p>
+<p><strong>一种简单的思路来解决这个问题，就是建立一个关于$w$和它上下文$Context(w)$的函数：</strong></p>
+<script type="math/tex; mode=display">
+p(w|Context(w)) = F(w,Context(w),\theta)</script><p>这样一来就不用每次都遍历数据库了，只需要训练模型得到参数集，之后使用参数集中的参数，那么输入唯一之后输出也就唯一了。</p>
 <h2 id="两个重要模型"><a href="#两个重要模型" class="headerlink" title="两个重要模型"></a>两个重要模型</h2><p>词向量界中有两个很重要的模型：</p>
 <ul>
 <li><strong>CBOW (Continuous Bag-of-Words Model)</strong></li>
@@ -150,18 +181,21 @@
 </ul>
 <p>Word2Vec 模型中，主要有 Skip-Gram 和 CBOW 两种模型，从直观上理解，Skip-Gram 是给定 input word 来预测上下文。而 CBOW 是给定上下文，来预测 input word。</p>
 <p>Word2Vec 模型实际上分为了两个部分，<strong>第一部分为建立模型，第二部分是通过模型获取嵌入词向量</strong>。Word2Vec 的整个建模过程实际上与自编码器（auto-encoder）的思想很相似，即先基于训练数据构建一个神经网络，当这个模型训练好以后，我们并不会用这个训练好的模型处理新的任务，我们真正需要的是这个模型通过训练数据所学得的参数，例如隐层的权重矩阵 —— 后面我们将会看到这些权重在 Word2Vec 中实际上就是我们试图去学习的 “word vectors”。基于训练数据建模的过程，我们给它一个名字叫 “Fake Task”，意味着建模并不是我们最终的目的。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/cbow_skip.jpg" alt="Skip-Gram 模型"></p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/cbow_skip.jpg" alt="Skip-Gram 模型"></p>
 <p>这两个模型是两个思想，基于这两个思想，Word2Vec给出了两个框架，一个利用了霍夫曼树（Hierarchical Softmax），一个利用了负采样（Negative Sampling）。</p>
-<p><strong>CBOW模型的目标函数为：</strong><br>$$<br>\sum_{w \in Corpus} \log p(w|Context(w))<br>$$<br><strong>Skip-gram模型的目标函数为：</strong><br>$$<br>\sum_{w \in Corpus} \log p(Context(w)|w)<br>$$</p>
-<h1 id="模型详解"><a href="#模型详解" class="headerlink" title="模型详解"></a>模型详解</h1><h2 id="Skip-gram-模型讲解"><a href="#Skip-gram-模型讲解" class="headerlink" title="Skip-gram 模型讲解"></a>Skip-gram 模型讲解</h2><h3 id="Fake-Task"><a href="#Fake-Task" class="headerlink" title="Fake Task"></a>Fake Task</h3><p>训练模型的真正目的是获得模型基于训练数据学得的隐层权重。为了得到这些权重，我们首先要构建一个完整的神经网络作为我们的 “Fake Task”，后面再返回来看通过 “Fake Task” 我们如何间接地得到这些词向量。</p>
-<p>下面的图中给出了一些我们的训练样本的例子。我们选定句子 <strong>“The quick brown fox jumps over lazy dog”</strong>，设定我们的窗口大小为 2（window_size&#x3D;2），也就是说我们仅选输入词前后各两个词和输入词进行组合。下图中，蓝色代表 input word，方框内代表位于窗口内的单词。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/training_data.png" alt="Training Data, Source from Chris McCormick"></p>
+<p><strong>CBOW模型的目标函数为：</strong></p>
+<script type="math/tex; mode=display">
+\sum_{w \in Corpus} \log p(w|Context(w))</script><p><strong>Skip-gram模型的目标函数为：</strong></p>
+<script type="math/tex; mode=display">
+\sum_{w \in Corpus} \log p(Context(w)|w)</script><h1 id="模型详解"><a href="#模型详解" class="headerlink" title="模型详解"></a>模型详解</h1><h2 id="Skip-gram-模型讲解"><a href="#Skip-gram-模型讲解" class="headerlink" title="Skip-gram 模型讲解"></a>Skip-gram 模型讲解</h2><h3 id="Fake-Task"><a href="#Fake-Task" class="headerlink" title="Fake Task"></a>Fake Task</h3><p>训练模型的真正目的是获得模型基于训练数据学得的隐层权重。为了得到这些权重，我们首先要构建一个完整的神经网络作为我们的 “Fake Task”，后面再返回来看通过 “Fake Task” 我们如何间接地得到这些词向量。</p>
+<p>下面的图中给出了一些我们的训练样本的例子。我们选定句子 <strong>“The quick brown fox jumps over lazy dog”</strong>，设定我们的窗口大小为 2（window_size=2），也就是说我们仅选输入词前后各两个词和输入词进行组合。下图中，蓝色代表 input word，方框内代表位于窗口内的单词。</p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/training_data.png" alt="Training Data, Source from Chris McCormick"></p>
 <p>我们的模型将会从每对单词出现的次数中习得统计结果。例如，我们的神经网络可能会得到更多类似（“Soviet“，”Union“）这样的训练样本对，而对于（”Soviet“，”Sasquatch“）这样的组合却看到的很少。因此，当我们的模型完成训练后，给定一个单词”Soviet“作为输入，输出的结果中”Union “或者” Russia “要比”Sasquatch“被赋予更高的概率。</p>
 <p>我们如何来表示这些单词呢？首先，我们都知道神经网络只能接受数值输入，我们不可能把一个单词字符串作为输入，因此我们得想个办法来表示这些单词。最常用的办法就是基于训练文档来构建我们自己的词汇表（vocabulary）再对单词进行 one-hot 编码。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/skip_gram_net_arch.png" alt="Architecture of neural network, source from Chris McCormick">隐层没有使用任何激活函数，但是输出层使用了 sotfmax。</p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/skip_gram_net_arch.png" alt="Architecture of neural network, source from Chris McCormick">隐层没有使用任何激活函数，但是输出层使用了 sotfmax。</p>
 <p>我们基于成对的单词来对神经网络进行训练，训练样本是 (input word, output word) 这样的单词对，input word 和 output word 都是 one-hot 编码的向量。最终模型的输出是一个概率分布。</p>
 <h3 id="隐藏层部分"><a href="#隐藏层部分" class="headerlink" title="隐藏层部分"></a>隐藏层部分</h3><p>看下面的图片，左右两张图分别从不同角度代表了输入层 - 隐层的权重矩阵。左图中每一列代表一个 10000 维的词向量和隐层单个神经元连接的权重向量。从右边的图来看，每一行实际上代表了每个单词的词向量。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/word2vec_weight_matrix_lookup_table.png" alt="Word Vector"></p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/word2vec_weight_matrix_lookup_table.png" alt="Word Vector"></p>
 <p><strong>所以我们最终的目标就是学习这个隐层的权重矩阵。</strong></p>
 <h3 id="输出层部分"><a href="#输出层部分" class="headerlink" title="输出层部分"></a>输出层部分</h3><p>经过神经网络隐层的计算，ants 这个词会从一个 1 x 10000 的向量变成 1 x 300 的向量，再被输入到输出层。输出层是一个 Softmax 回归分类器（这部分会在后面稍微展开一些），它的每个结点将会输出一个 0-1 之间的值（概率），这些所有输出层神经元结点的概率之和为 1。</p>
 <p>下面是一个例子，训练样本的计算示意图。</p>
@@ -169,7 +203,7 @@
 <p>input word: “ants”</p>
 <p>output word: “car”</p>
 </blockquote>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/output_weights_function.png" alt="Output Neuron"></p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/output_weights_function.png" alt="Output Neuron"></p>
 <h3 id="模型理解"><a href="#模型理解" class="headerlink" title="模型理解"></a>模型理解</h3><p>这部分官方已经给出了非常好的解释，这里就直接上英文原文吧：</p>
 <blockquote>
 <p>Ok, are you ready for an exciting bit of insight into this network?</p>
@@ -179,100 +213,116 @@
 </blockquote>
 <h2 id="Softmax-详解"><a href="#Softmax-详解" class="headerlink" title="Softmax 详解"></a>Softmax 详解</h2><p>在机器学习尤其是深度学习中，softmax 是个非常常用而且比较重要的函数，尤其在多分类的场景中使用广泛。他把一些输入映射为 0-1 之间的实数，并且归一化保证和为 1，因此多分类的概率之和也刚好为 1。 </p>
 <p>网上有一张图很好的说明了softmax的计算方法：</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/softmax.jpg" alt="Source from bitcarmanlee"></p>
-<p>假设有一个数组 $V$，$V_i$表示 $V$ 中的第$ i $个元素，那么这个元素的 softmax 值为：<br>$$<br>S_i &#x3D; \frac{e^i}{\sum_j e^j}<br>$$<br><strong>该元素的 softmax 值，就是该元素的指数与所有元素指数和的比值。</strong></p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/softmax.jpg" alt="Source from bitcarmanlee"></p>
+<p>假设有一个数组 $V$，$V_i$表示 $V$ 中的第$ i $个元素，那么这个元素的 softmax 值为：</p>
+<script type="math/tex; mode=display">
+S_i = \frac{e^i}{\sum_j e^j}</script><p><strong>该元素的 softmax 值，就是该元素的指数与所有元素指数和的比值。</strong></p>
 <h1 id="模型公式推导"><a href="#模型公式推导" class="headerlink" title="模型公式推导"></a>模型公式推导</h1><p>这里给出了几个模型的公式推导：</p>
 <ul>
 <li>神经网络模型（One-Word模型）</li>
 <li>CBOW 模型</li>
 <li>Skip-gram 模型</li>
 </ul>
-<h2 id="One-Word-模型"><a href="#One-Word-模型" class="headerlink" title="One-Word 模型"></a>One-Word 模型</h2><p><strong>One-Word <strong>是用神经网络来实现 <strong>N-Gram</strong>（$n&#x3D;2$时）。即</strong>N-Gram</strong>是思想，而<strong>One-Word</strong>模型是实现方法。即一个用<strong>one-hot</strong>编码的词作为输入，通过第一个权重矩阵得到隐藏层，再通过第二个权重矩阵的到输出层的前身，该前身再做<strong>Softmax</strong>得到输出端的向量表示。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/one-word.png" alt="One Word CBOW"></p>
+<h2 id="One-Word-模型"><a href="#One-Word-模型" class="headerlink" title="One-Word 模型"></a>One-Word 模型</h2><p><strong>One-Word </strong>是用神经网络来实现 <strong>N-Gram</strong>（$n=2$时）。即<strong>N-Gram</strong>是思想，而<strong>One-Word</strong>模型是实现方法。即一个用<strong>one-hot</strong>编码的词作为输入，通过第一个权重矩阵得到隐藏层，再通过第二个权重矩阵的到输出层的前身，该前身再做<strong>Softmax</strong>得到输出端的向量表示。</p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/one-word.png" alt="One Word CBOW"></p>
 <p>设：词汇量的大小为$V$，隐藏层的大小为$N$。输入向量是一个<strong>one-hot</strong>编码的向量，<strong>one-hot</strong>编码的向量表示为$(x_1,x_2,…,x_v)$，其中只有一个$x_k$为1，其余的均为0。姑且认为$X(V \times 1), h(N \times 1), Y(V \times 1)$都是列向量</p>
 <p>输入层和隐藏层之间是一个$V \times N$的矩阵$W_{V \times N}$</p>
-<p>$$<br>\left( \begin{array}{cccc}{\mathrm{W}<em>{11}} &amp; {\mathrm{W}</em>{12}} &amp; {\dots} &amp; {\mathrm{W}<em>{1 n}} \ {\mathrm{W}</em>{21}} &amp; {\mathrm{W}<em>{22}} &amp; {\dots} &amp; {\mathrm{W}</em>{2 n}} \ {\cdots} &amp; {\cdots} &amp; {\cdots} &amp; {\cdots} \ {\mathrm{W}<em>{\mathrm{vl}}} &amp; {\mathrm{W}</em>{\mathrm{v} 2}} &amp; {\dots} &amp; {\mathrm{W}_{\mathrm{vn}}}\end{array}\right)<br>$$</p>
-<p>$$<br>h&#x3D;x^T W<br>$$</p>
-<p>则$h$为<br>$$<br>\left( \begin{array}{llll}{\mathrm{W}<em>{\mathrm{kl}}} &amp; {\mathrm{W}</em>{\mathrm{k} 2}} &amp; {\dots} &amp; {\mathrm{W}_{\mathrm{kn}}}\end{array}\right)^{\mathrm{T}}<br>$$<br>即$W$矩阵的第$k$行的转置 （因为$x_k$为1，其余的均为0）</p>
+<script type="math/tex; mode=display">
+\left( \begin{array}{cccc}{\mathrm{W}_{11}} & {\mathrm{W}_{12}} & {\dots} & {\mathrm{W}_{1 n}} \\ {\mathrm{W}_{21}} & {\mathrm{W}_{22}} & {\dots} & {\mathrm{W}_{2 n}} \\ {\cdots} & {\cdots} & {\cdots} & {\cdots} \\ {\mathrm{W}_{\mathrm{vl}}} & {\mathrm{W}_{\mathrm{v} 2}} & {\dots} & {\mathrm{W}_{\mathrm{vn}}}\end{array}\right)</script><script type="math/tex; mode=display">
+h=x^T W</script><p>则$h$为</p>
+<script type="math/tex; mode=display">
+\left( \begin{array}{llll}{\mathrm{W}_{\mathrm{kl}}} & {\mathrm{W}_{\mathrm{k} 2}} & {\dots} & {\mathrm{W}_{\mathrm{kn}}}\end{array}\right)^{\mathrm{T}}</script><p>即$W$矩阵的第$k$行的转置 （因为$x_k$为1，其余的均为0）</p>
 <p>隐藏层到输出层是一个$N \times V$的权重矩阵</p>
 <p>形式和上面那个矩阵类似，只是矩阵的元素用$\mathrm{w}_{\mathrm{ij}}^{\prime}$表示</p>
-<p>$$<br>\mathrm{U}<em>{\mathrm{j}}&#x3D;\mathrm{W}</em>{\mathrm{j}}^{\prime} \mathrm{h}<br>$$</p>
-<p>注：$\mathrm{W}_{j}^{‘}$为$W$矩阵的第$j$行，$U_j$为输出层的第$j$个位置的前身</p>
+<script type="math/tex; mode=display">
+\mathrm{U}_{\mathrm{j}}=\mathrm{W}_{\mathrm{j}}^{\prime} \mathrm{h}</script><p>注：$\mathrm{W}_{j}^{‘}$为$W$矩阵的第$j$行，$U_j$为输出层的第$j$个位置的前身</p>
 <p>$U_j$经过一个<strong>Softmax回归</strong>得到$y_j$，$y_j$为正经的输出层的第$j$个位置</p>
-<p>$$<br>\mathrm{P}\left(\mathrm{w}<em>{j} | \mathrm{w}</em>{I}\right)&#x3D;y_{j}&#x3D;\frac{e^{j}}{\sum_{i&#x3D;1}^{V} e^{i}}<br>$$</p>
-<p>即在输入已经确定的情况下，输出的值为$w_j$的概率为这个</p>
+<script type="math/tex; mode=display">
+\mathrm{P}\left(\mathrm{w}_{j} | \mathrm{w}_{I}\right)=y_{j}=\frac{e^{j}}{\sum_{i=1}^{V} e^{i}}</script><p>即在输入已经确定的情况下，输出的值为$w_j$的概率为这个</p>
 <p>更新$W$和$W^{‘}$矩阵</p>
 <p>首先定义一个损失函数（我们希望这个损失函数最小）（至于为什么这么定义还是没太理解）</p>
-<p>$$<br>\mathrm{E}&#x3D;-\mathrm{P}\left(\mathrm{w}<em>{\mathrm{o}} | \mathrm{w}</em>{\mathrm{i}}\right)&#x3D;\mathrm{U}<em>{\mathrm{j}^{*}}-\log \left(\sum</em>{i&#x3D;1}^{V} e^{i}\right)<br>$$</p>
-<p>首先更新$W^{‘}$矩阵：</p>
+<script type="math/tex; mode=display">
+\mathrm{E}=-\mathrm{P}\left(\mathrm{w}_{\mathrm{o}} | \mathrm{w}_{\mathrm{i}}\right)=\mathrm{U}_{\mathrm{j}^{*}}-\log \left(\sum_{i=1}^{V} e^{i}\right)</script><p>首先更新$W^{‘}$矩阵：</p>
 <p>这就需要用$E$来对$\mathrm{w}^{‘}_{\mathrm{ij}}$来求偏导，以获得最快更新$W^{‘}$的方向（即梯度方向）</p>
 <p>在求偏导之前需要知道这样的前提 即</p>
-<p>$$<br>\frac{\partial \mathrm{E}}{\partial \mathrm{U}<em>{i}}&#x3D;\mathrm{y}</em>{\mathrm{i}}-\mathrm{t}_{\mathrm{i}}<br>$$</p>
-<p>当预测准确的时候$t_i$为1，否则为0，这个计算公式可以看成是输出层的的预测误差，至于结果为什么是这样的暂时还不是很清楚</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathrm{E}}{\partial \mathrm{U}_{i}}=\mathrm{y}_{\mathrm{i}}-\mathrm{t}_{\mathrm{i}}</script><p>当预测准确的时候$t_i$为1，否则为0，这个计算公式可以看成是输出层的的预测误差，至于结果为什么是这样的暂时还不是很清楚</p>
 <p>在上述前提下</p>
-<p>$$<br>\frac{\partial \mathrm{E}}{\partial \mathrm{W}<em>{\mathrm{ij}}}&#x3D;\frac{\partial \mathrm{E}}{\partial \mathrm{U}</em>{\mathrm{i}}} * \frac{\partial \mathrm{U}<em>{\mathrm{i}}}{\partial \mathrm{w}</em>{\mathrm{ij}}}&#x3D;\left(y_{i}-t_{i}\right) * h_{i}<br>$$</p>
-<p>则权重更新方程为</p>
-<p>$$<br>\mathbf{W}<em>{i j}^{\prime}&#x3D;\mathbf{W}</em>{i j}^{\prime}-\eta\left(y_{i}-t_{i}\right) * h_{i}<br>$$</p>
-<p>其次更新$W$矩阵<br>和上文差不多，也是需要$W$对$\mathrm{W}_{\mathrm{ij}}$求偏导</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathrm{E}}{\partial \mathrm{W}_{\mathrm{ij}}}=\frac{\partial \mathrm{E}}{\partial \mathrm{U}_{\mathrm{i}}} * \frac{\partial \mathrm{U}_{\mathrm{i}}}{\partial \mathrm{w}_{\mathrm{ij}}}=\left(y_{i}-t_{i}\right) * h_{i}</script><p>则权重更新方程为</p>
+<script type="math/tex; mode=display">
+\mathbf{W}_{i j}^{\prime}=\mathbf{W}_{i j}^{\prime}-\eta\left(y_{i}-t_{i}\right) * h_{i}</script><p>其次更新$W$矩阵<br>和上文差不多，也是需要$W$对$\mathrm{W}_{\mathrm{ij}}$求偏导</p>
 <p>求之前也需要知道一个前提：</p>
-<p>$$<br>\frac{\partial \mathrm{E}}{\partial h_{i}}&#x3D;\sum_{i&#x3D;1}^{V} \frac{\partial \mathrm{E}}{\partial U_{i}} \frac{\partial U_{i}}{\partial h_{i}}&#x3D;\sum_{i&#x3D;1}^{V}\left(y_{i}-t_{i}\right) * w_{i j}^{\prime}<br>$$</p>
-<p>此式子的结果用$\mathrm{EH}_{\mathrm{i}}$代为表示：</p>
-<p>$$<br>\mathrm{EH}&#x3D;\left(\mathrm{EH}<em>{1} \cdot \mathrm{EH}</em>{2}, \ldots . . \mathrm{EH}_{\mathrm{N}}\right)<br>$$</p>
-<p>在此前提下求$E$对$\mathrm{W}<em>{i j}$的偏导数为：<br>$$<br>\frac{\partial \mathrm{E}}{\partial \mathrm{w}</em>{i j}}&#x3D;\frac{\partial \mathrm{E}}{\partial \mathrm{h}<em>{j}} \frac{\partial \mathrm{h}</em>{j}}{\partial \mathrm{w}<em>{i j}}&#x3D;E H</em>{j} * X_{i}<br>$$</p>
-<p>由于X非1即0，所以权重更新公式为：</p>
-<p>$$<br>\mathrm{V}<em>{w i}&#x3D;\mathrm{V}</em>{w i}-\eta E H<br>$$<br>其中$\mathbf{V}_{w i}$为one-hot编码中非零行所对应的矩阵的行，其他行不用关心。</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathrm{E}}{\partial h_{i}}=\sum_{i=1}^{V} \frac{\partial \mathrm{E}}{\partial U_{i}} \frac{\partial U_{i}}{\partial h_{i}}=\sum_{i=1}^{V}\left(y_{i}-t_{i}\right) * w_{i j}^{\prime}</script><p>此式子的结果用$\mathrm{EH}_{\mathrm{i}}$代为表示：</p>
+<script type="math/tex; mode=display">
+\mathrm{EH}=\left(\mathrm{EH}_{1} \cdot \mathrm{EH}_{2}, \ldots . . \mathrm{EH}_{\mathrm{N}}\right)</script><p>在此前提下求$E$对$\mathrm{W}_{i j}$的偏导数为：</p>
+<script type="math/tex; mode=display">
+\frac{\partial \mathrm{E}}{\partial \mathrm{w}_{i j}}=\frac{\partial \mathrm{E}}{\partial \mathrm{h}_{j}} \frac{\partial \mathrm{h}_{j}}{\partial \mathrm{w}_{i j}}=E H_{j} * X_{i}</script><p>由于X非1即0，所以权重更新公式为：</p>
+<script type="math/tex; mode=display">
+\mathrm{V}_{w i}=\mathrm{V}_{w i}-\eta E H</script><p>其中$\mathbf{V}_{w i}$为one-hot编码中非零行所对应的矩阵的行，其他行不用关心。</p>
 <h2 id="CBOW-模型（连续词袋模型）"><a href="#CBOW-模型（连续词袋模型）" class="headerlink" title="CBOW 模型（连续词袋模型）"></a>CBOW 模型（连续词袋模型）</h2><ul>
 <li><strong>基本概念</strong></li>
 </ul>
 <p>CBOW 的基本思想是用中心词的上下文的c个词来预测中心词。</p>
 <p>连续词袋模型模型相当于是 <strong>One-Word</strong> 模型的补充，<strong>One-Word</strong> 是一个输入，一个输出，<strong>CBOW</strong> 是 c 个输入，1个输出。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/cbow.png" alt="CBOW 模型"></p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/cbow.png" alt="CBOW 模型"></p>
 <ul>
 <li>$\mathrm{X}_{mathrm{1}, mathrm{k}}$ 是上下文第 1 个单词的 one-hot 编码。</li>
 <li>$\mathrm{X}_{mathrm{c}, mathrm{k}}$  是第 C 个单词的 one-hot 编码。</li>
 <li>这C个 one-hot 编码通过相应位置加和求平均的方法得到一个$1 \times \mathrm{V}$ 的向量。</li>
 </ul>
-<p>该向量再乘以我们期望得到的第一个矩阵$\mathrm{W}<em>{\mathrm{V} \times \mathrm{N}}$来得到隐藏层的向量$h_i$，一个$1 \times N$的向量），即<br>$$<br>\mathrm{h}&#x3D;\frac{1}{C} W\left(\sum</em>{i&#x3D;1}^{C} x_{i}\right)<br>$$</p>
-<p>上图的$h_i$表示的意思可以与上上图的$h_i$相比较。然后$h$乘以另一个我们期望得到的矩阵：<br>$$<br>\mathrm{W}_{\mathrm{N}^{‘} \mathrm{V}}^{*}<br>$$<br>得到一个$1 \times \mathrm{V}$的向量U，再用Softmax得到一个$1 \times \mathrm{V}$的向量$Y$，其中$Y_i$最大的那个值就是期待的中心词。通过不断地学习来调整 $\mathrm{W}$ 和 $\mathrm{W}^{‘}$ 的值。</p>
+<p>该向量再乘以我们期望得到的第一个矩阵$\mathrm{W}_{\mathrm{V} \times \mathrm{N}}$来得到隐藏层的向量$h_i$，一个$1 \times N$的向量），即</p>
+<script type="math/tex; mode=display">
+\mathrm{h}=\frac{1}{C} W\left(\sum_{i=1}^{C} x_{i}\right)</script><p>上图的$h_i$表示的意思可以与上上图的$h_i$相比较。然后$h$乘以另一个我们期望得到的矩阵：</p>
+<script type="math/tex; mode=display">
+\mathrm{W}_{\mathrm{N}^{'} \mathrm{V}}^{*}</script><p>得到一个$1 \times \mathrm{V}$的向量U，再用Softmax得到一个$1 \times \mathrm{V}$的向量$Y$，其中$Y_i$最大的那个值就是期待的中心词。通过不断地学习来调整 $\mathrm{W}$ 和 $\mathrm{W}^{‘}$ 的值。</p>
 <ul>
 <li><strong>CBOW矩阵的调整</strong></li>
 </ul>
 <p>建立一个损失函数：</p>
-<p>$$<br>\mathrm{E}&#x3D;-\log \left(\mathrm{P}\left(\mathrm{w}<em>{\mathrm{o}} | \mathrm{W}</em>{\mathrm{I}, 1} \ldots \mathrm{W}<em>{\mathrm{I}, \mathrm{c}}\right)\right)\<br>&#x3D;-U</em>{j^{*}}+\log \left(\sum_{j}^{V} e^{u_{i}}\right)\<br>&#x3D;-\mathrm{V}<em>{\mathrm{w}</em>{\mathrm{o}}}^{\prime T} \cdot h+\log \left(\sum_{i&#x3D;1}^{V} e^{v_{v_{i}} T} \cdot h\right)<br>$$</p>
-<p>然后和上面one-word模型更新两个矩阵的方法类似  都是对相应的矩阵的元素求导得到梯度来更新矩阵。</p>
-<p>$$<br>\mathrm{V}<em>{\mathrm{wj}}^{\prime}&#x3D;\mathrm{V}</em>{\mathrm{wj}}^{\prime}-\eta\left(\mathrm{y}<em>{\mathrm{i}}-\mathrm{t}</em>{\mathrm{i}}\right) \mathrm{h}<br>$$</p>
-<p>用上述公式来更新$W^{‘}$，其中$j&#x3D;1,2, \dots \dots ,\mathrm{V}$</p>
+<script type="math/tex; mode=display">
+\mathrm{E}=-\log \left(\mathrm{P}\left(\mathrm{w}_{\mathrm{o}} | \mathrm{W}_{\mathrm{I}, 1} \ldots \mathrm{W}_{\mathrm{I}, \mathrm{c}}\right)\right)\\
+=-U_{j^{*}}+\log \left(\sum_{j}^{V} e^{u_{i}}\right)\\
+=-\mathrm{V}_{\mathrm{w}_{\mathrm{o}}}^{\prime T} \cdot h+\log \left(\sum_{i=1}^{V} e^{v_{v_{i}} T} \cdot h\right)</script><p>然后和上面one-word模型更新两个矩阵的方法类似  都是对相应的矩阵的元素求导得到梯度来更新矩阵。</p>
+<script type="math/tex; mode=display">
+\mathrm{V}_{\mathrm{wj}}^{\prime}=\mathrm{V}_{\mathrm{wj}}^{\prime}-\eta\left(\mathrm{y}_{\mathrm{i}}-\mathrm{t}_{\mathrm{i}}\right) \mathrm{h}</script><p>用上述公式来更新$W^{‘}$，其中$j=1,2, \dots \dots ,\mathrm{V}$</p>
 <p>其中$\mathrm{V}^{\prime}_{\mathrm{w} j}$为隐藏层到输出等的矩阵的第$j$列</p>
-<p>$$<br>\mathrm{V}<em>{\mathrm{w}, \mathrm{I}, \mathrm{c}}&#x3D;\mathrm{V}</em>{\mathrm{w}, \mathrm{I}, \mathrm{c}}-\frac{1}{\mathrm{C}} \eta \cdot \mathrm{EH}<br>$$</p>
-<p>用上述公式来更新$W$</p>
-<p>其中$\mathrm{V}_{\mathrm{w}, \mathrm{I}, \mathrm{c}}$是输入上下文单词的第c个单词的输入向量。其中$c&#x3D;1,2, \cdots \cdots ,\mathrm{C}$。</p>
+<script type="math/tex; mode=display">
+\mathrm{V}_{\mathrm{w}, \mathrm{I}, \mathrm{c}}=\mathrm{V}_{\mathrm{w}, \mathrm{I}, \mathrm{c}}-\frac{1}{\mathrm{C}} \eta \cdot \mathrm{EH}</script><p>用上述公式来更新$W$</p>
+<p>其中$\mathrm{V}_{\mathrm{w}, \mathrm{I}, \mathrm{c}}$是输入上下文单词的第c个单词的输入向量。其中$c=1,2, \cdots \cdots ,\mathrm{C}$。</p>
 <h2 id="Skip-Gram-模型"><a href="#Skip-Gram-模型" class="headerlink" title="Skip Gram 模型"></a>Skip Gram 模型</h2><h4 id="模型概述"><a href="#模型概述" class="headerlink" title="模型概述"></a>模型概述</h4><p>Skip-Gram 模型可以看成是与 CBOW 模型相反的，即用一个中心词来推测其附近的 c 个上下文（注：得到的 c 个上下文不考虑与中心词之间的距离的影响）。</p>
-<p><img src="/Blog/Blog/2019/04/21/Insight-into-Word2Vec/skip-gram.jpg" alt="Skip Gram 模型"></p>
-<h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>隐藏层$h$仍然是矩阵$W$的第$k$行（$X_k&#x3D;1$的情况下）</p>
+<p><img src="/Blog/2019/04/21/Insight-into-Word2Vec/skip-gram.jpg" alt="Skip Gram 模型"></p>
+<h4 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h4><p>隐藏层$h$仍然是矩阵$W$的第$k$行（$X_k=1$的情况下）</p>
 <p>与之前稍微有点不同的是Skip-Gram模型的输出有多个，每个输出都使用的相同的$W^{‘}$来计算</p>
-<p>$$<br>\mathrm{P}\left(\mathrm{w}<em>{c, j}&#x3D;w</em>{o, c} | w_{I}\right)&#x3D;y_{c, j}&#x3D;\frac{e^{u_{c, j}}}{\sum_{i&#x3D;1}^{V} e^{u_{i}}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\mathrm{P}\left(\mathrm{w}_{c, j}=w_{o, c} | w_{I}\right)=y_{c, j}=\frac{e^{u_{c, j}}}{\sum_{i=1}^{V} e^{u_{i}}}</script><ul>
 <li>其中 $\mathrm{W}_{\mathrm{c}, \mathrm{j}}$ 是输出层第  $c$ 个输出的第 $j$ 个单词。</li>
 <li>而 $\mathrm{w}_{\mathrm{o}, \mathrm{f}}$ 是第c个输出的实际输出的单词。</li>
 <li>$\mathrm{U}_{\mathrm{c}, \mathrm{j}}$ 是 h 与 $\mathrm{W}^{‘}$  的第 $j$  行向量相乘的结果，由于乘的都是同一个第 $j$行。</li>
 </ul>
-<p>所以：<br>$$<br>\mathrm{U}<em>{\mathrm{c}, \mathrm{j}}&#x3D;\mathrm{U}</em>{\mathrm{j}}&#x3D;V_{w_{j}}^{\prime T} h<br>$$</p>
-<p>再次构造损失函数：</p>
-<p>$$<br>\mathrm{E}&#x3D;-\log \left(\mathrm{P}\left(w_{0,1}, w_{0,2}, \ldots w_{0, \mathrm{C}} | w_{\mathrm{I}}\right)\right) \<br>&#x3D;-\sum_{i&#x3D;1}^{C} U_{j_{i}^{*}}+\operatorname{Clog}\left(\sum_{i&#x3D;1}^{V} U_{i^{\prime}}\right) \<br>$$</p>
-<p>$$<br>\frac{\partial \mathrm{E}}{\partial \mathrm{U}<em>{c, j}}&#x3D;y</em>{c, j}-t_{c, j}<br>$$</p>
-<p>用:<br>$$<br>\mathrm{EI}&#x3D;\left{\mathrm{EI}<em>{1}, \mathrm{EI}</em>{2}, \ldots . \mathrm{EI}<em>{\mathrm{v}}\right}<br>$$<br>来表示所有上下文单词的预测误差之和，即：<br>$$<br>\mathrm{EI}</em>{\mathrm{j}}&#x3D;\sum_{\mathrm{i}&#x3D;1}^{\mathrm{C}} \mathrm{y}<em>{\mathrm{i}, \mathrm{j}}-\mathrm{t}</em>{\mathrm{i}, \mathrm{j}}<br>$$</p>
-<p>$\mathrm{W}^{\prime}$的权重矩阵更新公式为：</p>
-<p>$$<br>w_{i, j}^{\prime}&#x3D;w_{i, j}^{\prime}-\eta^{<em>} E I_{j}^{</em>} h_{i}<br>$$</p>
-<p>$V$的权重矩阵更新公式为：</p>
-<p>$$<br>\mathrm{V}<em>{\mathrm{w}</em>{1}}&#x3D;\mathrm{V}<em>{\mathrm{w}</em>{1}}-\eta \mathrm{EH}<br>$$</p>
-<p>其中</p>
-<p>$$<br>\mathrm{EH}&#x3D;\sum_{j&#x3D;1}^{V} E I_{j} * w_{i, j}^{\prime}<br>$$</p>
-<h1 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h1><ul>
+<p>所以：</p>
+<script type="math/tex; mode=display">
+\mathrm{U}_{\mathrm{c}, \mathrm{j}}=\mathrm{U}_{\mathrm{j}}=V_{w_{j}}^{\prime T} h</script><p>再次构造损失函数：</p>
+<script type="math/tex; mode=display">
+\mathrm{E}=-\log \left(\mathrm{P}\left(w_{0,1}, w_{0,2}, \ldots w_{0, \mathrm{C}} | w_{\mathrm{I}}\right)\right) \\
+=-\sum_{i=1}^{C} U_{j_{i}^{*}}+\operatorname{Clog}\left(\sum_{i=1}^{V} U_{i^{\prime}}\right) \\</script><script type="math/tex; mode=display">
+\frac{\partial \mathrm{E}}{\partial \mathrm{U}_{c, j}}=y_{c, j}-t_{c, j}</script><p>用: </p>
+<script type="math/tex; mode=display">
+\mathrm{EI}=\left\{\mathrm{EI}_{1}, \mathrm{EI}_{2}, \ldots . \mathrm{EI}_{\mathrm{v}}\right\}</script><p>来表示所有上下文单词的预测误差之和，即：</p>
+<script type="math/tex; mode=display">
+\mathrm{EI}_{\mathrm{j}}=\sum_{\mathrm{i}=1}^{\mathrm{C}} \mathrm{y}_{\mathrm{i}, \mathrm{j}}-\mathrm{t}_{\mathrm{i}, \mathrm{j}}</script><p>$\mathrm{W}^{\prime}$的权重矩阵更新公式为：</p>
+<script type="math/tex; mode=display">
+w_{i, j}^{\prime}=w_{i, j}^{\prime}-\eta^{*} E I_{j}^{*} h_{i}</script><p>$V$的权重矩阵更新公式为：</p>
+<script type="math/tex; mode=display">
+\mathrm{V}_{\mathrm{w}_{1}}=\mathrm{V}_{\mathrm{w}_{1}}-\eta \mathrm{EH}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\mathrm{EH}=\sum_{j=1}^{V} E I_{j} * w_{i, j}^{\prime}</script><h1 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h1><ul>
 <li><a target="_blank" rel="noopener" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Chris McCormick · Machine Learning Tutorials and Insights</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/7160330.html">刘建平 Pinard · CBOW 与 Skip-Gram 模型基础</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/peghoty/p/3857839.html">peghoty · word2vec 中的数学原理详解</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41664845/article/details/82971728">算法原理以及公式推导</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27234078?utm_source=qq&utm_medium=social&utm_oi=989578670297628672">理解Word2Vec之Skip-Gram模型</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27234078?utm_source=qq&amp;utm_medium=social&amp;utm_oi=989578670297628672">理解Word2Vec之Skip-Gram模型</a></li>
 </ul>
 </div><div class="article-licensing box"><div class="licensing-title"><p>Insight into Word2Vec</p><p><a href="http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/">http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2019-04-21</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-06-22</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/NLP/">NLP</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Word2Vec/">Word2Vec</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Blog/2019/04/30/Convolutional-Neural-Networks/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Convolutional Neural Networks</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2019/04/21/hello-world/"><span class="level-item">Hello World</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'http://vincentgaohj.github.io/Blog/2019/04/21/Insight-into-Word2Vec/';

@@ -41,7 +41,6 @@
   })();
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2019-05-20T12:55:32.000Z" title="2019/5/20 20:55:32">2019-05-20</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Finance/">Finance</a><span> / </span><a class="link-muted" href="/Blog/categories/Finance/Asset-Management/">Asset Management</a></span><span class="level-item">17 minutes read (About 2502 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">运用股指期货套期保值模拟分析</h1><div class="content"><p>对于证券公司等机构投资者而言，如何完善一个完整的套期保值流程和套保策略是提高证券投资收益和规避风险的一个重要环节。股指期货相对于股票现货最重要的两个功能就是杠杆和做空。运用杠杆能够提高资金的使用效率，利用做空能够实现套期保值。</p>
 <span id="more"></span>
-
 <h3 id="投资组合选择"><a href="#投资组合选择" class="headerlink" title="投资组合选择"></a>投资组合选择</h3><p>选择 50 支股票作为初始投资组合</p>
 <hr>
 <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>以选定的 50 支股票构成的投资组合作为套保对象，规避系统性风险，且套保目标制定为完全套保，以实现完全对冲系统性风险。</p>
@@ -70,20 +69,22 @@
 </ul>
 </li>
 <li><p><strong>股指期货合约份数</strong></p>
-<p> 根据不同模型计算出的套保比率得出所需股指期货合约份数<br> $$<br> 期货合约份数 &#x3D; \frac{现货资产市值 \times 最优套保比率}{股指期货当期价格 \times 合约乘数}<br> $$</p>
-</li>
+<p> 根据不同模型计算出的套保比率得出所需股指期货合约份数</p>
+<script type="math/tex; mode=display">
+ 期货合约份数 = \frac{现货资产市值 \times 最优套保比率}{股指期货当期价格 \times 合约乘数}</script></li>
 <li><p><strong>风险规避效果</strong></p>
-<p> 度量不同模型计算出的套保比率的风险规避效果<br> $$<br> H e&#x3D;\frac{\sigma_{n}^{2}-\sigma_{k}^{2}}{\sigma_{n}^{2}}<br> $$</p>
-<ul>
+<p> 度量不同模型计算出的套保比率的风险规避效果</p>
+<script type="math/tex; mode=display">
+ H e=\frac{\sigma_{n}^{2}-\sigma_{k}^{2}}{\sigma_{n}^{2}}</script><ul>
 <li>分子：未套保资产组合收益方差减去套保后资产组合收益方差</li>
 </ul>
 </li>
 <li><p><strong>拟定交易费率和保证金比率</strong></p>
 <ul>
-<li>保证金 &#x3D; 收盘价 × 合约乘数 × 合约分数</li>
-<li>交易费率 &#x3D; 成交价 × 交易单位（合约乘数）× 交易费率 × 合约分数</li>
-<li>交易成本 &#x3D; 交易费率 × 交易额 &#x3D; 交易费率 × 合约分数 × 合约乘数 × 结算价格</li>
-<li>期货获利 &#x3D; 合约分数 × 期现差价 × 合约乘数 - 交易成本</li>
+<li>保证金 = 收盘价 × 合约乘数 × 合约分数</li>
+<li>交易费率 = 成交价 × 交易单位（合约乘数）× 交易费率 × 合约分数</li>
+<li>交易成本 = 交易费率 × 交易额 = 交易费率 × 合约分数 × 合约乘数 × 结算价格</li>
+<li>期货获利 = 合约分数 × 期现差价 × 合约乘数 - 交易成本</li>
 </ul>
 </li>
 <li><p><strong>动态调整</strong></p>
@@ -91,20 +92,26 @@
 </li>
 </ul>
 <hr>
-<h3 id="最优套期保值比率计量模型"><a href="#最优套期保值比率计量模型" class="headerlink" title="最优套期保值比率计量模型"></a>最优套期保值比率计量模型</h3><p>$$<br>H&#x3D;\frac{\operatorname{Cov}\left(R_{s}, R_{f}\right)}{\operatorname{Var}\left(R_{f}\right)}&#x3D;\frac{\rho \sigma_{s} \sigma_{f}}{\sigma_{f}^{2}}&#x3D;\rho \frac{\sigma_{s}}{\sigma_{f}}<br>$$</p>
-<p>其中 $R_s$ 为现货市场收益率，$R_f$ 为期货市场收益率</p>
+<h3 id="最优套期保值比率计量模型"><a href="#最优套期保值比率计量模型" class="headerlink" title="最优套期保值比率计量模型"></a>最优套期保值比率计量模型</h3><script type="math/tex; mode=display">
+H=\frac{\operatorname{Cov}\left(R_{s}, R_{f}\right)}{\operatorname{Var}\left(R_{f}\right)}=\frac{\rho \sigma_{s} \sigma_{f}}{\sigma_{f}^{2}}=\rho \frac{\sigma_{s}}{\sigma_{f}}</script><p>其中 $R_s$ 为现货市场收益率，$R_f$ 为期货市场收益率</p>
 <h4 id="具体可选择模型"><a href="#具体可选择模型" class="headerlink" title="具体可选择模型"></a>具体可选择模型</h4><ul>
 <li><p><strong>β 值</strong></p>
-<p>投资组合的 β 值 &#x3D; 以资金比例为权重的各股票 β 系数的加权平均值</p>
+<p>投资组合的 β 值 = 以资金比例为权重的各股票 β 系数的加权平均值</p>
 </li>
 <li><p><strong>最小二乘回归模型（OLS）</strong></p>
 <p>以 $R_s$ 为被解释变量， $R_f$ 为解释变量做最小二乘回归，得到的回归系数 $β$ 即为最优套保比率。</p>
 </li>
-<li><p><strong>双向自回归模型（B-VAR）</strong><br>$$<br>\begin{array}{l}{\Delta \ln S_{\mathrm{t}}&#x3D;C_{s}+\sum_{i&#x3D;1}^{l} \alpha_{s} \Delta \ln S_{t-1}+\sum_{i&#x3D;1}^{l} \beta_{s} \Delta \ln F_{t-1}+\varepsilon_{s}} \ {\Delta \ln F_{t}&#x3D;C_{f}+\sum_{i&#x3D;1}^{l} \alpha_{f} \Delta \ln F_{t-1}+\sum_{i&#x3D;1}^{l} \beta_{f} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}<br>$$<br>其中 $C$ 为截距项，$α &amp; β$ 为回归系数，$ε$ 为服从独立同分布的随机误差项，要寻找最佳滞后值 $L$，从而使残差项的自相关性消除。最后根据公式计算出套保比率：<br>$$<br>h^{*}&#x3D;\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}{\operatorname{Var}\left(\varepsilon_{f t}\right)}<br>$$<br>克服 ols 可能忽略残差项自相关的缺陷</p>
+<li><p><strong>双向自回归模型（B-VAR）</strong></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\Delta \ln S_{\mathrm{t}}=C_{s}+\sum_{i=1}^{l} \alpha_{s} \Delta \ln S_{t-1}+\sum_{i=1}^{l} \beta_{s} \Delta \ln F_{t-1}+\varepsilon_{s}} \\ {\Delta \ln F_{t}=C_{f}+\sum_{i=1}^{l} \alpha_{f} \Delta \ln F_{t-1}+\sum_{i=1}^{l} \beta_{f} \Delta \ln S_{t-1}+\varepsilon_{f t}}\end{array}</script><p>其中 $C$ 为截距项，$α \&amp; β$ 为回归系数，$ε$ 为服从独立同分布的随机误差项，要寻找最佳滞后值 $L$，从而使残差项的自相关性消除。最后根据公式计算出套保比率：</p>
+<script type="math/tex; mode=display">
+h^{*}=\frac{\operatorname{Cov}\left(\varepsilon_{s t}, \varepsilon_{f t}\right)}{\operatorname{Var}\left(\varepsilon_{f t}\right)}</script><p>克服 ols 可能忽略残差项自相关的缺陷</p>
 <p><strong>步骤：</strong></p>
-<p>确定最优滞后阶数，采用 AIC 方法，列出沪深 300 指数的前 5 阶 AIC，最小取值时的阶数即为最优滞后阶数。建立 B-var 模型：<br>$$<br>\Delta \ln \mathrm{S}<em>{1}&#x3D;\alpha+\beta \Delta \ln \mathrm{F}</em>{\mathrm{t}}+\sum_{i&#x3D;1}^{\mathrm{k}} \theta_{1} \Delta \ln \mathrm{S}<em>{-\mathrm{i}}+\sum</em>{\mathrm{i}&#x3D;1}^{\mathrm{m}} \lambda_{1} \Delta \ln \mathrm{F}<em>{\mathrm{t}-1}+\varepsilon</em>{\mathrm{t}}<br>$$<br>**输入值：**解释变量为股指期货价格 被解释变量为现货价格 还需要输入滞后阶数</p>
+<p>确定最优滞后阶数，采用 AIC 方法，列出沪深 300 指数的前 5 阶 AIC，最小取值时的阶数即为最优滞后阶数。建立 B-var 模型：</p>
+<script type="math/tex; mode=display">
+\Delta \ln \mathrm{S}_{1}=\alpha+\beta \Delta \ln \mathrm{F}_{\mathrm{t}}+\sum_{i=1}^{\mathrm{k}} \theta_{1} \Delta \ln \mathrm{S}_{-\mathrm{i}}+\sum_{\mathrm{i}=1}^{\mathrm{m}} \lambda_{1} \Delta \ln \mathrm{F}_{\mathrm{t}-1}+\varepsilon_{\mathrm{t}}</script><p><strong>输入值：</strong>解释变量为股指期货价格 被解释变量为现货价格 还需要输入滞后阶数</p>
 <p>β 值即为所求套保比率</p>
-<p>**需要展示的内容：**B-var 获得的 β 值</p>
+<p><strong>需要展示的内容：</strong>B-var 获得的 β 值</p>
 </li>
 <li><p><strong>误差修正模型（ECM）</strong></p>
 <p>在 B-var 模型的基础上将两组数据回归得到的残差序列作为滞后项引入 ECM 作为解释变量。</p>
@@ -118,7 +125,9 @@
 </li>
 </ul>
 </li>
-<li><p><strong>广义自回归条件异方差模型（GARCH）</strong><br>$$<br>\Delta \ln S_{t}&#x3D;\alpha+\beta \Delta \ln F_{t-1}+\gamma Z_{t-1}+\varepsilon_{t}<br>$$<br>其中 $β$ 就是套保比率值</p>
+<li><p><strong>广义自回归条件异方差模型（GARCH）</strong></p>
+<script type="math/tex; mode=display">
+\Delta \ln S_{t}=\alpha+\beta \Delta \ln F_{t-1}+\gamma Z_{t-1}+\varepsilon_{t}</script><p>其中 $β$ 就是套保比率值</p>
 </li>
 </ul>
 <hr>
@@ -131,7 +140,7 @@
 </ul>
 <h4 id="交割日"><a href="#交割日" class="headerlink" title="交割日"></a>交割日</h4><p>中国的 <em>股指期货交割日</em> 是合约交割月的第三个星期五</p>
 <h4 id="合约月份"><a href="#合约月份" class="headerlink" title="合约月份"></a>合约月份</h4><p>沪深 300 股指期货的合约月份有四个，即当月、下月及随后的两个季月，季月指 3 月、 6 月、 9 月、 12 月。也就是说，同时有四个合约在交易。比如，在 2010 年 3 月 2 日的沪深 300 股指期货仿真交易中，就同时有 IF1003、 IF1004、 IF1006、 IF1009 四个合约在交易，其中： IF1003 为当月合约， IF1004 为下月合约，IF1006 和 IF1009 为随后的两个季月合约。以 IF1006 为例， IF 为沪深 300 股指期货合约的交易代码，10 指 2010 年， 06 指到期交割月份为 6 月份。其余依此类推。</p>
-<h4 id="股指期货基差"><a href="#股指期货基差" class="headerlink" title="股指期货基差"></a>股指期货基差</h4><p>基差是股指期货标的指数价格与股指期货价格之间的差值，比如，在 4 月 6 日某时点，沪深 300 指数为 3250 点，IF1004 合约价格为 3310 点，则此时的基差为 3250 - 3310 &#x3D; -60 点。</p>
+<h4 id="股指期货基差"><a href="#股指期货基差" class="headerlink" title="股指期货基差"></a>股指期货基差</h4><p>基差是股指期货标的指数价格与股指期货价格之间的差值，比如，在 4 月 6 日某时点，沪深 300 指数为 3250 点，IF1004 合约价格为 3310 点，则此时的基差为 3250 - 3310 = -60 点。</p>
 <p>在股指期货交易中，由于现货价格与期货价格波动不一致、从而基差波动不确定而导致的风险被称为基差风险。</p>
 <p>如果基差朝着有利方向变化，则不仅可以取得较好的套期保值效果，而且还可以获得额外的盈利；反之，不仅会影响套保效果，甚至还会蒙受损失。比如，在买入套期保值中，由于在套保结束时要买入现货并卖出期货合约，当基差变弱、即现货价格相对更低而期货价格相对更高时，投资者买低卖高就可能获利。</p>
 <hr>
@@ -161,7 +170,6 @@
 <p>检验结果不平稳则对原序列进行一阶差分，得到新的序列，再进行 ADF 检验（步骤同上）。</p>
 <p><strong>一阶段差分代码：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">genr st = log(st) - log(st(-1))</span><br></pre></td></tr></table></figure>
-
 <p>其中 $st$ 为原序列</p>
 <p>需要展示的内容：沪深 300 期货与现货价格几次（一般为两次）平稳检验的结果，包括 ADF 值和 5% 置信水平下 t 检验的值。</p>
 </li>
@@ -176,7 +184,7 @@
 <li><p>如果残差项序列不存在单位根，则通过 E-G 检验，说明两组序列具有长期协整关系。</p>
 </li>
 </ul>
-<p>**需要展示的内容：**两组数据的残差项 e 进行 ADF 测试后的结果</p>
+<p><strong>需要展示的内容：</strong>两组数据的残差项 e 进行 ADF 测试后的结果</p>
 </li>
 </ul>
 </li>
