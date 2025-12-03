@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>GPU 与 TPU 的未来竞争格局态势 - Gao Haojun</title><link rel="manifest" href="/Blog/manifest.json"><meta name="application-name" content="Gao Haojun"><meta name="msapplication-TileImage" content="/img/favicon.jpeg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gao Haojun"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="本文基于 SemiAnalysis 2025 年 11 月报告，聚焦谷歌 TPU 的技术升级、商业化进展及产业链布局，分析其对 AI 硬件竞争格局的影响。核心围绕 TPU v7 的性能突破（逼近英伟达 GPU）、成本优势（TCO 更低、利润率更高）、ICI 架构的扩展性创新，结合谷歌与 Anthropic、WULF 等的关键交易，阐述 TPU 从内部使用走向全面商业化的转变。同时梳理了 TPU 产"><meta property="og:type" content="blog"><meta property="og:title" content="GPU 与 TPU 的未来竞争格局态势"><meta property="og:url" content="http://vincentgaohj.github.io/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><meta property="og:site_name" content="Gao Haojun"><meta property="og:description" content="本文基于 SemiAnalysis 2025 年 11 月报告，聚焦谷歌 TPU 的技术升级、商业化进展及产业链布局，分析其对 AI 硬件竞争格局的影响。核心围绕 TPU v7 的性能突破（逼近英伟达 GPU）、成本优势（TCO 更低、利润率更高）、ICI 架构的扩展性创新，结合谷歌与 Anthropic、WULF 等的关键交易，阐述 TPU 从内部使用走向全面商业化的转变。同时梳理了 TPU 产"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://vincentgaohj.github.io/Blog/gallery/GPU%E4%B8%8ETPU%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/tpu-vs-gpu.png.png"><meta property="article:published_time" content="2025-12-03T03:38:07.000Z"><meta property="article:modified_time" content="2025-12-03T02:23:34.703Z"><meta property="article:author" content="Haojun(Vincent) Gao"><meta property="article:tag" content="AI"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://vincentgaohj.github.io/Blog/gallery/GPU%E4%B8%8ETPU%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/tpu-vs-gpu.png.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://vincentgaohj.github.io/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"},"headline":"GPU 与 TPU 的未来竞争格局态势","image":["http://vincentgaohj.github.io/Blog/gallery/GPU%E4%B8%8ETPU%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/tpu-vs-gpu.png.png"],"datePublished":"2025-12-03T03:38:07.000Z","dateModified":"2025-12-03T02:23:34.703Z","author":{"@type":"Person","name":"Haojun(Vincent) Gao"},"publisher":{"@type":"Organization","name":"Gao Haojun","logo":{"@type":"ImageObject","url":"http://vincentgaohj.github.io/img/logo.jpg"}},"description":"本文基于 SemiAnalysis 2025 年 11 月报告，聚焦谷歌 TPU 的技术升级、商业化进展及产业链布局，分析其对 AI 硬件竞争格局的影响。核心围绕 TPU v7 的性能突破（逼近英伟达 GPU）、成本优势（TCO 更低、利润率更高）、ICI 架构的扩展性创新，结合谷歌与 Anthropic、WULF 等的关键交易，阐述 TPU 从内部使用走向全面商业化的转变。同时梳理了 TPU 产"}</script><link rel="canonical" href="http://vincentgaohj.github.io/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><link rel="icon" href="/Blog/img/favicon.jpeg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Blog/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?192470116504c325dfc73c99f66225ed";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-N6S845NT1J" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-N6S845NT1J');</script><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/GPU%E4%B8%8ETPU%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/tpu-vs-gpu.png.png" alt="GPU 与 TPU 的未来竞争格局态势"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2025-12-03T03:38:07.000Z" title="2025/12/3 11:38:07">2025-12-03</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">an hour read (About 7758 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">GPU 与 TPU 的未来竞争格局态势</h1><div class="content"><p>本文基于 SemiAnalysis 2025 年 11 月报告，聚焦谷歌 TPU 的技术升级、商业化进展及产业链布局，分析其对 AI 硬件竞争格局的影响。核心围绕 TPU v7 的性能突破（逼近英伟达 GPU）、成本优势（TCO 更低、利润率更高）、ICI 架构的扩展性创新，结合谷歌与 Anthropic、WULF 等的关键交易，阐述 TPU 从内部使用走向全面商业化的转变。同时梳理了 TPU 产业链生态，对比英伟达 GPU 生态，凸显谷歌在 AI 算力硬件领域的差异化竞争力，预示其将成为英伟达在 AI 训练 / 推理硬件市场的核心竞争对手。</p>
+<span id="more"></span>
+<h2 id="核心观点"><a href="#核心观点" class="headerlink" title="核心观点"></a>核心观点</h2><p><strong>一、关于谷歌的路线：Anthropic 交易标志着这一努力中的一个重要里程碑：谷歌云 CEO 托马斯·库里安在谈判中发挥了核心作用。谷歌很早就做出了承诺，积极投资 Anthropic 的融资轮次，<a target="_blank" rel="noopener" href="https://www.nytimes.com/2025/03/11/technology/google-investment-anthropic.html">甚至同意放弃投票权，并将其所有权上限设定为 15%，</a>以扩大 TPU 在谷歌内部之外的使用。</strong></p>
+<ul>
+<li>TPU集群长期以来一直与英伟达的AI硬件不相上下，但它主要支持谷歌的内部工作负载。按照谷歌的典型风格，即使在2018年向谷歌云平台（GCP）客户开放TPU之后，也从未将其完全商业化。这种情况正开始改变。在过去几个月里，谷歌动员了整个技术栈的力量，通过谷歌云平台将TPU提供给外部客户，或者作为商业供应商销售完整的TPU系统。由于基础实验室中有前 DeepMind 的 TPU 人才，这一策略的实施变得更加顺利，这使得 Anthropic 能够在包括 TPU 在内的多种硬件上训练 Sonnet 和 Opus 4.5。</li>
+<li>谷歌已经为 Anthropic 建造了一个大型设施。</li>
+</ul>
+<p><strong>二、成本优势显著，与英伟达形成差异化优势</strong></p>
+<ul>
+<li><strong>TPU 技术迭代与性能追赶</strong>：设计理念转向大语言模型优化，TPU v7（Ironwood）性能逼近英伟达旗舰 GPU：采用 N3E 工艺，HBM3E 容量 192GB、带宽 7380GB/s，FP8 算力 4614 TFLOPs，与英伟达 GB200 差距缩小，上市时间仅晚几个季度；从 v4 到 v7，算力、带宽持续提升，功耗优化，v6 相比 v5p 算力翻倍。</li>
+<li><strong>成本效益优势显著</strong>：TPU v7 总拥有成本（TCO）大幅低于英伟达 GB200/GB300，内部版每小时仅 1.28 美元（GB200 为 2.28 美元）；FP8 算力、内存带宽、内存容量的单位 TCO 均优于英伟达，息税前利润率高于多数 GPU 云交易，成为 GCP 差异化优势。</li>
+</ul>
+<p><strong>三、谷歌的 ICI 扩展网络，是英伟达 NVLink 唯一真正的竞争对手。</strong></p>
+<ul>
+<li><strong>ICI 3D Torus 架构核心优势</strong>：以 64 个 TPU 组成的 4x4x4 立方体为基本单元，支持 3D 环面扩展，最大规模达 9216 个 TPU；通过铜缆 + 光收发器 + OCS 实现连接，具备超大世界规模、高可重构性（支持数千种拓扑）、立方体可替代性、低成本（比同类交换网络省钱）、低延迟等优势。</li>
+</ul>
+<h2 id="谷歌与-Anthropic-的交易细节"><a href="#谷歌与-Anthropic-的交易细节" class="headerlink" title="谷歌与 Anthropic 的交易细节"></a>谷歌与 Anthropic 的交易细节</h2><h3 id="交易细节"><a href="#交易细节" class="headerlink" title="交易细节"></a>交易细节</h3><p><strong>该交易的第一阶段涉及40万个TPUv7 Ironwoods，成品机架价值约100亿美元，博通将直接向 Anthropic 出售这些产品。</strong></p>
+<ul>
+<li>Anthropic 是博通在最近一次财报电话会议中提到的第四个客户。Fluidstack 将负责现场安装、布线、老化测试、验收测试以及远程运维工作，Anthropic 则将物理服务器的管理工作外包出去。数据中心基础设施将由 TeraWulf（WULF）和 Cipher Mining（CIFR）提供。</li>
+</ul>
+<p><strong>剩余的60万个TPUv7单元将通过谷歌云平台（GCP）出租。</strong></p>
+<ul>
+<li>我们估计这笔交易的已签约未交付订单（RPO）为420亿美元，占谷歌云平台第三季度报告的490亿美元积压订单增长的大部分。</li>
+</ul>
+<p>未来几个季度，与 Meta、OAI、SSI 和 xAI 达成的额外交易可能会为谷歌云平台（GCP）带来更多的 RPO 以及直接的硬件销售。</p>
+<h3 id="WULF-Compute-与-Fluidstack-的交易，以及谷歌"><a href="#WULF-Compute-与-Fluidstack-的交易，以及谷歌" class="headerlink" title="WULF Compute 与 Fluidstack 的交易，以及谷歌"></a>WULF Compute 与 Fluidstack 的交易，以及谷歌</h3><p>虽然其他超大规模企业已经扩大了自己的场地并获得了大量的托管空间，但谷歌的行动则更为迟缓。我们认为核心问题在于合同和管理方面。每一个新的数据中心供应商都需要一份主服务协议，而这些协议涉及数十亿美元、多年期的承诺，自然会涉及一些行政流程。然而，谷歌的流程尤其缓慢，从初步讨论到签署主服务协议，往往需要长达三年的时间。谷歌的这种变通办法对那些希望转向人工智能数据中心基础设施的新云服务提供商和加密货币矿工具有重大影响。谷歌没有直接租赁，而是提供了一种信贷支持，即一种表外“欠条”，以便在Fluidstack无法支付其数据中心租金时介入。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!t7Va!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52a04a94-9e9e-445e-b806-5a6cebd3f244_2236x1228.png" alt="Source: TeraWulf"></p>
+<p><strong>这张图展示了 WULF Compute 与 Fluidstack 的交易，以及谷歌在其中的参与角色，结合信息可解读为：谷歌通过 “股权 + 信贷担保” 的方式，间接支持 Fluidstack 与 WULF 的大型数据中心租赁项目，而非直接提供硬件租赁服务。</strong></p>
+<p><strong>核心交易：WULF 与 Fluidstack 的租赁合作</strong></p>
+<ul>
+<li>WULF Compute 与 Fluidstack 签订了<strong>3 份 10 年期租约</strong>，涉及 Lake Mariner 数据中心的 CB-3、CB-4 及新增的 CB-5 项目，合计提供<strong>超 360MW 的关键 IT 负载</strong>（CB-5 单项目就新增 160+MW）。</li>
+<li>合同价值：<strong>初始 10 年期约 67 亿美元</strong>；若行使 10 年延期选项，可额外增加约 90 亿美元收入。</li>
+<li>交付节点：360+MW 的合同容量预计 2026 年底前交付。</li>
+</ul>
+<p><strong>谷歌并未直接向 Fluidstack 提供硬件租赁，而是通过两种方式参与：</strong></p>
+<ul>
+<li><strong>持股支持</strong>：持有 WULF 约 14% 的股份，该持股结构是为了在建设期间向贷款人提供保障。</li>
+<li><strong>信贷担保</strong>：为 Fluidstack 的债务提供<strong>32 亿美元的担保</strong>，以支持项目的债务融资。</li>
+</ul>
+<h2 id="Ironwood-已接近-Blackwell"><a href="#Ironwood-已接近-Blackwell" class="headerlink" title="Ironwood 已接近 Blackwell"></a>Ironwood 已接近 Blackwell</h2><h3 id="TPU-设计理念明显转变"><a href="#TPU-设计理念明显转变" class="headerlink" title="TPU 设计理念明显转变"></a>TPU 设计理念明显转变</h3><p>迎来大语言模型时代后，谷歌的TPU设计理念发生了明显转变。我们可以从最近两代专为大语言模型设计的 TPU 中看到这一点：TPUv6 Trillium（Ghostlite）和TPUv7 Ironwood（Ghostfish）就体现了这种变化。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!vv9d!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9582080e-9c38-4b5e-b964-ad512e9a9106_2034x1188.png" alt="Source: SemiAnalysis, Nvidia, Google"></p>
+<p>从下面的图表中我们可以看到，TPU v4 和 v5 的计算吞吐量远低于当时英伟达的旗舰产品。TPU v6 在浮点运算性能上非常接近H100/H200，但它比 H100 晚推出了两年。<strong>到了 TPU v7，差距进一步缩小，其服务器仅晚几个季度上市，同时提供的峰值理论浮点运算性能几乎达到了同一水平。</strong></p>
+<ul>
+<li>TPU v6 Trillium 与 TPU v5p 采用相同的 N5 Node，硅片面积相近，但峰值理论浮点运算能力却惊人地提升了两倍，同时功耗显著降低。</li>
+<li>对于Trillium，谷歌将每个脉动阵列的规模从128×128 瓦片扩大到 256 × 256 瓦片，扩大了四倍，这种阵列规模的增大带来了计算能力的提升。</li>
+</ul>
+<p><img src="https://substackcdn.com/image/fetch/$s_!gs9B!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0be58268-c1c0-443e-a511-f7bb76961208_1816x676.png" alt="Source: SemiAnalysis, Google"></p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!FOKg!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb1c9096c-e855-47e2-ae5b-7f74f1f00dc1_1334x784.png" alt=""></p>
+<p>TPU v7 Ironwood 是下一个迭代版本，谷歌在浮点运算能力、内存和带宽方面几乎完全缩小了与英伟达相应旗舰GPU的差距，尽管其全面上市时间比 Blackwell 晚了一年。与 GB200 相比，其浮点运算能力和内存带宽仅略有不足，配备 8-Hi HBM3E 时的容量与 GB200 相同，当然，这与配备 12-Hi HBM3E、容量为 288GB 的 GB300 相比存在明显差距。</p>
+<p>理论上的绝对性能是一回事，但重要的是 <strong>每总拥有成本（TCO Total Cost of Ownership）的实际性能</strong>。</p>
+<h3 id="每总拥有成本（TCO-Total-Cost-of-Ownership）的实际性能"><a href="#每总拥有成本（TCO-Total-Cost-of-Ownership）的实际性能" class="headerlink" title="每总拥有成本（TCO Total Cost of Ownership）的实际性能"></a>每总拥有成本（TCO Total Cost of Ownership）的实际性能</h3><p>虽然谷歌通过博通采购张量处理单元（TPU）并支付高额利润，但这远低于英伟达的利润，英伟达不仅在其销售的图形处理器（GPU）上获利丰厚，在包括中央处理器（CPU）、交换机、网络接口卡（NIC）、系统内存、线缆和连接器在内的整个系统上都能赚取高额利润。从谷歌的角度来看，这使得全3D环面配置下每块Ironwood芯片的总拥有成本（TCO）比 GB200 服务器的总拥有成本低约 44%。</p>
+<p>这远远弥补了峰值 FLOPs 和峰值内存带宽约 10% 的缺口。这是从谷歌及其采购TPU服务器的价格角度来看的。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!Ar7L!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1e2e4a9a-77de-4a25-9d45-f11fa140ef38_2056x928.png" alt=""></p>
+<p>谷歌 TPU v7 的<strong>成本效率显著高于英伟达 GB200/GB300</strong>：虽然 TPU 的标称算力、带宽略低，但单位算力、内存对应的总成本（TCO）更低，尤其在 FP8 精度场景下优势明显；而英伟达的 FP4 高算力仅在特定场景有价值，但 TPU 不支持原生 FP4。</p>
+<p><strong>核心成本数据（每小时 / 每单元）</strong></p>
+<ul>
+<li><p><strong>单位小时总成本</strong>：</p>
+<p>TPU 显著更低 —— 内部 TPU 仅$1.28/小时，外部TPU为 $1.60 / 小时；而英伟达 GB200 是 $2.28/小时、GB300 达 $2.73 / 小时。</p>
+</li>
+<li><p><strong>资本成本占比</strong>：</p>
+<p>英伟达（77.4%~79.0%）略高于 TPU（72.7%），说明 TPU 的运营成本占比相对更低。</p>
+</li>
+</ul>
+<p><strong>“成本 - 性能” 效率（核心对比维度）</strong></p>
+<ol>
+<li><p><strong>FP8 算力的 TCO</strong>：</p>
+<p>TPU 内部版仅$0.28/每PFLop·小时，远低于英伟达GB200（$0.46）、GB300（$0.55）；外部TPU也仅$0.40。</p>
+</li>
+<li><p><strong>内存带宽的 TCO</strong>：</p>
+<p>TPU 内部版$0.18/每TB/s·小时，大幅低于英伟达（$0.28~$0.34）。</p>
+</li>
+<li><p><strong>内存容量的 TCO</strong>：</p>
+<p>TPU 内部版$6.67/每TB·小时，同样优于英伟达（$9.47~$11.87）。</p>
+</li>
+</ol>
+<h3 id="TPU-v7-的经济效益"><a href="#TPU-v7-的经济效益" class="headerlink" title="TPU v7 的经济效益"></a>TPU v7 的经济效益</h3><p>TPU v7的经济效益显示出比我们观察到的其他大型基于GPU的云交易更高的息税前利润率，只有OCI与OpenAI的合作接近这一水平。即使考虑到博通在芯片级物料清单上的利润率叠加，谷歌仍能获得比商品化程度高得多的GPU交易高得多的利润率和回报。这正是TPU体系使谷歌云（GCP）成为真正差异化的云服务提供商（CSP）的地方。<a target="_blank" rel="noopener" href="https://newsletter.semianalysis.com/i/178649945/other-asic-programs-vs-microsoft">与此同时，像微软Azure这样ASIC项目举步维艰的公司，只能局限于在纯粹的商用硬件租赁业务中获得较为平庸的回报。</a></p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!HbvV!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5276c013-7a03-43cd-b01b-7bc5ffd3d53f_2314x598.png" alt="img"></p>
+<h2 id="芯片间互连（ICI）——扩展横向扩展世界规模的关键"><a href="#芯片间互连（ICI）——扩展横向扩展世界规模的关键" class="headerlink" title="芯片间互连（ICI）——扩展横向扩展世界规模的关键"></a>芯片间互连（ICI）——扩展横向扩展世界规模的关键</h2><h3 id="基本组成单元"><a href="#基本组成单元" class="headerlink" title="基本组成单元"></a>基本组成单元</h3><p>谷歌用于TPUv7的ICI扩展网络的基本组成单元是一个由64个TPU组成的4x4x4三维环面。每个包含64个TPU的4x4x4立方体对应一个包含64个TPU的物理机架。这是一个理想的尺寸，因为所有64个TPU都可以相互电连接，同时仍能容纳在一个物理机架中。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!zChs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0de048fb-89a6-4865-8ff7-dbcbb7d2cda9_1740x2338.png" style="zoom:50%;" /></p>
+<p>这些TPU以3D环形结构相互连接，每个TPU总共连接6个相邻节点——在X、Y和Z轴的每个轴上各连接2个逻辑上相邻的TPU。</p>
+<p>每个TPU通过计算托盘内的PCB线路始终与另外2个TPU相连，但根据该TPU在4x4x4立方体中的位置，它将通过直接连接铜缆（DAC）或光收发器与另外4个相邻TPU相连。</p>
+<p>4x4x4立方体内部的连接通过铜缆实现，而4x4x4立方体外的连接（包括回绕至立方体另一侧的连接以及与相邻4x4x4立方体的连接）将使用光收发器和光交叉连接器（OCS）。在下图中，我们可以看到这是一个3D环面网络：Z+面上的TPU 2,3,4通过800G光收发器并经由一个OCS，与Z-面上的TPU 2,3,1建立了回绕至Z轴对面的连接。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!DvYR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe0428839-ac3f-4ffc-923a-48295d2b9b19_2074x2144.png" style="zoom:50%;" /></p>
+<p>如上所述，除了始终通过PCB线路连接的2个相邻TPU外，TPU还将根据其在4x4x4立方体中的位置，使用DAC、收发器或两者的组合连接到另外4个相邻的TPU。</p>
+<p>4x4x4立方体内部的TPU将仅通过DAC连接到其他4个相邻TPU，立方体表面的TPU将通过3个DAC和1个光收发器进行连接，立方体边缘的TPU将通过2个光收发器和2个DAC进行连接，而立方体角落的TPU将通过1个DAC和3个光收发器进行连接。要记住某个TPU将使用多少个收发器，只需看该TPU有多少个面朝向立方体的“外部”即可。</p>
+<p>上图以及下表总结了各种位置类型的TPU数量，可用于得出每个TPU v7配备1.5个光收发器的连接比例。这些收发器与光电路交换机（OCS）相连，光电路交换机可实现4x4x4立方体之间的连接。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!SYnX!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F68c6923d-2032-4c7d-b630-0adb7ac4a272_710x787.png" alt=""></p>
+<p>以下是<strong>TPU v7 3D 环面机架连接组件的分类统计清单</strong>，清晰呈现不同位置 TPU 的连接配置及机架总量：</p>
+<p><strong>一个 64 颗 TPU 的机架对应 “4x4x4” 3D 立方体结构，TPU 分为 4 类：</strong></p>
+<ul>
+<li>内部 TPU：8 颗（立方体内部）</li>
+<li>角落 TPU：8 颗（立方体顶点）</li>
+<li>边缘 TPU：24 颗（立方体棱边，非顶点）</li>
+<li>面 TPU：24 颗（立方体表面，非棱边）</li>
+</ul>
+<p><strong>单颗 TPU 连接组件配置</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>TPU 类型</th>
+<th>铜缆数量</th>
+<th>PCB 走线数量</th>
+<th>光收发器数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内部 TPU</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>角落 TPU</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>边缘 TPU</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>面 TPU</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>机架总连接组件数量</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>连接组件类型</th>
+<th>机架总量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>铜缆</td>
+<td>80</td>
+</tr>
+<tr>
+<td>PCB 走线</td>
+<td>64</td>
+</tr>
+<tr>
+<td>光收发器</td>
+<td>96</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>内部 TPU 仅依赖铜缆 + PCB 走线完成机架内连接，无需光收发器；角落 / 边缘 / 面 TPU 通过光收发器实现跨机架的 3D 环面扩展，支撑大规模集群的低延迟通信。</strong></p>
+<h3 id="将多个-64-TPU-Cube-连接在一起"><a href="#将多个-64-TPU-Cube-连接在一起" class="headerlink" title="将多个 64 TPU Cube 连接在一起"></a>将多个 64 TPU Cube 连接在一起</h3><p>谷歌的ICI扩展网络独具特色，它允许将多个 64 个 TPU 的 4x4x4 立方体以 3D 环面结构连接在一起，从而创建大规模的全局规模。TPUv7 宣称的最大全局规模为9216 个TPU，但如今，谷歌支持将 TPU 配置为多种不同的切片规模，范围从 4 个 TPU 一直到 2048 个TPU。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!Qm1i!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9f178eb8-54c3-4944-836e-fcf8140436b0_3571x2394.png" alt=""></p>
+<p>要了解环绕连接和立方体间连接是如何建立的，让我们先看看如何在4x4x4的拓扑结构中创建一个64 TPU切片。我们可以使用由64个TPU组成的4x4x4单位立方体（对应一个物理的64 TPU机架）来构建这种拓扑结构。4x4x4立方体内部的所有8个TPU都可以通过铜缆与所有6个相邻TPU完全连接。如果某个TPU沿特定轴没有内部相邻的TPU，它会进行环绕并连接到立方体另一侧的TPU。例如，TPU 4,1,4在Z+方向没有内部相邻的TPU，因此它会使用一个800G光收发器连接到分配给Z轴的光交叉连接（OCS），该OCS被配置为将此连接导向立方体的Z-侧，从而连接到TPU 4,1,1。在Y-方向，TPU 1,1,1会使用光收发器连接到Y轴OCS，以链接到TPU 1,4,1的Y+侧，依此类推。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!n0x9!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F00598db9-454f-4788-b769-7994f4089016_1212x1176.png" style="zoom:50%;" /></p>
+<p>4x4x4立方体的每个面将通过16个不同的OCS进行连接——每个面的每个TPU对应一个OCS。</p>
+<p>例如，在下图中，在X+面上，TPU 4,3,2连接到OCS X,3,2的输入端。OCS X,3,2的输入端还将连接到9216个TPU集群中所有144个4x4x4立方体的X+面上相同的TPU索引（4,3,2）。OCS X,3,2的输出端随后将连接到集群中每个立方体上相同的TPU索引，不过这次是在X-面上——因此它将连接到集群所有144个立方体上的TPU 1,3,2。下图展示了立方体A的X+面上的所有16个TPU如何通过16个OCS连接到立方体B的X-面上的16个TPU。</p>
+<p>这些连接使得任何立方体的“+”面都能与其他任何立方体的“-”面相连，从而在形成切片时实现立方体的完全可互换性。</p>
+<p>有两个限制需要简要指出。首先，特定面上同一索引的TPU永远不能直接连接到不同的索引——因此TPU 4,3,2永远不能配置为连接到TPU 1,2,3。其次，由于OCS本质上起到配线架的作用——连接在输入侧的TPU不能“回环”连接到同样连接在OCS输入侧的任何其他TPU——例如，TPU 4,3,2永远不能连接到TPU 4,3,3。因此，“+”面上的任何TPU都永远不能连接到其他任何立方体的“+”面，“-”面上的任何TPU也永远不能连接到其他任何立方体的“-”面。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!PgAw!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F961039f5-7304-4448-8ec3-354ba95581f2_2245x1261.png" style="zoom:50%;" /></p>
+<p>让我们进一步扩展，看看如何设置一个4x4x8的拓扑结构。在这种配置中，我们通过沿Z轴连接两个64 TPU的4x4x4立方体来扩展切片。在这种情况下，OCS将重新配置TPU 4,1,4所连接的光端口，使其现在连接到TPU 4,1,5，而不是像独立的4x4x4拓扑结构那样绕回连接到TPU 4,1,1。进一步扩展来看，这两个4x4x4 TPU立方体的每个立方体的Z-面和Z+面将各有16个光连接，总共有64根光纤连接到16个Z轴OCS中。</p>
+<p>需要提醒读者的是，下面所描绘的A立方体和B立方体不一定物理上相邻。相反，它们通过OCS连接，并且可能分别位于数据中心的完全不同的位置。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!doQR!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9ae9e2f-9d75-42af-b823-208452482bc8_2932x2196.png" style="zoom:50%;" /></p>
+<p>我们现在将转向一个更大的拓扑结构——16x16x16 拓扑结构，这使我们的 TPU 数量达到 4096 个。在这个拓扑结构中，我们总共使用 48 个 OCS 来连接 64 个立方体，每个立方体包含 64 个TPU。在下图中，每个彩色立方体代表一个包含 64 个 TPU 的 4x4x4 立方体。以右下角的 4x4x4 立方体为例，这个立方体通过 OCS 沿着 Y 轴与相邻的立方体相连。</p>
+<p>9216 个 TPU 的最大世界规模是由 144 个 4×4×4 的立方体构成的，每个立方体需要 96 个光学连接，总共需要 13824 个端口。将总端口需求除以288（每个 OCS 有 144 个输入端口和 144 个输出端口），意味着我们需要 48 个144×144 的 OCS 来支持这一最大世界规模。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!JPff!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F82dd5eef-20a0-449e-bf54-241a13f32f22_2676x2364.png" style="zoom:50%;" /></p>
+<h3 id="为什么要使用Google的ICI-3D-Torus架构？"><a href="#为什么要使用Google的ICI-3D-Torus架构？" class="headerlink" title="为什么要使用Google的ICI 3D Torus架构？"></a>为什么要使用Google的ICI 3D Torus架构？</h3><p><strong>世界规模：</strong>最明显的优势是TPUv7 Ironwood支持的9216个TPU的超大最大世界规模。尽管由于有效吞吐量降低这一缺点，9216的最大切片规模可能很少被使用，但数千个TPU的切片能够且确实被普遍使用。这远远大于商业加速器市场和其他定制芯片供应商中常见的64或72个GPU的世界规模。</p>
+<p><strong>可重构性与可替代性：</strong>光交叉连接器（OCSs）的使用意味着网络拓扑本身支持网络连接的重新配置，以支持大量不同的拓扑结构——理论上可达数千种。谷歌的文档网站列出了10种不同的组合（本节前面的图片），但这些只是最常见的3D切片形状，实际上还有更多可供选择。</p>
+<ul>
+<li>可重构性还为广泛多样的并行性打开了大门。在64或72个GPU的规模下，不同的并行组合通常局限于64的因数。而对于ICI横向扩展网络，实现能精确匹配所需的数据并行、张量并行和流水线并行组合的拓扑结构的可能性十分丰富。</li>
+<li>开放式连接系统（OCSs）允许将任何立方体的任意“+”面与任何其他立方体的“-”面相连，这一事实意味着立方体具有完全的可替代性。任何一组立方体都可以组成切片。因此，无论出现任何故障、用户需求变化或使用情况改变，都不会阻碍新拓扑切片的形成。</li>
+</ul>
+<p><strong>成本更低：</strong>谷歌的ICI网络成本低于大多数可扩展交换网络。尽管由于使用了环形器，所采用的FR光学器件可能略贵一些，但网状网络减少了所需交换机和端口的总数，并消除了交换机之间连接产生的成本。</p>
+<p><img src="https://substackcdn.com/image/fetch/$s_!5GC1!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F77d42a55-42e4-4788-843e-cfc50c720fb0_2054x942.png" alt=""></p>
+<p><strong>低延迟和更好的局部性：</strong>TPU之间使用直接链接意味着，对于物理位置彼此靠近或被重新配置为直接相互连接的TPU，可以实现更低的延迟。彼此靠近的TPU也具有更好的数据局部性。</p>
+<h2 id="谷歌的产业链信息"><a href="#谷歌的产业链信息" class="headerlink" title="谷歌的产业链信息"></a>谷歌的产业链信息</h2><p><img src="https://substackcdn.com/image/fetch/$s_!gSrk!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F78b1f0fd-ac35-4791-98d5-3c162727ffa3_1316x832.png" alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Basket 名称</th>
+<th>公司代码</th>
+<th>公司中文名称</th>
+<th>英文全称</th>
+<th>核心业务领域</th>
+<th>产业链角色</th>
+<th>与 Basket 主题关联（AI 芯片核心逻辑）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TPU Basket</strong>（张量处理单元相关）</td>
+<td>GOOG US</td>
+<td>谷歌</td>
+<td>Alphabet Inc.</td>
+<td>互联网搜索、AI 技术研发、TPU 芯片设计</td>
+<td>芯片设计（TPU 发明者）</td>
+<td>全球首个 TPU（张量处理单元）研发方，用于自身 AI 模型训练 / 推理，开源 TPU 架构生态</td>
+</tr>
+<tr>
+<td></td>
+<td>AVGO US</td>
+<td>博通</td>
+<td>Broadcom Inc.</td>
+<td>半导体组件、光纤通信、数据中心芯片</td>
+<td>芯片设计 + 零部件供应</td>
+<td>为 TPU 提供高速接口芯片、射频组件，支撑 TPU 与服务器的连接效率</td>
+</tr>
+<tr>
+<td></td>
+<td>LITE US</td>
+<td>鲁门特姆</td>
+<td>Lumentum Holdings Inc.</td>
+<td>光通信器件、激光组件、光学模块</td>
+<td>光学零部件供应</td>
+<td>提供 TPU 服务器所需的高速光模块（数据传输核心部件）</td>
+</tr>
+<tr>
+<td></td>
+<td>CLS US</td>
+<td>康宁</td>
+<td>Corning Incorporated</td>
+<td>特种玻璃、光纤、半导体封装材料</td>
+<td>材料供应</td>
+<td>为 TPU 芯片封装、服务器机箱提供高耐热 / 高透光玻璃基板</td>
+</tr>
+<tr>
+<td></td>
+<td>TTMI US</td>
+<td>泰科电子</td>
+<td>TE Connectivity Ltd.</td>
+<td>工业连接器、传感器、射频组件</td>
+<td>连接器件供应</td>
+<td>提供 TPU 与主板、服务器的高可靠性连接器（信号传输关键部件）</td>
+</tr>
+<tr>
+<td></td>
+<td>FIX US</td>
+<td>菲尼特里</td>
+<td>Finisar Corporation</td>
+<td>光通信模块、激光二极管、光学传感器</td>
+<td>光模块供应</td>
+<td>为 TPU 数据中心提供 100G/400G 高速光模块，保障 AI 算力集群通信</td>
+</tr>
+<tr>
+<td></td>
+<td>FLEX US</td>
+<td>伟创力</td>
+<td>Flex Ltd.</td>
+<td>电子制造服务（EMS）、服务器组装</td>
+<td>制造服务提供商</td>
+<td>承接 TPU 服务器的组装、测试业务，属于 AI 算力硬件制造环节</td>
+</tr>
+<tr>
+<td><strong>Nvidia Basket</strong>（英伟达生态相关）</td>
+<td>NVDA US</td>
+<td>英伟达</td>
+<td>NVIDIA Corporation</td>
+<td>GPU 设计、AI 芯片、自动驾驶芯片</td>
+<td>核心芯片设计（生态主导）</td>
+<td>全球 AI 算力核心（GPU/HOLOCAUST 芯片），Basket 核心龙头，支撑 AI 训练 / 推理</td>
+</tr>
+<tr>
+<td></td>
+<td>ORCL US</td>
+<td>甲骨文</td>
+<td>Oracle Corporation</td>
+<td>企业软件、云计算、数据库服务</td>
+<td>云服务 + 软件生态</td>
+<td>与 Nvidia 合作推出 Oracle Cloud Infrastructure（OCI），搭载 A100/H100 芯片提供 AI 云服务</td>
+</tr>
+<tr>
+<td></td>
+<td>MSFT US</td>
+<td>微软</td>
+<td>Microsoft Corporation</td>
+<td>操作系统、云计算（Azure）、AI 服务</td>
+<td>云服务 + 软件生态</td>
+<td>Azure 云深度集成 Nvidia GPU，推出 Copilot AI 工具，是 Nvidia 芯片最大云客户之一</td>
+</tr>
+<tr>
+<td></td>
+<td>SMCI US</td>
+<td>超微电脑</td>
+<td>Super Micro Computer Inc.</td>
+<td>高性能服务器、AI 算力集群硬件</td>
+<td>硬件集成商</td>
+<td>专为 Nvidia GPU 设计 “Ultra Server”，是 AI 算力集群核心硬件供应商</td>
+</tr>
+<tr>
+<td></td>
+<td>2382 TT</td>
+<td>台达电</td>
+<td>Delta Electronics, Inc.</td>
+<td>电源管理系统、工业自动化、散热方案</td>
+<td>配套硬件供应</td>
+<td>为 Nvidia GPU 服务器提供高效电源和散热解决方案（AI 算力功耗核心需求）</td>
+</tr>
+<tr>
+<td></td>
+<td>6601138 CH</td>
+<td>中芯国际</td>
+<td>Semiconductor Manufacturing International Corporation</td>
+<td>集成电路制造（晶圆代工）</td>
+<td>芯片制造</td>
+<td>国内唯一能量产 14nm 芯片的代工厂，潜在为 Nvidia 供应链提供中低端芯片制造支持</td>
+</tr>
+<tr>
+<td></td>
+<td>3231 TT</td>
+<td>大立光</td>
+<td>Largan Precision Co., Ltd.</td>
+<td>手机 / 服务器摄像头镜头、光学组件</td>
+<td>光学零部件供应</td>
+<td>为搭载 Nvidia 芯片的 AI 终端（如自动驾驶汽车、边缘计算设备）提供镜头</td>
+</tr>
+<tr>
+<td></td>
+<td>3017 TT</td>
+<td>日月光</td>
+<td>Advanced Semiconductor Engineering, Inc.</td>
+<td>芯片封装测试、半导体制造服务</td>
+<td>芯片封装测试</td>
+<td>为 Nvidia GPU 芯片提供先进封装（如 CoWoS）测试服务，提升芯片性能</td>
+</tr>
+<tr>
+<td></td>
+<td>APH US</td>
+<td>安费诺</td>
+<td>Amphenol Corporation</td>
+<td>高频连接器、射频电缆、传感器</td>
+<td>连接器件供应</td>
+<td>提供 Nvidia GPU 与服务器主板的高频连接器，保障算力传输稳定性</td>
+</tr>
+<tr>
+<td></td>
+<td>8210 TT</td>
+<td>联电</td>
+<td>United Microelectronics Corporation (UMC)</td>
+<td>集成电路制造（晶圆代工）</td>
+<td>芯片制造</td>
+<td>为 Nvidia 供应链提供中低端芯片代工（如汽车级 AI 芯片），补充台积电产能</td>
+</tr>
+<tr>
+<td></td>
+<td>2308 TT</td>
+<td>台积电</td>
+<td>Taiwan Semiconductor Manufacturing Company Limited</td>
+<td>全球领先集成电路制造（晶圆代工）</td>
+<td>核心芯片制造</td>
+<td>独家代工 Nvidia A100/H100 等高端 AI 芯片（5nm/3nm 工艺），是 Nvidia 生态核心制造支柱</td>
+</tr>
+<tr>
+<td></td>
+<td>2059 TT</td>
+<td>鸿海（富士康）</td>
+<td>Hon Hai Precision Industry Co., Ltd.</td>
+<td>电子制造服务（EMS）、服务器组装</td>
+<td>硬件制造集成商</td>
+<td>组装 Nvidia GPU 服务器、AI 算力集群，是 Nvidia 硬件最大代工伙伴之一</td>
+</tr>
+<tr>
+<td></td>
+<td>034020 KS</td>
+<td>三星电子</td>
+<td>Samsung Electronics Co., Ltd.</td>
+<td>半导体（存储 / 逻辑芯片）、电子设备</td>
+<td>芯片制造 + 存储供应</td>
+<td>为 Nvidia 提供 HBM（高带宽存储）芯片（AI GPU 核心配套），同时竞争高端芯片代工市场</td>
+</tr>
+<tr>
+<td><strong>Trainium Basket</strong>（亚马逊 AI 芯片相关）</td>
+<td>AMZN US</td>
+<td>亚马逊</td>
+<td><a target="_blank" rel="noopener" href="https://amazon.com/">Amazon.com</a>, Inc.</td>
+<td>电子商务、云计算（AWS）、Trainium 芯片设计</td>
+<td>芯片设计 + 云服务（生态主导）</td>
+<td>自研 Trainium 芯片（用于 AWS AI 训练），Basket 核心龙头，对标 Nvidia GPU</td>
+</tr>
+<tr>
+<td></td>
+<td>MRVL US</td>
+<td>迈威尔科技</td>
+<td>Marvell Technology Group Ltd.</td>
+<td>数据中心芯片、存储控制器、网络芯片</td>
+<td>配套芯片设计</td>
+<td>为 AWS Trainium 服务器提供存储控制器和网络接口芯片，优化数据传输效率</td>
+</tr>
+<tr>
+<td></td>
+<td>6669 TT</td>
+<td>联发科</td>
+<td>MediaTek Inc.</td>
+<td>移动芯片、AI 边缘芯片、物联网芯片</td>
+<td>芯片设计</td>
+<td>与 AWS 合作推出边缘 AI 芯片，兼容 Trainium 生态，支撑边缘 AI 推理场景</td>
+</tr>
+<tr>
+<td></td>
+<td>3661 TT</td>
+<td>纬创</td>
+<td>Wistron Corporation</td>
+<td>电子制造服务（EMS）、服务器组装、云计算硬件</td>
+<td>硬件制造集成商</td>
+<td>为 AWS 组装搭载 Trainium 芯片的 AI 服务器，属于 AWS 算力硬件核心代工厂</td>
+</tr>
+<tr>
+<td></td>
+<td>2345 TT</td>
+<td>奇美电子</td>
+<td>Chi Mei Optoelectronics Corp.</td>
+<td>显示面板、光学组件、半导体材料</td>
+<td>显示 / 材料供应</td>
+<td>为 AWS Trainium 服务器提供高分辨率显示面板（数据中心监控场景）和光学材料</td>
+</tr>
+<tr>
+<td></td>
+<td>ALAB US</td>
+<td>奥罗拉微电子</td>
+<td>Aurora Labs Ltd.</td>
+<td>半导体设计工具、AI 芯片验证方案</td>
+<td>设计工具供应</td>
+<td>为 Trainium 芯片提供设计验证工具，加速芯片研发和量产效率</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a target="_blank" rel="noopener" href="https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the">(SemiAnalysis) TPUv7: Google Takes a Swing at the King</a></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>GPU 与 TPU 的未来竞争格局态势</p><p><a href="http://vincentgaohj.github.io/Blog/2025/12/03/TPU 与 GPU 的未来竞争格局态势/">http://vincentgaohj.github.io/Blog/2025/12/03/TPU 与 GPU 的未来竞争格局态势/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-12-03</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-12-03</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AI/">AI</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/"><span class="level-item">大模型的价格趋势与定价艺术</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://vincentgaohj.github.io/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/';
+            this.page.identifier = '2025/12/03/TPU 与 GPU 的未来竞争格局态势/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'vincentgaohj' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><img src="/Blog/gallery/GPU%E4%B8%8ETPU%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/tpu-vs-gpu.png.png" alt="GPU 与 TPU 的未来竞争格局态势"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-12-03T03:38:07.000Z">2025-12-03</time></p><p class="title"><a href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/">GPU 与 TPU 的未来竞争格局态势</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/"><img src="/Blog/gallery/Deploying-AWS-Lambda-with-Terraform/bailey_zindel.jpg" alt="大模型的价格趋势与定价艺术"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-10-14T02:32:09.000Z">2025-10-14</time></p><p class="title"><a href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/">大模型的价格趋势与定价艺术</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/09/24/State-of-AI-2025/"><img src="/Blog/gallery/State-of-AI-2025/intelligence.png" alt="State of AI 2025"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-09-24T03:38:07.000Z">2025-09-24</time></p><p class="title"><a href="/Blog/2025/09/24/State-of-AI-2025/">State of AI 2025</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/"><img src="/Blog/gallery/What-is-Knative-K-for-Kubernetes-Native/knative.png" alt="What is Knative?  K for Kubernetes + Native"></a></figure><div class="media-content"><p class="date"><time dateTime="2022-06-22T02:22:34.000Z">2022-06-22</time></p><p class="title"><a href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/">What is Knative?  K for Kubernetes + Native</a></p><p class="categories"><a href="/Blog/categories/Cloud-Native/">Cloud Native</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/">Kubernetes</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/Knative/">Knative</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2022/04/11/Deploying-AWS-Lambda-with-Terraform/"><img src="/Blog/gallery/Deploying-AWS-Lambda-with-Terraform/bailey_zindel.jpg" alt="Deploying AWS Lambda with Terraform"></a></figure><div class="media-content"><p class="date"><time dateTime="2022-04-11T06:02:44.000Z">2022-04-11</time></p><p class="title"><a href="/Blog/2022/04/11/Deploying-AWS-Lambda-with-Terraform/">Deploying AWS Lambda with Terraform</a></p><p class="categories"><a href="/Blog/categories/Terraform/">Terraform</a> / <a href="/Blog/categories/Terraform/Serverless/">Serverless</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Blog/categories/AI/"><span class="level-start"><span class="level-item">AI</span></span><span class="level-end"><span class="level-item tag">3</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AI/Analytics/"><span class="level-start"><span class="level-item">Analytics</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Machine-Learning-Specialty/"><span class="level-start"><span class="level-item">AWS Certified Machine Learning Specialty</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/"><span class="level-start"><span class="level-item">AWS Certified Solution Architect Associate</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Architecture/"><span class="level-start"><span class="level-item">Architecture</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Overview/"><span class="level-start"><span class="level-item">Overview</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Deep-Learning/"><span class="level-start"><span class="level-item">Deep Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NMF/"><span class="level-start"><span class="level-item">NMF</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Natural-Language-Processing/"><span class="level-start"><span class="level-item">Natural Language Processing</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Reinforce-Learning/"><span class="level-start"><span class="level-item">Reinforce Learning</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Big-Data/"><span class="level-start"><span class="level-item">Big Data</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Big-Data/Spark/"><span class="level-start"><span class="level-item">Spark</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/"><span class="level-start"><span class="level-item">Cloud Native</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/"><span class="level-start"><span class="level-item">Kubernetes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/Knative/"><span class="level-start"><span class="level-item">Knative</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Development/"><span class="level-start"><span class="level-item">Development</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Development/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Full-Stack/"><span class="level-start"><span class="level-item">Full Stack</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Log-Stack/"><span class="level-start"><span class="level-item">Log Stack</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/English-Study/"><span class="level-start"><span class="level-item">English Study</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/"><span class="level-start"><span class="level-item">Finance</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Finance/Asset-Management/"><span class="level-start"><span class="level-item">Asset Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/Econometrics/"><span class="level-start"><span class="level-item">Econometrics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Lifestyle/"><span class="level-start"><span class="level-item">Lifestyle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Terraform/"><span class="level-start"><span class="level-item">Terraform</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Terraform/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Blog/tags/AI/"><span class="tag">AI</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS/"><span class="tag">AWS</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS-Serverless/"><span class="tag">AWS - Serverless</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Apps/"><span class="tag">Apps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/BERT/"><span class="tag">BERT</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/CNN/"><span class="tag">CNN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified/"><span class="tag">Certified</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified-Machine-Learning-Specialty/"><span class="tag">Certified Machine Learning - Specialty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Native-Kubernetes/"><span class="tag">Cloud Native - Kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Clustering/"><span class="tag">Clustering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Coffee/"><span class="tag">Coffee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep-Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Django/"><span class="tag">Django</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/EKK/"><span class="tag">EKK</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Econometrics/"><span class="tag">Econometrics</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/GPT-2/"><span class="tag">GPT-2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/JetPack/"><span class="tag">JetPack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Knative/"><span class="tag">Knative</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Kotlin/"><span class="tag">Kotlin</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Log/"><span class="tag">Log</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Machine-Learning/"><span class="tag">Machine-Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NLP/"><span class="tag">NLP</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NMF/"><span class="tag">NMF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Overview-of-AWS/"><span class="tag">Overview of AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/PyTorch/"><span class="tag">PyTorch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Reinforce-Learning/"><span class="tag">Reinforce Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless/"><span class="tag">Serverless</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless-Terraform/"><span class="tag">Serverless - Terraform</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Spark/"><span class="tag">Spark</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TOEFL/"><span class="tag">TOEFL</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Word2Vec/"><span class="tag">Word2Vec</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Blog/img/self.jpg" alt="Haojun(Vincent) Gao"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Haojun(Vincent) Gao</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/Blog/archives"><p class="title">49</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/Blog/categories"><p class="title">32</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/Blog/tags"><p class="title">37</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#核心观点"><span class="level-left"><span class="level-item">1</span><span class="level-item">核心观点</span></span></a></li><li><a class="level is-mobile" href="#谷歌与-Anthropic-的交易细节"><span class="level-left"><span class="level-item">2</span><span class="level-item">谷歌与 Anthropic 的交易细节</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#交易细节"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">交易细节</span></span></a></li><li><a class="level is-mobile" href="#WULF-Compute-与-Fluidstack-的交易，以及谷歌"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">WULF Compute 与 Fluidstack 的交易，以及谷歌</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Ironwood-已接近-Blackwell"><span class="level-left"><span class="level-item">3</span><span class="level-item">Ironwood 已接近 Blackwell</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#TPU-设计理念明显转变"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">TPU 设计理念明显转变</span></span></a></li><li><a class="level is-mobile" href="#每总拥有成本（TCO-Total-Cost-of-Ownership）的实际性能"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">每总拥有成本（TCO Total Cost of Ownership）的实际性能</span></span></a></li><li><a class="level is-mobile" href="#TPU-v7-的经济效益"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">TPU v7 的经济效益</span></span></a></li></ul></li><li><a class="level is-mobile" href="#芯片间互连（ICI）——扩展横向扩展世界规模的关键"><span class="level-left"><span class="level-item">4</span><span class="level-item">芯片间互连（ICI）——扩展横向扩展世界规模的关键</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#基本组成单元"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">基本组成单元</span></span></a></li><li><a class="level is-mobile" href="#将多个-64-TPU-Cube-连接在一起"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">将多个 64 TPU Cube 连接在一起</span></span></a></li><li><a class="level is-mobile" href="#为什么要使用Google的ICI-3D-Torus架构？"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">为什么要使用Google的ICI 3D Torus架构？</span></span></a></li></ul></li><li><a class="level is-mobile" href="#谷歌的产业链信息"><span class="level-left"><span class="level-item">5</span><span class="level-item">谷歌的产业链信息</span></span></a></li><li><a class="level is-mobile" href="#Reference"><span class="level-left"><span class="level-item">6</span><span class="level-item">Reference</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Blog/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a><p class="is-size-7"><span>&copy; 2025 Haojun(Vincent) Gao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Gallery" href="https://www.gaohaojun.com/"><i class="fab fa-fighter-jet"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Linkedin" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-linkedin"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Instagram" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-instagram"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Blog/js/column.js"></script><script src="/Blog/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Blog/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/Blog/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Blog/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Blog/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
