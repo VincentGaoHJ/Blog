@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>OpenRouter 的 100 万亿 Tokens 实证研究 - Gao Haojun</title><link rel="manifest" href="/Blog/manifest.json"><meta name="application-name" content="Gao Haojun"><meta name="msapplication-TileImage" content="/img/favicon.jpeg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gao Haojun"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="2025年12月份，OpenRouter 发布了在其平台上使用的 100 万亿 Tokens 的实证研究，详细且全面的介绍了当前真实的交互数据。其中的一些结论还是很有启发性，基于此，可以展开数据驱动的 LLM 系统的设计与优化：关于开发者和终端用户在各种任务中调用模型的截面数据分析，模型与任务的双向匹配，使用情况如何因地理区域和时间而变化，以及定价和新模型发布等外部因素如何影响用户行为。 本文分析"><meta property="og:type" content="blog"><meta property="og:title" content="OpenRouter 的 100 万亿 Tokens 实证研究"><meta property="og:url" content="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><meta property="og:site_name" content="Gao Haojun"><meta property="og:description" content="2025年12月份，OpenRouter 发布了在其平台上使用的 100 万亿 Tokens 的实证研究，详细且全面的介绍了当前真实的交互数据。其中的一些结论还是很有启发性，基于此，可以展开数据驱动的 LLM 系统的设计与优化：关于开发者和终端用户在各种任务中调用模型的截面数据分析，模型与任务的双向匹配，使用情况如何因地理区域和时间而变化，以及定价和新模型发布等外部因素如何影响用户行为。 本文分析"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"><meta property="article:published_time" content="2025-12-10T03:37:07.000Z"><meta property="article:modified_time" content="2025-12-10T07:09:22.037Z"><meta property="article:author" content="Haojun(Vincent) Gao"><meta property="article:tag" content="AI"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"},"headline":"OpenRouter 的 100 万亿 Tokens 实证研究","image":["http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"],"datePublished":"2025-12-10T03:37:07.000Z","dateModified":"2025-12-10T07:09:22.037Z","author":{"@type":"Person","name":"Haojun(Vincent) Gao"},"publisher":{"@type":"Organization","name":"Gao Haojun","logo":{"@type":"ImageObject","url":"http://vincentgaohj.github.io/img/logo.jpg"}},"description":"2025年12月份，OpenRouter 发布了在其平台上使用的 100 万亿 Tokens 的实证研究，详细且全面的介绍了当前真实的交互数据。其中的一些结论还是很有启发性，基于此，可以展开数据驱动的 LLM 系统的设计与优化：关于开发者和终端用户在各种任务中调用模型的截面数据分析，模型与任务的双向匹配，使用情况如何因地理区域和时间而变化，以及定价和新模型发布等外部因素如何影响用户行为。 本文分析"}</script><link rel="canonical" href="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><link rel="icon" href="/Blog/img/favicon.jpeg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Blog/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>OpenRouter 的 100 万亿 Tokens 实证研究 - Gao Haojun</title><link rel="manifest" href="/Blog/manifest.json"><meta name="application-name" content="Gao Haojun"><meta name="msapplication-TileImage" content="/img/favicon.jpeg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gao Haojun"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="2025年12月，OpenRouter发布了基于其平台100万亿Tokens使用数据的实证研究报告，全面揭示了当前真实的AI交互模式。这些发现极具启发性，为数据驱动的LLM系统设计与优化提供了重要参考：报告深入分析了开发者和终端用户在不同任务中调用模型的情况、模型与任务的双向匹配关系、使用模式随地理区域和时间的变化规律，以及定价和新模型发布等外部因素对用户行为的影响。 本文重点分析开源生态、智能体"><meta property="og:type" content="blog"><meta property="og:title" content="OpenRouter 的 100 万亿 Tokens 实证研究"><meta property="og:url" content="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><meta property="og:site_name" content="Gao Haojun"><meta property="og:description" content="2025年12月，OpenRouter发布了基于其平台100万亿Tokens使用数据的实证研究报告，全面揭示了当前真实的AI交互模式。这些发现极具启发性，为数据驱动的LLM系统设计与优化提供了重要参考：报告深入分析了开发者和终端用户在不同任务中调用模型的情况、模型与任务的双向匹配关系、使用模式随地理区域和时间的变化规律，以及定价和新模型发布等外部因素对用户行为的影响。 本文重点分析开源生态、智能体"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"><meta property="article:published_time" content="2025-12-10T03:37:07.000Z"><meta property="article:modified_time" content="2025-12-10T08:26:16.340Z"><meta property="article:author" content="Haojun(Vincent) Gao"><meta property="article:tag" content="AI"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"},"headline":"OpenRouter 的 100 万亿 Tokens 实证研究","image":["http://vincentgaohj.github.io/Blog/gallery/OpenRouter-100-Tokens/tokens.png"],"datePublished":"2025-12-10T03:37:07.000Z","dateModified":"2025-12-10T08:26:16.340Z","author":{"@type":"Person","name":"Haojun(Vincent) Gao"},"publisher":{"@type":"Organization","name":"Gao Haojun","logo":{"@type":"ImageObject","url":"http://vincentgaohj.github.io/img/logo.jpg"}},"description":"2025年12月，OpenRouter发布了基于其平台100万亿Tokens使用数据的实证研究报告，全面揭示了当前真实的AI交互模式。这些发现极具启发性，为数据驱动的LLM系统设计与优化提供了重要参考：报告深入分析了开发者和终端用户在不同任务中调用模型的情况、模型与任务的双向匹配关系、使用模式随地理区域和时间的变化规律，以及定价和新模型发布等外部因素对用户行为的影响。 本文重点分析开源生态、智能体"}</script><link rel="canonical" href="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><link rel="icon" href="/Blog/img/favicon.jpeg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Blog/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
         (function() {
             var hm = document.createElement("script");
             hm.src = "//hm.baidu.com/hm.js?192470116504c325dfc73c99f66225ed";
@@ -39,67 +39,29 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/OpenRouter-100-Tokens/tokens.png" alt="OpenRouter 的 100 万亿 Tokens 实证研究"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2025-12-10T03:37:07.000Z" title="2025/12/10 11:37:07">2025-12-10</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">2 hours read (About 17200 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">OpenRouter 的 100 万亿 Tokens 实证研究</h1><div class="content"><p>2025年12月份，<a target="_blank" rel="noopener" href="https://openrouter.ai/">OpenRouter</a> 发布了在其平台上使用的 100 万亿 Tokens 的实证研究，详细且全面的介绍了当前真实的交互数据。其中的一些结论还是很有启发性，基于此，可以展开数据驱动的 LLM 系统的设计与优化：<strong>关于开发者和终端用户在各种任务中调用模型的截面数据分析，模型与任务的双向匹配，使用情况如何因地理区域和时间而变化，以及定价和新模型发布等外部因素如何影响用户行为</strong>。</p>
-<p>本文分析了关于开源生态，智能体趋势，以及用户留存，省去了 OpenRouter 针对地理区域（因其地理区域的分析缺少中国的样本）和成本定价的分析（后续单独分析）。</p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/OpenRouter-100-Tokens/tokens.png" alt="OpenRouter 的 100 万亿 Tokens 实证研究"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2025-12-10T03:37:07.000Z" title="2025/12/10 11:37:07">2025-12-10</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">2 hours read (About 15096 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">OpenRouter 的 100 万亿 Tokens 实证研究</h1><div class="content"><p>2025年12月，<a target="_blank" rel="noopener" href="https://openrouter.ai/">OpenRouter</a>发布了基于其平台100万亿Tokens使用数据的实证研究报告，全面揭示了当前真实的AI交互模式。这些发现极具启发性，为数据驱动的LLM系统设计与优化提供了重要参考：<strong>报告深入分析了开发者和终端用户在不同任务中调用模型的情况、模型与任务的双向匹配关系、使用模式随地理区域和时间的变化规律，以及定价和新模型发布等外部因素对用户行为的影响</strong>。</p>
+<p>本文重点分析开源生态、智能体发展趋势和用户留存机制，省略了OpenRouter关于地理区域（因缺少中国样本）和成本定价的分析（后续单独讨论）。</p>
 <span id="more"></span>
 
 <p>[TOC]</p>
 <hr>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>基于OpenRouter平台处理的100万亿Tokens数据分析，本研究揭示了AI大语言模型生态系统的关键发展趋势和模式：</p>
-<h3 id="开源生态的双重结构"><a href="#开源生态的双重结构" class="headerlink" title="开源生态的双重结构"></a>开源生态的双重结构</h3><p>AI大语言模型生态系统呈现出持久的双重结构：开源模型与闭源模型形成**30% vs 70%**的平衡格局。闭源系统继续定义可靠性和性能上限，特别适用于受监管或企业工作负载；而开源模型凭借成本效益、透明度和可定制性优势，成为某些工作负载的有吸引力的选择。中国开源模型从2024年末几乎可忽略不计的基数稳步增长，在某些周内占比接近30%，平均约占13.0%，而其他地区的开源模型平均占13.7%。</p>
-<h3 id="主要玩家格局演变"><a href="#主要玩家格局演变" class="headerlink" title="主要玩家格局演变"></a>主要玩家格局演变</h3><p>DeepSeek以14.37万亿Tokens一骑绝尘，但主导地位有所下降，整个开源生态朝着多元化方向发展。Qwen以5.59万亿Tokens位居第二，Meta LLaMA和Mistral AI分别处理3.96万亿和2.92万亿Tokens。到如今，没有任何单一开源模型的Tokens消耗超过整个生态的25%，分布更为平均，表明用户正在从多样化的选择中发现价值。</p>
-<h3 id="模型规模趋势"><a href="#模型规模趋势" class="headerlink" title="模型规模趋势"></a>模型规模趋势</h3><p>模型规模呈现明显分化：小型模型从60%下降至12%，持续被市场抛弃；中型模型从0%增长至30%，稳定占据重要市场，用户寻求能力与效率的平衡；大型模型从40%提升至50%，成为绝对主流选择。这种分化反映了市场的成熟，用户无需在两个极端之间权衡，而是根据具体需求选择中型模型（成本效率平衡）或大型模型（追求最佳效果）。</p>
-<h3 id="业务匹配特征"><a href="#业务匹配特征" class="headerlink" title="业务匹配特征"></a>业务匹配特征</h3><p>全球开源模型中角色扮演占52%，编程占20%，两者合计占据大部分开源Tokens。中国开源模型中编程占39%高于全球，角色扮演占33%低于全球，更偏向技术和生产力导向。编程领域闭源模型主导市场，但开源竞争激烈，用户粘性低，新模型可快速抢占市场；角色扮演领域开源占60%且持续上升，开源生态具有天然优势，未来可能主导该市场。</p>
-<h3 id="智能体推理兴起"><a href="#智能体推理兴起" class="headerlink" title="智能体推理兴起"></a>智能体推理兴起</h3><p>推理模型占比从低占比稳步上升至超过50%，成为实际工作负载的默认路径。工具调用逐步上升至15%，集中在针对Agent推理明确优化的模型中。Prompt长度从1.5K增长至6K以上（增长4倍），Completion长度从150增长至400（增长3倍），编程是Prompt长度增长的主要驱动力，编程提示词平均长度是通用提示词的3-4倍。模型正越来越多地扮演分析引擎的角色，处理大量材料并生成高价值见解。</p>
-<h3 id="使用类别集中化"><a href="#使用类别集中化" class="headerlink" title="使用类别集中化"></a>使用类别集中化</h3><p>编程是主导且不断增长的类别，从11%增长至50%以上，LLM已融入开发者工作流程并实现常态化。Claude持续占据60%编程市场份额，但最近有下滑迹象，首次跌破60%阈值；OpenAI在编程领域从2%快速扩大至8%，Google稳定在15%。现实世界中LLM使用高度集中在一小部分可重复、高频率的任务上，而非均匀探索性。</p>
-<h3 id="模型领域专业化"><a href="#模型领域专业化" class="headerlink" title="模型领域专业化"></a>模型领域专业化</h3><p>不同模型在不同领域展现独特优势：Anthropic的Claude主要用于编程和技术任务，占比超过80%；Google的模型用途多样化，涵盖法律、科学、技术以及常识性查询；DeepSeek的使用主要体现在角色扮演和日常互动上，占比超过66%；Qwen在编程任务上专注度较高，占比40%-60%。多模型生态系统正在形成，无单一模型能覆盖所有使用场景。</p>
-<h3 id="用户留存机制"><a href="#用户留存机制" class="headerlink" title="用户留存机制"></a>用户留存机制</h3><p>基础用户群代表工作负载已实现深度且持久的工作负载-模型适配，一旦适配确立就会产生经济和认知上的惯性。模型与工作负载完美匹配的”灰姑娘”时刻转瞬即逝，只出现在模型被视为”前沿”的那一刻。DeepSeek展现”回旋镖效应”，部分流失用户在尝试其他方案后回归，确认其专业技术性能和成本效益优势。基础用户群体是真正技术进步的印记，标志着人工智能模型从新奇事物转变为必需品的节点。</p>
-<h3 id="核心观点总结"><a href="#核心观点总结" class="headerlink" title="核心观点总结"></a>核心观点总结</h3><p><strong>1. 开源生态的双重结构</strong></p>
-<ul>
-<li>开源与闭源模型形成 <strong>30% vs 70%</strong> 的平衡格局</li>
-<li>DeepSeek 主导但地位下降，生态朝着多元化发展</li>
-<li>中型模型（30%）成为重要市场，大模型（50%）是主流，小模型（12%）被市场抛弃</li>
-</ul>
-<p><strong>2. 业务匹配的差异化</strong></p>
-<ul>
-<li><strong>全球开源模型</strong>：角色扮演（52%）和编程（20%）是主要用途</li>
-<li><strong>中国开源模型</strong>：编程（39%）和技术生产力导向，角色扮演（33%）低于全球</li>
-<li>角色扮演领域开源占60%，未来可能主导；编程领域闭源主导但竞争激烈</li>
-</ul>
-<p><strong>3. 智能体推理的兴起</strong></p>
-<ul>
-<li>推理模型占比从低占比<strong>稳步上升至超过50%</strong>，成为实际工作负载的默认路径</li>
-<li>工具调用逐步上升至<strong>15%</strong>，集中在Agent优化的模型中</li>
-<li>Prompt长度增长<strong>4倍</strong>（1.5K→6K+），Completion长度增长<strong>3倍</strong>（150→400），主要驱动力是编程需求</li>
-</ul>
-<p><strong>4. 使用类别的集中化</strong></p>
-<ul>
-<li><strong>编程</strong>是主导且不断增长的类别，从11%增长至50%+</li>
-<li>Claude持续占据60%编程市场份额，但OpenAI从2%快速扩大至8%</li>
-<li>大多数类别由1-2种使用模式主导，金融、学术、法律等分散分布</li>
-</ul>
-<p><strong>5. 模型与领域的专业化</strong></p>
-<ul>
-<li>不同模型在不同领域展现独特优势：Anthropic专注编程，DeepSeek专注角色扮演，Google通用信息引擎</li>
-<li><strong>多模型生态系统</strong>正在形成，无单一模型能覆盖所有使用场景</li>
-</ul>
-<p><strong>6. 用户留存的”灰姑娘水晶鞋”现象</strong></p>
-<ul>
-<li>基础用户群代表工作负载-模型适配，产生强烈锁定效应</li>
-<li>模型与工作负载完美匹配的”灰姑娘”时刻转瞬即逝，但对长期采用起决定性作用</li>
-<li>DeepSeek展现”回旋镖效应”，用户尝试其他方案后回归</li>
-</ul>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>基于OpenRouter平台处理的100万亿Tokens数据分析，本研究揭示了大语言模型生态系统的关键发展趋势：</p>
+<p><strong>第一章分析开源生态演进</strong>。随着DeepSeek的崛起，LLM生态系统呈现出稳定的双重结构：开源与闭源模型形成30% vs 70%的平衡格局。闭源系统继续定义性能上限，而开源模型凭借成本效益和可定制性优势，成为特定工作负载的首选。中国开源模型从2024年末几乎为零的基数稳步增长，周占比最高接近30%，平均占比13.0%。模型市场明显分化：小型模型从60%降至12%，逐渐被市场淘汰；中型模型从0%增长至30%，成为重要市场；大型模型从40%提升至50%，成为主流选择。这种分化反映了市场的成熟，用户不再需要在极端之间权衡，而是根据需求选择中型模型（平衡成本效率）或大型模型（追求最佳效果）。</p>
+<p><strong>第二章探讨智能体推理的兴起</strong>。推理模型占比从低位稳步上升至超过50%，成为实际工作负载的默认选择。工具调用逐步上升至15%，主要集中在针对智能体推理优化的模型中。提示词长度从1.5K增长至6K以上（增长4倍），补全长度从150增长至400（增长3倍），编程是提示词增长的主要驱动力，编程提示词平均长度是通用提示词的3-4倍。模型正越来越多地扮演分析引擎角色，处理大量材料并生成高价值见解。</p>
+<p><strong>第三章分析模型在不同业务中的不均匀发展</strong>。编程是主导且持续增长的类别，从11%增长至50%以上，LLM已深度融入开发者工作流程。Claude持续占据60%编程市场份额，但近期出现下滑迹象，首次跌破60%阈值；OpenAI在编程领域从2%快速扩大至8%，Google稳定在15%。现实世界中LLM使用高度集中在少数可重复、高频次任务上，而非均匀探索。</p>
+<p>第四章揭示了顶级实验室的野心：You Get What You Trained, and You Train What You What。各大顶尖公司的战略意图在模型的能力上体现的淋漓尽致：Anthropic 的 Claude 主要用于编程和技术任务，占比超过80%；Google 的模型用途多样化，涵盖法律、科学、技术以及常识性查询；DeepSeek 的使用主要体现在角色扮演和日常互动上，占比超过66%；Qwen 在编程任务上专注度较高，占比40%-60%。一个多模型的生态系统正在形成，无单一模型能覆盖所有使用场景。</p>
+<p><strong>第五章重点分析用户留存机制</strong>。基础用户群代表工作负载与模型已实现深度适配，一旦适配确立就会产生经济和认知惯性。模型与工作负载完美匹配的”灰姑娘时刻”转瞬即逝，只出现在模型被视为”前沿”的那一刻。DeepSeek展现出”回旋镖效应”，部分流失用户在尝试其他方案后回归，确认其专业性能和成本效益优势。基础用户群体是技术进步的真正标志，标志着AI模型从新奇事物转变为必需品的转折点。</p>
 <hr>
-<h2 id="开源生态：双重结构，DeepSeek，中型模型与角色扮演"><a href="#开源生态：双重结构，DeepSeek，中型模型与角色扮演" class="headerlink" title="开源生态：双重结构，DeepSeek，中型模型与角色扮演"></a>开源生态：双重结构，DeepSeek，中型模型与角色扮演</h2><h3 id="持久的双重结构：70-vs-30"><a href="#持久的双重结构：70-vs-30" class="headerlink" title="持久的双重结构：70% vs 30%"></a>持久的双重结构：70% vs 30%</h3><blockquote>
+<h2 id="一、开源生态：双重结构，DeepSeek，中型模型与角色扮演"><a href="#一、开源生态：双重结构，DeepSeek，中型模型与角色扮演" class="headerlink" title="一、开源生态：双重结构，DeepSeek，中型模型与角色扮演"></a>一、开源生态：双重结构，DeepSeek，中型模型与角色扮演</h2><h3 id="1-1-持久的双重结构：70-vs-30"><a href="#1-1-持久的双重结构：70-vs-30" class="headerlink" title="1.1 持久的双重结构：70% vs 30%"></a>1.1 持久的双重结构：70% vs 30%</h3><blockquote>
 <p><strong>总结：大语言模型生态系统中存在一种持久的双重结构：开源模型与闭源模型。目前的平衡点约为30%。</strong></p>
 <p>专有系统继续定义着可靠性和性能的上限，特别是在受监管或企业工作负载方面。相比之下，开源模型具有成本效益、透明度和可定制性，使其成为某些工作负载的有吸引力的选择。这些模型并非相互排斥，相反，它们在开发者和基础设施提供商日益青睐的多模型堆栈中相互补充。</p>
 </blockquote>
 <p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-split.png&w=3840&q=75" alt="Open vs closed source models split. Weekly share of total token volume by source type. Lighter blue shades represent open-weight models (China vs Rest-of-World), while dark blue corresponds to proprietary (closed) offerings. Vertical dashed lines mark the release of key open weight models including Llama 3.3 70B, DeepSeek V3, DeepSeek R1, Kimi K2, GPT OSS family, and Qwen 3 Coder."></p>
-<p>开源模型的使用量增长和主要开源模型的发布时间是高度吻合的，<strong>这表明像 DeepSeek 这样非常有竞争力的开源项目，可以在发布之时迅速的被采纳并保持一定的增长态势。</strong></p>
+<p>开源模型使用量的增长与主要开源模型的发布时间高度吻合，<strong>这表明像DeepSeek这样有竞争力的开源项目，能够在发布后迅速获得市场认可并保持增长势头。</strong></p>
 <p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-token-share.png&w=3840&q=75" alt="**Weekly token volume by model type.** Stacked bar chart showing total token usage by model category over time. Dark red corresponds to proprietary models (*Closed*), orange represents Chinese open source models (*Chinese OSS*), and teal indicates open source models developed outside China (*RoW OSS*). The chart highlights a gradual increase in OSS token share through 2025, particularly among Chinese OSS models beginning in mid-year."></p>
-<p>从2024年末几乎可以忽略不计的基数（周占比低至1.2%）开始，中国的开源模型稳步获得关注，在某些周内占所有模型总使用量的比例接近30%。<strong>在这一年的时间里，中国开源模型的周 Tokens 量平均约占13.0%</strong>，强劲增长主要集中在2025年下半年。相比之下，其他地区的开源模型平均占13.7%，而其他地区的专有模型则保持着最大份额（平均70%）。中国开源模型的扩张不仅反映了其具有竞争力的质量，还体现了快速的迭代和密集的发布周期。像 Qwen 和 DeepSeek 这样的模型保持着定期发布，能够快速适应新兴的工作负载。这种模式极大地重塑了开源领域，并推动了全球在大语言模型领域的竞争。</p>
+<p>从2024年末几乎可以忽略不计的基数（周占比低至1.2%）开始，中国开源模型稳步获得关注，某些周内占所有模型总使用量的比例接近30%。<strong>这一年中，中国开源模型的周Tokens量平均占比约13.0%</strong>，强劲增长主要集中在2025年下半年。相比之下，其他地区开源模型平均占13.7%，而专有模型保持最大份额（平均70%）。中国开源模型的扩张不仅体现了其竞争力，还反映了快速迭代和密集发布周期。像Qwen和DeepSeek这样的模型保持定期发布，能够快速适应新兴工作负载。这种模式极大重塑了开源领域，推动了全球大语言模型领域的竞争。</p>
 <hr>
-<h3 id="主要玩家：DeepSeek-vs-Others"><a href="#主要玩家：DeepSeek-vs-Others" class="headerlink" title="主要玩家：DeepSeek vs Others"></a>主要玩家：DeepSeek vs Others</h3><blockquote>
+<h3 id="1-2-主要玩家：DeepSeek-vs-Others"><a href="#1-2-主要玩家：DeepSeek-vs-Others" class="headerlink" title="1.2 主要玩家：DeepSeek vs Others"></a>1.2 主要玩家：DeepSeek vs Others</h3><blockquote>
 <p><strong>总结：DeepSeek 一骑绝尘，但主导地位有所下降，整个开源生态在朝着多元化的方向发展。</strong></p>
 </blockquote>
 <p>下表按模型划分的总 Tokens 量（2024年11月–2025年11月），反映了 OpenRouter 上所有模型的总使用量。</p>
@@ -151,16 +113,16 @@
 <td align="right">0.82</td>
 </tr>
 </tbody></table>
-<p>**这种近乎垄断的格局在“夏季拐点”（2025年年中）之后被打破。**此后，市场变得更加复杂，用途也大幅多样化。通义千问的模型、Minimax 的 M2、MoonshotAI 的 Kimi K2 以及 OpenAI 的 GPT-OSS 系列等新进入者都迅速发展，承接了大量需求，往往在发布后几周内就实现了生产级别的应用。<strong>这表明，开源社区和人工智能初创企业通过推出具备新颖功能或更高效率的模型，能够快速获得市场认可。</strong></p>
+<p>**这种近乎垄断的格局在”夏季拐点”（2025年年中）后被打破。**此后，市场变得更加复杂，用途也大幅多样化。通义千问、Minimax的M2、MoonshotAI的Kimi K2以及OpenAI的GPT-OSS系列等新进入者迅速发展，承接大量需求，往往在发布后几周内就实现生产级别应用。<strong>这表明，开源社区和AI初创企业通过推出具备新颖功能或更高效率的模型，能够快速获得市场认可。</strong></p>
 <p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/top-15-oss-models-over-time.png&w=3840&q=75" alt="**随着时间推移的前15大开源模型。** 领先开源模型的每周相对 Tokens 份额（堆积面积图）。每个彩色条带代表一个模型对开源 Tokens 总量的贡献。随着时间推移，色彩范围的扩大表明，近几个月的竞争格局更加分散，没有出现单一主导模型。"></p>
-<p>到如今，没有任何一个单一的开源模型的 Tokens 消耗超过整个生态的 25%，分布也更为平均。这也说明了一个重要的事实：用户正在从多样化的选择中发现价值——无论是风格，还是多样化的能力——而非直接默认一个最佳的选项。</p>
+<p>如今，没有任何单一开源模型的Tokens消耗超过整个生态的25%，分布更加均衡。这说明一个重要事实：用户正在从多样化选择中发现价值——无论是风格还是能力——而非直接默认选择一个最佳选项。</p>
 <ul>
-<li>**顶级多样性：**曾经有一个家族（深度求索）主导着开源生态的使用，而现在我们越来越多地模型各自保持着可观的份额。没有任何一个开源模型能持续占据超过约20%–25%的市场份额。</li>
-<li>**新进者的快速扩张：**性能出众的新型开放模型能在几周内获得大量使用。例如，MoonshotAI的模型迅速发展，可与老牌开源领军者相抗衡，甚至像MiniMax这样的新入局者在一个季度内就从零做到了可观的流量。这表明用户转换成本低，且用户群体乐于尝试新事物。</li>
-<li>**迭代优势：**深度求索（DeepSeek）长期位居榜首，这凸显了持续改进的重要性。深度求索的连续发布（Chat-V3、R1等）使其即便在挑战者涌现的情况下仍保持竞争力。那些在发展中停滞不前的开源模型，其市场份额往往会被那些在前沿领域频繁更新或针对特定领域微调的模型所抢占。</li>
+<li>**顶级多样性：**曾经由DeepSeek主导开源生态，现在各模型保持可观份额。没有任何开源模型能持续占据超过20%-25%的市场份额。</li>
+<li>**新进者的快速扩张：**性能出众新型开放模型能在几周内获得大量使用。例如，MoonshotAI模型迅速发展，可与老牌开源领军者抗衡，甚至像MiniMax这样的新入局者在一个季度内就从零做到可观流量。这表明用户转换成本低，且用户群体乐于尝试新事物。</li>
+<li>**迭代优势：**DeepSeek长期位居榜首，凸显了持续改进的重要性。其连续发布（Chat-V3、R1等）使其在挑战者涌现时仍保持竞争力。那些停滞不前的开源模型，其市场份额往往被频繁更新或针对特定领域微调的模型抢占。</li>
 </ul>
 <hr>
-<h3 id="模型规模的趋势：Medium-vs-Large-Small"><a href="#模型规模的趋势：Medium-vs-Large-Small" class="headerlink" title="模型规模的趋势：Medium vs Large&#x2F;Small"></a>模型规模的趋势：Medium vs Large&#x2F;Small</h3><blockquote>
+<h3 id="1-3-模型规模的趋势：Medium-vs-Large-Small"><a href="#1-3-模型规模的趋势：Medium-vs-Large-Small" class="headerlink" title="1.3 模型规模的趋势：Medium vs Large&#x2F;Small"></a>1.3 模型规模的趋势：Medium vs Large&#x2F;Small</h3><blockquote>
 <p><strong>总结：小模型已经成为过去式，中型的模型占据重要市场，而大模型成为绝对意义上的主流。</strong></p>
 <p>市场变得成熟的一个标志就是中型模型的产生和发展，用户无需再两个极端之间权衡。市场的分化主要在于目标的选择，要么倾向于使用中型模型（要在成本和效率之间权衡），要么只用大型模型（将工作负载整合到能力最强的模型上，获得最佳的效果和智慧）。</p>
 </blockquote>
@@ -172,7 +134,7 @@
 </ul>
 <p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/param-size-vs-usage.png&w=3840&q=75" alt="OSS model size vs. usage"></p>
 <p><strong>深入研究推动这些趋势的模型，可以发现不同的市场动态：</strong></p>
-<p>可以看出来，小模型的市场从最初的 60% 已经逐步下降到了 12%，并且这个趋势并没有回弹的迹象，说明小模型正在被市场抛弃。而中型模型在经过一年的发展，已经占据了 30% 左右的市场份额，并且非常稳定，说明这个市场需求是长期可持续的。而大模型也逐步提升了占比，从曾经的 40% 到 50%，说明强有力的大参数量模型依旧是用户和企业的首选。</p>
+<p>可以看出，小模型市场从最初的60%逐步下降至12%，且趋势没有回弹迹象，说明小模型正被市场淘汰。中型模型经过一年发展，已占据约30%市场份额且非常稳定，说明这个市场需求长期可持续。大模型占比也从40%提升至50%，说明大参数量模型仍是用户和企业的首选。</p>
 <ul>
 <li><strong>“小型”模型的市场：整体使用率下降。</strong> <ul>
 <li>尽管新模型不断涌现，但小型模型类别整体的使用份额正在下降。</li>
@@ -192,8 +154,262 @@
 </li>
 </ul>
 <hr>
-<h3 id="开源模型的业务匹配：角色扮演-编程-vs-Others"><a href="#开源模型的业务匹配：角色扮演-编程-vs-Others" class="headerlink" title="开源模型的业务匹配：角色扮演+编程 vs Others"></a>开源模型的业务匹配：角色扮演+编程 vs Others</h3><p><strong>首先确定分类：</strong></p>
-<p><strong>OpenRouter通过一个非专有模块 GoogleTagClassifier ，对占所有提示词约 0.25% 的随机样本进行内部分类</strong>。虽然这仅占总活动的一小部分，但考虑到 OpenRouter 处理的整体查询量，基础数据集仍然相当庞大。GoogleTagClassifier 与谷歌云自然语言的 <a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/classifying-text"><code>classifyText</code>内容分类API</a> 相连接。</p>
+<h3 id="1-4-开源模型的业务匹配：角色扮演-编程-vs-Others"><a href="#1-4-开源模型的业务匹配：角色扮演-编程-vs-Others" class="headerlink" title="1.4 开源模型的业务匹配：角色扮演+编程 vs Others"></a>1.4 开源模型的业务匹配：角色扮演+编程 vs Others</h3><p><strong>OpenRouter通过非专有模块GoogleTagClassifier，对占所有提示词约0.25%的随机样本进行内部分类</strong>。虽然仅占总活动的一小部分，但考虑到OpenRouter处理的整体查询量，基础数据集仍然相当庞大。GoogleTagClassifier与谷歌云自然语言的<a target="_blank" rel="noopener" href="https://cloud.google.com/natural-language/docs/classifying-text"><code>classifyText</code>内容分类API</a>相连接。分类细节放在附录中。</p>
+<h4 id="1-4-1-全球趋势：角色扮演和编程"><a href="#1-4-1-全球趋势：角色扮演和编程" class="headerlink" title="1.4.1 全球趋势：角色扮演和编程"></a>1.4.1 全球趋势：角色扮演和编程</h4><blockquote>
+<p>总结：虽然专有模型在结构化的商业任务中仍占主导地位，但开源模型已在两个特定领域确立了领先地位：<strong>创意角色扮演</strong>和<strong>编程辅助</strong>。这两个类别共同占据了开源模型 Tokens 使用量的大部分。</p>
+<p>数据：角色扮演占据 52% 的市场份额，而编程大致为 20%（编程与科技总计为 33%）。</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-category-trends.png&w=3840&q=75" alt="**开源模型的类别趋势。** 开源模型使用在高级任务类别的分布情况。角色扮演（约52%）和编程在开源工作负载组合中始终占主导地位，两者合计占据了大部分开源标记。较小的部分包括翻译、通用知识问答等。"></p>
+<p><strong>上图清晰显示，超过一半的开源模型使用属于<code>角色扮演</code>，而<code>编程</code>是第二大类别。</strong></p>
+<ul>
+<li>这表明用户转向开放模型主要是为了创造性交互式对话（如讲故事、角色扮演和游戏场景）和编码相关任务。</li>
+<li><strong>角色扮演的主导地位（达到50%及以上）说明开源模型的持续优势：可用于创造力，且通常不受内容过滤器限制，对幻想或娱乐应用极具吸引力。</strong></li>
+<li>角色扮演任务需要灵活响应、上下文保留和情感细微差别——开放模型能有效提供这些属性，不受商业安全或审核层严重限制。这使得它们对角色驱动体验、粉丝向小说撰写、交互式游戏和模拟社区特别有吸引力。</li>
+</ul>
+<hr>
+<h4 id="1-4-2-中国开源趋势：强编程，技术与生产力"><a href="#1-4-2-中国开源趋势：强编程，技术与生产力" class="headerlink" title="1.4.2 中国开源趋势：强编程，技术与生产力"></a>1.4.2 中国开源趋势：强编程，技术与生产力</h4><blockquote>
+<p><strong>总结：中国模型的主要任务在于编程与技术，而非主要创意。</strong></p>
+<p>数据：角色扮演占 33%（低于全球平均值 52%），编程占 39%（高于全球平均值 33%）</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/chinese-oss-category-trends.png&w=3840&q=75" alt="Chinese OSS Category Trends"></p>
+<p><strong>如果只聚焦中国开源模型随时间的细分情况，可以看出：这些模型不再主要用于创意任务。角色扮演仍是最大类别，占比约33%，但编程和技术领域使用量合计已占多数（39%）。</strong></p>
+<p>这种转变表明，像<code>Qwen</code>和<code>DeepSeek</code>这样的模型正越来越多地用于代码生成和基础设施相关工作负载。虽然大量企业用户可能影响特定领域，但总体趋势表明，中国开源模型正在技术和生产力领域直接竞争。</p>
+<hr>
+<h4 id="1-4-3-编程开源生态：依旧闭源主导，但中国开源生态蓬勃"><a href="#1-4-3-编程开源生态：依旧闭源主导，但中国开源生态蓬勃" class="headerlink" title="1.4.3 编程开源生态：依旧闭源主导，但中国开源生态蓬勃"></a>1.4.3 编程开源生态：依旧闭源主导，但中国开源生态蓬勃</h4><blockquote>
+<p>总结：闭源模型依旧主导市场，中国开源生态起步较早（Qwen 3 Coder），但西方模型比例有所上升，并观察到<strong>市场竞争十分激烈，比例变化大，说明用户粘性低，新模型凭借优异表现可迅速抢占市场。</strong></p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-oss-split.png&w=3840&q=75" alt="Programming Queries by Model Source"></p>
+<p>如果只聚焦编程类别，会发现闭源模型仍处理大部分编码辅助工作（灰色区域），反映出像Anthropic的Claude等强大产品表现。</p>
+<p>然而在开源部分，出现显著转变：2025年中期，中国开源模型（蓝色）提供大部分开源编码帮助（得益于<code>Qwen 3 Coder</code>等早期成功案例）。到2025年第四季度，西方开源模型（橙色），如Meta的LLaMA-2 Code和OpenAI的GPT-OSS系列，出现激增，但最近几周总体占比有所下降。这种波动表明市场竞争非常激烈。</p>
+<p>**实际结论是，开源代码助手使用情况高度动态变化，对新模型质量反应强烈：开发者愿意接受任何当前能提供最佳编码支持的开源模型。**需要说明，该图表未显示绝对数量：开源编码使用量整体在增长，因此蓝色部分占比缩小不意味着中国开源模型失去用户，只是相对份额有所变化。</p>
+<hr>
+<h4 id="1-4-4-角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"><a href="#1-4-4-角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地" class="headerlink" title="1.4.4 角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"></a>1.4.4 角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地</h4><blockquote>
+<p><strong>总结：在角色扮演生态中，开源占比非常高，达到60%，且开源生态占比逐步上升。可以确认开源生态在该领域具有天然优势，也可预见未来开源生态很可能主导该市场。到2025年底，中国和世界其他开源模型流量大致平分。</strong></p>
+<p>数据：开源模型占角色扮演领域60%市场，开源生态中，中国开源生态占20%-30%，其他开源生态占30%-40%。</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/roleplay-oss-split.png&w=3840&q=75" alt="Roleplay Queries by Model Source"></p>
+<p>如果只考察<code>角色扮演</code>流量，会发现其目前几乎由世界其他地区开源模型（橙色，近几周占43%）和闭源模型（灰色，最近约占42%）平分秋色。这与2025年初相比发生显著变化，当时该类别由专有模型（灰色）主导，约占70%市场份额。彼时（2025年5月），西方开源模型仅占约22%流量，中国开源模型（蓝色）占比更小，约8%。全年中，闭源模型份额稳步下降。到2025年10月底，随着西方和中国开源模型均取得显著进展，这一趋势进一步加速。</p>
+<p>可以得出结论，角色扮演领域存在良性竞争；用户在创意聊天和故事讲述方面，既有开源产品也有闭源产品可供选择，且选择都切实可行。这反映出开发者意识到角色扮演&#x2F;聊天模型需求，并为此对发布模型进行针对性调整（如在对话上进行微调，为角色一致性添加对齐机制）。需注意，”角色扮演”涵盖一系列子类型（从休闲聊天到复杂游戏场景）。</p>
+<p><strong>从宏观角度看，开源模型在这个创意领域显然具有优势。</strong></p>
+<hr>
+<h2 id="二、智能体推理的兴起"><a href="#二、智能体推理的兴起" class="headerlink" title="二、智能体推理的兴起"></a>二、智能体推理的兴起</h2><p><em>序：语言模型在生产环境中的使用方式正发生根本性转变：从单轮文本补全转向多步骤、工具集成且推理密集型的工作流。OpenRouter将这种转变称为<strong>智能体推理</strong>的兴起，即模型部署不仅为生成文本，还通过规划、调用工具或在扩展语境中交互来采取行动。本节通过五个指标追踪这一转变：推理模型兴起、工具调用行为扩展、序列长度分布变化，以及编程用途如何推动复杂性。</em></p>
+<p>下面分析的趋势（推理占比上升、工具使用范围扩大、序列变长以及编程的极大复杂性）共同表明，大语言模型（LLM）使用重心已发生转移。典型LLM请求不再是简单问题或孤立指令，而是结构化、类智能体循环的一部分，会调用外部工具、基于状态推理，并在更长语境中持续运行。</p>
+<p>对模型提供商而言，这提高了对默认能力要求。延迟、工具处理、上下文支持及鲁棒性变得愈发关键。对基础设施运营商来说，推理平台现在不仅要管理无状态请求，还要处理长时间运行对话、执行轨迹及权限敏感工具集成。</p>
+<p><strong>即便现在还未实现，也很快，智能体推理将占据大部分推理工作。</strong></p>
+<hr>
+<h3 id="2-1-Reasoning调用量稳步上升至一半市场"><a href="#2-1-Reasoning调用量稳步上升至一半市场" class="headerlink" title="2.1 Reasoning调用量稳步上升至一半市场"></a>2.1 Reasoning调用量稳步上升至一半市场</h3><blockquote>
+<p><strong>总结：自2025年初以来，通过推理优化模型处理的所有Tokens占比稳步上升，以推理为导向的模型正成为实际工作负载的默认路径。</strong></p>
+<p>该指标反映推理模型处理的所有Tokens比例，而非模型输出中”推理Tokens”占比。</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-vs-nonreasoning.png&w=3840&q=75" alt="Reasoning vs. Non-Reasoning Token Trends"></p>
+<p><strong>第一季度初，这一使用占比很低，现在已超过50%</strong>。这种转变反映市场两个方面：</p>
+<ul>
+<li>供给端，GPT-5、Claude 4.5和Gemini 3等更高能力模型系统发布，提升用户对逐步推理期望。</li>
+<li>需求端，用户越来越倾向于能够管理任务状态、遵循多步骤逻辑并支持智能体式工作流程模型，而仅仅是简单生成文本模型。</li>
+</ul>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-top-models.png&w=3840&q=75" alt="Top Reasoning Models by Token Volume"></p>
+<p><strong>在推理模型中，xAI的<code>Grok Code Fast 1</code>目前处理推理相关流量占比最大，其次是谷歌的<code>Gemini 2.5 Pro</code>和<code>Gemini 2.5 Flash</code>。xAI的<code>Grok 4 Fast</code>和OpenAI的<code>gpt-oss-120b</code>也跻身顶级行列。</strong></p>
+<p>在最新数据中，xAI的<code>Grok Code Fast 1</code>目前在推理流量中占据最大份额（不包括免费发布版访问），领先于谷歌的<code>Gemini 2.5 Pro</code>和<code>Gemini 2.5 Flash</code>。这与几周前情况相比有显著变化，当时<code>Gemini 2.5 Pro</code>在该类别中处于领先地位，<code>DeepSeek R1</code>和<code>Qwen3</code>也位居顶级行列。借助xAI积极推出策略、具有竞争力定价以及开发者对其代码导向型变体关注，<code>Grok Code Fast 1</code>和<code>Grok 4 Fast</code>迅速获得市场份额。与此同时，像OpenAI的<code>gpt-oss-120b</code>这样开源模型持续存在，凸显开发者在可能情况下仍会选择开源模型。</p>
+<p><strong>数据指向明确结论：以推理为导向的模型正成为实际工作负载的默认路径，而流经这些模型的Tokens所占市场份额，现已成为AI系统交互的主要指标。</strong></p>
+<hr>
+<h3 id="2-2-工具调用逐步上升至15"><a href="#2-2-工具调用逐步上升至15" class="headerlink" title="2.2 工具调用逐步上升至15%"></a>2.2 工具调用逐步上升至15%</h3><blockquote>
+<p><strong>总结：在高价值工作流中，启用工具使用的趋势正在上升。无法提供可靠工具调用的模型在企业应用中可能会落后</strong>。</p>
+<p>数据：来自Tool Call的请求占总请求的15%。</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-calling-vs-not.png&w=3840&q=75" alt="Tool Invocations"></p>
+<p>上图中，OpenRouter报告了来自完成原因为<code>Tool Call</code>的请求的总Tokens占比。该指标经过标准化且仅包含实际调用工具的那些交互。</p>
+<p>OpenRouter解释上图中5月份显著峰值主要归因于一个大型账户，其活动短暂提升整体交易量。<strong>除这一异常情况外，工具采用率在全年呈现持续上升趋势。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-use-models.png&w=3840&q=75" alt="Top Models by Tools Provided Volume"></p>
+<p><strong>工具调用集中在针对Agent Inference明确优化的模型中</strong>，例如Claude Sonnet、Gemini Flash。</p>
+<p>可以看出，工具调用最初集中在几个模型中：OpenAI的<code>gpt-4o-mini</code>和Anthropic的<code>Claude 3.5</code>和<code>3.7</code>系列，它们在2025年初占了大多数支持工具调用的市场。</p>
+<p>然而到年中，更广泛模型开始支持工具调用，从9月底开始，较新的<code>Claude 4.5 Sonnet</code>模型迅速获得份额。与此同时，<code>Grok Code Fast</code>和<code>GLM 4.5</code>等较新模型取得明显进展。这也说明在工具调用领域，多元化格局正在形成。</p>
+<p><strong>含义显而易见：在高价值工作流中，启用工具使用的趋势正在上升。没有提供可靠工具格式的模型在企业应用中可能会落后。</strong></p>
+<hr>
+<h3 id="2-3-序列长度增长主要驱动力为编程"><a href="#2-3-序列长度增长主要驱动力为编程" class="headerlink" title="2.3 序列长度增长主要驱动力为编程"></a>2.3 序列长度增长主要驱动力为编程</h3><p>总结：提示词长度、补全长度均大幅提升，主要推动因素是编程需求。模型正越来越多扮演分析引擎角色，而非创意生成器。</p>
+<p>数据：从2024年初，Prompt长度增长四倍（从约1.5K增至6K以上），Completion长度增长三倍（约150增至400），涉及代码理解、调试和代码生成的请求通常超过20K输入tokens。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth.png&w=3840&q=75" alt="Number of Prompt Tokens is on the Rise"></p>
+<p><strong>自2024年初以来，平均提示词Token长度增长近四倍，反映出工作负载上下文越来越复杂。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/average-seq-length-over-time.png&w=3840&q=75" alt="Average Sequence Length Over Time"></p>
+<p>**每次生成的平均令牌数（提示词+补全内容）增长近三倍，从2000增长至6000 Tokens。**序列长度是任务复杂度和交互深度的代表指标。上图显示，过去20个月里，平均序列长度增加两倍多。这种增长反映结构性转变，即朝着更长上下文窗口、更深任务历史及更详尽补全内容方向发展。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/completion-tokens-growth.png&w=3840&q=75" alt="Number of Completion Tokens Almost Tripled"></p>
+<p><strong>输出长度也有所增加，尽管起点较低，这表明更丰富、更详细的响应主要源于推理Tokens。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth-per-category.png&w=3840&q=75" alt="Programming as the Main Driver Behind Prompt Token Growth"></p>
+<p><strong>自2025年春季开始提供标签以来，与编程相关的任务始终需要最大输入上下文。且迅速拉开与其他领域需求差距。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/overall-vs-programming-seq-length.png&w=3840&q=75" alt="Sequence Length in Programming vs Overall"></p>
+<p>**编程提示词通常更长，且增长速度更快。**与编程相关的提示词现在平均token长度是通用提示词的3-4倍。这种差异表明，软件开发工作流是更长交互的主要驱动因素。较长序列不仅是用户冗长表达：它们是嵌入的、更复杂智能体工作流的标志。</p>
+<p><strong>这种增长的相对幅度凸显了向更复杂、上下文更丰富工作负载的决定性转变。</strong></p>
+<p>这种模式还反映模型使用的新平衡：如今，典型请求不再那么侧重开放式生成（如”给我写一篇文章”），而更多是对用户提供的大量材料（如代码库、文档、文字记录或冗长对话）进行推理，并生成简洁、高价值见解。<strong>模型正越来越多扮演分析引擎角色，而非创意生成器。</strong></p>
+<p>Category级数据呈现更细致图景：编程工作负载是提示词token增长的主要驱动力。涉及代码理解、调试和代码生成的请求通常超过20K输入Tokens，而所有其他类别请求则相对平稳且数量较少。<strong>这种不对称贡献表明：最近提示词长度增长并非所有任务的普遍趋势，而是与软件开发和技术推理用例相关的集中式增长。</strong></p>
+<hr>
+<h2 id="三、通过产业标签分析人类交互行为"><a href="#三、通过产业标签分析人类交互行为" class="headerlink" title="三、通过产业标签分析人类交互行为"></a>三、通过产业标签分析人类交互行为</h2><p><em>序：了解用户使用大语言模型执行的任务分布，对评估实际需求和模型与市场契合度至关重要。</em></p>
+<h3 id="3-1-毫无疑问的主导：编程"><a href="#3-1-毫无疑问的主导：编程" class="headerlink" title="3.1 毫无疑问的主导：编程"></a>3.1 毫无疑问的主导：编程</h3><blockquote>
+<p><strong>总结：编程是主导且不断增长的类别。LLM已融入开发者工作流程，实现常态化。这个领域持续吸引各大顶级实验室关注。</strong></p>
+<p>数据：Claude持续占据60%市场份额，但最近有下滑迹象。谷歌稳定在15%，OpenAI份额在最近几周从约2%扩大至约8%。</p>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-dominant-tag.png&w=3840&q=75" alt="Programming as a dominant and growing category"></p>
+<p><strong>编程是主导且不断增长的类别。</strong> 被归类到编程类别的所有大语言模型查询占比稳步上升，反映人工智能辅助开发工作流的兴起。</p>
+<p>编程已成为所有模型中扩张最稳定的类别。2025年期间，与编程相关的请求占比稳步上升，与大语言模型辅助的开发环境及工具集成相呼应。如上图所示，2025年初，编程查询约占总Tokens量的11%，而最近几周已超过50%。这一趋势反映用户使用从探索性或对话性用途转向代码生成、调试和数据脚本编写等应用型任务。</p>
+<p><strong>随着大语言模型融入开发者工作流程，它们作为编程工具的角色正逐渐常态化。这一演变对模型开发具有重要意义，包括：</strong></p>
+<ul>
+<li>更加强调以代码为中心的训练数据</li>
+<li>提升多步骤编程任务的推理深度</li>
+<li>加强模型与集成开发环境之间的反馈循环</li>
+</ul>
+<p><strong>对编程支持需求的不断增长正在重塑各模型提供商之间的竞争格局。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/top-models-programming-tag.png&w=3840&q=75" alt="Share of programming requests by model provider"></p>
+<p><strong>Anthropic的Claude系列在这一领域始终占据主导地位</strong>，在大部分时间里，其在编程相关市场中占比超过60%。尽管如此，这一格局仍发生显著变化。11月17日那一周，Anthropic份额首次跌破60%阈值。自7月以来，OpenAI份额在最近几周从约2%扩大至约8%，这可能反映其重新强调以开发者为中心。</p>
+<p>同一时期，谷歌份额稳定在约15%。中端市场也在发生变化。包括Z.AI、Qwen和Mistral AI在内的开源提供商正稳步获得更多关注。尤其是MiniMax，作为快速崛起的参与者，在最近几周取得显著增长。</p>
+<p>总体而言，<strong>编程已成为竞争最激烈且具有重要战略意义的模型类别之一</strong>。它持续吸引顶尖实验室关注，即使是模型质量或延迟方面的微小变化，也可能在每周改变市场份额。对基础设施提供商和开发者来说，这凸显持续进行基准测试和评估的必要性，尤其是在技术前沿不断发展的情况下。</p>
+<hr>
+<h3 id="3-2-产业探索的非均匀分布"><a href="#3-2-产业探索的非均匀分布" class="headerlink" title="3.2 产业探索的非均匀分布"></a>3.2 产业探索的非均匀分布</h3><blockquote>
+<p><strong>总结：大多数Category并非均匀分布，它们由一两种反复出现的使用模式主导（如角色扮演、科学和编程），这往往反映集中的用户意图或与大语言模型优势的契合。</strong></p>
+<p><strong>也有些领域反映使用的分散性：如金融、学术和法律，这种分散性可能反映这些领域的复杂性，或仅是与编码和聊天等更成熟类别相比，它们缺乏针对性的大模型工作流程。</strong></p>
+<p>分散性一方面反映领域复杂性，另一方面也说明大模型在现实生活中的探索是非均匀的。</p>
+</blockquote>
+<p>每个条形图显示该Category中主要子标签的细分情况。标签表示在该类别中占比至少7%的子标签。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-first-six.png&w=3840&q=75" alt="Top 6 categories by total token share"></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-next-six.png&w=3840&q=75" alt="Next 6 categories by token share"></p>
+<p>上图按十二个最常见的内容类别细分大语言模型使用情况，揭示每个类别的内部子主题结构。</p>
+<p><strong>一个关键发现是，大多数类别并非均匀分布：它们由一两种反复出现的使用模式主导，这往往反映集中的用户意图或与大语言模型优势的契合。</strong></p>
+<p><strong>【角色扮演】</strong></p>
+<p>在Tokens量最大的类别<strong>角色扮演</strong>中，近60%的角色扮演标记属于<code>游戏/角色扮演游戏</code>，这表明用户不将大语言模型视为随意的聊天机器人，而更多将其视为<strong>结构化的角色扮演或角色生成引擎</strong>。<code>作家资源</code>（15.6%）和<code>成人</code>内容（15.4%）的存在进一步印证这一点，它们体现互动小说、场景生成和个人幻想的融合。</p>
+<p><strong>与认为角色扮演主要是非正式对话的假设相反，数据显示这是一种定义明确且可复制的基于类型的使用场景。</strong></p>
+<p><strong>【编程】</strong></p>
+<p><strong>编程的情况也类似:</strong></p>
+<ul>
+<li><strong>超过三分之二的流量被标记为<code>编程/其他</code>。这表明与代码相关的提示具有广泛和通用的性质：用户并非狭隘地关注特定工具或语言，而是向大语言模型提出从逻辑调试到脚本起草等各种需求。</strong></li>
+<li><code>开发工具</code>（26.4%）以及来自脚本语言的少量占比表明出现专业化趋势。</li>
+</ul>
+<p><strong>【其他】</strong></p>
+<p>除角色扮演和编程这两个主要类别外，其余领域代表大语言模型使用中多样化但体量较小的部分。虽然这些领域各自规模较小，但它们揭示用户在专门任务和新兴任务中与模型交互的重要模式。</p>
+<p><strong>翻译、科学和健康领域呈现相对平稳的内部结构。</strong></p>
+<ul>
+<li>翻译领域，使用量几乎平均分配在<code>外语资源</code>（51.1%）和<code>其他</code>之间，这表明存在分散的需求：多语言查询、重新措辞、简单的语码转换，而非持续的文档级翻译。</li>
+<li>科学领域由单一标签<code>机器学习与人工智能</code>主导（80.4%），这表明大多数科学查询是关于元人工智能的问题，而非像物理或生物学这样的一般STEM主题。这反映用户兴趣或模型优势偏向于自我指涉性探究。</li>
+<li>健康是Top类别中最分散的，没有任何子标签的占比超过25%。标记分布在医学研究、咨询服务、治疗指导和诊断查询等多个方面。这种多样性凸显该领域的复杂性，也带来安全建模的挑战：大语言模型必须涵盖差异极大的用户意图，且这些意图往往出现在敏感场景中，却没有集中在单一用例上。</li>
+</ul>
+<p><strong>长尾类别的共同之处在于它们的广泛性：用户借助大语言模型进行探索性、结构松散或寻求帮助的交互，但没有编程或个人助理领域中那种专注的工作流程。总体而言，这些次要类别可能在数量上不占主导，但它们暗示潜在的需求。</strong></p>
+<p>这也表明大语言模型正被应用于从翻译到医疗指导再到人工智能内省等众多领域的边缘地带，而且随着模型在领域稳健性和工具集成方面的改进，我们可能会看到这些分散的意图汇聚成更清晰、数量更多的应用。</p>
+<p><strong>相比之下，金融、学术和法律领域的分布则要分散得多。</strong></p>
+<ul>
+<li><strong>金融领域</strong>的内容量分布在外汇、社会责任投资以及审计&#x2F;会计等多个方面：没有任何一个标签的占比超过20%。</li>
+<li><strong>法律领域</strong>也呈现类似的分散性，其使用量分布在<code>政府/其他</code>（43.0%）和<code>法律/其他</code>（17.8%）之间。这种分散性可能反映这些领域的复杂性，或仅是与编码和聊天等更成熟的类别相比，它们缺乏针对性的大模型工作流程。</li>
+</ul>
+<p><strong>或者说，现实世界中，大语言模型的使用并非均匀地具有探索性：其使用高度集中在一小部分可重复、高频率的任务上。角色扮演、编程和个人助理这三类任务均呈现清晰的结构和主导性标签。相比之下，科学、健康和法律领域的使用则更为分散，且可能未得到充分优化。</strong></p>
+<p>这些内在分布规律可为模型设计、特定领域的微调以及应用层面的界面设计提供指导，尤其在使大语言模型贴合用户目标方面。</p>
+<hr>
+<h2 id="四、模型和领域的结合：八仙过海，各显神通"><a href="#四、模型和领域的结合：八仙过海，各显神通" class="headerlink" title="四、模型和领域的结合：八仙过海，各显神通"></a>四、模型和领域的结合：八仙过海，各显神通</h2><blockquote>
+<p><strong>总结：每个提供商都展现与其战略重点相符的独特特征。这些差异凸显为何没有单一模型或提供商能最佳地覆盖所有使用场景，同时也强调多模型生态系统的潜在优势。</strong></p>
+<ul>
+<li><strong>Anthropic: 主要用于编程和技术任务（占比超过80%），角色扮演用途极少。</strong></li>
+<li><strong>Google: 一个广泛使用的组合，涵盖法律、科学、技术以及一些常识性查询。</strong></li>
+<li><strong>xAI: 使用主要集中在编程领域，而技术、角色扮演和学术领域在11月下旬占比更为突出。</strong></li>
+<li><strong>OpenAI: 随时间推移，逐渐转向编程和技术任务，角色扮演和随意聊天显著减少。</strong></li>
+<li><strong>DeepSeek: 其使用主要体现在角色扮演和日常互动上。</strong></li>
+<li><strong>Qwen: 在编程任务上专注度较高，角色扮演和科学类别的专注度则随时间波动。</strong></li>
+</ul>
+</blockquote>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/anthropic-top-tags.png&w=3840&q=75" alt="Anthropic top tags"></p>
+<p><strong>Anthropic: 主要用于编程和技术任务（占比超过80%），角色扮演用途极少。</strong></p>
+<p>Anthropic的Claude在<strong>编程</strong> + <strong>技术</strong>方面的应用占比极高，两者合计超过其使用量的80%。角色扮演和一般问答仅占很小一部分。这证实Claude的定位是一款针对复杂推理、编码和结构化任务进行优化的模型；开发者和企业似乎主要将Claude用作编码助手和问题解决工具。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/google-top-tags.png&w=3840&q=75" alt="Google top tags"></p>
+<p><strong>Google: 一个广泛使用的组合，涵盖法律、科学、技术以及一些常识性查询。</strong></p>
+<p>谷歌的模型用途更为多样化。在<strong>翻译</strong>、<strong>科学</strong>、<strong>技术</strong>以及一些<strong>常识</strong>领域有显著的应用部分。例如，谷歌约5%的使用量涉及法律或政策内容，另有约10%与科学相关。这可能暗示Gemini广泛的训练重点。与其他公司相比，到2025年底，谷歌在编码方面的占比相对较低，实际上还在下降（降至约18%），且应用类别范围更广。这表明谷歌的模型更多地被用作通用信息引擎。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/xai-top-tags.png&w=3840&q=75" alt="xAI top tags"></p>
+<p><strong>xAI: 使用主要集中在编程领域，而技术、角色扮演和学术领域在11月下旬占比更为突出。</strong></p>
+<p>xAI的使用情况与其他提供商截然不同。在大部分时间里，其使用量绝大多数集中在<strong>编程</strong>领域，往往超过所有Tokens的80%。直到11月下旬，这一分布才有所扩大，在<strong>技术</strong>、<strong>角色扮演</strong>和<strong>学术</strong>领域有了显著增长。</p>
+<p>这种急剧变化与xAI模型通过特定消费者应用免费发布的时间相吻合，这很可能带来大量非开发者流量。其结果是，使用构成融合早期以开发者为主的核心群体和突然涌现的通用型用户参与，这表明xAI的采用路径既受技术用户的影响，也与促销活动带来的阶段性流量激增有关。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-top-tags.png&w=3840&q=75" alt="OpenAI top tags"></p>
+<p><strong>OpenAI: 随时间推移，逐渐转向编程和技术任务，角色扮演和随意聊天显著减少。</strong></p>
+<p>2025年，OpenAI的使用情况发生显著变化。今年早些时候，科学类任务占OpenAI所有Tokens的一半以上；到2025年末，这一比例已降至15%以下。</p>
+<p>与此同时，编程和技术相关的使用量现在占总量的一半以上（各占29%），这反映其与开发者工作流、生产力工具和专业应用的整合更加深入。</p>
+<p>OpenAI的使用构成目前介于Anthropic高度集中的情况和谷歌更分散的分布之间，这表明其应用基础广泛，且正越来越倾向于高价值、结构化的任务。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-top-tags.png&w=3840&q=75" alt="DeepSeek top tags"></p>
+<p><strong>DeepSeek: 其使用主要体现在角色扮演和日常互动上。</strong></p>
+<p>深度求索和通义千问的使用模式与前文讨论的其他模型家族存在显著差异。DeepSeek的Tokens分布以角色扮演、休闲聊天和娱乐导向的互动为主，这类使用通常占其总使用量的三分之二以上。只有一小部分活动属于编程或科学等结构化任务。这种模式反映深度求索强烈的消费者导向及其作为高参与度对话模型的定位。</p>
+<p>值得注意的是，到夏末时，深度求索在编程相关使用方面呈现适度但稳定的增长，这表明它在轻量级开发工作流中的采用率正逐步提升。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/qwen-top-tags.png&w=3840&q=75" alt="Qwen top tags"></p>
+<p><strong>Qwen: 在编程任务上专注度较高，角色扮演和科学类别的专注度则随时间波动。</strong></p>
+<p>相比之下，通义千问呈现几乎相反的情况。在所显示的整个时间段内，编程内容始终占所有标记的40%-60%，这表明其明显侧重于技术和开发者任务。与Anthropic更稳定的、以工程为主的构成相比，通义千问在科学、技术和角色扮演等相邻类别中的波动性更大。</p>
+<p>这种每周的变化意味着其用户群体具有多样性，且应用场景在快速迭代。9月和10月角色扮演使用量显著上升，随后11月有所下降，这暗示用户行为在不断演变，或下游应用的路径规划在进行调整。</p>
+<hr>
+<h2 id="五、用户留存：灰姑娘的”水晶鞋”现象"><a href="#五、用户留存：灰姑娘的”水晶鞋”现象" class="headerlink" title="五、用户留存：灰姑娘的”水晶鞋”现象"></a>五、用户留存：灰姑娘的”水晶鞋”现象</h2><h3 id="5-1-灰姑娘的”水晶鞋”现象"><a href="#5-1-灰姑娘的”水晶鞋”现象" class="headerlink" title="5.1 灰姑娘的”水晶鞋”现象"></a>5.1 灰姑娘的”水晶鞋”现象</h3><p><strong>OpenRouter提出群留存率概念来揭示模型的用户留存现象。</strong></p>
+<p><em>Cohort Retention Rates. Retention is measured as</em> <em>activity retention</em><em>, where users are counted if they return in subsequent months, even after periods of inactivity; as a result, curves may exhibit small non-monotonic bumps.</em></p>
+<p><em>同期群留存率。留存率以<strong>活动留存</strong>来衡量，即只要用户在后续月份返回，即使中间有不活跃的时期也会被统计在内；因此，曲线可能会出现小的非单调波动。</em></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/claude-4-sonnet-retention.png&w=3840&q=75" alt="Claude 4 Sonnet retention"></p>
+<p>更多图片放在引用后面，供参考。</p>
+<p>这份留存率图表集捕捉领先大语言模型用户的市场动态。<strong>乍一看，数据的主要特征是高流失率和用户群体的快速衰减。然而，在这种波动性之下，隐藏一个更微妙且更重要的信号：一小部分早期用户群体随时间推移表现出持久的留存率。我们将这些群体称为<em>基础用户群</em>。</strong></p>
+<p><strong>这些群体不仅仅是早期采用者；他们代表那些工作负载已实现深度且持久的工作负载-模型适配的用户。一旦这种适配确立，就会产生经济和认知上的惯性，即便有更新的模型出现，也会抵制替代。</strong></p>
+<blockquote>
+<p>我们将”灰姑娘水晶鞋效应”作为一个框架来描述这种现象。该假说认为，在快速发展的人工智能生态系统中，存在一种潜在的高价值工作负载的分布，这些工作负载在连续的模型迭代中一直未得到解决。每个新的前沿模型都相当于被”试穿”以应对这些未解决的问题。当一个新发布的模型恰好满足之前未被满足的技术和经济约束时，它就实现精准匹配——也就是比喻中的”玻璃鞋”。</p>
+</blockquote>
+<p>对于那些工作负载最终”适配”的开发者或组织而言，这种契合会产生强烈的锁定效应。他们的系统、数据管道和用户体验会锚定在最先解决其问题的模型上。随着成本下降和可靠性提高，重新搭建平台的动力会大幅减弱。相反，那些未能找到这种适配的工作负载仍处于探索阶段，会从一个模型迁移到另一个模型，以寻找适合自己的解决方案。</p>
+<p>从经验来看，这种模式在2025年6月的<code>Gemini 2.5 Pro</code>用户群和2025年5月的<code>Claude 4 Sonnet</code>用户群中可见，这两个用户群在第5个月仍保留约40%的用户，显著高于后续用户群。这些用户群似乎与特定的技术突破（例如推理保真度或工具使用稳定性）相对应，这些突破最终使之前不可能实现的工作负载成为可能。</p>
+<ul>
+<li><strong>率先解决问题会产生持久优势。</strong> 当一个模型率先<em>解决</em>关键工作负载时，经典的先发优势便具有重要意义。早期采用者会将该模型嵌入到各种管道、基础设施和用户行为中，从而产生很高的转换成本。这就形成一种稳定的平衡状态，即便出现更新的替代方案，该模型仍能保留其核心用户群体。</li>
+<li><strong>留存率作为能力拐点的指标。</strong> 同期群组层面的留存模式是模型差异化的实证信号。一个或多个早期群组中的持续留存表明存在有意义的能力拐点——即从不可行变为可行的工作负载类别。缺乏此类模式则表明能力相当，差异化深度有限。</li>
+<li>**前沿窗口的时间限制。**竞争格局带来一个狭窄的时间窗口，模型可在其中获取基础用户。随着后续模型缩小能力差距，形成新基础用户群体的概率急剧下降。因此，模型与工作负载完美匹配的”灰姑娘”时刻虽转瞬即逝，却对长期采用动态起决定性作用。</li>
+</ul>
+<p><strong>每一代新模型都会带来一个短暂的机会，以解决先前未满足的工作负载。当这种契合出现时，受影响的用户会形成基础用户群：即使后续有新模型推出，其留存轨迹仍保持稳定的用户群体。</strong></p>
+<hr>
+<hr>
+<h3 id="5-2-主导性发布异常"><a href="#5-2-主导性发布异常" class="headerlink" title="5.2 主导性发布异常"></a>5.2 主导性发布异常</h3><p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-4omini-retention.png&w=3840&q=75" alt="OpenAI GPT-4o Mini retention"></p>
+<p><code>OpenAI GPT-4o Mini</code>的图表极度直观地展现这一现象。一个单一的基础群体（2024年7月，橙线）在发布时就确立主导性的、稳定的工作负载-模型适配。所有后续群体——在这种适配确立且市场已经向前发展<em>之后</em>出现的群体——表现都如出一辙：它们不断流失并聚集在底部。</p>
+<p><strong>这表明，建立这种基础适配的窗口期是唯一的，且只出现在模型被视为”前沿”的那一刻。</strong></p>
+<hr>
+<h3 id="5-3-适配失败的后果"><a href="#5-3-适配失败的后果" class="headerlink" title="5.3 适配失败的后果"></a>5.3 适配失败的后果</h3><p><code>Gemini 2.0 Flash</code>和<code>Llama 4 Maverick</code>的图表展示一个警示故事，说明当初始适配从未建立时会发生什么。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
+<p>与其他模型不同，它们没有表现出色的基础用户群体。每个用户群体的表现都同样糟糕。这表明，这些模型从未被视为高价值、粘性工作负载的”前沿”。它们直接进入<em>足够好</em>的市场，因此未能锁定任何用户群。</p>
+<p>同样，尽管<code>DeepSeek</code>总体上取得巨大成功，但其混乱的图表显示，它难以建立一个稳定的基础用户群体。</p>
+<h3 id="5-4-DeepSeek-的回旋镖效应"><a href="#5-4-DeepSeek-的回旋镖效应" class="headerlink" title="5.4 DeepSeek 的回旋镖效应"></a>5.4 DeepSeek 的回旋镖效应</h3><p><strong>DeepSeek 模型呈现一种更为复杂的模式。</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-r1-retentions.png&w=3840&q=75" alt="DeepSeek R1 retention"></p>
+<p><strong>它们的留存曲线显示一种极不寻常的异常现象：<em>复苏式跃升</em>。</strong></p>
+<p>与典型的单调下降留存率不同，多个深度求索用户群体在经历初期用户流失后，留存率出现明显上升（例如，R1的2025年4月用户群体在第3个月左右，以及Chat V3-0324的2025年7月用户群体在第2个月左右）。</p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-chat-v3-retentions.png&w=3840&q=75" alt="DeepSeek Chat V3-0324 retention"></p>
+<p><strong>这表明部分流失的用户正在回归该模型。这种”回旋镖效应”意味着，这些用户在尝试其他替代方案后，通过竞争性测试确认深度求索凭借其专业技术性能、成本效益或其他独特功能的卓越组合，能够为其特定工作负载提供最优且更适配的解决方案，因此选择回归深度求索。</strong></p>
+<p><em>水晶鞋</em>现象将留存率重新定义为理解能力突破的视角，而非一种结果。</p>
+<p>**基础用户群体是真正技术进步的印记：它们标志着人工智能模型从新奇事物转变为必需品的转折点。**对于开发者和投资者而言，尽早识别这些用户群体或许是预测模型在市场中能否保持持久优势的最有效信号。</p>
+<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>这项实证研究从数据驱动的角度探讨了大型语言模型（LLMs）的实际使用情况，体现了几个能让人们人工智能部署的传统认知更加细致的主题：</p>
+<p><strong>【多模型生态系统】</strong></p>
+<blockquote>
+<p><strong>没有任何单一模型能在所有使用场景中占据主导地位。相反，一个丰富的多模型生态系统正在形成，封闭模型和开放模型都占据了相当大的份额。</strong></p>
+</blockquote>
+<ul>
+<li>例如，尽管OpenAI和Anthropic的模型在许多编程和知识任务中处于领先地位，但DeepSeek和Qwen等开源模型合计处理了总token的很大一部分（有时超过30%）。这表明，大语言模型（LLM）使用的未来可能是与模型无关且多样化的。</li>
+<li>对于开发者而言，这意味着要保持灵活性，整合多个模型并为每项任务选择最合适的模型，而不是将所有赌注都押在某一个模型的优势上。</li>
+<li>对于模型提供商来说，竞争可能来自意想不到的地方（例如，除非持续改进和差异化，否则其他模型可能会侵蚀你的部分市场）。</li>
+</ul>
+<p><strong>【超越生产力的使用多样性】</strong></p>
+<blockquote>
+<p><strong>一个令人惊讶的发现是，角色扮演和以娱乐为导向的使用量非常大。超过一半的开源模型使用是为了角色扮演和讲故事。</strong></p>
+</blockquote>
+<ul>
+<li>即使在闭源平台上，早期 ChatGPT 的使用中也有相当一部分是休闲和创造性的。这与大语言模型主要用于编写代码、电子邮件或摘要的假设相悖。实际上，许多用户使用这些模型是为了获得陪伴或进行探索。这具有重要意义。</li>
+<li>它凸显了面向消费者的应用程序存在巨大机遇，这些应用程序将叙事设计、情感参与和交互性融合在一起。它为个性化开辟了新领域——智能体可以发展个性、记住偏好或维持长篇互动。</li>
+<li>它还重新定义了模型评估指标：成功可能更少依赖于事实准确性，而更多地取决于一致性、连贯性以及维持引人入胜的对话的能力。</li>
+<li>最后，它为人工智能与娱乐知识产权之间的交叉提供了途径，在互动叙事、游戏和创作者驱动的虚拟角色方面具有潜力。</li>
+</ul>
+<p><strong>【智能体与人类：智能体推理的兴起】</strong> </p>
+<blockquote>
+<p><strong>大型语言模型的使用正从单轮交互转向智能体推理，即模型通过多个步骤进行规划、推理和执行。它们不再生成一次性的响应，而是协调工具调用、访问外部数据，并迭代优化输出以实现目标</strong>。</p>
+</blockquote>
+<ul>
+<li>早期证据表明，多步骤查询和链式工具使用呈上升趋势，我们将其视为智能体使用的代表。</li>
+<li>随着这种模式的扩展，评估将从语言质量转向任务完成度和效率。</li>
+<li>下一个竞争前沿在于模型能够多么有效地进行持续推理，这一转变可能最终会重新定义大规模智能体推理在实践中的意义。</li>
+</ul>
+<p><strong>【留存率与灰姑娘水晶鞋现象】</strong></p>
+<blockquote>
+<p><strong>随着基础模型的跨越式（而非渐进式）发展，留存率已成为衡量防御能力的真正标准。每一次突破都会创造一个短暂的启动窗口，在这个窗口中，模型可以完美地“适配”高价值工作负载（即灰姑娘水晶鞋时刻），一旦用户找到这种适配，他们就会留下来。</strong></p>
+</blockquote>
+<ul>
+<li>在这种模式下，产品与市场的契合度等同于工作负载与模型的契合度：率先解决实际痛点会推动深度且稳定的采用，因为用户会围绕该能力构建工作流程和习惯。届时，无论是从技术上还是行为习惯上，转换模型的成本都会很高。</li>
+<li>对于开发者和投资者而言，需要关注的信号并非增长，而是留存曲线，即那些在模型更新过程中依然留存的核心用户群体的形成。</li>
+<li>在一个节奏日益加快的市场中，尽早抓住这些重要的未被满足的需求，将决定谁能在下次能力飞跃后屹立不倒。</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a target="_blank" rel="noopener" href="https://openrouter.ai/state-of-ai">(OpenRouter) State of AI</a></p>
+<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p><strong>OpenRouter 的分类与谷歌标签的对应关系</strong></p>
 <ul>
 <li><strong>Programming &#x2F; 编程：</strong><ul>
 <li><code>/Computers &amp; Electronics/Programming</code></li>
@@ -233,267 +449,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="全球趋势：角色扮演和编程"><a href="#全球趋势：角色扮演和编程" class="headerlink" title="全球趋势：角色扮演和编程"></a>全球趋势：角色扮演和编程</h4><blockquote>
-<p>总结：虽然专有模型在结构化的商业任务中仍占主导地位，但开源模型已在两个特定领域确立了领先地位：<strong>创意角色扮演</strong>和<strong>编程辅助</strong>。这两个类别共同占据了开源模型 Tokens 使用量的大部分。</p>
-<p>数据：角色扮演占据 52% 的市场份额，而编程大致为 20%（编程与科技总计为 33%）。</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-category-trends.png&w=3840&q=75" alt="**开源模型的类别趋势。** 开源模型使用在高级任务类别的分布情况。角色扮演（约52%）和编程在开源工作负载组合中始终占主导地位，两者合计占据了大部分开源标记。较小的部分包括翻译、通用知识问答等。"></p>
-<p><strong>上图可以清晰地看出，超过一半的开源模型使用属于 <code>角色扮演</code>，而<code>编程</code>是第二大类别。</strong></p>
-<ul>
-<li>这表明用户转向开放模型主要是为了创造性的交互式对话（如讲故事、角色角色扮演和游戏场景）和与编码相关的任务。</li>
-<li><strong>角色扮演的主导地位（持续到达 50% 及以上）说明了开源模型持续的优势：可以用于创造力，并且通常不受内容过滤器的限制，这使得它们对幻想或娱乐应用极具吸引力。</strong></li>
-<li>角色扮演任务需要灵活的响应、上下文保留和情感细微差别——开放模型可以有效地提供这些属性，而不会受到商业安全或审核层的严重限制。这使得它们对尝试角色驱动体验、粉丝向的小说撰写、交互式游戏和模拟社区特别有吸引力。</li>
-</ul>
-<hr>
-<h4 id="中国的开源模型：强编程，技术与生产力"><a href="#中国的开源模型：强编程，技术与生产力" class="headerlink" title="中国的开源模型：强编程，技术与生产力"></a>中国的开源模型：强编程，技术与生产力</h4><blockquote>
-<p><strong>总结：中国模型的主要任务在于编程与技术，而非主要创意。</strong></p>
-<p>数据：角色扮演占 33%（低于全球平均值 52%），编程占 39%（高于全球平均值 33%）</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/chinese-oss-category-trends.png&w=3840&q=75" alt="Chinese OSS Category Trends"></p>
-<p><strong>如果我们只聚焦中国开源模型随时间的细分情况，可以看出：这些模型不再主要用于创意任务。角色扮演仍然是最大的类别，占比约 33%，但编程和技术领域的使用量合计已占多数（39%）。</strong></p>
-<p>这种转变表明，像<code>Qwen</code>和<code>DeepSeek</code>这样的模型正越来越多地被用于代码生成和与基础设施相关的工作负载。虽然大量的企业用户可能会影响特定领域，但总体趋势表明，中国开源模型正在技术和生产力领域直接竞争。</p>
-<hr>
-<h4 id="编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃"><a href="#编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃" class="headerlink" title="编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃"></a>编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃</h4><blockquote>
-<p>总结：闭源模型依旧主导市场，中国开源生态起步的早（ Qwen 3 Coder），但西方模型比例有所上升，并且观察到一个现象：<strong>这个市场的竞争是十分激烈的，比例变化很大，说明用户粘性是低的，新模型凭借优异的表现可以迅速抢占市场。</strong></p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-oss-split.png&w=3840&q=75" alt="Programming Queries by Model Source"></p>
-<p>如果我们只聚焦于编程类别，会发现闭源模型仍然处理着大部分的编码辅助工作（灰色区域），这反映出像Anthropic 的 Claude 等强大产品的表现。</p>
-<p>然而，在开源部分，出现了一个显著的转变：2025年中期，中国的开源模型（蓝色）提供了大部分的开源编码帮助（这得益于像<code>Qwen 3 Coder</code>等早期成功案例）。到2025年第四季度，西方的开源模型（橙色），如Meta的LLaMA-2 Code 和 OpenAI 的 GPT-OSS 系列，出现了激增，但在最近几周，其总体占比有所下降。这种波动表明市场竞争非常激烈。</p>
-<p>**实际的结论是，开源代码助手的使用情况是高度动态变化的，并且对新模型的质量反应强烈：开发者愿意接受任何当前能提供最佳编码支持的开源模型。**需要说明的是，该图表没有显示绝对数量：开源编码的使用量整体在增长，因此蓝色部分占比的缩小并不意味着中国的开源模型失去了用户，只是相对份额有所变化。</p>
-<hr>
-<h4 id="角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"><a href="#角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地" class="headerlink" title="角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"></a>角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地</h4><blockquote>
-<p><strong>总结：在角色扮演生态里，开源占比非常高，达到了60%，并且开源生态占比逐步上升。可以确认的是，开源生态在这个领域具有天然的优势，也可以预见在未来，开源生态很可能主导这个市场。到 2025 年底，中国和世界其他开源模型的流量大致平分。</strong></p>
-<p>数据：开源模型占角色扮演领域的 60% 市场，开源生态中，中国开源生态占 20%-30%，而其他开源生态占 30% - 40% 之间。</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/roleplay-oss-split.png&w=3840&q=75" alt="Roleplay Queries by Model Source"></p>
-<p>现在如果我们只考察<code>角色扮演</code>的流量，会发现其目前几乎由世界其他地区的开源模型（橙色，近几周占43%）和闭源模型（灰色，最近约占42%）平分秋色。这与 2025 年初相比发生了显著变化，当时该类别由专有模型（灰色）主导，约占 70% 的市场份额。彼时（2025年5月），西方开源模型仅占约 22% 的流量，中国开源模型（蓝色）的占比更小，约为 8%。全年中，闭源模型的份额稳步下降。到 2025 年 10 月底，随着西方和中国的开源模型均取得显著进展，这一趋势进一步加速。</p>
-<p>可以得出结论，角色扮演的领域存在良性竞争；用户在创意聊天和故事讲述方面，既有开源产品也有闭源产品可供选择，且这些选择都切实可行。这反映出开发者们意识到了角色扮演&#x2F;聊天模型的需求，并为此对其发布的模型进行了针对性调整（例如，在对话上进行微调，为角色一致性添加对齐机制）。需要注意的是，“角色扮演”涵盖了一系列子类型（从休闲聊天到复杂的游戏场景）。</p>
-<p><strong>然而，从宏观角度来看，开源模型在这个创意领域显然具有优势。</strong></p>
-<hr>
-<h2 id="智能体推理的兴起"><a href="#智能体推理的兴起" class="headerlink" title="智能体推理的兴起"></a>智能体推理的兴起</h2><p><em>序：语言模型在生产环境中的使用方式正在发生根本性转变：从单轮文本补全转向多步骤、工具集成且推理密集型的工作流。OpenRouter 将这种转变称为<strong>智能体推理</strong>的兴起，即模型的部署不仅是为了生成文本，还为了通过规划、调用工具或在扩展语境中进行交互来采取行动。本节通过五个指标来追踪这一转变：推理模型的兴起、工具调用行为的扩展、序列长度分布的变化，以及编程用途如何推动复杂性。</em></p>
-<p>下面分析的这些趋势（推理占比上升、工具使用范围扩大、序列变长以及编程的极大复杂性）共同表明，大语言模型（LLM）使用的重心已经发生了转移。典型的 LLM 请求不再是简单的问题或孤立的指令，而是结构化、类智能体循环的一部分，会调用外部工具、基于状态进行推理，并在更长的语境中持续运行。</p>
-<p>对于模型提供商而言，这提高了对默认能力的要求。延迟、工具处理、上下文支持以及鲁棒性变得愈发关键。对于基础设施运营商来说，推理平台现在不仅要管理无状态请求，还要处理长时间运行的对话、执行轨迹以及权限敏感的工具集成。</p>
-<p><strong>即便现在还未实现，也很快，智能体推理将占据大部分推理工作。</strong></p>
-<hr>
-<h3 id="Reasoning-的调用量：稳步上升至一半的市场"><a href="#Reasoning-的调用量：稳步上升至一半的市场" class="headerlink" title="Reasoning 的调用量：稳步上升至一半的市场"></a>Reasoning 的调用量：稳步上升至一半的市场</h3><blockquote>
-<p><strong>总结：自 2025 年初以来，通过推理优化模型处理的所有 Tokens 占比稳步上升，以推理为导向的模型正成为实际工作负载的默认路径。</strong></p>
-<p>该指标反映的是推理模型处理的所有 Tokens 的比例，而非模型输出中“推理 Tokens”的占比。</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-vs-nonreasoning.png&w=3840&q=75" alt="Reasoning vs. Non-Reasoning Token Trends"></p>
-<p><strong>在第一季度初，这一使用占比很低，现在已超过 50%</strong>。这种转变反映了市场的两个方面：</p>
-<ul>
-<li>供给端，GPT-5、Claude 4.5 和 Gemini 3 等更高能力模型系统的发布，提升了用户对逐步推理的期望。</li>
-<li>需求端，用户越来越倾向于能够管理任务状态、遵循多步骤逻辑并支持智能体式工作流程的模型，而不仅仅是简单生成文本的模型。</li>
-</ul>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-top-models.png&w=3840&q=75" alt="Top Reasoning Models by Token Volume"></p>
-<p><strong>在推理模型中，xAI 的 <code>Grok Code Fast 1</code> 目前处理的推理相关流量占比最大，其次是谷歌的 <code>Gemini 2.5 Pro</code>和<code>Gemini 2.5 Flash</code>。xAI 的 <code>Grok 4 Fast </code>和 OpenAI的 <code>gpt-oss-120b</code> 也跻身顶级行列。</strong></p>
-<p>在最新数据中，xAI 的 <code>Grok Code Fast 1</code> 目前在推理流量中占据最大份额（不包括免费的发布版访问），领先于谷歌的 <code>Gemini 2.5 Pro</code> 和 <code>Gemini 2.5 Flash</code>。这与几周前的情况相比有了显著变化，当时 <code>Gemini 2.5 Pro </code>在该类别中处于领先地位，<code>DeepSeek R1</code> 和 <code>Qwen3</code> 也位居顶级行列。借助 xAI 积极的推出策略、具有竞争力的定价以及开发者对其代码导向型变体的关注，<code>Grok Code Fast 1</code> 和 <code>Grok 4 Fast</code> 迅速获得了市场份额。与此同时，像 OpenAI 的 <code>gpt-oss-120b</code> 这样的开源模型持续存在，这凸显出开发者在可能的情况下仍然会选择开源模型。</p>
-<p><strong>数据指向了一个明确的结论：以推理为导向的模型正成为实际工作负载的默认路径，而流经这些模型的Tokens所占的市场份额，如今已成为AI系统交互的主要指标。</strong></p>
-<hr>
-<h3 id="工具调用：逐步上升至-15"><a href="#工具调用：逐步上升至-15" class="headerlink" title="工具调用：逐步上升至 15%"></a>工具调用：逐步上升至 15%</h3><blockquote>
-<p><strong>总结：在高价值工作流中，启用工具使用的趋势正在上升。无法提供可靠的工具调用的模型在企业的应用中可能会落后</strong>。</p>
-<p>数据：来自 Tool Call 的请求占总请求的 15%。</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-calling-vs-not.png&w=3840&q=75" alt="Tool Invocations"></p>
-<p>在上图中，OpenRouter 报告了来自完成原因是 <code>Tool Call</code> 的请求的总 Tokens 占比。该指标经过 Normalization 并且仅包含实际调用了工具的那些交互。</p>
-<p>OpenRouter 解释上图中 5 月份的显著峰值主要归因于一个大型账户，其活动短暂提升了整体交易量。<strong>除了这一异常情况外，工具的采用率在全年呈现出持续上升的趋势。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-use-models.png&w=3840&q=75" alt="Top Models by Tools Provided Volume"></p>
-<p><strong>工具调用集中在针对 Agent Inference 明确优化的模型中</strong>，例如 Claude Sonnet、Gemini Flash。</p>
-<p>可以看出来，工具调用最初集中在几个模型中：OpenAI 的 <code>gpt-4o-mini</code> 和 Anthropic 的 <code>Claude 3.5</code> 和 <code>3.7</code>系列，它们在 2025 年初占了大多数支持工具调用的市场。</p>
-<p>然而，到年中，更广泛的模型开始支持工具调用，从 9 月底开始，较新的 <code>Claude 4.5 Sonnet</code> 模型迅速获得了份额。与此同时，<code>Grok Code Fast</code> 和 <code>GLM 4.5</code> 等较新的模型取得了明显的进展。这也说明了在工具调用这一领域，多元化的格局正在形成。</p>
-<p><strong>含义显而易见：在高价值工作流中，启用工具使用的趋势正在上升。没有提供可靠工具格式的模型在企业的应用中可能会落后。</strong></p>
-<hr>
-<h3 id="Prompt-Completion：长度增长，主要驱动力为编程"><a href="#Prompt-Completion：长度增长，主要驱动力为编程" class="headerlink" title="Prompt &amp; Completion：长度增长，主要驱动力为编程"></a>Prompt &amp; Completion：长度增长，主要驱动力为编程</h3><p>总结：提示词长度，补全的长度均大幅提升，而主要的推动因素是编程的需求。模型正越来越多地扮演分析引擎的角色，而非创意生成器。</p>
-<p>数据：从 2024 年初，Prompt 长度增长四倍（从约 1.5K 增至 6K 以上），Completion 长度增长三倍（约 150 增 至 400），涉及代码理解、调试和代码生成的请求通常超过 20K 输入 tokens。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth.png&w=3840&q=75" alt="Number of Prompt Tokens is on the Rise"></p>
-<p><strong>自 2024 年初以来，平均提示词 Token 长度增长了近四倍，这反映出工作负载的上下文越来越复杂。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/average-seq-length-over-time.png&w=3840&q=75" alt="Average Sequence Length Over Time"></p>
-<p>**每次生成的平均令牌数（提示词 + 补全内容）增长近三倍，从 2000 增长至 6000 Tokens。**序列长度是任务复杂度和交互深度的一个代表指标。上图显示，在过去20个月里，平均序列长度增加了两倍多。这种增长反映出一种结构性转变，即朝着更长的上下文窗口、更深的任务历史以及更详尽的补全内容方向发展。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/completion-tokens-growth.png&w=3840&q=75" alt="Number of Completion Tokens Almost Tripled"></p>
-<p><strong>输出长度也有所增加，尽管起点较低，这表明更丰富、更详细的响应主要源于推理的 Tokens。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth-per-category.png&w=3840&q=75" alt="Programming as the Main Driver Behind Prompt Token Growth"></p>
-<p><strong>自 2025 年春季开始提供标签以来，与编程相关的任务始终需要最大的输入上下文。而且迅速拉开与其他领域的需求差距。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/overall-vs-programming-seq-length.png&w=3840&q=75" alt="Sequence Length in Programming vs Overall"></p>
-<p>**编程提示词通常更长，且增长速度更快。**与编程相关的提示词现在的平均 token 长度是通用提示词的 3-4 倍。这种差异表明，软件开发工作流是更长交互的主要驱动因素。较长的序列不仅仅是用户的冗长表达：它们是嵌入的、更复杂的智能体工作流的标志。</p>
-<p><strong>这种增长的相对幅度凸显了向更复杂、上下文更丰富的工作负载的决定性转变。</strong></p>
-<p>这种模式还反映了模型使用的一种新平衡：如今，典型的请求不再那么侧重于开放式生成（例如“给我写一篇文章”），而更多是对用户提供的大量材料（如代码库、文档、文字记录或冗长对话）进行推理，并生成简洁、高价值的见解。<strong>模型正越来越多地扮演分析引擎的角色，而非创意生成器。</strong></p>
-<p>Category 级的数据呈现出更细致的图景：编程工作负载是提示词 token 增长的主要驱动力。涉及代码理解、调试和代码生成的请求通常超过 20K 输入 Tokens，而所有其他类别的请求则相对平稳且数量较少。<strong>这种不对称的贡献表明：最近提示词长度的增长并非所有任务的普遍趋势，而是与软件开发和技术推理用例相关的集中式增长。</strong></p>
-<hr>
-<h2 id="通过-Category-分析人们如何使用大型语言模型"><a href="#通过-Category-分析人们如何使用大型语言模型" class="headerlink" title="通过 Category 分析人们如何使用大型语言模型"></a>通过 Category 分析人们如何使用大型语言模型</h2><p><em>序：了解用户使用大语言模型（LLMs）执行的任务分布对于评估实际需求和模型与市场的契合度至关重要。</em></p>
-<h3 id="主导的类别"><a href="#主导的类别" class="headerlink" title="主导的类别"></a>主导的类别</h3><blockquote>
-<p><strong>总结：编程毫无疑问是主导且不断增长的类别。LLM 融入了开发者的工作流程，并且实现常态化。且这个领域持续吸引着各大顶级实验室的关注。</strong></p>
-<p>数据：Claude 持续占据 60% 的市场份额，但最近有下滑的迹象。谷歌稳定在 15%，OpenAI 的份额在最近几周从约 2% 扩大到约 8%。</p>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-dominant-tag.png&w=3840&q=75" alt="Programming as a dominant and growing category"></p>
-<p><strong>编程，是主导且不断增长的类别。</strong> 被归类到编程类别的所有大型语言模型查询的占比稳步上升，这反映了人工智能辅助开发工作流的兴起。</p>
-<p>编程已成为所有模型中扩张最稳定的类别。2025 年期间，与编程相关的请求占比稳步上升，这与大语言模型辅助的开发环境及工具集成的兴起相呼应。如上图所示，2025 年初，编程查询约占总 Tokens 量的 11%，而在最近几周已超过 50%。这一趋势反映出用户的使用从探索性或对话性用途转向代码生成、调试和数据脚本编写等应用型任务。</p>
-<p><strong>随着大语言模型融入开发者的工作流程，它们作为编程工具的角色正逐渐常态化。这一演变对模型开发具有重要意义，包括：</strong></p>
-<ul>
-<li>更加强调以代码为中心的训练数据</li>
-<li>提升多步骤编程任务的推理深度</li>
-<li>加强模型与集成开发环境之间的反馈循环</li>
-</ul>
-<p><strong>对编程支持需求的不断增长正在重塑各模型提供商之间的竞争格局。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/top-models-programming-tag.png&w=3840&q=75" alt="Share of programming requests by model provider"></p>
-<p><strong>Anthropic 的 Claude 系列在这一领域始终占据主导地位</strong>，在大部分时间里，其在编程相关市场中占比超过 60%。尽管如此，这一格局仍发生了显著变化。11 月 17 日那一周，Anthropic 的份额首次跌破 60% 这一阈值。自 7 月以来，OpenAI 的份额在最近几周从约 2% 扩大到约 8%，这可能反映出其重新强调以开发者为中心。</p>
-<p>同一时期，谷歌的份额稳定在约 15%。中端市场也在发生变化。包括 Z.AI、Qwen 和 Mistral AI 在内的开源提供商正稳步获得更多关注。尤其是 MiniMax，作为一个快速崛起的参与者，在最近几周取得了显著增长。</p>
-<p>总体而言，<strong>编程已成为竞争最激烈且具有重要战略意义的模型类别之一</strong>。它持续吸引着顶尖实验室的关注，即使是模型质量或延迟方面的微小变化，也可能在每周改变市场份额。对于基础设施提供商和开发者来说，这凸显了持续进行基准测试和评估的必要性，尤其是在技术前沿不断发展的情况下。</p>
-<hr>
-<h3 id="每个-Category-下的主要构成"><a href="#每个-Category-下的主要构成" class="headerlink" title="每个 Category 下的主要构成"></a>每个 Category 下的主要构成</h3><blockquote>
-<p><strong>总结：大多数 Category 并非均匀分布，它们由一两种反复出现的使用模式主导（如角色扮演，科学和编程），这往往反映出集中的用户意图或与大语言模型优势的契合。</strong></p>
-<p><strong>也有些领域反映出使用的分散性：例如金融，学术和法律，这种分散性可能反映了这些领域的复杂性，或者仅仅是与编码和聊天等更成熟的类别相比，它们缺乏有针对性的大模型工作流程。</strong></p>
-<p>分散性一方面反映领域的复杂性，另一方面也说明了大模型在现实生活中的探索是非均匀的。</p>
-</blockquote>
-<p>每个条形图显示该 Category 中主要子标签的细分情况。标签表示在该类别中占比至少 7% 的子标签。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-first-six.png&w=3840&q=75" alt="Top 6 categories by total token share"></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-next-six.png&w=3840&q=75" alt="Next 6 categories by token share"></p>
-<p>上图按十二个最常见的内容类别细分了大语言模型的使用情况，揭示了每个类别的内部子主题结构。</p>
-<p><strong>一个关键发现是，大多数类别并非均匀分布：它们由一两种反复出现的使用模式主导，这往往反映出集中的用户意图或与大语言模型优势的契合。</strong></p>
-<p><strong>【角色扮演】</strong></p>
-<p>在 Tokens 量最大的类别 <strong>角色扮演</strong> 中，近 60% 的角色扮演标记属于<code>游戏/角色扮演游戏</code>，这表明用户不将大语言模型视为随意的聊天机器人，而更多地将其视为<strong>结构化的角色扮演或角色生成引擎</strong>。<code>作家资源</code>（15.6%）和<code>成人</code>内容（15.4%）的存在进一步印证了这一点，它们体现了互动小说、场景生成和个人幻想的融合。</p>
-<p><strong>与认为角色扮演主要是非正式对话的假设相反，数据显示这是一种定义明确且可复制的基于类型的使用场景（well-defined and replicable genre-based use case）。</strong></p>
-<p><strong>【编程】</strong></p>
-<p><strong>编程的情况也类似:</strong></p>
-<ul>
-<li><strong>超过三分之二的流量被标记为<code>编程/其他</code>。这表明与代码相关的提示具有广泛和通用的性质：用户并非狭隘地关注特定工具或语言，而是向大语言模型提出从逻辑调试到脚本起草等各种需求。</strong></li>
-<li><code>开发工具</code>（26.4%）以及来自脚本语言的少量占比表明出现了专业化趋势。</li>
-</ul>
-<p><strong>【其他】</strong></p>
-<p>除了角色扮演和编程这两个主要类别外，其余领域代表了大语言模型（LLM）使用中多样化但体量较小的部分。虽然这些领域各自规模较小，但它们揭示了用户在专门任务和新兴任务中与模型交互的重要模式。</p>
-<p><strong>翻译、科学和健康领域呈现出相对平稳的内部结构。</strong></p>
-<ul>
-<li>翻译领域，使用量几乎平均分配在<code>外语资源</code>（51.1%）和<code>其他</code>之间，这表明存在分散的需求：多语言查询、重新措辞、简单的语码转换，而非持续的文档级翻译。</li>
-<li>科学领域由单一标签<code>机器学习与人工智能</code>主导（80.4%），这表明大多数科学查询是关于元人工智能的问题，而非像物理或生物学这样的一般 STEM 主题。这反映出用户兴趣或模型优势偏向于自我指涉性探究（Self-referential inquiry）。</li>
-<li>健康是 Top 类别中最分散的，没有任何子标签的占比超过 25%。标记分布在医学研究、咨询服务、治疗指导和诊断查询等多个方面。这种多样性凸显了该领域的复杂性，也带来了安全建模的挑战：大型语言模型必须涵盖差异极大的用户意图，且这些意图往往出现在敏感场景中，却没有集中在单一用例上。</li>
-</ul>
-<p><strong>长尾的类别的共同之处在于它们的广泛性：用户借助大语言模型进行探索性、结构松散或寻求帮助的交互，但没有编程或个人助理领域中那种专注的工作流程。总体而言，这些次要类别可能在数量上不占主导，但它们暗示了潜在的需求。</strong></p>
-<p>这也表明大语言模型正被应用于从翻译到医疗指导再到人工智能内省等众多领域的边缘地带，而且随着模型在领域稳健性和工具集成方面的改进，我们可能会看到这些分散的意图汇聚成更清晰、数量更多的应用。</p>
-<p><strong>相比之下，金融、学术和法律领域的分布则要分散得多。</strong></p>
-<ul>
-<li><strong>金融领域</strong>的内容量分布在外汇、社会责任投资以及审计&#x2F;会计等多个方面：没有任何一个标签的占比超过20%。</li>
-<li><strong>法律领域</strong>也呈现出类似的分散性，其使用量分布在<code>政府/其他</code>（43.0%）和<code>法律/其他</code>（17.8%）之间。这种分散性可能反映了这些领域的复杂性，或者仅仅是与编码和聊天等更成熟的类别相比，它们缺乏有针对性的大模型工作流程。</li>
-</ul>
-<p><strong>所以说，现实世界中，大型语言模型（LLM）的使用并非均匀地具有探索性：其使用高度集中在一小部分可重复、高频率的任务上。角色扮演、编程和个人助理这三类任务均呈现出清晰的结构和主导性标签。相比之下，科学、健康和法律领域的使用则更为分散，且可能未得到充分优化。</strong></p>
-<p>这些内在分布规律可为模型设计、特定领域的微调以及应用层面的界面设计提供指导，尤其在使大型语言模型贴合用户目标方面。</p>
-<hr>
-<h2 id="模型和领域的结合：八仙过海，各显神通"><a href="#模型和领域的结合：八仙过海，各显神通" class="headerlink" title="模型和领域的结合：八仙过海，各显神通"></a>模型和领域的结合：八仙过海，各显神通</h2><p>不同的模型作者被用于不同的使用模式。下图展示了主要模型系列（Anthropic的Claude、谷歌的模型、OpenAI的GPT系列、深度求索（DeepSeek）和通义千问（Qwen））的内容类别分布。每个条形代表该提供商100%的令牌使用量，按 TOP 标签进行细分。</p>
-<blockquote>
-<p><strong>总结：每个提供商都展现出与其战略重点相符的独特特征。这些差异凸显了为何没有单一模型或提供商能最佳地覆盖所有使用场景，同时也强调了多模型生态系统的潜在优势。</strong></p>
-<ul>
-<li><strong>Anthropic: 主要用于编程和技术任务（占比超过80%），角色扮演用途极少。</strong></li>
-<li><strong>Google: 一个广泛使用的组合，涵盖法律、科学、技术以及一些常识性查询。</strong></li>
-<li><strong>xAI: 使用主要集中在编程领域，而技术、角色扮演和学术领域在 11 月下旬的占比更为突出。</strong></li>
-<li><strong>OpenAI: 随着时间的推移，逐渐转向编程和技术任务，角色扮演和随意聊天显著减少。</strong></li>
-<li><strong>DeepSeek: 其使用主要体现在角色扮演和日常互动上。</strong></li>
-<li><strong>Qwen: 在编程任务上专注度较高，角色扮演和科学类别的专注度则随时间波动。</strong></li>
-</ul>
-</blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/anthropic-top-tags.png&w=3840&q=75" alt="Anthropic top tags"></p>
-<p><strong>Anthropic: 主要用于编程和技术任务（占比超过80%），角色扮演用途极少。</strong></p>
-<p>Anthropic 的 Claude 在<strong>编程</strong> + <strong>技术</strong>方面的应用占比极高，两者合计超过其使用量的80%。角色扮演和一般问答仅占很小一部分。这证实了 Claude 的定位是一款针对复杂推理、编码和结构化任务进行优化的模型；开发者和企业似乎主要将 Claude 用作编码助手和问题解决工具。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/google-top-tags.png&w=3840&q=75" alt="Google top tags"></p>
-<p><strong>Google: 一个广泛使用的组合，涵盖法律、科学、技术以及一些常识性查询。</strong></p>
-<p>谷歌的模型用途更为多样化。在<strong>翻译</strong>、<strong>科学</strong>、<strong>技术</strong>以及一些<strong>常识</strong>领域有显著的应用部分。例如，谷歌约 5% 的使用量涉及法律或政策内容，另有约 10% 与科学相关。这可能暗示了 Gemini 广泛的训练重点。与其他公司相比，到2025年底，谷歌在编码方面的占比相对较低，实际上还在下降（降至约18%），且应用类别范围更广。这表明谷歌的模型更多地被用作通用信息引擎。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/xai-top-tags.png&w=3840&q=75" alt="xAI top tags"></p>
-<p><strong>xAI: 使用主要集中在编程领域，而技术、角色扮演和学术领域在 11 月下旬的占比更为突出。</strong></p>
-<p>xAI的使用情况与其他提供商截然不同。在大部分时间里，其使用量绝大多数集中在<strong>编程</strong>领域，往往超过所有 Tokens 的 80%。直到 11 月下旬，这一分布才有所扩大，在<strong>技术</strong>、<strong>角色扮演</strong>和<strong>学术</strong>领域有了显著增长。</p>
-<p>这种急剧变化与 xAI 模型通过特定消费者应用免费发布的时间相吻合，这很可能带来了大量非开发者流量。其结果是，使用构成融合了早期以开发者为主的核心群体和突然涌现的通用型用户参与，这表明 xAI 的采用路径既受到技术用户的影响，也与促销活动带来的阶段性流量激增有关。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-top-tags.png&w=3840&q=75" alt="OpenAI top tags"></p>
-<p><strong>OpenAI: 随着时间的推移，逐渐转向编程和技术任务，角色扮演和随意聊天显著减少。</strong></p>
-<p>2025年，OpenAI 的使用情况发生了显著变化。今年早些时候，科学类任务占OpenAI所有令牌的一半以上；到2025年末，这一比例已降至 15% 以下。</p>
-<p>与此同时，编程和技术相关的使用量现在占总量的一半以上（各占29%），这反映出其与开发者工作流、生产力工具和专业应用的整合更加深入。</p>
-<p>OpenAI 的使用构成目前介于 Anthropic 高度集中的情况和谷歌更分散的分布之间，这表明其应用基础广泛，且正越来越倾向于高价值、结构化的任务。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-top-tags.png&w=3840&q=75" alt="DeepSeek top tags"></p>
-<p><strong>DeepSeek: 其使用主要体现在角色扮演和日常互动上。</strong></p>
-<p>深度求索（DeepSeek）和通义千问（Qwen）的使用模式与前文讨论的其他模型家族存在显著差异。DeepSeek 的 Tokens 分布以角色扮演、休闲聊天和娱乐导向的互动为主，这类使用通常占其总使用量的三分之二以上。只有一小部分活动属于编程或科学等结构化任务。这种模式反映出深度求索强烈的消费者导向及其作为高参与度对话模型的定位。</p>
-<p>值得注意的是，到夏末时，深度求索在编程相关使用方面呈现出适度但稳定的增长，这表明它在轻量级开发工作流中的采用率正逐步提升。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/qwen-top-tags.png&w=3840&q=75" alt="Qwen top tags"></p>
-<p><strong>Qwen: 在编程任务上专注度较高，角色扮演和科学类别的专注度则随时间波动。</strong></p>
-<p>相比之下，通义千问呈现出几乎相反的情况。在所显示的整个时间段内，编程内容始终占所有标记的 40% - 60%，这表明其明显侧重于技术和开发者任务。与 Anthropic 更稳定的、以工程为主的构成相比，通义千问在科学、技术和角色扮演等相邻类别中的波动性更大。</p>
-<p>这种每周的变化意味着其用户群体具有多样性，且应用场景在快速迭代。9 月和 10 月角色扮演使用量显著上升，随后 11 月有所下降，这暗示着用户行为在不断演变，或者下游应用的路径规划在进行调整。</p>
-<hr>
-<h2 id="用户留存：灰姑娘的“水晶鞋”现象"><a href="#用户留存：灰姑娘的“水晶鞋”现象" class="headerlink" title="用户留存：灰姑娘的“水晶鞋”现象"></a>用户留存：灰姑娘的“水晶鞋”现象</h2><h3 id="灰姑娘的“水晶鞋”现象"><a href="#灰姑娘的“水晶鞋”现象" class="headerlink" title="灰姑娘的“水晶鞋”现象"></a>灰姑娘的“水晶鞋”现象</h3><p><strong>OpenRouter 提出了群留存率（<em>Cohort Retention Rates</em>）的概念来揭示模型的用户留存现象。</strong></p>
-<p><em>Cohort Retention Rates. Retention is measured as</em> <em>activity retention</em><em>, where users are counted if they return in subsequent months, even after periods of inactivity; as a result, curves may exhibit small non-monotonic bumps.</em></p>
-<p><em>同期群留存率。留存率以<strong>活动留存</strong>来衡量，即只要用户在后续月份返回，即使中间有不活跃的时期也会被统计在内；因此，曲线可能会出现小的非单调波动。</em></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/claude-4-sonnet-retention.png&w=3840&q=75" alt="Claude 4 Sonnet retention"></p>
-<p>更多的图片放在引用后面，供参考。</p>
-<p>这份留存率图表集捕捉了领先的大语言模型用户的市场动态。<strong>乍一看，数据的主要特征是高流失率和用户群体的快速衰减。然而，在这种波动性之下，隐藏着一个更微妙且更重要的信号：一小部分早期用户群体随着时间的推移表现出持久的留存率。我们将这些群体称为<em>基础用户群</em>。</strong></p>
-<p><strong>这些群体不仅仅是早期采用者；他们代表着那些工作负载已经实现了深度且持久的工作负载-模型适配的用户。一旦这种适配确立，就会产生经济和认知上的惯性，即便有更新的模型出现，也会抵制替代。</strong></p>
-<blockquote>
-<p>我们将“灰姑娘水晶鞋效应”作为一个框架来描述这种现象。该假说认为，在快速发展的人工智能生态系统中，存在一种潜在的高价值工作负载的分布，这些工作负载在连续的模型迭代中一直未得到解决。每个新的前沿模型都相当于被“试穿”以应对这些未解决的问题。当一个新发布的模型恰好满足了之前未被满足的技术和经济约束时，它就实现了精准匹配——也就是比喻中的“玻璃鞋”。</p>
-</blockquote>
-<p>对于那些工作负载最终“适配”的开发者或组织而言，这种契合会产生强烈的锁定效应。他们的系统、数据管道和用户体验会锚定在最先解决其问题的模型上。随着成本下降和可靠性提高，重新搭建平台的动力会大幅减弱。相反，那些未能找到这种适配的工作负载仍处于探索阶段，会从一个模型迁移到另一个模型，以寻找适合自己的解决方案。</p>
-<p>从经验来看，这种模式在2025年6月的<code>Gemini 2.5 Pro</code>用户群和2025年5月的<code>Claude 4 Sonnet</code>用户群中可见，这两个用户群在第5个月仍保留约40%的用户，显著高于后续用户群。这些用户群似乎与特定的技术突破（例如推理保真度或工具使用稳定性）相对应，这些突破最终使之前不可能实现的工作负载成为可能。</p>
-<ul>
-<li><strong>率先解决问题作为持久优势。</strong> 当一个模型率先<em>解决</em>关键工作负载时，经典的先发优势便具有了重要意义。早期采用者会将该模型嵌入到各种管道、基础设施和用户行为中，从而产生很高的转换成本。这就形成了一种稳定的平衡状态，即便出现更新的替代方案，该模型仍能保留其核心用户群体。</li>
-<li><strong>留存率作为能力拐点的指标。</strong> 同期群组层面的留存模式是模型差异化的实证信号。一个或多个早期群组中的持续留存表明存在有意义的能力拐点——即从不可行变为可行的工作负载类别。缺乏此类模式则表明能力相当，差异化深度有限。</li>
-<li>**前沿窗口的时间限制。**竞争格局带来了一个狭窄的时间窗口，模型可在其中获取基础用户。随着后续模型缩小能力差距，形成新基础用户群体的概率急剧下降。因此，模型与工作负载完美匹配的“灰姑娘”时刻虽转瞬即逝，却对长期采用动态起着决定性作用。</li>
-</ul>
-<p><strong>每一代新模型都会带来一个短暂的机会，以解决先前未满足的工作负载。当这种契合出现时，受影响的用户会形成基础用户群：即使后续有新模型推出，其留存轨迹仍保持稳定的用户群体。</strong></p>
-<hr>
-<h3 id="主导性发布异常"><a href="#主导性发布异常" class="headerlink" title="主导性发布异常"></a>主导性发布异常</h3><p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-4omini-retention.png&w=3840&q=75" alt="OpenAI GPT-4o Mini retention"></p>
-<p><code>OpenAI GPT-4o Mini</code>的图表极度直观地展现了这一现象。一个单一的基础群体（2024年7月，橙线）在发布时就确立了主导性的、稳定的工作负载-模型适配。所有后续群体——在这种适配确立且市场已经向前发展<em>之后</em>出现的群体——表现都如出一辙：它们不断流失并聚集在底部。</p>
-<p><strong>这表明，建立这种基础适配的窗口期是唯一的，且只出现在模型被视为“前沿”的那一刻。</strong></p>
-<hr>
-<h3 id="适配失败的后果"><a href="#适配失败的后果" class="headerlink" title="适配失败的后果"></a>适配失败的后果</h3><p><code>Gemini 2.0 Flash</code>和<code>Llama 4 Maverick</code>的图表展示了一个警示故事，说明了当初始适配从未建立时会发生什么。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
-<p>与其他模型不同，它们没有表现出色的基础用户群体。每个用户群体的表现都同样糟糕。这表明，这些模型从未被视为高价值、粘性工作负载的“前沿”。它们直接进入了<em>足够好</em>的市场，因此未能锁定任何用户群。</p>
-<p>同样，尽管<code>DeepSeek</code>总体上取得了巨大成功，但其混乱的图表显示，它难以建立一个稳定的基础用户群体。</p>
-<h3 id="DeepSeek-的回旋镖效应"><a href="#DeepSeek-的回旋镖效应" class="headerlink" title="DeepSeek 的回旋镖效应"></a>DeepSeek 的回旋镖效应</h3><p><strong>深度求索（DeepSeek）模型呈现出一种更为复杂的模式。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-r1-retentions.png&w=3840&q=75" alt="DeepSeek R1 retention"></p>
-<p><strong>它们的留存曲线显示出一种极不寻常的异常现象：<em>复苏式跃升</em>。</strong></p>
-<p>与典型的单调下降留存率不同，多个深度求索（DeepSeek）用户群体在经历初期用户流失后，留存率出现了明显的上升（例如，深度求索（DeepSeek）R1 的 2025 年 4 月用户群体在第 3 个月左右，以及深度求索（DeepSeek）Chat V3-0324 的 2025年 7 月用户群体在第 2 个月左右）。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-chat-v3-retentions.png&w=3840&q=75" alt="DeepSeek Chat V3-0324 retention"></p>
-<p><strong>这表明部分流失的用户正在回归该模型。这种“回旋镖效应”意味着，这些用户在尝试了其他替代方案后，通过竞争性测试确认深度求索（DeepSeek）凭借其专业技术性能、成本效益或其他独特功能的卓越组合，能够为其特定工作负载提供最优且往往更适配的解决方案，因此选择回归深度求索（DeepSeek）。</strong></p>
-<p><em>水晶鞋</em>现象将留存率重新定义为理解能力突破的视角，而非一种结果。</p>
-<p>**基础用户群体是真正技术进步的印记：它们标志着人工智能模型从新奇事物转变为必需品的节点。**对于开发者和投资者而言，尽早识别这些用户群体或许是预测模型在市场中能否保持持久优势的最有效信号。</p>
-<h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p>这项实证研究从数据驱动的角度探讨了大型语言模型（LLMs）的实际使用情况，强调了几个能让人们对人工智能部署的传统认知更加细致的主题：</p>
-<p><strong>【多模型生态系统】</strong></p>
-<p><strong>没有任何单一模型能在所有使用场景中占据主导地位。相反，一个丰富的多模型生态系统正在形成，封闭模型和开放模型都占据了相当大的份额。</strong></p>
-<ul>
-<li>例如，尽管OpenAI和Anthropic的模型在许多编程和知识任务中处于领先地位，但DeepSeek和Qwen等开源模型合计处理了总token的很大一部分（有时超过30%）。这表明，大语言模型（LLM）使用的未来可能是与模型无关且多样化的。</li>
-<li>对于开发者而言，这意味着要保持灵活性，整合多个模型并为每项任务选择最合适的模型，而不是将所有赌注都押在某一个模型的优势上。</li>
-<li>对于模型提供商来说，竞争可能来自意想不到的地方（例如，除非持续改进和差异化，否则其他模型可能会侵蚀你的部分市场）。</li>
-</ul>
-<p><strong>【超越生产力的使用多样性】</strong></p>
-<p>*<em>一个令人惊讶的发现是，<em>角色扮演和以娱乐为导向的使用</em>量非常大。超过一半的开源模型使用是为了角色扮演和讲故事。</em>*</p>
-<ul>
-<li>即使在闭源平台上，在专业化的用例增长之前，早期 ChatGPT 的使用中也有相当一部分是休闲和创造性的。这与大语言模型主要用于编写代码、电子邮件或摘要的假设相悖。实际上，许多用户使用这些模型是为了获得陪伴或进行探索。这具有重要意义。</li>
-<li>它凸显了面向消费者的应用程序存在巨大机遇，这些应用程序将叙事设计、情感参与和交互性融合在一起。它为个性化开辟了新领域——智能体可以发展个性、记住偏好或维持长篇互动。</li>
-<li>它还重新定义了模型评估指标：成功可能更少依赖于事实准确性，而更多地取决于一致性、连贯性以及维持引人入胜的对话的能力。</li>
-<li>最后，它为人工智能与娱乐知识产权之间的交叉提供了途径，在互动叙事、游戏和创作者驱动的虚拟角色方面具有潜力。</li>
-</ul>
-<p><strong>【智能体与人类：智能体推理的兴起】</strong> </p>
-<p><strong>大型语言模型的使用正从单轮交互转向智能体推理，即模型通过多个步骤进行规划、推理和执行。它们不再生成一次性的响应，而是协调工具调用、访问外部数据，并迭代优化输出以实现目标</strong>。</p>
-<ul>
-<li>早期证据表明，多步骤查询和链式工具使用呈上升趋势，我们将其视为智能体使用的代表。</li>
-<li>随着这种模式的扩展，评估将从语言质量转向任务完成度和效率。</li>
-<li>下一个竞争前沿在于模型能够多么有效地进行持续推理，这一转变可能最终会重新定义大规模智能体推理在实践中的意义。</li>
-</ul>
-<p><strong>【地理展望】</strong></p>
-<p><strong>大型语言模型（LLM）的使用正变得日益<em>全球化和去中心化</em>，在北美以外地区也呈现快速增长态势。</strong></p>
-<ul>
-<li>亚洲在总 Tokens 需求中的占比已从约 13% 上升至 31%，这反映出企业采用率的提高和创新的增强。与此同时，<em>中国已崛起为一支重要力量</em>，不仅体现在国内消费方面，还体现在产出具有全球竞争力的模型上。更广泛的启示是：<em>大型语言模型必须具备全球实用性</em>，要能在不同语言、不同场景和不同市场中表现出色。</li>
-<li>下一阶段的竞争将取决于文化适应性和多语言能力，而不仅仅是模型规模。</li>
-</ul>
-<p><strong>【成本与使用动态】</strong> </p>
-<p><strong>大语言模型（LLM）市场目前似乎还不像是大宗商品市场：仅凭价格无法很好地解释使用情况。用户会在成本与推理质量、可靠性及能力广度之间进行权衡。</strong></p>
-<ul>
-<li>闭源模型继续占据高价值、与收入相关的工作负载，而开源模型则在低成本、高容量的任务中占据主导地位。这形成了一种动态平衡——这种平衡并非由稳定性决定，更多是由来自底层的持续压力所驱动。</li>
-<li>开源模型不断推动着效率前沿的发展，尤其是在推理和编码领域（例如Kimi K2 Thinking），通过快速迭代和开源创新，性能差距正在缩小。</li>
-<li>开源模型的每一次改进都会削弱闭源系统的定价能力，迫使它们通过更卓越的集成、一致性和企业支持来证明其溢价的合理性。由此产生的竞争节奏快、不对称且不断变化。</li>
-<li>随着时间的推移，随着质量趋同加速，<em>价格弹性可能会增加</em>，这将使曾经差异化的市场变得更具流动性。</li>
-</ul>
-<p><strong>【留存率与灰姑娘水晶鞋现象】</strong></p>
-<p><strong>随着基础模型的跨越式（而非渐进式）发展，留存率已成为衡量防御能力的真正标准。每一次突破都会创造一个短暂的启动窗口，在这个窗口中，模型可以完美地“适配”高价值工作负载（即灰姑娘水晶鞋时刻），一旦用户找到这种适配，他们就会留下来。</strong></p>
-<ul>
-<li>在这种模式下，产品与市场的契合度等同于工作负载与模型的契合度：率先解决实际痛点会推动深度且稳定的采用，因为用户会围绕该能力构建工作流程和习惯。届时，无论是从技术上还是行为习惯上，转换模型的成本都会很高。</li>
-<li>对于开发者和投资者而言，需要关注的信号并非增长，而是留存曲线，即那些在模型更新过程中依然留存的核心用户群体的形成。</li>
-<li>在一个节奏日益加快的市场中，尽早抓住这些重要的未被满足的需求，将决定谁能在下次能力飞跃后屹立不倒。</li>
-</ul>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a target="_blank" rel="noopener" href="https://openrouter.ai/state-of-ai">(OpenRouter) State of AI</a></p>
-<h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/gemini-2.5-pro-retentions.png&w=3840&q=75" alt="Gemini 2.5 Pro retention"></p>
+<p><strong>Gemini Retention Rates</strong></p>
+<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/gemini-2.5-pro-retentions.png&w=3840&q=75" alt="Gemini 2.5 Pro retention"></p>
 <p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/gemini-2.5-flash.png&w=3840&q=75" alt="Gemini 2.5 Flash retention"></p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>OpenRouter 的 100 万亿 Tokens 实证研究</p><p><a href="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-的-100-万亿-Tokens-实证研究/">http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-的-100-万亿-Tokens-实证研究/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-12-10</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-12-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AI/">AI</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><span class="level-item">TPU 与 GPU 的未来竞争格局态势</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/';
@@ -504,7 +461,7 @@
             s.src = '//' + 'vincentgaohj' + '.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());
             (d.head || d.body).appendChild(s);
-        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><img src="/Blog/gallery/OpenRouter-100-Tokens/tokens.png" alt="OpenRouter 的 100 万亿 Tokens 实证研究"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-12-10T03:37:07.000Z">2025-12-10</time></p><p class="title"><a href="/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/">OpenRouter 的 100 万亿 Tokens 实证研究</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><img src="/Blog/gallery/GPU-TPU/tpu-vs-gpu.png" alt="TPU 与 GPU 的未来竞争格局态势"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-12-03T03:38:07.000Z">2025-12-03</time></p><p class="title"><a href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/">TPU 与 GPU 的未来竞争格局态势</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/"><img src="/Blog/gallery/Deploying-AWS-Lambda-with-Terraform/bailey_zindel.jpg" alt="大模型的价格趋势与定价艺术"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-10-14T02:32:09.000Z">2025-10-14</time></p><p class="title"><a href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/">大模型的价格趋势与定价艺术</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/09/24/State-of-AI-2025/"><img src="/Blog/gallery/State-of-AI-2025/intelligence.png" alt="State of AI 2025"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-09-24T03:38:07.000Z">2025-09-24</time></p><p class="title"><a href="/Blog/2025/09/24/State-of-AI-2025/">State of AI 2025</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/"><img src="/Blog/gallery/What-is-Knative-K-for-Kubernetes-Native/knative.png" alt="What is Knative?  K for Kubernetes + Native"></a></figure><div class="media-content"><p class="date"><time dateTime="2022-06-22T02:22:34.000Z">2022-06-22</time></p><p class="title"><a href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/">What is Knative?  K for Kubernetes + Native</a></p><p class="categories"><a href="/Blog/categories/Cloud-Native/">Cloud Native</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/">Kubernetes</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/Knative/">Knative</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Blog/categories/AI/"><span class="level-start"><span class="level-item">AI</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AI/Analytics/"><span class="level-start"><span class="level-item">Analytics</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Machine-Learning-Specialty/"><span class="level-start"><span class="level-item">AWS Certified Machine Learning Specialty</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/"><span class="level-start"><span class="level-item">AWS Certified Solution Architect Associate</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Architecture/"><span class="level-start"><span class="level-item">Architecture</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Overview/"><span class="level-start"><span class="level-item">Overview</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Deep-Learning/"><span class="level-start"><span class="level-item">Deep Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NMF/"><span class="level-start"><span class="level-item">NMF</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Natural-Language-Processing/"><span class="level-start"><span class="level-item">Natural Language Processing</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Reinforce-Learning/"><span class="level-start"><span class="level-item">Reinforce Learning</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Big-Data/"><span class="level-start"><span class="level-item">Big Data</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Big-Data/Spark/"><span class="level-start"><span class="level-item">Spark</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/"><span class="level-start"><span class="level-item">Cloud Native</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/"><span class="level-start"><span class="level-item">Kubernetes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/Knative/"><span class="level-start"><span class="level-item">Knative</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Development/"><span class="level-start"><span class="level-item">Development</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Development/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Full-Stack/"><span class="level-start"><span class="level-item">Full Stack</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Log-Stack/"><span class="level-start"><span class="level-item">Log Stack</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/English-Study/"><span class="level-start"><span class="level-item">English Study</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/"><span class="level-start"><span class="level-item">Finance</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Finance/Asset-Management/"><span class="level-start"><span class="level-item">Asset Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/Econometrics/"><span class="level-start"><span class="level-item">Econometrics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Lifestyle/"><span class="level-start"><span class="level-item">Lifestyle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Terraform/"><span class="level-start"><span class="level-item">Terraform</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Terraform/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Blog/tags/AI/"><span class="tag">AI</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS/"><span class="tag">AWS</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS-Serverless/"><span class="tag">AWS - Serverless</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Apps/"><span class="tag">Apps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/BERT/"><span class="tag">BERT</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/CNN/"><span class="tag">CNN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified/"><span class="tag">Certified</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified-Machine-Learning-Specialty/"><span class="tag">Certified Machine Learning - Specialty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Native-Kubernetes/"><span class="tag">Cloud Native - Kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Clustering/"><span class="tag">Clustering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Coffee/"><span class="tag">Coffee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep-Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Django/"><span class="tag">Django</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/EKK/"><span class="tag">EKK</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Econometrics/"><span class="tag">Econometrics</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/GPT-2/"><span class="tag">GPT-2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/JetPack/"><span class="tag">JetPack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Knative/"><span class="tag">Knative</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Kotlin/"><span class="tag">Kotlin</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Log/"><span class="tag">Log</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Machine-Learning/"><span class="tag">Machine-Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NLP/"><span class="tag">NLP</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NMF/"><span class="tag">NMF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Overview-of-AWS/"><span class="tag">Overview of AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/PyTorch/"><span class="tag">PyTorch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Reinforce-Learning/"><span class="tag">Reinforce Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless/"><span class="tag">Serverless</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless-Terraform/"><span class="tag">Serverless - Terraform</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Spark/"><span class="tag">Spark</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TOEFL/"><span class="tag">TOEFL</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Word2Vec/"><span class="tag">Word2Vec</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Blog/img/self.jpg" alt="Haojun(Vincent) Gao"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Haojun(Vincent) Gao</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/Blog/archives"><p class="title">50</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/Blog/categories"><p class="title">32</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/Blog/tags"><p class="title">37</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Summary"><span class="level-left"><span class="level-item">Summary</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#开源生态的双重结构"><span class="level-left"><span class="level-item">开源生态的双重结构</span></span></a></li><li><a class="level is-mobile" href="#主要玩家格局演变"><span class="level-left"><span class="level-item">主要玩家格局演变</span></span></a></li><li><a class="level is-mobile" href="#模型规模趋势"><span class="level-left"><span class="level-item">模型规模趋势</span></span></a></li><li><a class="level is-mobile" href="#业务匹配特征"><span class="level-left"><span class="level-item">业务匹配特征</span></span></a></li><li><a class="level is-mobile" href="#智能体推理兴起"><span class="level-left"><span class="level-item">智能体推理兴起</span></span></a></li><li><a class="level is-mobile" href="#使用类别集中化"><span class="level-left"><span class="level-item">使用类别集中化</span></span></a></li><li><a class="level is-mobile" href="#模型领域专业化"><span class="level-left"><span class="level-item">模型领域专业化</span></span></a></li><li><a class="level is-mobile" href="#用户留存机制"><span class="level-left"><span class="level-item">用户留存机制</span></span></a></li><li><a class="level is-mobile" href="#核心观点总结"><span class="level-left"><span class="level-item">核心观点总结</span></span></a></li></ul></li><li><a class="level is-mobile" href="#开源生态：双重结构，DeepSeek，中型模型与角色扮演"><span class="level-left"><span class="level-item">开源生态：双重结构，DeepSeek，中型模型与角色扮演</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#持久的双重结构：70-vs-30"><span class="level-left"><span class="level-item">持久的双重结构：70% vs 30%</span></span></a></li><li><a class="level is-mobile" href="#主要玩家：DeepSeek-vs-Others"><span class="level-left"><span class="level-item">主要玩家：DeepSeek vs Others</span></span></a></li><li><a class="level is-mobile" href="#模型规模的趋势：Medium-vs-Large-Small"><span class="level-left"><span class="level-item">模型规模的趋势：Medium vs Large/Small</span></span></a></li><li><a class="level is-mobile" href="#开源模型的业务匹配：角色扮演-编程-vs-Others"><span class="level-left"><span class="level-item">开源模型的业务匹配：角色扮演+编程 vs Others</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#全球趋势：角色扮演和编程"><span class="level-left"><span class="level-item">全球趋势：角色扮演和编程</span></span></a></li><li><a class="level is-mobile" href="#中国的开源模型：强编程，技术与生产力"><span class="level-left"><span class="level-item">中国的开源模型：强编程，技术与生产力</span></span></a></li><li><a class="level is-mobile" href="#编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃"><span class="level-left"><span class="level-item">编程领域的开源生态：依旧闭源主导，但中国开源生态蓬勃</span></span></a></li><li><a class="level is-mobile" href="#角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"><span class="level-left"><span class="level-item">角色扮演领域的开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#智能体推理的兴起"><span class="level-left"><span class="level-item">智能体推理的兴起</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Reasoning-的调用量：稳步上升至一半的市场"><span class="level-left"><span class="level-item">Reasoning 的调用量：稳步上升至一半的市场</span></span></a></li><li><a class="level is-mobile" href="#工具调用：逐步上升至-15"><span class="level-left"><span class="level-item">工具调用：逐步上升至 15%</span></span></a></li><li><a class="level is-mobile" href="#Prompt-Completion：长度增长，主要驱动力为编程"><span class="level-left"><span class="level-item">Prompt &amp; Completion：长度增长，主要驱动力为编程</span></span></a></li></ul></li><li><a class="level is-mobile" href="#通过-Category-分析人们如何使用大型语言模型"><span class="level-left"><span class="level-item">通过 Category 分析人们如何使用大型语言模型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#主导的类别"><span class="level-left"><span class="level-item">主导的类别</span></span></a></li><li><a class="level is-mobile" href="#每个-Category-下的主要构成"><span class="level-left"><span class="level-item">每个 Category 下的主要构成</span></span></a></li></ul></li><li><a class="level is-mobile" href="#模型和领域的结合：八仙过海，各显神通"><span class="level-left"><span class="level-item">模型和领域的结合：八仙过海，各显神通</span></span></a></li><li><a class="level is-mobile" href="#用户留存：灰姑娘的“水晶鞋”现象"><span class="level-left"><span class="level-item">用户留存：灰姑娘的“水晶鞋”现象</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#灰姑娘的“水晶鞋”现象"><span class="level-left"><span class="level-item">灰姑娘的“水晶鞋”现象</span></span></a></li><li><a class="level is-mobile" href="#主导性发布异常"><span class="level-left"><span class="level-item">主导性发布异常</span></span></a></li><li><a class="level is-mobile" href="#适配失败的后果"><span class="level-left"><span class="level-item">适配失败的后果</span></span></a></li><li><a class="level is-mobile" href="#DeepSeek-的回旋镖效应"><span class="level-left"><span class="level-item">DeepSeek 的回旋镖效应</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Discussion"><span class="level-left"><span class="level-item">Discussion</span></span></a></li><li><a class="level is-mobile" href="#Reference"><span class="level-left"><span class="level-item">Reference</span></span></a></li><li><a class="level is-mobile" href="#Appendix"><span class="level-left"><span class="level-item">Appendix</span></span></a></li></ul></div></div><script src="/Blog/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a><p class="is-size-7"><span>&copy; 2025 Haojun(Vincent) Gao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Gallery" href="https://www.gaohaojun.com/"><i class="fab fa-fighter-jet"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Linkedin" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-linkedin"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Instagram" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-instagram"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/"><img src="/Blog/gallery/OpenRouter-100-Tokens/tokens.png" alt="OpenRouter 的 100 万亿 Tokens 实证研究"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-12-10T03:37:07.000Z">2025-12-10</time></p><p class="title"><a href="/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/">OpenRouter 的 100 万亿 Tokens 实证研究</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><img src="/Blog/gallery/GPU-TPU/tpu-vs-gpu.png" alt="TPU 与 GPU 的未来竞争格局态势"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-12-03T03:38:07.000Z">2025-12-03</time></p><p class="title"><a href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/">TPU 与 GPU 的未来竞争格局态势</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/"><img src="/Blog/gallery/Deploying-AWS-Lambda-with-Terraform/bailey_zindel.jpg" alt="大模型的价格趋势与定价艺术"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-10-14T02:32:09.000Z">2025-10-14</time></p><p class="title"><a href="/Blog/2025/10/14/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BB%B7%E6%A0%BC%E8%B6%8B%E5%8A%BF%E4%B8%8E%E5%AE%9A%E4%BB%B7%E8%89%BA%E6%9C%AF/">大模型的价格趋势与定价艺术</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2025/09/24/State-of-AI-2025/"><img src="/Blog/gallery/State-of-AI-2025/intelligence.png" alt="State of AI 2025"></a></figure><div class="media-content"><p class="date"><time dateTime="2025-09-24T03:38:07.000Z">2025-09-24</time></p><p class="title"><a href="/Blog/2025/09/24/State-of-AI-2025/">State of AI 2025</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/"><img src="/Blog/gallery/What-is-Knative-K-for-Kubernetes-Native/knative.png" alt="What is Knative?  K for Kubernetes + Native"></a></figure><div class="media-content"><p class="date"><time dateTime="2022-06-22T02:22:34.000Z">2022-06-22</time></p><p class="title"><a href="/Blog/2022/06/22/What-is-Knative-K-for-Kubernetes-Native/">What is Knative?  K for Kubernetes + Native</a></p><p class="categories"><a href="/Blog/categories/Cloud-Native/">Cloud Native</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/">Kubernetes</a> / <a href="/Blog/categories/Cloud-Native/Kubernetes/Knative/">Knative</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Blog/categories/AI/"><span class="level-start"><span class="level-item">AI</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AI/Analytics/"><span class="level-start"><span class="level-item">Analytics</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">17</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Machine-Learning-Specialty/"><span class="level-start"><span class="level-item">AWS Certified Machine Learning Specialty</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/"><span class="level-start"><span class="level-item">AWS Certified Solution Architect Associate</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Architecture/"><span class="level-start"><span class="level-item">Architecture</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Overview/"><span class="level-start"><span class="level-item">Overview</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Deep-Learning/"><span class="level-start"><span class="level-item">Deep Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NMF/"><span class="level-start"><span class="level-item">NMF</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Natural-Language-Processing/"><span class="level-start"><span class="level-item">Natural Language Processing</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Reinforce-Learning/"><span class="level-start"><span class="level-item">Reinforce Learning</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Big-Data/"><span class="level-start"><span class="level-item">Big Data</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Big-Data/Spark/"><span class="level-start"><span class="level-item">Spark</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/"><span class="level-start"><span class="level-item">Cloud Native</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/"><span class="level-start"><span class="level-item">Kubernetes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/Knative/"><span class="level-start"><span class="level-item">Knative</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Development/"><span class="level-start"><span class="level-item">Development</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Development/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Full-Stack/"><span class="level-start"><span class="level-item">Full Stack</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Log-Stack/"><span class="level-start"><span class="level-item">Log Stack</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/English-Study/"><span class="level-start"><span class="level-item">English Study</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/"><span class="level-start"><span class="level-item">Finance</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Finance/Asset-Management/"><span class="level-start"><span class="level-item">Asset Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/Econometrics/"><span class="level-start"><span class="level-item">Econometrics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Lifestyle/"><span class="level-start"><span class="level-item">Lifestyle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Terraform/"><span class="level-start"><span class="level-item">Terraform</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Terraform/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Blog/tags/AI/"><span class="tag">AI</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS/"><span class="tag">AWS</span><span class="tag">19</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS-Serverless/"><span class="tag">AWS - Serverless</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Apps/"><span class="tag">Apps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/BERT/"><span class="tag">BERT</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/CNN/"><span class="tag">CNN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified/"><span class="tag">Certified</span><span class="tag">10</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified-Machine-Learning-Specialty/"><span class="tag">Certified Machine Learning - Specialty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Native-Kubernetes/"><span class="tag">Cloud Native - Kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Clustering/"><span class="tag">Clustering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Coffee/"><span class="tag">Coffee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep-Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Django/"><span class="tag">Django</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/EKK/"><span class="tag">EKK</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Econometrics/"><span class="tag">Econometrics</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/GPT-2/"><span class="tag">GPT-2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/JetPack/"><span class="tag">JetPack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Knative/"><span class="tag">Knative</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Kotlin/"><span class="tag">Kotlin</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Log/"><span class="tag">Log</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Machine-Learning/"><span class="tag">Machine-Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NLP/"><span class="tag">NLP</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NMF/"><span class="tag">NMF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Overview-of-AWS/"><span class="tag">Overview of AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/PyTorch/"><span class="tag">PyTorch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Reinforce-Learning/"><span class="tag">Reinforce Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless/"><span class="tag">Serverless</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless-Terraform/"><span class="tag">Serverless - Terraform</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Spark/"><span class="tag">Spark</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TOEFL/"><span class="tag">TOEFL</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Word2Vec/"><span class="tag">Word2Vec</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Blog/img/self.jpg" alt="Haojun(Vincent) Gao"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Haojun(Vincent) Gao</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/Blog/archives"><p class="title">50</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/Blog/categories"><p class="title">32</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/Blog/tags"><p class="title">37</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Summary"><span class="level-left"><span class="level-item">Summary</span></span></a></li><li><a class="level is-mobile" href="#一、开源生态：双重结构，DeepSeek，中型模型与角色扮演"><span class="level-left"><span class="level-item">一、开源生态：双重结构，DeepSeek，中型模型与角色扮演</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-持久的双重结构：70-vs-30"><span class="level-left"><span class="level-item">1.1 持久的双重结构：70% vs 30%</span></span></a></li><li><a class="level is-mobile" href="#1-2-主要玩家：DeepSeek-vs-Others"><span class="level-left"><span class="level-item">1.2 主要玩家：DeepSeek vs Others</span></span></a></li><li><a class="level is-mobile" href="#1-3-模型规模的趋势：Medium-vs-Large-Small"><span class="level-left"><span class="level-item">1.3 模型规模的趋势：Medium vs Large/Small</span></span></a></li><li><a class="level is-mobile" href="#1-4-开源模型的业务匹配：角色扮演-编程-vs-Others"><span class="level-left"><span class="level-item">1.4 开源模型的业务匹配：角色扮演+编程 vs Others</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-4-1-全球趋势：角色扮演和编程"><span class="level-left"><span class="level-item">1.4.1 全球趋势：角色扮演和编程</span></span></a></li><li><a class="level is-mobile" href="#1-4-2-中国开源趋势：强编程，技术与生产力"><span class="level-left"><span class="level-item">1.4.2 中国开源趋势：强编程，技术与生产力</span></span></a></li><li><a class="level is-mobile" href="#1-4-3-编程开源生态：依旧闭源主导，但中国开源生态蓬勃"><span class="level-left"><span class="level-item">1.4.3 编程开源生态：依旧闭源主导，但中国开源生态蓬勃</span></span></a></li><li><a class="level is-mobile" href="#1-4-4-角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"><span class="level-left"><span class="level-item">1.4.4 角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#二、智能体推理的兴起"><span class="level-left"><span class="level-item">二、智能体推理的兴起</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-Reasoning调用量稳步上升至一半市场"><span class="level-left"><span class="level-item">2.1 Reasoning调用量稳步上升至一半市场</span></span></a></li><li><a class="level is-mobile" href="#2-2-工具调用逐步上升至15"><span class="level-left"><span class="level-item">2.2 工具调用逐步上升至15%</span></span></a></li><li><a class="level is-mobile" href="#2-3-序列长度增长主要驱动力为编程"><span class="level-left"><span class="level-item">2.3 序列长度增长主要驱动力为编程</span></span></a></li></ul></li><li><a class="level is-mobile" href="#三、通过产业标签分析人类交互行为"><span class="level-left"><span class="level-item">三、通过产业标签分析人类交互行为</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-毫无疑问的主导：编程"><span class="level-left"><span class="level-item">3.1 毫无疑问的主导：编程</span></span></a></li><li><a class="level is-mobile" href="#3-2-产业探索的非均匀分布"><span class="level-left"><span class="level-item">3.2 产业探索的非均匀分布</span></span></a></li></ul></li><li><a class="level is-mobile" href="#四、模型和领域的结合：八仙过海，各显神通"><span class="level-left"><span class="level-item">四、模型和领域的结合：八仙过海，各显神通</span></span></a></li><li><a class="level is-mobile" href="#五、用户留存：灰姑娘的”水晶鞋”现象"><span class="level-left"><span class="level-item">五、用户留存：灰姑娘的”水晶鞋”现象</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#5-1-灰姑娘的”水晶鞋”现象"><span class="level-left"><span class="level-item">5.1 灰姑娘的”水晶鞋”现象</span></span></a></li><li><a class="level is-mobile" href="#5-2-主导性发布异常"><span class="level-left"><span class="level-item">5.2 主导性发布异常</span></span></a></li><li><a class="level is-mobile" href="#5-3-适配失败的后果"><span class="level-left"><span class="level-item">5.3 适配失败的后果</span></span></a></li><li><a class="level is-mobile" href="#5-4-DeepSeek-的回旋镖效应"><span class="level-left"><span class="level-item">5.4 DeepSeek 的回旋镖效应</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Discussion"><span class="level-left"><span class="level-item">Discussion</span></span></a></li><li><a class="level is-mobile" href="#Reference"><span class="level-left"><span class="level-item">Reference</span></span></a></li><li><a class="level is-mobile" href="#Appendix"><span class="level-left"><span class="level-item">Appendix</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Blog/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a><p class="is-size-7"><span>&copy; 2025 Haojun(Vincent) Gao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Gallery" href="https://www.gaohaojun.com/"><i class="fab fa-fighter-jet"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Linkedin" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-linkedin"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Instagram" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-instagram"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
