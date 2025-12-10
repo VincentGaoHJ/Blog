@@ -43,6 +43,7 @@
 <p>With AWS databases, you don’t need to worry about <strong>database management tasks</strong> such as server provisioning, patching, setup, configuration, backups, or recovery. </p>
 <p><img src="https://d1.awsstatic.com/webteam/category-pages/Databases/category-page-diagram_database_gaming.de2623720c885acfe788a9170db1837129758d8a.png" alt="Build globally distributed and internet-scale applications that handle millions of requests over hundreds of terabytes of data"></p>
 <span id="more"></span>
+
 <p>[toc]</p>
 <h1 id="Database-on-AWS"><a href="#Database-on-AWS" class="headerlink" title="Database on AWS"></a>Database on AWS</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Database Types</strong></p>
 <ul>
@@ -55,7 +56,7 @@
 <ul>
 <li><strong>Online Transaction Processing (OLTP)</strong> differs from <strong>Online Analytics Processing (OLAP)</strong> in terms of the types of queries you will run.</li>
 </ul>
-<p><strong>Redshift for Data Warehousing </strong></p>
+<p>**Redshift for Data Warehousing **</p>
 <ul>
 <li><strong>Used for business intelligence.</strong> Tools like Congnos, Jaspersoft, SQL Server Reporting Services, Oracle Hyperion, SAP NetWeaver.</li>
 <li>Used to pull in very large and complex data sets. Usually used by management to do queries on data (such as current performance vs targets etc)</li>
@@ -79,14 +80,14 @@
 <li>RDS is NOT Serverless</li>
 <li>Aurora Serverless IS Serverless</li>
 </ul>
-<h2 id="RDS-Back-Ups-Multi-AZ-amp-Read-Replicas"><a href="#RDS-Back-Ups-Multi-AZ-amp-Read-Replicas" class="headerlink" title="RDS - Back Ups, Multi-AZ &amp; Read Replicas"></a>RDS - Back Ups, Multi-AZ &amp; Read Replicas</h2><h3 id="Back-Ups"><a href="#Back-Ups" class="headerlink" title="Back Ups"></a>Back Ups</h3><p><strong>Automated Backups</strong></p>
+<h2 id="RDS-Back-Ups-Multi-AZ-Read-Replicas"><a href="#RDS-Back-Ups-Multi-AZ-Read-Replicas" class="headerlink" title="RDS - Back Ups, Multi-AZ &amp; Read Replicas"></a>RDS - Back Ups, Multi-AZ &amp; Read Replicas</h2><h3 id="Back-Ups"><a href="#Back-Ups" class="headerlink" title="Back Ups"></a>Back Ups</h3><p><strong>Automated Backups</strong></p>
 <ul>
 <li>Automated Backups allow you to recover your database to any point in time within a “retention period”. The retention period can be between one and 35 days. </li>
 <li>Automated Backups will take a full daily snapshot and will also store transaction logs throughout the day. </li>
 <li>When you do a recovery, AWS will first choose the most recent daily back up, and then apply transaction logs relevant to that day. This allows you to do a point in time recovery down to a second, within the retention period.</li>
 <li><strong>Enabled by default.</strong></li>
 <li>The backup data is stored in S3 and you get free storage space equal to the size of your database.</li>
-<li>Backups are taken within a defined window. During the backup window, storage I/O may be suspended while your data is being backed up.</li>
+<li>Backups are taken within a defined window. During the backup window, storage I&#x2F;O may be suspended while your data is being backed up.</li>
 </ul>
 <p><strong>Database Snapshots</strong></p>
 <ul>
@@ -136,12 +137,12 @@
 <h3 id="Tenets-of-NoSQL-DATA-MODELING"><a href="#Tenets-of-NoSQL-DATA-MODELING" class="headerlink" title="Tenets of NoSQL DATA MODELING"></a>Tenets of NoSQL DATA MODELING</h3><ul>
 <li>Understand the use case</li>
 <li>Define the access patterns<ul>
-<li>Read/Write workloads</li>
+<li>Read&#x2F;Write workloads</li>
 </ul>
 </li>
 <li><strong>Data-modeling</strong><ul>
 <li><strong>Avoid relational design patterns, use one table</strong></li>
-<li><strong>1 application service = 1 table</strong><ul>
+<li><strong>1 application service &#x3D; 1 table</strong><ul>
 <li>Reduce round trips</li>
 <li>Simplify access patterns</li>
 </ul>
@@ -160,15 +161,15 @@
 <ul>
 <li>Fully managed, highly available, in-memory cache</li>
 <li>10x performance improvement</li>
-<li>Reduces request time from <strong>milliseconds</strong> to microseconds — even under load.</li>
+<li>Reduces request time from <strong>milliseconds</strong> to microseconds – even under load.</li>
 <li>No need for developers to manage caching logic</li>
 <li>DAX is completely compatible with DynamoDB API calls</li>
 </ul>
 <p><strong><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transactions.html">Transactions</a></strong></p>
 <ul>
 <li><strong>Multiple “all-or-nothing” operations</strong></li>
-<li>Financial transactions / Fulfilling orders</li>
-<li>Two underlying reads or writes — prepare/commit</li>
+<li>Financial transactions &#x2F; Fulfilling orders</li>
+<li>Two underlying reads or writes – prepare&#x2F;commit</li>
 <li>Up to 25 items or 4 MB of Data</li>
 </ul>
 <p><strong>On-Demand Capacity</strong></p>
@@ -176,7 +177,7 @@
 <li><strong>Pay-per-request pricing</strong></li>
 <li><strong>Balance cost and performance</strong></li>
 <li>No minimum capacity</li>
-<li><strong>No charge for read/write</strong> — only storage and backups</li>
+<li><strong>No charge for read&#x2F;write</strong> – only storage and backups</li>
 <li><strong>Pay more per request</strong> than with provisioned capacity</li>
 <li>Use for new product launches</li>
 </ul>
@@ -324,8 +325,8 @@
 <p><strong>Redis</strong></p>
 <ul>
 <li>Advanced data types</li>
-<li>Ranking/Sorting data sets</li>
-<li>Pub/Sub capabilities</li>
+<li>Ranking&#x2F;Sorting data sets</li>
+<li>Pub&#x2F;Sub capabilities</li>
 <li>Persistence</li>
 <li>Multi-AZ</li>
 <li>Backup &amp; Restore Capabilities</li>
@@ -349,7 +350,7 @@
 <ul>
 <li>CloudFront</li>
 <li>API Gateway</li>
-<li>ElastiCache — Memcached and Redis</li>
+<li>ElastiCache – Memcached and Redis</li>
 <li>DynamoDB Accelerator (DAX)</li>
 </ul>
 <h2 id="EMR-Overview"><a href="#EMR-Overview" class="headerlink" title="EMR Overview"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/emr">EMR Overview</a></h2><p><strong>Amazon EMR makes it easy to set up, operate, and scale your big data environments by automating time-consuming tasks like provisioning capacity and tuning clusters.</strong></p>
