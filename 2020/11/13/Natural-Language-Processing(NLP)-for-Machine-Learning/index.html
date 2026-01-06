@@ -40,9 +40,8 @@
       window.addEventListener('hashchange', switchTab, false);
   })();
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-11-13T04:53:22.000Z" title="2020/11/13 12:53:22">2020-11-13</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Algorithm/">Algorithm</a><span> / </span><a class="link-muted" href="/Blog/categories/Algorithm/Natural-Language-Processing/">Natural Language Processing</a></span><span class="level-item">12 minutes read (About 1777 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Natural Language Processing(NLP) for Machine Learning</h1><div class="content"><p>Machine learning with natural language is faced with one major hurdle – its algorithms usually deal with numbers, and natural language is, well, text. So we need to transform that text into numbers, otherwise known as text vectorization.</p>
-<p><img src="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png"></p>
+<p><img src="https://monkeylearn.com/static/d7073ac089cd3ea6dff4c1645446f91a/05b00/Getting-started-in-NLP.png" alt=""></p>
 <span id="more"></span>
-
 <p>[toc]</p>
 <h2 id="Form-the-Dataset"><a href="#Form-the-Dataset" class="headerlink" title="Form the Dataset"></a>Form the Dataset</h2><p><strong>Positive Samples</strong></p>
 <ul>
@@ -55,11 +54,12 @@
 </ul>
 <p><strong>Negative Samples</strong></p>
 <ul>
-<li>User Dataset –  <a target="_blank" rel="noopener" href="https://www.oreilly.com/ideas/tweets-loud-and-quiet">“Tweets Loud and Quiet”</a> </li>
-<li>Tweets Dataset – <a target="_blank" rel="noopener" href="http://help.sentiment140.com/for-students/">sentiment140</a></li>
+<li>User Dataset —  <a target="_blank" rel="noopener" href="https://www.oreilly.com/ideas/tweets-loud-and-quiet">“Tweets Loud and Quiet”</a> </li>
+<li>Tweets Dataset — <a target="_blank" rel="noopener" href="http://help.sentiment140.com/for-students/">sentiment140</a></li>
 <li>Those two dataset have no connection, but we could know the distribution of users information and tweets content separately. <strong>That’s also why we could use these two separate dataset to form the negative sample by simply sampling the tweets from tweets dataset to be the users tweets feature.</strong> the total number of tweets posted by user is told by the users dataset, as well as the frequency of user’s tweet behavior(calculated by total number divided by time horizon).</li>
 </ul>
 <p><strong>Sample of Natural Language Dataset</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -70,7 +70,8 @@
 <th>state-back label</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>32</td>
 <td>1</td>
@@ -98,8 +99,11 @@
 <td>#AI RT @couponfree01: #udemy Free Discount - The Complete Node.js Developer Course (3rd Edition)</td>
 <td>0</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Sample of Numeric Dataset</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -114,7 +118,8 @@
 <th>state-back label</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>1</td>
 <td>32</td>
 <td>1</td>
@@ -158,7 +163,9 @@
 <td>0</td>
 <td>0</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><em>Note: the numeric value isn’t the number of time that word appear in the sample, it’s the TF-IDF value of the words. That’s why the values are decimal instead of integer. TF-IDF value will be introduced in the Vectorizing Data section, please find it below. The mean reason to do so is the reduce the dimension and also measure the feature of samples in a more scientific way</em></p>
 <h2 id="Pre-processing-Data"><a href="#Pre-processing-Data" class="headerlink" title="Pre-processing Data"></a>Pre-processing Data</h2><h3 id="Remove-punctuation"><a href="#Remove-punctuation" class="headerlink" title="Remove punctuation"></a>Remove punctuation</h3><p>Punctuation can provide grammatical context to a sentence which supports our understanding. But for our vectorizer which counts the number of words and not the context, it does not add value, so we remove all special characters.</p>
 <p><strong>e.g.: How are you?-&gt;How are you</strong></p>
@@ -180,10 +187,18 @@
 <li>So, if the word is very common and appears in many documents, this number will approach 0. Otherwise, it will approach 1.</li>
 </ul>
 <p>Multiplying these two numbers results in the TF-IDF score of a word in a document. The higher the score, the more relevant that word is in that particular document.</p>
-<h4 id="Mathematical-Term"><a href="#Mathematical-Term" class="headerlink" title="Mathematical Term"></a>Mathematical Term</h4><p><strong>To put it in more formal mathematical terms</strong>, the TF-IDF score for the word t in the document d from the document set D is calculated as follows:<br>$$<br>\begin{equation}<br>\text { tf-idf }(t, d, D)&#x3D;t f(t, d) \cdot \text { idf }(t, D)<br>\end{equation}<br>$$</p>
-<p>where</p>
-<p>$$<br>\begin{equation}<br>\begin{array}{c}<br>t f(t, d)&#x3D;\log (1+\text { freq }(t, d)) \<br>i d f(t, D)&#x3D;\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)<br>\end{array}<br>\end{equation}<br>$$</p>
-<p><a target="_blank" rel="noopener" href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly"><strong>How can one reduce the TFIDF model size?</strong></a></p>
+<h4 id="Mathematical-Term"><a href="#Mathematical-Term" class="headerlink" title="Mathematical Term"></a>Mathematical Term</h4><p><strong>To put it in more formal mathematical terms</strong>, the TF-IDF score for the word t in the document d from the document set D is calculated as follows:</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\text { tf-idf }(t, d, D)=t f(t, d) \cdot \text { idf }(t, D)
+\end{equation}</script><p>where</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+\begin{array}{c}
+t f(t, d)=\log (1+\text { freq }(t, d)) \\
+i d f(t, D)=\log \left(\frac{N}{\operatorname{count}(d \in D: t \in d)}\right)
+\end{array}
+\end{equation}</script><p><a target="_blank" rel="noopener" href="https://www.quora.com/How-can-one-reduce-the-TFIDF-model-size-without-reducing-the-accuracy-significantly"><strong>How can one reduce the TFIDF model size?</strong></a></p>
 <ul>
 <li>The most effortless way is by filtering out infrequent words. You can achieve this by setting input arguments as follows: to use <code>min_df</code> to ignore terms that have a document frequency lower than the <code>min_df</code>. If float, the parameter represents a proportion of documents, integer absolute counts. When dealing with a relatively large corpus, using <code>min_df</code> of 5, 10, or 50 reduces the size of the vocabulary significantly while maintaining (or often improving) the accuracy.</li>
 <li><code>max_features</code> To consider only the top <code>max_features</code> ordered by term frequency across the corpus. This is useful if you have strict limit on the size of TF-IDF transformed features (e.g. up to 100,000 TF-IDF features).</li>
@@ -201,12 +216,12 @@
 <li><strong>Recall</strong>: recall is the fraction of the relevant documents that are successfully retrieved.</li>
 <li>Precision and recall are then defined as:</li>
 </ul>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807"></p>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b"></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/26106935459abe7c266f7b1ebfa2a824b334c807" alt=""></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/4c233366865312bc99c832d1475e152c5074891b" alt=""></p>
 <ul>
 <li><strong>F-measure</strong>: he traditional F-measure or balanced F-score (<strong>F1 score</strong>) is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers">geometric(harmonic) mean</a> of precision and recall:</li>
 </ul>
-<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e"></p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/9c94f59b68f5ae0dc92185906c7ec4214fd04e1e" alt=""></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/natural-language-processing-nlp-for-machine-learning-d44498845d5b">Natural Language Processing(NLP) for Machine Learning</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/sklearn-feature-extraction-with-tf-idf/">Sklearn | Feature Extraction with TF-IDF</a></li>

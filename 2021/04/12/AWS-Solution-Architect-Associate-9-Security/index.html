@@ -42,7 +42,6 @@
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-04-12T02:18:34.000Z" title="2021/4/12 10:18:34">2021-04-12</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AWS/">AWS</a><span> / </span><a class="link-muted" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/">AWS Certified Solution Architect Associate</a></span><span class="level-item">9 minutes read (About 1322 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">AWS Solution Architect(Associate) - Topic 9: Cloud Security</h1><div class="content"><p>AWS allows you to automate manual security tasks so you can shift your focus to scaling and innovating your business.</p>
 <p><img src="https://d2908q01vomqb2.cloudfront.net/22d200f8670dbdb3e253a90eee5098477c95c23d/2021/03/09/Demystifying-KMS-keys-2021-2.png" alt="AWS options for key management"></p>
 <span id="more"></span>
-
 <h1 id="Cloud-Security"><a href="#Cloud-Security" class="headerlink" title="Cloud Security"></a>Cloud Security</h1><h2 id="Reducing-Security-Threats"><a href="#Reducing-Security-Threats" class="headerlink" title="Reducing Security Threats"></a>Reducing Security Threats</h2><p>If you are operating a public web application, you should prefer WAF in these instances mentioned below, and it can be integrated into CloudFront.</p>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/0xlwLEccRe0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -66,80 +65,87 @@
 <li>Encrypt and decrypt data up to 4 KB in size</li>
 <li>Integrated with most AWS services</li>
 <li>Pay per API call</li>
-<li>Audit capability using CloudTrail – logs delivered to S3</li>
+<li>Audit capability using CloudTrail — logs delivered to S3</li>
 <li>FIPS 140-2 Level 2, FIPS is a US government computer security standard used to approve cryptographic modules.</li>
 <li>Level 3 is CloudHSM</li>
 </ul>
 <p><strong>Types of CMKs</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">Type</th>
-<th align="center">Can View</th>
-<th align="center">Can Manage</th>
-<th align="center">Dedicated to My Account</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Can View</th>
+<th style="text-align:center">Can Manage</th>
+<th style="text-align:center">Dedicated to My Account</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Customer Managed</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<tbody>
+<tr>
+<td style="text-align:center">Customer Managed</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">AWS Managed CMK</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center">√</td>
+<td style="text-align:center">AWS Managed CMK</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">AWS Owned CMK</td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center"></td>
+<td style="text-align:center">AWS Owned CMK</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Symmetric vs Asymmetric CMKs</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">Symmetric</th>
-<th align="center">Asymmetric</th>
+<th style="text-align:center">Symmetric</th>
+<th style="text-align:center">Asymmetric</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><strong>Same</strong> key used for encryption and decryption</td>
-<td align="center">Mathematically related public&#x2F;private key pair</td>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Same</strong> key used for encryption and decryption</td>
+<td style="text-align:center">Mathematically related public/private key pair</td>
 </tr>
 <tr>
-<td align="center"><strong>AES-256</strong></td>
-<td align="center"><strong>RSA</strong> and <strong>elliptic-curve cryptography (ECC)</strong></td>
+<td style="text-align:center"><strong>AES-256</strong></td>
+<td style="text-align:center"><strong>RSA</strong> and <strong>elliptic-curve cryptography (ECC)</strong></td>
 </tr>
 <tr>
-<td align="center">Never leaves AWS unencrypted</td>
-<td align="center"><strong>Private</strong> key never leaves AWS unencrypted</td>
+<td style="text-align:center">Never leaves AWS unencrypted</td>
+<td style="text-align:center"><strong>Private</strong> key never leaves AWS unencrypted</td>
 </tr>
 <tr>
-<td align="center">Must call the KMS APIs to use</td>
-<td align="center">Must call the KMS APIs to use the <strong>private</strong> key</td>
+<td style="text-align:center">Must call the KMS APIs to use</td>
+<td style="text-align:center">Must call the KMS APIs to use the <strong>private</strong> key</td>
 </tr>
 <tr>
-<td align="center">AWS services integrated with KMS use symmetric CMKs</td>
-<td align="center"><strong>Download</strong> the public key and use outside AWS</td>
+<td style="text-align:center">AWS services integrated with KMS use symmetric CMKs</td>
+<td style="text-align:center"><strong>Download</strong> the public key and use outside AWS</td>
 </tr>
 <tr>
-<td align="center">Encrypt, decrypt, and re-encrypt data</td>
-<td align="center">Used outside AWS by users who can’t call KMS APIs</td>
+<td style="text-align:center">Encrypt, decrypt, and re-encrypt data</td>
+<td style="text-align:center">Used outside AWS by users who can’t call KMS APIs</td>
 </tr>
 <tr>
-<td align="center">Generate data keys, data key pairs, and random byte strings</td>
-<td align="center">AWS services integrated with KMS <strong>do not support</strong> asymmetric CMKS</td>
+<td style="text-align:center">Generate data keys, data key pairs, and random byte strings</td>
+<td style="text-align:center">AWS services integrated with KMS <strong>do not support</strong> asymmetric CMKS</td>
 </tr>
 <tr>
-<td align="center"><strong>Import</strong> your own key material</td>
-<td align="center">Often used in Sign messages and verify signatures</td>
+<td style="text-align:center"><strong>Import</strong> your own key material</td>
+<td style="text-align:center">Often used in Sign messages and verify signatures</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="CloudHSM"><a href="#CloudHSM" class="headerlink" title="CloudHSM"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/cloudhsm/">CloudHSM</a></h2><iframe width="1228" height="691" src="https://www.youtube.com/embed/hEVks207ALM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <p><strong>AWS CloudHSM is a cloud-based hardware security module (HSM) that enables you to easily generate and use your own encryption keys on the AWS Cloud.</strong></p>
@@ -150,13 +156,13 @@
 <li><strong>No access</strong> to the AWS-managed component</li>
 <li>Runs within a VPC in your account</li>
 <li>Single tenant , dedicated hardware, multi-AZ cluster</li>
-<li>Industry-standard APIs – <strong>no AWS APIs</strong></li>
+<li>Industry-standard APIs — <strong>no AWS APIs</strong></li>
 <li><strong>PKCS#11</strong></li>
 <li><strong>Java Cryptography Tensions (JCE)</strong></li>
 <li><strong>Microsoft CryptoNG (CNG)</strong></li>
-<li>Keep your keys safe – <strong>irretrievable</strong> if lost!</li>
+<li>Keep your keys safe — <strong>irretrievable</strong> if lost!</li>
 </ul>
-<h2 id="Systems-Manager-Parameter-Store"><a href="#Systems-Manager-Parameter-Store" class="headerlink" title="Systems Manager Parameter Store"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">Systems Manager Parameter Store</a></h2><p><em><strong>AWS Systems Manager Parameter Store (Parameter Store) provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, Amazon Machine Image (AMI) IDs, and license codes as parameter values.</strong></em></p>
+<h2 id="Systems-Manager-Parameter-Store"><a href="#Systems-Manager-Parameter-Store" class="headerlink" title="Systems Manager Parameter Store"></a><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">Systems Manager Parameter Store</a></h2><p><strong><em>AWS Systems Manager Parameter Store (Parameter Store) provides secure, hierarchical storage for configuration data management and secrets management. You can store data such as passwords, database strings, Amazon Machine Image (AMI) IDs, and license codes as parameter values.</em></strong></p>
 <ul>
 <li>Component of AWS Systems Manager (SSM)</li>
 <li>Secure <strong>serverless</strong> storage for configuration and secrets:<ul>
@@ -175,9 +181,9 @@
 <h3 id="AWS-Parameter-Store-vs-AWS-Secrets-Manager"><a href="#AWS-Parameter-Store-vs-AWS-Secrets-Manager" class="headerlink" title="AWS Parameter Store vs. AWS Secrets Manager"></a>AWS Parameter Store vs. AWS Secrets Manager</h3><p>To implement password rotation lifecycles, use AWS Secrets Manager (Secrets Manager). Secrets Manager allows you to easily rotate, manage, and retrieve database credentials, API keys, and other secrets throughout their lifecycle. For more information, see <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html">What is AWS Secrets Manager?</a></p>
 <p><strong>Similarities</strong></p>
 <ul>
-<li><strong>Managed Key&#x2F;Value Store Services.</strong> Both services can store values up to 4096 characters and allow the keys to have prefixes.</li>
+<li><strong>Managed Key/Value Store Services.</strong> Both services can store values up to 4096 characters and allow the keys to have prefixes.</li>
 <li><strong>Similar Encryption Options.</strong> Both services can leverage AWS KMS to encrypt values. </li>
-<li><strong>Both Reference-able in CloudFormation.</strong> Writing on how SSM Parameter Store and AWS Secrets Manager interact with CloudFormation can be a whole separate article.</li>
+<li><strong>Both Reference-able in CloudFormation.</strong> Writing on how SSM Parameter Store and AWS Secrets Manager interact with CloudFormation can be a whole separate article. </li>
 </ul>
 <p><strong>Differences</strong></p>
 <ul>
@@ -199,8 +205,7 @@
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/mt/the-right-way-to-store-secrets-using-parameter-store/">The Right Way to Store Secrets using Parameter Store</a></li>
 </ul>
 </li>
-<li><p><strong>Third Party Blog</strong></p>
-<ul>
+<li><strong>Third Party Blog</strong><ul>
 <li><a target="_blank" rel="noopener" href="https://www.1strategy.com/blog/2019/02/28/aws-parameter-store-vs-aws-secrets-manager/">AWS Parameter Store vs. AWS Secrets Manager</a></li>
 </ul>
 </li>

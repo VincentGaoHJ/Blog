@@ -40,896 +40,979 @@
       window.addEventListener('hashchange', switchTab, false);
   })();
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2025-12-20T02:31:07.000Z" title="2025/12/20 10:31:07">2025-12-20</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AWS/">AWS</a><span> / </span><a class="link-muted" href="/Blog/categories/AWS/AWS-Certified-Generative-AI-Developer-Professional/">AWS Certified Generative AI Developer Professional</a></span><span class="level-item">36 minutes read (About 5328 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">AWS Certified Generative AI Developer - Professional (AIP-C01) 考试大纲详解</h1><div class="content"><p>这份文档基于官方考试指南，对 <strong>AWS Certified Generative AI Developer - Professional</strong> 认证的五大领域、具体任务和技能要求进行了结构化整理和要点解析，旨在系统化地理解和掌握考试范围。</p>
-<p><img src="https://assets.aboutamazon.com/dims4/default/05b0003/2147483647/strip/true/crop/1320x512+0+0/resize/1320x512!/quality/90/?url=https://amazon-blogs-brightspot.s3.amazonaws.com/93/df/69c908f34ca9bdd1dbbc8c3aef8d/certified1.png" alt="AWS Certified Generative AI Developer - Professional"></p>
+<p><img src="https://assets.aboutamazon.com/dims4/default/05b0003/2147483647/strip/true/crop/1320x512+0+0/resize/1320x512!/quality/90/?url=https%3A%2F%2Famazon-blogs-brightspot.s3.amazonaws.com%2F93%2Fdf%2F69c908f34ca9bdd1dbbc8c3aef8d%2Fcertified1.png" alt="AWS Certified Generative AI Developer - Professional"></p>
 <span id="more"></span>
-
 <hr>
-<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>该认证的核心是围绕 <strong>Amazon Bedrock</strong> 这一全托管服务，并整合 AWS 广泛的 AI&#x2F;ML 与云服务栈（如 SageMaker、Lambda、Step Functions 等），贯穿生成式AI应用的全生命周期。它强调从<strong>解决方案架构</strong>出发，涵盖<strong>基础模型选择与定制、数据工程与检索增强生成（RAG）、提示工程与智能体（Agent）开发</strong>，到<strong>企业集成、安全治理、成本性能优化</strong>，以及最终的<strong>测试验证与故障排除</strong>。认证要求考生不仅掌握技术实现，更需深刻理解如何在企业环境中实施<strong>负责任的AI原则</strong>，确保解决方案的安全性、合规性、可靠性与成本效益。</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>该认证的核心是围绕 <strong>Amazon Bedrock</strong> 这一全托管服务，并整合 AWS 广泛的 AI/ML 与云服务栈（如 SageMaker、Lambda、Step Functions 等），贯穿生成式AI应用的全生命周期。它强调从<strong>解决方案架构</strong>出发，涵盖<strong>基础模型选择与定制、数据工程与检索增强生成（RAG）、提示工程与智能体（Agent）开发</strong>，到<strong>企业集成、安全治理、成本性能优化</strong>，以及最终的<strong>测试验证与故障排除</strong>。认证要求考生不仅掌握技术实现，更需深刻理解如何在企业环境中实施<strong>负责任的AI原则</strong>，确保解决方案的安全性、合规性、可靠性与成本效益。</p>
 <p>总而言之，该认证标志着持有者具备在 AWS 云上端到端交付生产级、企业就绪的生成式AI应用程序所需的深度知识与实战技能。</p>
 <p>[TOC]</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><table>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">领域</th>
+<th style="text-align:left">领域</th>
 <th></th>
 <th>分项</th>
 <th>分项要点</th>
-<th align="left">考试占比</th>
+<th style="text-align:left">考试占比</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1</td>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
 <td><strong>基础模型集成、数据管理与合规性</strong></td>
 <td></td>
 <td></td>
-<td align="left"><strong>31%</strong></td>
+<td style="text-align:left"><strong>31%</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.1</td>
 <td><strong>分析需求与设计</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.2</td>
 <td><strong>配置基础模型</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.3</td>
 <td><strong>数据流水线</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.4</td>
 <td><strong>向量存储</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.5</td>
 <td><strong>增强检索机制</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>1.6</td>
 <td><strong>提示词工程</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">2</td>
+<td style="text-align:left">2</td>
 <td><strong>实施与集成</strong></td>
 <td></td>
 <td></td>
-<td align="left"><strong>26%</strong></td>
+<td style="text-align:left"><strong>26%</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>2.1</td>
 <td><strong>智能体AI解决方案与工具集成</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>2.2</td>
 <td><strong>模型部署策略</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>2.3</td>
 <td><strong>企业级集成架构</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>2.4</td>
 <td><strong>基础模型 API 集成</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>2.5</td>
 <td><strong>应用程序集成模式与开发工具</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">3</td>
+<td style="text-align:left">3</td>
 <td><strong>AI 的安全、保障与治理</strong></td>
 <td></td>
 <td></td>
-<td align="left"><strong>20%</strong></td>
+<td style="text-align:left"><strong>20%</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>3.1</td>
 <td><strong>输入与输出安全控制</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>3.2</td>
 <td><strong>数据安全与隐私控制</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>3.3</td>
 <td><strong>AI 治理与合规机制</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>3.4</td>
 <td><strong>负责任的 AI 原则</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">4</td>
+<td style="text-align:left">4</td>
 <td><strong>生成式 AI 应用的运营效率与优化</strong></td>
 <td></td>
 <td></td>
-<td align="left"><strong>12%</strong></td>
+<td style="text-align:left"><strong>12%</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>4.1</td>
 <td><strong>成本优化</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>4.2</td>
 <td><strong>优化性能</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>4.3</td>
 <td><strong>监控系统</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">5</td>
+<td style="text-align:left">5</td>
 <td><strong>测试、验证与故障排除</strong></td>
 <td></td>
 <td></td>
-<td align="left"><strong>11%</strong></td>
+<td style="text-align:left"><strong>11%</strong></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>5.1</td>
 <td><strong>评估系统</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"></td>
+<td style="text-align:left"></td>
 <td></td>
 <td>5.2</td>
 <td><strong>故障排除</strong></td>
-<td align="left"></td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left"><strong>总计</strong></td>
+<td style="text-align:left"><strong>总计</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td align="left"><strong>100%</strong></td>
+<td style="text-align:left"><strong>100%</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h3 id="（一）内容领域-1：基础模型集成、数据管理与合规"><a href="#（一）内容领域-1：基础模型集成、数据管理与合规" class="headerlink" title="（一）内容领域 1：基础模型集成、数据管理与合规"></a>（一）内容领域 1：基础模型集成、数据管理与合规</h3><h4 id="任务-1-1：分析需求并设计生成式人工智能解决方案"><a href="#任务-1-1：分析需求并设计生成式人工智能解决方案" class="headerlink" title="任务 1.1：分析需求并设计生成式人工智能解决方案"></a>任务 1.1：分析需求并设计生成式人工智能解决方案</h4><table>
+<h3 id="（一）内容领域-1：基础模型集成、数据管理与合规"><a href="#（一）内容领域-1：基础模型集成、数据管理与合规" class="headerlink" title="（一）内容领域 1：基础模型集成、数据管理与合规"></a>（一）内容领域 1：基础模型集成、数据管理与合规</h3><h4 id="任务-1-1：分析需求并设计生成式人工智能解决方案"><a href="#任务-1-1：分析需求并设计生成式人工智能解决方案" class="headerlink" title="任务 1.1：分析需求并设计生成式人工智能解决方案"></a>任务 1.1：分析需求并设计生成式人工智能解决方案</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.1.1</td>
-<td align="left">制定全面的架构设计</td>
-<td align="left">根据业务需求和技术约束选择合适的基础模型、集成模式、部署策略。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.1.1</td>
+<td style="text-align:left">制定全面的架构设计</td>
+<td style="text-align:left">根据业务需求和技术约束选择合适的基础模型、集成模式、部署策略。</td>
 </tr>
 <tr>
-<td align="left">1.1.2</td>
-<td align="left">开发技术概念验证 (PoC)</td>
-<td align="left">使用 <strong>Amazon Bedrock</strong> 等工具在全面部署前验证可行性、性能及业务价值。</td>
+<td style="text-align:left">1.1.2</td>
+<td style="text-align:left">开发技术概念验证 (PoC)</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock</strong> 等工具在全面部署前验证可行性、性能及业务价值。</td>
 </tr>
 <tr>
-<td align="left">1.1.3</td>
-<td align="left">创建标准化技术组件</td>
-<td align="left">遵循 <strong>AWS Well-Architected Framework</strong> 和 <strong>Generative AI Lens</strong>，确保跨部署场景的一致性。</td>
+<td style="text-align:left">1.1.3</td>
+<td style="text-align:left">创建标准化技术组件</td>
+<td style="text-align:left">遵循 <strong>AWS Well-Architected Framework</strong> 和 <strong>Generative AI Lens</strong>，确保跨部署场景的一致性。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-1-2：选择并配置基础模型（FMs）"><a href="#任务-1-2：选择并配置基础模型（FMs）" class="headerlink" title="任务 1.2：选择并配置基础模型（FMs）"></a>任务 1.2：选择并配置基础模型（FMs）</h4><table>
+<h4 id="任务-1-2：选择并配置基础模型（FMs）"><a href="#任务-1-2：选择并配置基础模型（FMs）" class="headerlink" title="任务 1.2：选择并配置基础模型（FMs）"></a>任务 1.2：选择并配置基础模型（FMs）</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.2.1</td>
-<td align="left">评估并选择基础模型</td>
-<td align="left">基于性能基准、能力分析和局限性评估，匹配业务用例。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.2.1</td>
+<td style="text-align:left">评估并选择基础模型</td>
+<td style="text-align:left">基于性能基准、能力分析和局限性评估，匹配业务用例。</td>
 </tr>
 <tr>
-<td align="left">1.2.2</td>
-<td align="left">制定灵活架构模式</td>
-<td align="left">使用 <strong>AWS Lambda</strong>、<strong>API Gateway</strong>、<strong>AWS AppConfig</strong> 实现动态模型选择和提供商切换，无需修改代码。</td>
+<td style="text-align:left">1.2.2</td>
+<td style="text-align:left">制定灵活架构模式</td>
+<td style="text-align:left">使用 <strong>AWS Lambda</strong>、<strong>API Gateway</strong>、<strong>AWS AppConfig</strong> 实现动态模型选择和提供商切换，无需修改代码。</td>
 </tr>
 <tr>
-<td align="left">1.2.3</td>
-<td align="left">设计具备弹性的AI系统</td>
-<td align="left">使用 <strong>AWS Step Functions</strong> 断路器模式、<strong>Bedrock 跨区域推理</strong>、跨区域部署、优雅降级策略应对服务中断。</td>
+<td style="text-align:left">1.2.3</td>
+<td style="text-align:left">设计具备弹性的AI系统</td>
+<td style="text-align:left">使用 <strong>AWS Step Functions</strong> 断路器模式、<strong>Bedrock 跨区域推理</strong>、跨区域部署、优雅降级策略应对服务中断。</td>
 </tr>
 <tr>
-<td align="left">1.2.4</td>
-<td align="left">实施模型定制化与生命周期管理</td>
-<td align="left">使用 <strong>Amazon SageMaker</strong> 部署微调模型，应用 LoRA 等高效适配技术，利用 <strong>SageMaker Model Registry</strong> 进行版本控制和自动化流水线。</td>
+<td style="text-align:left">1.2.4</td>
+<td style="text-align:left">实施模型定制化与生命周期管理</td>
+<td style="text-align:left">使用 <strong>Amazon SageMaker</strong> 部署微调模型，应用 LoRA 等高效适配技术，利用 <strong>SageMaker Model Registry</strong> 进行版本控制和自动化流水线。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-1-3：为基础模型调用实施数据验证与处理流水线"><a href="#任务-1-3：为基础模型调用实施数据验证与处理流水线" class="headerlink" title="任务 1.3：为基础模型调用实施数据验证与处理流水线"></a>任务 1.3：为基础模型调用实施数据验证与处理流水线</h4><table>
+<h4 id="任务-1-3：为基础模型调用实施数据验证与处理流水线"><a href="#任务-1-3：为基础模型调用实施数据验证与处理流水线" class="headerlink" title="任务 1.3：为基础模型调用实施数据验证与处理流水线"></a>任务 1.3：为基础模型调用实施数据验证与处理流水线</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.3.1</td>
-<td align="left">创建数据验证工作流</td>
-<td align="left">使用 <strong>AWS Glue Data Quality</strong>、<strong>SageMaker Data Wrangler</strong>、自定义 <strong>Lambda</strong>、<strong>CloudWatch</strong> 确保数据质量。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.3.1</td>
+<td style="text-align:left">创建数据验证工作流</td>
+<td style="text-align:left">使用 <strong>AWS Glue Data Quality</strong>、<strong>SageMaker Data Wrangler</strong>、自定义 <strong>Lambda</strong>、<strong>CloudWatch</strong> 确保数据质量。</td>
 </tr>
 <tr>
-<td align="left">1.3.2</td>
-<td align="left">处理复杂数据类型</td>
-<td align="left">使用 <strong>Bedrock 多模态模型</strong>、<strong>SageMaker Processing</strong>、<strong>AWS Transcribe</strong> 处理文本、图像、音频、表格数据。</td>
+<td style="text-align:left">1.3.2</td>
+<td style="text-align:left">处理复杂数据类型</td>
+<td style="text-align:left">使用 <strong>Bedrock 多模态模型</strong>、<strong>SageMaker Processing</strong>、<strong>AWS Transcribe</strong> 处理文本、图像、音频、表格数据。</td>
 </tr>
 <tr>
-<td align="left">1.3.3</td>
-<td align="left">格式化输入数据</td>
-<td align="left">为 <strong>Bedrock API</strong> 准备 JSON，为 <strong>SageMaker Endpoint</strong> 准备结构化数据，处理对话格式。</td>
+<td style="text-align:left">1.3.3</td>
+<td style="text-align:left">格式化输入数据</td>
+<td style="text-align:left">为 <strong>Bedrock API</strong> 准备 JSON，为 <strong>SageMaker Endpoint</strong> 准备结构化数据，处理对话格式。</td>
 </tr>
 <tr>
-<td align="left">1.3.4</td>
-<td align="left">提升输入数据质量</td>
-<td align="left">使用 <strong>Bedrock</strong> 重新格式化、<strong>Amazon Comprehend</strong> 提取实体、<strong>Lambda</strong> 标准化数据以改善模型响应。</td>
+<td style="text-align:left">1.3.4</td>
+<td style="text-align:left">提升输入数据质量</td>
+<td style="text-align:left">使用 <strong>Bedrock</strong> 重新格式化、<strong>Amazon Comprehend</strong> 提取实体、<strong>Lambda</strong> 标准化数据以改善模型响应。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-1-4：设计并实施向量存储解决方案"><a href="#任务-1-4：设计并实施向量存储解决方案" class="headerlink" title="任务 1.4：设计并实施向量存储解决方案"></a>任务 1.4：设计并实施向量存储解决方案</h4><table>
+<h4 id="任务-1-4：设计并实施向量存储解决方案"><a href="#任务-1-4：设计并实施向量存储解决方案" class="headerlink" title="任务 1.4：设计并实施向量存储解决方案"></a>任务 1.4：设计并实施向量存储解决方案</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.4.1</td>
-<td align="left">创建高级向量数据库架构</td>
-<td align="left">使用 <strong>Amazon Bedrock Knowledge Base</strong>、带 Neural plugin 的 <strong>Amazon OpenSearch Service</strong>、<strong>Amazon RDS</strong> 与 <strong>S3</strong> 集成、带向量功能的 <strong>DynamoDB</strong>。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.4.1</td>
+<td style="text-align:left">创建高级向量数据库架构</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock Knowledge Base</strong>、带 Neural plugin 的 <strong>Amazon OpenSearch Service</strong>、<strong>Amazon RDS</strong> 与 <strong>S3</strong> 集成、带向量功能的 <strong>DynamoDB</strong>。</td>
 </tr>
 <tr>
-<td align="left">1.4.2</td>
-<td align="left">开发元数据框架</td>
-<td align="left">利用 <strong>S3</strong> 对象元数据、自定义属性、标签系统提升搜索精度和上下文感知。</td>
+<td style="text-align:left">1.4.2</td>
+<td style="text-align:left">开发元数据框架</td>
+<td style="text-align:left">利用 <strong>S3</strong> 对象元数据、自定义属性、标签系统提升搜索精度和上下文感知。</td>
 </tr>
 <tr>
-<td align="left">1.4.3</td>
-<td align="left">实施高性能向量数据库架构</td>
-<td align="left">优化 <strong>OpenSearch</strong> 分片策略，采用多索引、分层索引技术以支持大规模语义搜索。</td>
+<td style="text-align:left">1.4.3</td>
+<td style="text-align:left">实施高性能向量数据库架构</td>
+<td style="text-align:left">优化 <strong>OpenSearch</strong> 分片策略，采用多索引、分层索引技术以支持大规模语义搜索。</td>
 </tr>
 <tr>
-<td align="left">1.4.4</td>
-<td align="left">创建集成组件</td>
-<td align="left">使用 AWS 服务连接文档管理系统、知识库等资源，实现全面的数据集成。</td>
+<td style="text-align:left">1.4.4</td>
+<td style="text-align:left">创建集成组件</td>
+<td style="text-align:left">使用 AWS 服务连接文档管理系统、知识库等资源，实现全面的数据集成。</td>
 </tr>
 <tr>
-<td align="left">1.4.5</td>
-<td align="left">设计数据维护系统</td>
-<td align="left">实施增量更新、实时变更检测、自动化同步和定时刷新流水线，确保向量存储信息最新。</td>
+<td style="text-align:left">1.4.5</td>
+<td style="text-align:left">设计数据维护系统</td>
+<td style="text-align:left">实施增量更新、实时变更检测、自动化同步和定时刷新流水线，确保向量存储信息最新。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-1-5：设计用于基础模型增强的检索机制"><a href="#任务-1-5：设计用于基础模型增强的检索机制" class="headerlink" title="任务 1.5：设计用于基础模型增强的检索机制"></a>任务 1.5：设计用于基础模型增强的检索机制</h4><table>
+<h4 id="任务-1-5：设计用于基础模型增强的检索机制"><a href="#任务-1-5：设计用于基础模型增强的检索机制" class="headerlink" title="任务 1.5：设计用于基础模型增强的检索机制"></a>任务 1.5：设计用于基础模型增强的检索机制</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.5.1</td>
-<td align="left">开发文档分段方法</td>
-<td align="left">使用 <strong>Bedrock 分块功能</strong>、<strong>Lambda</strong> 固定大小分块、自定义分层分块以优化检索性能。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.5.1</td>
+<td style="text-align:left">开发文档分段方法</td>
+<td style="text-align:left">使用 <strong>Bedrock 分块功能</strong>、<strong>Lambda</strong> 固定大小分块、自定义分层分块以优化检索性能。</td>
 </tr>
 <tr>
-<td align="left">1.5.2</td>
-<td align="left">选择并配置 Embedding 方案</td>
-<td align="left">根据维度和领域适配性选择 <strong>Amazon Titan Embeddings</strong> 或其他模型，使用 <strong>Lambda</strong> 批量生成向量。</td>
+<td style="text-align:left">1.5.2</td>
+<td style="text-align:left">选择并配置 Embedding 方案</td>
+<td style="text-align:left">根据维度和领域适配性选择 <strong>Amazon Titan Embeddings</strong> 或其他模型，使用 <strong>Lambda</strong> 批量生成向量。</td>
 </tr>
 <tr>
-<td align="left">1.5.3</td>
-<td align="left">部署向量搜索解决方案</td>
-<td align="left">使用 <strong>OpenSearch Service</strong>、带 <strong>pgvector</strong> 的 <strong>Aurora</strong>、<strong>Bedrock Knowledge Base</strong> 的向量存储功能。</td>
+<td style="text-align:left">1.5.3</td>
+<td style="text-align:left">部署向量搜索解决方案</td>
+<td style="text-align:left">使用 <strong>OpenSearch Service</strong>、带 <strong>pgvector</strong> 的 <strong>Aurora</strong>、<strong>Bedrock Knowledge Base</strong> 的向量存储功能。</td>
 </tr>
 <tr>
-<td align="left">1.5.4</td>
-<td align="left">创建高级搜索架构</td>
-<td align="left">结合语义搜索（<strong>OpenSearch</strong>）、混合搜索（关键词+向量）、使用 <strong>Bedrock</strong> 重排序模型提升相关性。</td>
+<td style="text-align:left">1.5.4</td>
+<td style="text-align:left">创建高级搜索架构</td>
+<td style="text-align:left">结合语义搜索（<strong>OpenSearch</strong>）、混合搜索（关键词+向量）、使用 <strong>Bedrock</strong> 重排序模型提升相关性。</td>
 </tr>
 <tr>
-<td align="left">1.5.5</td>
-<td align="left">开发复杂查询处理系统</td>
-<td align="left">使用 <strong>Bedrock</strong> 进行查询扩展，<strong>Lambda</strong> 进行查询分解，<strong>Step Functions</strong> 进行查询转换。</td>
+<td style="text-align:left">1.5.5</td>
+<td style="text-align:left">开发复杂查询处理系统</td>
+<td style="text-align:left">使用 <strong>Bedrock</strong> 进行查询扩展，<strong>Lambda</strong> 进行查询分解，<strong>Step Functions</strong> 进行查询转换。</td>
 </tr>
 <tr>
-<td align="left">1.5.6</td>
-<td align="left">创建统一访问机制</td>
-<td align="left">通过函数调用接口、模型上下文协议 (MCP) 客户端、标准化 API 模式实现与基础模型的无缝集成。</td>
+<td style="text-align:left">1.5.6</td>
+<td style="text-align:left">创建统一访问机制</td>
+<td style="text-align:left">通过函数调用接口、模型上下文协议 (MCP) 客户端、标准化 API 模式实现与基础模型的无缝集成。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-1-6：为基础模型交互实施提示工程策略与治理"><a href="#任务-1-6：为基础模型交互实施提示工程策略与治理" class="headerlink" title="任务 1.6：为基础模型交互实施提示工程策略与治理"></a>任务 1.6：为基础模型交互实施提示工程策略与治理</h4><table>
+<h4 id="任务-1-6：为基础模型交互实施提示工程策略与治理"><a href="#任务-1-6：为基础模型交互实施提示工程策略与治理" class="headerlink" title="任务 1.6：为基础模型交互实施提示工程策略与治理"></a>任务 1.6：为基础模型交互实施提示工程策略与治理</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">1.6.1</td>
-<td align="left">制定模型指令框架</td>
-<td align="left">使用 <strong>Amazon Bedrock Prompt Management</strong> 和 <strong>Guardrails</strong> 定义角色、执行责任AI指南、配置响应格式。</td>
+<tbody>
+<tr>
+<td style="text-align:left">1.6.1</td>
+<td style="text-align:left">制定模型指令框架</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock Prompt Management</strong> 和 <strong>Guardrails</strong> 定义角色、执行责任AI指南、配置响应格式。</td>
 </tr>
 <tr>
-<td align="left">1.6.2</td>
-<td align="left">构建交互式 AI 系统</td>
-<td align="left">使用 <strong>Step Functions</strong> 实现澄清工作流，<strong>Amazon Comprehend</strong> 进行意图识别，<strong>DynamoDB</strong> 存储对话历史。</td>
+<td style="text-align:left">1.6.2</td>
+<td style="text-align:left">构建交互式 AI 系统</td>
+<td style="text-align:left">使用 <strong>Step Functions</strong> 实现澄清工作流，<strong>Amazon Comprehend</strong> 进行意图识别，<strong>DynamoDB</strong> 存储对话历史。</td>
 </tr>
 <tr>
-<td align="left">1.6.3</td>
-<td align="left">实施提示管理与治理系统</td>
-<td align="left">使用 <strong>Bedrock Prompt Management</strong> 创建参数化模板和审批工作流，<strong>S3</strong> 存储模板，<strong>CloudTrail</strong> 和 <strong>CloudWatch Logs</strong> 跟踪使用。</td>
+<td style="text-align:left">1.6.3</td>
+<td style="text-align:left">实施提示管理与治理系统</td>
+<td style="text-align:left">使用 <strong>Bedrock Prompt Management</strong> 创建参数化模板和审批工作流，<strong>S3</strong> 存储模板，<strong>CloudTrail</strong> 和 <strong>CloudWatch Logs</strong> 跟踪使用。</td>
 </tr>
 <tr>
-<td align="left">1.6.4</td>
-<td align="left">开发质量保证系统</td>
-<td align="left">使用 <strong>Lambda</strong> 验证输出，<strong>Step Functions</strong> 测试边缘案例，<strong>CloudWatch</strong> 进行提示回归测试。</td>
+<td style="text-align:left">1.6.4</td>
+<td style="text-align:left">开发质量保证系统</td>
+<td style="text-align:left">使用 <strong>Lambda</strong> 验证输出，<strong>Step Functions</strong> 测试边缘案例，<strong>CloudWatch</strong> 进行提示回归测试。</td>
 </tr>
 <tr>
-<td align="left">1.6.5</td>
-<td align="left">提升基础模型性能</td>
-<td align="left">通过结构化输入、输出格式规范、思维链 (Chain-of-Thought) 指令、反馈循环等迭代优化提示。</td>
+<td style="text-align:left">1.6.5</td>
+<td style="text-align:left">提升基础模型性能</td>
+<td style="text-align:left">通过结构化输入、输出格式规范、思维链 (Chain-of-Thought) 指令、反馈循环等迭代优化提示。</td>
 </tr>
 <tr>
-<td align="left">1.6.6</td>
-<td align="left">设计复杂提示系统</td>
-<td align="left">使用 <strong>Amazon Bedrock 提示流</strong> 实现顺序链、条件分支、可复用组件，集成预处理与后处理步骤。</td>
+<td style="text-align:left">1.6.6</td>
+<td style="text-align:left">设计复杂提示系统</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock 提示流</strong> 实现顺序链、条件分支、可复用组件，集成预处理与后处理步骤。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h3 id="（二）内容领域-2：实施与集成"><a href="#（二）内容领域-2：实施与集成" class="headerlink" title="（二）内容领域 2：实施与集成"></a>（二）内容领域 2：实施与集成</h3><h4 id="任务-2-1：实施智能体人工智能解决方案与工具集成"><a href="#任务-2-1：实施智能体人工智能解决方案与工具集成" class="headerlink" title="任务 2.1：实施智能体人工智能解决方案与工具集成"></a>任务 2.1：实施智能体人工智能解决方案与工具集成</h4><table>
+<h3 id="（二）内容领域-2：实施与集成"><a href="#（二）内容领域-2：实施与集成" class="headerlink" title="（二）内容领域 2：实施与集成"></a>（二）内容领域 2：实施与集成</h3><h4 id="任务-2-1：实施智能体人工智能解决方案与工具集成"><a href="#任务-2-1：实施智能体人工智能解决方案与工具集成" class="headerlink" title="任务 2.1：实施智能体人工智能解决方案与工具集成"></a>任务 2.1：实施智能体人工智能解决方案与工具集成</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">2.1.1</td>
-<td align="left">开发智能自主系统</td>
-<td align="left">使用 <strong>Strands Agents</strong> 和 <strong>AWS Agent Squad</strong> 构建多智能体系统，利用 MCP 实现智能体-工具交互。</td>
+<tbody>
+<tr>
+<td style="text-align:left">2.1.1</td>
+<td style="text-align:left">开发智能自主系统</td>
+<td style="text-align:left">使用 <strong>Strands Agents</strong> 和 <strong>AWS Agent Squad</strong> 构建多智能体系统，利用 MCP 实现智能体-工具交互。</td>
 </tr>
 <tr>
-<td align="left">2.1.2</td>
-<td align="left">创建高级问题解决系统</td>
-<td align="left">使用 <strong>Step Functions</strong> 实施 <strong>ReAct</strong> 模式和思维链推理。</td>
+<td style="text-align:left">2.1.2</td>
+<td style="text-align:left">创建高级问题解决系统</td>
+<td style="text-align:left">使用 <strong>Step Functions</strong> 实施 <strong>ReAct</strong> 模式和思维链推理。</td>
 </tr>
 <tr>
-<td align="left">2.1.3</td>
-<td align="left">开发安全的AI工作流</td>
-<td align="left">使用 <strong>Step Functions</strong> 和 <strong>Lambda</strong> 实施停止条件、超时机制、<strong>IAM policies</strong> 和断路器。</td>
+<td style="text-align:left">2.1.3</td>
+<td style="text-align:left">开发安全的AI工作流</td>
+<td style="text-align:left">使用 <strong>Step Functions</strong> 和 <strong>Lambda</strong> 实施停止条件、超时机制、<strong>IAM policies</strong> 和断路器。</td>
 </tr>
 <tr>
-<td align="left">2.1.4</td>
-<td align="left">创建模型协调系统</td>
-<td align="left">为专门任务使用特定模型，制定自定义聚合逻辑，构建模型选择框架。</td>
+<td style="text-align:left">2.1.4</td>
+<td style="text-align:left">创建模型协调系统</td>
+<td style="text-align:left">为专门任务使用特定模型，制定自定义聚合逻辑，构建模型选择框架。</td>
 </tr>
 <tr>
-<td align="left">2.1.5</td>
-<td align="left">开发协同式AI系统</td>
-<td align="left">使用 <strong>Step Functions</strong> 编排审核流程，<strong>API Gateway</strong> 收集反馈，采用人类增强模式。</td>
+<td style="text-align:left">2.1.5</td>
+<td style="text-align:left">开发协同式AI系统</td>
+<td style="text-align:left">使用 <strong>Step Functions</strong> 编排审核流程，<strong>API Gateway</strong> 收集反馈，采用人类增强模式。</td>
 </tr>
 <tr>
-<td align="left">2.1.6</td>
-<td align="left">实施智能工具集成</td>
-<td align="left">使用 <strong>Strands API</strong> 定义自定义行为，制定标准化函数定义，用 <strong>Lambda</strong> 处理错误和验证参数。</td>
+<td style="text-align:left">2.1.6</td>
+<td style="text-align:left">实施智能工具集成</td>
+<td style="text-align:left">使用 <strong>Strands API</strong> 定义自定义行为，制定标准化函数定义，用 <strong>Lambda</strong> 处理错误和验证参数。</td>
 </tr>
 <tr>
-<td align="left">2.1.7</td>
-<td align="left">开发模型扩展框架</td>
-<td align="left">使用 <strong>Lambda</strong> 实现轻量级 MCP 服务器，使用 <strong>Amazon ECS</strong> 实现复杂工具服务器，使用 MCP 客户端库。</td>
+<td style="text-align:left">2.1.7</td>
+<td style="text-align:left">开发模型扩展框架</td>
+<td style="text-align:left">使用 <strong>Lambda</strong> 实现轻量级 MCP 服务器，使用 <strong>Amazon ECS</strong> 实现复杂工具服务器，使用 MCP 客户端库。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-2-2：实施模型部署策略"><a href="#任务-2-2：实施模型部署策略" class="headerlink" title="任务 2.2：实施模型部署策略"></a>任务 2.2：实施模型部署策略</h4><table>
+<h4 id="任务-2-2：实施模型部署策略"><a href="#任务-2-2：实施模型部署策略" class="headerlink" title="任务 2.2：实施模型部署策略"></a>任务 2.2：实施模型部署策略</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">2.2.1</td>
-<td align="left">根据需求部署基础模型</td>
-<td align="left">使用 <strong>Lambda</strong> 按需调用，<strong>Bedrock 预置吞吐量配置</strong>，<strong>SageMaker 终端节点</strong>。</td>
+<tbody>
+<tr>
+<td style="text-align:left">2.2.1</td>
+<td style="text-align:left">根据需求部署基础模型</td>
+<td style="text-align:left">使用 <strong>Lambda</strong> 按需调用，<strong>Bedrock 预置吞吐量配置</strong>，<strong>SageMaker 终端节点</strong>。</td>
 </tr>
 <tr>
-<td align="left">2.2.2</td>
-<td align="left">解决 LLM 部署的独特挑战</td>
-<td align="left">针对内存、GPU 利用率和 Tokens 处理，优化容器化部署和模型加载策略。</td>
+<td style="text-align:left">2.2.2</td>
+<td style="text-align:left">解决 LLM 部署的独特挑战</td>
+<td style="text-align:left">针对内存、GPU 利用率和 Tokens 处理，优化容器化部署和模型加载策略。</td>
 </tr>
 <tr>
-<td align="left">2.2.3</td>
-<td align="left">开发优化的部署方法</td>
-<td align="left">为特定任务选择较小的预训练模型，使用基于 API 的模型级联处理常规查询以平衡性能与成本。</td>
+<td style="text-align:left">2.2.3</td>
+<td style="text-align:left">开发优化的部署方法</td>
+<td style="text-align:left">为特定任务选择较小的预训练模型，使用基于 API 的模型级联处理常规查询以平衡性能与成本。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-2-3：设计并实施企业级集成架构"><a href="#任务-2-3：设计并实施企业级集成架构" class="headerlink" title="任务 2.3：设计并实施企业级集成架构"></a>任务 2.3：设计并实施企业级集成架构</h4><table>
+<h4 id="任务-2-3：设计并实施企业级集成架构"><a href="#任务-2-3：设计并实施企业级集成架构" class="headerlink" title="任务 2.3：设计并实施企业级集成架构"></a>任务 2.3：设计并实施企业级集成架构</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">2.3.1</td>
-<td align="left">创建企业级连接解决方案</td>
-<td align="left">使用基于 API 的集成连接遗留系统，采用事件驱动架构和数据同步模式。</td>
+<tbody>
+<tr>
+<td style="text-align:left">2.3.1</td>
+<td style="text-align:left">创建企业级连接解决方案</td>
+<td style="text-align:left">使用基于 API 的集成连接遗留系统，采用事件驱动架构和数据同步模式。</td>
 </tr>
 <tr>
-<td align="left">2.3.2</td>
-<td align="left">开发集成式 AI 能力</td>
-<td align="left">使用 <strong>API Gateway</strong> 集成微服务，<strong>Lambda</strong> 处理 Webhook，<strong>Amazon EventBridge</strong> 驱动事件。</td>
+<td style="text-align:left">2.3.2</td>
+<td style="text-align:left">开发集成式 AI 能力</td>
+<td style="text-align:left">使用 <strong>API Gateway</strong> 集成微服务，<strong>Lambda</strong> 处理 Webhook，<strong>Amazon EventBridge</strong> 驱动事件。</td>
 </tr>
 <tr>
-<td align="left">2.3.3</td>
-<td align="left">创建安全访问框架</td>
-<td align="left">使用身份联合、基于角色的访问控制 (RBAC)、最小权限原则保护模型和数据访问。</td>
+<td style="text-align:left">2.3.3</td>
+<td style="text-align:left">创建安全访问框架</td>
+<td style="text-align:left">使用身份联合、基于角色的访问控制 (RBAC)、最小权限原则保护模型和数据访问。</td>
 </tr>
 <tr>
-<td align="left">2.3.4</td>
-<td align="left">开发跨环境 AI 解决方案</td>
-<td align="left">使用 <strong>AWS Outposts</strong>、<strong>AWS Wavelength</strong> 满足数据驻留和合规要求，建立云边安全路由。</td>
+<td style="text-align:left">2.3.4</td>
+<td style="text-align:left">开发跨环境 AI 解决方案</td>
+<td style="text-align:left">使用 <strong>AWS Outposts</strong>、<strong>AWS Wavelength</strong> 满足数据驻留和合规要求，建立云边安全路由。</td>
 </tr>
 <tr>
-<td align="left">2.3.5</td>
-<td align="left">实施 CI&#x2F;CD 流水线和网关</td>
-<td align="left">使用 <strong>AWS CodePipeline</strong>、<strong>CodeBuild</strong> 自动化部署与测试，建立集中式生成式AI网关进行抽象和控制。</td>
+<td style="text-align:left">2.3.5</td>
+<td style="text-align:left">实施 CI/CD 流水线和网关</td>
+<td style="text-align:left">使用 <strong>AWS CodePipeline</strong>、<strong>CodeBuild</strong> 自动化部署与测试，建立集中式生成式AI网关进行抽象和控制。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-2-4：实施基础模型-API-集成"><a href="#任务-2-4：实施基础模型-API-集成" class="headerlink" title="任务 2.4：实施基础模型 API 集成"></a>任务 2.4：实施基础模型 API 集成</h4><table>
+<h4 id="任务-2-4：实施基础模型-API-集成"><a href="#任务-2-4：实施基础模型-API-集成" class="headerlink" title="任务 2.4：实施基础模型 API 集成"></a>任务 2.4：实施基础模型 API 集成</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">2.4.1</td>
-<td align="left">创建灵活的模型交互系统</td>
-<td align="left">使用 <strong>Bedrock API</strong> 同步请求，<strong>AWS SDK</strong> 和 <strong>Amazon SQS</strong> 异步处理，<strong>API Gateway</strong> 验证请求。</td>
+<tbody>
+<tr>
+<td style="text-align:left">2.4.1</td>
+<td style="text-align:left">创建灵活的模型交互系统</td>
+<td style="text-align:left">使用 <strong>Bedrock API</strong> 同步请求，<strong>AWS SDK</strong> 和 <strong>Amazon SQS</strong> 异步处理，<strong>API Gateway</strong> 验证请求。</td>
 </tr>
 <tr>
-<td align="left">2.4.2</td>
-<td align="left">开发实时 AI 交互系统</td>
-<td align="left">使用 <strong>Bedrock streaming API</strong>、<strong>WebSocket</strong> 或 Server-Sent Events (SSE)、<strong>API Gateway</strong> 分块传输实现流式响应。</td>
+<td style="text-align:left">2.4.2</td>
+<td style="text-align:left">开发实时 AI 交互系统</td>
+<td style="text-align:left">使用 <strong>Bedrock streaming API</strong>、<strong>WebSocket</strong> 或 Server-Sent Events (SSE)、<strong>API Gateway</strong> 分块传输实现流式响应。</td>
 </tr>
 <tr>
-<td align="left">2.4.3</td>
-<td align="left">创建具备弹性的基础模型系统</td>
-<td align="left">使用 <strong>AWS SDK</strong> 实现指数退避重试，<strong>API Gateway</strong> 管理速率限制，优雅降级，<strong>AWS X-Ray</strong> 提供可观测性。</td>
+<td style="text-align:left">2.4.3</td>
+<td style="text-align:left">创建具备弹性的基础模型系统</td>
+<td style="text-align:left">使用 <strong>AWS SDK</strong> 实现指数退避重试，<strong>API Gateway</strong> 管理速率限制，优雅降级，<strong>AWS X-Ray</strong> 提供可观测性。</td>
 </tr>
 <tr>
-<td align="left">2.4.4</td>
-<td align="left">开发智能模型路由系统</td>
-<td align="left">应用程序代码静态路由，<strong>Step Functions</strong> 动态内容路由，<strong>API Gateway</strong> 实现基于指标的智能路由和请求转换。</td>
+<td style="text-align:left">2.4.4</td>
+<td style="text-align:left">开发智能模型路由系统</td>
+<td style="text-align:left">应用程序代码静态路由，<strong>Step Functions</strong> 动态内容路由，<strong>API Gateway</strong> 实现基于指标的智能路由和请求转换。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-2-5：实施应用程序集成模式与开发工具"><a href="#任务-2-5：实施应用程序集成模式与开发工具" class="headerlink" title="任务 2.5：实施应用程序集成模式与开发工具"></a>任务 2.5：实施应用程序集成模式与开发工具</h4><table>
+<h4 id="任务-2-5：实施应用程序集成模式与开发工具"><a href="#任务-2-5：实施应用程序集成模式与开发工具" class="headerlink" title="任务 2.5：实施应用程序集成模式与开发工具"></a>任务 2.5：实施应用程序集成模式与开发工具</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">2.5.1</td>
-<td align="left">创建基础模型 API 接口</td>
-<td align="left">处理流式响应、管理令牌限制、实施针对模型超时的重试策略。</td>
+<tbody>
+<tr>
+<td style="text-align:left">2.5.1</td>
+<td style="text-align:left">创建基础模型 API 接口</td>
+<td style="text-align:left">处理流式响应、管理令牌限制、实施针对模型超时的重试策略。</td>
 </tr>
 <tr>
-<td align="left">2.5.2</td>
-<td align="left">开发易用的 AI 接口</td>
-<td align="left">使用 <strong>AWS Amplify</strong> 构建声明式 UI，采用 API 优先开发，使用 <strong>Amazon Bedrock Prompt Flows</strong> 无代码构建工作流。</td>
+<td style="text-align:left">2.5.2</td>
+<td style="text-align:left">开发易用的 AI 接口</td>
+<td style="text-align:left">使用 <strong>AWS Amplify</strong> 构建声明式 UI，采用 API 优先开发，使用 <strong>Amazon Bedrock Prompt Flows</strong> 无代码构建工作流。</td>
 </tr>
 <tr>
-<td align="left">2.5.3</td>
-<td align="left">创建业务系统增强功能</td>
-<td align="left">使用 <strong>Lambda</strong> 增强 CRM，<strong>Step Functions</strong> 编排文档处理，<strong>Amazon Q Business</strong> 提供内部知识工具，<strong>Bedrock</strong> 自动化数据工作流。</td>
+<td style="text-align:left">2.5.3</td>
+<td style="text-align:left">创建业务系统增强功能</td>
+<td style="text-align:left">使用 <strong>Lambda</strong> 增强 CRM，<strong>Step Functions</strong> 编排文档处理，<strong>Amazon Q Business</strong> 提供内部知识工具，<strong>Bedrock</strong> 自动化数据工作流。</td>
 </tr>
 <tr>
-<td align="left">2.5.4</td>
-<td align="left">提升开发者效率</td>
-<td align="left">使用 <strong>Amazon Q Developer</strong> 生成和重构代码，提供 API 辅助的代码建议和性能优化。</td>
+<td style="text-align:left">2.5.4</td>
+<td style="text-align:left">提升开发者效率</td>
+<td style="text-align:left">使用 <strong>Amazon Q Developer</strong> 生成和重构代码，提供 API 辅助的代码建议和性能优化。</td>
 </tr>
 <tr>
-<td align="left">2.5.5</td>
-<td align="left">开发高级生成式AI应用程序</td>
-<td align="left">使用 <strong>Strands Agents</strong>、<strong>AWS Agent Squad</strong> 实现原生编排，<strong>Step Functions</strong> 编排智能体，<strong>Bedrock</strong> 管理提示链。</td>
+<td style="text-align:left">2.5.5</td>
+<td style="text-align:left">开发高级生成式AI应用程序</td>
+<td style="text-align:left">使用 <strong>Strands Agents</strong>、<strong>AWS Agent Squad</strong> 实现原生编排，<strong>Step Functions</strong> 编排智能体，<strong>Bedrock</strong> 管理提示链。</td>
 </tr>
 <tr>
-<td align="left">2.5.6</td>
-<td align="left">提高故障排除效率</td>
-<td align="left">使用 <strong>CloudWatch Logs Insights</strong> 分析提示与响应，<strong>X-Ray</strong> 跟踪 API 调用，<strong>Amazon Q Developer</strong> 识别错误模式。</td>
+<td style="text-align:left">2.5.6</td>
+<td style="text-align:left">提高故障排除效率</td>
+<td style="text-align:left">使用 <strong>CloudWatch Logs Insights</strong> 分析提示与响应，<strong>X-Ray</strong> 跟踪 API 调用，<strong>Amazon Q Developer</strong> 识别错误模式。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h3 id="（三）内容领域-3：AI-安全、安全性与治理"><a href="#（三）内容领域-3：AI-安全、安全性与治理" class="headerlink" title="（三）内容领域 3：AI 安全、安全性与治理"></a>（三）内容领域 3：AI 安全、安全性与治理</h3><h4 id="任务-3-1：实施输入与输出安全控制"><a href="#任务-3-1：实施输入与输出安全控制" class="headerlink" title="任务 3.1：实施输入与输出安全控制"></a>任务 3.1：实施输入与输出安全控制</h4><table>
+<h3 id="（三）内容领域-3：AI-安全、安全性与治理"><a href="#（三）内容领域-3：AI-安全、安全性与治理" class="headerlink" title="（三）内容领域 3：AI 安全、安全性与治理"></a>（三）内容领域 3：AI 安全、安全性与治理</h3><h4 id="任务-3-1：实施输入与输出安全控制"><a href="#任务-3-1：实施输入与输出安全控制" class="headerlink" title="任务 3.1：实施输入与输出安全控制"></a>任务 3.1：实施输入与输出安全控制</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">3.1.1</td>
-<td align="left">开发内容安全系统（输入）</td>
-<td align="left">使用 <strong>Amazon Bedrock guardrails</strong> 过滤内容，<strong>Step Functions</strong> 和 <strong>Lambda</strong> 自定义审核，实施实时验证。</td>
+<tbody>
+<tr>
+<td style="text-align:left">3.1.1</td>
+<td style="text-align:left">开发内容安全系统（输入）</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock guardrails</strong> 过滤内容，<strong>Step Functions</strong> 和 <strong>Lambda</strong> 自定义审核，实施实时验证。</td>
 </tr>
 <tr>
-<td align="left">3.1.2</td>
-<td align="left">创建内容安全框架（输出）</td>
-<td align="left">使用 <strong>Bedrock guardrails</strong> 过滤响应，专门模型评估毒性，文本转 SQL 确保确定性。</td>
+<td style="text-align:left">3.1.2</td>
+<td style="text-align:left">创建内容安全框架（输出）</td>
+<td style="text-align:left">使用 <strong>Bedrock guardrails</strong> 过滤响应，专门模型评估毒性，文本转 SQL 确保确定性。</td>
 </tr>
 <tr>
-<td align="left">3.1.3</td>
-<td align="left">开发准确性验证系统</td>
-<td align="left">使用 <strong>Bedrock Knowledge Base</strong> 进行事实核查，置信度评分，<strong>JSON Schema</strong> 强制结构化输出以减少幻觉。</td>
+<td style="text-align:left">3.1.3</td>
+<td style="text-align:left">开发准确性验证系统</td>
+<td style="text-align:left">使用 <strong>Bedrock Knowledge Base</strong> 进行事实核查，置信度评分，<strong>JSON Schema</strong> 强制结构化输出以减少幻觉。</td>
 </tr>
 <tr>
-<td align="left">3.1.4</td>
-<td align="left">创建深度防御安全系统</td>
-<td align="left">组合 <strong>Amazon Comprehend</strong> 预处理、<strong>Bedrock</strong> 模型护栏、<strong>Lambda</strong> 后处理验证、<strong>API Gateway</strong> 响应过滤。</td>
+<td style="text-align:left">3.1.4</td>
+<td style="text-align:left">创建深度防御安全系统</td>
+<td style="text-align:left">组合 <strong>Amazon Comprehend</strong> 预处理、<strong>Bedrock</strong> 模型护栏、<strong>Lambda</strong> 后处理验证、<strong>API Gateway</strong> 响应过滤。</td>
 </tr>
 <tr>
-<td align="left">3.1.5</td>
-<td align="left">实施高级威胁检测</td>
-<td align="left">使用 <strong>Prompt Injection</strong> 和越狱检测机制，输入清理，安全分类器，自动化对抗性测试工作流。</td>
+<td style="text-align:left">3.1.5</td>
+<td style="text-align:left">实施高级威胁检测</td>
+<td style="text-align:left">使用 <strong>Prompt Injection</strong> 和越狱检测机制，输入清理，安全分类器，自动化对抗性测试工作流。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-3-2：实施数据安全与隐私控制"><a href="#任务-3-2：实施数据安全与隐私控制" class="headerlink" title="任务 3.2：实施数据安全与隐私控制"></a>任务 3.2：实施数据安全与隐私控制</h4><table>
+<h4 id="任务-3-2：实施数据安全与隐私控制"><a href="#任务-3-2：实施数据安全与隐私控制" class="headerlink" title="任务 3.2：实施数据安全与隐私控制"></a>任务 3.2：实施数据安全与隐私控制</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">3.2.1</td>
-<td align="left">开发受保护的 AI 环境</td>
-<td align="left">使用 VPC 终端节点隔离网络，<strong>IAM</strong> 策略控制访问，<strong>AWS Lake Formation</strong> 精细数据权限，<strong>CloudWatch</strong> 监控。</td>
+<tbody>
+<tr>
+<td style="text-align:left">3.2.1</td>
+<td style="text-align:left">开发受保护的 AI 环境</td>
+<td style="text-align:left">使用 VPC 终端节点隔离网络，<strong>IAM</strong> 策略控制访问，<strong>AWS Lake Formation</strong> 精细数据权限，<strong>CloudWatch</strong> 监控。</td>
 </tr>
 <tr>
-<td align="left">3.2.2</td>
-<td align="left">开发隐私保护系统</td>
-<td align="left">使用 <strong>Amazon Comprehend</strong> 和 <strong>Macie</strong> 检测 PII，<strong>Bedrock</strong> 原生隐私功能，<strong>Guardrails</strong> 过滤输出，<strong>S3 Lifecycle</strong> 管理数据保留。</td>
+<td style="text-align:left">3.2.2</td>
+<td style="text-align:left">开发隐私保护系统</td>
+<td style="text-align:left">使用 <strong>Amazon Comprehend</strong> 和 <strong>Macie</strong> 检测 PII，<strong>Bedrock</strong> 原生隐私功能，<strong>Guardrails</strong> 过滤输出，<strong>S3 Lifecycle</strong> 管理数据保留。</td>
 </tr>
 <tr>
-<td align="left">3.2.3</td>
-<td align="left">创建以隐私为中心的 AI 系统</td>
-<td align="left">实施数据掩码，使用 <strong>Comprehend PII 检测</strong>，匿名化策略，<strong>Bedrock guardrails</strong>。</td>
+<td style="text-align:left">3.2.3</td>
+<td style="text-align:left">创建以隐私为中心的 AI 系统</td>
+<td style="text-align:left">实施数据掩码，使用 <strong>Comprehend PII 检测</strong>，匿名化策略，<strong>Bedrock guardrails</strong>。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-3-3：实施-AI-治理与合规机制"><a href="#任务-3-3：实施-AI-治理与合规机制" class="headerlink" title="任务 3.3：实施 AI 治理与合规机制"></a>任务 3.3：实施 AI 治理与合规机制</h4><table>
+<h4 id="任务-3-3：实施-AI-治理与合规机制"><a href="#任务-3-3：实施-AI-治理与合规机制" class="headerlink" title="任务 3.3：实施 AI 治理与合规机制"></a>任务 3.3：实施 AI 治理与合规机制</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">3.3.1</td>
-<td align="left">开发合规框架</td>
-<td align="left">使用 <strong>SageMaker</strong> 生成 Model Cards，<strong>AWS Glue</strong> 跟踪数据血缘，元数据标签归因，<strong>CloudWatch Logs</strong> 记录决策。</td>
+<tbody>
+<tr>
+<td style="text-align:left">3.3.1</td>
+<td style="text-align:left">开发合规框架</td>
+<td style="text-align:left">使用 <strong>SageMaker</strong> 生成 Model Cards，<strong>AWS Glue</strong> 跟踪数据血缘，元数据标签归因，<strong>CloudWatch Logs</strong> 记录决策。</td>
 </tr>
 <tr>
-<td align="left">3.3.2</td>
-<td align="left">实施数据源跟踪</td>
-<td align="left">使用 <strong>AWS Glue Data Catalog</strong> 注册数据源，元数据标签归因，<strong>CloudTrail</strong> 审计日志。</td>
+<td style="text-align:left">3.3.2</td>
+<td style="text-align:left">实施数据源跟踪</td>
+<td style="text-align:left">使用 <strong>AWS Glue Data Catalog</strong> 注册数据源，元数据标签归因，<strong>CloudTrail</strong> 审计日志。</td>
 </tr>
 <tr>
-<td align="left">3.3.3</td>
-<td align="left">创建组织级治理系统</td>
-<td align="left">构建符合组织政策、监管要求和负责任AI原则的全面架构。</td>
+<td style="text-align:left">3.3.3</td>
+<td style="text-align:left">创建组织级治理系统</td>
+<td style="text-align:left">构建符合组织政策、监管要求和负责任AI原则的全面架构。</td>
 </tr>
 <tr>
-<td align="left">3.3.4</td>
-<td align="left">实施持续监控和治理控制</td>
-<td align="left">自动化检测滥用、漂移和违规，监控偏差，设置自动化告警和修复，实施令牌级脱敏和响应日志记录。</td>
+<td style="text-align:left">3.3.4</td>
+<td style="text-align:left">实施持续监控和治理控制</td>
+<td style="text-align:left">自动化检测滥用、漂移和违规，监控偏差，设置自动化告警和修复，实施令牌级脱敏和响应日志记录。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-3-4：实施负责任的-AI-原则"><a href="#任务-3-4：实施负责任的-AI-原则" class="headerlink" title="任务 3.4：实施负责任的 AI 原则"></a>任务 3.4：实施负责任的 AI 原则</h4><table>
+<h4 id="任务-3-4：实施负责任的-AI-原则"><a href="#任务-3-4：实施负责任的-AI-原则" class="headerlink" title="任务 3.4：实施负责任的 AI 原则"></a>任务 3.4：实施负责任的 AI 原则</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">3.4.1</td>
-<td align="left">开发透明的 AI 系统</td>
-<td align="left">提供推理展示和证据展示，使用 <strong>CloudWatch</strong> 收集置信度指标，利用 <strong>Bedrock agent tracing</strong> 提供推理轨迹。</td>
+<tbody>
+<tr>
+<td style="text-align:left">3.4.1</td>
+<td style="text-align:left">开发透明的 AI 系统</td>
+<td style="text-align:left">提供推理展示和证据展示，使用 <strong>CloudWatch</strong> 收集置信度指标，利用 <strong>Bedrock agent tracing</strong> 提供推理轨迹。</td>
 </tr>
 <tr>
-<td align="left">3.4.2</td>
-<td align="left">应用公平性评估</td>
-<td align="left">使用 <strong>CloudWatch</strong> 预定义指标，<strong>Bedrock Prompt Management</strong> 和 <strong>Flow</strong> 进行 A&#x2F;B 测试，使用 <strong>LLM-as-a-judge</strong> 自动化评估。</td>
+<td style="text-align:left">3.4.2</td>
+<td style="text-align:left">应用公平性评估</td>
+<td style="text-align:left">使用 <strong>CloudWatch</strong> 预定义指标，<strong>Bedrock Prompt Management</strong> 和 <strong>Flow</strong> 进行 A/B 测试，使用 <strong>LLM-as-a-judge</strong> 自动化评估。</td>
 </tr>
 <tr>
-<td align="left">3.4.3</td>
-<td align="left">开发符合政策的 AI 系统</td>
-<td align="left">使用 <strong>Bedrock guardrails</strong> 实施政策要求，使用 Model Cards 记录局限性，<strong>Lambda</strong> 自动化合规检查。</td>
+<td style="text-align:left">3.4.3</td>
+<td style="text-align:left">开发符合政策的 AI 系统</td>
+<td style="text-align:left">使用 <strong>Bedrock guardrails</strong> 实施政策要求，使用 Model Cards 记录局限性，<strong>Lambda</strong> 自动化合规检查。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h3 id="（四）内容领域-4：生成式人工智能应用的运营效率与优化"><a href="#（四）内容领域-4：生成式人工智能应用的运营效率与优化" class="headerlink" title="（四）内容领域 4：生成式人工智能应用的运营效率与优化"></a>（四）内容领域 4：生成式人工智能应用的运营效率与优化</h3><h4 id="任务-4-1：实施成本优化与资源效率策略"><a href="#任务-4-1：实施成本优化与资源效率策略" class="headerlink" title="任务 4.1：实施成本优化与资源效率策略"></a>任务 4.1：实施成本优化与资源效率策略</h4><table>
+<h3 id="（四）内容领域-4：生成式人工智能应用的运营效率与优化"><a href="#（四）内容领域-4：生成式人工智能应用的运营效率与优化" class="headerlink" title="（四）内容领域 4：生成式人工智能应用的运营效率与优化"></a>（四）内容领域 4：生成式人工智能应用的运营效率与优化</h3><h4 id="任务-4-1：实施成本优化与资源效率策略"><a href="#任务-4-1：实施成本优化与资源效率策略" class="headerlink" title="任务 4.1：实施成本优化与资源效率策略"></a>任务 4.1：实施成本优化与资源效率策略</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">4.1.1</td>
-<td align="left">开发 Tokens 效率系统</td>
-<td align="left">估算和跟踪令牌使用，优化上下文窗口，控制响应大小，实施提示压缩和上下文修剪。</td>
+<tbody>
+<tr>
+<td style="text-align:left">4.1.1</td>
+<td style="text-align:left">开发 Tokens 效率系统</td>
+<td style="text-align:left">估算和跟踪令牌使用，优化上下文窗口，控制响应大小，实施提示压缩和上下文修剪。</td>
 </tr>
 <tr>
-<td align="left">4.1.2</td>
-<td align="left">创建成本效益模型选择框架</td>
-<td align="left">评估成本-能力模型，基于查询复杂度分层使用模型，衡量性价比，采用高效推理模式。</td>
+<td style="text-align:left">4.1.2</td>
+<td style="text-align:left">创建成本效益模型选择框架</td>
+<td style="text-align:left">评估成本-能力模型，基于查询复杂度分层使用模型，衡量性价比，采用高效推理模式。</td>
 </tr>
 <tr>
-<td align="left">4.1.3</td>
-<td align="left">开发高性能系统</td>
-<td align="left">使用批处理策略，容量规划，利用率监控，自动扩展，优化预置吞吐量配置。</td>
+<td style="text-align:left">4.1.3</td>
+<td style="text-align:left">开发高性能系统</td>
+<td style="text-align:left">使用批处理策略，容量规划，利用率监控，自动扩展，优化预置吞吐量配置。</td>
 </tr>
 <tr>
-<td align="left">4.1.4</td>
-<td align="left">创建智能缓存系统</td>
-<td align="left">实施语义缓存，结果指纹识别，边缘缓存，确定性请求哈希，提示缓存。</td>
+<td style="text-align:left">4.1.4</td>
+<td style="text-align:left">创建智能缓存系统</td>
+<td style="text-align:left">实施语义缓存，结果指纹识别，边缘缓存，确定性请求哈希，提示缓存。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-4-2：优化应用程序性能"><a href="#任务-4-2：优化应用程序性能" class="headerlink" title="任务 4.2：优化应用程序性能"></a>任务 4.2：优化应用程序性能</h4><table>
+<h4 id="任务-4-2：优化应用程序性能"><a href="#任务-4-2：优化应用程序性能" class="headerlink" title="任务 4.2：优化应用程序性能"></a>任务 4.2：优化应用程序性能</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">4.2.1</td>
-<td align="left">创建响应式 AI 系统</td>
-<td align="left">预计算可预测查询，使用延迟优化的 <strong>Bedrock</strong> 模型，并行请求，流式传输响应，进行性能基准测试。</td>
+<tbody>
+<tr>
+<td style="text-align:left">4.2.1</td>
+<td style="text-align:left">创建响应式 AI 系统</td>
+<td style="text-align:left">预计算可预测查询，使用延迟优化的 <strong>Bedrock</strong> 模型，并行请求，流式传输响应，进行性能基准测试。</td>
 </tr>
 <tr>
-<td align="left">4.2.2</td>
-<td align="left">提升检索性能</td>
-<td align="left">优化索引，预处理查询，实施带有自定义评分的混合搜索。</td>
+<td style="text-align:left">4.2.2</td>
+<td style="text-align:left">提升检索性能</td>
+<td style="text-align:left">优化索引，预处理查询，实施带有自定义评分的混合搜索。</td>
 </tr>
 <tr>
-<td align="left">4.2.3</td>
-<td align="left">实施吞吐量优化</td>
-<td align="left">优化令牌处理，使用批处理推理策略，管理并发模型调用。</td>
+<td style="text-align:left">4.2.3</td>
+<td style="text-align:left">实施吞吐量优化</td>
+<td style="text-align:left">优化令牌处理，使用批处理推理策略，管理并发模型调用。</td>
 </tr>
 <tr>
-<td align="left">4.2.4</td>
-<td align="left">提升基础模型性能</td>
-<td align="left">配置模型特定参数（如 <strong>temperature</strong>, <strong>top-k&#x2F;p</strong>），通过 A&#x2F;B 测试评估效果。</td>
+<td style="text-align:left">4.2.4</td>
+<td style="text-align:left">提升基础模型性能</td>
+<td style="text-align:left">配置模型特定参数（如 <strong>temperature</strong>, <strong>top-k/p</strong>），通过 A/B 测试评估效果。</td>
 </tr>
 <tr>
-<td align="left">4.2.5</td>
-<td align="left">创建高效的资源分配系统</td>
-<td align="left">针对令牌处理进行容量规划，监控提示和完成模式的利用率，优化自动扩展配置。</td>
+<td style="text-align:left">4.2.5</td>
+<td style="text-align:left">创建高效的资源分配系统</td>
+<td style="text-align:left">针对令牌处理进行容量规划，监控提示和完成模式的利用率，优化自动扩展配置。</td>
 </tr>
 <tr>
-<td align="left">4.2.6</td>
-<td align="left">优化工作流性能</td>
-<td align="left">分析 <strong>prompt-completion API</strong> 调用，优化向量数据库查询，应用降低延迟的技术，采用高效的服务通信模式。</td>
+<td style="text-align:left">4.2.6</td>
+<td style="text-align:left">优化工作流性能</td>
+<td style="text-align:left">分析 <strong>prompt-completion API</strong> 调用，优化向量数据库查询，应用降低延迟的技术，采用高效的服务通信模式。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-4-3：实施生成式人工智能应用的监控系统"><a href="#任务-4-3：实施生成式人工智能应用的监控系统" class="headerlink" title="任务 4.3：实施生成式人工智能应用的监控系统"></a>任务 4.3：实施生成式人工智能应用的监控系统</h4><table>
+<h4 id="任务-4-3：实施生成式人工智能应用的监控系统"><a href="#任务-4-3：实施生成式人工智能应用的监控系统" class="headerlink" title="任务 4.3：实施生成式人工智能应用的监控系统"></a>任务 4.3：实施生成式人工智能应用的监控系统</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">4.3.1</td>
-<td align="left">创建全面的可观测性系统</td>
-<td align="left">跟踪运营指标、性能、模型交互和业务影响指标，使用自定义仪表板。</td>
+<tbody>
+<tr>
+<td style="text-align:left">4.3.1</td>
+<td style="text-align:left">创建全面的可观测性系统</td>
+<td style="text-align:left">跟踪运营指标、性能、模型交互和业务影响指标，使用自定义仪表板。</td>
 </tr>
 <tr>
-<td align="left">4.3.2</td>
-<td align="left">实施全面的监控系统</td>
-<td align="left">使用 <strong>CloudWatch</strong> 跟踪令牌使用、提示有效性、幻觉率，使用 <strong>Bedrock Model Invocation Logs</strong> 分析请求&#x2F;响应，进行异常检测和成本监控。</td>
+<td style="text-align:left">4.3.2</td>
+<td style="text-align:left">实施全面的监控系统</td>
+<td style="text-align:left">使用 <strong>CloudWatch</strong> 跟踪令牌使用、提示有效性、幻觉率，使用 <strong>Bedrock Model Invocation Logs</strong> 分析请求/响应，进行异常检测和成本监控。</td>
 </tr>
 <tr>
-<td align="left">4.3.3</td>
-<td align="left">开发集成式可观测性方案</td>
-<td align="left">整合运营仪表板、业务可视化、合规监控、审计日志和用户交互跟踪。</td>
+<td style="text-align:left">4.3.3</td>
+<td style="text-align:left">开发集成式可观测性方案</td>
+<td style="text-align:left">整合运营仪表板、业务可视化、合规监控、审计日志和用户交互跟踪。</td>
 </tr>
 <tr>
-<td align="left">4.3.4</td>
-<td align="left">创建工具性能框架</td>
-<td align="left">跟踪调用模式，收集性能指标，监控工具调用和多智能体协同，设定使用基准。</td>
+<td style="text-align:left">4.3.4</td>
+<td style="text-align:left">创建工具性能框架</td>
+<td style="text-align:left">跟踪调用模式，收集性能指标，监控工具调用和多智能体协同，设定使用基准。</td>
 </tr>
 <tr>
-<td align="left">4.3.5</td>
-<td align="left">创建向量存储运营管理系统</td>
-<td align="left">监控向量数据库性能，自动化索引优化，实施数据质量验证流程。</td>
+<td style="text-align:left">4.3.5</td>
+<td style="text-align:left">创建向量存储运营管理系统</td>
+<td style="text-align:left">监控向量数据库性能，自动化索引优化，实施数据质量验证流程。</td>
 </tr>
 <tr>
-<td align="left">4.3.6</td>
-<td align="left">开发针对基础模型的故障排除框架</td>
-<td align="left">使用 Golden Datasets 检测幻觉，使用输出差异分析 (Output Diffing)，跟踪推理路径，建立专门的可观测性流水线。</td>
+<td style="text-align:left">4.3.6</td>
+<td style="text-align:left">开发针对基础模型的故障排除框架</td>
+<td style="text-align:left">使用 Golden Datasets 检测幻觉，使用输出差异分析 (Output Diffing)，跟踪推理路径，建立专门的可观测性流水线。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h3 id="（五）内容领域-5：测试、验证与故障排除"><a href="#（五）内容领域-5：测试、验证与故障排除" class="headerlink" title="（五）内容领域 5：测试、验证与故障排除"></a>（五）内容领域 5：测试、验证与故障排除</h3><h4 id="任务-5-1：实施生成式人工智能的评估系统"><a href="#任务-5-1：实施生成式人工智能的评估系统" class="headerlink" title="任务 5.1：实施生成式人工智能的评估系统"></a>任务 5.1：实施生成式人工智能的评估系统</h4><table>
+<h3 id="（五）内容领域-5：测试、验证与故障排除"><a href="#（五）内容领域-5：测试、验证与故障排除" class="headerlink" title="（五）内容领域 5：测试、验证与故障排除"></a>（五）内容领域 5：测试、验证与故障排除</h3><h4 id="任务-5-1：实施生成式人工智能的评估系统"><a href="#任务-5-1：实施生成式人工智能的评估系统" class="headerlink" title="任务 5.1：实施生成式人工智能的评估系统"></a>任务 5.1：实施生成式人工智能的评估系统</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">5.1.1</td>
-<td align="left">开发全面的评估框架</td>
-<td align="left">使用相关性、事实准确性、一致性和流畅性等指标评估模型输出。</td>
+<tbody>
+<tr>
+<td style="text-align:left">5.1.1</td>
+<td style="text-align:left">开发全面的评估框架</td>
+<td style="text-align:left">使用相关性、事实准确性、一致性和流畅性等指标评估模型输出。</td>
 </tr>
 <tr>
-<td align="left">5.1.2</td>
-<td align="left">创建系统化模型评估系统</td>
-<td align="left">使用 <strong>Amazon Bedrock Model Evaluations</strong>、A&#x2F;B测试、金丝雀测试、多模型评估，衡量令牌效率、延迟-质量比和成本-性能。</td>
+<td style="text-align:left">5.1.2</td>
+<td style="text-align:left">创建系统化模型评估系统</td>
+<td style="text-align:left">使用 <strong>Amazon Bedrock Model Evaluations</strong>、A/B测试、金丝雀测试、多模型评估，衡量令牌效率、延迟-质量比和成本-性能。</td>
 </tr>
 <tr>
-<td align="left">5.1.3</td>
-<td align="left">开发以用户为中心的评估机制</td>
-<td align="left">收集用户反馈，建立评分系统，使用标注工作流评估响应质量。</td>
+<td style="text-align:left">5.1.3</td>
+<td style="text-align:left">开发以用户为中心的评估机制</td>
+<td style="text-align:left">收集用户反馈，建立评分系统，使用标注工作流评估响应质量。</td>
 </tr>
 <tr>
-<td align="left">5.1.4</td>
-<td align="left">创建系统化的质量保证流程</td>
-<td align="left">实施持续评估工作流，进行模型输出回归测试，设置自动化质量门控。</td>
+<td style="text-align:left">5.1.4</td>
+<td style="text-align:left">创建系统化的质量保证流程</td>
+<td style="text-align:left">实施持续评估工作流，进行模型输出回归测试，设置自动化质量门控。</td>
 </tr>
 <tr>
-<td align="left">5.1.5</td>
-<td align="left">开发全面的评估系统</td>
-<td align="left">进行 RAG 评估，使用 LLM-as-a-judge 自动化评估，收集人类反馈。</td>
+<td style="text-align:left">5.1.5</td>
+<td style="text-align:left">开发全面的评估系统</td>
+<td style="text-align:left">进行 RAG 评估，使用 LLM-as-a-judge 自动化评估，收集人类反馈。</td>
 </tr>
 <tr>
-<td align="left">5.1.6</td>
-<td align="left">实施检索质量测试</td>
-<td align="left">评估相关性评分、上下文匹配、检索延迟。</td>
+<td style="text-align:left">5.1.6</td>
+<td style="text-align:left">实施检索质量测试</td>
+<td style="text-align:left">评估相关性评分、上下文匹配、检索延迟。</td>
 </tr>
 <tr>
-<td align="left">5.1.7</td>
-<td align="left">开发智能体性能框架</td>
-<td align="left">衡量任务完成率、工具使用有效性，使用 <strong>Amazon Bedrock Agent evaluations</strong>，评估多步骤工作流中的推理质量。</td>
+<td style="text-align:left">5.1.7</td>
+<td style="text-align:left">开发智能体性能框架</td>
+<td style="text-align:left">衡量任务完成率、工具使用有效性，使用 <strong>Amazon Bedrock Agent evaluations</strong>，评估多步骤工作流中的推理质量。</td>
 </tr>
 <tr>
-<td align="left">5.1.8</td>
-<td align="left">创建全面的报告系统</td>
-<td align="left">使用可视化工具和自动化报告向利益相关者传达性能指标和洞察。</td>
+<td style="text-align:left">5.1.8</td>
+<td style="text-align:left">创建全面的报告系统</td>
+<td style="text-align:left">使用可视化工具和自动化报告向利益相关者传达性能指标和洞察。</td>
 </tr>
 <tr>
-<td align="left">5.1.9</td>
-<td align="left">创建部署验证系统</td>
-<td align="left">使用合成的用户工作流，针对幻觉和语义漂移进行输出验证，确保响应一致性的自动化检查。</td>
+<td style="text-align:left">5.1.9</td>
+<td style="text-align:left">创建部署验证系统</td>
+<td style="text-align:left">使用合成的用户工作流，针对幻觉和语义漂移进行输出验证，确保响应一致性的自动化检查。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h4 id="任务-5-2：对生成式人工智能应用程序进行故障排除"><a href="#任务-5-2：对生成式人工智能应用程序进行故障排除" class="headerlink" title="任务 5.2：对生成式人工智能应用程序进行故障排除"></a>任务 5.2：对生成式人工智能应用程序进行故障排除</h4><table>
+<h4 id="任务-5-2：对生成式人工智能应用程序进行故障排除"><a href="#任务-5-2：对生成式人工智能应用程序进行故障排除" class="headerlink" title="任务 5.2：对生成式人工智能应用程序进行故障排除"></a>任务 5.2：对生成式人工智能应用程序进行故障排除</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">描述</th>
-<th align="left">关键要点&#x2F;AWS服务示例</th>
+<th style="text-align:left">编号</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">关键要点/AWS服务示例</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">5.2.1</td>
-<td align="left">解决内容处理问题</td>
-<td align="left">诊断上下文窗口溢出，实施动态分块，优化提示设计，分析截断错误。</td>
+<tbody>
+<tr>
+<td style="text-align:left">5.2.1</td>
+<td style="text-align:left">解决内容处理问题</td>
+<td style="text-align:left">诊断上下文窗口溢出，实施动态分块，优化提示设计，分析截断错误。</td>
 </tr>
 <tr>
-<td align="left">5.2.2</td>
-<td align="left">诊断并解决 API 集成问题</td>
-<td align="left">使用错误日志记录、请求验证和响应分析解决生成式AI服务特有的集成问题。</td>
+<td style="text-align:left">5.2.2</td>
+<td style="text-align:left">诊断并解决 API 集成问题</td>
+<td style="text-align:left">使用错误日志记录、请求验证和响应分析解决生成式AI服务特有的集成问题。</td>
 </tr>
 <tr>
-<td align="left">5.2.3</td>
-<td align="left">排查提示工程问题</td>
-<td align="left">使用提示测试框架、版本比较和系统化优化来改善响应质量和一致性。</td>
+<td style="text-align:left">5.2.3</td>
+<td style="text-align:left">排查提示工程问题</td>
+<td style="text-align:left">使用提示测试框架、版本比较和系统化优化来改善响应质量和一致性。</td>
 </tr>
 <tr>
-<td align="left">5.2.4</td>
-<td align="left">排查检索系统问题</td>
-<td align="left">分析响应相关性，诊断嵌入质量，监控漂移，解决向量化和分块问题，优化向量搜索性能。</td>
+<td style="text-align:left">5.2.4</td>
+<td style="text-align:left">排查检索系统问题</td>
+<td style="text-align:left">分析响应相关性，诊断嵌入质量，监控漂移，解决向量化和分块问题，优化向量搜索性能。</td>
 </tr>
 <tr>
-<td align="left">5.2.5</td>
-<td align="left">排查提示维护问题</td>
-<td align="left">使用 <strong>CloudWatch Logs</strong> 诊断提示混淆，使用 <strong>X-Ray</strong> 建立可观测性流水线，检测格式不一致，实施系统化优化工作流。</td>
+<td style="text-align:left">5.2.5</td>
+<td style="text-align:left">排查提示维护问题</td>
+<td style="text-align:left">使用 <strong>CloudWatch Logs</strong> 诊断提示混淆，使用 <strong>X-Ray</strong> 建立可观测性流水线，检测格式不一致，实施系统化优化工作流。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="Some-Useful-Website"><a href="#Some-Useful-Website" class="headerlink" title="Some Useful Website"></a>Some Useful Website</h2><ul>
 <li><strong>Jayendra’s Cloud Certification Blog</strong>: <a target="_blank" rel="noopener" href="https://jayendrapatil.com/aws-certified-ai-practitioner-aif-c01-exam-learning-path/">AWS Certified AI Practitioner AIF-C01 Exam Learning Path</a></li>
 <li><strong>官方考试指南</strong>: <a target="_blank" rel="noopener" href="https://d1.awsstatic.com/onedam/marketing-channels/website/aws/en_US/certification/approved/pdfs/docs-aip/AWS-Certified-Generative-AI-Developer-Pro_Exam-Guide.pdf">AWS Certified Generative AI Developer - Professional (AIP-C01) Exam Guide</a></li>
