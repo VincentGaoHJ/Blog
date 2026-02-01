@@ -43,11 +43,12 @@
 <p>You no longer have to provision, scale, and maintain servers to run your applications, databases, and storage systems. Learn more about serverless computing <a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/">here</a>.</p>
 <p><img src="https://d1.awsstatic.com/Test%20Images/Kate%20Test%20Images/Serverless_Web_App_LP_assets-12.da876b91b6451199d3582b6cc81dc17ff7e5791f.png" alt="Architecture of Building a Serverless Web Application"></p>
 <span id="more"></span>
-<h1 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h1><h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/lambda/">Lambda</a></h2><p><strong><em>AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, creating workload-aware cluster scaling logic, maintaining event integrations, or managing runtimes.</em></strong></p>
+
+<h1 id="Serverless"><a href="#Serverless" class="headerlink" title="Serverless"></a>Serverless</h1><h2 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/lambda/">Lambda</a></h2><p><em><strong>AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, creating workload-aware cluster scaling logic, maintaining event integrations, or managing runtimes.</strong></em></p>
 <p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png" alt="How AWS Lambda Works"></p>
 <ul>
 <li>Lambda scales out (not up) automatically</li>
-<li>Lambda functions are independent, 1 event = 1 function</li>
+<li>Lambda functions are independent, 1 event &#x3D; 1 function</li>
 <li>Lambda is serverless</li>
 <li>Know what services are serverless<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/">RDS</a> is not serverless (<a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/aurora/">Aurora</a> service is a exception) even though AWS takes care of its operation system, there is still an operating system that they have to go in and you still gonna have downtime when they’re doing maintenance. </li>
@@ -57,11 +58,11 @@
 <li>EC2 is not serverless, because it’s obviously a virtual machine</li>
 </ul>
 </li>
-<li>Lambda functions can trigger other lambda functions, 1 event can = x functions if functions trigger other functions</li>
+<li>Lambda functions can trigger other lambda functions, 1 event can &#x3D; x functions if functions trigger other functions</li>
 <li>Architectures can get extremely complicated, <strong><a target="_blank" rel="noopener" href="https://aws.amazon.com/xray/">AWS X-ray</a></strong> allows you to debug what is happening</li>
 <li>Lambda can do things globally, you can use it to back up S3 buckets to other S3 buckets etc.</li>
 </ul>
-<h2 id="Serverless-Application-Model-SAM"><a href="#Serverless-Application-Model-SAM" class="headerlink" title="Serverless Application Model (SAM)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/sam/">Serverless Application Model (SAM)</a></h2><p><strong><em>The AWS Serverless Application Model (SAM) is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings.</em></strong></p>
+<h2 id="Serverless-Application-Model-SAM"><a href="#Serverless-Application-Model-SAM" class="headerlink" title="Serverless Application Model (SAM)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/serverless/sam/">Serverless Application Model (SAM)</a></h2><p><em><strong>The AWS Serverless Application Model (SAM) is an open-source framework for building serverless applications. It provides shorthand syntax to express functions, APIs, databases, and event source mappings.</strong></em></p>
 <iframe width="853" height="480" src="https://www.youtube.com/embed/1dzihtC5LJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <ul>
@@ -71,7 +72,7 @@
 <li>Run serverless applications locally</li>
 <li>Package and deploy using CodeDeploy</li>
 </ul>
-<h2 id="Elastic-Container-Service-ECS"><a href="#Elastic-Container-Service-ECS" class="headerlink" title="Elastic Container Service (ECS)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/">Elastic Container Service (ECS)</a></h2><p><strong><em>Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service. Customers such as Duolingo, Samsung, GE, and Cookpad use ECS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.</em></strong></p>
+<h2 id="Elastic-Container-Service-ECS"><a href="#Elastic-Container-Service-ECS" class="headerlink" title="Elastic Container Service (ECS)"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/ecs/">Elastic Container Service (ECS)</a></h2><p><em><strong>Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service. Customers such as Duolingo, Samsung, GE, and Cookpad use ECS to run their most sensitive and mission critical applications because of its security, reliability, and scalability.</strong></em></p>
 <p><img src="https://d1.awsstatic.com/reInvent/re20-pdp-tier1/Mithril/product-page-diagram_Amazon-ECS%402x.0d872eb6fb782ddc733a27d2bb9db795fed71185.png" alt="How Amazon ECS works"></p>
 <p><strong>What are Containers and Docker?</strong></p>
 <ul>
@@ -96,7 +97,7 @@
 </ul>
 <p><strong>ECS Components</strong></p>
 <ul>
-<li><strong>Cluster:</strong> Logical collection of ECS resources — either ECS EC2 instance or Fargate instances</li>
+<li><strong>Cluster:</strong> Logical collection of ECS resources – either ECS EC2 instance or Fargate instances</li>
 <li><strong>Task:</strong> Single running copy of any containers defined by a task definition.</li>
 <li><strong>Task Definition:</strong> Defines your application</li>
 <li><strong>Service:</strong> Allows task definitions to be scaled by adding tasks</li>
@@ -144,7 +145,7 @@
 <ul>
 <li>Distribute traffic evenly across tasks in your service</li>
 <li>Supports ALB (Application Load Balancer), NLB (Network Load Balancer), CLB (Classic Load Balancer)</li>
-<li>Use ALB to route HTTP/HTTPS (layer 7) traffic</li>
+<li>Use ALB to route HTTP&#x2F;HTTPS (layer 7) traffic</li>
 <li>Use NLB or CLB to route TCP (layer 4) traffic</li>
 <li>Supported by both EC2 and Fargate launch types</li>
 <li>ALB allows:<ul>
@@ -167,7 +168,8 @@
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/developer/deploying-aws-step-functions-using-github-actions/">Deploying AWS Step Functions using GitHub Actions</a></li>
 </ul>
 </li>
-<li><strong>AWS Compute Blog</strong><ul>
+<li><p><strong>AWS Compute Blog</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/getting-started-with-serverless-for-developers-part-1/">Getting started with serverless for developers: Part 1</a></li>
 <li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/compute/using-container-image-support-for-aws-lambda-with-aws-sam/">Using container image support for AWS Lambda with AWS SAM</a></li>
 </ul>

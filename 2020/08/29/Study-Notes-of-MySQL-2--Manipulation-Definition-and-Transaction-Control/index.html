@@ -45,6 +45,7 @@
 <li><strong>TCL</strong> (Transaction Control Language)</li>
 </ul>
 <span id="more"></span>
+
 <p>[toc]</p>
 <h1 id="DML-Data-Manipulation-Language"><a href="#DML-Data-Manipulation-Language" class="headerlink" title="DML (Data Manipulation Language)"></a>DML (Data Manipulation Language)</h1><h2 id="Insert"><a href="#Insert" class="headerlink" title="Insert"></a>Insert</h2><ul>
 <li><p><strong>Classic Way</strong></p>
@@ -54,11 +55,13 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">语法：</span><br><span class="line">	INSERT INTO 列名</span><br><span class="line">	SET 列名 = 值, 列名 = 值</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">INSERT INTO bueaty</span><br><span class="line">SET id = 19, NAME = &#x27;刘涛&#x27;, phone = &#x27;999&#x27;;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Classic Way VS Streamlined Way</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 方式一支持插入多行，方式二不支持</span><br><span class="line">INSERT INTO players</span><br><span class="line">VALUES (33, &#x27;Larry Bird&#x27;)</span><br><span class="line">,(21, &#x27;Tim Duncan&#x27;);</span><br><span class="line"></span><br><span class="line"># 方式一支持子查询，方式二不支持</span><br><span class="line">INSERT INTO beauty(id, NAME, phone)</span><br><span class="line">SELECT id, boy_name</span><br><span class="line">FROM boys</span><br><span class="line">WHERE id &lt; 3;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 方式一支持插入多行，方式二不支持</span><br><span class="line">INSERT INTO players</span><br><span class="line">VALUES (33, &#x27;Larry Bird&#x27;)</span><br><span class="line">,(21, &#x27;Tim Duncan&#x27;);</span><br><span class="line"></span><br><span class="line"># 方式一支持子查询，方式二不支持</span><br><span class="line">INSERT INTO beauty(id, NAME, phone)</span><br><span class="line">SELECT id, boy_name</span><br><span class="line">FROM boys</span><br><span class="line">WHERE id &lt; 3;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *单表* 语法：</span><br><span class="line">	UPDATE 表名</span><br><span class="line">	SET 列 = 值，列 = 值</span><br><span class="line">	WHERE 筛选条件；</span><br><span class="line">	</span><br><span class="line">修改 *多表* 92 语法：</span><br><span class="line">	UPDATE 表名1, 表名2</span><br><span class="line">	SET 列 = 值, ...</span><br><span class="line">	WHERE 连接条件</span><br><span class="line">	AND 筛选条件; </span><br><span class="line">	</span><br><span class="line">修改 *多表* 99 语法：</span><br><span class="line">	UPDATE 表1</span><br><span class="line">	INNER/LEFT/RIGHT JOIN 表2</span><br><span class="line">	ON 连接条件</span><br><span class="line">	SET 列 = 值, ...</span><br><span class="line">	WHERE 筛选条件;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># 修改张无忌的女朋友的手机号为114</span><br><span class="line">UPDATE boys bo</span><br><span class="line">INNER JOIN beauty b</span><br><span class="line">ON bo.&#x27;id&#x27; = b.&#x27;boyfriend_id&#x27;</span><br><span class="line">SET b.&#x27;phone&#x27; = &#x27;114&#x27;</span><br><span class="line">WHERE bo.&#x27;boyName&#x27; = &#x27;张无忌&#x27;;</span><br></pre></td></tr></table></figure>
-<h2 id="Delete-amp-Truncate"><a href="#Delete-amp-Truncate" class="headerlink" title="Delete &amp; Truncate"></a>Delete &amp; Truncate</h2><ul>
+
+
+
+<h2 id="Delete-Truncate"><a href="#Delete-Truncate" class="headerlink" title="Delete &amp; Truncate"></a>Delete &amp; Truncate</h2><ul>
 <li><p><strong>Delete</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">DELETE 单表删除 语法：</span><br><span class="line">	DELETE FROM 表名 </span><br><span class="line">	WHERE 筛选条件;</span><br><span class="line">	</span><br><span class="line">DELETE 多表删除 92 语法：</span><br><span class="line">	DELETE 表1的别名，表2的别名（删除谁写谁的别名）</span><br><span class="line">	FROM 表1 别名, 表2 别名</span><br><span class="line">	WHERE 连接条件</span><br><span class="line">	AND 筛选条件;</span><br><span class="line">	</span><br><span class="line">DELETE 多表删除 99 语法：</span><br><span class="line">	DELETE 表1的别名，表2的别名（删除谁写谁的别名）</span><br><span class="line">	FROM 表1</span><br><span class="line">	INNER/LEFT/RIGHT JOIN 表2</span><br><span class="line">	WHERE 筛选条件;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 </li>
@@ -94,8 +97,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">用途：</span><br><span class="line">	修改库的字符集</span><br><span class="line">语法：</span><br><span class="line">	ALTER DATABASE books CHARCTER SET gbk;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>删除</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">语法：</span><br><span class="line">	DROP DATABASE 库名;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">DROP DATABASE IF EXISTS books;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">语法：</span><br><span class="line">	DROP DATABASE 库名;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">DROP DATABASE IF EXISTS books;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="表的管理"><a href="#表的管理" class="headerlink" title="表的管理"></a>表的管理</h2><ul>
 <li><p><strong>创建</strong></p>
@@ -108,13 +110,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">语法：</span><br><span class="line">	DROP TABLE 表名;</span><br><span class="line">*/</span><br><span class="line">DROP TABLE IF EXISTS book_author;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>复制</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">复制表的 结构 语法：</span><br><span class="line">	CREATE TABLE 新表名 LIKE 旧表名;</span><br><span class="line">*/</span><br><span class="line">CREATE TABLE copy LIKE author;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">复制表的 结构 + 数据 语法：</span><br><span class="line">	CREATE TABLE 新表名 </span><br><span class="line">	SELECT * FROM 旧表名;</span><br><span class="line">*/</span><br><span class="line">CREATE TABLE copy2 </span><br><span class="line">SELECT * FROM author;</span><br><span class="line"></span><br><span class="line"># 复制部分数据</span><br><span class="line">CREATE TABLE copy2 </span><br><span class="line">SELECT id, author_name</span><br><span class="line">FROM author</span><br><span class="line">WHERE nation = &#x27;China&#x27;;</span><br><span class="line"></span><br><span class="line"># 复制部分结构（部分字段）</span><br><span class="line">CREATE TABLE copy </span><br><span class="line">SELECT id, author_name</span><br><span class="line">FROM author</span><br><span class="line">WHERE 1 = 2; # WHERE 0;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">复制表的 结构 语法：</span><br><span class="line">	CREATE TABLE 新表名 LIKE 旧表名;</span><br><span class="line">*/</span><br><span class="line">CREATE TABLE copy LIKE author;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">复制表的 结构 + 数据 语法：</span><br><span class="line">	CREATE TABLE 新表名 </span><br><span class="line">	SELECT * FROM 旧表名;</span><br><span class="line">*/</span><br><span class="line">CREATE TABLE copy2 </span><br><span class="line">SELECT * FROM author;</span><br><span class="line"></span><br><span class="line"># 复制部分数据</span><br><span class="line">CREATE TABLE copy2 </span><br><span class="line">SELECT id, author_name</span><br><span class="line">FROM author</span><br><span class="line">WHERE nation = &#x27;China&#x27;;</span><br><span class="line"></span><br><span class="line"># 复制部分结构（部分字段）</span><br><span class="line">CREATE TABLE copy </span><br><span class="line">SELECT id, author_name</span><br><span class="line">FROM author</span><br><span class="line">WHERE 1 = 2; # WHERE 0;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ul>
 <li><strong>数值型 - 整型</strong></li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -123,8 +123,7 @@
 <th>范围</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Tinyint</td>
 <td>1</td>
 <td>有符号：-128 -127 <br />无符号：(0-255)</td>
@@ -149,14 +148,12 @@
 <td>8</td>
 <td>很大</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 设置无符号（默认有符号）</span><br><span class="line">CREATE TABLE IF EXISTS tab_int(</span><br><span class="line">	t1 INT;</span><br><span class="line">    t2 INT UNSIGNED</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 如果插入数值超出范围：插入临界值</span><br><span class="line"># 如果不设置长度就是默认长度</span><br><span class="line"># 设置了长度不改变范围，只改变显示长度，真是的范围只由整数类型决定（搭配 ZEROFILL 使用可以用 0 在左侧填充）</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><strong>小数 - 定点数</strong></li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -166,8 +163,7 @@
 <th>范围</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>float(M,D)</td>
 <td>根据插入的值来确定精度</td>
 <td>4</td>
@@ -179,13 +175,10 @@
 <td>8</td>
 <td>很大</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li><strong>小数 - 浮点数</strong></li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -195,21 +188,18 @@
 <th>范围</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>DEC(M,D)<br />DECIMAL(M,D)</td>
-<td>M=10, D=0</td>
+<td>M&#x3D;10, D&#x3D;0</td>
 <td>M+2</td>
 <td>最大取值范围与double相同，给定decimal的有效取值范围由M和D决定</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># M：整数部位和小数部位总长度</span><br><span class="line"># D：小数点后几位</span><br><span class="line"># M 和 D 都可以省略</span><br><span class="line">CREATE TABLE tab_float(</span><br><span class="line">	f1 FLOAT(5,2),</span><br><span class="line">    f1 DOUBLE(5,2),</span><br><span class="line">    f1 DECIMAL(5,2),</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><strong>字符型 - 较短的文本</strong></li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -219,8 +209,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>char(M)</td>
 <td>可变类型</td>
 <td>M</td>
@@ -234,25 +223,23 @@
 </tr>
 <tr>
 <td>binary &amp; varbinary</td>
-<td>/</td>
-<td>/</td>
+<td>&#x2F;</td>
+<td>&#x2F;</td>
 <td>保存较短的二进制</td>
 </tr>
 <tr>
 <td>enum</td>
-<td>/</td>
-<td>/</td>
+<td>&#x2F;</td>
+<td>&#x2F;</td>
 <td>用于保存枚举</td>
 </tr>
 <tr>
 <td>set</td>
-<td>/</td>
-<td>/</td>
+<td>&#x2F;</td>
+<td>&#x2F;</td>
 <td>用于保存集合</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li><strong>字符型 - 较长的文本</strong><ul>
 <li>text</li>
@@ -261,7 +248,6 @@
 </li>
 <li><strong>日期类型</strong></li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -271,8 +257,7 @@
 <th>最大值</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>date</td>
 <td>4</td>
 <td>1000-01-01</td>
@@ -302,9 +287,7 @@
 <td>1901</td>
 <td>2155</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h2><ul>
 <li><p><strong>含义：一种限制，用于限制表中的数据，为了保证表中的数据的准确和可靠性</strong></p>
 </li>
@@ -335,7 +318,7 @@
 </ul>
 </li>
 <li>表级约束<ul>
-<li>除了非空/默认，其他都支持</li>
+<li>除了非空&#x2F;默认，其他都支持</li>
 </ul>
 </li>
 </ul>
@@ -353,8 +336,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时添加 *表级* 约束</span><br><span class="line">	alter table 表名 add [constraint 约束名] 约束类型（字段名）;</span><br><span class="line">*/</span><br><span class="line"># 主键约束-表级</span><br><span class="line">ALTER TABLE stuinfo ADD PRIMARY KEY(id);</span><br><span class="line"># 唯一约束-表级</span><br><span class="line">ALTER TABLE stuinfo ADD UNIQUE(seat);</span><br><span class="line"># 外键约束</span><br><span class="line">ALTER TABLE stuinfo ADD [CONSTRAINT fk_stuinfo_major] FOREIGN KEY(majorid) REFERENCES major(id);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改 <strong>表</strong> 时<strong>删除</strong>约束</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时删除约束</span><br><span class="line">*/</span><br><span class="line"># 删除非空约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;</span><br><span class="line"># 删除默认约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN age INT;</span><br><span class="line"># 删除主键</span><br><span class="line">ALTER TABLE stuinfo DROP PRIMARY KEY;</span><br><span class="line"># 删除唯一约束</span><br><span class="line">ALTER TABLE stuinfo DROP INDEX seat;</span><br><span class="line"># 删除外键约束</span><br><span class="line">ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">修改 *表* 时删除约束</span><br><span class="line">*/</span><br><span class="line"># 删除非空约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;</span><br><span class="line"># 删除默认约束</span><br><span class="line">ALTER TABLE stuinfo MODIFY COLUMN age INT;</span><br><span class="line"># 删除主键</span><br><span class="line">ALTER TABLE stuinfo DROP PRIMARY KEY;</span><br><span class="line"># 删除唯一约束</span><br><span class="line">ALTER TABLE stuinfo DROP INDEX seat;</span><br><span class="line"># 删除外键约束</span><br><span class="line">ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="标识列"><a href="#标识列" class="headerlink" title="标识列"></a>标识列</h2><ul>
 <li><p><strong>标识列：又称为自增长列</strong></p>
@@ -380,12 +362,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>修改表时删除标识列</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab_identity MODIFY COLUMN id INT;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tab_identity MODIFY COLUMN id INT;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h1 id="TCL-Transaction-Control-Language"><a href="#TCL-Transaction-Control-Language" class="headerlink" title="TCL (Transaction Control Language)"></a>TCL (Transaction Control Language)</h1><h2 id="Basic-Terminology"><a href="#Basic-Terminology" class="headerlink" title="Basic Terminology"></a>Basic Terminology</h2><ul>
-<li><strong>事务：一个或者一组 sql 语句组成的一个执行单元。</strong>这个执行单元要么全部执行，要么全部不执行。如果单元中的某条 SQL 语句执行失败，那么整个单元将会回滚。</li>
+<li><p>**事务：一个或者一组 sql 语句组成的一个执行单元。**这个执行单元要么全部执行，要么全部不执行。如果单元中的某条 SQL 语句执行失败，那么整个单元将会回滚。</p>
+</li>
 <li><p><strong>存储引擎</strong></p>
 <ul>
 <li>概念：在 MySQL 中的数据用各种不同的技术存储在文件或者内存中。</li>
@@ -405,23 +387,20 @@
 <h2 id="事务的创建"><a href="#事务的创建" class="headerlink" title="事务的创建"></a>事务的创建</h2><ul>
 <li><p>隐式事务：事务没有明显的开启和结束的标记</p>
 <ul>
-<li>比如：insert / update / delete</li>
+<li>比如：insert &#x2F; update &#x2F; delete</li>
 </ul>
 </li>
 <li><p>显式事务：事务具有明显的开启和结束的标记</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 前提：必须先设置自动提交功能为禁用</span><br><span class="line">set autocommit = 0;</span><br><span class="line"># 可选</span><br><span class="line">START TRANSACTION;</span><br><span class="line"># 结束事务</span><br><span class="line">COMMIT; # 提交事务</span><br><span class="line">ROLLBACK; # 回滚事务</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 500 WHERE username = &#x27;Tim Duncan&#x27;;</span><br><span class="line">UPDATE account SET balance = 1500 WHERE username = &#x27;Larry Bird&#x27;;</span><br><span class="line">COMMIT;</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &#x27;Tim Duncan&#x27;;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &#x27;Larry Bird&#x27;;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 前提：必须先设置自动提交功能为禁用</span><br><span class="line">set autocommit = 0;</span><br><span class="line"># 可选</span><br><span class="line">START TRANSACTION;</span><br><span class="line"># 结束事务</span><br><span class="line">COMMIT; # 提交事务</span><br><span class="line">ROLLBACK; # 回滚事务</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 500 WHERE username = &#x27;Tim Duncan&#x27;;</span><br><span class="line">UPDATE account SET balance = 1500 WHERE username = &#x27;Larry Bird&#x27;;</span><br><span class="line">COMMIT;</span><br><span class="line"></span><br><span class="line"># e.g.</span><br><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &#x27;Tim Duncan&#x27;;</span><br><span class="line">UPDATE account SET balance = 1000 WHERE username = &#x27;Larry Bird&#x27;;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h2><div class="table-container">
-<table>
+<h2 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h2><table>
 <thead>
 <tr>
 <th>隔离级别</th>
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>READ UNCOMMITTED 读未提交数据</td>
 <td>允许事务读取未被其他事物提交的变更。<br />脏读，幻读，不可重复读的问题都会出现。</td>
 </tr>
@@ -437,9 +416,7 @@
 <td>SERIALIZABLE 串行化</td>
 <td>确保事务可以从一个表中读取相同的行，在这个事务持续期间，禁止其他事务对该表执行插入，更新和删除。<br />所有并发问题可以避免。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li><p><strong>如果没有设置隔离机制</strong></p>
 <ul>
@@ -462,6 +439,9 @@
 </li>
 </ul>
 <h2 id="回滚点"><a href="#回滚点" class="headerlink" title="回滚点"></a>回滚点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SET autocommit = 0;</span><br><span class="line">START TRANSACTION;</span><br><span class="line">DELETE FROM account WHERE id = 25;</span><br><span class="line">SAVEPOINT a; # 设置保存点</span><br><span class="line">DELETE FROM account WHERE id = 29;</span><br><span class="line">ROLLBACK TO a; # 回滚到保存点</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><ul>
 <li><p><strong>含义：虚拟表，和普通表一样使用（MySQL 15.1 版本出现的新特性，是通过表动态生成的数据）。只保存 SQL 逻辑，不保存查询结果。</strong></p>
 </li>
@@ -491,11 +471,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DESC myv3;</span><br><span class="line">SHOW CREATE VIEW myv3;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>视图的更新</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 插入  </span><br><span class="line">INSERT INTO myv1 VALUES(&#x27;张飞&#x27;,&#x27;1234@sina.com&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><p>UPDATE myn1 SET last_name = ‘Tim Duncan’ WHERE last_name = ‘Larry Bird’;</p>
-<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p>DELETE FROM myv1 WHERE last_name = ‘Tim Duncan’;</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  - **具备以下关键词的视图不允许更新**</span><br><span class="line">    - 包含以下关键字的 SQL 语句：```分组函数```，```distinct```，```group by```，```having```，```union``` 或者 ```union all```</span><br><span class="line">    - 常量视图：```SELECT &#x27;John&#x27; NAME<span class="comment">;```</span></span><br><span class="line">    - ```select``` 中包含子查询</span><br><span class="line">    - ```join```</span><br><span class="line">    - ```from ``` 一个不能更新的视图</span><br><span class="line">    - ```where``` 子句的子查询引用了 ```from``` 子句中的表</span><br><span class="line"></span><br><span class="line">- **视图与表的对比**</span><br><span class="line">  - 视图不占用实际的物理空间，表占用</span><br><span class="line">  - 视图保存语句逻辑，表保存了实际结果数据</span><br><span class="line">  - 视图一般不进行增删改</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 插入  </span><br><span class="line">INSERT INTO myv1 VALUES(&#x27;张飞&#x27;,&#x27;1234@sina.com&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
+<h1 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h1><p>  UPDATE myn1 SET last_name &#x3D; ‘Tim Duncan’ WHERE last_name &#x3D; ‘Larry Bird’;</p>
+<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><p>  DELETE FROM myv1 WHERE last_name &#x3D; ‘Tim Duncan’;<br>  <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">  - **具备以下关键词的视图不允许更新**</span><br><span class="line">    - 包含以下关键字的 SQL 语句：```分组函数```，```distinct```，```group by```，```having```，```union``` 或者 ```union all```</span><br><span class="line">    - 常量视图：```SELECT &#x27;John&#x27; NAME<span class="comment">;```</span></span><br><span class="line">    - ```select``` 中包含子查询</span><br><span class="line">    - ```join```</span><br><span class="line">    - ```from ``` 一个不能更新的视图</span><br><span class="line">    - ```where``` 子句的子查询引用了 ```from``` 子句中的表</span><br><span class="line"></span><br><span class="line">- **视图与表的对比**</span><br><span class="line">  - 视图不占用实际的物理空间，表占用</span><br><span class="line">  - 视图保存语句逻辑，表保存了实际结果数据</span><br><span class="line">  - 视图一般不进行增删改</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>Study Notes of MySQL 2 —— Manipulation, Definition and Transaction Control</p><p><a href="http://vincentgaohj.github.io/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/">http://vincentgaohj.github.io/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2020-08-29</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-02-22</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/MySQL/">MySQL</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Blog/2020/08/31/Study-Notes-of-MySQL-3--Variables-Procedures-and-Functions/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Study Notes of MySQL 3 —— Variables, Procedures and Functions</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2020/08/17/Study-Notes-of-MySQL-1--Query%20Function/"><span class="level-item">Study Notes of MySQL 1 —— Query Function</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'http://vincentgaohj.github.io/Blog/2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/';
             this.page.identifier = '2020/08/29/Study-Notes-of-MySQL-2--Manipulation-Definition-and-Transaction-Control/';
