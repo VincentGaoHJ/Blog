@@ -43,21 +43,16 @@
 <p>You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.</p>
 <p><img src="https://d2908q01vomqb2.cloudfront.net/e1822db470e60d090affd0956d743cb0e7cdf113/2020/11/05/The-following-diagram-shows-the-key-components-to-deploy-a-secure-server-endpoint-in-a-VPC-with-shared-subnets..png" alt="Key Components to Deploy a Secure Server Endpoint in a VPC with Shared Subnets"></p>
 <span id="more"></span>
-
 <h1 id="VPCs"><a href="#VPCs" class="headerlink" title="VPCs"></a>VPCs</h1><p>Virtual Private Cloud lets you provision a logically isolated section of the Amazon Web Services Cloud where you can launch AWS resources in a virtue network that you define. You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.</p>
 <h2 id="VPC-Overview"><a href="#VPC-Overview" class="headerlink" title="VPC Overview"></a>VPC Overview</h2><ul>
 <li><p><strong>No Translative peering</strong></p>
 </li>
 <li><p>When you create a VPC, a  default Route Table, Network Access Control List and a default Security Group is created</p>
 </li>
-<li><p>It won’t create any subnets, nor will it create a default Internet gateway</p>
-</li>
-<li><p>Amazon always reserve 5 IP addresses within your subnets</p>
-</li>
-<li><p>You can only have 1 Internet Gateway per VPC</p>
-</li>
-<li><p>Security Groups cant span VPCs.</p>
-</li>
+<li>It won’t create any subnets, nor will it create a default Internet gateway</li>
+<li>Amazon always reserve 5 IP addresses within your subnets</li>
+<li>You can only have 1 Internet Gateway per VPC</li>
+<li>Security Groups cant span VPCs.</li>
 </ul>
 <h2 id="Amazon-Virtual-Private-Cloud-features"><a href="#Amazon-Virtual-Private-Cloud-features" class="headerlink" title="Amazon Virtual Private Cloud features"></a>Amazon Virtual Private Cloud features</h2><p> Amazon Virtual Private Cloud provides features that you can use to increase and monitor the security for your virtual private cloud (VPC):</p>
 <ul>
@@ -67,44 +62,48 @@
 </li>
 <li><p><strong>VPC Traffic Mirroring:</strong> VPC traffic mirroring allows you to copy network traffic from an elastic network interface of Amazon EC2 instances and then send the traffic to out-of-band security and monitoring appliances for deep packet inspection. </p>
 </li>
-<li><p><strong>Ingress Routing:</strong> This allows you to route all incoming and outgoing traffic flowing to&#x2F;from an <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">Internet Gateway</a> (IGW) or <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html">Virtual Private Gateway</a> (VGW) to a specific EC2 instance’s <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interface</a>. With this feature, you can configure your <a target="_blank" rel="noopener" href="https://aws.amazon.com/vpc/">virtual private cloud</a> to send all traffic to an IGW, VGW or EC2 instance before the traffic reaches your business workloads.</p>
+<li><p><strong>Ingress Routing:</strong> This allows you to route all incoming and outgoing traffic flowing to/from an <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html">Internet Gateway</a> (IGW) or <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/vpc/latest/adminguide/Introduction.html">Virtual Private Gateway</a> (VGW) to a specific EC2 instance’s <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html">Elastic Network Interface</a>. With this feature, you can configure your <a target="_blank" rel="noopener" href="https://aws.amazon.com/vpc/">virtual private cloud</a> to send all traffic to an IGW, VGW or EC2 instance before the traffic reaches your business workloads.</p>
 </li>
 <li><p><strong>Security Groups:</strong> Security groups act as a firewall for associated Amazon EC2 instances, controlling both inbound and outbound traffic at the instance level. </p>
 </li>
-<li><p><strong>Network Access Control List:</strong> A network access control list (ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets.</p>
+<li><p><strong>Network Access Control List:</strong> A network access control list (ACL) is an optional layer of security for your VPC that acts as a firewall for controlling traffic in and out of one or more subnets. </p>
 </li>
 </ul>
-<h2 id="Security-groups-vs-Network-ACLs"><a href="#Security-groups-vs-Network-ACLs" class="headerlink" title="Security groups vs Network ACLs"></a>Security groups vs Network ACLs</h2><table>
+<h2 id="Security-groups-vs-Network-ACLs"><a href="#Security-groups-vs-Network-ACLs" class="headerlink" title="Security groups vs Network ACLs"></a>Security groups vs Network ACLs</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">Security group</th>
+<th style="text-align:left">Security group</th>
 <th>Network ACL</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">Operates at the instance level</td>
+<tbody>
+<tr>
+<td style="text-align:left">Operates at the instance level</td>
 <td>Operates at the subnet level</td>
 </tr>
 <tr>
-<td align="left">Supports allow rules only</td>
+<td style="text-align:left">Supports allow rules only</td>
 <td>Supports allow rules and deny rules</td>
 </tr>
 <tr>
-<td align="left"><strong>Is stateful: Return traffic is automatically allowed, regardless of any rules</strong></td>
+<td style="text-align:left"><strong>Is stateful: Return traffic is automatically allowed, regardless of any rules</strong></td>
 <td><strong>Is stateless: Return traffic must be explicitly allowed by rules</strong></td>
 </tr>
 <tr>
-<td align="left">We evaluate all rules before deciding whether to allow traffic</td>
+<td style="text-align:left">We evaluate all rules before deciding whether to allow traffic</td>
 <td>We process rules in order, starting with the lowest numbered rule, when deciding whether to allow traffic</td>
 </tr>
 <tr>
-<td align="left">Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on</td>
+<td style="text-align:left">Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on</td>
 <td>Automatically applies to all instances in the subnets that it’s associated with (therefore, it provides an additional layer of defense if the security group rules are too permissive)</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="Network-Address-Translation-NAT"><a href="#Network-Address-Translation-NAT" class="headerlink" title="Network Address Translation (NAT)"></a>Network Address Translation (NAT)</h2><p><strong>NAT Instance</strong></p>
 <ul>
-<li>When creating a NAT instance, Disable Source&#x2F;Destination Check on the Instance</li>
+<li>When creating a NAT instance, Disable Source/Destination Check on the Instance</li>
 <li>NAT instances must be in a public subnet</li>
 <li>There must be a route out of the private subnet to the NAT instance, in order for this to work</li>
 <li>The amount of traffic that NAT instances can support depends on the instance size. If you are bottlenecking, increase the instance size.</li>
@@ -120,25 +119,19 @@
 <li>Not associated with security groups</li>
 <li>Automatically assigned a public ip address</li>
 <li>Remember to update your route tables</li>
-<li>No need to disable Source&#x2F;Destination Checks</li>
+<li>No need to disable Source/Destination Checks</li>
 </ul>
 <h2 id="Access-Control-Lists-ACL"><a href="#Access-Control-Lists-ACL" class="headerlink" title="Access Control Lists (ACL)"></a>Access Control Lists (ACL)</h2><ul>
-<li><p>VPC automatically comes with a default network ACL, and by default it allows all outbound and inbound traffic</p>
-</li>
-<li><p>You can create custom network ACLs. By default, each custom network ACL denies all inbound and outbound traffic until you add rules.</p>
-</li>
+<li>VPC automatically comes with a default network ACL, and by default it allows all outbound and inbound traffic</li>
+<li>You can create custom network ACLs. By default, each custom network ACL denies all inbound and outbound traffic until you add rules.</li>
 <li><p>Each subnet in your VPC must be associated with a network ACL. If you don’t explicitly associate a subnet with a network ACL, the subnet is automatically associated with the default network ACL</p>
 </li>
 <li><p>Block IP Addresses using network ACLs not Security Groups</p>
 </li>
-<li><p>You can associate a network ACL with multiple subnets; however, a subnet can be associated with only one network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.</p>
-</li>
-<li><p>Network ACLs contain a numbered list of rules that is evaluated in order, starting with the lowest numbered rule.</p>
-</li>
-<li><p>Network ACLs have separate inbound and outbound rules, and each rule can either allow or deny traffic</p>
-</li>
-<li><p>Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa.)</p>
-</li>
+<li>You can associate a network ACL with multiple subnets; however, a subnet can be associated with only one network ACL at a time. When you associate a network ACL with a subnet, the previous association is removed.</li>
+<li>Network ACLs contain a numbered list of rules that is evaluated in order, starting with the lowest numbered rule.</li>
+<li>Network ACLs have separate inbound and outbound rules, and each rule can either allow or deny traffic</li>
+<li>Network ACLs are stateless; responses to allowed inbound traffic are subject to the rules for outbound traffic (and vice versa.)</li>
 </ul>
 <h2 id="VPC-Flow-Logs"><a href="#VPC-Flow-Logs" class="headerlink" title="VPC Flow Logs"></a>VPC Flow Logs</h2><ul>
 <li>You cannot enable flow logs for VPCs that are peered with your VPC unless the peer VPC is in your account.</li>
@@ -160,8 +153,7 @@
 </li>
 <li><p>A Bastion is used to securely administer EC2 instances (Using SSH or RDP). Bastions are called Jump Boxes in Australia</p>
 </li>
-<li><p>You cannot use a NAT Gateway as a Bastion host</p>
-</li>
+<li>You cannot use a NAT Gateway as a Bastion host</li>
 </ul>
 <h2 id="Direct-Connect"><a href="#Direct-Connect" class="headerlink" title="Direct Connect"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/directconnect/">Direct Connect</a></h2><h3 id="Basic-Idea"><a href="#Basic-Idea" class="headerlink" title="Basic Idea"></a>Basic Idea</h3><p>AWS Direct Connect is a cloud service solution that makes it easy to establish a dedicated network connection from your premises to AWS. Using AWS Direct Connect, you can establish private connectivity between AWS and your data-center, office, or co-location environment, which in many cases can reduce your network costs, increase bandwidth throughput, and provide a more consistent network experience than Internet-based connections.</p>
 <p><img src="https://d1.awsstatic.com/AWS%20Direct%20Connect/Product-Page-Diagram_Direct-Connect.0166400894ac5f9c921c3f7a346f55d8c42f492c.png" alt="How it works"></p>
@@ -192,44 +184,38 @@
 <p><strong>Without AWS Global Accelerator:</strong></p>
 <p><strong>It can take many networks to reach the application. Paths to and from the application may differ. Each hop impacts performance and can introduce risks.</strong> </p>
 <h3 id="AWS-Global-Accelerator-Components"><a href="#AWS-Global-Accelerator-Components" class="headerlink" title="AWS Global Accelerator Components"></a>AWS Global Accelerator Components</h3><ul>
-<li><p><strong>Static IP addresses</strong></p>
-<ul>
+<li><strong>Static IP addresses</strong><ul>
 <li>By default, Global Accelerator provides you with two static IP addresses that you associate with your accelerator.</li>
-<li><code>1.2.3.4</code> &#x2F; <code>5.6.7.8</code></li>
+<li><code>1.2.3.4</code> / <code>5.6.7.8</code></li>
 </ul>
 </li>
-<li><p><strong>Accelerator</strong></p>
-<ul>
+<li><strong>Accelerator</strong><ul>
 <li>An accelerator directs traffic to optimal endpoints over the AWS global network to improve the availability and performance of your Internet applications.</li>
 <li>Each accelerator includes one or more listeners</li>
 </ul>
 </li>
-<li><p><strong>DNS Name</strong></p>
-<ul>
-<li>Global Accelerator assigns each accelerator a default Domain Name System(DNS) name – that points to the static IP addresses that Global Accelerator assigns to you.</li>
+<li><strong>DNS Name</strong><ul>
+<li>Global Accelerator assigns each accelerator a default Domain Name System(DNS) name — that points to the static IP addresses that Global Accelerator assigns to you.</li>
 <li>Depending on the use case, you can use your accelerator’s static IP addresses or DNS name to route traffic to your accelerator, or set up DNS records to route traffic using your own custom domain name.</li>
 </ul>
 </li>
-<li><p><strong>Network Zone</strong></p>
-<ul>
+<li><strong>Network Zone</strong><ul>
 <li>A network zone services the static IP addresses for your accelerator from a unique IP subnet. Similar to an AWS Availability Zone, a network zone is an isolated unit with its own set of physical infrastructure.</li>
 <li>When you configure an accelerator, by default, Global Accelerator allocates two IPv4 addresses for it. If one IP address from a network zone becomes unavailable due to IP address blocking by certain client networks, or network disruptions, client applications can retry on the healthy static IP address from the other isolated network zone.</li>
 </ul>
 </li>
-<li><p><strong>Listener</strong></p>
-<ul>
+<li><strong>Listener</strong><ul>
 <li>A listener processes inbound connections from clients to Global Accelerator, based on the port (or port range) and protocol that you configure. Global Accelerator supports both TCP and UDP protocols.</li>
 <li>Each listener has one or more endpoint groups associated with it, and traffic is forwarded to endpoints in one of the groups.</li>
 <li>You associate endpoint groups with listeners by specifying the Regions that you want to distribute traffic to.</li>
 <li>Traffic is disputed to optimal endpoints within the endpoint groups associated with a listener.</li>
 </ul>
 </li>
-<li><p><strong>Endpoint Group</strong></p>
-<ul>
+<li><strong>Endpoint Group</strong><ul>
 <li>Each endpoint group is associated with a specific AWS Region</li>
 <li>Endpoint groups include one or more endpoints in the Region</li>
 <li>You can increase or reduce the percentage of traffic that would be otherwise directed to an endpoint group by adjusting a setting called a traffic dial</li>
-<li>The traffic dial lets you easily do performance testing or blue&#x2F;green deployment testing for new releases across different AWS Regions, for example.</li>
+<li>The traffic dial lets you easily do performance testing or blue/green deployment testing for new releases across different AWS Regions, for example.</li>
 </ul>
 </li>
 <li><p><strong>Endpoint</strong></p>
@@ -254,13 +240,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="VPC-Private-Link"><a href="#VPC-Private-Link" class="headerlink" title="VPC Private Link"></a>VPC Private Link</h2><p><em><strong>If you see a question asking about peering VPCs to tens, hundreds, or thousands of customer VPCS, think of AWS Private Link.</strong></em></p>
+<h2 id="VPC-Private-Link"><a href="#VPC-Private-Link" class="headerlink" title="VPC Private Link"></a>VPC Private Link</h2><p><strong><em>If you see a question asking about peering VPCs to tens, hundreds, or thousands of customer VPCS, think of AWS Private Link.</em></strong></p>
 <ul>
 <li>It doesn’t require VPC peering; no route tables, NAT, IGWs, etc.</li>
 <li>Requires a Network Load Balancer on the service VPC and an ENI on the customer VPC.</li>
 </ul>
-<h2 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a>Transit Gateway</h2><p><em><strong>If you are given a scenario question where it’s talking about how you can simplify your network topology, maybe you have got hundreds of VPN connections coming in, direct connection, a whole bunch of VPC peering going on and you also need to support IP multicast. I want you to think of Transit Gateway immediately.</strong></em></p>
-<p><em><strong>It’s a way of simplifying your network architecture or topology, and it always uses a hub and spoke model.</strong></em></p>
+<h2 id="Transit-Gateway"><a href="#Transit-Gateway" class="headerlink" title="Transit Gateway"></a>Transit Gateway</h2><p><strong><em>If you are given a scenario question where it’s talking about how you can simplify your network topology, maybe you have got hundreds of VPN connections coming in, direct connection, a whole bunch of VPC peering going on and you also need to support IP multicast. I want you to think of Transit Gateway immediately.</em></strong></p>
+<p><strong><em>It’s a way of simplifying your network architecture or topology, and it always uses a hub and spoke model.</em></strong></p>
 <ul>
 <li>Allows you to have transitive peering between thousands of VPCs and on-premises data centers.</li>
 <li>Works on a hub-and-spoke model</li>
@@ -270,7 +256,7 @@
 <li>Works with Direct Connect as well as VPN connections.</li>
 <li><strong>Supports IP multi-cast (not supported by any other AWS service)</strong></li>
 </ul>
-<h2 id="VPN-CloudHub"><a href="#VPN-CloudHub" class="headerlink" title="VPN CloudHub"></a>VPN CloudHub</h2><p><em><strong>If you see a scenario talking about how you can essentially manage your multiple sites with VPN, please definitely consider VPN CloudHub.</strong></em></p>
+<h2 id="VPN-CloudHub"><a href="#VPN-CloudHub" class="headerlink" title="VPN CloudHub"></a>VPN CloudHub</h2><p><strong><em>If you see a scenario talking about how you can essentially manage your multiple sites with VPN, please definitely consider VPN CloudHub.</em></strong></p>
 <p><img src="https://d1.awsstatic.com/diagrams/product-page-diagram_Accelerated-Site-to-Site-VPN_How-it-Works%402x.89c94ea4b307abe21f82d9fd453fe3c72cacb2a3.png" alt="How it works"></p>
 <ul>
 <li>If you have multiple sites, each with it’s own VPN connection, you can use AWS VPN CloudHub to connect those sites together.</li>
@@ -278,7 +264,7 @@
 <li>Low cost; easy to manage.</li>
 <li>It operates over the public Internet, but all traffic between the customer gateway and the AWS VPN CloudHub is encrypted.</li>
 </ul>
-<h2 id="Networking-Costs-on-AWS"><a href="#Networking-Costs-on-AWS" class="headerlink" title="Networking Costs on AWS"></a>Networking Costs on AWS</h2><p><em><strong>If you see a scenario based question where it’s talking about cost optimization, you always want to use private IPs over public IPs</strong></em> </p>
+<h2 id="Networking-Costs-on-AWS"><a href="#Networking-Costs-on-AWS" class="headerlink" title="Networking Costs on AWS"></a>Networking Costs on AWS</h2><p><strong><em>If you see a scenario based question where it’s talking about cost optimization, you always want to use private IPs over public IPs</em></strong> </p>
 <ul>
 <li>Using private IP addresses will utilizes the AWS backbone network which will save on costs.</li>
 <li>If you want to cut all network costs, group your EC2 instances in the same Availability Zone and use private IP addresses. This will be cost-free, but make sure to keep in mind single point of failure issues.</li>
@@ -297,55 +283,62 @@
 </li>
 </ul>
 <h1 id="Dive-Into-Exam"><a href="#Dive-Into-Exam" class="headerlink" title="Dive Into Exam"></a>Dive Into Exam</h1><ul>
-<li><p><strong>Having just created a new VPC and launching an instance into its public subnet, you realise that you have forgotten to assign a public IP to the instance during creation. What is the simplest way to make your instance reachable from the outside world?</strong></p>
-<ul>
+<li><strong>Having just created a new VPC and launching an instance into its public subnet, you realise that you have forgotten to assign a public IP to the instance during creation. What is the simplest way to make your instance reachable from the outside world?</strong><ul>
 <li><strong>Answer:</strong> Create an Elastic IP and new network interface. Associate the Elastic IP to the new network interface, and the new network interface to your instance.</li>
 <li><strong>Explanation:</strong> Although creating a new NIC &amp; associating an EIP also results in your instance being accessible from the internet, it leaves your instance with 2 NICs &amp; 2 private IPs as well as the public address and is therefore not the simplest solution. By default, any user-created VPC subnet WILL NOT automatically assign public IPv4 addresses to instances – the only subnet that does this is the “default” VPC subnets automatically created by AWS in your account.</li>
 </ul>
 </li>
-<li><p><strong>Are you permitted to conduct your own vulnerability scans on your own VPC without alerting AWS first?</strong></p>
+</ul>
 <ul>
+<li><strong>Are you permitted to conduct your own vulnerability scans on your own VPC without alerting AWS first?</strong><ul>
 <li><strong>Answer:</strong> Depends on the type of scan and the service being scanned. Some scans can be performed without alerting AWS, some require you to alert.</li>
 <li><strong>Explanation:</strong> Until recently customers were not permitted to conduct penetration testing without AWS engagement. However that has changed. There are still conditions though.</li>
 </ul>
 </li>
-<li><p><strong>True or False: You can accelerate your application by adding a second Internet gateway to your VPC.</strong></p>
+</ul>
 <ul>
+<li><strong>True or False: You can accelerate your application by adding a second Internet gateway to your VPC.</strong><ul>
 <li><strong>Answer:</strong> FALSE</li>
 <li><strong>Explanation:</strong> You may have only one Internet gateway per VPC.</li>
 </ul>
 </li>
-<li><p><strong>True or False: An application load balancer must be deployed into at least two subnets.</strong></p>
+</ul>
 <ul>
+<li><strong>True or False: An application load balancer must be deployed into at least two subnets.</strong><ul>
 <li><strong>Answer:</strong> True</li>
 </ul>
 </li>
-<li><p><strong>Which of the following allows you to SSH or RDP into an EC2 instance located in a private subnet?</strong></p>
+</ul>
 <ul>
+<li><strong>Which of the following allows you to SSH or RDP into an EC2 instance located in a private subnet?</strong><ul>
 <li><strong>Answer:</strong> Bastion host</li>
 <li><strong>Explanation:</strong> A Bastion host allows you to securely administer (via SSH or RDP) an EC2 instance located in a private subnet. Don’t confuse Bastions and NATs, which allow outside traffic to reach an instance in a private subnet.</li>
 </ul>
 </li>
-<li><p><strong>Which of the following offers the largest range of internal IP addresses?</strong></p>
+</ul>
 <ul>
-<li><strong>Answer:</strong> &#x2F;16</li>
-<li><strong>Explanation:</strong> The &#x2F;16 offers 65,536 possible addresses.</li>
+<li><strong>Which of the following offers the largest range of internal IP addresses?</strong><ul>
+<li><strong>Answer:</strong> /16</li>
+<li><strong>Explanation:</strong> The /16 offers 65,536 possible addresses.</li>
 </ul>
 </li>
-<li><p><strong>When I create a new security group, all outbound traffic is allowed by default.</strong></p>
+</ul>
 <ul>
+<li><strong>When I create a new security group, all outbound traffic is allowed by default.</strong><ul>
 <li><strong>Answer:</strong> True</li>
 </ul>
 </li>
-<li><p><strong>By default, how many VPCs am I allowed in each AWS region?</strong></p>
+</ul>
 <ul>
+<li><strong>By default, how many VPCs am I allowed in each AWS region?</strong><ul>
 <li><strong>Answer:</strong> 5</li>
 </ul>
 </li>
-<li><p><strong>To save administration headaches, a consultant advises that you leave all security groups in web-facing subnets open on port 22 to 0.0.0.0&#x2F;0 CIDR. That way, you can connect wherever you are in the world. Is this a good security design?</strong></p>
+</ul>
 <ul>
+<li><strong>To save administration headaches, a consultant advises that you leave all security groups in web-facing subnets open on port 22 to 0.0.0.0/0 CIDR. That way, you can connect wherever you are in the world. Is this a good security design?</strong><ul>
 <li><strong>Answer:</strong> No.</li>
-<li><strong>Explanation:</strong> 0.0.0.0&#x2F;0 would allow ANYONE from ANYWHERE to connect to your instances. This is generally a bad plan. The phrase ‘web-facing subnets’ does not mean just web servers. It would include any instances in that subnet some of which you may not strangers attacking. You would only allow 0.0.0.0&#x2F;0 on port 80 or 443 to to connect to your public facing Web Servers, or preferably only to an ELB. Good security starts by limiting public access to only what the customer needs. Please see the AWS Security whitepaper for complete details.</li>
+<li><strong>Explanation:</strong> 0.0.0.0/0 would allow ANYONE from ANYWHERE to connect to your instances. This is generally a bad plan. The phrase ‘web-facing subnets’ does not mean just web servers. It would include any instances in that subnet some of which you may not strangers attacking. You would only allow 0.0.0.0/0 on port 80 or 443 to to connect to your public facing Web Servers, or preferably only to an ELB. Good security starts by limiting public access to only what the customer needs. Please see the AWS Security whitepaper for complete details.</li>
 </ul>
 </li>
 </ul>
