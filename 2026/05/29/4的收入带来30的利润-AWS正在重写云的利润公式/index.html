@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>从算力出租到分销智能：AWS 正在重写云的利润公式 - Gao Haojun</title><link rel="manifest" href="/Blog/manifest.json"><meta name="application-name" content="Gao Haojun"><meta name="msapplication-TileImage" content="/img/favicon.jpeg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gao Haojun"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="213 个基点的逆势跃升，4% 收入撬动 30% 利润增长的算术，三层杠杆 × 五笔反方账 × 三维胜负手——万字深度拆解 AWS 利润率逆袭的全部逻辑。"><meta property="og:type" content="blog"><meta property="og:title" content="从算力出租到分销智能：AWS 正在重写云的利润公式"><meta property="og:url" content="http://vincentgaohj.github.io/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/"><meta property="og:site_name" content="Gao Haojun"><meta property="og:description" content="213 个基点的逆势跃升，4% 收入撬动 30% 利润增长的算术，三层杠杆 × 五笔反方账 × 三维胜负手——万字深度拆解 AWS 利润率逆袭的全部逻辑。"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://vincentgaohj.github.io/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png"><meta property="article:published_time" content="2026-05-29T09:00:00.000Z"><meta property="article:modified_time" content="2026-05-30T01:53:54.804Z"><meta property="article:author" content="Haojun(Vincent) Gao"><meta property="article:tag" content="AI"><meta property="article:tag" content="AWS"><meta property="article:tag" content="Anthropic"><meta property="article:tag" content="Cloud Computing"><meta property="article:tag" content="Bedrock"><meta property="article:tag" content="TokenOps"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://vincentgaohj.github.io/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://vincentgaohj.github.io/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/"},"headline":"从算力出租到分销智能：AWS 正在重写云的利润公式","image":["http://vincentgaohj.github.io/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png"],"datePublished":"2026-05-29T09:00:00.000Z","dateModified":"2026-05-30T01:53:54.804Z","author":{"@type":"Person","name":"Haojun(Vincent) Gao"},"publisher":{"@type":"Organization","name":"Gao Haojun","logo":{"@type":"ImageObject","url":"http://vincentgaohj.github.io/img/logo.jpg"}},"description":"213 个基点的逆势跃升，4% 收入撬动 30% 利润增长的算术，三层杠杆 × 五笔反方账 × 三维胜负手——万字深度拆解 AWS 利润率逆袭的全部逻辑。"}</script><link rel="canonical" href="http://vincentgaohj.github.io/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/"><link rel="icon" href="/Blog/img/favicon.jpeg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Blog/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?192470116504c325dfc73c99f66225ed";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-N6S845NT1J" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-N6S845NT1J');</script><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png" alt="从算力出租到分销智能：AWS 正在重写云的利润公式"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2026-05-29T09:00:00.000Z" title="2026/5/29 17:00:00">2026-05-29</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">an hour read (About 9465 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">从算力出租到分销智能：AWS 正在重写云的利润公式</h1><div class="content"><blockquote>
+<p>本篇文章是对 SemiAnalysis 报告的思考，原文翻译请看：<a target="_blank" rel="noopener" href="https://gaohaojun.cn/Blog/2026/05/29/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/">AWS 的秘密：Anthropic 增长与 Bedrock 组合推动 AWS 利润率攀升，同行落后</a></p>
+</blockquote>
+<p><strong>2026 年 5 月 28 日，SemiAnalysis 发布了一份付费报告，发现 AWS 经营利润率环比攀升了 213 个基点。是什么驱动了 AWS 的利润提升？</strong></p>
+<p>在展开分析之前，先讲清楚 SemiAnalysis 发现了什么。这份报告的核心逻辑可以拆成四个部分：现象上来看：AWS 的利润曲线出现了拐点；从结构上来看， Bedrock 贡献了 30% 的利润增量；从驱动力上来看，Anthropic 是核心动力；从竞争上来看，各家大相径庭但 AWS 占据竞争的中心。所以我们可以总结道：</p>
+<p><strong>AWS 的利润率攀升不是一次性的财务优化，而是一场从”出租算力”的 IaaS 商向”分销智能”的 AI 平台商的深层商业模式迁移。这不再是谁更早建好数据中心的问题，而是谁同时掌握了分销渠道权、自研芯片能力和客户工程深度的问题。AWS 是唯一在三层博弈中同时落子的玩家。</strong></p>
+<span id="more"></span>
+
+<p><strong>一、从现象上看：利润曲线分叉了。</strong> SemiAnalysis 开篇即指出，把云厂商最近几个季度的利润曲线叠在一起，会看到一条明显分叉的走向：Oracle 和 CoreWeave 让市场失望，Azure 利润率向下漂移，Google Cloud 看似漂亮却”虚高”：因为 GCP 分部并不承担 DeepMind 的训练成本。**在所有主要云厂商中，AWS 是唯一出现真正拐点的玩家：经营利润率环比攀升了 213 个基点。**更反直觉的是，这一成就建立在行业最短的 5 年服务器折旧之上：AWS 背着最重的折旧负担，跑出了最快的利润增速。如果把折旧标准调到对手的 6 年水平，差距还会更大。现象层的核心问题是：这 213 个基点不是凭空来的，它的结构基础是什么？</p>
+<p><strong>二、从结构上来看：Bedrock 占比 4% 的生意，贡献了 30% 的利润增量。</strong> SemiAnalysis 的 Tokenomics 模型给出了一个足以刷新行业认知的数据。驱动这一拐点的 Bedrock 平台仅占 AWS 总收入的 4%，却贡献了 AWS 毛利同比增长的 30%。而 Bedrock 的商业模式与传统的 GPU 出租有着本质区别——它不是卖 IaaS 小时，而是卖 Token。在 Bedrock 的核心条款下，Anthropic 是 Token 的实际销售方，全部收入归它入账；AWS 作为计算与分销渠道，收取两笔性质完全不同的费用：一笔覆盖算力成本的 IaaS 基础设施费，一笔几乎纯利润的分销分成。SemiAnalysis 的模型显示，在当前收入水平下，**Bedrock 的 EBIT 利润率约为 55%，远超传统 AI IaaS。**更精妙的是交易结构中设有一个”超额业绩门槛”——当 Token 吞吐量超过特定水平时，AWS 的分成比例自动上调。这意味着 Anthropic 增长越快，AWS 单位利润率越高，形成了一个正向反馈循环。Q2 展望更为乐观：Bedrock 收入占 AWS AI 收入的比重预计将升至 53%，为 AWS 总收入增长额外贡献 9 个百分点。结构层的核心问题是：为什么这个结构是可持续的，而不是一次性的财务优化？</p>
+<p><strong>三、从动力上来看：Anthropic 是一台从 -94% 烧到 60%+ 的发动机。</strong> 任何分销渠道的天花板，最终取决于它代销的产品。SemiAnalysis 用了一整节”Anthropic’s Blowout Q1”来展开这个引擎的爆发力：Anthropic 的 ARR 在单季度内从约 90 亿美元剧烈上行至 300 亿美元，净增约 210 亿美元；API 收入同比暴增约 13 倍，主要由 Claude Code 在企业市场的快速渗透驱动；推理毛利率更是完成了商业史上罕见的逆转——从 2024 年的 -94%，到 2025 年的 38%，再到 2026 年 Q1 的 60% 中段，仅用了两年。**Anthropic 与 OpenAI 存在关键的结构性差异：前者收入以 API 和企业端为主，单位经济远优于后者偏重消费者的免费用户结构。**据《华尔街日报》5 月 20 日报道，Anthropic 在 Q2 有望实现调整后经营利润转正。动力层的核心问题是：这个增长引擎的油量有多少？被市场低估的结构性绑定是什么？</p>
+<p><strong>四、从竞争上来看：对手各有各的困局。</strong> SemiAnalysis 没有只讲 AWS 的故事，它用对等篇幅审视了对手为什么追不上。微软一侧，绝大部分 AI 算力通过长期合同流向 OpenAI——仅 OpenAI 一家的积压订单就达到 Azure 全年营收的 2.5 倍；加上 2024-2025 年长达一年的数据中心建设暂停，2027 年的产能预期被严重压缩。谷歌一侧，报告用最尖锐的语言戳破了 GCP 的利润率假象——那本质上是”EBTIT”利润，即 Earnings Before Training, Interest and Taxes——DeepMind&#x2F;Gemini 的训练支出藏在”Alphabet 层面活动”里，2026 年 Q1 高达 54 亿美元（上年同期 30 亿美元），年化超过 200 亿美元的经常性成本被归入别处。同时谷歌”同时在五条战线上与全球最顶尖对手正面交锋”——云服务对 AWS、硬件对英伟达、模型对 Anthropic 和 OpenAI、广告对 Meta、自动驾驶对特斯拉——是一家终极供应受限的企业。竞争层的核心问题是：对手的困局是暂时的还是结构性的？AWS 的窗口期有多长？</p>
+<p>以上四层发现构成了 SemiAnalysis 报告的核心事实框架。</p>
+<ul>
+<li>现象层告诉市场<strong>分叉已经发生</strong>，结构层解释了<strong>分叉的会计学基础</strong>，动力层揭示了<strong>分叉的增长来源</strong>，竞争层描绘了<strong>分叉的持续条件</strong>。</li>
+</ul>
+<p>它们共同指向同一个底层命题——<strong>AWS 的利润率攀升不是一次性的财务优化，而是一场从”出租算力”的 IaaS 商向”分销智能”的 AI 平台商的深层商业模式迁移。这不再是谁更早建好数据中心的问题，而是谁同时掌握了分销渠道权、自研芯片能力和客户工程深度的问题。AWS 是唯一在三层博弈中同时落子的玩家。</strong></p>
+<hr>
+<h2 id="一、利润从哪来：拆解-213-个基点"><a href="#一、利润从哪来：拆解-213-个基点" class="headerlink" title="一、利润从哪来：拆解 213 个基点"></a>一、利润从哪来：拆解 213 个基点</h2><p>SemiAnalysis 原文开篇即抛出一个让所有云厂商分析师都必须正视的判断：<strong>过去几个季度，其他云服务商的运营利润率持续下滑或持平，只有 AWS 出现了真正的拐点。</strong> 把同行的利润曲线叠在一张图上，分叉一目了然：</p>
+<table>
+<thead>
+<tr>
+<th align="left">云服务商</th>
+<th align="left">利润率趋势</th>
+<th align="left">AI 收入占比</th>
+<th align="left">TaaS 占 AI 业务</th>
+<th align="left">服务器折旧</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>AWS</strong></td>
+<td align="left">↑ 环比 <strong>+213bp</strong></td>
+<td align="left">10%</td>
+<td align="left"><strong>37%</strong>（且快速攀升）</td>
+<td align="left"><strong>5 年</strong>（最短）</td>
+</tr>
+<tr>
+<td align="left">Azure</td>
+<td align="left">↓ 持续下行</td>
+<td align="left">27%</td>
+<td align="left">&lt;20%</td>
+<td align="left">6 年</td>
+</tr>
+<tr>
+<td align="left">Google Cloud</td>
+<td align="left">↑ 存疑</td>
+<td align="left">36%</td>
+<td align="left">&lt;20%</td>
+<td align="left">6 年</td>
+</tr>
+<tr>
+<td align="left">Oracle &#x2F; CoreWeave</td>
+<td align="left">↓ 低于预期</td>
+<td align="left">极低</td>
+<td align="left">近乎为零</td>
+<td align="left">较长</td>
+</tr>
+</tbody></table>
+<p>两个矛盾值得深究。<strong>第一，AWS 的 AI 收入占比只有 10%，远低于谷歌的 36% 和 Azure 的 27%，但利润率却是唯一真实上升的。</strong> SemiAnalysis 的结论是：这说明不是”AI 收入有多少”的问题，而是”AI 收入以什么方式产生”的问题——AWS 以 TaaS（代币即服务）为主，而 Azure 和 GCP 的 AI 业务中 IaaS 仍占 80% 以上。<strong>第二，AWS 背着行业里最短的 5 年折旧——</strong> SemiAnalysis 原文特别强调了这一点：更短的折旧意味着更高的当期折旧成本，也就是在账面利润最”吃亏”的条件下跑出了这条向上的曲线。如果按竞争对手 6 年的标准重算，AWS 的优势比报表看起来还要大。</p>
+<p>回到 Amazon 的 Q1 财报本身：AWS 营收 376 亿美元（同比 +28%），经营利润 142 亿美元（利润率约 37.7%），集团合并经营利润 239 亿美元——其中包含了一笔 168 亿美元的 Anthropic 投资重估收益，这是一次性的、估值驱动的。当前 31.7 倍滚动 P&#x2F;E、近三万亿美元市值、过去十二个月自由现金流仅 12 亿美元（同期单季 CapEx 就 442 亿，全年指引 2000 亿），这些数字加在一起给了管理层一个极其狭窄的容错空间：<strong>市场要的不是一季的利润惊喜，而是利润从哪里来、能持续多久。</strong></p>
+<h3 id="1-1-TaaS-vs-IaaS：两种生意的利润公式"><a href="#1-1-TaaS-vs-IaaS：两种生意的利润公式" class="headerlink" title="1.1 TaaS vs IaaS：两种生意的利润公式"></a>1.1 TaaS vs IaaS：两种生意的利润公式</h3><p>答案藏在 SemiAnalysis 对 Bedrock 交易结构的拆解里。<strong>原文的关键发现是：在 Bedrock 的核心条款下，Anthropic 是 Token 的实际销售方，全部收入入账归它；AWS 作为计算与分销渠道，收取两笔性质完全不同的费用——一笔覆盖算力成本的 IaaS 基础设施费，另一笔是几乎纯利润的分销分成。这就是 TaaS 与 IaaS 的本质区别。</strong></p>
+<p><strong>传统 AI IaaS</strong>：出租 GPU 集群，签照付不议多年合同。收入 &#x3D; GPU 小时 × 单价，成本 &#x3D; 硬件折旧 + 运营支出，利润受制于 Nvidia 芯片溢价和市场竞争。</p>
+<p><strong>Bedrock 的 TaaS 模式</strong>：SemiAnalysis 的 Tokenomics 模型估计，在当前收入水平下，Bedrock 的 EBIT 利润率约 <strong>55%</strong>，远超传统 AI IaaS。基础设施费覆盖了 AWS 的边际成本，分销分成是纯利润增量——这就是 Bedrock 仅占 4% 收入却能贡献 30% 毛利增长的根本会计逻辑。</p>
+<p>两种模式的增长动力学完全不同：</p>
+<table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">AI IaaS</th>
+<th align="left">TaaS (Bedrock)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">增长模式</td>
+<td align="left">阶梯式（签一单跳一级）</td>
+<td align="left">连续式（Token 用量每日增长）</td>
+</tr>
+<tr>
+<td align="left">客户粘性</td>
+<td align="left">合同期限约束</td>
+<td align="left">模型质量 + 生态锁定</td>
+</tr>
+<tr>
+<td align="left">利润率弹性</td>
+<td align="left">固定（受制于硬件成本）</td>
+<td align="left">递增（规模效应 + 超额分成门槛）</td>
+</tr>
+<tr>
+<td align="left">风险特征</td>
+<td align="left">低（照付不议保底）</td>
+<td align="left">中高（用量波动）</td>
+</tr>
+</tbody></table>
+<p>SemiAnalysis 披露了一个关键的合同设计细节：<strong>Bedrock&#x2F;Anthropic 的交易结构里设有一个”超额业绩门槛”——当 Token 吞吐量超过特定水平时，AWS 的分成比例自动上调。</strong> 这意味着 Anthropic 增长越快，AWS 的单位利润率越高，形成了一个正向反馈循环。用 SemiAnalysis 的原话来说：”当这些 TaaS 安排对云服务商和实验室双方均有利时，它们能成为极佳的利润率增长点，推动收入提升。”</p>
+<h3 id="1-2-4-vs-30-的算术"><a href="#1-2-4-vs-30-的算术" class="headerlink" title="1.2 4% vs 30% 的算术"></a>1.2 4% vs 30% 的算术</h3><p>这层会计逻辑的威力集中体现在 SemiAnalysis 测算的一个反直觉比例上：<strong>Bedrock 在 Q1 同比贡献了 AWS 毛利美元增量的 30%，而其在总收入的占比仅 4%。</strong> 原文的表述更为尖锐——“尽管 Bedrock 仅占 AWS 总收入的 4%，却贡献了毛利同比增量的 30%。Q1 相对于上年同期的增量 EBIT 利润率，主要就是由 Bedrock 驱动的。”</p>
+<p>解释这个比例的钥匙是”增量结构”：基准业务的利润率约 30%，而 Bedrock 的利润率约 55%。当 Bedrock 以 170% 的环比增速增长（Amazon 财报电话会议披露数据）时，全部增量收入以 55% 的利润率流入，对整体利润曲线的拉升被急剧放大。</p>
+<p><strong>SemiAnalysis 的原文还给出了 Bedrock 的体量数据：</strong> 年化收入已达 55 亿美元，其中 80-90% 以上客户使用 Anthropic 模型。在 AWS AI 业务中，Bedrock 占比从 2025 年 Q1 的 9% 跃升至当前的 37%，而同期 Azure 和 GCP 的 AI 业务仍以 IaaS 为主，IaaS 占比均在 80% 以上。原文的 Q2 展望更为乐观——预计 Bedrock 收入占 AWS AI 收入的比重将升至 53%，为 AWS 总收入增长额外贡献 9 个百分点。</p>
+<hr>
+<h2 id="二、三层杠杆：凭什么持续"><a href="#二、三层杠杆：凭什么持续" class="headerlink" title="二、三层杠杆：凭什么持续"></a>二、三层杠杆：凭什么持续</h2><p>如果说上一章回答的是 SemiAnalysis 原文已经报告的”钱从哪里来”，这一章回答的是原文埋下但未展开的”为什么是 AWS，而不是微软或谷歌”。答案不在某一个单点优势上，而在三层相互乘数化的杠杆。</p>
+<h3 id="2-1-第一层：Anthropic——从-94-到-60-，与被低估的十年期绑定"><a href="#2-1-第一层：Anthropic——从-94-到-60-，与被低估的十年期绑定" class="headerlink" title="2.1 第一层：Anthropic——从 -94% 到 60%+，与被低估的十年期绑定"></a>2.1 第一层：Anthropic——从 -94% 到 60%+，与被低估的十年期绑定</h3><p>SemiAnalysis 原文的判断非常直接：<strong>“任何分销渠道的天花板，最终取决于它代销的产品。Bedrock 的关键不在服务本身，而在 Anthropic 一身。”</strong> 原文用了一整节”Anthropic’s Blowout Q1”来详细展开 Anthropic 的业绩爆发：</p>
+<table>
+<thead>
+<tr>
+<th align="left">时间</th>
+<th align="left">推理毛利率</th>
+<th align="left">年度 ARR</th>
+<th align="left">解读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">2024</td>
+<td align="left"><strong>-94%</strong></td>
+<td align="left">&lt;$10B</td>
+<td align="left">大力烧钱训练和获客</td>
+</tr>
+<tr>
+<td align="left">2025</td>
+<td align="left"><strong>38%</strong></td>
+<td align="left">~$90B</td>
+<td align="left">Claude 开始商业化起飞</td>
+</tr>
+<tr>
+<td align="left">2026 Q1</td>
+<td align="left"><strong>~60% 中段</strong></td>
+<td align="left"><strong>$300B</strong>（单季净增 $210B）</td>
+<td align="left">Claude Code 在企业市场”掀起热潮”</td>
+</tr>
+<tr>
+<td align="left">2026 年底（预测）</td>
+<td align="left">?</td>
+<td align="left">有望突破 <strong>$1000B</strong></td>
+<td align="left">“主要由企业 API 支出驱动”</td>
+</tr>
+</tbody></table>
+<p>SemiAnalysis 原文指出了 Anthropic 与 OpenAI 的关键结构性差异：<strong>“Anthropic 的收入主要来自 API 和企业端，而 OpenAI 则偏向消费者领域，且因免费用户承担着相对较高的推理成本负担。”</strong> 这种结构差异意味着 Anthropic 每增长一美元 ARR，转化为毛利的比例天然更高。原文还披露了 Anthropic 在信用卡面板数据中的关键信号——“在净新增客户中的市场份额（现已占多数）以及平均交易价值均持续超越 OpenAI”。Claude Code 的爆发是核心驱动力，带动 API 收入同比暴增约 13 倍。据《华尔街日报》5 月 20 日报道，Anthropic 在 Q2 有望在调整后实现经营利润转正。SemiAnalysis 原文也提到其 Tokenomics 模型的最新估算在收入、成本结构和 GAAP EBIT 利润方面”均高度吻合”这一判断。</p>
+<p><strong>而真正让这种绑定不可逆的，是资本结构层面的安排。</strong> 据 AI CERTs 等媒体披露，Amazon 已累计向 Anthropic 注入约 130 亿美元（含近期追加的 50 亿美元优先股），协议预留再追加至多 200 亿美元，触发条件是 Anthropic 达到约定的收入指标。同时 Anthropic 承诺在十年内向 AWS 采购约 1000 亿美元算力、预留 5 吉瓦 Trainium 容量，其中 1 吉瓦今年内上线。市场把这种安排称为**”循环融资”**：Amazon 向 Anthropic 注入现金 → Anthropic 拿现金向 AWS 采购算力 → 客户在 Bedrock 消费 Anthropic 的 Token → AWS 收取基础设施费 + 分销分成 → 现金带着利润回到 Amazon 的报表。Amazon 这一侧的账本逻辑是：用一份十年期、千亿美元级的资本合同把代销关系变成了结构性绑定，同时锁定了 Anthropic 的算力需求和 Trainium 的产能消化，两边的下行风险都被摊到了下一个十年。</p>
+<h3 id="2-2-第二层：TokenOps——被低估的需求侧结构性革命"><a href="#2-2-第二层：TokenOps——被低估的需求侧结构性革命" class="headerlink" title="2.2 第二层：TokenOps——被低估的需求侧结构性革命"></a>2.2 第二层：TokenOps——被低估的需求侧结构性革命</h3><p>如果 Anthropic 是供给侧发动机，那么在需求端正发生一件被 SemiAnalysis 原文和中文科技社区分析共同捕捉到的变化：<strong>Token 正在从 IT 账单的一行模糊支出，变成企业 P&amp;L 上独立归因、独立预算、独立优化的成本中心。</strong> Finout 在 2026 年 4 月 29 日发布的指南里把这种变化叫 <strong>TokenOps</strong>。Token 一旦被预算化，就不再是可弹性削减的支出，而是被纳入年度规划的刚性成本。</p>
+<p>来自 OnlyCFO（2026.5.27）和第三方调研的关键数据描绘了需求侧的爆炸式增长：Token 支出正在成为大量科技公司最大的单一供应商支出，压过了 AWS 与 Azure 等传统 IT 支出。Salesforce CEO Marc Benioff 公开表示当年在 Anthropic 上的预算约 3 亿美元——一家不训练基础模型的 SaaS 公司，纯粹是消费端就花了这个数。ICONIQ 样本显示 AI 产品中位毛利率从 2024 年的 41% 上升到 2026 年的 52%，仍低于传统 SaaS 的 77%，差距就是继续扩张 Token 支出的空间。Scale 的调研显示，2026 年人均 AI Token 支出已达每年 1.6 万美元，且增速不减。</p>
+<p>Finout 把 Token 支出拆为五块，每一块都对应可量化的优化空间：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Token 支出构成</th>
+<th align="left">占比</th>
+<th align="left">核心优化手段</th>
+<th align="left">优化空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">系统 Prompt</td>
+<td align="left">10–30%</td>
+<td align="left">提示词精简与缓存</td>
+<td align="left">语义缓存降 40–80%</td>
+</tr>
+<tr>
+<td align="left">上下文与记忆</td>
+<td align="left">20–50%</td>
+<td align="left">上下文窗口管理</td>
+<td align="left">分级路由拉低费率 30–60%</td>
+</tr>
+<tr>
+<td align="left">输出长度</td>
+<td align="left">15–35%</td>
+<td align="left">输出限制策略</td>
+<td align="left">与 Prompt 优化协同</td>
+</tr>
+<tr>
+<td align="left">重试与错误</td>
+<td align="left">5–20%</td>
+<td align="left">降级与错误处理</td>
+<td align="left">大幅削减浪费</td>
+</tr>
+<tr>
+<td align="left">模型选择</td>
+<td align="left">最大成本杠杆</td>
+<td align="left">分级路由（强&#x2F;弱模型）</td>
+<td align="left">批处理约实时价五折</td>
+</tr>
+</tbody></table>
+<p>DigitalApplied 的成本词汇表指出，用厂商标价做预算会高估实际支出 3-10 倍。这本来看似是帮企业省钱，但从产业角度看，<strong>“挤水分”并不会减少 Token 总量——它让支出从模糊变得可追溯、可考核，然后让能创造价值的部分继续扩张。客户越精细地管理 Token，越倾向于把模型采购集中到一个具备统一计费、合规框架和可观测性的大平台。</strong> 这几乎就是 Bedrock 的产品定义。</p>
+<p><strong>一个具有象征意义的事件是 GitHub Copilot 在 2026 年 4 月 27 日宣布从固定订阅转为按用量计费：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">模型</th>
+<th align="left">旧乘数</th>
+<th align="left">新乘数</th>
+<th align="left">涨幅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Claude Opus 4.6</td>
+<td align="left">3x</td>
+<td align="left">27x</td>
+<td align="left">9 倍</td>
+</tr>
+<tr>
+<td align="left">GPT-5.4 mini</td>
+<td align="left">0.33x</td>
+<td align="left">6x</td>
+<td align="left">18 倍</td>
+</tr>
+</tbody></table>
+<p>当 AI 工具的真实推理成本远超订阅收入时，按用量收费不是商业选择，而是生存必需。这一逻辑会在 Cursor、Windsurf 和各家垂直 AI 工具上重演。而当越来越多的工具按用量收费时，开发者会被迫更系统地思考”什么任务值得最强的模型、什么任务可以分级路由到更便宜的模型”——<strong>这种行为的终点，就是把模型采购集中到一个能提供多模型选择、统一计费和分级路由能力的平台上，这恰好是 Bedrock 的产品边界。</strong></p>
+<h3 id="2-3-第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆"><a href="#2-3-第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆" class="headerlink" title="2.3 第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆"></a>2.3 第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆</h3><p>SemiAnalysis 原文在”垂直整合使 AWS 在利润率方面处于行业领先地位”一节中明确指出：<strong>“提高 Bedrock 在业务组合中的占比，与亚马逊押注定制芯片的战略形成了绝佳组合。”</strong> 原文引用了 AWS CEO Matt Garman 在 2025 年 11 月的公开表态——<strong>“AWS Trainium 芯片专为 AI 工作负载设计，如今已支撑超过 50% 的 Bedrock Token 使用量。”</strong></p>
+<p>理解 Trainium 的价值只需记住一个前提：Bedrock 向客户呈现的是 Token，不是底层硬件。客户在不知不觉中，有一半以上的推理已经跑在了 AWS 自研芯片上。而当芯片从 Nvidia GPU 切换到自研 Trainium 时，硬件采购成本大幅下降，面向客户的 Token 定价不变——中间的差额全部转化为 AWS 的利润。SemiAnalysis 原文还指出，AWS 的 Graviton 在 CPU 侧形成同向加固——“亚马逊目前与 Anthropic、OpenAI 和 Meta 达成了大规模的 CPU 及 Graviton 交易。”</p>
+<p>但这还不是 Trainium 的完整杠杆。AWS 的 5 年折旧是行业最短，本应是竞争劣势——但在 Bedrock 模式下，卖点从”机器”升级为”Token”，折旧负担被渠道分成摊薄了。<strong>AWS 在同一份折旧成本之上多收了一笔渠道费，每一美元折旧对应的是远比 IaaS 更多的收入；同时 Trainium 的自研芯片在成本侧再补一刀。</strong> 市场通常只看到 Bedrock 的收入增长，而没有把”渠道分成 × 折旧摊薄 × 芯片成本优化”这三个变量放在一起算账。</p>
+<p>SemiAnalysis 在另一份芯片深度报告中指出，Trainium2&#x2F;3 在大批量推理与强化学习场景下的 perf&#x2F;TCO 已能与 Nvidia 部分型号正面竞争。而 Nvidia GPU 在 2027 年前供不应求的局面难以根本缓解，给 Trainium 留下了 18-24 个月的成本优势窗口。Anthropic 已预留 5 吉瓦 Trainium 容量并与多代芯片绑定——这份十年的甲方采购承诺同时也是 AWS 自研芯片战略的一份期权。</p>
+<hr>
+<h2 id="三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术"><a href="#三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术" class="headerlink" title="三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术"></a>三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术</h2><p>SemiAnalysis 原文用了大量篇幅对比竞争对手的困境，这些对比是理解 AWS 利润率拐点为什么”只有 AWS 能做到”的关键。原文的判断非常直白：<strong>“微软严重依赖 IaaS，而其在 365 Copilot 和 GitHub 等其他 AI 领域的努力未能取得进展。谷歌在 Gemini Enterprise Agent 平台上的 Gemini API 表现良好，但未能受益于推动 Anthropic API 收入同比增长约 13 倍的相同编程市场趋势。”</strong></p>
+<h3 id="3-1-微软：被-OpenAI-长期合同”绑架”的云巨头"><a href="#3-1-微软：被-OpenAI-长期合同”绑架”的云巨头" class="headerlink" title="3.1 微软：被 OpenAI 长期合同”绑架”的云巨头"></a>3.1 微软：被 OpenAI 长期合同”绑架”的云巨头</h3><p>SemiAnalysis 原文揭示了微软 AI 战略的核心矛盾：<strong>“微软绝大部分 AI 算力通过长期算力合同流向 OpenAI——仅 OpenAI 一家的积压订单就达到 Azure 全年营收的 2.5 倍。”</strong> 叠加微软内部 AI 项目的算力消耗，可供外部客户使用的容量被挤压到极低水平。而 TaaS 模式的命脉恰恰在于要有富余算力才能灵活响应 Token 消耗的波动性需求。</p>
+<p>原文还指出了第二个障碍：<strong>“微软在威斯康星州建设大规模 AI 集群的速度异常缓慢，与亚马逊在印第安纳州和密西西比州以闪电速度建设近 2 吉瓦容量的做法形成鲜明对比。”</strong> 加上 2024-2025 年长达一年的数据中心建设暂停——SemiAnalysis 此前在《数据中心冻结》一文中专门分析过——显著降低了微软 2027 年的产能预期。原文给出的结论是：微软追赶的唯一途径是向 Neocloud 高价租赁容量，但这成本高昂且会削弱利润率优势。</p>
+<h3 id="3-2-谷歌：被”EBTIT-会计魔术”掩盖的战略透支"><a href="#3-2-谷歌：被”EBTIT-会计魔术”掩盖的战略透支" class="headerlink" title="3.2 谷歌：被”EBTIT 会计魔术”掩盖的战略透支"></a>3.2 谷歌：被”EBTIT 会计魔术”掩盖的战略透支</h3><p>如果说微软的问题是结构性的，谷歌的问题则被 SemiAnalysis 原文用最尖锐的语言戳破了。<strong>原文的原话是：”我们认为利润率上升是一种假象，更类似于’EBTIT’利润率，即 Earnings Before Training, Interest and Taxes——扣除训练成本、利息和税之前的利润。”</strong></p>
+<p>SemiAnalysis 引用了谷歌最新 10-Q 文件的原始数据：<strong>“Alphabet 层面活动，主要反映与共享 AI 研发相关的支出，在 2026 年 Q1 达到 54 亿美元，高于 2025 年 Q1 的 30 亿美元。因此可以说，所有 Gemini API 收入都以高于平均水平的利润率流入谷歌云，从而提升了 GCP 的利润率表现，而超过 100 亿美元的经常性成本却被归入其他类别。”</strong> 此外，谷歌云可能还因通过博通向 Anthropic 销售 TPU 而获得一次性专利费收入，进一步美化了数字。</p>
+<p>原文对谷歌更根本的判断在于战略焦点问题：<strong>“谷歌是一家终极供应受限的企业。这家公司同时试图在云服务领域与 AWS 竞争，在硬件领域与英伟达竞争，在模型领域与 Anthropic 和 OpenAI 竞争，在广告领域与 Meta 竞争，在自动驾驶领域与特斯拉竞争。”</strong> 在 SemiAnalysis 的数据中心产能模型里，谷歌的内部产能足以支撑一个成功的 AI 实验室，但留给 GCP 云业务的增长空间极其有限。作为 Claude 分发平台的 Gemini Enterprise Agent Platform（原 Vertex AI），其产能增量远低于 Bedrock。GCP 在实践中更像是谷歌交叉销售 TPU 硬件和广告服务的入口，而非一个独立运营的 AI 增长引擎——对谷歌而言，Meta 是最佳例证：先是大额 GPU 订单，随后大规模采用 Gemini，最终导向巨额 TPU 硬件交易。GCP 在其中扮演的不是利润中心，而是获客渠道。</p>
+<hr>
+<h2 id="四、五笔反方账：把-AWS-的胜局拉回地面"><a href="#四、五笔反方账：把-AWS-的胜局拉回地面" class="headerlink" title="四、五笔反方账：把 AWS 的胜局拉回地面"></a>四、五笔反方账：把 AWS 的胜局拉回地面</h2><p>到这里，AWS 的叙事已经完全展开：利润从 Bedrock 的 TaaS 结构来（第一章），凭借 Anthropic、TokenOps 和 Trainium 三层杠杆持续放大（第二章），而竞争对手各有各的困局（第三章）。三层杠杆叠在一起，很容易就得出”AWS 已经赢麻了”的结论。<strong>但 SemiAnalysis 原文并非单边唱多——它同样埋下了多处风险提示。</strong> 下面这五笔账，有来自原文的线索，也有基于原文数据的独立推演。如果其中任何一笔在未来十二到十八个月爆雷，AWS 的利润飞轮就会出现结构性减速。</p>
+<p><strong>第一，自由现金流。</strong></p>
+<p>mazon 财报数据时明确指出，Q1 的过去十二个月自由现金流仅 12 亿美元，同期单季 CapEx 442 亿、全年指引 2000 亿。这个裂口意味着市场在给 Amazon 开的是一张必须在未来三到五年内通过利润飞轮收回来的”信用支票”——目前只有 Bedrock 完成了兑现的第一环，Trainium 的规模效应和 Graviton 的外部收入贡献仍在证明自己的路上。随着投资者对 AI 资本开支的耐心窗口持续缩短，自由现金流转正的时间表将直接决定估值中枢。</p>
+<p><strong>第二，收入确认的模糊地带。</strong> </p>
+<p>Q1 财报里那笔 168 亿美元的 Anthropic 重估收益是一次性、估值驱动的。SemiAnalysis 原文特别提示了一个会计细节：</p>
+<blockquote>
+<p><strong>“由于 Anthropic 按总额确认 ARR 的会计处理方式，Bedrock 的利润率相对于其当前约 60% 的推理毛利率（低端水平）呈现轻微负向混合效应。”</strong> </p>
+</blockquote>
+<p>当市场越来越要求 Amazon 把”经营利润里来自 Bedrock 的部分”从合并报表中单独拆出来时，账本上的模糊性本身就是一个风险。</p>
+<p><strong>第三，客户集中度。</strong> </p>
+<blockquote>
+<p><strong>“Bedrock 目前年化收入已达 55 亿美元，绝大多数客户（80-90% 以上）使用 Anthropic 模型。”</strong> </p>
+</blockquote>
+<p>这种集中度在顺风期是杠杆，在逆风期就是风险。一旦 Anthropic 的市占被侵蚀、或合同进入再谈判窗口，AWS 的 EBIT 弹性同步收窄。AWS 引入 OpenAI 模型到 Bedrock 正是对冲之举——但这同时也稀释了”独家渠道”的溢价。</p>
+<p><strong>第四，循环融资的监管与信任成本。</strong> </p>
+<p>现金-算力-收入-利润的闭环让合作更稳固，但把监管风险和信息披露压力提到了新的门槛。”你的最大客户同时也是最大投资者，账上有 130 亿美元来自他，你还承诺未来十年向他采购 1000 亿美元”——这种结构一旦被监管认定为实质控制或关联交易粉饰收入，Amazon 将面临额外的披露义务乃至反垄断审查。</p>
+<p><strong>第五，竞争格局不会静止。</strong> </p>
+<p>SemiAnalysis 原文在结论部分给出了一个清醒的判断：</p>
+<blockquote>
+<p><strong>“长期来看，我们预计 AI 实验室将日益垂直化其推理栈，从而对纯 IaaS 供应商的利润率形成压力。”</strong> </p>
+</blockquote>
+<p>现在，AWS 与 Microsoft 已经彼此打开了模型边界：AWS 获得了 OpenAI 的接入，Microsoft 获得了 Claude 的接入，Google 在 Gemini 上的迭代也并未落后。前沿模型的分销权一旦不再是近似垄断，压力测试的核心问题就变成：当所有平台都能提供相似的模型组合时，客户选择的依据是什么？如果答案是”价格”，三大巨头的 TaaS 利润率将同步下坠；如果答案是”生态”——计费框架、安全合规、客户已建立的操作流程——AWS 的先发优势才有机会固化为结构性护城河。</p>
+<hr>
+<h2 id="五、三维胜负手：云的下一个十年由谁定义"><a href="#五、三维胜负手：云的下一个十年由谁定义" class="headerlink" title="五、三维胜负手：云的下一个十年由谁定义"></a>五、三维胜负手：云的下一个十年由谁定义</h2><p>SemiAnalysis 原文在结尾给出了一个方向性的结论：</p>
+<blockquote>
+<p><strong>“领先的 IaaS 云服务提供商在未来 2-3 年内的利润率只会持续改善。但 AWS 在产能大幅扩张和资本支出通胀的背景下，仍能实现利润率上升，这令人瞩目，且得益于其团队做出的战略决策。长期来看，我们预计 AI 实验室将日益垂直化其推理栈，从而对纯 IaaS 供应商的利润率形成压力。同时，我们预期云服务提供商将通过定制芯片和战略合作伙伴关系实现垂直整合，利用其庞大且多元化的客户基础创造价值。”</strong></p>
+</blockquote>
+<p>基于这个判断框架，进一步将竞争分解为三个维度：</p>
+<table>
+<thead>
+<tr>
+<th align="left">竞争维度</th>
+<th align="left">AWS</th>
+<th align="left">Azure</th>
+<th align="left">Google Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>分销层</strong></td>
+<td align="left">Bedrock（TaaS 37%），独家深度绑定 Anthropic + 新增 OpenAI</td>
+<td align="left">Foundry（TaaS &lt;20%），IaaS 仍 80%+，被 OpenAI 合同锁定算力</td>
+<td align="left">Gemini Enterprise Agent（TaaS &lt;20%），Claude + Gemini，产能受限</td>
+</tr>
+<tr>
+<td align="left"><strong>自研芯片层</strong></td>
+<td align="left">Trainium 承接 &gt;50% Token，Graviton 领先</td>
+<td align="left">与 AMD 合作，自研在研</td>
+<td align="left">TPU 技术领先但内部分配冲突</td>
+</tr>
+<tr>
+<td align="left"><strong>客户工程层</strong></td>
+<td align="left">原生 AWS 工具链（CloudWatch&#x2F;IAM&#x2F;计费）</td>
+<td align="left">Azure 生态 + M365 捆绑</td>
+<td align="left">GCP 相对薄弱，交叉销售导向</td>
+</tr>
+<tr>
+<td align="left"><strong>产能（2025-27）</strong></td>
+<td align="left"><strong>第一</strong>，建站最快</td>
+<td align="left">第二，但 2024-25 暂停一年</td>
+<td align="left">第三，多线作战分流</td>
+</tr>
+<tr>
+<td align="left"><strong>折旧</strong></td>
+<td align="left"><strong>5 年</strong></td>
+<td align="left">6 年</td>
+<td align="left">6 年</td>
+</tr>
+</tbody></table>
+<p><strong>分销层决定了谁赚到 Token 渠道费，自研芯片层决定了谁把渠道费转化为更高的利润，客户工程层决定了谁能把客户锁定在最长的时间维度上。</strong> 如果在分销层领先但在芯片层落后，利润天花板将被 Nvidia 定价锁死。如果在分销和芯片都领先但错过了客户工程层，客户会被提供更好 TokenOps 工具的第三方平台分流。<strong>AWS 是目前唯一三个维度都在布局的玩家——但领先不等于锁定，窗口期正在以季度为单位缩短。</strong></p>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>213 个基点，是一道裂口的宽度。但裂口的方向，取决于未来五年三方力量的同时拉扯：AWS 能不能在窗口关闭前把领先固化为护城河，微软能不能挣脱 IaaS 的惯性完成一次迟到的转身，谷歌能不能在五线作战的消耗战中保住 GCP 的战略独立性。</p>
+<p><strong>2026 到 2027 年，是 AWS 的窗口期。</strong> 这段时间里，Bedrock 的收入占比将从 4% 向 15-20% 爬升，Trainium 承接的 Token 负载将从 50% 向 70%+ 推进，Anthropic 的 ARR 如果真如 SemiAnalysis 模型预测的那样向千亿美元迈进，超额业绩门槛下的分成比例将把 Bedrock 的 EBIT 利润率从 55% 再往上推一个台阶。每一季的财报都是在和时间赛跑——自由现金流必须从 12 亿美元的低谷里爬出来，向 2000 亿年度 CapEx 的投资者证明这张”信用支票”是能兑现的。跑赢了，213bp 就只是一个起点；跑输了，市场对 AI 资本开支的耐心将在某个季度突然耗尽。与此同时，微软被迫向 Neocloud 高价租赁容量来弥补 2024-2025 年数据中心暂停留下的产能窟窿，谷歌的”Alphabet 层面活动”科目大概率继续膨胀——当训练成本从 54 亿向 80 亿、100 亿攀升，把账做在 GCP 分部以外的会计魔术将越来越难以自圆其说。而 Oracle 和 Coreweave，在这一阶段就会被彻底挤出 TaaS 市场的牌桌——SemiAnalysis 的数据已经很直白：它们的 TaaS 业务”近乎为零”，这不算落后，这是缺席。</p>
+<p><strong>2027 到 2029 年，是模型平权时代的到来。</strong> 前沿模型的分销权将不再由任何一家云厂商独占。OpenAI 同时在 Bedrock、Foundry 和 Gemini Enterprise Agent Platform 上架，Claude 同样遍地开花，Gemini 奋力追赶。当客户真正拥有了多模型选择权时，竞争从”谁有最好的模型”切换为”谁有最好的平台”——计费体验、安全合规框架、TokenOps 工具链、分级路由能力、与现有云基础设施的集成深度。这是 AWS 五年前就开始建设的护城河被真正测试的阶段：CloudWatch、IAM、统一计费、Bedrock 的 API 端点生态，这些在模型独家时代看起来只是”加分项”的东西，到了模型平权时代会变成唯一的决策变量。微软的底牌是企业关系——M365 的装机量、Azure 的既有客户基础、Dynamics 和 Power Platform 的捆绑效应，如果它能在这个阶段把 Azure Foundry 的 TaaS 占比从不到 20% 推到 50% 以上，它仍然是最危险的追赶者。而谷歌面临的是最艰难的选择：是继续把 GCP 当成交叉销售 TPU 和 Gemini API 的获客渠道，还是把它扶正为一个有独立利润纪律的云业务，后者意味着要在 Alphabet 内部为 GCP 争取更多的产能分配——在一个”终极供应受限”的企业里，这意味着从广告、自动驾驶和硬件业务嘴里抢资源。</p>
+<p><strong>2029 到 2031 年，是 AI 实验室垂直化推理栈的终局阶段。</strong> SemiAnalysis 原文已经给出了这个判断——“AI 实验室将日益垂直化其推理栈，从而对纯 IaaS 供应商的利润率形成压力。” Anthropic 预留的 5 吉瓦 Trainium 容量，本质上就是一份向自建推理基础设施过渡的路线图。OpenAI 迟早会走上同一条路，Gemini 更不用说——谷歌自建推理能力本来就是与生俱来的。当上游的模型供应商开始自己消化推理负载、下游的云厂商通过自研芯片持续压低成本，夹在中间的纯 IaaS 出租商将被两端的剪刀差同时挤压。到那个时候，云厂商的竞争将彻底分化为两条路：一条是以 AWS 为代表的全栈整合路线——从芯片到平台到模型分销，每一层都在自己的控制之下；另一条是被迫退守为”算力批发商”的路线——在越来越薄的 IaaS 利润里挣扎，既没有芯片自主权，也没有模型分销的渠道溢价，更没有客户工程层的锁定深度。</p>
+<p><strong>213 个基点是第一局的比分。三局之后还在场上的人，才是 Token 经济学真正的赢家。</strong> 第二局的名字叫”模型平权”，第三局的名字叫”垂直整合”。AWS 目前只赢了第一局。但这个游戏的规则已经变了——赢下第一局的人，拥有选择下一局打法的权利。微软和谷歌必须在追赶中做出选择，而 AWS 只需要在领先中做出判断。在岔路口比在直道上更容易拉开距离。</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>从算力出租到分销智能：AWS 正在重写云的利润公式</p><p><a href="http://vincentgaohj.github.io/Blog/2026/05/29/4的收入带来30的利润-AWS正在重写云的利润公式/">http://vincentgaohj.github.io/Blog/2026/05/29/4的收入带来30的利润-AWS正在重写云的利润公式/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-05-29</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-05-30</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AI/">AI</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AWS/">AWS</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Anthropic/">Anthropic</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Cloud-Computing/">Cloud Computing</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Bedrock/">Bedrock</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/TokenOps/">TokenOps</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2026/05/29/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/"><span class="level-item">AWS 的秘密：Anthropic 增长与 Bedrock 组合推动 AWS 利润率攀升，同行落后</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://vincentgaohj.github.io/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/';
+            this.page.identifier = '2026/05/29/4的收入带来30的利润-AWS正在重写云的利润公式/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'vincentgaohj' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/"><img src="/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png" alt="从算力出租到分销智能：AWS 正在重写云的利润公式"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-05-29T09:00:00.000Z">2026-05-29</time></p><p class="title"><a href="/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/">从算力出租到分销智能：AWS 正在重写云的利润公式</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/05/29/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/"><img src="/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover.png" alt="AWS 的秘密：Anthropic 增长与 Bedrock 组合推动 AWS 利润率攀升，同行落后"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-05-29T02:00:00.000Z">2026-05-29</time></p><p class="title"><a href="/Blog/2026/05/29/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/">AWS 的秘密：Anthropic 增长与 Bedrock 组合推动 AWS 利润率攀升，同行落后</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/02/09/%E5%AD%98%E5%82%A8%E7%8B%82%E6%BD%AE-%E5%9B%9B%E5%8D%81%E5%B9%B4%E4%B8%80%E9%81%87%E7%9A%84%E7%9F%AD%E7%BC%BA%E5%A6%82%E4%BD%95%E5%82%AC%E7%94%9F%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E5%A4%A7%E7%B9%81%E8%8D%A3/"><img src="/Blog/gallery/%E5%AD%98%E5%82%A8%E7%8B%82%E6%BD%AE/cover.png" alt="存储狂潮：四十年一遇的短缺如何催生存储芯片大繁荣"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-02-09T03:42:21.000Z">2026-02-09</time></p><p class="title"><a href="/Blog/2026/02/09/%E5%AD%98%E5%82%A8%E7%8B%82%E6%BD%AE-%E5%9B%9B%E5%8D%81%E5%B9%B4%E4%B8%80%E9%81%87%E7%9A%84%E7%9F%AD%E7%BC%BA%E5%A6%82%E4%BD%95%E5%82%AC%E7%94%9F%E5%AD%98%E5%82%A8%E8%8A%AF%E7%89%87%E5%A4%A7%E7%B9%81%E8%8D%A3/">存储狂潮：四十年一遇的短缺如何催生存储芯片大繁荣</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/02/02/Smothering-Height-%E6%91%A9%E6%A0%B9%E5%A4%A7%E9%80%9A%E5%AF%B9AI%E7%A7%91%E6%8A%80%E7%9A%842026%E5%B1%95%E6%9C%9B/"><img src="/Blog/gallery/smothering-height/cover.png" alt="Smothering Height：摩根大通对AI科技的2026展望"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-02-02T08:42:21.000Z">2026-02-02</time></p><p class="title"><a href="/Blog/2026/02/02/Smothering-Height-%E6%91%A9%E6%A0%B9%E5%A4%A7%E9%80%9A%E5%AF%B9AI%E7%A7%91%E6%8A%80%E7%9A%842026%E5%B1%95%E6%9C%9B/">Smothering Height：摩根大通对AI科技的2026展望</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/01/27/Social-Scaling-%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%A4%9A%E6%A0%B7%E6%80%A7%E5%AF%B9%E5%85%B6%E6%8E%A8%E7%90%86%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D/"><img src="/Blog/gallery/social-scaling/social_cover.png" alt="Social Scaling：模型的认知多样性对其推理准确率的影响"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-01-27T03:09:14.000Z">2026-01-27</time></p><p class="title"><a href="/Blog/2026/01/27/Social-Scaling-%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%AE%A4%E7%9F%A5%E5%A4%9A%E6%A0%B7%E6%80%A7%E5%AF%B9%E5%85%B6%E6%8E%A8%E7%90%86%E5%87%86%E7%A1%AE%E7%8E%87%E7%9A%84%E5%BD%B1%E5%93%8D/">Social Scaling：模型的认知多样性对其推理准确率的影响</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Research/">Research</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Blog/categories/AI/"><span class="level-start"><span class="level-item">AI</span></span><span class="level-end"><span class="level-item tag">12</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AI/Analytics/"><span class="level-start"><span class="level-item">Analytics</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AI/Research/"><span class="level-start"><span class="level-item">Research</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">18</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Generative-AI-Developer-Professional/"><span class="level-start"><span class="level-item">AWS Certified Generative AI Developer Professional</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Machine-Learning-Specialty/"><span class="level-start"><span class="level-item">AWS Certified Machine Learning Specialty</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/"><span class="level-start"><span class="level-item">AWS Certified Solution Architect Associate</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Architecture/"><span class="level-start"><span class="level-item">Architecture</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Overview/"><span class="level-start"><span class="level-item">Overview</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Deep-Learning/"><span class="level-start"><span class="level-item">Deep Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NMF/"><span class="level-start"><span class="level-item">NMF</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Natural-Language-Processing/"><span class="level-start"><span class="level-item">Natural Language Processing</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Reinforce-Learning/"><span class="level-start"><span class="level-item">Reinforce Learning</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Big-Data/"><span class="level-start"><span class="level-item">Big Data</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Big-Data/Spark/"><span class="level-start"><span class="level-item">Spark</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/"><span class="level-start"><span class="level-item">Cloud Native</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/"><span class="level-start"><span class="level-item">Kubernetes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/Knative/"><span class="level-start"><span class="level-item">Knative</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Development/"><span class="level-start"><span class="level-item">Development</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Development/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Full-Stack/"><span class="level-start"><span class="level-item">Full Stack</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Log-Stack/"><span class="level-start"><span class="level-item">Log Stack</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/English-Study/"><span class="level-start"><span class="level-item">English Study</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/"><span class="level-start"><span class="level-item">Finance</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Finance/Asset-Management/"><span class="level-start"><span class="level-item">Asset Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/Econometrics/"><span class="level-start"><span class="level-item">Econometrics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Lifestyle/"><span class="level-start"><span class="level-item">Lifestyle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Terraform/"><span class="level-start"><span class="level-item">Terraform</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Terraform/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Blog/tags/AI/"><span class="tag">AI</span><span class="tag">11</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS/"><span class="tag">AWS</span><span class="tag">23</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS-Serverless/"><span class="tag">AWS - Serverless</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Anthropic/"><span class="tag">Anthropic</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Apps/"><span class="tag">Apps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/BERT/"><span class="tag">BERT</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Bedrock/"><span class="tag">Bedrock</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/CNN/"><span class="tag">CNN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified/"><span class="tag">Certified</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified-Machine-Learning-Specialty/"><span class="tag">Certified Machine Learning - Specialty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Computing/"><span class="tag">Cloud Computing</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Native-Kubernetes/"><span class="tag">Cloud Native - Kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Clustering/"><span class="tag">Clustering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Coffee/"><span class="tag">Coffee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep-Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Django/"><span class="tag">Django</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/EKK/"><span class="tag">EKK</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Econometrics/"><span class="tag">Econometrics</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/GPT-2/"><span class="tag">GPT-2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/JetPack/"><span class="tag">JetPack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Knative/"><span class="tag">Knative</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Kotlin/"><span class="tag">Kotlin</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Log/"><span class="tag">Log</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Machine-Learning/"><span class="tag">Machine-Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Memory/"><span class="tag">Memory</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NLP/"><span class="tag">NLP</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NMF/"><span class="tag">NMF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Overview-of-AWS/"><span class="tag">Overview of AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/PyTorch/"><span class="tag">PyTorch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Reinforce-Learning/"><span class="tag">Reinforce Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Research/"><span class="tag">Research</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless/"><span class="tag">Serverless</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless-Terraform/"><span class="tag">Serverless - Terraform</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Spark/"><span class="tag">Spark</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TOEFL/"><span class="tag">TOEFL</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TokenOps/"><span class="tag">TokenOps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Word2Vec/"><span class="tag">Word2Vec</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Blog/img/self.jpg" alt="Haojun(Vincent) Gao"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Haojun(Vincent) Gao</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/Blog/archives"><p class="title">59</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/Blog/categories"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/Blog/tags"><p class="title">43</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#一、利润从哪来：拆解-213-个基点"><span class="level-left"><span class="level-item">一、利润从哪来：拆解 213 个基点</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-TaaS-vs-IaaS：两种生意的利润公式"><span class="level-left"><span class="level-item">1.1 TaaS vs IaaS：两种生意的利润公式</span></span></a></li><li><a class="level is-mobile" href="#1-2-4-vs-30-的算术"><span class="level-left"><span class="level-item">1.2 4% vs 30% 的算术</span></span></a></li></ul></li><li><a class="level is-mobile" href="#二、三层杠杆：凭什么持续"><span class="level-left"><span class="level-item">二、三层杠杆：凭什么持续</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-第一层：Anthropic——从-94-到-60-，与被低估的十年期绑定"><span class="level-left"><span class="level-item">2.1 第一层：Anthropic——从 -94% 到 60%+，与被低估的十年期绑定</span></span></a></li><li><a class="level is-mobile" href="#2-2-第二层：TokenOps——被低估的需求侧结构性革命"><span class="level-left"><span class="level-item">2.2 第二层：TokenOps——被低估的需求侧结构性革命</span></span></a></li><li><a class="level is-mobile" href="#2-3-第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆"><span class="level-left"><span class="level-item">2.3 第三层：Trainium——被市场低估的”折旧摊薄”二阶杠杆</span></span></a></li></ul></li><li><a class="level is-mobile" href="#三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术"><span class="level-left"><span class="level-item">三、竞争对手为什么追不上：微软的被绑架与谷歌的会计魔术</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-微软：被-OpenAI-长期合同”绑架”的云巨头"><span class="level-left"><span class="level-item">3.1 微软：被 OpenAI 长期合同”绑架”的云巨头</span></span></a></li><li><a class="level is-mobile" href="#3-2-谷歌：被”EBTIT-会计魔术”掩盖的战略透支"><span class="level-left"><span class="level-item">3.2 谷歌：被”EBTIT 会计魔术”掩盖的战略透支</span></span></a></li></ul></li><li><a class="level is-mobile" href="#四、五笔反方账：把-AWS-的胜局拉回地面"><span class="level-left"><span class="level-item">四、五笔反方账：把 AWS 的胜局拉回地面</span></span></a></li><li><a class="level is-mobile" href="#五、三维胜负手：云的下一个十年由谁定义"><span class="level-left"><span class="level-item">五、三维胜负手：云的下一个十年由谁定义</span></span></a></li><li><a class="level is-mobile" href="#结语"><span class="level-left"><span class="level-item">结语</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Blog/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a><p class="is-size-7"><span>&copy; 2026 Haojun(Vincent) Gao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Gallery" href="https://www.gaohaojun.com/"><i class="fab fa-fighter-jet"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Linkedin" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-linkedin"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Instagram" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-instagram"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Blog/js/column.js"></script><script src="/Blog/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Blog/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/Blog/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Blog/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Blog/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
