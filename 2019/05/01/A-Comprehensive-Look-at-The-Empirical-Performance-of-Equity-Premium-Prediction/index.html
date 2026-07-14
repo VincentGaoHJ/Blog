@@ -41,16 +41,17 @@
   })();
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2019-05-01T14:25:45.000Z" title="2019/5/1 22:25:45">2019-05-01</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Finance/">Finance</a><span> / </span><a class="link-muted" href="/Blog/categories/Finance/Econometrics/">Econometrics</a></span><span class="level-item">15 minutes read (About 2304 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</h1><div class="content"><p>A comprehensive interpretation of paper <em>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</em></p>
 <span id="more"></span>
+
 <h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p><strong>被解释变量就是股票超额收益（equity premium）</strong></p>
 <p>Our dependent variable is always the equity premium, that is, the total rate of return on the stock market minus the prevailing short-term interest rate.</p>
 <p><strong>解释变量有以下三种：与股票特征相关的变量，与利率相关的变量以及市场上的宏观变量：</strong></p>
 <ul>
 <li><p><strong>股票特征相关变量 stock characteristics</strong></p>
 <ul>
-<li><p><strong>股息 Dividends</strong> ： d/p (dividend price ratio) &amp; d/y (dividend yield) </p>
+<li><p><strong>股息 Dividends</strong> ： d&#x2F;p (dividend price ratio) &amp; d&#x2F;y (dividend yield) </p>
 <p>Dividends are 12-month moving sums of dividends paid on the S&amp;P 500 index.</p>
 </li>
-<li><p><strong>收入 Earnings</strong> ：e/p (earnings price ratio) &amp; d/e (dividend payout ratio)</p>
+<li><p><strong>收入 Earnings</strong> ：e&#x2F;p (earnings price ratio) &amp; d&#x2F;e (dividend payout ratio)</p>
 <p>Earnings are 12-month moving sums of earnings on the S&amp;P 500 index.</p>
 </li>
 <li><p><strong>股票方差 Stock Variance (svar)</strong>： 股票方差是以标准普尔500指数日回报的平方之和计算的</p>
@@ -83,8 +84,8 @@
 </li>
 <li><p><strong>宏观变量</strong></p>
 <ul>
-<li><strong>投资对资本的比率 Investment to Capital Ratio (i/k)</strong></li>
-<li>i/k = 总投资 / 整个经济体的总资本</li>
+<li><strong>投资对资本的比率 Investment to Capital Ratio (i&#x2F;k)</strong></li>
+<li>i&#x2F;k &#x3D; 总投资 &#x2F; 整个经济体的总资本</li>
 </ul>
 </li>
 </ul>
@@ -94,14 +95,8 @@
 <li><p><strong>‘‘Kitchen Sink’’ Regression (all)</strong></p>
 <p>包括上述所以的变量（它不包括<strong>cay</strong>,部分原因是数据的可用性有限）。</p>
 </li>
-<li><p><strong>Consumption, wealth, income ratio (cay)</strong></p>
-<script type="math/tex; mode=display">
-c_{t}=\alpha+\beta_{a} \cdot a_{t}+\beta_{y} \cdot y_{t}+\sum_{i=-k} b_{a, i} \cdot \Delta a_{t-i} +\sum_{i=-k}^{k} b_{y, i} \cdot \Delta y_{t-i}+\epsilon_{t} \\
-t=k+1, \ldots, T-k</script><p>where c is the aggregate consumption, a is the aggregate wealth, and y is the aggregate income.</p>
-<p>Because the cay is constructed using look-ahead (in-sample) estimation regression coefficients, we also created an equivalent measure that excludes advance knowledge from the estimation equation and thus uses only prevailing data. In other words, if the current time period is ‘s’, then we estimated using only the data up to ‘s’ through</p>
-<script type="math/tex; mode=display">
-c_{t}=\alpha+\beta_{a}^{s} \cdot a_{t}+\beta_{y}^{s} \cdot y_{t}+\sum_{i=-k}^{k} b_{a, i}^{s} \cdot \Delta a_{t-i} +\sum_{i=-k}^{k} b_{y, i}^{s} \cdot \Delta y_{t-i}+\epsilon_{t} \\
-t=k+1, \ldots, s-k</script><p>This measure is called caya (‘‘ante’’) to distinguish it from the traditional variable cayp constructed with look-ahead bias (‘‘post’’).</p>
+<li><p><strong>Consumption, wealth, income ratio (cay)</strong><br>$$<br>c_{t}&#x3D;\alpha+\beta_{a} \cdot a_{t}+\beta_{y} \cdot y_{t}+\sum_{i&#x3D;-k} b_{a, i} \cdot \Delta a_{t-i} +\sum_{i&#x3D;-k}^{k} b_{y, i} \cdot \Delta y_{t-i}+\epsilon_{t} \<br>t&#x3D;k+1, \ldots, T-k<br>$$<br>where c is the aggregate consumption, a is the aggregate wealth, and y is the aggregate income.</p>
+<p>Because the cay is constructed using look-ahead (in-sample) estimation regression coefficients, we also created an equivalent measure that excludes advance knowledge from the estimation equation and thus uses only prevailing data. In other words, if the current time period is ‘s’, then we estimated using only the data up to ‘s’ through<br>$$<br>c_{t}&#x3D;\alpha+\beta_{a}^{s} \cdot a_{t}+\beta_{y}^{s} \cdot y_{t}+\sum_{i&#x3D;-k}^{k} b_{a, i}^{s} \cdot \Delta a_{t-i} +\sum_{i&#x3D;-k}^{k} b_{y, i}^{s} \cdot \Delta y_{t-i}+\epsilon_{t} \<br>t&#x3D;k+1, \ldots, s-k<br>$$<br>This measure is called caya (‘‘ante’’) to distinguish it from the traditional variable cayp constructed with look-ahead bias (‘‘post’’).</p>
 </li>
 <li><p><strong>model selection (ms)</strong></p>
 <p>如果有 $k$ 个变量，就会有 $2^k$ 个随机的模型组合方式。在每个时期 $t$，选出一个最好的模型 —— 标准是 OOS 的预测误差最小（minimum OOS prediction errors）。</p>
@@ -117,29 +112,28 @@ t=k+1, \ldots, s-k</script><p>This measure is called caya (‘‘ante’’) to 
 </ol>
 <h2 id="实证分析-Empirical-Procedure"><a href="#实证分析-Empirical-Procedure" class="headerlink" title="实证分析 Empirical Procedure"></a>实证分析 Empirical Procedure</h2><h3 id="OOS-Statistic"><a href="#OOS-Statistic" class="headerlink" title="OOS Statistic"></a>OOS Statistic</h3><p>eN 表示 OOS 与历史均值（无条件预测）之间的误差；eA 表示 OOS 与 OLS 回归模型（条件预测）之间的误差。</p>
 <ul>
-<li><script type="math/tex; mode=display">
-R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
-<li><script type="math/tex; mode=display">
-\overline{R}^{2}=R^{2}-\left(1-R^{2}\right) \times\left(\frac{T-k}{T-1}\right)</script></li>
-<li><script type="math/tex; mode=display">
-\Delta \mathrm{RMSE}=\sqrt{\mathrm{MSE}_{N}}-\sqrt{\mathrm{MSE}_{A}}</script></li>
-<li><script type="math/tex; mode=display">
-\operatorname{MSE}-\mathrm{F}=(T-h+1) \times\left(\frac{\mathrm{MSE}_{N}-\mathrm{MSE}_{A}}{\mathrm{MSE}_{A}}\right)</script></li>
+<li><p>$$<br>R^{2}&#x3D;1-\frac{\mathrm{MSE}<em>{A}}{\mathrm{MSE}</em>{N}}<br>$$</p>
+</li>
+<li><p>$$<br>\overline{R}^{2}&#x3D;R^{2}-\left(1-R^{2}\right) \times\left(\frac{T-k}{T-1}\right)<br>$$</p>
+</li>
+<li><p>$$<br>\Delta \mathrm{RMSE}&#x3D;\sqrt{\mathrm{MSE}<em>{N}}-\sqrt{\mathrm{MSE}</em>{A}}<br>$$</p>
+</li>
+<li><p>$$<br>\operatorname{MSE}-\mathrm{F}&#x3D;(T-h+1) \times\left(\frac{\mathrm{MSE}<em>{N}-\mathrm{MSE}</em>{A}}{\mathrm{MSE}_{A}}\right)<br>$$</p>
+</li>
 </ul>
 <p>For our encompassing tests in Section 6, we compute</p>
 <ul>
-<li><script type="math/tex; mode=display">
-\mathrm{ENC}=\frac{T-h+1}{T} \times \frac{\sum_{t=1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}</script></li>
+<li>$$<br>\mathrm{ENC}&#x3D;\frac{T-h+1}{T} \times \frac{\sum_{t&#x3D;1}^{T}\left(e_{N t}^{2}-e_{N t} \cdot e_{A t}\right)}{\operatorname{MSE}_{A}}<br>$$</li>
 </ul>
 <h3 id="重抽样-Bootstrap"><a href="#重抽样-Bootstrap" class="headerlink" title="重抽样 Bootstrap"></a>重抽样 Bootstrap</h3><h4 id="论文"><a href="#论文" class="headerlink" title="论文"></a>论文</h4><p>We then generate 10,000 bootstrapped time series by drawing with replacement from the residuals. The initial observation—preceding the sample of data used to estimate the models—is selected by picking one date from the actual data at random. This bootstrap procedure not only preserves the autocorrelation structure of the predictor variable, thereby being valid under the Stambaugh (1999) specification, but also preserves the cross-correlation structure of the two residuals. </p>
 <h4 id="我们-Moving-Block-Bootstrap"><a href="#我们-Moving-Block-Bootstrap" class="headerlink" title="我们 Moving Block Bootstrap"></a>我们 Moving Block Bootstrap</h4><p><strong>Bootstrap</strong></p>
-<p><strong>它的核心思想是通过使用数据本身，从而估计从该数据中计算出来的统计数据的变化。</strong>现代计算机强大的计算能力使得该方法的实现非常简单。</p>
+<p>**它的核心思想是通过使用数据本身，从而估计从该数据中计算出来的统计数据的变化。**现代计算机强大的计算能力使得该方法的实现非常简单。</p>
 <p>放到参数估计的上下文中，<strong>Bootstrap 意味着我们仅仅通过使用手头上的样本数据（样本数据 “自力更生”）而不对总体的分布做任何假设（比如传统方法中的正态分布假设），来计算样本统计量在估计总体统计量时的误差。</strong></p>
 <p>Bootstrap 原则指出：<strong>Bootstrap 样本统计量 u* 围绕原始样本统计量 u 的变化（简称为 u* 的变化）是 原始样本统计量 u 围绕总体统计量 v 的变化（简称为 u 的变化） 的一个很好的近似。</strong></p>
 <p><strong>为了计算 u* 的变化，我们只需要对原始样本数据进行大量的可置换重采样。</strong></p>
 <p><strong>Block Bootstrap</strong></p>
 <p>The block bootstrap is used when the data, or the errors in a model, are correlated. In this case, a simple case or residual resampling will fail, as it is not able to replicate the correlation in the data. The block bootstrap tries to replicate the correlation by resampling instead blocks of data.</p>
-<p><strong>由于时间序列存在自相关性，因此在重采样的时候应使用 Block Bootstrap。</strong>顾名思义，Block Bootstrap 就是每次从序列中有放回的抽取一个由连续 n 个相邻数据点构成的 block（大小由 block size 决定）。主流的 Block Bootstrap 算法包括以下三种：</p>
+<p>**由于时间序列存在自相关性，因此在重采样的时候应使用 Block Bootstrap。**顾名思义，Block Bootstrap 就是每次从序列中有放回的抽取一个由连续 n 个相邻数据点构成的 block（大小由 block size 决定）。主流的 Block Bootstrap 算法包括以下三种：</p>
 <ul>
 <li>Moving Block Bootstrap（Kunsch 1989, Liu and Singh 1992）；</li>
 <li>Circular Block Bootstrap（Politis and Romano 1992）;</li>
@@ -157,14 +151,14 @@ R^{2}=1-\frac{\mathrm{MSE}_{A}}{\mathrm{MSE}_{N}}</script></li>
 <h3 id="Estimation-Period"><a href="#Estimation-Period" class="headerlink" title="Estimation Period"></a>Estimation Period</h3><ul>
 <li>The first begins OOS forecasts 20 years after data are available; </li>
 <li>The second begins OOS forecast in 1965 (or 20 years after data are available, whichever comes later); </li>
-<li>The third ignores all data prior to 1927 even in the estimation. </li>
+<li>The third ignores all data prior to 1927 even in the estimation.</li>
 </ul>
 <h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
 <li>大多数模型是不稳定的、甚至是虚假的。即使单个变量模型在某段时间内具有良好的样本外预测能力，这种预测能力也很难持续，比如经济结构不稳定或结构变化。</li>
 <li>到 2005 年末为止，大多数模型无论是在 IS 还是在 OOS 中都丧失了统计显著性。在 OOS 中，大多数模型不仅不能在统计意义上或经济意义上打败无条件基准水平（历史均值），而且表现的还不如它。如果我们把目光集中在 1975 年以后的时间里，我们会发现，没有哪一个模型在 OOS 中有突出的表现，而且也几乎没有可接受的 IS 显著水平。</li>
 <li>当我们把视角从研究者转向为投资者时，我们相信有证据表明这些模型并不能给今天的投资提供支持或建议。</li>
 </ul>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIyMDEwNDk1Mg==&amp;mid=2650877206&amp;idx=1&amp;sn=54cfdca6a519abee8fb96ba8f4632ca5&amp;scene=21#wechat_redirect">用 Bootstrap 进行参数估计大有可为</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzIyMDEwNDk1Mg==&mid=2650877206&idx=1&sn=54cfdca6a519abee8fb96ba8f4632ca5&scene=21#wechat_redirect">用 Bootstrap 进行参数估计大有可为</a></p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>A Comprehensive Look at The Empirical Performance of Equity Premium Prediction</p><p><a href="http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/">http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2019-05-01</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-02-22</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Econometrics/">Econometrics</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Blog/2019/05/14/Study-Notes-of-LaTeX/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Study Notes of LaTeX</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2019/04/30/Convolutional-Neural-Networks/"><span class="level-item">Convolutional Neural Networks</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'http://vincentgaohj.github.io/Blog/2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/';
             this.page.identifier = '2019/05/01/A-Comprehensive-Look-at-The-Empirical-Performance-of-Equity-Premium-Prediction/';

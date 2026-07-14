@@ -42,23 +42,32 @@
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/LAMBADA-Method-How-to-use-Data-Augmentation-in-NLU/cover.png" alt="LAMBADA Method: How to use Data Augmentation in NLU?"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-30T14:44:24.000Z" title="2021/10/30 22:44:24">2021-10-30</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Algorithm/">Algorithm</a><span> / </span><a class="link-muted" href="/Blog/categories/Algorithm/Deep-Learning/">Deep Learning</a></span><span class="level-item">22 minutes read (About 3235 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">LAMBADA Method: How to use Data Augmentation in NLU?</h1><div class="content"><p><strong>In this tutorial, I will walk you through the implementation to reproduce LAMBADA.</strong></p>
 <p><a target="_blank" rel="noopener" href="https://gaohaojun.cn/Blog/2021/10/26/Not-Enough-Data-Deep-Learning-to-the-Rescue/">From my previous article</a>, which illustrate the basic idea of LAMBADA method that leverage Natural Language Generation(NLG) to  boost training set for the Natural Language Understanding(NLU) task including text classification.</p>
 <span id="more"></span>
+
 <p><img src="https://cdn-images-1.medium.com/max/1000/1*C8hNiOqur4OJyEZmC7OnzQ.png" alt="Image by bagoftricks"></p>
 <p>Before you dive into the code fragment, you may have a look at <a target="_blank" rel="noopener" href="https://gaohaojun.cn/Blog/2021/10/26/Not-Enough-Data-Deep-Learning-to-the-Rescue/">my previous article about the basic idea of the LAMBADA</a>, including the fundamental thinking, and the workflow. </p>
 <h1 id="Step-1-Preparation"><a href="#Step-1-Preparation" class="headerlink" title="Step 1: Preparation"></a>Step 1: Preparation</h1><ul>
-<li>We use <code>distilBERT</code> as a classification model and <code>GPT-2</code> as text generation model. For both, we load pretrained weights and fine tune them.</li>
+<li>We use <code>distilBERT </code> as a classification model and <code>GPT-2</code> as text generation model. For both, we load pretrained weights and fine tune them.</li>
 <li>In case of <code>GPT-2</code> we apply the Huggingface Transfomers library to bootstrap a pretrained model and subsequently to fine-tune it.</li>
 <li>To load and fine-tune DistilBERT we use Ktrain, a library that provides a high-level interface for language models, eliminating the need to worry about tokenization and other pre-processing tasks.</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!pip install ktrain</span><br><span class="line">!pip install transformers</span><br><span class="line">!pip install tensorflow</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="Step-2-Load-Data"><a href="#Step-2-Load-Data" class="headerlink" title="Step 2: Load Data"></a>Step 2: Load Data</h1><p>Then, we load the data from the csv file, which can be obtained from my repository. We split it into train set, valid set, and test set.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">labels = data_train[<span class="string">&#x27;Label&#x27;</span>].unique()</span><br><span class="line"></span><br><span class="line">X_train, X_valid, X_test, y_train, y_valid, y_test = [], [], [], [], [], []</span><br><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> labels:</span><br><span class="line">    intent_X_train, intent_X_valid, intent_y_train, intent_y_valid = train_test_split(</span><br><span class="line">        data_train[data_train[<span class="string">&#x27;Label&#x27;</span>] == label][<span class="string">&#x27;Text&#x27;</span>],</span><br><span class="line">        data_train[data_train[<span class="string">&#x27;Label&#x27;</span>] == label][<span class="string">&#x27;Label&#x27;</span>],</span><br><span class="line">        train_size=<span class="number">0.8</span>,</span><br><span class="line">        random_state=<span class="number">43</span>)</span><br><span class="line">    intent_X_valid, intent_X_test, intent_y_valid, intent_y_test = train_test_split(</span><br><span class="line">        intent_X_valid, intent_y_valid,</span><br><span class="line">        train_size=<span class="number">0.5</span>,</span><br><span class="line">        random_state=<span class="number">43</span>)</span><br><span class="line">    X_train.extend(intent_X_train)</span><br><span class="line">    X_valid.extend(intent_X_valid)</span><br><span class="line">    X_test.extend(intent_X_test)</span><br><span class="line">    y_train.extend(intent_y_train)</span><br><span class="line">    y_valid.extend(intent_y_valid)</span><br><span class="line">    y_test.extend(intent_y_test)</span><br></pre></td></tr></table></figure>
+
 <p>You can see the labels are:</p>
 <blockquote>
-<p>array([‘<strong>label</strong>15’, ‘<strong>label</strong>7’, ‘<strong>label</strong>0’, ‘<strong>label</strong>13’,  ‘<strong>label</strong>9’, ‘<strong>label</strong>8’, ‘<strong>label</strong>2’, ‘<strong>label</strong>4’,  ‘<strong>label</strong>1’, ‘<strong>label</strong>10’, ‘<strong>label</strong>5’, ‘<strong>label</strong>3’,<br>       ‘<strong>label</strong>14’, ‘<strong>label</strong>11’, ‘<strong>label</strong>12’, ‘<strong>label</strong>6’], dtype=object)</p>
+<p>array([‘__label__15’, ‘__label__7’, ‘__label__0’, ‘__label__13’,  ‘__label__9’, ‘__label__8’, ‘__label__2’, ‘__label__4’,  ‘__label__1’, ‘__label__10’, ‘__label__5’, ‘__label__3’,<br>       ‘__label__14’, ‘__label__11’, ‘__label__12’, ‘__label__6’], dtype&#x3D;object)</p>
 </blockquote>
 <h1 id="Step-3-Training-the-Initial-Intent-Classifier-BERT"><a href="#Step-3-Training-the-Initial-Intent-Classifier-BERT" class="headerlink" title="Step 3: Training the Initial Intent Classifier (BERT)"></a>Step 3: Training the Initial Intent Classifier (BERT)</h1><h2 id="Initialize-model-and-learner"><a href="#Initialize-model-and-learner" class="headerlink" title="Initialize model and learner"></a>Initialize model and learner</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ktrain</span><br><span class="line"><span class="keyword">from</span> ktrain <span class="keyword">import</span> text</span><br></pre></td></tr></table></figure>
+
 <p>We download the pretrained DistilBERT model, transform the training and validation data from pure text into the valid format for our model and initialize a learner object, which is used in KTrain to train the model.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">distil_bert = text.Transformer(<span class="string">&#x27;distilbert-base-cased&#x27;</span>, </span><br><span class="line">                               maxlen=<span class="number">50</span>, </span><br><span class="line">                               class_names=labels)</span><br><span class="line">                               </span><br><span class="line">processed_train = distil_bert.preprocess_train(X_train, y_train)</span><br><span class="line">processed_test = distil_bert.preprocess_test(X_valid, y_valid)</span><br><span class="line"></span><br><span class="line">model = distil_bert.get_classifier()</span><br><span class="line">learner = ktrain.get_learner(</span><br><span class="line">    model, train_data=processed_train, val_data=processed_test, batch_size=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Train-classifier"><a href="#Train-classifier" class="headerlink" title="Train classifier"></a>Train classifier</h2><ul>
 <li>Train classifier for given learning rate and number of epochs.</li>
 <li>The number of epochs chosen depends on the size of your training data set.</li>
@@ -67,13 +76,23 @@
 <p>Now it’s time to train the model. We feed the training data to the network multiple times, specified by the number of epochs. In the beginning both monitored metrics, namely the loss function (decrease) and the accuracy (increase), should indicate improvement of the model with each epoch passed. However, after training the model for a while the validation loss will increase and the validation accuracy drop. This is a result of overfitting the training data and it is time to stop feeding the same data to the network.</p>
 <p>The optimal number of epochs depends on your data set, model and training parameters. If you do not know the right number of epochs beforehand you can use a high number of epochs and activate checkpoints by setting the checkpoint_folder parameter to select the best performing model afterwards.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">N_TRAINING_EPOCHS = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">learner.fit_onecycle(<span class="number">5e-5</span>, N_TRAINING_EPOCHS)</span><br></pre></td></tr></table></figure>
-<h2 id="Evaluate-trained-predictor"><a href="#Evaluate-trained-predictor" class="headerlink" title="Evaluate trained predictor"></a>Evaluate trained predictor</h2><p>To check the performance of our trained classifier, we use our test data in the <code>eval.csv</code> file.</p>
+
+
+
+<h2 id="Evaluate-trained-predictor"><a href="#Evaluate-trained-predictor" class="headerlink" title="Evaluate trained predictor"></a>Evaluate trained predictor</h2><p>To check the performance of our trained classifier, we use our test data in the <code>eval.csv </code> file.</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">predictor = ktrain<span class="selector-class">.get_predictor</span>(learner<span class="selector-class">.model</span>, preproc=distil_bert)</span><br><span class="line"></span><br><span class="line">predictions = predictor<span class="selector-class">.predict</span>(X_test)</span><br><span class="line">np_test_intents = np<span class="selector-class">.array</span>(y_test)</span><br><span class="line">np_predictions = np<span class="selector-class">.array</span>(predictions)</span><br><span class="line"></span><br><span class="line">result = (np_test_intents == np_predictions)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(<span class="string">&quot;Accuracy: &#123;:.2f&#125;%&quot;</span>.format(result.sum()</span></span>/<span class="built_in">len</span>(result)*<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
 <p><em>Note that thanks to the KTrain interface we can simply feed the list of utterances to the predictor without the need to pre-process the raw strings beforehand.</em></p>
 <h2 id="Prepare-model-for-download"><a href="#Prepare-model-for-download" class="headerlink" title="Prepare model for download"></a>Prepare model for download</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">predictor.save(<span class="string">&#x27;models/initial/distilbert_&#123;&#125;epochs_&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">    N_TRAINING_EPOCHS, </span><br><span class="line">    datetime.datetime.now().strftime(<span class="string">&quot;%Y-%m-%d-%H-%M-%S&quot;</span>)))</span><br><span class="line"></span><br><span class="line">!<span class="built_in">zip</span> -r -X distilbert_initial.<span class="built_in">zip</span> models/initial</span><br></pre></td></tr></table></figure>
+
+
+
 <h1 id="Step-4-Fine-tune-GPT-2-to-generate-utterances"><a href="#Step-4-Fine-tune-GPT-2-to-generate-utterances" class="headerlink" title="Step 4:  Fine-tune GPT-2 to generate utterances"></a>Step 4:  Fine-tune GPT-2 to generate utterances</h1><h2 id="Fine-tune-GPT-2"><a href="#Fine-tune-GPT-2" class="headerlink" title="Fine-tune GPT-2"></a>Fine-tune GPT-2</h2><p>To fine-tune GPT-2, we use a Python script made available by Huggingface on their Github repository: <a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">https://github.com/huggingface/transformers</a></p>
 <p>Put transformed dataset in directory where this jupyter notebook located at in order to run python script smoothly.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">utterance_file = data_train[[<span class="string">&#x27;Label&#x27;</span>, <span class="string">&#x27;Text&#x27;</span>]]</span><br><span class="line">path = <span class="string">&#x27;content&#x27;</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;Create directory: <span class="subst">&#123;path&#125;</span>&#x27;</span>)</span><br><span class="line">    os.mkdir(path)</span><br><span class="line">save_to_csv(utterance_file, <span class="string">&#x27;train.csv&#x27;</span>, path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Save training file successfully&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
 <p><strong>Among others, we specify the following parameters:</strong></p>
 <ul>
 <li><strong>the pretrained model that we want to use (gpt2-medium).</strong> Larger models, typically generate better text outputs. Please note, these models require a large amount of memory during training, so make sure you pick a model that fits into your (GPU-)memory.</li>
@@ -82,215 +101,240 @@
 <li><strong>the block size.</strong> The block size defines an upper bound on the number of tokens considered from each training data instance that are used. Make sure that this number is sufficient so that utterances are not cropped.</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">!python finetune_gpt.py \</span><br><span class="line">    --output_dir=.//content//transformers//output \</span><br><span class="line">    --model_type=gpt2-medium \</span><br><span class="line">    --model_name_or_path=gpt2-medium \</span><br><span class="line">    --num_train_epochs=<span class="number">3.0</span> \</span><br><span class="line">    --do_train \</span><br><span class="line">    --train_data_file=.//content//train.csv \</span><br><span class="line">    --per_gpu_train_batch_size=<span class="number">4</span> \</span><br><span class="line">    --block_size=<span class="number">50</span> \</span><br><span class="line">    --gradient_accumulation_steps=<span class="number">1</span> \</span><br><span class="line">    --line_by_line \</span><br><span class="line">    --overwrite_output_dir</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Load-and-Manually-Test-Model"><a href="#Load-and-Manually-Test-Model" class="headerlink" title="Load and Manually Test Model"></a>Load and Manually Test Model</h2><p>You can play around with the model, generating utterances for different intents. See how the parameters top_k and top_p influence the result.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> GPT2Tokenizer, TFGPT2LMHeadModel</span><br><span class="line"></span><br><span class="line">tokenizer = GPT2Tokenizer.from_pretrained(<span class="string">&quot;gpt2-medium&quot;</span>)</span><br><span class="line">model = TFGPT2LMHeadModel.from_pretrained(</span><br><span class="line">    <span class="string">&#x27;.//content//transformers//output//&#x27;</span>, </span><br><span class="line">    pad_token_id=tokenizer.eos_token_id, from_pt=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+
+
 <p><strong>Top k sampling</strong> means sorting by probability and zero-ing out the probabilities for anything below the k’th token. It appears to improve quality by removing the tail and making it less likely to go off topic. But in some cases, there really are many words we could sample from reasonably (broad distribution below), and in some cases there aren’t (narrow distribution below).</p>
-<p>To address this problem, the authors propose <strong>top p sampling</strong>, aka nucleus sampling, in which we compute the cumulative distribution and cut off as soon as the CDF exceeds P. In the broad distribution example above, it may take the top 100 tokens to exceed top_p = .9. In the narrow distribution, we may already exceed top_p = .9 with just “hot” and “warm” in our sample distribution. In this way, we still avoid sampling egregiously wrong tokens, but preserve variety when the highest scoring tokens have low confidence.</p>
+<p>To address this problem, the authors propose <strong>top p sampling</strong>, aka nucleus sampling, in which we compute the cumulative distribution and cut off as soon as the CDF exceeds P. In the broad distribution example above, it may take the top 100 tokens to exceed top_p &#x3D; .9. In the narrow distribution, we may already exceed top_p &#x3D; .9 with just “hot” and “warm” in our sample distribution. In this way, we still avoid sampling egregiously wrong tokens, but preserve variety when the highest scoring tokens have low confidence.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">input_ids = tokenizer.encode(<span class="string">&#x27;i m trying to&#x27;</span>, return_tensors=<span class="string">&#x27;tf&#x27;</span>)</span><br><span class="line">sample_outputs = model.generate(</span><br><span class="line">    input_ids,</span><br><span class="line">    do_sample=<span class="literal">True</span>, </span><br><span class="line">    max_length=<span class="number">50</span>, </span><br><span class="line">    top_k=<span class="number">10</span>,</span><br><span class="line">    top_p=<span class="number">0.9</span>, </span><br><span class="line">    num_return_sequences=<span class="number">10</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Output:\n&quot;</span> + <span class="number">100</span> * <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i, sample_output <span class="keyword">in</span> <span class="built_in">enumerate</span>(sample_outputs):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;&#123;&#125;: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(i, tokenizer.decode(sample_output, skip_special_tokens=<span class="literal">True</span>)))</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>0: i m trying to get a list of all the words in the wordlist and their synonyms. it s a wordlist of about 10k words. i m trying to do a word frequency plot. the word frequency plot shows that the frequency of<br>1: i m trying to find out if there are any books on bitcoin cash which are free for anyone to download. the author of the book, jr. b. lang, is a bitcoin cash expert and has been quoted in many publications as saying that<br>2: i m trying to find a way to get my iphone from to my apple apple tv via usb. my iphone is 3rd gen and apple tv 2nd gen.<br>3: i m trying to determine if there are two sets of rules for a particular problem that can be applied to any other problem. one set of rules is for discrete cases and the second set is for continuous cases.&#xd;<br>4: i m trying to understand how a node can be a node in a dapp.&#xd;&#xa;i m trying to understand how a node can be a node in a dapp.&#xd;<br>5: i m trying to do a pulldown on a website with a template.i m using jquery.getElementsByTagName(‘meta’) and the following output<br>6: i m trying to determine the best way to store my bitcoin. my bitcoin is stored on my master wallet. however, i want to add the bch address from my wallet to my bitcoin. my master wallet only has the private key of the wallet<br>7: i m trying to find a way to show the number of lines in the code of a function. i m using the following code snippet from the os x man page: &#xd;<br>8: i m trying to find the code for my samsung galaxy s3. the s3 is a s1 with an ikon gsm  camera. the camera is a 1.5m  lens. it also has the moto g<br>9: i m trying to figure out a way to find out the time and date of the most recent call. i m using the time-to-call function from the samsung s go-pro app, but the function does not work on my device</p>
 </blockquote>
 <h2 id="Prepare-model-for-download-1"><a href="#Prepare-model-for-download-1" class="headerlink" title="Prepare model for download"></a>Prepare model for download</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="built_in">zip</span> -r -X gpt-2_tuned.<span class="built_in">zip</span> .//content//transformers//output</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>  adding: /content//transformers//output/ (stored 0%)<br>  adding: /content//transformers//output/tokenizer_config.json (deflated 37%)<br>  adding: /content//transformers//output/vocab.json (deflated 59%)<br>  adding: /content//transformers//output/config.json (deflated 51%)<br>  adding: /content//transformers//output/training_args.bin (deflated 44%)<br>  adding: /content//transformers//output/merges.txt (deflated 53%)<br>  adding: /content//transformers//output/special_tokens_map.json (deflated 52%)<br>  adding: /content//transformers//output/checkpoint-500/ (stored 0%)<br>  adding: /content//transformers//output/checkpoint-500/optimizer.pt (deflated 9%)<br>  adding: /content//transformers//output/checkpoint-500/tokenizer_config.json (deflated 37%)<br>  adding: /content//transformers//output/checkpoint-500/vocab.json (deflated 59%)<br>  adding: /content//transformers//output/checkpoint-500/config.json (deflated 51%)<br>  adding: /content//transformers//output/checkpoint-500/training_args.bin (deflated 44%)<br>  adding: /content//transformers//output/checkpoint-500/merges.txt (deflated 53%)<br>  adding: /content//transformers//output/checkpoint-500/special_tokens_map.json (deflated 52%)<br>  adding: /content//transformers//output/checkpoint-500/scheduler.pt (deflated 49%)<br>  adding: /content//transformers//output/checkpoint-500/pytorch_model.bin (deflated 9%)<br>  adding: /content//transformers//output/pytorch_model.bin (deflated 9%)</p>
+<p>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F; (stored 0%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;tokenizer_config.json (deflated 37%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;vocab.json (deflated 59%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;config.json (deflated 51%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;training_args.bin (deflated 44%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;merges.txt (deflated 53%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;special_tokens_map.json (deflated 52%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F; (stored 0%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;optimizer.pt (deflated 9%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;tokenizer_config.json (deflated 37%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;vocab.json (deflated 59%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;config.json (deflated 51%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;training_args.bin (deflated 44%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;merges.txt (deflated 53%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;special_tokens_map.json (deflated 52%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;scheduler.pt (deflated 49%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;checkpoint-500&#x2F;pytorch_model.bin (deflated 9%)<br>  adding: &#x2F;content&#x2F;&#x2F;transformers&#x2F;&#x2F;output&#x2F;pytorch_model.bin (deflated 9%)</p>
 </blockquote>
 <h1 id="Step-5-Generate-and-Filter-New-Utterances"><a href="#Step-5-Generate-and-Filter-New-Utterances" class="headerlink" title="Step 5: Generate and Filter New Utterances"></a>Step 5: Generate and Filter New Utterances</h1><p><strong>We now generate the new utterances for all intents. To have a sufficiently large sample that we can choose the best utterances from, we generate 200 per intent.</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">NUMBER_OF_GENERATED_UTTERANCES_PER_INTENT = <span class="number">200</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_utterances_df</span>(<span class="params">n_generated, tokenizer, model, intent</span>):</span><br><span class="line">    input_ids = tokenizer.encode(intent + <span class="string">&#x27;,&#x27;</span>, return_tensors=<span class="string">&#x27;tf&#x27;</span>)</span><br><span class="line">    sample_outputs = model.generate(</span><br><span class="line">        input_ids,</span><br><span class="line">        do_sample=<span class="literal">True</span>, </span><br><span class="line">        max_length=<span class="number">50</span>, </span><br><span class="line">        top_k=n_generated, </span><br><span class="line">        top_p=<span class="number">0.92</span>, </span><br><span class="line">        num_return_sequences=n_generated)</span><br><span class="line"></span><br><span class="line">    list_of_intent_and_utterances = [(</span><br><span class="line">        intent, tokenizer.decode(sample_output, skip_special_tokens=<span class="literal">True</span>)[<span class="built_in">len</span>(intent)+<span class="number">1</span>:]) </span><br><span class="line">        <span class="keyword">for</span> sample_output <span class="keyword">in</span> sample_outputs]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> pandas.DataFrame(list_of_intent_and_utterances, columns=[<span class="string">&#x27;intent&#x27;</span>, <span class="string">&#x27;utterance&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
 <p><strong>Generate the result by calling the function above:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">labels = data_train[<span class="string">&quot;Label&quot;</span>].unique()</span><br><span class="line"></span><br><span class="line">generated_utterances_df = pandas.DataFrame(columns=[<span class="string">&#x27;Outcome&#x27;</span>, <span class="string">&#x27;Text&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> label <span class="keyword">in</span> labels:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Generating for intent &quot;</span> + label)</span><br><span class="line">    utterances_for_intent_df = generate_utterances_df(</span><br><span class="line">        NUMBER_OF_GENERATED_UTTERANCES_PER_INTENT, tokenizer, model, label)</span><br><span class="line">    generated_utterances_df = generated_utterances_df.append(utterances_for_intent_df)</span><br></pre></td></tr></table></figure>
+
 <p><strong>Save file:</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">generated_utterances_df.to_csv(<span class="string">&quot;generated.csv&quot;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Train-BERT-classifier-with-augmented-dataset"><a href="#Train-BERT-classifier-with-augmented-dataset" class="headerlink" title="Train BERT classifier with augmented dataset"></a>Train BERT classifier with augmented dataset</h2><p>After a while the data is generated, and we can have a closer look at it. First, we use our old distilBERT classifier to predict the intent for all generated utterances. We also keep track of the prediction probability indicating the level of confidence of each individual prediction made by our model.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">generated_data = generated_utterances_df.assign(</span><br><span class="line">    utterance=[utterance.replace(<span class="string">&#x27;!&#x27;</span>, <span class="string">&#x27;&#x27;</span>) <span class="keyword">for</span> utterance <span class="keyword">in</span> generated_utterances_df[<span class="string">&#x27;utterance&#x27;</span>]])</span><br><span class="line"></span><br><span class="line">predictions_for_generated = np.array(predictor.predict(</span><br><span class="line">    generated_data[<span class="string">&#x27;utterance&#x27;</span>].tolist(), </span><br><span class="line">    return_proba=<span class="literal">False</span>))</span><br><span class="line"></span><br><span class="line">proba_for_predictions_for_gen = predictor.predict(</span><br><span class="line">    generated_data[<span class="string">&#x27;utterance&#x27;</span>].tolist(), </span><br><span class="line">    return_proba=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">predicted_proba = np.array([</span><br><span class="line">    <span class="built_in">max</span>(probas) <span class="keyword">for</span> probas <span class="keyword">in</span> proba_for_predictions_for_gen])</span><br><span class="line"></span><br><span class="line">generated_data_predicted = pandas.DataFrame(&#123;</span><br><span class="line">    <span class="string">&quot;intent&quot;</span>: generated_data[<span class="string">&#x27;intent&#x27;</span>],</span><br><span class="line">    <span class="string">&quot;utterance&quot;</span>: generated_data[<span class="string">&#x27;utterance&#x27;</span>],</span><br><span class="line">    <span class="string">&quot;predicted_intent&quot;</span>: predictions_for_generated,</span><br><span class="line">    <span class="string">&quot;prediction_proba&quot;</span>: predicted_proba&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
 <p><strong>Let’s have a look at some of the utterances for which the intent used for generation does not match the predicted intent.</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">generated_data_predicted[generated_data_predicted[<span class="string">&#x27;intent&#x27;</span>] != </span><br><span class="line">                         generated_data_predicted[<span class="string">&#x27;predicted_intent&#x27;</span>]].head(<span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-<div class="table-container">
+
 <table>
 <thead>
 <tr>
-<th style="text-align:right"></th>
-<th style="text-align:right">intent</th>
-<th style="text-align:right">utterance</th>
-<th style="text-align:right">predicted_intent</th>
+<th align="right"></th>
+<th align="right">intent</th>
+<th align="right">utterance</th>
+<th align="right">predicted_intent</th>
 <th>prediction_proba</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">0</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">why is there a special category called <code>coset</code>…</td>
-<td style="text-align:right"><strong>label</strong>14</td>
+<tbody><tr>
+<td align="right">0</td>
+<td align="right">__label__12</td>
+<td align="right">why is there a special category called <code>coset</code>…</td>
+<td align="right">__label__14</td>
 <td>0.602601</td>
 </tr>
 <tr>
-<td style="text-align:right">1</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">how can i set up qgis for different operating …</td>
-<td style="text-align:right"><strong>label</strong>13</td>
+<td align="right">1</td>
+<td align="right">__label__12</td>
+<td align="right">how can i set up qgis for different operating …</td>
+<td align="right">__label__13</td>
 <td>0.918635</td>
 </tr>
 <tr>
-<td style="text-align:right">2</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">is there a minimum required work weekly for eu…</td>
-<td style="text-align:right"><strong>label</strong>6</td>
+<td align="right">2</td>
+<td align="right">__label__12</td>
+<td align="right">is there a minimum required work weekly for eu…</td>
+<td align="right">__label__6</td>
 <td>0.835881</td>
 </tr>
 <tr>
-<td style="text-align:right">5</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">who was ryan about the arcania</td>
-<td style="text-align:right"><strong>label</strong>10</td>
+<td align="right">5</td>
+<td align="right">__label__12</td>
+<td align="right">who was ryan about the arcania</td>
+<td align="right">__label__10</td>
 <td>0.564748</td>
 </tr>
 <tr>
-<td style="text-align:right">7</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">example of combining points data</td>
-<td style="text-align:right"><strong>label</strong>13</td>
+<td align="right">7</td>
+<td align="right">__label__12</td>
+<td align="right">example of combining points data</td>
+<td align="right">__label__13</td>
 <td>0.927397</td>
 </tr>
 <tr>
-<td style="text-align:right">8</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">how can i switch between my the clock/utc-rpi …</td>
-<td style="text-align:right"><strong>label</strong>3</td>
+<td align="right">8</td>
+<td align="right">__label__12</td>
+<td align="right">how can i switch between my the clock&#x2F;utc-rpi …</td>
+<td align="right">__label__3</td>
 <td>0.430493</td>
 </tr>
 <tr>
-<td style="text-align:right">9</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">which mlb agent is responsible for taxonomy of…</td>
-<td style="text-align:right"><strong>label</strong>11</td>
+<td align="right">9</td>
+<td align="right">__label__12</td>
+<td align="right">which mlb agent is responsible for taxonomy of…</td>
+<td align="right">__label__11</td>
 <td>0.572228</td>
 </tr>
 <tr>
-<td style="text-align:right">10</td>
-<td style="text-align:right"><strong>label</strong>12</td>
-<td style="text-align:right">how can i prove that two points are continuous…</td>
-<td style="text-align:right"><strong>label</strong>14</td>
+<td align="right">10</td>
+<td align="right">__label__12</td>
+<td align="right">how can i prove that two points are continuous…</td>
+<td align="right">__label__14</td>
 <td>0.950781</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>We can see that in some cases the prediction is clearly wrong. However, there are also cases where the prediction matches the utterance, but doesn’t match the intent used for generation. This indicates that our GPT-2 model is not perfect as it doesn’t generate matching utterances for an intent all the time.</p>
 <p><strong>To stop from training our classifier with corrupt data, we drop all utterances for which the basic intent does not match the predicted intent. For those with matching instances, we only keep the ones with the highest prediction probability scores.</strong></p>
 <h2 id="Filter-generated-utterances"><a href="#Filter-generated-utterances" class="headerlink" title="Filter generated utterances"></a>Filter generated utterances</h2><p>Filter utterances with old classifier when prediction matches:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">correctly_predicted_data = generated_data_predicted[</span><br><span class="line">    generated_data_predicted[<span class="string">&#x27;intent&#x27;</span>] == generated_data_predicted[<span class="string">&#x27;predicted_intent&#x27;</span>]]</span><br><span class="line">correctly_predicted_data.groupby(<span class="string">&quot;intent&quot;</span>).count()</span><br></pre></td></tr></table></figure>
+
 <p>Check for the number of unique utterances per intent:</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">correctly_predicted_data.drop_duplicates(</span><br><span class="line">    <span class="attribute">subset</span>=<span class="string">&#x27;utterance&#x27;</span>, <span class="attribute">keep</span>=<span class="string">&#x27;first&#x27;</span>).sort_values(</span><br><span class="line">    by=[<span class="string">&#x27;intent&#x27;</span>, <span class="string">&#x27;prediction_proba&#x27;</span>], ascending=[<span class="literal">True</span>, <span class="literal">False</span>]).drop_duplicates(</span><br><span class="line">    <span class="attribute">keep</span>=<span class="string">&#x27;first&#x27;</span>).groupby(&#x27;intent&#x27;).count()</span><br></pre></td></tr></table></figure>
+
 <p>Take TOP_N predictions per intent according to probability and drop duplicated</p>
 <p>We can see that for each intent, there are at least 35 mutually distinct utterances. To keep a balanced data set, we pick the top 30 utterances per intent according to the prediction probability.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TOP_N = <span class="number">30</span></span><br><span class="line">top_predictions_per_intent = correctly_predicted_data.drop_duplicates(</span><br><span class="line">    subset=<span class="string">&#x27;utterance&#x27;</span>, keep=<span class="string">&#x27;first&#x27;</span>).sort_values(</span><br><span class="line">    by=[<span class="string">&#x27;intent&#x27;</span>, <span class="string">&#x27;prediction_proba&#x27;</span>], ascending=[<span class="literal">True</span>, <span class="literal">False</span>]).drop_duplicates(</span><br><span class="line">    keep=<span class="string">&#x27;first&#x27;</span>).groupby(<span class="string">&#x27;intent&#x27;</span>).head(TOP_N)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top_predictions_per_intent</span><br></pre></td></tr></table></figure>
-<div class="table-container">
+
 <table>
 <thead>
 <tr>
-<th style="text-align:right"></th>
-<th style="text-align:right">intent</th>
-<th style="text-align:right">utterance</th>
-<th style="text-align:right">predicted_intent</th>
+<th align="right"></th>
+<th align="right">intent</th>
+<th align="right">utterance</th>
+<th align="right">predicted_intent</th>
 <th>prediction_proba</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:right">103</td>
-<td style="text-align:right"><strong>label</strong>0</td>
-<td style="text-align:right">adding jquery files from within a wordpress theme</td>
-<td style="text-align:right"><strong>label</strong>0</td>
+<tbody><tr>
+<td align="right">103</td>
+<td align="right">__label__0</td>
+<td align="right">adding jquery files from within a wordpress theme</td>
+<td align="right">__label__0</td>
 <td>0.810196</td>
 </tr>
 <tr>
-<td style="text-align:right">66</td>
-<td style="text-align:right"><strong>label</strong>0</td>
-<td style="text-align:right">formatting wordpress content</td>
-<td style="text-align:right"><strong>label</strong>0</td>
+<td align="right">66</td>
+<td align="right">__label__0</td>
+<td align="right">formatting wordpress content</td>
+<td align="right">__label__0</td>
 <td>0.808586</td>
 </tr>
 <tr>
-<td style="text-align:right">131</td>
-<td style="text-align:right"><strong>label</strong>0</td>
-<td style="text-align:right">add.php to front page of wordpress</td>
-<td style="text-align:right"><strong>label</strong>0</td>
+<td align="right">131</td>
+<td align="right">__label__0</td>
+<td align="right">add.php to front page of wordpress</td>
+<td align="right">__label__0</td>
 <td>0.807943</td>
 </tr>
 <tr>
-<td style="text-align:right">177</td>
-<td style="text-align:right"><strong>label</strong>0</td>
-<td style="text-align:right">adding wordpress in post_meta subcategory</td>
-<td style="text-align:right"><strong>label</strong>0</td>
+<td align="right">177</td>
+<td align="right">__label__0</td>
+<td align="right">adding wordpress in post_meta subcategory</td>
+<td align="right">__label__0</td>
 <td>0.804899</td>
 </tr>
 <tr>
-<td style="text-align:right">51</td>
-<td style="text-align:right"><strong>label</strong>0</td>
-<td style="text-align:right">is there a way to change how views are display…</td>
-<td style="text-align:right"><strong>label</strong>0</td>
+<td align="right">51</td>
+<td align="right">__label__0</td>
+<td align="right">is there a way to change how views are display…</td>
+<td align="right">__label__0</td>
 <td>0.801144</td>
 </tr>
 <tr>
-<td style="text-align:right">…</td>
-<td style="text-align:right">…</td>
-<td style="text-align:right">…</td>
-<td style="text-align:right">…</td>
+<td align="right">…</td>
+<td align="right">…</td>
+<td align="right">…</td>
+<td align="right">…</td>
 <td>…</td>
 </tr>
 <tr>
-<td style="text-align:right">36</td>
-<td style="text-align:right"><strong>label</strong>9</td>
-<td style="text-align:right">new player</td>
-<td style="text-align:right"><strong>label</strong>9</td>
+<td align="right">36</td>
+<td align="right">__label__9</td>
+<td align="right">new player</td>
+<td align="right">__label__9</td>
 <td>0.815141</td>
 </tr>
 <tr>
-<td style="text-align:right">147</td>
-<td style="text-align:right"><strong>label</strong>9</td>
-<td style="text-align:right">is there a way to get a different card with ea…</td>
-<td style="text-align:right"><strong>label</strong>9</td>
+<td align="right">147</td>
+<td align="right">__label__9</td>
+<td align="right">is there a way to get a different card with ea…</td>
+<td align="right">__label__9</td>
 <td>0.772208</td>
 </tr>
 <tr>
-<td style="text-align:right">117</td>
-<td style="text-align:right"><strong>label</strong>9</td>
-<td style="text-align:right">how do i recover my lost data</td>
-<td style="text-align:right"><strong>label</strong>9</td>
+<td align="right">117</td>
+<td align="right">__label__9</td>
+<td align="right">how do i recover my lost data</td>
+<td align="right">__label__9</td>
 <td>0.768557</td>
 </tr>
 <tr>
-<td style="text-align:right">49</td>
-<td style="text-align:right"><strong>label</strong>9</td>
-<td style="text-align:right">i need to save my first pakistani boy in dlc 2…</td>
-<td style="text-align:right"><strong>label</strong>9</td>
+<td align="right">49</td>
+<td align="right">__label__9</td>
+<td align="right">i need to save my first pakistani boy in dlc 2…</td>
+<td align="right">__label__9</td>
 <td>0.757511</td>
 </tr>
 <tr>
-<td style="text-align:right">15</td>
-<td style="text-align:right"><strong>label</strong>9</td>
-<td style="text-align:right">how can i bypass game engine antiophthalmic fa…</td>
-<td style="text-align:right"><strong>label</strong>9</td>
+<td align="right">15</td>
+<td align="right">__label__9</td>
+<td align="right">how can i bypass game engine antiophthalmic fa…</td>
+<td align="right">__label__9</td>
 <td>0.738432</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h1 id="Step-6-Train-the-Intent-Classifier-with-Augmented-Data"><a href="#Step-6-Train-the-Intent-Classifier-with-Augmented-Data" class="headerlink" title="Step 6: Train the Intent Classifier with Augmented Data"></a>Step 6: Train the Intent Classifier with Augmented Data</h1><h2 id="Combine-old-and-augmented-data"><a href="#Combine-old-and-augmented-data" class="headerlink" title="Combine old and augmented data"></a>Combine old and augmented data</h2><p>We now combine the generated data with the initial training data and split the enriched data set intotraining and validation data.</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">data_train_aug = data_train<span class="selector-class">.append</span>(top_predictions_per_intent<span class="selector-attr">[[<span class="string">&#x27;intent&#x27;</span>, <span class="string">&#x27;utterance&#x27;</span>]</span>]<span class="selector-class">.rename</span>(</span><br><span class="line">    <span class="attribute">columns</span>=&#123;<span class="string">&#x27;intent&#x27;</span>:<span class="string">&#x27;Label&#x27;</span>, <span class="string">&#x27;utterance&#x27;</span>:<span class="string">&#x27;Text&#x27;</span>&#125;), ignore_index=True)</span><br><span class="line">data_train_aug</span><br><span class="line"></span><br><span class="line">labels = data_train_aug<span class="selector-attr">[<span class="string">&#x27;Label&#x27;</span>]</span><span class="selector-class">.unique</span>()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">X_train_aug, X_valid_aug, X_test_aug = <span class="selector-attr">[]</span>, <span class="selector-attr">[]</span>, <span class="selector-attr">[]</span></span><br><span class="line">y_train_aug, y_valid_aug, y_test_aug = <span class="selector-attr">[]</span>, <span class="selector-attr">[]</span>, <span class="selector-attr">[]</span></span><br><span class="line"><span class="keyword">for</span> <span class="selector-tag">label</span> <span class="keyword">in</span> labels:</span><br><span class="line">    intent_X_train, intent_X_valid, intent_y_train, intent_y_valid = <span class="built_in">train_test_split</span>(</span><br><span class="line">        data_train<span class="selector-attr">[data_train[<span class="string">&#x27;Label&#x27;</span>]</span> == label]<span class="selector-attr">[<span class="string">&#x27;Text&#x27;</span>]</span>,</span><br><span class="line">        data_train<span class="selector-attr">[data_train[<span class="string">&#x27;Label&#x27;</span>]</span> == label]<span class="selector-attr">[<span class="string">&#x27;Label&#x27;</span>]</span>,</span><br><span class="line">        train_size=<span class="number">0.8</span>,</span><br><span class="line">        random_state=<span class="number">43</span>)</span><br><span class="line">    intent_X_valid, intent_X_test, intent_y_valid, intent_y_test = <span class="built_in">train_test_split</span>(</span><br><span class="line">        intent_X_valid, intent_y_valid,</span><br><span class="line">        train_size=<span class="number">0.5</span>,</span><br><span class="line">        random_state=<span class="number">43</span>)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    X_train_aug<span class="selector-class">.extend</span>(intent_X_train)</span><br><span class="line">    X_valid_aug<span class="selector-class">.extend</span>(intent_X_valid)</span><br><span class="line">    X_test_aug<span class="selector-class">.extend</span>(intent_X_test)</span><br><span class="line">    y_train_aug<span class="selector-class">.extend</span>(intent_y_train)</span><br><span class="line">    y_valid_aug<span class="selector-class">.extend</span>(intent_y_valid)</span><br><span class="line">    y_test_aug<span class="selector-class">.extend</span>(intent_y_test)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Initialise-augmented-model-and-learner"><a href="#Initialise-augmented-model-and-learner" class="headerlink" title="Initialise augmented model and learner"></a>Initialise augmented model and learner</h2><p>Now it’s time to train our new intent classification model. The code is like the one above:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">distil_bert_augmented = text.Transformer(<span class="string">&#x27;distilbert-base-cased&#x27;</span>, </span><br><span class="line">                                         maxlen=<span class="number">50</span>, </span><br><span class="line">                                         classes=intents)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">processed_train_aug = distil_bert_augmented.preprocess_train(</span><br><span class="line">    X_train_aug, y_train_aug)</span><br><span class="line">processed_test_aug = distil_bert_augmented.preprocess_test(</span><br><span class="line">    X_valid_aug, y_valid_aug)</span><br><span class="line">    </span><br><span class="line">model_aug = distil_bert_augmented.get_classifier()</span><br><span class="line">learner_aug = ktrain.get_learner(</span><br><span class="line">    model_aug, </span><br><span class="line">    <span class="attribute">train_data</span>=processed_train_aug, </span><br><span class="line">    <span class="attribute">val_data</span>=processed_test_aug, </span><br><span class="line">    <span class="attribute">batch_size</span>=50)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Train-classifier-1"><a href="#Train-classifier-1" class="headerlink" title="Train classifier"></a>Train classifier</h2><p>Train classifier for given learning rate and number of epochs.</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">N_TRAINING_EPOCHS_AUGMENTED</span> = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">learner_aug</span>.fit_onecycle(<span class="number">5</span>e-<span class="number">5</span>, N_TRAINING_EPOCHS_AUGMENTED)</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="Evaluate-trained-predictor-1"><a href="#Evaluate-trained-predictor-1" class="headerlink" title="Evaluate trained predictor"></a>Evaluate trained predictor</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">predictor_aug = ktrain.get_predictor(</span><br><span class="line">    learner_aug.model, </span><br><span class="line">    preproc=distil_bert_augmented)</span><br><span class="line"></span><br><span class="line">predictions_aug = predictor_aug.predict(X_test_aug)</span><br><span class="line"></span><br><span class="line">np_test_intents = np.array(y_test_aug)</span><br><span class="line">np_predictions_aug = np.array(predictions_aug)</span><br><span class="line"></span><br><span class="line">result_aug = (np_test_intents == np_predictions_aug)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Accuracy: &#123;:.2f&#125;%&quot;</span>.<span class="built_in">format</span>(result_aug.<span class="built_in">sum</span>()/<span class="built_in">len</span>(result_aug)*<span class="number">100</span>))</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>Accuracy: 87.85%</p>
 </blockquote>
 <h2 id="Prepare-model-for-download-2"><a href="#Prepare-model-for-download-2" class="headerlink" title="Prepare model for download"></a>Prepare model for download</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">predictor.save(<span class="string">&#x27;models/augmented/_distilbert_aug_&#123;&#125;epochs_&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">    N_TRAINING_EPOCHS_AUGMENTED, </span><br><span class="line">    datetime.datetime.now().strftime(<span class="string">&quot;%Y-%m-%d-%H-%M-%S-%f&quot;</span>)))</span><br><span class="line"></span><br><span class="line">!<span class="built_in">zip</span> -r -X distilbert_augmented.<span class="built_in">zip</span> models/augmented</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>adding: models/augmented/ (stored 0%)<br>adding: models/augmented/_distilbert_aug_5epochs_2021-04-01-15-13-40-763970/ (stored 0%)<br>adding: models/augmented/_distilbert_aug_5epochs_2021-04-01-15-13-40-763970/config.json (deflated 61%)<br>adding: models/augmented/_distilbert_aug_5epochs_2021-04-01-15-13-40-763970/tf_model.h5 (deflated 8%)<br>adding: models/augmented/_distilbert_aug_5epochs_2021-04-01-15-13-40-763970/tf_model.preproc (deflated 55%)</p>
+<p>adding: models&#x2F;augmented&#x2F; (stored 0%)<br>adding: models&#x2F;augmented&#x2F;_distilbert_aug_5epochs_2021-04-01-15-13-40-763970&#x2F; (stored 0%)<br>adding: models&#x2F;augmented&#x2F;_distilbert_aug_5epochs_2021-04-01-15-13-40-763970&#x2F;config.json (deflated 61%)<br>adding: models&#x2F;augmented&#x2F;_distilbert_aug_5epochs_2021-04-01-15-13-40-763970&#x2F;tf_model.h5 (deflated 8%)<br>adding: models&#x2F;augmented&#x2F;_distilbert_aug_5epochs_2021-04-01-15-13-40-763970&#x2F;tf_model.preproc (deflated 55%)</p>
 </blockquote>
 <h1 id="LAMBADA-AI-Summary"><a href="#LAMBADA-AI-Summary" class="headerlink" title="LAMBADA AI: Summary"></a>LAMBADA AI: Summary</h1><p><strong>We employed the LAMBADA method to augment data used for Natural Language Understanding (NLU) tasks. We trained a GPT-2 model to generate new training utterances and utilized them as training data for our intent classification model (DistilBERT). The performance of the intent classification model improved by at least 4% in each of our tests.</strong></p>
 <p>Additionally, we saw that high-level libraries such as KTrain and Huggingface Transformers help to reduce the complexity of applying state-of-the-art transformer models for Natural Language Generation (NLG) and other Natural Language Processing (NLP) tasks such as classification and make these approaches broadly applicable.</p>

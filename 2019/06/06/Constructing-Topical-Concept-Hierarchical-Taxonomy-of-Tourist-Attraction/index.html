@@ -44,27 +44,19 @@
 <li>A concept extraction module for extracting concept of every topic that maintain strong discriminative power at different levels of the taxonomy.</li>
 </ul>
 <hr>
-<h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:</p>
-<script type="math/tex; mode=display">
-\min _{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}=\left\|\mathbf{X}-\mathbf{U H V}^{T}\right\|_{F}^{2} \\
-\mathbf{U}^{T} \mathbf{U}=\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}=\mathbf{I}</script><p>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}<em>{+}$ and $V ∈ R^{n×c}</em>{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
+<h3 id="理论数学表达"><a href="#理论数学表达" class="headerlink" title="理论数学表达"></a>理论数学表达</h3><h4 id="Non-negative-Matrix-Factorization"><a href="#Non-negative-Matrix-Factorization" class="headerlink" title="Non-negative Matrix Factorization"></a>Non-negative Matrix Factorization</h4><p>The model is to approximate the input attraction-ToI matrix with three factor matrices that assign cluster labels to tourist attractions and Things of Interest (ToI) simultaneously by solving the following optimization problem:<br>$$<br>\min <em>{\mathbf{U}, \mathbf{H}, \mathbf{V} \geq 0} \mathcal{O}&#x3D;\left|\mathbf{X}-\mathbf{U H V}^{T}\right|</em>{F}^{2} \<br>\mathbf{U}^{T} \mathbf{U}&#x3D;\mathbf{I}, \quad \mathbf{V}^{T} \mathbf{V}&#x3D;\mathbf{I}<br>$$<br>where $X $ is the input attraction-word content matrix, and $U ∈ R^{m×c}<em>{+}$ and $V ∈ R^{n×c}</em>{+}$ are orthogonal nonnegative matrices indicating low-dimensional representations of attractions and things of interest, respectively. The orthogonal and nonnegative conditions of the two matrices $U$ and $V$ enforce the model to provide a hard assignment of cluster label for attractions and things of interest.  $H ∈ R^{c×c}_{+}$ provides a condensed view of $X$ .</p>
 <span id="more"></span>
-<p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.</p>
-<script type="math/tex; mode=display">
-\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>This is <a target="_blank" rel="noopener" href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记">理论推导</a> link.</p>
+
+<p>The optimization problem above is not convex with respect to the three variables $U$ , $H$ and $V$ together. There is no closed-form solution for the problem. Next, we use an alternative scheme to solve the optimization problem.<br>$$<br>\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}<br>$$</p>
+<p>$$<br>\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}<br>$$</p>
+<p>$$<br>\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}<br>$$</p>
+<p>This is <a target="_blank" rel="noopener" href="https://blog.csdn.net/shanglianlm/article/details/46755239" title="矩阵分解笔记">理论推导</a> link.</p>
 <hr>
 <h4 id="Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Concept Extraction based on TextRank Algorithm"></a>Concept Extraction based on TextRank Algorithm</h4><h5 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h5><p>Graph-based ranking algorithms are essentially a way of deciding the importance of a vertex within<br>a graph, based on global information recursively drawn from the entire graph. </p>
-<p>Formally, let $G=(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}<em>{i}$ , let $\operatorname{In}\left(V</em>{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V<em>{i}\right)$ be the set of vertices that vertex $V</em>{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):</p>
-<script type="math/tex; mode=display">
-S\left(V_{i}\right)=(1-d)+d * \sum_{j \in I n\left(V_{i}\right)} \frac{1}{\left|O u t\left(V_{j}\right)\right|} S\left(V_{j}\right)</script><p>where $d$ is a damping factor that can be set between 0 and 1, which has the role of integrating into the model the probability of jumping from a given vertex to another random vertex in the graph. The factor $d$ is usually set to $0.85$ (Brin and Page, 1998), and this is the value we are also using in our implementation.</p>
-<h5 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h5><p>However, the graphs are built from natural language texts, and may include multiple or partial links between the units (vertices) that are extracted from text. It may be therefore useful to indicate and incorporate into the model the “strength” of the connection between two vertices $\boldsymbol{V}<em>{i}$ and $\boldsymbol{V}</em>{j}$ as a weight $w_{i j}$ added to the corresponding edge that connects the two vertices.</p>
-<script type="math/tex; mode=display">
-W S\left(V_{i}\right)=(1-d)+d * \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right)</script><p><strong>Concept Extraction</strong></p>
-<p>在这里，由于我们的模型已经提供了一个关于景点的层级结构，也就相当于对于每一个节点（除根节点以外），其先验知识就是其父节点的知识，也就是我们在抽取关键词作为节点概念的时候，一些在父节点就已经很出众的词语不应该成为子节点的概念。所以关于一个阶段来说，其概念抽取的时候应该选择在父子节点中概念重要程度增加最多的概念：</p>
-<script type="math/tex; mode=display">
-Importance\left(V_{i}\right) = W S\left(V_{i}\right) - W S_{parent}\left(V_{i}\right)\\=d * [ \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right) - \sum_{V_{j} \in I n_{p}\left(V_{i}\right)} \frac{(w_{j i})_{p}}{\sum_{V_{k} \in O u t_{p}\left(V_{j}\right)} (w_{j k})_{p}} W S_{p}\left(V_{j}\right)]</script><hr>
+<p>Formally, let $G&#x3D;(V, E)$ be a directed graph with the set of vertices $V$ and set of edges $E$, where is a subset of $V \times V$ . For a given vertex $\boldsymbol{V}<em>{i}$ , let $\operatorname{In}\left(V</em>{i}\right)$  be the set of vertices that point to it (predecessors), and<br>let $O u t\left(V_{i}\right)$ be the set of vertices that vertex $V_{i}$ points to (successors). The score of a vertex $V_{i}$ is defined as<br>follows (Brin and Page, 1998):<br>$$<br>S\left(V_{i}\right)&#x3D;(1-d)+d * \sum_{j \in I n\left(V_{i}\right)} \frac{1}{\left|O u t\left(V_{j}\right)\right|} S\left(V_{j}\right)<br>$$<br>where $d$ is a damping factor that can be set between 0 and 1, which has the role of integrating into the model the probability of jumping from a given vertex to another random vertex in the graph. The factor $d$ is usually set to $0.85$ (Brin and Page, 1998), and this is the value we are also using in our implementation.</p>
+<h5 id="TextRank"><a href="#TextRank" class="headerlink" title="TextRank"></a>TextRank</h5><p>However, the graphs are built from natural language texts, and may include multiple or partial links between the units (vertices) that are extracted from text. It may be therefore useful to indicate and incorporate into the model the “strength” of the connection between two vertices $\boldsymbol{V}<em>{i}$ and $\boldsymbol{V}</em>{j}$ as a weight $w_{i j}$ added to the corresponding edge that connects the two vertices.<br>$$<br>W S\left(V_{i}\right)&#x3D;(1-d)+d * \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right)<br>$$<br><strong>Concept Extraction</strong></p>
+<p>在这里，由于我们的模型已经提供了一个关于景点的层级结构，也就相当于对于每一个节点（除根节点以外），其先验知识就是其父节点的知识，也就是我们在抽取关键词作为节点概念的时候，一些在父节点就已经很出众的词语不应该成为子节点的概念。所以关于一个阶段来说，其概念抽取的时候应该选择在父子节点中概念重要程度增加最多的概念：<br>$$<br>Importance\left(V_{i}\right) &#x3D; W S\left(V_{i}\right) - W S_{parent}\left(V_{i}\right)\&#x3D;d * [ \sum_{V_{j} \in I n\left(V_{i}\right)} \frac{w_{j i}}{\sum_{V_{k} \in O u t\left(V_{j}\right)} w_{j k}} W S\left(V_{j}\right) - \sum_{V_{j} \in I n_{p}\left(V_{i}\right)} \frac{(w_{j i})<em>{p}}{\sum</em>{V_{k} \in O u t_{p}\left(V_{j}\right)} (w_{j k})<em>{p}} W S</em>{p}\left(V_{j}\right)]<br>$$</p>
+<hr>
 <h4 id="对树生成的约束"><a href="#对树生成的约束" class="headerlink" title="对树生成的约束"></a>对树生成的约束</h4><ul>
 <li><p><strong>预剪枝</strong></p>
 <ul>
@@ -75,21 +67,17 @@ Importance\left(V_{i}\right) = W S\left(V_{i}\right) - W S_{parent}\left(V_{i}\r
 <li><p><strong>后剪枝</strong></p>
 <p><strong>定义一个目标函数，由损失项 (Loss term) 加上正则项 (Regularization term)，以最小化结构性风险(Structural risk)</strong></p>
 <ul>
-<li><p>每个景点由一个向量表示，向量由词袋模型生成，所以两个景点向量之间的距离可以表示成：</p>
-<script type="math/tex; mode=display">
-\operatorname{dist}(X, Y)=\sqrt{\sum_{i=1}^{n}\left(x_{i}-y_{i}\right)^{2}}</script></li>
-<li><p>我们用景点和簇中心向量距离的和来定义这个簇的混乱程度：</p>
-<script type="math/tex; mode=display">
-H(X)= \sum_{i=1}^{n}dist(X_{i}-\hat{X})</script></li>
+<li><p>每个景点由一个向量表示，向量由词袋模型生成，所以两个景点向量之间的距离可以表示成：<br>$$<br>\operatorname{dist}(X, Y)&#x3D;\sqrt{\sum_{i&#x3D;1}^{n}\left(x_{i}-y_{i}\right)^{2}}<br>$$</p>
+</li>
+<li><p>我们用景点和簇中心向量距离的和来定义这个簇的混乱程度：<br>$$<br>H(X)&#x3D; \sum_{i&#x3D;1}^{n}dist(X_{i}-\hat{X})<br>$$</p>
+</li>
 <li><p>因为每一个节点中景点向量的向量空间是变化的，所以直接用决策树的剪枝策略是没有意义的，这里收到<strong>决策树代价复杂度剪枝方法</strong>的启发，做了一些调整：</p>
 <ul>
 <li>因为节点之间的景点向量空间是不断变化的，所以在考虑剪枝的时候仅考虑本节点是否应该继续分割而不考虑继续分割后再进行分割而产生的变化，构建如下的损失函数：</li>
 </ul>
-<script type="math/tex; mode=display">
-C_{\alpha} (T)=\frac{1}{N} \sum_{t=1}^{|T|} N_{t} H_{t}+\alpha(|T|+1)</script><p>$|T|$：该节点生成的簇个数；$N$：样本总数；$N_t$：第 t 个簇中的样本数量；$H_t$：第 t 个簇的混乱程度；$\alpha$：惩罚因子</p>
-<p>对于每一个节点，聚类后：</p>
-<script type="math/tex; mode=display">
-C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} (T)$ 则此次聚类没有意义，则不需要进行这次聚类。</p>
+<p>$$<br>C_{\alpha} (T)&#x3D;\frac{1}{N} \sum_{t&#x3D;1}^{|T|} N_{t} H_{t}+\alpha(|T|+1)<br>$$</p>
+<p>$|T|$：该节点生成的簇个数；$N$：样本总数；$N_t$：第 t 个簇中的样本数量；$H_t$：第 t 个簇的混乱程度；$\alpha$：惩罚因子</p>
+<p>对于每一个节点，聚类后：<br>$$<br>C_{\alpha}(t)&#x3D;H(t)+\alpha<br>$$<br>若 $C_{\alpha}(t) &lt;&#x3D; C_{\alpha} (T)$ 则此次聚类没有意义，则不需要进行这次聚类。</p>
 </li>
 </ul>
 </li>
@@ -130,13 +118,13 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} 
 <hr>
 <h4 id="Algorithm-2-Clustering-for-topic-splitting"><a href="#Algorithm-2-Clustering-for-topic-splitting" class="headerlink" title="Algorithm 2:  Clustering for topic splitting"></a>Algorithm 2:  Clustering for topic splitting</h4><hr>
 <ul>
-<li><strong>Input: </strong>A matrix $X$ of parent topic $C$ ; the number of sub-topics $K$; threshold $δ$ and $\gamma$.</li>
+<li>**Input: **A matrix $X$ of parent topic $C$ ; the number of sub-topics $K$; threshold $δ$ and $\gamma$.</li>
 <li><strong>Output:</strong> $K$ sub-topics of $C$</li>
 </ul>
 <hr>
 <p>$C_{sub}$ $\leftarrow$ $C$ ;</p>
 <p><strong>while</strong> <em>True</em> <strong>do</strong></p>
-<p>&emsp;&emsp;$ S<em>1, S_2, … , S_K \leftarrow Nonnegative \ Matrix \ Factorization (S</em>{sub}, K)$</p>
+<p>&emsp;&emsp;$ S_1, S_2, … , S_K \leftarrow Nonnegative \ Matrix \ Factorization (S_{sub}, K)$</p>
 <p>&emsp;&emsp;<strong>for</strong> $k$ <em>from</em> $1$ <em>to</em> $K$ <strong>do</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;<strong>for</strong> <em>t ∈ S_k</em> <strong>do</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$r( t, S_k ) ← probability\ of \ term \  t \ for \ S_k ;$</p>
@@ -144,7 +132,7 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} 
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong>if</strong> $r(t,S k ) &lt; δ$  <strong>and</strong> $d( t, S_k ) &lt; \gamma$ <strong>then</strong> </p>
 <p>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;$S_k ← S_k − {t};$</p>
 <p>&emsp;&emsp;$C^{‘}_{sub} \leftarrow  S_1 ∪ S_2 ∪ … ∪ S_K;$ </p>
-<p>&emsp;&emsp;<strong>if</strong> $C^{‘}<em>{sub} = C</em>{sub}$ <strong>then</strong></p>
+<p>&emsp;&emsp;<strong>if</strong> $C^{‘}<em>{sub} &#x3D; C</em>{sub}$ <strong>then</strong></p>
 <p>&emsp;&emsp;&emsp;&emsp;$Break;$</p>
 <p>&emsp;&emsp;$C^{‘}<em>{sub} \leftarrow C</em>{sub}$<br><strong>Return</strong> $S_1 , S_2 , … , S_K;$</p>
 <hr>
@@ -154,15 +142,10 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} 
 <li><strong>Output:</strong> ${U,V}$</li>
 </ul>
 <hr>
-<p><strong>Initialize</strong> $U = U_0 ,V = V_0 ,H ≥ 0$</p>
+<p><strong>Initialize</strong> $U &#x3D; U_0 ,V &#x3D; V_0 ,H ≥ 0$</p>
 <p><strong>while</strong> $Not convergent$ <strong>and</strong> $t ≤ T$ <strong>do</strong></p>
-<p>&emsp;&emsp;<strong>Update</strong></p>
-<script type="math/tex; mode=display">
-\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}</script><p>&emsp;&emsp;<strong>Update</strong> </p>
-<script type="math/tex; mode=display">
-\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}</script><p>&emsp;&emsp;<strong>Update</strong> </p>
-<script type="math/tex; mode=display">
-\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}</script><p>&emsp;&emsp;$t=t+1$</p>
+<p>&emsp;&emsp;<strong>Update</strong><br>$$<br>\mathbf{H}(i, j) \leftarrow \mathbf{H}(i, j) \sqrt{\frac{\left[\mathbf{U}^{T} \mathbf{X V}\right](i, j)}{\left[\mathbf{U}^{T} \mathbf{U H V}^{T} \mathbf{V}\right](i, j)}}<br>$$<br>&emsp;&emsp;<strong>Update</strong><br>$$<br>\mathbf{U}(i, j) \leftarrow \mathbf{U}(i, j) \sqrt{\frac{\left[\mathbf{X} \mathbf{V} \mathbf{H}^{T}\right](i, j)}{\left[\mathbf{U} \mathbf{H} \mathbf{V}^{T} \mathbf{V} \mathbf{H}^{T}\right](i, j)}}<br>$$</p>
+<p>&emsp;&emsp;<strong>Update</strong><br>$$<br>\mathbf{V}(i, j) \leftarrow \mathbf{V}(i, j) \sqrt{\frac{\left[\mathbf{X}^{T} \mathbf{U} \mathbf{H}\right](i, j)}{\left[\mathbf{V} \mathbf{H}^{T} \mathbf{U}^{T} \mathbf{U} \mathbf{H}\right](i, j)}}<br>$$<br>&emsp;&emsp;$t&#x3D;t+1$</p>
 <p><strong>end while</strong></p>
 <hr>
 <h4 id="Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm"><a href="#Algorithm-4-Concept-Extraction-based-on-TextRank-Algorithm" class="headerlink" title="Algorithm 4:  Concept Extraction based on TextRank Algorithm"></a>Algorithm 4:  Concept Extraction based on TextRank Algorithm</h4><hr>
@@ -171,7 +154,7 @@ C_{\alpha}(t)=H(t)+\alpha</script><p>若 $C<em>{\alpha}(t) &lt;= C</em>{\alpha} 
 <li><em>Identify relations that connect such text units, and use these relations to draw edges between vertices</em><br><em>in the graph.</em></li>
 <li><em>Iterate the graph-based ranking algorithm until convergence.</em></li>
 <li><em>The intersection of the two graph vertices is the set of concept words, and the final score of the word is the score difference between the two graphs.</em></li>
-<li><em>Sort concept words based on their final score. Use the values attached to each concept word for ranking/selection decisions.</em></li>
+<li><em>Sort concept words based on their final score. Use the values attached to each concept word for ranking&#x2F;selection decisions.</em></li>
 </ol>
 <hr>
 </div><div class="article-licensing box"><div class="licensing-title"><p>Constructing Topical Concept Hierarchical Taxonomy of Tourist Attraction</p><p><a href="http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/">http://vincentgaohj.github.io/Blog/2019/06/06/Constructing-Topical-Concept-Hierarchical-Taxonomy-of-Tourist-Attraction/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2019-06-06</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-02-22</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/NMF/">NMF</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Machine-Learning/">Machine-Learning</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Clustering/">Clustering</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Blog/2019/08/07/AWS-Amazon-Web-Services-Study-Notes/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">AWS (Amazon Web Services) Study Notes</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2019/05/20/%E8%BF%90%E7%94%A8%E8%82%A1%E6%8C%87%E6%9C%9F%E8%B4%A7%E5%A5%97%E6%9C%9F%E4%BF%9D%E5%80%BC%E6%A8%A1%E6%8B%9F%E5%88%86%E6%9E%90/"><span class="level-item">运用股指期货套期保值模拟分析</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {

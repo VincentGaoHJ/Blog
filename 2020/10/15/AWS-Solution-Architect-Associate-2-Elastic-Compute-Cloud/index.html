@@ -43,6 +43,7 @@
 <p>Amazon EC2’s simple web service interface allows you to obtain and configure capacity with minimal friction. It provides you with complete control of your computing resources and lets you run on Amazon’s proven computing environment.</p>
 <p><img src="https://d2908q01vomqb2.cloudfront.net/b6692ea5df920cad691c20319a6fffd7a4a766b8/2020/10/01/icbiome-2.jpg" alt="ICBiome uses AWS to empower hospitals in dealing with harmful pathogens"></p>
 <span id="more"></span>
+
 <p>[toc]</p>
 <h1 id="Elastic-Compute-Cloud"><a href="#Elastic-Compute-Cloud" class="headerlink" title="Elastic Compute Cloud"></a>Elastic Compute Cloud</h1><p>Amazon Elastic Compute Cloud (Amazon EC2) is a web service that provides secure, resizable compute capacity in the cloud. </p>
 <p>Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change.</p>
@@ -94,7 +95,6 @@
 <h2 id="EBS"><a href="#EBS" class="headerlink" title="EBS"></a>EBS</h2><p>Amazon Elastic Block Store (EBS) provides persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud.</p>
 <p>Each Amazon EBS volume is automatically replicated within its Availability Zone to protect you from component failure, offering high availability and durability.</p>
 <p><strong>5 Different Types of EBS Storage</strong></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -106,8 +106,7 @@
 <th><strong>Max IOPS Volume</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>General Purpose (SSD)</strong></td>
 <td>balances price and performance for a wide variety of transaction workloads</td>
 <td><strong>Most Work Loads</strong></td>
@@ -147,22 +146,20 @@
 <td>1 GiB - 1 TiB</td>
 <td>40-200</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <ul>
 <li>Termination protection is <strong>turned off</strong> by default, you must turn it on.</li>
 <li>On an EBS-backed instance, the <strong>default action is for the root EBS volume to be deleted</strong> when the instance is terminated.</li>
 <li>EBS Root Volumes of your <strong>DEFAULT</strong> AMI’s <strong>CAN</strong> be encrypted. You can use a third party tool (such as bit locker etc) to encrypt the root volume. or this can be done when creating AMI’s in the AWS console or using the API.</li>
 <li>Additional volumes can be encrypted.</li>
-<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/aws/new-multi-attach-for-provisioned-iops-io1-amazon-ebs-volumes/">As of Feb 2020 you can attach certain types of EBS volumes to multiple EC2 instances.</a> </li>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/aws/new-multi-attach-for-provisioned-iops-io1-amazon-ebs-volumes/">As of Feb 2020 you can attach certain types of EBS volumes to multiple EC2 instances.</a></li>
 </ul>
-<h2 id="EBS-Volume-amp-Snapshot"><a href="#EBS-Volume-amp-Snapshot" class="headerlink" title="EBS Volume &amp; Snapshot"></a>EBS Volume &amp; Snapshot</h2><ul>
+<h2 id="EBS-Volume-Snapshot"><a href="#EBS-Volume-Snapshot" class="headerlink" title="EBS Volume &amp; Snapshot"></a>EBS Volume &amp; Snapshot</h2><ul>
 <li><strong>It’s really important to remember that your EBS volumes will always be in the same Availability Zones as your EC2 instance.</strong></li>
 <li><strong>Volumes exist on EBS.</strong> Think of EBS as a virtual hard disk.</li>
 <li><strong>Snapshots exist on S3.</strong> Think of snapshots as a photograph of the disk.</li>
 <li><strong>Snapshots are point in time copies of Volumes.</strong></li>
-<li><strong>Snapshots are incremental</strong> — this means that only the blocks that have changed since your last snapshot are moved to S3.</li>
+<li><strong>Snapshots are incremental</strong> – this means that only the blocks that have changed since your last snapshot are moved to S3.</li>
 <li><strong>If this is your first snapshot, it may take some time to create.</strong></li>
 <li>To create a snapshot for Amazon EBS volumes that serve as root devices, you should stop the instance before taking the snapshot. <strong>However you can take a snap while the instance is running.</strong></li>
 <li><strong>You can create AMI’s from Snapshots.</strong></li>
@@ -210,7 +207,7 @@
 <li><p><strong>EN</strong></p>
 <p><strong>For when you need speeds between 10 Gbps and 100 Gbps. Anywhere you need reliable, high throughput.</strong></p>
 <ul>
-<li><strong>Enhanced Networking</strong>. Uses <strong>single root I/O virtualization (SR-IOV)</strong> to provide high-performance networking capabilities on supported instance types.</li>
+<li><strong>Enhanced Networking</strong>. Uses <strong>single root I&#x2F;O virtualization (SR-IOV)</strong> to provide high-performance networking capabilities on supported instance types.</li>
 <li>Enhanced networking provides higher bandwidth, higher packet per second (PPS) performance, and consistently lower inter-instance latencies. There is no additional charge for using enhanced networking.</li>
 <li>Use where you want good network performance.</li>
 <li><strong>Depending on your instance type, enhanced networking can be enabled using:</strong><ul>
@@ -230,7 +227,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="Encrypted-Root-Device-Volumes-amp-Snapshots"><a href="#Encrypted-Root-Device-Volumes-amp-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><p><strong>EBS Encryption</strong></p>
+<h2 id="Encrypted-Root-Device-Volumes-Snapshots"><a href="#Encrypted-Root-Device-Volumes-Snapshots" class="headerlink" title="Encrypted Root Device Volumes &amp; Snapshots"></a>Encrypted Root Device Volumes &amp; Snapshots</h2><p><strong>EBS Encryption</strong></p>
 <ul>
 <li><strong>snapshots of encrypted volumes are encrypted automatically.</strong></li>
 <li><strong>Volumes restored from encrypted snapshots are encrypted automatically.</strong></li>
@@ -244,7 +241,7 @@
 <li>Create an AMI from the encrypted Snapshot</li>
 <li>Use that AMI to launch new encrypted instance</li>
 </ul>
-<h2 id="Spot-Instances-amp-Spot-Fleets"><a href="#Spot-Instances-amp-Spot-Fleets" class="headerlink" title="Spot Instances &amp; Spot Fleets"></a>Spot Instances &amp; Spot Fleets</h2><p><strong>Amazon EC2 Spot Instances let you take advantage of unused EC2 capacity in the AWS Cloud.</strong></p>
+<h2 id="Spot-Instances-Spot-Fleets"><a href="#Spot-Instances-Spot-Fleets" class="headerlink" title="Spot Instances &amp; Spot Fleets"></a>Spot Instances &amp; Spot Fleets</h2><p><strong>Amazon EC2 Spot Instances let you take advantage of unused EC2 capacity in the AWS Cloud.</strong></p>
 <ul>
 <li>You may also use a <strong>Spot block</strong> to stop your Spot Instances from being terminated even if the Spot price goes over your max Spot price.</li>
 </ul>
@@ -308,7 +305,7 @@
 <p><strong>CloudTrail vs CloudWatch</strong></p>
 <ul>
 <li><strong>CloudWatch monitors performance.</strong></li>
-<li><strong>CloudTrail monitors API calls in the AWS platform</strong> </li>
+<li><strong>CloudTrail monitors API calls in the AWS platform</strong></li>
 </ul>
 <p><strong>Things need to be remembered:</strong></p>
 <ul>
@@ -321,8 +318,8 @@
 </ul>
 <p><strong>Exam Tips</strong></p>
 <ul>
-<li><strong>Standard Monitoring = 5 Minutes</strong></li>
-<li><strong>Detailed Monitoring = 1 Minutes</strong></li>
+<li><strong>Standard Monitoring &#x3D; 5 Minutes</strong></li>
+<li><strong>Detailed Monitoring &#x3D; 1 Minutes</strong></li>
 </ul>
 <h2 id="AWS-Command-Line"><a href="#AWS-Command-Line" class="headerlink" title="AWS Command Line"></a>AWS Command Line</h2><ul>
 <li>You can interact with AWS from anywhere in the world just by using the command line (CLI).</li>
@@ -333,7 +330,7 @@
 <li><strong>Roles are far more secure than storing your access key and secret access key on individual EC2 instances.</strong></li>
 <li>Roles are easier to manage.</li>
 <li><strong>Roles can be assigned to an EC2 instance after it is created using both the console &amp; command line.</strong></li>
-<li><strong>Roles are universal — you can use them in any region.</strong></li>
+<li><strong>Roles are universal – you can use them in any region.</strong></li>
 </ul>
 <h2 id="BootStrap-Scrips"><a href="#BootStrap-Scrips" class="headerlink" title="BootStrap Scrips"></a>BootStrap Scrips</h2><p><strong>Bootstrap Scripts are super powerful as you can see it’s a way of automating your infrastructure.</strong></p>
 <ul>
@@ -344,8 +341,7 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/m</span>eta-data/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>User data simply contain the bootstrap script that you run</strong></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/u</span>ser-data/</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http:<span class="regexp">//</span><span class="number">196.254</span>.<span class="number">169.254</span><span class="regexp">/latest/u</span>ser-data/</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="EFS-Amazon-Elastic-File-System"><a href="#EFS-Amazon-Elastic-File-System" class="headerlink" title="EFS (Amazon Elastic File System)"></a>EFS (Amazon Elastic File System)</h2><p>Amazon Elastic File System(Amazon EFS) is as <strong>file storage service for Amazon Elastic Compute Cloud (EC2) instance</strong>. Amazon EFS is easy to use and provides a simple interface that allows you to create and configure file systems quickly and easily.</p>
 <p><strong>With Amazon EFS, storage capacity is elastic</strong>, growing and shrinking automatically as you add and remove files, so you applications have the storage they need, when they need it.</p>
@@ -358,7 +354,7 @@
 <li><strong>Data is stored across multiple AZ’s within a region</strong></li>
 <li><strong>Read After Write Consistency</strong></li>
 </ul>
-<h2 id="FSX-for-Windows-amp-FSX-for-Lustre"><a href="#FSX-for-Windows-amp-FSX-for-Lustre" class="headerlink" title="FSX for Windows &amp; FSX for Lustre"></a>FSX for Windows &amp; FSX for Lustre</h2><p><strong>Amazon FSx for Windows</strong></p>
+<h2 id="FSX-for-Windows-FSX-for-Lustre"><a href="#FSX-for-Windows-FSX-for-Lustre" class="headerlink" title="FSX for Windows &amp; FSX for Lustre"></a>FSX for Windows &amp; FSX for Lustre</h2><p><strong>Amazon FSx for Windows</strong></p>
 <ul>
 <li>Amazon FSx for Windows File Server provides <strong>a fully managed native Microsoft Windows file system so you can easily move your Windows-based applications that require file storage to AWS</strong>. Amazon FSx is built on Windows Server.</li>
 </ul>
@@ -369,8 +365,7 @@
 <li><p>With Amazon FSx, you can launch and run a Lustre file system that can process massive data sets at up to hundreds of gigabytes per second of throughput, millions of IOPS, and sub-millisecond latencies.</p>
 </li>
 </ul>
-<h3 id="How-is-FSx-Windows-amp-Lustre-Different-to-EFS"><a href="#How-is-FSx-Windows-amp-Lustre-Different-to-EFS" class="headerlink" title="How is FSx (Windows &amp; Lustre) Different to EFS"></a>How is FSx (Windows &amp; Lustre) Different to EFS</h3><div class="table-container">
-<table>
+<h3 id="How-is-FSx-Windows-Lustre-Different-to-EFS"><a href="#How-is-FSx-Windows-Lustre-Different-to-EFS" class="headerlink" title="How is FSx (Windows &amp; Lustre) Different to EFS"></a>How is FSx (Windows &amp; Lustre) Different to EFS</h3><table>
 <thead>
 <tr>
 <th>Windows FSx</th>
@@ -378,8 +373,7 @@
 <th>EFS</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>A managed Windows Server</td>
 <td>A managed file system</td>
 <td>A managed NAS filter for EC2 instances</td>
@@ -399,9 +393,7 @@
 <td><strong>When you need high-speed, high-capacity distributed storage.</strong></td>
 <td><strong>When you need distributed, highly resilient storage for Linux-based applications</strong></td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="EC2-Placement-Groups"><a href="#EC2-Placement-Groups" class="headerlink" title="EC2 Placement Groups"></a>EC2 Placement Groups</h2><p><strong>Clustered Placement Group</strong></p>
 <ul>
 <li><strong>Grouping of instances within a single Availability Zone.</strong></li>
@@ -421,7 +413,7 @@
 <li>Amazon EC2 ensures that each partition within a placement group have its own set of racks.</li>
 <li>Uses cases are <strong>multiple EC2 instances HDFS, Hbase, and Cassandra.</strong><ul>
 <li><strong>HDFS</strong>: The Hadoop Distributed File System ( <em>HDFS</em> ) is a distributed file system designed to run on commodity hardware.</li>
-<li><strong>Hbase</strong>: <strong>HBase</strong> is an <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open-source_software">open-source</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Non-relational_database">non-relational</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Distributed_database">distributed database</a> modeled after <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Google">Google’s</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bigtable">Bigtable</a> and written in <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Java_(programming_language">Java</a>). It is developed as part of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Apache_Software_Foundation">Apache Software Foundation</a>‘s <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadoop">Apache Hadoop</a> project and runs on top of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadoop_Distributed_File_System">HDFS (Hadoop Distributed File System)</a> or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Alluxio">Alluxio</a>, providing Bigtable-like capabilities for Hadoop.</li>
+<li><strong>Hbase</strong>: <strong>HBase</strong> is an <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Open-source_software">open-source</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Non-relational_database">non-relational</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Distributed_database">distributed database</a> modeled after <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Google">Google’s</a> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bigtable">Bigtable</a> and written in <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>. It is developed as part of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Apache_Software_Foundation">Apache Software Foundation</a>‘s <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadoop">Apache Hadoop</a> project and runs on top of <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Hadoop_Distributed_File_System">HDFS (Hadoop Distributed File System)</a> or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Alluxio">Alluxio</a>, providing Bigtable-like capabilities for Hadoop.</li>
 <li><strong>Cassandra</strong>: Apache Cassandra™ is a distributed NoSQL database that delivers continuous availability, high performance, and linear scalability that successful applications require.</li>
 </ul>
 </li>
@@ -432,10 +424,10 @@
 <li><strong>You can’t merge</strong> placement groups.</li>
 <li><strong>You can’t move</strong> an existing instance into a placement group. Before you move the instance, the instance must be in the stopped state. You can move or remove an instance using the AWS CLI or an AWS SDK (software development kit), you can’t do it via the console yet.</li>
 </ul>
-<h2 id="HPC-on-AWS"><a href="#HPC-on-AWS" class="headerlink" title="HPC on AWS"></a>HPC on AWS</h2><p>You can create a large number of resources in almost no time. You only pay for the resources you use — and, once finished, you can destroy the resources. </p>
+<h2 id="HPC-on-AWS"><a href="#HPC-on-AWS" class="headerlink" title="HPC on AWS"></a>HPC on AWS</h2><p>You can create a large number of resources in almost no time. You only pay for the resources you use – and, once finished, you can destroy the resources. </p>
 <ul>
 <li><strong>Data Transfer</strong><ul>
-<li><strong>Snowball, snowmobile (terabytes/petabytes worth of data)</strong></li>
+<li><strong>Snowball, snowmobile (terabytes&#x2F;petabytes worth of data)</strong></li>
 <li><strong>AWS DataSync</strong> </li>
 <li><strong>Direct Connect</strong> (a cloud service solution that makes it easy to establish a dedicated network connection from your premises to AWS)</li>
 </ul>
@@ -447,9 +439,9 @@
 </ul>
 </li>
 <li><strong>Networking</strong><ul>
-<li><strong>Enhanced Networking</strong> (Uses single root I/O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. <strong>It provides higher I/O performance and lower CPU utilization</strong>)</li>
+<li><strong>Enhanced Networking</strong> (Uses single root I&#x2F;O virtualization (SR-IOV) to provide high-performance networking capabilities on supported instance types. <strong>It provides higher I&#x2F;O performance and lower CPU utilization</strong>)</li>
 <li><strong>Elastic Network Adapter</strong></li>
-<li><strong>Elastic Fabric Adapters </strong>(Network device you can attach to your Amazon EC2 to accelerate HPC and machine learning applications.)</li>
+<li>**Elastic Fabric Adapters **(Network device you can attach to your Amazon EC2 to accelerate HPC and machine learning applications.)</li>
 </ul>
 </li>
 <li><strong>Storage</strong><ul>
