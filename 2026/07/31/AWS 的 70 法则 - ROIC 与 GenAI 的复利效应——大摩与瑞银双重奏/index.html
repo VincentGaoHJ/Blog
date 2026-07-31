@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏 - Gao Haojun</title><link rel="manifest" href="/Blog/manifest.json"><meta name="application-name" content="Gao Haojun"><meta name="msapplication-TileImage" content="/img/favicon.jpeg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Gao Haojun"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="摩根士丹利与瑞银对 Amazon Q2 2026 财报的深度解读——AWS 的 70 法则与 40%+ 增长路径、GenAI 投资的 ROIC 验证、$4,960 亿 backlog 的有机增长分量、Trainium 与 OpenAI 的催化剂、以及从 P&amp;#x2F;E 到 P&amp;#x2F;FCF 的估值方法论对决"><meta property="og:type" content="blog"><meta property="og:title" content="AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏"><meta property="og:url" content="http://vincentgaohj.github.io/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/"><meta property="og:site_name" content="Gao Haojun"><meta property="og:description" content="摩根士丹利与瑞银对 Amazon Q2 2026 财报的深度解读——AWS 的 70 法则与 40%+ 增长路径、GenAI 投资的 ROIC 验证、$4,960 亿 backlog 的有机增长分量、Trainium 与 OpenAI 的催化剂、以及从 P&amp;#x2F;E 到 P&amp;#x2F;FCF 的估值方法论对决"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://vincentgaohj.github.io/Blog/gallery/AWS-70-ROIC-GenAI/cover.png"><meta property="article:published_time" content="2026-07-31T02:00:00.000Z"><meta property="article:modified_time" content="2026-07-31T18:12:05.708Z"><meta property="article:author" content="Haojun(Vincent) Gao"><meta property="article:tag" content="AI"><meta property="article:tag" content="Research"><meta property="article:tag" content="Cloud"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="http://vincentgaohj.github.io/Blog/gallery/AWS-70-ROIC-GenAI/cover.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://vincentgaohj.github.io/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/"},"headline":"AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏","image":["http://vincentgaohj.github.io/Blog/gallery/AWS-70-ROIC-GenAI/cover.png"],"datePublished":"2026-07-31T02:00:00.000Z","dateModified":"2026-07-31T18:12:05.708Z","author":{"@type":"Person","name":"Haojun(Vincent) Gao"},"publisher":{"@type":"Organization","name":"Gao Haojun","logo":{"@type":"ImageObject","url":"http://vincentgaohj.github.io/img/logo.jpg"}},"description":"摩根士丹利与瑞银对 Amazon Q2 2026 财报的深度解读——AWS 的 70 法则与 40%+ 增长路径、GenAI 投资的 ROIC 验证、$4,960 亿 backlog 的有机增长分量、Trainium 与 OpenAI 的催化剂、以及从 P&#x2F;E 到 P&#x2F;FCF 的估值方法论对决"}</script><link rel="canonical" href="http://vincentgaohj.github.io/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/"><link rel="icon" href="/Blog/img/favicon.jpeg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/Blog/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><script>var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?192470116504c325dfc73c99f66225ed";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><script src="https://www.googletagmanager.com/gtag/js?id=G-N6S845NT1J" async></script><script>window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-N6S845NT1J');</script><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/AWS-70-ROIC-GenAI/cover.png" alt="AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2026-07-31T02:00:00.000Z" title="2026/7/31 10:00:00">2026-07-31</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">an hour read (About 13194 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏</h1><div class="content"><blockquote>
+<p>2026 年 7 月 31 日，Amazon 发布 Q2 2026 财报后，华尔街两大投行几乎同时发声。摩根士丹利的 Brian Nowak 发布 M Idea 报告 <em>“AWS’s Rule of 70 and ROIC Deliver”</em>，维持 Overweight，目标价从 $309.10 上调至 <strong>$335</strong>（当前 $235.50，隐含上行约 30%）。瑞银的 Stephen Ju 发布深度报告 <em>“AWS Set to Accelerate Further into 40%+ Growth”</em>，维持 Buy，目标价从 $305 上调至 <strong>$318</strong>（当前 $258.12，隐含上行约 23%）。两份报告共用一个事实基础，但切入角度、估值方法和关键催化剂各有侧重。合在一起，它们构成了当前华尔街对 Amazon 最完整的叙事框架。</p>
+</blockquote>
+<blockquote>
+<p>两份报告的核心共识可以概括为：<strong>AWS 的增长正在加速——从 2Q25 的 17.5% 到 2Q26 的 36.8%，且在 2027 年有望突破 40%+。更重要的是，这种增长不是”赔钱换规模”——增量利润率（incremental margin）高达 52%，验证了 GenAI 投资的 ROIC。</strong> 但真正的价值在于两份报告如何从不同角度解构同一组数据，以及它们的分歧点揭示了怎样的市场定价偏差。</p>
+</blockquote>
+<p><strong>TL;DR：</strong></p>
+<ol>
+<li><strong>AWS 增长从”加速”到”再加速”</strong>：2Q26 同比增速 36.8%（大摩），超出华尔街 31% 和瑞银 32% 的预测。瑞银预测 2026 下半年 ~39%，2027 年在 OpenAI 采用 Trainium 的推动下突破 40%+。AI ARR 从 $100 亿单季翻倍至 $250 亿，但非 AI 营收也在加速（low-20s%），证明 AI 不是替代而是带动。</li>
+<li><strong>Backlog 的真相——不只是 Anthropic</strong>：$4,960 亿 backlog 环比增加 $1,320 亿，但瑞银拆解出其中约 $1,000 亿来自 Anthropic 长期合同（此前已公告），<strong>剩余约 $510 亿是纯粹的有机增长</strong>——远超历史上任何一个季度。这回答了市场最核心的疑问：”AWS 的增长是不是只靠一个大客户？”</li>
+<li><strong>GenAI 的 ROIC 从理论走向财报</strong>：大摩此前专题报告提出超大规模云厂商在 GenAI 推理时代的增量利润率可达 30-70%+，Q2 数据给出了验证——AWS 增量利润率 52%（剔除一次性项目），为 4Q24 以来最高。瑞银从反向角度论证：<strong>AWS 营收增长太快，Amazon 需要把 SG&amp;A 增速提到近三年的 3 倍才能阻止利润率扩张——而这显然不可能。</strong></li>
+<li><strong>资本开支大幅上调，但市场”欣然接受”</strong>：瑞银指出 2026 年 capex 指引从 $2,000 亿上调至 $2,200 亿（主因内存等供应链成本上升），大摩将 2027&#x2F;2028 年 capex 预测上调至 $3,250 亿&#x2F;$3,500 亿。但两家一致认为——<strong>ROIC 越高，越应该加大投资。</strong></li>
+<li><strong>OpenAI 将采用 Trainium——瑞银独家催化剂</strong>：这是报告中最重要的前瞻性信息。OpenAI 预计在 2027 年初开始使用 AWS 自研的 Trainium 芯片进行训练。这意味着 AWS 的 AI 芯片业务从”内部降本工具”升级为”外部营收引擎”，也是瑞银对 2027 年 AWS 40%+ 增长预测的核心支撑。</li>
+<li><strong>估值方法论的对决——P&#x2F;E vs P&#x2F;FCF</strong>：大摩用 P&#x2F;E（25x 2027&#x2F;2028 平均 EPS），强调 PEG 折价（0.7x vs 云厂商中位数 1.3x）。瑞银用 P&#x2F;FCF（30x 3Q27-2Q28 FCF），强调 Amazon 管理层一直以自由现金流为沟通核心。两家目标价差距仅 5%，但底层哲学截然不同。</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="一、AWS-的”70-法则”与”40-增长路径”：一份数据，两种叙事"><a href="#一、AWS-的”70-法则”与”40-增长路径”：一份数据，两种叙事" class="headerlink" title="一、AWS 的”70 法则”与”40%+ 增长路径”：一份数据，两种叙事"></a>一、AWS 的”70 法则”与”40%+ 增长路径”：一份数据，两种叙事</h2><h3 id="1-1-大摩的”70-法则”：增长质量与复利效应"><a href="#1-1-大摩的”70-法则”：增长质量与复利效应" class="headerlink" title="1.1 大摩的”70 法则”：增长质量与复利效应"></a>1.1 大摩的”70 法则”：增长质量与复利效应</h3><blockquote>
+<p>AWS’s ~840bp growth acceleration to 36.8% y&#x2F;y growth (vs us at 34%) speaks to its pole position in the age of GenAI adoption in training and inference.</p>
+</blockquote>
+<p>大摩在标题中嵌入”Rule of 70”——金融学中经典的近似公式：一个变量以 X% 的速度增长，翻倍所需时间约为 70 ÷ X 年。AWS 的 36.8% 同比增速意味着其营收规模大约每 1.9 年翻一番。这不仅仅是数字游戏——它传达了一个鲜明的信号：<strong>AWS 当前的增速已经进入”复利效应肉眼可见”的区间。</strong> 在一个年化 run-rate 超过 $1,700 亿的基数上，每 1.9 年翻一番意味着 2028 年 AWS 将是一个年营收超过 $3,400 亿的实体。大摩预测 AWS 2025-2028 年营收 CAGR 为 38%，从 $1,287 亿增至 $3,408 亿。</p>
+<p><strong>但大摩真正的洞察不在于增速本身，而在于增速的”质量”。</strong> 报告明确指出，AWS 的 AI 营收和非 AI 营收同时在加速——AI ARR 单季增长 67%（$100 亿 → $250 亿），非 AI 营收同比增速从 1Q26 的约 19-20% 加速至 2Q26 的低 20%+ 区间。大摩特别用括号标注了 Graviton（”see here”），暗示 AI 工作负载正在带动非 AI 服务（如自研芯片、存储、数据库）的附加销售。</p>
+<blockquote>
+<p>This speaks to AWS’s ability to attach non-AI services (like Graviton, see here) to AI loads…and the still strong demand for its core tools.</p>
+</blockquote>
+<h3 id="1-2-瑞银的”40-增长路径”：从数据到催化剂"><a href="#1-2-瑞银的”40-增长路径”：从数据到催化剂" class="headerlink" title="1.2 瑞银的”40%+ 增长路径”：从数据到催化剂"></a>1.2 瑞银的”40%+ 增长路径”：从数据到催化剂</h3><blockquote>
+<p>This sets the stage for what should be ~39% YOY growth for AWS into 2H26 and what should be above 40% growth next year as OpenAI starts to use Trainium chips in early-2027.</p>
+</blockquote>
+<p>瑞银的叙事比大摩更进一步——不是停留在”发生了什么”，而是给出了”接下来会发生什么”的明确路径。第 3 季度 2026 约 39%，2027 年 40%+，并且将增长加速的催化剂锁定在了 OpenAI 采用 Trainium 这一具体事件上。</p>
+<p><strong>瑞银对增长的预测做了更细致的量化校准。</strong> 报告指出，AWS Q2 实际增速 37% 超出瑞银预测的 32%、华尔街的 31%，而瑞银认为投资者预期（bogey）大约在 36%——即便如此，实际结果仍超预期。基于 backlog 和营收的重新校准，瑞银将 3Q26 AWS 增速预测从 35.8% 上调至 38.9%，FY26 从 33.3% 上调至 36.1%。值得注意的是，瑞银在报告中强调”our estimates remain well ahead of consensus”——即使上调后，瑞银的预测仍远高于华尔街共识，并且<strong>预期华尔街将继续追赶（catch up）瑞银的预测。</strong></p>
+<h3 id="1-3-AI-与非-AI-营收的结构性拆分：两份报告的共同发现"><a href="#1-3-AI-与非-AI-营收的结构性拆分：两份报告的共同发现" class="headerlink" title="1.3 AI 与非 AI 营收的结构性拆分：两份报告的共同发现"></a>1.3 AI 与非 AI 营收的结构性拆分：两份报告的共同发现</h3><p>大摩的 Exhibit 2 提供了最详细的 AI 与非 AI 营收拆分，这张表是理解 AWS 增长质量的关键：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>3Q25</th>
+<th>4Q25</th>
+<th>1Q26</th>
+<th>2Q26</th>
+<th>3Q26E</th>
+<th>4Q26E</th>
+<th>1Q27E</th>
+<th>2Q27E</th>
+<th>3Q27E</th>
+<th>4Q27E</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总 AWS 营收（$bn）</td>
+<td>33</td>
+<td>36</td>
+<td>38</td>
+<td>42</td>
+<td>46</td>
+<td>51</td>
+<td>54</td>
+<td>59</td>
+<td>65</td>
+<td>71</td>
+</tr>
+<tr>
+<td>AI 营收（$bn）</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>6</td>
+<td>8</td>
+<td>10</td>
+<td>12</td>
+<td>14</td>
+<td>16</td>
+<td>18</td>
+</tr>
+<tr>
+<td>AI 占比</td>
+<td>6%</td>
+<td>7%</td>
+<td>10%</td>
+<td>15%</td>
+<td>18%</td>
+<td>20%</td>
+<td>22%</td>
+<td>23%</td>
+<td>24%</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>隐含 AI ARR（$bn）</td>
+<td>8</td>
+<td>11</td>
+<td>15</td>
+<td>25</td>
+<td>33</td>
+<td>40</td>
+<td>48</td>
+<td>55</td>
+<td>63</td>
+<td>70</td>
+</tr>
+<tr>
+<td>非 AI 营收（$bn）</td>
+<td>31</td>
+<td>33</td>
+<td>34</td>
+<td>36</td>
+<td>38</td>
+<td>41</td>
+<td>42</td>
+<td>45</td>
+<td>49</td>
+<td>54</td>
+</tr>
+<tr>
+<td>非 AI 同比增速</td>
+<td>19%</td>
+<td>22%</td>
+<td>23%</td>
+<td>24%</td>
+<td>25%</td>
+<td>26%</td>
+<td>29%</td>
+<td>31%</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody></table>
+
+
+<p><strong>图 1（大摩 Exhibit 2）是大摩对 AWS AI 与非 AI 营收的完整拆分预测。</strong> 这张表的关键价值不在于任何单一数字，而在于它揭示了四个趋势的叠加：AI 营收的指数增长（蓝色柱）、AI 占比的持续攀升（从 6% 到 25%）、非 AI 营收的二次加速（橙色线从 19% 到 31%），以及隐含 AI ARR 的惊人膨胀（从 $80 亿到 $700 亿）。<strong>值得注意的是，大摩预测 4Q27E 总 AWS 营收 $710 亿，其中 AI 营收 $180 亿（25%），非 AI 营收 $540 亿——即便到那时，非 AI 营收仍是 AI 营收的 3 倍，但 AI 的增速（75% YoY）远高于非 AI（31% YoY）。</strong> 这个结构意味着 AWS 正在经历”双引擎加速”——AI 引擎增速更快，但非 AI 引擎基数更大，两者共同推高总营收。</p>
+<p><strong>三个被市场低估的结构性变化：</strong></p>
+<p><strong>第一，AI 营收的绝对规模正在以令人窒息的速度膨胀。</strong> 从 3Q25 的 $20 亿到 4Q27E 的 $180 亿，八个季度增长 9 倍。隐含 AI ARR 从 $80 亿到 $700 亿。瑞银补充了一个关键数据点：<strong>AWS 芯片业务（自研芯片相关的营收）年化收入已超过 $250 亿，高于 1Q26 披露的 $200 亿。</strong> 在云计算历史上，没有任何一个单一产品线在如此短的时间内达到如此大的体量。</p>
+<p><strong>第二，AI 在拉动非 AI 营收加速，而非替代。</strong> 这是两份报告最关键的共识。非 AI 营收的同比增速从 3Q25 的 19% 持续攀升至 2Q27E 的 31%。<strong>客户在 AWS 上跑 AI 训练和推理的同时，自然会用到存储、数据库、网络、安全等全套非 AI 服务。AI 是”锚定产品”——它把客户锁进 AWS 生态之后，交叉销售（cross-sell）自然发生。</strong> 大摩特别提到 Graviton 作为非 AI 服务被 AI 负载带动的典型案例——客户在 AWS 上训练模型，自然会选择 AWS 的 Graviton 芯片做推理，而不是去另一家云厂商租 GPU。</p>
+<p><strong>第三，AI 占比从 6% 到 25% 的跃迁正在重塑 AWS 的利润率结构。</strong> AI 推理的增量利润率远高于传统 IaaS——Bedrock 的净额确认模式使得营收口径偏小但利润率口径偏高，因为 AWS 不需要承担第三方模型的训练成本，只需要提供推理算力并抽取分成。随着 AI 占比从个位数升至四分之一，AWS 整体的利润率中枢将被系统性上移。</p>
+<h3 id="1-4-三大云厂商的横向对比：谁在加冕，谁在追赶？"><a href="#1-4-三大云厂商的横向对比：谁在加冕，谁在追赶？" class="headerlink" title="1.4 三大云厂商的横向对比：谁在加冕，谁在追赶？"></a>1.4 三大云厂商的横向对比：谁在加冕，谁在追赶？</h3><p>大摩的 Exhibit 3 提供了 2Q26 超大规模云厂商的完整对比（”Tale of the Tape”）。瑞银虽然未单独列出 Azure 利润，但引用了大摩的分析框架。两张表合在一起，构成了当前云市场格局的全景：</p>
+<p><strong>营收对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>AWS</th>
+<th>Azure</th>
+<th>Google Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1Q25 营收（$mn）</td>
+<td>29,267</td>
+<td>19,211</td>
+<td>12,260</td>
+</tr>
+<tr>
+<td>2Q26 营收（$mn）</td>
+<td>42,232</td>
+<td>30,857</td>
+<td>24,768</td>
+</tr>
+<tr>
+<td>2Q26 同比增速</td>
+<td>36.8%</td>
+<td>43.0%</td>
+<td>81.8%</td>
+</tr>
+<tr>
+<td>相对份额</td>
+<td>43.2%</td>
+<td>31.5%</td>
+<td>25.3%</td>
+</tr>
+</tbody></table>
+<p><strong>利润对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>AWS</th>
+<th>Google Cloud</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2Q26 EBIT 利润率</td>
+<td>39.4%</td>
+<td>35.6%</td>
+</tr>
+<tr>
+<td>2Q26 增量利润率</td>
+<td>56.9%</td>
+<td>53.7%</td>
+</tr>
+<tr>
+<td>Q&#x2F;Q EBIT 增量（$mn）</td>
+<td>2,460</td>
+<td>2,216</td>
+</tr>
+</tbody></table>
+<p><strong>Google Cloud 的 81.8% 增速需要拆解。</strong> 大摩明确指出，Google 的 TPU 销售以总额（gross）计入营收，而 AWS Bedrock 以净额（net）确认第三方模型收入分成。剔除 TPU 销售后，大摩估算 Google Cloud 的 Q&#x2F;Q 营收增量约为 $30-40 亿，低于 AWS 的 $46.5 亿，更接近 Azure 的 $38.8 亿。<strong>另一方面，TPU 销售的利润率结构性偏低——AWS 以更小的营收增量创造了更多的 EBIT 增量（$25 亿 vs Google Cloud 的 $22 亿），这本身就是利润率质量的直接体现。</strong></p>
+
+
+<p><strong>图 2（大摩 Exhibit 3）是 2Q26 超大规模云厂商的”Tale of the Tape”。</strong> 这张图将 AWS、Azure 和 Google Cloud 的营收趋势和 EBIT 利润率并排展示，一目了然地揭示了三个关键趋势：第一，AWS 的营收份额从 1Q25 的 48.2% 持续下降至 2Q26 的 43.2%，但这不是”份额丢失”——是 Google Cloud 和 Azure 在更小的基数上增速更快；第二，AWS 的 EBIT 利润率从 4Q25 的 35.0% 跃升至 2Q26 的 39.4%，而 Google Cloud 从 30.1% 升至 35.6%——两者都在扩张，但 AWS 的利润率水平始终领先约 4 个百分点；第三，AWS 的 Q&#x2F;Q EBIT 增量（$25 亿）超过了 Google Cloud 的 $22 亿，尽管 Google Cloud 的营收增量略高——<strong>这正是利润率质量的终极体现：你多赚了 $1 营收，但我多赚了更多利润。</strong></p>
+<p><strong>AWS 的 39.4% EBIT 利润率是三大云厂商中最高的，且 56.9% 的增量利润率意味着每新增 $1 营收，约有 $0.57 落入 EBIT。</strong> 这种增量利润率的水平在科技行业历史上通常只出现在纯软件公司（如 Microsoft、Adobe、Salesforce）的巅峰期，而不是一个同时运营着全球最大电商和物流网络的综合企业。而且，大摩特别标注了 2Q26 利润率中包含约 $6 亿的能源衍生品合同一次性收益——剔除后，AWS 利润率约为 38%，增量利润率约为 52%。<strong>两者都仍是 4Q24 以来的最高水平。</strong></p>
+<hr>
+<h2 id="二、Backlog-的解剖：-4-960-亿中，多少是-Anthropic，多少是”真金白银”？"><a href="#二、Backlog-的解剖：-4-960-亿中，多少是-Anthropic，多少是”真金白银”？" class="headerlink" title="二、Backlog 的解剖：$4,960 亿中，多少是 Anthropic，多少是”真金白银”？"></a>二、Backlog 的解剖：$4,960 亿中，多少是 Anthropic，多少是”真金白银”？</h2><h3 id="2-1-大摩：-4-960-亿是”未来收入的锁”"><a href="#2-1-大摩：-4-960-亿是”未来收入的锁”" class="headerlink" title="2.1 大摩：$4,960 亿是”未来收入的锁”"></a>2.1 大摩：$4,960 亿是”未来收入的锁”</h3><blockquote>
+<p>AWS’s $496bn backlog (up $132bn q&#x2F;q) was 5%, or ~$20bn better than expected. This, in our view, continues to be an important indicator of durable multi-year growth to come at AWS.</p>
+</blockquote>
+<p>大摩将 $4,960 亿 backlog 视为”未来收入可见性”的最高信号。$4,960 亿大约是 AWS 2025 年全年营收（$1,287 亿）的 3.85 倍。换句话说，即使 AWS 从现在开始一个新增客户都没有，仅靠已签合同的履约就能支撑近四年的营收。<strong>环比增加 $1,320 亿意味着 AWS 在 Q2 单季签下的新合同金额，超过了绝大多数 SaaS 公司的总市值。</strong></p>
+<p>大摩的预测模型预期 backlog 约 $4,780 亿，实际 $4,960 亿超出约 $180 亿（5%）。<strong>但大摩没有进一步拆解这个增量中有多少来自 Anthropic——这是瑞银补上的关键拼图。</strong></p>
+<h3 id="2-2-瑞银：Anthropic-1-000-亿-vs-有机-510-亿"><a href="#2-2-瑞银：Anthropic-1-000-亿-vs-有机-510-亿" class="headerlink" title="2.2 瑞银：Anthropic $1,000 亿 vs 有机 $510 亿"></a>2.2 瑞银：Anthropic $1,000 亿 vs 有机 $510 亿</h3><blockquote>
+<p>We had anticipated the backlog to step up by $100B given the previously-announced Anthropic agreement, but it grew by an incremental $51B QOQ.</p>
+</blockquote>
+<p>这是瑞银报告中最重要的一个数据点，也是市场最需要知道但大摩没有明确回答的问题。<strong>$1,320 亿的 backlog 环比增量中，约 $1,000 亿来自 Anthropic 的长期合同（此前已公告），剩余的约 $510 亿才是”纯粹的有机增长”。</strong> 瑞银此前预测 backlog 为 $4,780 亿，实际 $4,960 亿超预期约 $180 亿——与大摩的预测一致。</p>
+<p>这个拆分的意义怎么强调都不过分。<strong>市场在财报前最核心的担忧是：”AWS 的增长是不是只靠 Anthropic 一家大客户？”</strong> 如果 $1,320 亿的 backlog 增量全部来自 Anthropic，那这个担忧就是合理的——AWS 的 AI 故事本质上是一个”单客户集中度风险”。但瑞银的数据证明：即使剔除 Anthropic，单季 backlog 有机增量仍高达约 $510 亿，远超历史上任何一个季度。<strong>AWS 的增长不是”单客户驱动”，而是”全行业 AI 采纳浪潮驱动”。</strong></p>
+<p>瑞银进一步指出，<strong>Performance Obligations（履约义务）的大幅增长”likely was well contemplated”（市场可能已经有所预期）</strong>，因为 Anthropic 的 $1,000 亿合同此前已公告。但 $510 亿的有机增量是市场没有预期到的——这也是为什么大摩说”$20bn better than expected”。</p>
+<h3 id="2-3-Backlog-的本质：从”合同”到”收入”的转化机制"><a href="#2-3-Backlog-的本质：从”合同”到”收入”的转化机制" class="headerlink" title="2.3 Backlog 的本质：从”合同”到”收入”的转化机制"></a>2.3 Backlog 的本质：从”合同”到”收入”的转化机制</h3><p>在云计算行业，backlog 主要由长期合同（通常 3-5 年）组成，客户承诺在未来几年内消费一定金额的云服务。<strong>Backlog 的增长意味着：第一，企业正在做长期的云迁移和 AI 采纳决策，而非短期试验；第二，AWS 在赢下这些决策时处于领先地位；第三，这些承诺收入将在未来几年逐步释放为实际营收，提供了极高的收入可预测性。</strong></p>
+<p><strong>瑞银对 backlog 进行了更激进的转化。</strong> 报告指出，基于 Q2 的 backlog 超预期，瑞银重新校准了 AWS 的营收预测，将 3Q26 增速从 35.8% 上调至 38.9%，FY26 从 33.3% 上调至 36.1%。<strong>瑞银的 AWS 营收预测持续领先华尔街共识，并且预期华尔街将”继续追赶”（continue to catch up with us）。</strong></p>
+<hr>
+<h2 id="三、GenAI-的-ROIC：从”信仰”到”可验证”——两份报告的互补论证"><a href="#三、GenAI-的-ROIC：从”信仰”到”可验证”——两份报告的互补论证" class="headerlink" title="三、GenAI 的 ROIC：从”信仰”到”可验证”——两份报告的互补论证"></a>三、GenAI 的 ROIC：从”信仰”到”可验证”——两份报告的互补论证</h2><h3 id="3-1-大摩的自下而上论证：增量利润率-52"><a href="#3-1-大摩的自下而上论证：增量利润率-52" class="headerlink" title="3.1 大摩的自下而上论证：增量利润率 52%"></a>3.1 大摩的自下而上论证：增量利润率 52%</h3><blockquote>
+<p>We believe this was driven by capacity optimizations, Bedrock, accelerating core, etc.</p>
+</blockquote>
+<p>大摩在 7 月 27 日发布的专题报告 <em>“Internet: The Paths to 25-50% GenAI ROIC”</em> 中构建了一个完整的 ROIC 测算框架，并在 Q2 数据中找到了验证。框架的核心逻辑是：<strong>推理的边际成本远低于训练。</strong> 训练一个大模型需要数万张 GPU 运行数周甚至数月，但推理——尤其是经过蒸馏和量化优化后的推理——每 token 的算力消耗远低于训练。训练是固定成本，推理是可变成本。固定成本已被摊销，可变成本极低——这正是高增量利润率的经典配方。</p>
+<p>大摩列出的具体驱动因素包括：</p>
+<ol>
+<li><strong>容量优化（capacity optimizations）</strong>：更高的服务器利用率、更优的冷却方案、更智能的负载调度——这些都在系统性地压低单位算力的运营成本。</li>
+<li><strong>Bedrock 的净额确认模式</strong>：AWS 聚合了 Anthropic、Meta、Stability AI 等第三方模型，以净额确认收入分成。营收口径偏小，但利润率口径偏高——因为 AWS 不需要承担模型的训练成本，只需要提供推理算力并抽取分成。</li>
+<li><strong>核心业务加速（accelerating core）</strong>：非 AI 业务的加速增长带来了规模效应，存量基础设施的折旧被更多营收分摊。</li>
+<li><strong>Graviton 自研芯片</strong>：ARM 架构的 Graviton 在推理任务中的性价比远高于 x86 方案，进一步压低了推理的算力成本。</li>
+</ol>
+<p><strong>大摩提供的云厂商对比表（Exhibit 1）展示了一个更宏大的图景：</strong> 超大规模云厂商（AWS、GCP、Azure）在 GenAI 推理时代的增量利润率可达 30-70%+。而 AWS 的 Q2 数据——增量利润率 52%——正处于这个区间的中上端。</p>
+<h3 id="3-2-瑞银的自上而下论证：利润率扩张是”数学上的必然”"><a href="#3-2-瑞银的自上而下论证：利润率扩张是”数学上的必然”" class="headerlink" title="3.2 瑞银的自上而下论证：利润率扩张是”数学上的必然”"></a>3.2 瑞银的自上而下论证：利润率扩张是”数学上的必然”</h3><blockquote>
+<p>We contend that in view of the revenue dollar growth for AWS into 2027, Amazon has to figure out a way to increase SG&amp;A expenses at 3x the speed of recent years to keep margins down. This in our view points the way to continued segment margin expansion into 2027.</p>
+</blockquote>
+<p>瑞银的论证方式与大摩截然不同，但结论完全一致。大摩从”增量利润率”自下而上推导，瑞银从”营收增速 vs 费用增速”自上而下推导。<strong>瑞银的逻辑是：AWS 的营收增长太快了，以至于 Amazon 如果想阻止利润率继续扩张，必须把 SG&amp;A 开支增速提高到过去几年的 3 倍——而这显然不太可能（也不符合管理层的激励机制）。因此，利润率的持续扩张几乎是”数学上不可避免的”。</strong></p>
+<p><strong>这个论证的巧妙之处在于它把”利润率扩张”从一个”预测”变成了一个”剩余项”（residual）。</strong> 如果营收增速是给定的（基于 backlog 和 AI 需求），费用增速是有上限的（受限于组织能力和管理层意愿），那么利润率扩张就是两者之差——不是”可能发生”，而是”必然发生”。</p>
+<h3 id="3-3-剔除一次性项目后的真实利润率"><a href="#3-3-剔除一次性项目后的真实利润率" class="headerlink" title="3.3 剔除一次性项目后的真实利润率"></a>3.3 剔除一次性项目后的真实利润率</h3><p>瑞银特别指出，Q2 AWS 利润率包含约 $6 亿能源衍生品合同的一次性公允价值变动收益。剔除后，<strong>AWS 运营利润率环比持平于 38%。</strong> 大摩的 Exhibit 3 也给出了同样的脚注注释。</p>
+<blockquote>
+<p>We note that investors have been hesitant to underwrite prospects of stable or increasing margins given rising mix of AI compute workloads.</p>
+</blockquote>
+<p><strong>市场此前担心 AI 工作负载占比上升会压低利润率——因为 AI 推理的算力成本高于传统托管服务，而 AI 客户（尤其是大模型训练客户）的议价能力可能更强。</strong> 但 Q2 的数据证明：即使 AI 占比从 1Q26 的 10% 升至 2Q26 的 15%，利润率纹丝不动（38%）。<strong>这说明 AWS 的定价策略、成本管理和自有芯片战略正在有效抵消 AI 负载的成本压力。</strong> 两家报告都指向同一个结论：AI 不是利润率稀释剂，而是利润率放大器。</p>
+<h3 id="3-4-大摩的-ROIC-模型框架"><a href="#3-4-大摩的-ROIC-模型框架" class="headerlink" title="3.4 大摩的 ROIC 模型框架"></a>3.4 大摩的 ROIC 模型框架</h3><p>大摩在 Exhibit 1 中展示了超大规模云厂商在 GenAI 推理时代的 ROIC 计算框架。该框架将一个”基于第三方基础设施运行的模型 API”的 ROIC 定义为：<strong>收入，减去训练容量成本（训练成本通常费用化计入运营开支），再减去算力租赁成本（COGS），按 21% 税率计税。</strong> 这个框架的核心假设是：推理的边际成本结构决定了 ROIC 的上限，而 AWS 的 Bedrock 平台（净额确认 + 不用承担模型训练成本）天然处于这个框架的最优位置。</p>
+
+
+<p><strong>图 3（大摩 Exhibit 1）是大摩 ROIC 框架的可视化呈现。</strong> 这张图的核心信息是：在 GenAI 推理时代，超大规模云厂商（AWS、GCP、Azure）的增量利润率可达 30-70%+，而”基于第三方基础设施运行的模型 API”（即非云厂商的模型公司，如 Anthropic 如果不在 AWS 上运行）的 ROIC 仅处于较低水平。<strong>AWS 的 Bedrock 平台之所以处于最优位置，是因为它同时享有”模型 API 的收入”（通过 Bedrock 聚合第三方模型）和”基础设施的利润率”（通过自有数据中心和 Graviton&#x2F;Trainium 芯片）——这是一个”两头吃”的商业模式。</strong> 而 Q2 的数据——AWS 增量利润率 52%——正处于 30-70% 区间的中上端，验证了这个框架的合理性。</p>
+<hr>
+<h2 id="四、资本开支：-2-200-亿的修正是”被原谅的增量”"><a href="#四、资本开支：-2-200-亿的修正是”被原谅的增量”" class="headerlink" title="四、资本开支：$2,200 亿的修正是”被原谅的增量”"></a>四、资本开支：$2,200 亿的修正是”被原谅的增量”</h2><h3 id="4-1-瑞银：capex-指引从-2-000-亿上调至-2-200-亿"><a href="#4-1-瑞银：capex-指引从-2-000-亿上调至-2-200-亿" class="headerlink" title="4.1 瑞银：capex 指引从 $2,000 亿上调至 $2,200 亿"></a>4.1 瑞银：capex 指引从 $2,000 亿上调至 $2,200 亿</h3><blockquote>
+<p>Despite the revision to its CapEx guide for 2026 from $200 billion to $220 billion, driven largely by rising supply chain costs, we believe that investors are more than willing to justify the incremental $20 billion spend given the outsized AWS growth in the quarter.</p>
+</blockquote>
+<p>瑞银特别指出，capex 上调的主要驱动因素是<strong>内存等供应链成本上升</strong>——不是”新增投资项目”，而是”已有项目的成本超支”。但市场对此的反应是”欣然接受”——因为 AWS 的增速远超预期，$200 亿的增量投资在 37% 的增速面前显得微不足道。<strong>Q2 实际 capex 为 $542 亿（含资本租赁），略高于瑞银预测的 $546 亿，但符合华尔街 $526 亿的预期。</strong></p>
+
+
+<p><strong>图 4（瑞银 Figure 2）是瑞银对 3Q26-2028 的全线估计变更表。</strong> 这张表透露了几个值得关注的细节：第一，瑞银将 3Q26 营收预测下调了 3.3%（从 $2,070 亿至 $2,001 亿），主因是 Prime Day 从 7 月提前至 6 月导致的季节性调整——<strong>这不是需求疲软，而是会计时间差；</strong> 第二，AWS 营收预测全线调升——3Q26 上调 2.3%，FY26 上调 2.1%，FY28 上调 2.3%——瑞银对 AWS 的信心在财报后进一步增强了；第三，2026 年调整后 EPS 从 $11.03 大幅上调至 $14.88（+34.8%），主要反映了 Anthropic 公允价值收益的纳入——<strong>如果不剔除这个非现金项目，EPS 预测会被严重高估；</strong> 第四，capex 预测在 FY26 基本不变（$2,212 亿），但 FY27 和 FY28 仅有小幅上调——<strong>说明瑞银认为 capex 上修主要是一次性的供应链成本推动，而非持续性的投资扩张。</strong></p>
+<h3 id="4-2-大摩：2027-2028-年冲向-3-250-亿-3-500-亿"><a href="#4-2-大摩：2027-2028-年冲向-3-250-亿-3-500-亿" class="headerlink" title="4.2 大摩：2027&#x2F;2028 年冲向 $3,250 亿&#x2F;$3,500 亿"></a>4.2 大摩：2027&#x2F;2028 年冲向 $3,250 亿&#x2F;$3,500 亿</h3><blockquote>
+<p>Raising ‘27&#x2F;‘28 Capex to $325bn&#x2F;$350bn: AWS’s strong and accelerating ROIC justifies more spend and we expect this to continue.</p>
+</blockquote>
+<p>大摩将 2027&#x2F;2028 年的资本开支预测分别上调至 $3,250 亿和 $3,500 亿。<strong>三年累计资本开支约 $8,890 亿（2026E: $2,195 亿 + 2027E: $3,223 亿 + 2028E: $3,470 亿），接近万亿美元。</strong> 这个数字在全球企业资本开支历史上是空前的。</p>
+<p>但大摩的逻辑非常清晰且不容反驳：<strong>ROIC 越高，越应该加大投资。</strong> 如果 AWS 的增量利润率是 50%+，那么每投入 $1 的资本开支，在 2-3 年内就能产生 $1+ 的增量 EBIT。这不是”烧钱”——这是”高回报投资”。在资本配置的框架下，<strong>拒绝一个 ROIC 50%+ 的投资机会，才是对股东价值的最大损害。</strong></p>
+<p>大摩特别提到了管理层对 capex 构成的拆分：长期资产（建筑物等，折旧 20-30 年）vs 短期资产（网络&#x2F;芯片&#x2F;服务器，折旧 5-7 年）。大摩在自下而上的 capex 测算中使用了这个分类。<strong>这个拆分的战略意义在于：即使未来 AI 需求增速放缓，主要体现在短期资产（服务器&#x2F;芯片）的减投上，而长期资产（数据中心建筑）仍可服务于传统云计算需求，不会成为沉没成本。</strong> 换句话说，Amazon 的 capex 并非”全押 AI”——它有一个结构性的安全垫。</p>
+<h3 id="4-3-自由现金流的短期阵痛与长期终局"><a href="#4-3-自由现金流的短期阵痛与长期终局" class="headerlink" title="4.3 自由现金流的短期阵痛与长期终局"></a>4.3 自由现金流的短期阵痛与长期终局</h3><p>两家报告都显示，2026-2028 年自由现金流为负：</p>
+<ul>
+<li><strong>大摩</strong>：2026E -$116 亿，2027E -$592 亿，2028E -$169 亿</li>
+<li><strong>瑞银</strong>：2026E FCF 收益率仅 0.2%，2027E 升至 2.2%，2028E 跃升至 6.5%，2030E 达 13.1%</li>
+</ul>
+<p><strong>但两家都认为这不是问题——因为经营现金流快速增长。</strong> 大摩预测经营现金流从 2025 年 $1,395 亿增至 2028E $3,301 亿，三年翻倍以上。瑞银预测经营现金流从 2025 年 $1,411 亿增至 2028E $4,690 亿，增速更快。</p>
+<p><strong>瑞银的 FCF 收益率预测更值得关注：</strong> 2026E 年 FCF 收益率仅 0.2%（几乎为零），2027E 年升至 2.2%（勉强可接受），2028E 年跃升至 6.5%（已经很健康），2030E 年达 13.1%（极其丰厚）。<strong>这个轨迹说明：当前的负 FCF 不是”赚钱能力差”，而是”投资速度远快于赚钱速度”——一旦 capex 增速放缓，FCF 会像水库开闸一样释放。</strong> 瑞银 30x FCF 的估值倍数正是基于这个终局逻辑。</p>
+<p><strong>资产负债表提供了缓冲。</strong> 大摩预测 2026E 年末现金 $1,096 亿，长期债务 $1,539 亿；瑞银预测 2026E 年末现金 $1,294 亿，长期债务 $2,531 亿。两家都预期 Amazon 将通过债务融资而非股权融资来支撑 capex——<strong>避免稀释现有股东，同时充分利用当前的低利率环境。</strong></p>
+<hr>
+<h2 id="五、零售：履约成本拐点与三条增长曲线"><a href="#五、零售：履约成本拐点与三条增长曲线" class="headerlink" title="五、零售：履约成本拐点与三条增长曲线"></a>五、零售：履约成本拐点与三条增长曲线</h2><h3 id="5-1-大摩的三条曲线：机器人、生鲜、Agentic"><a href="#5-1-大摩的三条曲线：机器人、生鲜、Agentic" class="headerlink" title="5.1 大摩的三条曲线：机器人、生鲜、Agentic"></a>5.1 大摩的三条曲线：机器人、生鲜、Agentic</h3><p>大摩用了近三分之一的篇幅讨论零售业务——不是因为零售的数据有多惊艳，而是因为零售正在发生一些”从量变到质变”的转折。</p>
+<p><strong>机器人：履约效率的物理引擎。</strong> 大摩指出，Amazon 正在持续用最新一代技术改造仓储设施，并预计在 2026 年将 Cardinal 和 Sparrow 等机器人手臂的部署数量翻倍以上。<strong>Fulfillment cost per unit efficiency was notably strong, coming in 2% below us, and 17% y&#x2F;y unit growth was the fastest since 1Q21.</strong> 单均履约成本同比下降 2%，而单量增长 17%——这是典型的经营杠杆释放。这里需要特别说明：17% 的单量增速包含了 Prime Day 从 7 月提前至 6 月的拉动效应，即便如此，增速仍是 1Q21 以来最高。</p>
+<p><strong>生鲜&#x2F;易腐品：零售业的终极战场。</strong> 大摩提供了三个关键数据：生鲜易腐品的月活客户自年初以来增长超过 50%；含生鲜的当日达订单平均多出 3 倍的商品数量；生鲜产品在 Amazon.com 前 20 大畅销商品中占据了 6 席。<strong>生鲜是零售业最难攻克的品类——冷链物流、短保质期、高损耗率——但一旦攻克，它就是最高频、最高粘性、最高客单价的品类。</strong> Amazon 在全品类电商（三日达非易腐品 + 当日达生鲜）上的覆盖范围，是沃尔玛、Costco 或任何单一渠道都无法复制的。</p>
+<p><strong>Agentic 购物：从”搜索”到”委托”。</strong> 大摩提供了三个递进的数据：过去 12 个月有超过 3.5 亿客户使用过 Alexa Shopping；Q2 活跃用户近乎翻倍；交互量同比增长 5 倍以上。<strong>Agentic 购物的本质不是”语音搜索”，而是”委托决策”——用户只需说”帮我买性价比最高的洗衣液”，AI 代理完成所有中间步骤。</strong> 大摩在 2025 年 11 月 17 日的专题报告 <em>“Agentic Shoppers Are Coming… Who Could Win or Lose?”</em> 中已将 Amazon 列为 Agentic 电商的最大受益者之一。Q2 的数据验证了这个判断，但更重要的是：3.5 亿用户只是”用过”，远未到”依赖”的程度。一旦用户习惯从”搜索”转向”委托”，Amazon 的 GMV 增长曲线将出现第二次陡峭化。</p>
+<h3 id="5-2-瑞银的警示：配送成本-vs-单量增速的”疫情以来首次逆转”"><a href="#5-2-瑞银的警示：配送成本-vs-单量增速的”疫情以来首次逆转”" class="headerlink" title="5.2 瑞银的警示：配送成本 vs 单量增速的”疫情以来首次逆转”"></a>5.2 瑞银的警示：配送成本 vs 单量增速的”疫情以来首次逆转”</h3><blockquote>
+<p>Even as cost growth of 19% outpaced units growth of 17% in the quarter (the first time that the metrics have inflected since the pandemic)…</p>
+</blockquote>
+<p><strong>这是瑞银报告中最值得警惕的一个数据点——Q2 配送成本增速（19%）自疫情以来首次超过单量增速（17%）。</strong> 瑞银提供了从 1Q18 到 2Q26 的完整时间序列图（Figure 1），展示了这一指标的完整周期波动：</p>
+<ul>
+<li><strong>2Q19</strong>：配送成本增速与单量增速开始分化（同日达 Prime 推出，配送成本飙升）</li>
+<li><strong>3Q22</strong>：配送成本增速与单量增速开始收敛（Amazon 逐渐消化了成本基础）</li>
+<li><strong>4Q22</strong>：单量增速开始超过成本增速，单位经济效益改善</li>
+<li><strong>4Q24</strong>：单量增速超过成本增速的差距达到 4Q22 以来最大</li>
+<li><strong>1Q26</strong>：单量增速达到疫情以来最高峰</li>
+<li><strong>2Q26</strong>：配送成本增速（19%）反超单量增速（17%），出现拐点</li>
+</ul>
+
+
+<p><strong>图 5（瑞银 Figure 1）是瑞银最经典的追踪图表之一——从 1Q18 到 2Q26 的单量增速与配送成本增速的完整周期。</strong> 这张图的价值在于它揭示了 Amazon 零售业务的”心跳”：当单量增速（蓝色线）高于配送成本增速（橙色线）时，单位经济效益改善，利润率扩张；当配送成本增速反超时，利润率承压。<strong>从 4Q22 到 1Q26，单量增速持续高于成本增速，这段时间也是 Amazon 零售利润率持续改善的黄金期。2Q26 的拐点——成本增速首次反超——是自疫情以来第一次出现，因此瑞银特别标注了四个关键时间节点（2Q19 分化、3Q22 收敛、4Q22 改善、2Q26 拐点）。</strong> 但正如瑞银所强调的，单量增速本身（17%）是 1Q21 以来最高——需求面没有问题，成本面的压力是”主动选择”（更快配送）和”宏观因素”（燃油价格）叠加的结果，而非结构性的恶化。</p>
+<p><strong>但瑞银认为这不是长期趋势逆转，而是三个短期因素叠加的结果：</strong></p>
+<ol>
+<li><strong>燃油价格上涨</strong>：推高了逐单配送成本</li>
+<li><strong>当日达&#x2F;Amazon Now 的扩张</strong>：更快的配送意味着更高的单位成本（更少的集单机会、更频繁的半空车运输）</li>
+<li><strong>生鲜&#x2F;日用品&#x2F;药品的高频次配送</strong>：这些品类单均价值低、配送频次高，天然拉高了”配送成本&#x2F;单量”比率</li>
+</ol>
+<p><strong>瑞银的核心判断是：单量增速本身（17%）是 1Q21 以来最高——需求依然强劲，成本的上升是”主动选择”（更快配送、更多品类）而非”被动承受”。</strong> 从长期来看，机器人化和区域化履约网络（regionalization）仍将推动单位成本下降。<strong>但短期来看，这个拐点值得持续关注——如果下个季度配送成本增速继续高于单量增速，说明”更快配送 vs 更低成本”的取舍正在向”更快”倾斜，而这将对零售利润率构成压力。</strong></p>
+<h3 id="5-3-大摩的零售利润拆解"><a href="#5-3-大摩的零售利润拆解" class="headerlink" title="5.3 大摩的零售利润拆解"></a>5.3 大摩的零售利润拆解</h3><p>大摩对零售利润做了更细致的拆解。零售 EBIT 受益于约 $6 亿的关税相关退款一次性收益，但被约 $11 亿的燃油和干线运输成本（transitory macro fuel and line-haul costs）所抵消。<strong>剔除这净约 $5 亿的不利因素后，大摩估算零售 EBIT 约为 $113 亿（7.2% 利润率），基本符合大摩预测的 $116 亿（7.4% 利润率）。</strong></p>
+<p>这个拆解说明：<strong>零售业务的利润率没有实质性的恶化——它只是被临时性的宏观因素（燃油价格）和投入性因素（Prime Day 切换、当日达扩张）所掩盖。</strong> 一旦这些因素消退，零售利润率将回到上行轨道。</p>
+<hr>
+<h2 id="六、Trainium-与-OpenAI：瑞银的独家催化剂"><a href="#六、Trainium-与-OpenAI：瑞银的独家催化剂" class="headerlink" title="六、Trainium 与 OpenAI：瑞银的独家催化剂"></a>六、Trainium 与 OpenAI：瑞银的独家催化剂</h2><h3 id="6-1-OpenAI-将采用-Trainium-进行训练"><a href="#6-1-OpenAI-将采用-Trainium-进行训练" class="headerlink" title="6.1 OpenAI 将采用 Trainium 进行训练"></a>6.1 OpenAI 将采用 Trainium 进行训练</h3><blockquote>
+<p>…what should be above 40% growth next year as OpenAI starts to use Trainium chips in early-2027.</p>
+</blockquote>
+<p>这是瑞银报告中最重要的前瞻性信息，也是大摩报告中没有提及的独家催化剂。<strong>OpenAI——全球最大的 AI 模型训练公司——将在 2027 年初开始使用 AWS 自研的 Trainium 芯片进行训练。</strong> 这里需要特别强调”Trainium”而非”Inferentia”——Trainium 是 AWS 的训练芯片，Inferentia 是推理芯片。OpenAI 使用 Trainium 意味着<strong>OpenAI 将把部分训练工作负载从 Nvidia GPU 迁移到 AWS 的自研芯片上。</strong></p>
+<p><strong>这个催化剂的意义是分层的：</strong></p>
+<p><strong>第一层：从”Nvidia 经销商”到”自有芯片平台”。</strong> AWS 目前大部分 AI 营收来自出租搭载 Nvidia GPU 的算力实例。Nvidia 在这个交易中分走了 GPU 硬件利润的大头，AWS 赚的是”出租”的差价。但如果 OpenAI 的训练工作负载迁移到 Trainium 上，AWS 的角色将从”Nvidia 的渠道商”变成”自有芯片的平台商”——利润率结构将发生根本性变化。<strong>瑞银披露 AWS 芯片业务年化收入已超过 $250 亿——如果 Trainium 被 OpenAI 采用，这个数字的增速将远超当前预测。</strong></p>
+<p><strong>第二层：生态锁定效应。</strong> 一旦 OpenAI 的训练流程深度适配了 Trainium 的硬件架构和软件栈（AWS Neuron SDK），切换成本将极高。CUDA 的生态护城河之所以强大，是因为开发者已经习惯了 Nvidia 的编程模型。<strong>如果 OpenAI——作为 AI 行业的”标准制定者”之一——将其训练流程适配到 Trainium 上，这将为其他 AI 公司跟进提供最强的信号和参考架构。</strong></p>
+<p><strong>第三层：40%+ 增长的底气。</strong> 瑞银对 2027 年 AWS 40%+ 增长预测的核心支撑，就是 Trainium 被 OpenAI 及其他客户采用。这不是一个”可能”的催化剂——它是一个已经写入双方合作路线图的确定性事件。</p>
+<h3 id="6-2-Anthropic-的-53-4-亿公允价值收益：不要被它迷惑"><a href="#6-2-Anthropic-的-53-4-亿公允价值收益：不要被它迷惑" class="headerlink" title="6.2 Anthropic 的 $53.4 亿公允价值收益：不要被它迷惑"></a>6.2 Anthropic 的 $53.4 亿公允价值收益：不要被它迷惑</h3><p>瑞银特别提醒投资者注意一个容易被忽略的细节：</p>
+<blockquote>
+<p>Net income included ~$53.4B gain from its Anthropic investment but excluding the benefit, reported results would have come in under the Street.</p>
+</blockquote>
+<p>Q2 GAAP 净利润 $626 亿，其中包含约 $534 亿的 Anthropic 股权投资公允价值变动收益（mark-to-market）。<strong>剔除这一非现金项目，真实经营业绩低于华尔街共识。</strong> 大摩的 Exhibit 6 也显示，GAAP EPS $5.75 中包含非经营性税前其他收入约 $39 亿，剔除后 EPS 约为 $1.90——与华尔街共识 $1.92 基本一致。</p>
+<p><strong>但两家都认为这不影响核心投资逻辑。</strong> Anthropic 的估值上涨本身就是 AWS AI 生态价值的间接印证——Anthropic 是 AWS 最大的 AI 客户之一，其估值上升意味着市场对 AI 行业的整体信心增强，而这将进一步推动更多企业采用 AWS 的 AI 服务。</p>
+<h3 id="6-3-Q3-指引：不要被表面数字误导"><a href="#6-3-Q3-指引：不要被表面数字误导" class="headerlink" title="6.3 Q3 指引：不要被表面数字误导"></a>6.3 Q3 指引：不要被表面数字误导</h3><p>两家报告都提到了 Q3 指引的”表面疲软”：</p>
+<blockquote>
+<p>Management offered 3Q26 revenue guide of $197 billion to $202 billion (+9%-12% YOY) vs the Street $203.9 billion (+14.9%) and UBSe $207.0 billion (+13.2%).</p>
+</blockquote>
+<p><strong>$197-2020 亿的营收指引低于华尔街 $203.9 亿和瑞银 $207.0 亿的预测，同比增速仅 9-12%。</strong> 但瑞银指出，剔除 Prime Day 从 7 月提前至 6 月的影响，增速将高出约 400bp。此外，汇率不利影响约 80bp。<strong>调整后的增速约为 13-16%，与瑞银的预测基本一致。</strong> 大摩也指出，Q3 指引”generally in-line”——考虑到 Prime Day 切换和汇率因素后，并没有实质性疲软。</p>
+<p><strong>营业利润指引 $225-265 亿，隐含利润率 11.4-13.1%，与瑞银预测的 $256 亿（12.4%）和华尔街 $254 亿（12.4%）基本一致。</strong></p>
+
+
+<p><strong>图 6（瑞银 Figure 3-4）展示了 Q2 实际结果与瑞银预测的逐项对比。</strong> 这张表最值得关注的是”% Δ”列——它揭示了哪些业务线超出预期、哪些低于预期。AWS 超出 3.5%（$407.9 亿 vs $422.3 亿实际），在线商店超出 5.5%（拉动来自 Prime Day 提前），但广告收入低于预期 1.1%，第三方卖家服务低于预期 1.4%。<strong>“其他收入”项（mark-to-market 收益）的 $534 亿暴增使得税前利润从瑞银预测的 $240 亿暴增至 $809 亿，净利润从 $204 亿飙升至 $626 亿——这就是为什么 GAAP EPS $5.75 远高于运营 EPS 约 $1.90。</strong> 这张表是理解”Amazon 财报到底好不好”的关键——<strong>剔除 Anthropic 的非现金收益后，运营层面的表现是”稳健超预期”，而非”暴增”。</strong></p>
+
+
+<p><strong>图 7（大摩 Exhibit 6）是大摩的”实际 vs 预测”对比表，与瑞银的 Figure 3-4 形成互补。</strong> 大摩的对比更侧重于成本结构——配送成本（$279 亿 vs 预测 $293 亿，低 5%）、履约费用（$289 亿 vs 预测 $288 亿，基本持平）、技术与内容（$295 亿 vs 预测 $287 亿，高 3%）。<strong>大摩特别标注了 GAAP EPS $5.75 中包含非经营性税前其他收入约 $39 亿，剔除后 EPS 约为 $1.90——与华尔街共识 $1.92 基本一致。</strong> 两张表（瑞银 + 大摩）合在一起，提供了 Q2 财报的完整画像：<strong>营收端 AWS 大超预期，零售略超预期；利润端运营利润超出预期（$275 亿 vs 预测 $253 亿），但剔除一次性项目后大致符合预期；成本端配送成本低于预期（利好），但技术与内容高于预期（利空）。</strong></p>
+<hr>
+<h2 id="七、估值方法论：P-E-vs-P-FCF-的对决"><a href="#七、估值方法论：P-E-vs-P-FCF-的对决" class="headerlink" title="七、估值方法论：P&#x2F;E vs P&#x2F;FCF 的对决"></a>七、估值方法论：P&#x2F;E vs P&#x2F;FCF 的对决</h2><h3 id="7-1-大摩的-PEG-折价论"><a href="#7-1-大摩的-PEG-折价论" class="headerlink" title="7.1 大摩的 PEG 折价论"></a>7.1 大摩的 PEG 折价论</h3><p>大摩的目标价 $335 基于将约 25x P&#x2F;E 应用于 2027&#x2F;2028 年平均 EPS 约 $14（滚动至年中），对应约 28x 2027 年 EPS 和约 22x 2028 年 EPS。</p>
+<p><strong>大摩估值的核心论点是 PEG 折价。</strong> 报告中的 Exhibit 5 提供了大科技公司（包括 AAPL、MSFT、GOOGL、META、COST、NFLX、WMT）的 PEG 对比：</p>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>2027E EPS 增速</th>
+<th>2027E P&#x2F;E</th>
+<th>2027E PEG</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AAPL</td>
+<td>18%</td>
+<td>32x</td>
+<td>1.8x</td>
+</tr>
+<tr>
+<td>MSFT</td>
+<td>16%</td>
+<td>21x</td>
+<td>1.3x</td>
+</tr>
+<tr>
+<td>GOOGL</td>
+<td>26%</td>
+<td>22x</td>
+<td>0.8x</td>
+</tr>
+<tr>
+<td>META</td>
+<td>6%</td>
+<td>16x</td>
+<td>2.6x</td>
+</tr>
+<tr>
+<td>超大规模云厂商中位数</td>
+<td>16%</td>
+<td>21x</td>
+<td><strong>1.3x</strong></td>
+</tr>
+<tr>
+<td><strong>AMZN @ $260</strong></td>
+<td><strong>41%</strong></td>
+<td>22x</td>
+<td><strong>0.5x</strong></td>
+</tr>
+<tr>
+<td><strong>AMZN @ $335</strong></td>
+<td><strong>41%</strong></td>
+<td>28x</td>
+<td><strong>0.7x</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Amazon 的 EPS 增速是超大规模云厂商中位数的 2.5 倍（41% vs 16%），但当前 PEG 仅为 0.5x，比中位数 1.3x 折价约 60%。</strong> 即使按目标价 $335 计算，PEG 也只有 0.7x，折价 47%。<strong>大摩的核心论点：市场在系统性低估 Amazon 的盈利增长潜力——这种低估体现在 PEG 的大幅折价上。</strong></p>
+<p><strong>市场为什么给 Amazon 如此大的 PEG 折价？</strong> 大摩没有明确回答，但可以从报告逻辑中推断：第一，资本开支的巨幅增长让市场对自由现金流的短期前景感到不安；第二，零售业务的利润率远低于 AWS，拖累了整体利润率；第三，Amazon 从未回购股票，也没有分红，市场缺少”股东回报”的信号；第四，Anthropic 的 $534 亿非现金收益让 GAAP 净利润失真，投资者可能对盈利质量存疑。</p>
+<p><strong>大摩的熊&#x2F;牛场景分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>2027&#x2F;2028 平均 EPS</th>
+<th>应用 P&#x2F;E</th>
+<th>目标价</th>
+<th>涨跌幅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>熊市</td>
+<td>$12</td>
+<td>17x</td>
+<td>$215</td>
+<td>-17%</td>
+</tr>
+<tr>
+<td>基准</td>
+<td>$14</td>
+<td>25x</td>
+<td>$335</td>
+<td>+29%</td>
+</tr>
+<tr>
+<td>牛市</td>
+<td>$15</td>
+<td>27x</td>
+<td>$410</td>
+<td>+58%</td>
+</tr>
+</tbody></table>
+<p><strong>熊市场景的 $215 仅比当前股价（$235.50）低约 8.7%——下行风险有限。</strong> 牛市场景的 $410 比当前股价高出 74.1%——上行空间远大于下行风险。这种不对称的回报分布正是 Overweight 评级的底层逻辑。</p>
+
+
+
+
+<p><strong>图 7（大摩 Exhibit 4-5）将大摩的估值逻辑可视化。</strong> Exhibit 4 展示了熊&#x2F;基准&#x2F;牛三种场景下的目标价推导——核心变量是 EPS 和 P&#x2F;E 倍数。Exhibit 5 将 Amazon 的 PEG 与七大可比公司（AAPL、MSFT、GOOGL、META、COST、NFLX、WMT）并排对比。<strong>这两张图合在一起，构成了大摩最核心的投资论点：Amazon 的 EPS 增速（41%）在可比公司中排名第一，但 PEG（0.5x）排名倒数——这种”增速最高、估值最低”的组合，在有效市场中是不可持续的。</strong> 值得注意的是，大摩选取的可比公司中包含了 Costco、Walmart 等零售公司——它们的 PEG 分别为 4.5x 和 5.1x，远高于 Amazon。<strong>如果 Amazon 的零售业务也能获得类似的 PEG 溢价，整体估值将远超当前水平。</strong></p>
+<h3 id="7-2-瑞银的-P-FCF-框架"><a href="#7-2-瑞银的-P-FCF-框架" class="headerlink" title="7.2 瑞银的 P&#x2F;FCF 框架"></a>7.2 瑞银的 P&#x2F;FCF 框架</h3><blockquote>
+<p>We derive our price target based on a Price to Free Cash Flow (FCF) methodology and apply a 30x multiple (unchanged) as Amazon has typically anchored its conversations around cash flow generation.</p>
+</blockquote>
+<p>瑞银的目标价 $318 基于将 30x P&#x2F;FCF 倍数应用于 3Q27-2Q28 自由现金流估计 $1,163 亿。<strong>瑞银的估值逻辑是：Amazon 管理层一直以自由现金流为核心与投资者沟通，因此估值框架也应该以 FCF 为准。</strong> 30x FCF 是瑞银长期使用的倍数，反映了对 Amazon 长期现金生成能力的信心。</p>
+<p><strong>瑞银的当前估值指标（截至 2026 年 7 月 30 日）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>股价</td>
+<td>$258.12</td>
+</tr>
+<tr>
+<td>稀释后股本</td>
+<td>约 109 亿股</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>$2,710 亿</td>
+</tr>
+<tr>
+<td>2027E GAAP P&#x2F;E</td>
+<td>19x</td>
+</tr>
+<tr>
+<td>2028E GAAP P&#x2F;E</td>
+<td>11x</td>
+</tr>
+<tr>
+<td>2026E FCF 收益率</td>
+<td>0.2%</td>
+</tr>
+<tr>
+<td>2027E FCF 收益率</td>
+<td>2.2%</td>
+</tr>
+<tr>
+<td>2028E FCF 收益率</td>
+<td>6.5%</td>
+</tr>
+</tbody></table>
+<p><strong>瑞银的核心论点：Amazon 当前 19x 2027E GAAP P&#x2F;E 不应该低于市场倍数。</strong> 报告明确指出，Google 和 Meta 作为可比公司，交易在 20-25x 区间——Amazon 的 19x 明显偏低。</p>
+<p><strong>瑞银的熊&#x2F;牛场景分析：</strong></p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>2 年营收 CAGR</th>
+<th>FCF 利润率</th>
+<th>应用倍数</th>
+<th>3Q27-2Q28 FCF</th>
+<th>目标价</th>
+<th>涨跌幅</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>熊市</td>
+<td>13.0%</td>
+<td>8.5%</td>
+<td>20x</td>
+<td>$842 亿</td>
+<td>$153</td>
+<td>-41%</td>
+</tr>
+<tr>
+<td>基准</td>
+<td>16.9%</td>
+<td>11.0%</td>
+<td>30x</td>
+<td>$1,163 亿</td>
+<td>$318</td>
+<td>+23%</td>
+</tr>
+<tr>
+<td>牛市</td>
+<td>20.0%</td>
+<td>14.5%</td>
+<td>35x</td>
+<td>$1,620 亿</td>
+<td><strong>$509</strong></td>
+<td>+97%</td>
+</tr>
+</tbody></table>
+<p><strong>上行&#x2F;下行不对称比率为 2.4x（97% ÷ 41%）。</strong> 瑞银的牛市场景 $509 比大摩的 $410 高出约 24%，反映了瑞银对 FCF 利润率改善的更高预期——在牛市场景中，瑞银假设 FCF 利润率 14.5%，而大摩的牛市场景仅基于 $15 EPS × 27x P&#x2F;E。</p>
+<h3 id="7-3-两种估值方法的哲学对决"><a href="#7-3-两种估值方法的哲学对决" class="headerlink" title="7.3 两种估值方法的哲学对决"></a>7.3 两种估值方法的哲学对决</h3><p><strong>两家目标价分别为 $335 和 $318，差距仅约 5%——但估值方法论的底层哲学截然不同。</strong></p>
+<p>大摩的 P&#x2F;E 框架暗含的假设是”盈利增长是当前最核心的定价因子”。PEG 折价论的核心逻辑是：<strong>市场给 Amazon 的定价低于其增长应该获得的溢价——这种定价偏差终将纠正。</strong> 大摩的 25x P&#x2F;E 倍数本身并不激进（同行业可比公司中位数 21x），但大摩没有像瑞银那样直接对标 FCF 终局——而是选择了一个更”当下”的锚点：<strong>你的 EPS 增速是 41%，你的 PEG 是 0.5x，你应该被重新定价。</strong></p>
+<p>瑞银的 P&#x2F;FCF 框架暗含的假设是”资本开支终将回落，自由现金流才是终极价值来源”。30x FCF 是一个长期倍数，它隐含的信念是：<strong>今天的 capex 是明天的 FCF，而 FCF 的终局状态值得 30x 的溢价。</strong> 瑞银的估值更依赖终局——FCF 收益率从 2026E 年的 0.2% 到 2030E 年的 13.1%，这个跃迁是 30x FCF 倍数的信心来源。</p>
+<p><strong>两种方法对应两种投资风格：</strong> 大摩的 P&#x2F;E&#x2F;PEG 框架适合”增速驱动型”投资者——他们关心的是”这个季度的增长有没有被充分定价”；瑞银的 P&#x2F;FCF 框架适合”现金回报型”投资者——他们关心的是”五年后这家公司能产生多少自由现金”。<strong>但在当前这个时间点，两种方法都指向同一个方向：Amazon 被低估了。</strong></p>
+
+
+<p><strong>图 8（大摩 Exhibit 7）是大摩对 2026-2028 年全线估计的变更汇总。</strong> 这张表的关键信息在”Revision”列：大摩将 2027 年 North America 营收上调 1%，International 上调 2%，AWS 上调 2%——但 AWS 的 EBIT 被上调了更多（利润率提升）。<strong>值得关注的是，大摩将 2027 年 capex 上调了 6% 至 $3,223 亿，自由现金流从 -$439 亿进一步恶化至 -$592 亿（-26%）。</strong> 这说明大摩在”ROIC 越高越该投”的框架下，对 capex 采取了最激进的假设——<strong>即使这意味着短期内 FCF 更难看，长期的盈利增长足以弥补。</strong> 同时，大摩将 2027 年非经营性收入从 -$55 亿调整至 -$51 亿，将 2028 年从 -$88 亿调整至 -$77 亿——反映了对 Anthropic 公允价值变动收益的更保守假设。</p>
+<hr>
+<h2 id="八、解读：从”两份报告”看”一个共识”"><a href="#八、解读：从”两份报告”看”一个共识”" class="headerlink" title="八、解读：从”两份报告”看”一个共识”"></a>八、解读：从”两份报告”看”一个共识”</h2><h3 id="8-1-“AI-不是成本中心，是利润中心”——华尔街的集体转折"><a href="#8-1-“AI-不是成本中心，是利润中心”——华尔街的集体转折" class="headerlink" title="8.1 “AI 不是成本中心，是利润中心”——华尔街的集体转折"></a>8.1 “AI 不是成本中心，是利润中心”——华尔街的集体转折</h3><p><strong>两份报告在同一天发布，给出了几乎相同的核心结论：AWS 的 AI 业务正在从”烧钱”转向”赚钱”，而且赚钱的速度远超市场预期。</strong> 这不是巧合——这是华尔街对 GenAI 投资回报率从”怀疑”到”确认”的集体转折。</p>
+<p><strong>Q2 2026 是转折点。</strong> 在此之前，市场的主流叙事是”AI 投资巨大，回报不确定”。在此之后，数据给出了明确答案：AWS 的 AI ARR 单季翻倍（$100 亿 → $250 亿）、增量利润率 52%、backlog 有机增长 $510 亿——<strong>ROIC 不再是理论推导，而是财报数字。</strong> 大摩的专题报告 <em>“The Paths to 25-50% GenAI ROIC”</em> 在 7 月 27 日发布，仅四天后，Q2 数据就提供了实证。</p>
+<h3 id="8-2-两份报告的交集与分歧"><a href="#8-2-两份报告的交集与分歧" class="headerlink" title="8.2 两份报告的交集与分歧"></a>8.2 两份报告的交集与分歧</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>大摩</th>
+<th>瑞银</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>评级</td>
+<td>Overweight</td>
+<td>Buy</td>
+</tr>
+<tr>
+<td>目标价</td>
+<td>$335</td>
+<td>$318</td>
+</tr>
+<tr>
+<td>当前股价</td>
+<td>$235.50</td>
+<td>$258.12</td>
+</tr>
+<tr>
+<td>隐含上行</td>
+<td>+29%</td>
+<td>+23%</td>
+</tr>
+<tr>
+<td>估值方法</td>
+<td>P&#x2F;E（25x）</td>
+<td>P&#x2F;FCF（30x）</td>
+</tr>
+<tr>
+<td>核心叙事</td>
+<td>“70 法则” + PEG 折价</td>
+<td>“40%+ 增长” + Trainium 催化剂</td>
+</tr>
+<tr>
+<td>利润率论述</td>
+<td>增量利润率 52%，自下而上</td>
+<td>38% 利润率持平，反向逻辑（SG&amp;A 3x）</td>
+</tr>
+<tr>
+<td>Backlog 解读</td>
+<td>$4,960 亿总规模</td>
+<td>拆分 Anthropic $1,000 亿 vs 有机 $510 亿</td>
+</tr>
+<tr>
+<td>Capex 论述</td>
+<td>长期资产 vs 短期资产拆分</td>
+<td>内存成本上升驱动上修，投资者”欣然接受”</td>
+</tr>
+<tr>
+<td>零售关注点</td>
+<td>机器人、生鲜、Agentic 三条曲线</td>
+<td>配送成本 vs 单量增速 18 季度拐点</td>
+</tr>
+<tr>
+<td>独家信息</td>
+<td>云厂商增量利润率矩阵</td>
+<td>OpenAI 将采用 Trainium</td>
+</tr>
+<tr>
+<td>牛市目标价</td>
+<td>$410</td>
+<td>$509</td>
+</tr>
+<tr>
+<td>上行&#x2F;下行不对称</td>
+<td>2.5x</td>
+<td>2.4x</td>
+</tr>
+</tbody></table>
+<p><strong>交集揭示了共识：AWS 的增长正在加速，利润率正在扩张，而市场定价尚未充分反映。</strong> 分歧则在于：大摩更关注”比同行便宜多少”（PEG 折价），瑞银更关注”未来的现金有多厚”（FCF 终局）；大摩更关注零售的长期增长曲线（机器人、生鲜、Agentic），瑞银更关注零售的短期成本拐点（配送成本反超单量增速）。</p>
+<h3 id="8-3-从”云基础设施”到”AI-操作系统”"><a href="#8-3-从”云基础设施”到”AI-操作系统”" class="headerlink" title="8.3 从”云基础设施”到”AI 操作系统”"></a>8.3 从”云基础设施”到”AI 操作系统”</h3><p><strong>Trainium 被 OpenAI 采用，是 AWS 从”卖 Nvidia GPU 算力”转向”卖自有芯片算力”的分水岭。</strong> 如果 AWS 能成功将 Trainium 从”Nvidia 替代品”升级为”AI 训练的首选平台”，那么 AWS 的商业模式将从”基础设施租赁”转变为”芯片 + 平台 + 生态”——这一定位的估值逻辑，远非 25x P&#x2F;E 或 30x FCF 所能框定。</p>
+<p><strong>但这里有一个没有被充分讨论的风险：如果 Trainium 的性能或生态无法达到 OpenAI 的期望，OpenAI 可能在 2027 年之后减少或撤回 Trainium 的使用。</strong> 瑞银并未讨论这个下行情景——它假设 Trainium 的采用是”一路向上”的。对于投资者而言，这个风险值得独立评估。</p>
+<h3 id="8-4-增长、利润率和资本的三角正反馈"><a href="#8-4-增长、利润率和资本的三角正反馈" class="headerlink" title="8.4 增长、利润率和资本的三角正反馈"></a>8.4 增长、利润率和资本的三角正反馈</h3><p><strong>这份报告最核心的洞察，不在于任何单一数据的亮眼，而在于它揭示了一个正在加速运转的正反馈三角：</strong></p>
+<ol>
+<li><strong>增长（Growth）</strong>：AWS 的 36.8% → 39% → 40%+ 增速 → 更高营收 → 更大规模</li>
+<li><strong>利润率（Margins）</strong>：增量利润率 52% → 更高 EBIT → 更多现金</li>
+<li><strong>资本（Capital）</strong>：更多现金 + 更高 ROIC → 更激进的投资 → 更强的增长</li>
+</ol>
+<p><strong>这三个环节在传统企业中通常是”不可能三角”——高增长需要高投入，高投入压低利润率，低利润率限制再投资能力。</strong> 但 AWS 正在打破这个三角：它的增长越快，利润率越高（因为增量利润率远超存量利润率），利润率越高，它能投的钱越多，而更多的投资又能带来更多的增长。<strong>这正是”复利机器”的定义：每一个环节都在强化下一个环节，形成指数级的飞轮效应。</strong></p>
+<p><strong>而 Trainium 和 OpenAI 的催化剂，本质上是在给这个飞轮加入”第四维”——技术自主性。</strong> 当 AWS 不再依赖 Nvidia 的 GPU 供应周期和定价策略，而是用自己的芯片、自己的软件栈、自己的数据中心来驱动 AI 增长时，这个飞轮就不再受制于任何外部供应商的瓶颈。<strong>这才是瑞银报告中”40%+ 增长”的真正底气所在。</strong></p>
+<hr>
+<p><em>博客作者对摩根士丹利和瑞银的研究报告做了深度解读与融合分析，并未按原文全译，需要精确原文的读者请自行寻找。两份报告均在 2026 年 7 月 31 日发布，基于 Amazon Q2 2026 财报。</em></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏</p><p><a href="http://vincentgaohj.github.io/Blog/2026/07/31/AWS 的 70 法则 - ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏/">http://vincentgaohj.github.io/Blog/2026/07/31/AWS 的 70 法则 - ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2026-07-31</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2026-08-01</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AI/">AI</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Research/">Research</a><a class="link-muted mr-2" rel="tag" href="/Blog/tags/Cloud/">Cloud</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2026/07/27/%E9%87%8E%E6%9D%91%E9%A6%96%E8%AF%84%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8-AI%E8%B6%85%E7%BA%A7%E5%91%A8%E6%9C%9F%E4%B8%8B%E7%9A%84%E4%B8%AD%E5%9B%BDDRAM%E4%B9%8B%E7%8E%8B/"><span class="level-item">野村首评长鑫存储：AI 超级周期下的中国 DRAM 之王</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
+            this.page.url = 'http://vincentgaohj.github.io/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/';
+            this.page.identifier = '2026/07/31/AWS 的 70 法则 - ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏/';
+        };
+        (function() {
+            var d = document, s = d.createElement('script');  
+            s.src = '//' + 'vincentgaohj' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/"><img src="/Blog/gallery/AWS-70-ROIC-GenAI/cover.png" alt="AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-31T02:00:00.000Z">2026-07-31</time></p><p class="title"><a href="/Blog/2026/07/31/AWS%20%E7%9A%84%2070%20%E6%B3%95%E5%88%99%20-%20ROIC%20%E4%B8%8E%20GenAI%20%E7%9A%84%E5%A4%8D%E5%88%A9%E6%95%88%E5%BA%94%E2%80%94%E2%80%94%E5%A4%A7%E6%91%A9%E4%B8%8E%E7%91%9E%E9%93%B6%E5%8F%8C%E9%87%8D%E5%A5%8F/">AWS 的 70 法则：ROIC 与 GenAI 的复利效应——大摩与瑞银双重奏</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/07/27/%E9%87%8E%E6%9D%91%E9%A6%96%E8%AF%84%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8-AI%E8%B6%85%E7%BA%A7%E5%91%A8%E6%9C%9F%E4%B8%8B%E7%9A%84%E4%B8%AD%E5%9B%BDDRAM%E4%B9%8B%E7%8E%8B/"><img src="/Blog/gallery/cxmt-nomura/cover.png" alt="野村首评长鑫存储：AI 超级周期下的中国 DRAM 之王"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-27T02:00:00.000Z">2026-07-27</time></p><p class="title"><a href="/Blog/2026/07/27/%E9%87%8E%E6%9D%91%E9%A6%96%E8%AF%84%E9%95%BF%E9%91%AB%E5%AD%98%E5%82%A8-AI%E8%B6%85%E7%BA%A7%E5%91%A8%E6%9C%9F%E4%B8%8B%E7%9A%84%E4%B8%AD%E5%9B%BDDRAM%E4%B9%8B%E7%8E%8B/">野村首评长鑫存储：AI 超级周期下的中国 DRAM 之王</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/07/20/SpaceX%E4%B8%8E%E6%99%BA%E8%83%BD%E7%BB%8F%E6%B5%8E-i%E7%AD%89%E4%BA%8Eer%E5%B9%B3%E6%96%B9/"><img src="/Blog/gallery/spacex-intelligence-economy/cover.png" alt="SpaceX 与智能经济：i = er^2"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-20T02:00:00.000Z">2026-07-20</time></p><p class="title"><a href="/Blog/2026/07/20/SpaceX%E4%B8%8E%E6%99%BA%E8%83%BD%E7%BB%8F%E6%B5%8E-i%E7%AD%89%E4%BA%8Eer%E5%B9%B3%E6%96%B9/">SpaceX 与智能经济：i = er^2</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/07/14/%E5%86%85%E5%AD%98%E7%A8%80%E7%BC%BA-%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E4%B8%8EAI%E4%BA%A7%E4%B8%9A%E9%87%8D%E6%9E%84/"><img src="/Blog/gallery/%E5%86%85%E5%AD%98%E7%A8%80%E7%BC%BA%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E4%B8%8EAI%E4%BA%A7%E4%B8%9A%E9%87%8D%E6%9E%84/cover.png" alt="内存稀缺、开源模型与AI产业重构"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-07-14T02:00:00.000Z">2026-07-14</time></p><p class="title"><a href="/Blog/2026/07/14/%E5%86%85%E5%AD%98%E7%A8%80%E7%BC%BA-%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E4%B8%8EAI%E4%BA%A7%E4%B8%9A%E9%87%8D%E6%9E%84/">内存稀缺、开源模型与AI产业重构</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/"><img src="/Blog/gallery/AWS%E7%9A%84%E7%A7%98%E5%AF%86-Anthropic%E5%A2%9E%E9%95%BF%E4%B8%8EBedrock%E7%BB%84%E5%90%88%E6%8E%A8%E5%8A%A8AWS%E5%88%A9%E6%B6%A6%E7%8E%87%E6%94%80%E5%8D%87/cover2.png" alt="从算力出租到分销智能：AWS 正在重写云的利润公式"></a></figure><div class="media-content"><p class="date"><time dateTime="2026-05-29T09:00:00.000Z">2026-05-29</time></p><p class="title"><a href="/Blog/2026/05/29/4%E7%9A%84%E6%94%B6%E5%85%A5%E5%B8%A6%E6%9D%A530%E7%9A%84%E5%88%A9%E6%B6%A6-AWS%E6%AD%A3%E5%9C%A8%E9%87%8D%E5%86%99%E4%BA%91%E7%9A%84%E5%88%A9%E6%B6%A6%E5%85%AC%E5%BC%8F/">从算力出租到分销智能：AWS 正在重写云的利润公式</a></p><p class="categories"><a href="/Blog/categories/AI/">AI</a> / <a href="/Blog/categories/AI/Analytics/">Analytics</a></p></div></article></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/Blog/categories/AI/"><span class="level-start"><span class="level-item">AI</span></span><span class="level-end"><span class="level-item tag">16</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AI/Analytics/"><span class="level-start"><span class="level-item">Analytics</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AI/Research/"><span class="level-start"><span class="level-item">Research</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">18</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Generative-AI-Developer-Professional/"><span class="level-start"><span class="level-item">AWS Certified Generative AI Developer Professional</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Machine-Learning-Specialty/"><span class="level-start"><span class="level-item">AWS Certified Machine Learning Specialty</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/AWS-Certified-Solution-Architect-Associate/"><span class="level-start"><span class="level-item">AWS Certified Solution Architect Associate</span></span><span class="level-end"><span class="level-item tag">10</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Architecture/"><span class="level-start"><span class="level-item">Architecture</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Overview/"><span class="level-start"><span class="level-item">Overview</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/AWS/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">9</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Deep-Learning/"><span class="level-start"><span class="level-item">Deep Learning</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NLP/"><span class="level-start"><span class="level-item">NLP</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/NMF/"><span class="level-start"><span class="level-item">NMF</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Natural-Language-Processing/"><span class="level-start"><span class="level-item">Natural Language Processing</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Algorithm/Reinforce-Learning/"><span class="level-start"><span class="level-item">Reinforce Learning</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Big-Data/"><span class="level-start"><span class="level-item">Big Data</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Big-Data/Spark/"><span class="level-start"><span class="level-item">Spark</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/"><span class="level-start"><span class="level-item">Cloud Native</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/"><span class="level-start"><span class="level-item">Kubernetes</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Cloud-Native/Kubernetes/Knative/"><span class="level-start"><span class="level-item">Knative</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/Development/"><span class="level-start"><span class="level-item">Development</span></span><span class="level-end"><span class="level-item tag">7</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Development/Android/"><span class="level-start"><span class="level-item">Android</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Full-Stack/"><span class="level-start"><span class="level-item">Full Stack</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/Log-Stack/"><span class="level-start"><span class="level-item">Log Stack</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Development/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/English-Study/"><span class="level-start"><span class="level-item">English Study</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/"><span class="level-start"><span class="level-item">Finance</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Finance/Asset-Management/"><span class="level-start"><span class="level-item">Asset Management</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Finance/Econometrics/"><span class="level-start"><span class="level-item">Econometrics</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li><li><a class="level is-mobile" href="/Blog/categories/LaTeX/"><span class="level-start"><span class="level-item">LaTeX</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Lifestyle/"><span class="level-start"><span class="level-item">Lifestyle</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/Blog/categories/Terraform/"><span class="level-start"><span class="level-item">Terraform</span></span><span class="level-end"><span class="level-item tag">1</span></span></a><ul><li><a class="level is-mobile" href="/Blog/categories/Terraform/Serverless/"><span class="level-start"><span class="level-item">Serverless</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/Blog/tags/AI/"><span class="tag">AI</span><span class="tag">15</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS/"><span class="tag">AWS</span><span class="tag">23</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/AWS-Serverless/"><span class="tag">AWS - Serverless</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Android/"><span class="tag">Android</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Anthropic/"><span class="tag">Anthropic</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Apps/"><span class="tag">Apps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/BERT/"><span class="tag">BERT</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Bedrock/"><span class="tag">Bedrock</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/CNN/"><span class="tag">CNN</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified/"><span class="tag">Certified</span><span class="tag">12</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Certified-Machine-Learning-Specialty/"><span class="tag">Certified Machine Learning - Specialty</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud/"><span class="tag">Cloud</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Computing/"><span class="tag">Cloud Computing</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Cloud-Native-Kubernetes/"><span class="tag">Cloud Native - Kubernetes</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Clustering/"><span class="tag">Clustering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Coffee/"><span class="tag">Coffee</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Deep-Learning/"><span class="tag">Deep-Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Django/"><span class="tag">Django</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Docker/"><span class="tag">Docker</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/EKK/"><span class="tag">EKK</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Econometrics/"><span class="tag">Econometrics</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/GPT-2/"><span class="tag">GPT-2</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/JetPack/"><span class="tag">JetPack</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Knative/"><span class="tag">Knative</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Kotlin/"><span class="tag">Kotlin</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/LaTeX/"><span class="tag">LaTeX</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Log/"><span class="tag">Log</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Machine-Learning/"><span class="tag">Machine-Learning</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Memory/"><span class="tag">Memory</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/MySQL/"><span class="tag">MySQL</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NLP/"><span class="tag">NLP</span><span class="tag">5</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/NMF/"><span class="tag">NMF</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Overview-of-AWS/"><span class="tag">Overview of AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/PyTorch/"><span class="tag">PyTorch</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/React/"><span class="tag">React</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Reinforce-Learning/"><span class="tag">Reinforce Learning</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Research/"><span class="tag">Research</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Semiconductor/"><span class="tag">Semiconductor</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless/"><span class="tag">Serverless</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Serverless-Terraform/"><span class="tag">Serverless - Terraform</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Spark/"><span class="tag">Spark</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TOEFL/"><span class="tag">TOEFL</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/TokenOps/"><span class="tag">TokenOps</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/Blog/tags/Word2Vec/"><span class="tag">Word2Vec</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/Blog/img/self.jpg" alt="Haojun(Vincent) Gao"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Haojun(Vincent) Gao</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/Blog/archives"><p class="title">63</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/Blog/categories"><p class="title">34</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/Blog/tags"><p class="title">45</p></a></div></div></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#一、AWS-的”70-法则”与”40-增长路径”：一份数据，两种叙事"><span class="level-left"><span class="level-item">一、AWS 的”70 法则”与”40%+ 增长路径”：一份数据，两种叙事</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-1-大摩的”70-法则”：增长质量与复利效应"><span class="level-left"><span class="level-item">1.1 大摩的”70 法则”：增长质量与复利效应</span></span></a></li><li><a class="level is-mobile" href="#1-2-瑞银的”40-增长路径”：从数据到催化剂"><span class="level-left"><span class="level-item">1.2 瑞银的”40%+ 增长路径”：从数据到催化剂</span></span></a></li><li><a class="level is-mobile" href="#1-3-AI-与非-AI-营收的结构性拆分：两份报告的共同发现"><span class="level-left"><span class="level-item">1.3 AI 与非 AI 营收的结构性拆分：两份报告的共同发现</span></span></a></li><li><a class="level is-mobile" href="#1-4-三大云厂商的横向对比：谁在加冕，谁在追赶？"><span class="level-left"><span class="level-item">1.4 三大云厂商的横向对比：谁在加冕，谁在追赶？</span></span></a></li></ul></li><li><a class="level is-mobile" href="#二、Backlog-的解剖：-4-960-亿中，多少是-Anthropic，多少是”真金白银”？"><span class="level-left"><span class="level-item">二、Backlog 的解剖：$4,960 亿中，多少是 Anthropic，多少是”真金白银”？</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#2-1-大摩：-4-960-亿是”未来收入的锁”"><span class="level-left"><span class="level-item">2.1 大摩：$4,960 亿是”未来收入的锁”</span></span></a></li><li><a class="level is-mobile" href="#2-2-瑞银：Anthropic-1-000-亿-vs-有机-510-亿"><span class="level-left"><span class="level-item">2.2 瑞银：Anthropic $1,000 亿 vs 有机 $510 亿</span></span></a></li><li><a class="level is-mobile" href="#2-3-Backlog-的本质：从”合同”到”收入”的转化机制"><span class="level-left"><span class="level-item">2.3 Backlog 的本质：从”合同”到”收入”的转化机制</span></span></a></li></ul></li><li><a class="level is-mobile" href="#三、GenAI-的-ROIC：从”信仰”到”可验证”——两份报告的互补论证"><span class="level-left"><span class="level-item">三、GenAI 的 ROIC：从”信仰”到”可验证”——两份报告的互补论证</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#3-1-大摩的自下而上论证：增量利润率-52"><span class="level-left"><span class="level-item">3.1 大摩的自下而上论证：增量利润率 52%</span></span></a></li><li><a class="level is-mobile" href="#3-2-瑞银的自上而下论证：利润率扩张是”数学上的必然”"><span class="level-left"><span class="level-item">3.2 瑞银的自上而下论证：利润率扩张是”数学上的必然”</span></span></a></li><li><a class="level is-mobile" href="#3-3-剔除一次性项目后的真实利润率"><span class="level-left"><span class="level-item">3.3 剔除一次性项目后的真实利润率</span></span></a></li><li><a class="level is-mobile" href="#3-4-大摩的-ROIC-模型框架"><span class="level-left"><span class="level-item">3.4 大摩的 ROIC 模型框架</span></span></a></li></ul></li><li><a class="level is-mobile" href="#四、资本开支：-2-200-亿的修正是”被原谅的增量”"><span class="level-left"><span class="level-item">四、资本开支：$2,200 亿的修正是”被原谅的增量”</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#4-1-瑞银：capex-指引从-2-000-亿上调至-2-200-亿"><span class="level-left"><span class="level-item">4.1 瑞银：capex 指引从 $2,000 亿上调至 $2,200 亿</span></span></a></li><li><a class="level is-mobile" href="#4-2-大摩：2027-2028-年冲向-3-250-亿-3-500-亿"><span class="level-left"><span class="level-item">4.2 大摩：2027/2028 年冲向 $3,250 亿/$3,500 亿</span></span></a></li><li><a class="level is-mobile" href="#4-3-自由现金流的短期阵痛与长期终局"><span class="level-left"><span class="level-item">4.3 自由现金流的短期阵痛与长期终局</span></span></a></li></ul></li><li><a class="level is-mobile" href="#五、零售：履约成本拐点与三条增长曲线"><span class="level-left"><span class="level-item">五、零售：履约成本拐点与三条增长曲线</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#5-1-大摩的三条曲线：机器人、生鲜、Agentic"><span class="level-left"><span class="level-item">5.1 大摩的三条曲线：机器人、生鲜、Agentic</span></span></a></li><li><a class="level is-mobile" href="#5-2-瑞银的警示：配送成本-vs-单量增速的”疫情以来首次逆转”"><span class="level-left"><span class="level-item">5.2 瑞银的警示：配送成本 vs 单量增速的”疫情以来首次逆转”</span></span></a></li><li><a class="level is-mobile" href="#5-3-大摩的零售利润拆解"><span class="level-left"><span class="level-item">5.3 大摩的零售利润拆解</span></span></a></li></ul></li><li><a class="level is-mobile" href="#六、Trainium-与-OpenAI：瑞银的独家催化剂"><span class="level-left"><span class="level-item">六、Trainium 与 OpenAI：瑞银的独家催化剂</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#6-1-OpenAI-将采用-Trainium-进行训练"><span class="level-left"><span class="level-item">6.1 OpenAI 将采用 Trainium 进行训练</span></span></a></li><li><a class="level is-mobile" href="#6-2-Anthropic-的-53-4-亿公允价值收益：不要被它迷惑"><span class="level-left"><span class="level-item">6.2 Anthropic 的 $53.4 亿公允价值收益：不要被它迷惑</span></span></a></li><li><a class="level is-mobile" href="#6-3-Q3-指引：不要被表面数字误导"><span class="level-left"><span class="level-item">6.3 Q3 指引：不要被表面数字误导</span></span></a></li></ul></li><li><a class="level is-mobile" href="#七、估值方法论：P-E-vs-P-FCF-的对决"><span class="level-left"><span class="level-item">七、估值方法论：P/E vs P/FCF 的对决</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#7-1-大摩的-PEG-折价论"><span class="level-left"><span class="level-item">7.1 大摩的 PEG 折价论</span></span></a></li><li><a class="level is-mobile" href="#7-2-瑞银的-P-FCF-框架"><span class="level-left"><span class="level-item">7.2 瑞银的 P/FCF 框架</span></span></a></li><li><a class="level is-mobile" href="#7-3-两种估值方法的哲学对决"><span class="level-left"><span class="level-item">7.3 两种估值方法的哲学对决</span></span></a></li></ul></li><li><a class="level is-mobile" href="#八、解读：从”两份报告”看”一个共识”"><span class="level-left"><span class="level-item">八、解读：从”两份报告”看”一个共识”</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#8-1-“AI-不是成本中心，是利润中心”——华尔街的集体转折"><span class="level-left"><span class="level-item">8.1 “AI 不是成本中心，是利润中心”——华尔街的集体转折</span></span></a></li><li><a class="level is-mobile" href="#8-2-两份报告的交集与分歧"><span class="level-left"><span class="level-item">8.2 两份报告的交集与分歧</span></span></a></li><li><a class="level is-mobile" href="#8-3-从”云基础设施”到”AI-操作系统”"><span class="level-left"><span class="level-item">8.3 从”云基础设施”到”AI 操作系统”</span></span></a></li><li><a class="level is-mobile" href="#8-4-增长、利润率和资本的三角正反馈"><span class="level-left"><span class="level-item">8.4 增长、利润率和资本的三角正反馈</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/Blog/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a><p class="is-size-7"><span>&copy; 2026 Haojun(Vincent) Gao</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Gallery" href="https://www.gaohaojun.com/"><i class="fab fa-fighter-jet"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Linkedin" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-linkedin"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Instagram" href="https://www.instagram.com/vincent_gaohj/"><i class="fab fa-instagram"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/Blog/js/column.js"></script><script src="/Blog/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/Blog/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><!--!--><!--!--><!--!--><script src="/Blog/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/Blog/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/Blog/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
