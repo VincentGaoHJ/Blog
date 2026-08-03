@@ -42,7 +42,6 @@
   </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/Blog/gallery/OpenRouter-100-Tokens/tokens.png" alt="OpenRouter 的 100 万亿 Tokens 实证研究"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2025-12-10T03:37:07.000Z" title="2025/12/10 11:37:07">2025-12-10</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/AI/">AI</a><span> / </span><a class="link-muted" href="/Blog/categories/AI/Analytics/">Analytics</a></span><span class="level-item">2 hours read (About 15015 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">OpenRouter 的 100 万亿 Tokens 实证研究</h1><div class="content"><p>2025年12月，<a target="_blank" rel="noopener" href="https://openrouter.ai/">OpenRouter</a>发布了基于其平台100万亿Tokens使用数据的实证研究报告，全面揭示了当前真实的AI交互模式。这些发现极具启发性，为数据驱动的LLM系统设计与优化提供了重要参考：<strong>报告深入分析了开发者和终端用户在不同任务中调用模型的情况、模型与任务的双向匹配关系、使用模式随地理区域和时间的变化规律，以及定价和新模型发布等外部因素对用户行为的影响</strong>。</p>
 <p>本文重点分析开源生态、智能体发展趋势和用户留存机制，省略了OpenRouter关于地理区域（因缺少中国样本）和成本定价的分析（后续单独讨论）。</p>
 <span id="more"></span>
-
 <hr>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>基于OpenRouter平台处理的100万亿Tokens数据分析，本研究揭示了大语言模型生态系统的关键发展趋势：</p>
 <p><strong>第一章分析开源生态演进</strong>。随着DeepSeek的崛起，LLM生态系统呈现出稳定的双重结构：开源与闭源模型形成30% vs 70%的平衡格局。闭源系统继续定义性能上限，而开源模型凭借成本效益和可定制性优势，成为特定工作负载的首选。中国开源模型从2024年末几乎为零的基数稳步增长，周占比最高接近30%，平均占比13.0%。模型市场明显分化：小型模型从60%降至12%，逐渐被市场淘汰；中型模型从0%增长至30%，成为重要市场；大型模型从40%提升至50%，成为主流选择。这种分化反映了市场的成熟，用户不再需要在极端之间权衡，而是根据需求选择中型模型（平衡成本效率）或大型模型（追求最佳效果）。</p>
@@ -55,65 +54,69 @@
 <p><strong>总结：大语言模型生态系统中存在一种持久的双重结构：开源模型与闭源模型。目前的平衡点约为30%。</strong></p>
 <p>专有系统继续定义着可靠性和性能的上限，特别是在受监管或企业工作负载方面。相比之下，开源模型具有成本效益、透明度和可定制性，使其成为某些工作负载的有吸引力的选择。这些模型并非相互排斥，相反，它们在开发者和基础设施提供商日益青睐的多模型堆栈中相互补充。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-split.png&w=3840&q=75" alt="Open vs closed source models split"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Foss-split.png&amp;w=3840&amp;q=75" alt="Open vs closed source models split"></p>
 <p>开源模型使用量的增长与主要开源模型的发布时间高度吻合，<strong>这表明像DeepSeek这样有竞争力的开源项目，能够在发布后迅速获得市场认可并保持增长势头。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-token-share.png&w=3840&q=75" alt="Weekly token volume by model type"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Foss-token-share.png&amp;w=3840&amp;q=75" alt="Weekly token volume by model type"></p>
 <p>从2024年末几乎可以忽略不计的基数（周占比低至1.2%）开始，中国开源模型稳步获得关注，某些周内占所有模型总使用量的比例接近30%。<strong>这一年中，中国开源模型的周Tokens量平均占比约13.0%</strong>，强劲增长主要集中在2025年下半年。相比之下，其他地区开源模型平均占13.7%，而专有模型保持最大份额（平均70%）。中国开源模型的扩张不仅体现了其竞争力，还反映了快速迭代和密集发布周期。像Qwen和DeepSeek这样的模型保持定期发布，能够快速适应新兴工作负载。这种模式极大重塑了开源领域，推动了全球大语言模型领域的竞争。</p>
 <hr>
 <h3 id="1-2-主要玩家：DeepSeek-vs-Others"><a href="#1-2-主要玩家：DeepSeek-vs-Others" class="headerlink" title="1.2 主要玩家：DeepSeek vs Others"></a>1.2 主要玩家：DeepSeek vs Others</h3><blockquote>
 <p><strong>总结：DeepSeek 一骑绝尘，但主导地位有所下降，整个开源生态在朝着多元化的方向发展</strong>。</p>
 </blockquote>
 <p>下表按模型划分的总 Tokens 量（2024年11月–2025年11月），反映了 OpenRouter 上所有模型的总使用量。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left">Model Author</th>
-<th align="right">Total Tokens (Trillions)</th>
+<th style="text-align:left">Model Author</th>
+<th style="text-align:right">Total Tokens (Trillions)</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">DeepSeek</td>
-<td align="right">14.37</td>
+<tbody>
+<tr>
+<td style="text-align:left">DeepSeek</td>
+<td style="text-align:right">14.37</td>
 </tr>
 <tr>
-<td align="left">Qwen</td>
-<td align="right">5.59</td>
+<td style="text-align:left">Qwen</td>
+<td style="text-align:right">5.59</td>
 </tr>
 <tr>
-<td align="left">Meta LLaMA</td>
-<td align="right">3.96</td>
+<td style="text-align:left">Meta LLaMA</td>
+<td style="text-align:right">3.96</td>
 </tr>
 <tr>
-<td align="left">Mistral AI</td>
-<td align="right">2.92</td>
+<td style="text-align:left">Mistral AI</td>
+<td style="text-align:right">2.92</td>
 </tr>
 <tr>
-<td align="left">OpenAI</td>
-<td align="right">1.65</td>
+<td style="text-align:left">OpenAI</td>
+<td style="text-align:right">1.65</td>
 </tr>
 <tr>
-<td align="left">Minimax</td>
-<td align="right">1.26</td>
+<td style="text-align:left">Minimax</td>
+<td style="text-align:right">1.26</td>
 </tr>
 <tr>
-<td align="left">Z-AI</td>
-<td align="right">1.18</td>
+<td style="text-align:left">Z-AI</td>
+<td style="text-align:right">1.18</td>
 </tr>
 <tr>
-<td align="left">TNGTech</td>
-<td align="right">1.13</td>
+<td style="text-align:left">TNGTech</td>
+<td style="text-align:right">1.13</td>
 </tr>
 <tr>
-<td align="left">MoonshotAI</td>
-<td align="right">0.92</td>
+<td style="text-align:left">MoonshotAI</td>
+<td style="text-align:right">0.92</td>
 </tr>
 <tr>
-<td align="left">Google</td>
-<td align="right">0.82</td>
+<td style="text-align:left">Google</td>
+<td style="text-align:right">0.82</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>这种近乎垄断的格局在”夏季拐点”（2025年年中）后被打破</strong>。此后，市场变得更加复杂，用途也大幅多样化。通义千问、Minimax的M2、MoonshotAI的Kimi K2以及OpenAI的GPT-OSS系列等新进入者迅速发展，承接大量需求，往往在发布后几周内就实现生产级别应用。<strong>这表明，开源社区和AI初创企业通过推出具备新颖功能或更高效率的模型，能够快速获得市场认可。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/top-15-oss-models-over-time.png&w=3840&q=75" alt="**Top 15 OSS"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Ftop-15-oss-models-over-time.png&amp;w=3840&amp;q=75" alt="**Top 15 OSS"></p>
 <p>如今，没有任何单一开源模型的Tokens消耗超过整个生态的25%，分布更加均衡。这说明一个重要事实：用户正在从多样化选择中发现价值——无论是风格还是能力——而非直接默认选择一个最佳选项。</p>
 <ul>
 <li><strong>顶级多样性</strong>：曾经由DeepSeek主导开源生态，现在各模型保持可观份额。没有任何开源模型能持续占据超过20%-25%的市场份额。</li>
@@ -121,7 +124,7 @@
 <li><strong>迭代优势</strong>：DeepSeek长期位居榜首，凸显了持续改进的重要性。其连续发布（Chat-V3、R1等）使其在挑战者涌现时仍保持竞争力。那些停滞不前的开源模型，其市场份额往往被频繁更新或针对特定领域微调的模型抢占。</li>
 </ul>
 <hr>
-<h3 id="1-3-模型规模的趋势：Medium-vs-Large-Small"><a href="#1-3-模型规模的趋势：Medium-vs-Large-Small" class="headerlink" title="1.3 模型规模的趋势：Medium vs Large&#x2F;Small"></a>1.3 模型规模的趋势：Medium vs Large&#x2F;Small</h3><blockquote>
+<h3 id="1-3-模型规模的趋势：Medium-vs-Large-Small"><a href="#1-3-模型规模的趋势：Medium-vs-Large-Small" class="headerlink" title="1.3 模型规模的趋势：Medium vs Large/Small"></a>1.3 模型规模的趋势：Medium vs Large/Small</h3><blockquote>
 <p><strong>总结：小模型已经成为过去式，中型的模型占据重要市场，而大模型成为绝对意义上的主流</strong>。</p>
 <p>市场变得成熟的一个标志就是中型模型的产生和发展，用户无需再两个极端之间权衡。市场的分化主要在于目标的选择，要么倾向于使用中型模型（要在成本和效率之间权衡），要么只用大型模型（将工作负载整合到能力最强的模型上，获得最佳的效果和智慧）。</p>
 </blockquote>
@@ -131,7 +134,7 @@
 <li><strong>中型模型</strong>：参数规模在 150 亿到 700 亿之间的模型。</li>
 <li><strong>大型模型</strong>：具有 700 亿或更多参数的模型。</li>
 </ul>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/param-size-vs-usage.png&w=3840&q=75" alt="OSS model size vs. usage"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fparam-size-vs-usage.png&amp;w=3840&amp;q=75" alt="OSS model size vs. usage"></p>
 <p><strong>深入研究推动这些趋势的模型，可以发现不同的市场动态：</strong></p>
 <p>可以看出，小模型市场从最初的60%逐步下降至12%，且趋势没有回弹迹象，说明小模型正被市场淘汰。中型模型经过一年发展，已占据约30%市场份额且非常稳定，说明这个市场需求长期可持续。大模型占比也从40%提升至50%，说明大参数量模型仍是用户和企业的首选。</p>
 <ul>
@@ -158,7 +161,7 @@
 <p><strong>总结：虽然闭源模型在结构化的商业任务中仍占主导地位，但开源模型已在两个特定领域确立了领先地位：角色扮演和编程辅助。这两个类别共同占据了开源模型 Tokens 使用量的大部分。</strong></p>
 <p>数据：角色扮演占据 52% 的市场份额，而编程大致为 20%（编程与科技总计为 33%）。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/oss-category-trends.png&w=3840&q=75" alt="Category Breakdown of OSS Models"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Foss-category-trends.png&amp;w=3840&amp;q=75" alt="Category Breakdown of OSS Models"></p>
 <p><strong>上图清晰显示，超过一半的开源模型使用属于<code>角色扮演</code>，而<code>编程</code>是第二大类别。</strong></p>
 <ul>
 <li>这表明用户转向开放模型主要是为了创造性交互式对话（如讲故事、角色扮演和游戏场景）和编码相关任务。</li>
@@ -170,25 +173,25 @@
 <p><strong>总结：中国模型的主要任务在于编程与技术，而非主要创意。</strong></p>
 <p>数据：角色扮演占 33%（低于全球平均值 52%），编程占 39%（高于全球平均值 33%）</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/chinese-oss-category-trends.png&w=3840&q=75" alt="Chinese OSS Category Trends"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fchinese-oss-category-trends.png&amp;w=3840&amp;q=75" alt="Chinese OSS Category Trends"></p>
 <p><strong>如果只聚焦中国开源模型随时间的细分情况，可以看出：这些模型不再主要用于创意任务。角色扮演仍是最大类别，占比约33%，但编程和技术领域使用量合计已占多数（39%）。</strong></p>
 <p>这种转变表明，像<code>Qwen</code>和<code>DeepSeek</code>这样的模型正越来越多地用于代码生成和基础设施相关工作负载。虽然大量企业用户可能影响特定领域，但总体趋势表明，中国开源模型正在技术和生产力领域直接竞争。</p>
 <hr>
 <h4 id="1-4-3-编程开源生态：依旧闭源主导，但中国开源生态蓬勃"><a href="#1-4-3-编程开源生态：依旧闭源主导，但中国开源生态蓬勃" class="headerlink" title="1.4.3 编程开源生态：依旧闭源主导，但中国开源生态蓬勃"></a>1.4.3 编程开源生态：依旧闭源主导，但中国开源生态蓬勃</h4><blockquote>
 <p><strong>总结：闭源模型依旧主导市场，中国开源生态起步较早（Qwen 3 Coder），但西方模型比例有所上升，并观察到市场竞争十分激烈，比例变化大，说明用户粘性低，新模型凭借优异表现可迅速抢占市场</strong>。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-oss-split.png&w=3840&q=75" alt="Programming Queries by Model Source"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fprogramming-oss-split.png&amp;w=3840&amp;q=75" alt="Programming Queries by Model Source"></p>
 <p>如果只聚焦编程类别，会发现闭源模型仍处理大部分编码辅助工作（灰色区域），反映出像Anthropic的Claude等强大产品表现。</p>
 <p>然而在开源部分，出现显著转变：2025年中期，中国开源模型（蓝色）提供大部分开源编码帮助（得益于<code>Qwen 3 Coder</code>等早期成功案例）。到2025年第四季度，西方开源模型（橙色），如Meta的LLaMA-2 Code和OpenAI的GPT-OSS系列，出现激增，但最近几周总体占比有所下降。这种波动表明市场竞争非常激烈。</p>
-<p>**实际结论是，开源代码助手使用情况高度动态变化，对新模型质量反应强烈：开发者愿意接受任何当前能提供最佳编码支持的开源模型。**需要说明，该图表未显示绝对数量：开源编码使用量整体在增长，因此蓝色部分占比缩小不意味着中国开源模型失去用户，只是相对份额有所变化。</p>
+<p><strong>实际结论是，开源代码助手使用情况高度动态变化，对新模型质量反应强烈：开发者愿意接受任何当前能提供最佳编码支持的开源模型。</strong>需要说明，该图表未显示绝对数量：开源编码使用量整体在增长，因此蓝色部分占比缩小不意味着中国开源模型失去用户，只是相对份额有所变化。</p>
 <hr>
 <h4 id="1-4-4-角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"><a href="#1-4-4-角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地" class="headerlink" title="1.4.4 角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地"></a>1.4.4 角色扮演开源生态：与闭源生态评分秋色，中国开源也占有开源生态的一席之地</h4><blockquote>
 <p><strong>总结：在角色扮演生态中，开源占比非常高，达到60%，且开源生态占比逐步上升。可以确认开源生态在该领域具有天然优势，也可预见未来开源生态很可能主导该市场。到2025年底，中国和世界其他开源模型流量大致平分。</strong></p>
 <p>数据：开源模型占角色扮演领域60%市场，开源生态中，中国开源生态占20%-30%，其他开源生态占30%-40%。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/roleplay-oss-split.png&w=3840&q=75" alt="Roleplay Queries by Model Source"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Froleplay-oss-split.png&amp;w=3840&amp;q=75" alt="Roleplay Queries by Model Source"></p>
 <p>如果只考察<code>角色扮演</code>流量，会发现其目前几乎由世界其他地区开源模型（橙色，近几周占43%）和闭源模型（灰色，最近约占42%）平分秋色。这与2025年初相比发生显著变化，当时该类别由专有模型（灰色）主导，约占70%市场份额。彼时（2025年5月），西方开源模型仅占约22%流量，中国开源模型（蓝色）占比更小，约8%。全年中，闭源模型份额稳步下降。到2025年10月底，随着西方和中国开源模型均取得显著进展，这一趋势进一步加速。</p>
-<p>可以得出结论，角色扮演领域存在良性竞争；用户在创意聊天和故事讲述方面，既有开源产品也有闭源产品可供选择，且选择都切实可行。这反映出开发者意识到角色扮演&#x2F;聊天模型需求，并为此对发布模型进行针对性调整（如在对话上进行微调，为角色一致性添加对齐机制）。需注意，”角色扮演”涵盖一系列子类型（从休闲聊天到复杂游戏场景）。</p>
+<p>可以得出结论，角色扮演领域存在良性竞争；用户在创意聊天和故事讲述方面，既有开源产品也有闭源产品可供选择，且选择都切实可行。这反映出开发者意识到角色扮演/聊天模型需求，并为此对发布模型进行针对性调整（如在对话上进行微调，为角色一致性添加对齐机制）。需注意，”角色扮演”涵盖一系列子类型（从休闲聊天到复杂游戏场景）。</p>
 <p><strong>从宏观角度看，开源模型在这个创意领域显然具有优势。</strong></p>
 <hr>
 <h2 id="二、智能体推理的兴起"><a href="#二、智能体推理的兴起" class="headerlink" title="二、智能体推理的兴起"></a>二、智能体推理的兴起</h2><p><em>序：语言模型在生产环境中的使用方式正发生根本性转变：从单轮文本补全转向多步骤、工具集成且推理密集型的工作流。OpenRouter将这种转变称为<strong>智能体推理</strong>的兴起，即模型部署不仅为生成文本，还通过规划、调用工具或在扩展语境中交互来采取行动。本节通过五个指标追踪这一转变：推理模型兴起、工具调用行为扩展、序列长度分布变化，以及编程用途如何推动复杂性。</em></p>
@@ -200,13 +203,13 @@
 <p><strong>总结：自2025年初以来，通过推理优化模型处理的所有Tokens占比稳步上升，以推理为导向的模型正成为实际工作负载的默认路径。</strong></p>
 <p>该指标反映推理模型处理的所有Tokens比例，而非模型输出中”推理Tokens”占比。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-vs-nonreasoning.png&w=3840&q=75" alt="Reasoning vs. Non-Reasoning Token Trends"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Freasoning-vs-nonreasoning.png&amp;w=3840&amp;q=75" alt="Reasoning vs. Non-Reasoning Token Trends"></p>
 <p><strong>第一季度初，这一使用占比很低，现在已超过50%</strong>。这种转变反映市场两个方面：</p>
 <ul>
 <li>供给端，GPT-5、Claude 4.5和Gemini 3等更高能力模型系统发布，提升用户对逐步推理期望。</li>
 <li>需求端，用户越来越倾向于能够管理任务状态、遵循多步骤逻辑并支持智能体式工作流程模型，而仅仅是简单生成文本模型。</li>
 </ul>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/reasoning-top-models.png&w=3840&q=75" alt="Top Reasoning Models by Token Volume"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Freasoning-top-models.png&amp;w=3840&amp;q=75" alt="Top Reasoning Models by Token Volume"></p>
 <p><strong>在推理模型中，xAI的<code>Grok Code Fast 1</code>目前处理推理相关流量占比最大，其次是谷歌的<code>Gemini 2.5 Pro</code>和<code>Gemini 2.5 Flash</code>。xAI的<code>Grok 4 Fast</code>和OpenAI的<code>gpt-oss-120b</code>也跻身顶级行列。</strong></p>
 <p>在最新数据中，xAI的<code>Grok Code Fast 1</code>目前在推理流量中占据最大份额（不包括免费发布版访问），领先于谷歌的<code>Gemini 2.5 Pro</code>和<code>Gemini 2.5 Flash</code>。这与几周前情况相比有显著变化，当时<code>Gemini 2.5 Pro</code>在该类别中处于领先地位，<code>DeepSeek R1</code>和<code>Qwen3</code>也位居顶级行列。借助xAI积极推出策略、具有竞争力定价以及开发者对其代码导向型变体关注，<code>Grok Code Fast 1</code>和<code>Grok 4 Fast</code>迅速获得市场份额。与此同时，像OpenAI的<code>gpt-oss-120b</code>这样开源模型持续存在，凸显开发者在可能情况下仍会选择开源模型。</p>
 <p><strong>数据指向明确结论：以推理为导向的模型正成为实际工作负载的默认路径，而流经这些模型的Tokens所占市场份额，现已成为AI系统交互的主要指标。</strong></p>
@@ -215,10 +218,10 @@
 <p><strong>总结：在高价值工作流中，启用工具使用的趋势正在上升。无法提供可靠工具调用的模型在企业应用中可能会落后</strong>。</p>
 <p>数据：来自Tool Call的请求占总请求的15%。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-calling-vs-not.png&w=3840&q=75" alt="Tool Invocations"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Ftool-calling-vs-not.png&amp;w=3840&amp;q=75" alt="Tool Invocations"></p>
 <p>上图中，OpenRouter报告了来自完成原因为<code>Tool Call</code>的请求的总Tokens占比。该指标经过标准化且仅包含实际调用工具的那些交互。</p>
 <p>OpenRouter解释上图中5月份显著峰值主要归因于一个大型账户，其活动短暂提升整体交易量。<strong>除这一异常情况外，工具采用率在全年呈现持续上升趋势。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/tool-use-models.png&w=3840&q=75" alt="Top Models by Tools Provided Volume"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Ftool-use-models.png&amp;w=3840&amp;q=75" alt="Top Models by Tools Provided Volume"></p>
 <p><strong>工具调用集中在针对Agent Inference明确优化的模型中</strong>，例如Claude Sonnet、Gemini Flash。</p>
 <p>可以看出，工具调用最初集中在几个模型中：OpenAI的<code>gpt-4o-mini</code>和Anthropic的<code>Claude 3.5</code>和<code>3.7</code>系列，它们在2025年初占了大多数支持工具调用的市场。</p>
 <p>然而到年中，更广泛模型开始支持工具调用，从9月底开始，较新的<code>Claude 4.5 Sonnet</code>模型迅速获得份额。与此同时，<code>Grok Code Fast</code>和<code>GLM 4.5</code>等较新模型取得明显进展。这也说明在工具调用领域，多元化格局正在形成。</p>
@@ -228,15 +231,15 @@
 <p><strong>总结：提示词长度、补全长度均大幅提升，主要推动因素是编程需求。模型正越来越多扮演分析引擎角色，而非创意生成器。</strong></p>
 <p>数据：从2024年初，Prompt长度增长四倍（从约1.5K增至6K以上），Completion长度增长三倍（约150增至400），涉及代码理解、调试和代码生成的请求通常超过20K输入tokens。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth.png&w=3840&q=75" alt="Number of Prompt Tokens is on the Rise"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fprompt-tokens-growth.png&amp;w=3840&amp;q=75" alt="Number of Prompt Tokens is on the Rise"></p>
 <p><strong>自2024年初以来，平均提示词Token长度增长近四倍，反映出工作负载上下文越来越复杂。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/average-seq-length-over-time.png&w=3840&q=75" alt="Average Sequence Length Over Time"></p>
-<p>**每次生成的平Tokens数（提示词+补全内容）增长近三倍，从2000增长至6000 Tokens。**序列长度是任务复杂度和交互深度的代表指标。上图显示，过去20个月里，平均序列长度增加两倍多。这种增长反映结构性转变，即朝着更长上下文窗口、更深任务历史及更详尽补全内容方向发展。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/completion-tokens-growth.png&w=3840&q=75" alt="Number of Completion Tokens Almost Tripled"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Faverage-seq-length-over-time.png&amp;w=3840&amp;q=75" alt="Average Sequence Length Over Time"></p>
+<p><strong>每次生成的平Tokens数（提示词+补全内容）增长近三倍，从2000增长至6000 Tokens。</strong>序列长度是任务复杂度和交互深度的代表指标。上图显示，过去20个月里，平均序列长度增加两倍多。这种增长反映结构性转变，即朝着更长上下文窗口、更深任务历史及更详尽补全内容方向发展。</p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fcompletion-tokens-growth.png&amp;w=3840&amp;q=75" alt="Number of Completion Tokens Almost Tripled"></p>
 <p><strong>输出长度也有所增加，尽管起点较低，这表明更丰富、更详细的响应主要源于推理Tokens。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/prompt-tokens-growth-per-category.png&w=3840&q=75" alt="Programming as the Main Driver Behind Prompt Token Growth"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fprompt-tokens-growth-per-category.png&amp;w=3840&amp;q=75" alt="Programming as the Main Driver Behind Prompt Token Growth"></p>
 <p><strong>自2025年春季开始提供标签以来，与编程相关的任务始终需要最大输入上下文。且迅速拉开与其他领域需求差距。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/overall-vs-programming-seq-length.png&w=3840&q=75" alt="Sequence Length in Programming vs Overall"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Foverall-vs-programming-seq-length.png&amp;w=3840&amp;q=75" alt="Sequence Length in Programming vs Overall"></p>
 <p><strong>编程提示词通常更长，且增长速度更快</strong>。与编程相关的提示词现在平均token长度是通用提示词的3-4倍。这种差异表明，软件开发工作流是更长交互的主要驱动因素。较长序列不仅是用户冗长表达：它们是嵌入的、更复杂智能体工作流的标志。</p>
 <p><strong>这种增长的相对幅度凸显了向更复杂、上下文更丰富工作负载的决定性转变。</strong></p>
 <p>这种模式还反映模型使用的新平衡：如今，典型请求不再那么侧重开放式生成（如”给我写一篇文章”），而更多是对用户提供的大量材料（如代码库、文档、文字记录或冗长对话）进行推理，并生成简洁、高价值见解。<strong>模型正越来越多扮演分析引擎角色，而非创意生成器。</strong></p>
@@ -247,7 +250,7 @@
 <p><strong>总结：编程是主导且不断增长的类别。LLM已融入开发者工作流程，实现常态化。这个领域持续吸引各大顶级实验室关注。</strong></p>
 <p>数据：Claude持续占据60%市场份额，但最近有下滑迹象。谷歌稳定在15%，OpenAI份额在最近几周从约2%扩大至约8%。</p>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/programming-dominant-tag.png&w=3840&q=75" alt="Programming as a dominant and growing category"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fprogramming-dominant-tag.png&amp;w=3840&amp;q=75" alt="Programming as a dominant and growing category"></p>
 <p><strong>编程是主导且不断增长的类别。</strong> 被归类到编程类别的所有大语言模型查询占比稳步上升，反映人工智能辅助开发工作流的兴起。</p>
 <p>编程已成为所有模型中扩张最稳定的类别。2025年期间，与编程相关的请求占比稳步上升，与大语言模型辅助的开发环境及工具集成相呼应。如上图所示，2025年初，编程查询约占总Tokens量的11%，而最近几周已超过50%。这一趋势反映用户使用从探索性或对话性用途转向代码生成、调试和数据脚本编写等应用型任务。</p>
 <p><strong>随着大语言模型融入开发者工作流程，它们作为编程工具的角色正逐渐常态化。这一演变对模型开发具有重要意义，包括：</strong></p>
@@ -257,7 +260,7 @@
 <li>加强模型与集成开发环境之间的反馈循环</li>
 </ul>
 <p><strong>对编程支持需求的不断增长正在重塑各模型提供商之间的竞争格局。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/top-models-programming-tag.png&w=3840&q=75" alt="Share of programming requests by model provider"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Ftop-models-programming-tag.png&amp;w=3840&amp;q=75" alt="Share of programming requests by model provider"></p>
 <p><strong>Anthropic的Claude系列在这一领域始终占据主导地位</strong>，在大部分时间里，其在编程相关市场中占比超过60%。尽管如此，这一格局仍发生显著变化。11月17日那一周，Anthropic份额首次跌破60%阈值。自7月以来，OpenAI份额在最近几周从约2%扩大至约8%，这可能反映其重新强调以开发者为中心。</p>
 <p>同一时期，谷歌份额稳定在约15%。中端市场也在发生变化。包括Z.AI、Qwen和Mistral AI在内的开源提供商正稳步获得更多关注。尤其是MiniMax，作为快速崛起的参与者，在最近几周取得显著增长。</p>
 <p>总体而言，<strong>编程已成为竞争最激烈且具有重要战略意义的模型类别之一</strong>。它持续吸引顶尖实验室关注，即使是模型质量或延迟方面的微小变化，也可能在每周改变市场份额。对基础设施提供商和开发者来说，这凸显持续进行基准测试和评估的必要性，尤其是在技术前沿不断发展的情况下。</p>
@@ -268,8 +271,8 @@
 <p>分散性一方面反映领域复杂性，另一方面也说明大模型在现实生活中的探索是非均匀的。</p>
 </blockquote>
 <p>每个条形图显示该Category中主要子标签的细分情况。标签表示在该类别中占比至少7%的子标签。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-first-six.png&w=3840&q=75" alt="Top 6 categories by total token share"></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/all-categories-tags-next-six.png&w=3840&q=75" alt="Next 6 categories by token share"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fall-categories-tags-first-six.png&amp;w=3840&amp;q=75" alt="Top 6 categories by total token share"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fall-categories-tags-next-six.png&amp;w=3840&amp;q=75" alt="Next 6 categories by token share"></p>
 <p>上图按十二个最常见的内容类别细分大语言模型使用情况，揭示每个类别的内部子主题结构。</p>
 <p><strong>一个关键发现是，大多数类别并非均匀分布：它们由一两种反复出现的使用模式主导，这往往反映集中的用户意图或与大语言模型优势的契合。</strong></p>
 <p><strong>【角色扮演】</strong></p>
@@ -293,7 +296,7 @@
 <p>这也表明大语言模型正被应用于从翻译到医疗指导再到人工智能内省等众多领域的边缘地带，而且随着模型在领域稳健性和工具集成方面的改进，未来可能会看到这些分散的意图汇聚成更清晰、数量更多的应用。</p>
 <p><strong>相比之下，金融、学术和法律领域的分布则要分散得多。</strong></p>
 <ul>
-<li><strong>金融领域</strong>的内容量分布在外汇、社会责任投资以及审计&#x2F;会计等多个方面：没有任何一个标签的占比超过20%。</li>
+<li><strong>金融领域</strong>的内容量分布在外汇、社会责任投资以及审计/会计等多个方面：没有任何一个标签的占比超过20%。</li>
 <li><strong>法律领域</strong>也呈现类似的分散性，其使用量分布在<code>政府/其他</code>（43.0%）和<code>法律/其他</code>（17.8%）之间。这种分散性可能反映这些领域的复杂性，或仅是与编码和聊天等更成熟的类别相比，它们缺乏针对性的大模型工作流程。</li>
 </ul>
 <p><strong>或者说，现实世界中，大语言模型的使用并非均匀地具有探索性：其使用高度集中在一小部分可重复、高频率的任务上。角色扮演、编程和个人助理这三类任务均呈现清晰的结构和主导性标签。相比之下，科学、健康和法律领域的使用则更为分散，且可能未得到充分优化。</strong></p>
@@ -309,34 +312,34 @@
 <li><strong>Qwen&amp;xAI: 一个全面的技术开发者</strong>。其在编程任务上专注度较高，而在角色扮演和科学类别的专注度则随时间波动。</li>
 </ul>
 </blockquote>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/anthropic-top-tags.png&w=3840&q=75" alt="Anthropic top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fanthropic-top-tags.png&amp;w=3840&amp;q=75" alt="Anthropic top tags"></p>
 <p><strong>Anthropic: 主要用于编程和技术任务（占比超过80%），角色扮演用途极少。</strong></p>
 <p>Anthropic的Claude在<strong>编程</strong> + <strong>技术</strong>方面的应用占比极高，两者合计超过其使用量的80%。角色扮演和一般问答仅占很小一部分。这证实Claude的定位是一款针对复杂推理、编码和结构化任务进行优化的模型；开发者和企业似乎主要将Claude用作编码助手和问题解决工具。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/google-top-tags.png&w=3840&q=75" alt="Google top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fgoogle-top-tags.png&amp;w=3840&amp;q=75" alt="Google top tags"></p>
 <p><strong>Google: 一个广泛使用的组合，涵盖法律、科学、技术以及一些常识性查询。</strong></p>
 <p>谷歌的模型用途更为多样化。在<strong>翻译</strong>、<strong>科学</strong>、<strong>技术</strong>以及一些<strong>常识</strong>领域有显著的应用部分。例如，谷歌约5%的使用量涉及法律或政策内容，另有约10%与科学相关。这可能暗示Gemini广泛的训练重点。与其他公司相比，到2025年底，谷歌在编码方面的占比相对较低，实际上还在下降（降至约18%），且应用类别范围更广。这表明谷歌的模型更多地被用作通用信息引擎。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/xai-top-tags.png&w=3840&q=75" alt="xAI top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fxai-top-tags.png&amp;w=3840&amp;q=75" alt="xAI top tags"></p>
 <p><strong>xAI: 使用主要集中在编程领域，而技术、角色扮演和学术领域在11月下旬占比更为突出。</strong></p>
 <p>xAI的使用情况与其他提供商截然不同。在大部分时间里，其使用量绝大多数集中在<strong>编程</strong>领域，往往超过所有Tokens的80%。直到11月下旬，这一分布才有所扩大，在<strong>技术</strong>、<strong>角色扮演</strong>和<strong>学术</strong>领域有了显著增长。</p>
 <p>这种急剧变化与xAI模型通过特定消费者应用免费发布的时间相吻合，这很可能带来大量非开发者流量。其结果是，使用构成融合早期以开发者为主的核心群体和突然涌现的通用型用户参与，这表明xAI的采用路径既受技术用户的影响，也与促销活动带来的阶段性流量激增有关。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-top-tags.png&w=3840&q=75" alt="OpenAI top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fopenai-top-tags.png&amp;w=3840&amp;q=75" alt="OpenAI top tags"></p>
 <p><strong>OpenAI: 随时间推移，逐渐转向编程和技术任务，角色扮演和随意聊天显著减少。</strong></p>
 <p>2025年，OpenAI的使用情况发生显著变化。今年早些时候，科学类任务占OpenAI所有Tokens的一半以上；到2025年末，这一比例已降至15%以下。</p>
 <p>与此同时，编程和技术相关的使用量现在占总量的一半以上（各占29%），这反映其与开发者工作流、生产力工具和专业应用的整合更加深入。</p>
 <p>OpenAI的使用构成目前介于Anthropic高度集中的情况和谷歌更分散的分布之间，这表明其应用基础广泛，且正越来越倾向于高价值、结构化的任务。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-top-tags.png&w=3840&q=75" alt="DeepSeek top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fdeepseek-top-tags.png&amp;w=3840&amp;q=75" alt="DeepSeek top tags"></p>
 <p><strong>DeepSeek: 其使用主要体现在角色扮演和日常互动上。</strong></p>
 <p>深度求索和通义千问的使用模式与前文讨论的其他模型家族存在显著差异。DeepSeek的Tokens分布以角色扮演、休闲聊天和娱乐导向的互动为主，这类使用通常占其总使用量的三分之二以上。只有一小部分活动属于编程或科学等结构化任务。这种模式反映深度求索强烈的消费者导向及其作为高参与度对话模型的定位。</p>
 <p>值得注意的是，到夏末时，深度求索在编程相关使用方面呈现适度但稳定的增长，这表明它在轻量级开发工作流中的采用率正逐步提升。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/qwen-top-tags.png&w=3840&q=75" alt="Qwen top tags"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fqwen-top-tags.png&amp;w=3840&amp;q=75" alt="Qwen top tags"></p>
 <p><strong>Qwen: 在编程任务上专注度较高，角色扮演和科学类别的专注度则随时间波动。</strong></p>
 <p>相比之下，通义千问呈现几乎相反的情况。在所显示的整个时间段内，编程内容始终占所有标记的40%-60%，这表明其明显侧重于技术和开发者任务。与Anthropic更稳定的、以工程为主的构成相比，通义千问在科学、技术和角色扮演等相邻类别中的波动性更大。</p>
 <p>这种每周的变化意味着其用户群体具有多样性，且应用场景在快速迭代。9月和10月角色扮演使用量显著上升，随后11月有所下降，这暗示用户行为在不断演变，或下游应用的路径规划在进行调整。</p>
 <hr>
 <h2 id="五、用户留存：灰姑娘的”水晶鞋”现象"><a href="#五、用户留存：灰姑娘的”水晶鞋”现象" class="headerlink" title="五、用户留存：灰姑娘的”水晶鞋”现象"></a>五、用户留存：灰姑娘的”水晶鞋”现象</h2><h3 id="5-1-灰姑娘的”水晶鞋”现象-The-Cinderella-“Glass-Slipper”-Phenomenon"><a href="#5-1-灰姑娘的”水晶鞋”现象-The-Cinderella-“Glass-Slipper”-Phenomenon" class="headerlink" title="5.1 灰姑娘的”水晶鞋”现象 The Cinderella “Glass Slipper” Phenomenon"></a>5.1 灰姑娘的”水晶鞋”现象 The Cinderella “Glass Slipper” Phenomenon</h3><p><strong>OpenRouter提出群留存率概念来揭示模型的用户留存现象。</strong></p>
-<p><em>Cohort Retention Rates. Retention is measured as</em> <em>activity retention</em><em>, where users are counted if they return in subsequent months, even after periods of inactivity; as a result, curves may exhibit small non-monotonic bumps.</em></p>
+<p><em>Cohort Retention Rates. Retention is measured as</em> <em>activity retention**, where users are counted if they return in subsequent months, even after periods of inactivity; as a result, curves may exhibit small non-monotonic bumps.</em></p>
 <p><em>同期群留存率。留存率以<strong>活动留存</strong>来衡量，即只要用户在后续月份返回，即使中间有不活跃的时期也会被统计在内；因此，曲线可能会出现小的非单调波动。</em></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/claude-4-sonnet-retention.png&w=3840&q=75" alt="Claude 4 Sonnet retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fclaude-4-sonnet-retention.png&amp;w=3840&amp;q=75" alt="Claude 4 Sonnet retention"></p>
 <p><strong>乍一看，数据的主要特征是高流失率和用户群体的快速衰减。然而，在这种波动性之下，隐藏一个更微妙且更重要的信号：一小部分早期用户群体随时间推移表现出持久的留存率。OpenRouter将这些群体称为”基础用户群”。</strong></p>
 <p><strong>这些群体不仅仅是早期采用者；他们代表那些工作负载已实现深度且持久的工作负载与模型契合的用户。一旦这种契合确立，就会产生经济和认知上的惯性，即便有更新的模型出现，也会抵制替代。</strong></p>
 <blockquote>
@@ -347,27 +350,27 @@
 <ul>
 <li><strong>率先解决问题会产生持久优势。</strong> 当一个模型率先<em>解决</em>关键工作负载时，经典的先发优势便具有重要意义。早期采用者会将该模型嵌入到各种管道、基础设施和用户行为中，从而产生很高的转换成本。这就形成一种稳定的平衡状态，即便出现更新的替代方案，该模型仍能保留其核心用户群体。</li>
 <li><strong>留存率作为能力拐点的指标。</strong> 同期群组层面的留存模式是模型差异化的实证信号。一个或多个早期群组中的持续留存表明存在有意义的能力拐点——即从不可行变为可行的工作负载类别。缺乏此类模式则表明能力相当，差异化深度有限。</li>
-<li>**前沿窗口的时间限制。**竞争格局带来一个狭窄的时间窗口，模型可在其中获取基础用户。随着后续模型缩小能力差距，形成新基础用户群体的概率急剧下降。因此，模型与工作负载完美匹配的”灰姑娘”时刻虽转瞬即逝，却对长期采用动态起决定性作用。</li>
+<li><strong>前沿窗口的时间限制。</strong>竞争格局带来一个狭窄的时间窗口，模型可在其中获取基础用户。随着后续模型缩小能力差距，形成新基础用户群体的概率急剧下降。因此，模型与工作负载完美匹配的”灰姑娘”时刻虽转瞬即逝，却对长期采用动态起决定性作用。</li>
 </ul>
 <p><strong>每一代新模型都会带来一个短暂的机会，以解决先前未满足的工作负载。当这种契合出现时，受影响的用户会形成基础用户群：即使后续有新模型推出，其留存轨迹仍保持稳定的用户群体。</strong></p>
 <hr>
-<h3 id="5-2-显著的发布“异常”-The-Dominant-Launch-Anomaly"><a href="#5-2-显著的发布“异常”-The-Dominant-Launch-Anomaly" class="headerlink" title="5.2 显著的发布“异常” The Dominant Launch Anomaly"></a>5.2 显著的发布“异常” The Dominant Launch Anomaly</h3><p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/openai-4omini-retention.png&w=3840&q=75" alt="OpenAI GPT-4o Mini retention"></p>
+<h3 id="5-2-显著的发布“异常”-The-Dominant-Launch-Anomaly"><a href="#5-2-显著的发布“异常”-The-Dominant-Launch-Anomaly" class="headerlink" title="5.2 显著的发布“异常” The Dominant Launch Anomaly"></a>5.2 显著的发布“异常” The Dominant Launch Anomaly</h3><p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fopenai-4omini-retention.png&amp;w=3840&amp;q=75" alt="OpenAI GPT-4o Mini retention"></p>
 <p><code>OpenAI GPT-4o Mini</code>的图表极度直观地展现这一现象。一个单一的基础群体（2024年7月，橙线）在发布时就确立主导性的、稳定的工作负载-模型契合。所有后续用户群（在这种契合确立且市场已经向前发展后出现的群体）表现都如出一辙：它们不断流失并聚集在底部。</p>
 <p><strong>这表明，建立这种基础性契合的窗口期是唯一的，且只出现在模型被视为”前沿”的那一刻。</strong></p>
 <hr>
 <h3 id="5-3-契合失败的后果-The-Consequence-of-No-Fit"><a href="#5-3-契合失败的后果-The-Consequence-of-No-Fit" class="headerlink" title="5.3 契合失败的后果 The Consequence of No-Fit"></a>5.3 契合失败的后果 The Consequence of No-Fit</h3><p><code>Gemini 2.0 Flash</code>和<code>Llama 4 Maverick</code>的图表展示一个警示故事，深刻的说明当初始契合从未建立时会发生什么！</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/llama-4-maverick-retention.png&w=3840&q=75" alt="Llama 4 Maverick retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fllama-4-maverick-retention.png&amp;w=3840&amp;q=75" alt="Llama 4 Maverick retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fllama-4-maverick-retention.png&amp;w=3840&amp;q=75" alt="Llama 4 Maverick retention"></p>
 <p>与其他模型不同，它们没有表现出色的基础用户群体。每个用户群体的表现都同样糟糕。这表明，这些模型从未被视为高价值、粘性工作负载的”前沿”。它们直接进入<em>足够好</em>的市场，因此未能锁定任何用户群。</p>
 <p>同样，尽管<code>DeepSeek</code>总体上取得巨大成功，但其混乱的图表显示，它难以建立一个稳定的基础用户群体。</p>
 <h3 id="5-4-DeepSeek-的回旋镖效应-Boomerang-Effect"><a href="#5-4-DeepSeek-的回旋镖效应-Boomerang-Effect" class="headerlink" title="5.4 DeepSeek 的回旋镖效应 Boomerang Effect"></a>5.4 DeepSeek 的回旋镖效应 Boomerang Effect</h3><p><strong>DeepSeek 模型呈现一种更为复杂的模式。</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-r1-retentions.png&w=3840&q=75" alt="DeepSeek R1 retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fdeepseek-r1-retentions.png&amp;w=3840&amp;q=75" alt="DeepSeek R1 retention"></p>
 <p><strong>它们的留存曲线显示一种极不寻常的异常现象：<em>复苏式跃升</em>。</strong></p>
 <p>与典型的单调下降留存率不同，多个深度求索用户群体在经历初期用户流失后，留存率出现明显上升（例如，R1的2025年4月用户群体在第3个月左右，以及Chat V3-0324的2025年7月用户群体在第2个月左右）。</p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/deepseek-chat-v3-retentions.png&w=3840&q=75" alt="DeepSeek Chat V3-0324 retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fdeepseek-chat-v3-retentions.png&amp;w=3840&amp;q=75" alt="DeepSeek Chat V3-0324 retention"></p>
 <p><strong>这表明部分流失的用户正在回归该模型。这种”回旋镖效应”意味着，这些用户在尝试其他替代方案后，通过竞争性测试确认深度求索凭借其专业技术性能、成本效益或其他独特功能的卓越组合，能够为其特定工作负载提供最优且更契合的解决方案，因此选择回归深度求索。</strong></p>
 <p>水晶鞋现象将留存率重新定义为理解能力突破的视角，而非一种结果。</p>
-<p>**基础用户群体是真正技术进步的印记：它们标志着人工智能模型从新奇事物转变为必需品的转折点。**对于开发者和投资者而言，尽早识别这些用户群体或许是预测模型在市场中能否保持持久优势的最有效信号。</p>
+<p><strong>基础用户群体是真正技术进步的印记：它们标志着人工智能模型从新奇事物转变为必需品的转折点。</strong>对于开发者和投资者而言，尽早识别这些用户群体或许是预测模型在市场中能否保持持久优势的最有效信号。</p>
 <hr>
 <h2 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h2><p><strong>【多模型生态系统】</strong></p>
 <blockquote>
@@ -410,47 +413,47 @@
 <hr>
 <h2 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h2><p><strong>OpenRouter 的分类与谷歌标签的对应关系</strong></p>
 <ul>
-<li><strong>Programming &#x2F; 编程：</strong><ul>
+<li><strong>Programming / 编程：</strong><ul>
 <li><code>/Computers &amp; Electronics/Programming</code></li>
 <li><code>/Science/Computer Science/*</code></li>
 </ul>
 </li>
-<li><strong>Roleplay &#x2F; 角色扮演：</strong><ul>
+<li><strong>Roleplay / 角色扮演：</strong><ul>
 <li><code>/Games/Roleplaying Games</code></li>
 <li><code>/Arts &amp; Entertainment/*</code> 下的创意对话</li>
 </ul>
 </li>
-<li><strong>Translation &#x2F; 翻译：</strong><ul>
+<li><strong>Translation / 翻译：</strong><ul>
 <li><code>/Reference/Language Resources/*</code></li>
 </ul>
 </li>
-<li><strong>General Q&amp;A &#x2F; Knowledge &#x2F; 一般问答 &#x2F; 知识：</strong> <ul>
+<li><strong>General Q&amp;A / Knowledge / 一般问答 / 知识：</strong> <ul>
 <li><code>/Reference/General Reference/*</code> </li>
 <li><code>/News/*</code> 下的事实查询</li>
 </ul>
 </li>
-<li><strong>Productivity &#x2F; Writing &#x2F; 生产力 &#x2F; 写作：</strong><ul>
+<li><strong>Productivity / Writing / 生产力 / 写作：</strong><ul>
 <li><code>/Computers &amp; Electronics/Software/Business &amp; Productivity Software</code></li>
 <li><code>/Business &amp; Industrial/Business Services/Writing &amp; Editing Services</code></li>
 </ul>
 </li>
-<li><strong>Education &#x2F; 教育：</strong><ul>
+<li><strong>Education / 教育：</strong><ul>
 <li><code>/Jobs &amp; Education/Education/*</code></li>
 </ul>
 </li>
-<li><strong>Literature &#x2F; Creative Writing &#x2F; 文学 &#x2F; 创意写作：</strong><ul>
+<li><strong>Literature / Creative Writing / 文学 / 创意写作：</strong><ul>
 <li><code>/Books &amp; Literature/*</code></li>
-<li>&#96;&#96;&#x2F;Arts &amp; Entertainment&#x2F;*&#96;下的叙事内容</li>
+<li><code>`/Arts &amp; Entertainment/*</code>下的叙事内容</li>
 </ul>
 </li>
-<li><strong>Adult &#x2F; 成人：</strong><ul>
+<li><strong>Adult / 成人：</strong><ul>
 <li><code>/Adult</code></li>
 </ul>
 </li>
 </ul>
 <p><strong>Gemini Retention Rates</strong></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/gemini-2.5-pro-retentions.png&w=3840&q=75" alt="Gemini 2.5 Pro retention"></p>
-<p><img src="https://openrouter.ai/_next/image?url=/images/state-of-ai/gemini-2.5-flash.png&w=3840&q=75" alt="Gemini 2.5 Flash retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fgemini-2.5-pro-retentions.png&amp;w=3840&amp;q=75" alt="Gemini 2.5 Pro retention"></p>
+<p><img src="https://openrouter.ai/_next/image?url=%2Fimages%2Fstate-of-ai%2Fgemini-2.5-flash.png&amp;w=3840&amp;q=75" alt="Gemini 2.5 Flash retention"></p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>OpenRouter 的 100 万亿 Tokens 实证研究</p><p><a href="http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-的-100-万亿-Tokens-实证研究/">http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-的-100-万亿-Tokens-实证研究/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Haojun(Vincent) Gao</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2025-12-10</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2025-12-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-globe"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/Blog/tags/AI/">AI</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=62145317b846610019d3dc05&amp;product=inline-share-buttons" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://afdian.net/@vincent_gaohj" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/Blog/img/alipay.jpg" alt="Alipay"></span></a><a class="button donate" href="https://www.buymeacoffee.com/gaohaojun" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/Blog/2025/12/20/AWS-Generative-AI-Developer-Professional-%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B2%E8%AF%A6%E8%A7%A3/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">AWS Certified Generative AI Developer - Professional (AIP-C01) 考试大纲详解</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/Blog/2025/12/03/TPU%20%E4%B8%8E%20GPU%20%E7%9A%84%E6%9C%AA%E6%9D%A5%E7%AB%9E%E4%BA%89%E6%A0%BC%E5%B1%80%E6%80%81%E5%8A%BF/"><span class="level-item">TPU 与 GPU 的未来竞争格局态势</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div><script>var disqus_config = function () {
             this.page.url = 'http://vincentgaohj.github.io/Blog/2025/12/10/OpenRouter-%E7%9A%84-100-%E4%B8%87%E4%BA%BF-Tokens-%E5%AE%9E%E8%AF%81%E7%A0%94%E7%A9%B6/';
             this.page.identifier = '2025/12/10/OpenRouter-的-100-万亿-Tokens-实证研究/';

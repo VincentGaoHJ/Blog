@@ -39,31 +39,30 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-12-09T12:22:32.000Z" title="2020/12/9 20:22:32">2020-12-09</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Big-Data/">Big Data</a><span> / </span><a class="link-muted" href="/Blog/categories/Big-Data/Spark/">Spark</a></span><span class="level-item">15 minutes read (About 2228 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Apache Spark: the New ‘king’ of Big Data</h1><div class="content"><p><img src="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg"></p>
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/Blog/"><img src="/Blog/img/logo.jpg" alt="Gao Haojun" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/Blog/">Home</a><a class="navbar-item" href="/Blog/archives">Archives</a><a class="navbar-item" href="/Blog/categories">Categories</a><a class="navbar-item" href="/Blog/tags">Tags</a><a class="navbar-item" href="/Blog/about">About</a><a class="navbar-item" href="/Blog/links">Links</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="GitHub" href="https://github.com/VincentGaoHJ"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-12-09T12:22:32.000Z" title="2020/12/9 20:22:32">2020-12-09</time></span><span class="level-item"><a class="link-muted" href="/Blog/categories/Big-Data/">Big Data</a><span> / </span><a class="link-muted" href="/Blog/categories/Big-Data/Spark/">Spark</a></span><span class="level-item">15 minutes read (About 2228 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">Apache Spark: the New ‘king’ of Big Data</h1><div class="content"><p><img src="https://logz.io/wp-content/uploads/2018/02/hadoop-vs-spark-article-1.jpg" alt=""></p>
 <span id="more"></span>
-
 <p>[TOC]</p>
 <h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><h3 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h3><p>It’s a general-purpose form of distributed processing that has several components: </p>
 <ul>
 <li><strong>HDFS</strong>(The Hadoop Distributed File System), which stores files in a Hadoop-native format and parallelizes them across a cluster; </li>
 <li><strong>YARN</strong>, a schedule that coordinates application runtimes; </li>
-<li><strong>MapReduce</strong>, the algorithm that actually processes the data in parallel.</li>
+<li><strong>MapReduce</strong>, the algorithm that actually processes the data in parallel. </li>
 </ul>
 <p>Hadoop is built in Java, and accessible through many programming languages, for writing MapReduce code, including Python, through a Thrift client.</p>
 <h3 id="What-is-Apache-Spark"><a href="#What-is-Apache-Spark" class="headerlink" title="What is Apache Spark?"></a>What is Apache Spark?</h3><p>Spark as a whole consists of various libraries, APIs, databases, etc. The main components of Apache Spark are as follows:</p>
 <ul>
-<li><p>**Spark Core: **Spare Core is the basic building block of Spark, which includes all components for job scheduling, performing various memory operations, fault tolerance, and more. Spark Core is also home to the API that consists of RDD. Moreover, Spark Core provides APIs for building and manipulating data in RDD.</p>
+<li><p><strong>Spark Core: </strong>Spare Core is the basic building block of Spark, which includes all components for job scheduling, performing various memory operations, fault tolerance, and more. Spark Core is also home to the API that consists of RDD. Moreover, Spark Core provides APIs for building and manipulating data in RDD.</p>
 </li>
-<li><p>**Spark SQL: **Apache Spark works with the unstructured data using its ‘go to’ tool, Spark SQL. Spark SQL allows querying data via SQL, as well as via Apache Hive’s form of SQL called Hive Query Language (HQL). It also supports data from various sources like parse tables, log files, JSON, etc. Spark SQL allows programmers to combine SQL queries with <strong>programmable changes or manipulations</strong> supported by RDD in Python, Java, Scala, and R.</p>
+<li><p><strong>Spark SQL: </strong>Apache Spark works with the unstructured data using its ‘go to’ tool, Spark SQL. Spark SQL allows querying data via SQL, as well as via Apache Hive’s form of SQL called Hive Query Language (HQL). It also supports data from various sources like parse tables, log files, JSON, etc. Spark SQL allows programmers to combine SQL queries with <strong>programmable changes or manipulations</strong> supported by RDD in Python, Java, Scala, and R.</p>
 </li>
-<li><p>**Spark Streaming: **Spark Streaming processes live streams of data. Data generated by various sources is processed at the very instant by Spark Streaming. Examples of this data include log files, messages containing status updates posted by users, etc.</p>
+<li><p><strong>Spark Streaming: </strong>Spark Streaming processes live streams of data. Data generated by various sources is processed at the very instant by Spark Streaming. Examples of this data include log files, messages containing status updates posted by users, etc.</p>
 </li>
-<li><p>**GraphX: **GraphX is Apache Spark’s library for enhancing graphs and enabling graph-parallel computation. Apache Spark includes a number of graph algorithms which help users in simplifying graph analytics.</p>
+<li><p><strong>GraphX: </strong>GraphX is Apache Spark’s library for enhancing graphs and enabling graph-parallel computation. Apache Spark includes a number of graph algorithms which help users in simplifying graph analytics.</p>
 </li>
-<li><p>**MLlib: **Apache Spark comes up with a library containing common Machine Learning (ML) services called MLlib. It provides various types of ML algorithms including regression, clustering, and classification, which can perform various operations on data to get meaningful insights out of it.</p>
+<li><p><strong>MLlib: </strong>Apache Spark comes up with a library containing common Machine Learning (ML) services called MLlib. It provides various types of ML algorithms including regression, clustering, and classification, which can perform various operations on data to get meaningful insights out of it.</p>
 </li>
 </ul>
-<p><img src="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png"></p>
+<p><img src="https://databricks.com/wp-content/uploads/2019/03/gloss-spark1.png" alt=""></p>
 <p>Spark has several APIs. The original interface was written in Scala, and based on heavy usage by data scientists, Python and R endpoints were also added. Java is another option for writing Spark jobs.  </p>
 <h3 id="Apache-Spark-vs-Hadoop-vs-Hive"><a href="#Apache-Spark-vs-Hadoop-vs-Hive" class="headerlink" title="Apache Spark vs Hadoop vs Hive"></a>Apache Spark vs Hadoop vs Hive</h3><p>That’s not to say Hadoop is obsolete. It does things that Spark does not, and often provides the framework upon which Spark works. The <a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html">Hadoop Distributed File System</a> enables the service to store and index files, serving as a virtual data infrastructure.</p>
 <p>Spark, on the other hand, performs distributed, high-speed compute functions on that architecture. <strong>If Hadoop is the professional kitchen with the tools and equipment to build and cook meals of data, then Spark is the expediter that rapidly assembles and distributes those meals for consumption.</strong></p>
@@ -114,7 +113,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png"></p>
+<h2 id="Apache-Spark-Architecture"><a href="#Apache-Spark-Architecture" class="headerlink" title="Apache Spark Architecture"></a>Apache Spark Architecture</h2><h3 id="Features-of-Apache-Spark"><a href="#Features-of-Apache-Spark" class="headerlink" title="Features of Apache Spark"></a>Features of Apache Spark</h3><p><img src="https://d1jnx9ba8s6j9r.cloudfront.net/blog/wp-content/uploads/2018/09/Picture5-2-768x408.png" alt=""></p>
 <ul>
 <li><strong>Speed</strong></li>
 </ul>
@@ -124,14 +123,14 @@
 <p>Simple programming layer provides powerful caching and disk persistence capabilities.</p>
 </li>
 <li><p><strong>Deployment</strong></p>
-<p>It can be deployed through <em><strong>Mesos, Hadoop via YARN, or Spark’s own cluster manager.</strong></em></p>
+<p>It can be deployed through <strong><em>Mesos, Hadoop via YARN, or Spark’s own cluster manager.</em></strong></p>
 </li>
-<li><p><strong>Real-Time</strong><br>It offers Real-time computation &amp; low latency because of <em><strong>in-memory computation.</strong></em></p>
+<li><p><strong>Real-Time</strong><br>It offers Real-time computation &amp; low latency because of <strong><em>in-memory computation.</em></strong></p>
 </li>
 <li><p><strong>Polyglot</strong></p>
+<p>Spark provides high-level APIs in Java, Scala, Python, and R. Spark code can be written in any of these four languages. It also provides a shell in Scala and Python.</p>
 </li>
 </ul>
-<p>  Spark provides high-level APIs in Java, Scala, Python, and R. Spark code can be written in any of these four languages. It also provides a shell in Scala and Python.</p>
 <h3 id="Spark-Architecture-Overview"><a href="#Spark-Architecture-Overview" class="headerlink" title="Spark Architecture Overview"></a>Spark Architecture Overview</h3><p>Apache Spark has a well-defined layered architecture where all the spark components and layers are loosely coupled. This architecture is further integrated with various extensions and libraries. Apache Spark Architecture is based on two main abstractions:</p>
 <ul>
 <li><em>Resilient Distributed Dataset (RDD)</em></li>

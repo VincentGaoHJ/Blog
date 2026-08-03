@@ -43,43 +43,46 @@
 <p>Using IAM, you can create and manage AWS users and groups, and use permissions to allow and deny their access to AWS resources.</p>
 <p><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--T9jIYY2g--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://raw.githubusercontent.com/butu5/devto/master/blog-posts/iam-test/assets/3-iam.png" alt="Using IAM, you can control who can access to AWS resources"></p>
 <span id="more"></span>
-
 <p>[toc]</p>
 <h1 id="Advanced-IAM"><a href="#Advanced-IAM" class="headerlink" title="Advanced IAM"></a>Advanced IAM</h1><h2 id="AWS-Directory-Service"><a href="#AWS-Directory-Service" class="headerlink" title="AWS Directory Service"></a><a target="_blank" rel="noopener" href="https://aws.amazon.com/directoryservice/">AWS Directory Service</a></h2><p><img src="https://d1.awsstatic.com/Products/product-name/diagrams/directory_service_howitworks.80bfccbf2f5d1d63558ec3c086aff247147258f1.png" alt="How it works"></p>
 <p><strong>AWS Directory Service for Microsoft Active Directory</strong>, also known as AWS Managed Microsoft Active Directory (AD), enables your directory-aware workloads and AWS resources to use managed Active Directory (AD) in AWS.</p>
 <p><a target="_blank" rel="noopener" href="https://aws.amazon.com/rds/faqs/">https://aws.amazon.com/rds/faqs/</a></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">AWS</th>
-<th align="center">Customer</th>
+<th style="text-align:center">AWS</th>
+<th style="text-align:center">Customer</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Multi-AZ Deployment</td>
-<td align="center">Users, Groups, GPOs</td>
+<tbody>
+<tr>
+<td style="text-align:center">Multi-AZ Deployment</td>
+<td style="text-align:center">Users, Groups, GPOs</td>
 </tr>
 <tr>
-<td align="center">Patch, Monitor, Recover</td>
-<td align="center">Standard AD Tools</td>
+<td style="text-align:center">Patch, Monitor, Recover</td>
+<td style="text-align:center">Standard AD Tools</td>
 </tr>
 <tr>
-<td align="center">Instance Rotation</td>
-<td align="center">Scale out DCs</td>
+<td style="text-align:center">Instance Rotation</td>
+<td style="text-align:center">Scale out DCs</td>
 </tr>
 <tr>
-<td align="center">Snapshot and Restore</td>
-<td align="center">Trusts (Resource Forest)</td>
+<td style="text-align:center">Snapshot and Restore</td>
+<td style="text-align:center">Trusts (Resource Forest)</td>
 </tr>
 <tr>
-<td align="center"></td>
-<td align="center">Certificate Authorities</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Certificate Authorities</td>
 </tr>
 <tr>
-<td align="center"></td>
-<td align="center">Federation</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">Federation</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>User Case</strong></p>
 <ul>
 <li>Provide your on-premises AD users quick access to AWS</li>
@@ -88,31 +91,34 @@
 <li>Give your on-premises AD users federated access to the AWS Management Console and AWS CLI quickly</li>
 <li>Grant your on-premises AD users single-click access to cloud business applications</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">AD Compatible</th>
-<th align="center">Not AD Compatible</th>
+<th style="text-align:center">AD Compatible</th>
+<th style="text-align:center">Not AD Compatible</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">Managed Microsoft AD</td>
-<td align="center">Cloud Directory</td>
+<tbody>
+<tr>
+<td style="text-align:center">Managed Microsoft AD</td>
+<td style="text-align:center">Cloud Directory</td>
 </tr>
 <tr>
-<td align="center">AD Connector</td>
-<td align="center">Cognito User Pools</td>
+<td style="text-align:center">AD Connector</td>
+<td style="text-align:center">Cognito User Pools</td>
 </tr>
 <tr>
-<td align="center">Simple AD</td>
-<td align="center"></td>
+<td style="text-align:center">Simple AD</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>Simple AD</strong></p>
 <ul>
 <li>Standalone managed directory</li>
 <li>Basic AD features</li>
-<li>Small: &lt;&#x3D; 500; Large &lt;&#x3D; 5000 users</li>
+<li>Small: &lt;= 500; Large &lt;= 5000 users</li>
 <li>Easier to manage EC2</li>
 <li>Linux workloads that need LDAP</li>
 <li>Does not support trusts (can’t join on-promises AD)</li>
@@ -146,12 +152,12 @@
 </li>
 </ul>
 <p><strong>IAM Policies</strong></p>
-<p><em><strong>Not explicitly allowed &#x3D;&#x3D; implicity denied</strong></em></p>
+<p><strong><em>Not explicitly allowed == implicity denied</em></strong></p>
 <ul>
 <li>JSON document that defines permissions</li>
 <li>Identity Policy &amp; Resource Policy</li>
 <li>No effect until attached</li>
-<li>List of Statements (Effect&#x2F;Action&#x2F;Resource)</li>
+<li>List of Statements (Effect/Action/Resource)</li>
 </ul>
 <p><strong>Permission Boundaries</strong></p>
 <ul>
